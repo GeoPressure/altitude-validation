@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: "If you use these results or this code, please cite it as below."
+type: software
+title: "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes"
+abstract: >-
+  Validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure
+  measurement using ERA5 reanalysis, against HadISD surface station barometers (ground level)
+  and IGRA2 radiosondes (0-6 km above ground). Separates accuracy (static per-site bias) from
+  precision (temporal scatter), quantifies their drivers, and compares ERA5 single-levels with
+  ERA5-Land.
+authors:
+  - family-names: Nussbaumer
+    given-names: Raphaël
+    orcid: https://orcid.org/0000-0002-8185-1020
+    affiliation: Swiss Ornithological Institute
+repository-code: https://github.com/GeoPressure/altitude-validation
+license: MIT
+keywords:
+  - geolocator
+  - barometric altimetry
+  - ERA5
+  - bird migration
+  - flight altitude
+  - validation
+references:
+  - type: data
+    title: "HadISD: Hadley Centre Integrated Sub-daily Dataset, version 3.4.3.2025f"
+    authors:
+      - family-names: Dunn
+        given-names: Robert J. H.
+    url: https://www.metoffice.gov.uk/hadobs/hadisd/
+  - type: data
+    title: "Integrated Global Radiosonde Archive (IGRA), Version 2"
+    authors:
+      - name: NOAA National Centers for Environmental Information
+    doi: 10.7289/V5X63K0Q
+  - type: data
+    title: "ERA5 hourly data on single levels from 1940 to present"
+    authors:
+      - family-names: Hersbach
+        given-names: Hans
+    doi: 10.24381/cds.adbb2d47
+  - type: data
+    title: "ERA5-Land hourly data from 1950 to present"
+    authors:
+      - family-names: Muñoz Sabater
+        given-names: Joaquín
+    doi: 10.24381/cds.e2161bac

@@ -1,0 +1,360 @@
+---
+title: "How accurate is altitude from pressure geolocators?"
+subtitle: "A global validation of GeoPressureR altitude against station barometers and radiosondes"
+author: "Raphaël Nussbaumer"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    theme: cosmo
+    fig-width: 9
+execute:
+  echo: false
+  warning: false
+  message: false
+knitr:
+  opts_knit:
+    root.dir: ".."
+---
+
+```{r setup}
+library(data.table)
+tab <- function(f) fread(file.path("output/tables", f))
+hl <- tab("headline.csv")
+h <- function(k, digits = 1) {
+  v <- hl[metric == k, value]
+  if (!length(v) || is.na(v)) return("NA")
+  formatC(v, format = "f", digits = digits, big.mark = ",")
+}
+hi <- function(k) h(k, 0)
+fig <- function(f) knitr::include_graphics(normalizePath(file.path("output/figures", f)), rel_path = FALSE)
+A <- tab("A_summary.csv")
+B <- tab("B_height.csv")
+gp_version <- readLines("output/tables/geopressurer_version.txt")
+```
+
+::: {.callout-note appearance="simple"}
+## In short
+
+**At ground level**, GeoPressureR's default (ERA5 single-levels) retrieves a geolocator's altitude
+with a median per-site **bias of `r h("A_cons_abs_bias_median")` m** (90% of sites within
+`r h("A_cons_abs_bias_p90")` m) and a **temporal scatter (SD) of `r h("A_cons_sd_median")` m**
+(`r hi("A_cons_n_stations")` stations worldwide, 2022–2024). Pooled over all station-hours the mean
+absolute error is **`r h("A_cons_mae")` m** and 95% of errors are below `r h("A_cons_p95")` m.
+Terrain roughness is the main driver: errors roughly triple from flat to mountainous terrain.
+
+**In flight**, altitude is **underestimated by about 1–1.5% of the height above the ground**
+(`r h("B_rel_bias_1000_1500", 0)` m at 1–1.5 km, `r h("B_rel_bias_2000_3000", 0)` m at 2–3 km,
+`r h("B_rel_bias_5000_6000", 0)` m at 5–6 km), because the formula assumes a standard temperature
+profile. The error is largest in continental and polar winters (surface inversions). Averaged over
+the heights at which tracked birds fly, flight adds a mean absolute error of
+**`r h("B_bird_weighted_mae")` m**.
+
+**ERA5-Land** is much worse for absolute altitude (MAE `r h("A_cons_land_mae")` m) and should not be
+used for it.
+:::
+
+# Why this study
+
+GeoPressureR (and GeoPressureAPI behind it) converts the pressure a geolocator records into an
+altitude using ERA5 reanalysis: the surface pressure $p_0$ and 2 m temperature $T_0$ at the bird's
+location and hour, the ERA5 orography $z_0$, and the barometric formula with a standard lapse rate
+$L = -6.5$ K/km,
+
+$$
+z = z_0 + \frac{T_0}{L}\left[\left(\frac{p}{p_0}\right)^{-R L / (g M)} - 1\right].
+$$
+
+Users want to know how good that altitude is, where and when it is worse, and why. An earlier check
+over the Alps
+([GeoPressureAPI#27](https://github.com/GeoPressure/GeoPressureAPI/issues/27)) found ~9 m mean
+absolute error with ERA5 single-levels and led to making single-levels the default. This study extends
+that check to the whole globe, a full annual cycle, three recent years, and — using radiosondes —
+to the heights at which birds fly.
+
+# Methods
+
+## What is validated
+
+The exact GeoPressureR code path is evaluated: grid-cell snapping, nearest-hour matching, the ERA5
+orography files and `pressure_to_altitude()` are taken from GeoPressureR `r gp_version`, reading
+ERA5 from the ECMWF ARCO archive (`pressurepath_create(source = "arco")`). A cross-check against
+GeoPressureAPI (Earth Engine) on `r if (file.exists("output/tables/api_crosscheck_summary.csv")) tab("api_crosscheck_summary.csv")$n else "NA"`
+station-hours found a maximum difference of `r h("api_max_abs_diff", 2)` m, so every result below
+applies to both entry points.
+
+Two ERA5 products are compared: **ERA5 single-levels** (0.25°, the default) and **ERA5-Land**
+(0.1°). The mixed `"both"` option is not evaluated separately: over land it is ERA5-Land.
+
+## Reference data
+
+**Tier A — surface barometers (ground level).** HadISD v3.4.3.2025f (Dunn et al. 2012, 2016), a
+quality-controlled subset of NOAA ISD. Its station-level pressure is treated as a geolocator reading
+and the retrieved altitude is compared with the station elevation. Stations were chosen for spatial
+balance: in every 5°×5° cell the highest, the lowest and one random station, plus every station
+above 1000 m. Stations had to report station pressure on at least half the days of each of
+2022–2024, at least 6-hourly; the set was then thinned to one random station per 5° cell plus one
+per 2.5° cell above 1000 m. ERA5-Land was evaluated on a random 200 of these stations, and a random
+100 reporting in 1990, 2005 and 2015 test for changes over time.
+
+**Tier B — radiosondes (0–6 km above ground).** IGRA2 (Durre et al. 2006, 2018), 2023–2024. At
+every level the sonde reports pressure and geopotential height; the pressure is given to the
+altitude formula at the launch site and hour of that level, and the retrieved altitude is compared
+with the sonde's height. Stations: the highest and one random active station per 10°×10° cell, plus
+all above 1000 m.
+
+## Separating accuracy from precision, and handling errors in the reference
+
+At ~5–10 m, errors in the reference itself matter. Three choices keep them out of the headline
+numbers:
+
+- **Accuracy vs precision.** Each station's error is split into its mean (the *bias*: constant in
+  time, relevant for absolute altitude) and the SD around that mean (*precision*: relevant for
+  altitude changes). A wrong station elevation shifts only the bias, so precision is robust to
+  metadata errors.
+- **Trusted metadata subset.** Accuracy is also reported for stations whose HadISD elevation agrees
+  within 20 m with an independent DEM (Mapzen terrain tiles via OpenTopoData).
+- **Height relative to the surface level (Tier B).** The error at a level minus the error at the same
+  sounding's surface level cancels the station elevation entirely, isolating how the error grows
+  with height.
+
+Gross observation errors were flagged when more than 100 m (Tier A) or 150 m (Tier B) and 10 robust
+SD from the station's (or height bin's) median error: `r h("A_gross_fraction", 5)` of Tier A and
+`r h("B_gross_fraction", 5)` of Tier B observations.
+
+Pooled statistics give every station equal weight.
+
+**Reference consistency screen.** 
+`r hi("A_n_inconsistent")` of `r hi("A_n_stations")` Tier A stations (5%) carry a constant offset
+larger than any plausible extrapolation error (|bias| > 30 m + 10% of the gap between station
+elevation and ERA5 orography, equivalent to a ~28 K error in the assumed layer temperature). Their
+pressure tracks ERA5 hour by hour (median SD ~5 m) but at a fixed offset of typically 75 m: the
+signature of a pressure reported at a different height than the listed elevation (datum or
+metadata error), not of a reanalysis error. They are included in the "all stations" row and
+excluded elsewhere. A few could be genuine errors in deep valleys; this is a limitation.
+
+## Drivers
+
+Candidate drivers of accuracy and precision: the difference between station elevation and ERA5
+orography, sub-grid terrain roughness (ERA5 `sdor`), latitude, Köppen-Geiger climate zone (station
+level); local solar hour, season, boundary layer height, skin − 2 m temperature (a proxy for
+surface inversions) and 6 h surface pressure tendency (observation level). Their effect is
+estimated with GAMs (mgcv) and ranked by the deviance explained lost when each is dropped.
+
+For Tier B, the error expected from the temperature assumption alone is
+$\Delta z \cdot (\bar T_\text{assumed} - \bar T_\text{obs}) / \bar T_\text{obs}$, where
+$\bar T_\text{obs}$ is the sonde's log-pressure-weighted mean temperature of the layer below the level.
+
+# Results: ground level (Tier A)
+
+```{r}
+knitr::kable(
+  A[group == "all", .(subset, dataset = fifelse(dataset == "sl", "single-levels", "land"),
+    stations = n_stations, `obs` = format(n_obs, big.mark = ","),
+    `median |bias|` = round(abs_bias_median, 1), `p90 |bias|` = round(abs_bias_p90, 1),
+    `median SD` = round(sd_median, 1), `p90 SD` = round(sd_p90, 1), MAE = round(mae, 1),
+    RMSE = round(rmse, 1), `p95 |err|` = round(p95_abs, 1))],
+  caption = "Altitude error at ground level, 2022-2024 (m)."
+)
+```
+
+```{r}
+#| fig-cap: "Accuracy: mean error per station."
+fig("A_map_bias.png")
+```
+
+```{r}
+#| fig-cap: "Precision: temporal SD of the error per station."
+fig("A_map_sd.png")
+```
+
+```{r}
+#| fig-cap: "Share of stations below a given |bias|, ERA5 single-levels vs ERA5-Land."
+#| out-width: 70%
+fig("A_sl_vs_land.png")
+```
+
+## By terrain, elevation, latitude and climate
+
+```{r}
+knitr::kable(
+  A[group != "all" & dataset == "sl", .(group, subset, stations = n_stations,
+    `median |bias|` = round(abs_bias_median, 1), `p90 |bias|` = round(abs_bias_p90, 1),
+    `median SD` = round(sd_median, 1), `p90 SD` = round(sd_p90, 1), MAE = round(mae, 1),
+    `p95 |err|` = round(p95_abs, 1))],
+  caption = "ERA5 single-levels, by station class (m). Terrain = sub-grid orography SD in the ERA5 cell."
+)
+```
+
+## Drivers
+
+```{r}
+#| fig-cap: "Left: bias against the gap between station elevation and ERA5 orography. Right: precision against sub-grid terrain roughness."
+fig("A_drivers.png")
+```
+
+```{r}
+d <- tab("A_drivers_station.csv")
+knitr::kable(d[, .(response, term, `deviance explained (full)` = round(dev_expl_full, 3),
+  `lost when dropped` = round(dev_expl_drop, 3), n)], caption = "Station-level drivers (GAM).")
+d <- tab("A_drivers_obs.csv")
+knitr::kable(d[, .(term, `deviance explained (full)` = round(dev_expl_full, 3),
+  `lost when dropped` = round(dev_expl_drop, 3), n)],
+  caption = "Observation-level drivers of the de-biased absolute error (GAM with station random effect).")
+```
+
+```{r}
+#| fig-cap: "Diurnal and seasonal cycle of the de-biased error (RMS), by climate zone."
+fig("A_cycles.png")
+```
+
+```{r}
+#| fig-cap: "Change over time, for stations reporting in every year."
+#| out-width: 70%
+if (file.exists("output/figures/A_era.png")) fig("A_era.png")
+```
+
+```{r}
+#| results: asis
+if (file.exists("output/tables/A_era.csv")) {
+  e <- tab("A_era.csv")
+  print(knitr::kable(e[, lapply(.SD, function(x) round(x, 1)), .SDcols = names(e)],
+    caption = "Change over time for stations reporting in every year (m)."))
+}
+```
+
+# Results: in flight (Tier B)
+
+```{r}
+knitr::kable(
+  B[, .(method, `height above ground` = hbin, n = format(n, big.mark = ","),
+    bias = round(bias, 1), SD = round(sd, 1), MAE = round(mae, 1), RMSE = round(rmse, 1),
+    `p95 |err|` = round(p95_abs, 1))],
+  caption = "Error relative to the surface level of the same sounding, by height (m)."
+)
+```
+
+```{r}
+#| fig-cap: "Bias and SD of the altitude error against height above ground, for GeoPressureR and alternative formulations, with the height distribution of geolocator flight points (right)."
+fig("B_height.png")
+```
+
+```{r}
+#| fig-cap: "The height-dependent error is almost entirely the difference between the temperature profile the formula assumes and the one the sonde observed."
+#| out-width: 70%
+fig("B_temperature.png")
+```
+
+```{r}
+#| fig-cap: "Height-dependent bias by climate zone and season (solid: summer half-year, dashed: winter half-year; southern hemisphere shifted by six months)."
+#| out-width: 80%
+fig("B_height_climate.png")
+```
+
+```{r}
+bw <- tab("B_bird_weighted.csv")
+knitr::kable(bw[, .(method, bias = round(bias, 1), MAE = round(mae, 1), RMSE = round(rmse, 1))],
+  caption = "Error averaged over the height distribution of geolocator flight points (m).")
+```
+
+```{r}
+d <- tab("B_height_daynight_season.csv")[method == "GeoPressureR (ERA5 single-levels)"]
+knitr::kable(dcast(d, hbin ~ daynight + season, value.var = "bias", fun.aggregate = function(x)
+  round(x, 1)), caption = "Bias by height, day/night and season (m).")
+```
+
+# Discussion and guidance for users
+
+```{r}
+tr <- A[dataset == "sl"]
+t <- function(sub, col) round(tr[subset == sub][[col]], 1)
+e <- if (file.exists("output/tables/A_era.csv")) tab("A_era.csv") else NULL
+te <- tab("B_temperature_explanation.csv")
+bwv <- tab("B_bird_weighted.csv")
+bws <- function(m, col) round(bwv[method == m][[col]], 1)
+```
+
+## What users can expect
+
+| Situation | Typical error | Driver |
+|---|---|---|
+| Absolute altitude on the ground, flat terrain | bias `r t("flat (<20 m)", "abs_bias_median")` m (p90 `r t("flat (<20 m)", "abs_bias_p90")` m), MAE `r t("flat (<20 m)", "mae")` m | ERA5 surface pressure at 0.25° |
+| Absolute altitude on the ground, mountains (sub-grid SD > 300 m) | bias `r t("mountain (>300 m)", "abs_bias_median")` m (p90 `r t("mountain (>300 m)", "abs_bias_p90")` m), MAE `r t("mountain (>300 m)", "mae")` m | terrain the 0.25° grid cannot resolve |
+| Altitude *changes* at one site (precision) | SD `r t("flat (<20 m)", "sd_median")` m (flat) to `r t("mountain (>300 m)", "sd_median")` m (mountains) | as above; almost no diurnal or seasonal cycle |
+| In flight, 1–1.5 km above ground | `r h("B_rel_bias_1000_1500", 0)` m bias, RMSE `r h("B_rel_rmse_1000_1500", 0)` m (added to the ground-level error) | assumed temperature profile |
+| In flight, 2–3 km above ground | `r h("B_rel_bias_2000_3000", 0)` m bias, RMSE `r h("B_rel_rmse_2000_3000", 0)` m | as above; ~2x in continental/polar winter |
+
+**On the ground, the error is mostly a fixed offset per place, not noise.** Station identity
+explains almost all of the explainable variation in the de-biased error; hour of day, season,
+boundary layer height, surface inversions and pressure tendency each add less than 0.5% of
+deviance. Precision (SD ~4 m) is therefore better than absolute accuracy (MAE ~7 m), and roughly
+constant in time. What changes the error is *where*: the gap between the
+true ground and ERA5's smoothed orography, and sub-grid terrain roughness.
+
+**In flight, the error grows with height and is systematic.** The barometric formula extrapolates
+the ERA5 2 m temperature upwards with a standard lapse rate of −6.5 K/km and ignores humidity. The
+real atmosphere is usually warmer than that (shallower lapse rates, surface inversions, and the
+virtual-temperature effect of water vapour), so the layer is too cold in the formula and the bird is
+placed too low. The error predicted from the sonde's own temperature profile explains
+`r round(100 * te$r2)`% of the variance (r = `r round(te$r, 2)`, slope `r round(te$slope, 2)`); the
+remaining offset of `r round(te$intercept)` m is consistent with humidity, which the dry-bulb
+comparison leaves out. It is worst over cold continental and polar surfaces in winter, where strong
+inversions sit under much warmer air, and in the humid tropics.
+
+**Flight altitudes from GeoPressureR are therefore conservative (slightly too low).** For a bird at
+2 km above the ground, expect it about 25–35 m too low, with a scatter (SD) of 30–50 m; roughly
+double that in a continental or polar winter.
+
+**ERA5 has improved.** For the same stations, the median ground-level bias fell from
+`r if (!is.null(e)) round(e[year == min(year), abs_bias_median], 1) else "NA"` m in
+`r if (!is.null(e)) min(e$year) else "NA"` to
+`r if (!is.null(e)) round(e[year == max(year), abs_bias_median], 1) else "NA"` m in
+`r if (!is.null(e)) max(e$year) else "NA"`, and the precision improved by about a third. Tracks
+from the 1990s and earlier should be expected to be somewhat less accurate.
+
+**ERA5-Land vs ERA5 single-levels.** ERA5-Land's median ground-level bias is about four times
+larger. Its height-*relative* errors in flight are similar to single-levels, because the error
+relative to the surface level cancels its static orography inconsistency. This confirms that its
+problem is a fixed spatial offset
+([GeoPressureAPI#27](https://github.com/GeoPressure/GeoPressureAPI/issues/27)), which matters
+for absolute altitude and for comparing altitudes between places.
+
+## Could the formula do better?
+
+Two simple changes remove most of the average bias in flight: using the 2 m virtual temperature
+(from ERA5 2 m dewpoint), and a −5 K/km lapse rate. Averaged over bird flight heights, the bias drops
+from `r bws("GeoPressureR (ERA5 single-levels)", "bias")` m to
+`r bws("virtual temperature + lapse -5 K/km", "bias")` m and the RMSE from
+`r bws("GeoPressureR (ERA5 single-levels)", "rmse")` m to
+`r bws("virtual temperature + lapse -5 K/km", "rmse")` m. The scatter barely changes, though. It
+comes from day-to-day and seasonal departures from any fixed profile, mainly inversions. Removing it
+needs the actual temperature profile, i.e. ERA5 pressure-level temperature or geopotential. That
+would be worth evaluating as a GeoPressureR improvement for in-flight altitude; it is not what
+GeoPressureR does today, and nothing here changes its ground-level behaviour.
+
+## Limitations
+
+- **Not independent of ERA5.** Station surface pressure and radiosondes are both assimilated by
+  ERA5, so errors *at these sites* are optimistic. Remote areas without observations are likely
+  somewhat worse, especially for ground-level bias.
+- **The sensor is not included.** Geolocator pressure sensors add their own offset, drift and
+  resolution (1 hPa ≈ 8 m near the ground). The numbers here are the error of the retrieval method
+  given a perfect pressure reading.
+- **Radiosonde geometry.** The ERA5 column at the launch site is used; balloon drift (typically a few
+  km below 5 km) is ignored. Sonde heights are themselves derived hypsometrically. The ~10 m scatter
+  within the first 100 m partly reflects integer-metre reporting and interpolated low levels.
+- **Reference screen.** 5% of surface stations were excluded as datum/metadata errors. A few may be
+  genuine valley errors, so the mountain numbers may be slightly optimistic.
+- **Sampling.** Stations are thinned for spatial balance, but coverage is still sparse in parts of
+  Africa, South America and over the oceans (Tier A is land-only).
+
+# Data and code availability
+
+Code: <https://github.com/GeoPressure/altitude-validation>. ERA5 and ERA5-Land: Copernicus Climate
+Change Service (Hersbach et al. 2020; Muñoz-Sabater et al. 2021), via the ECMWF ARCO archive.
+HadISD: Met Office Hadley Centre, Non-Commercial Government Licence; this product may contain data
+governed by WMO Resolution 40 Annex 1. IGRA2: NOAA NCEI. Bird heights: GeoLocator master data
+package (<https://doi.org/10.5281/zenodo.18187092>).

@@ -1,0 +1,21 @@
+{
+  "title": "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Nussbaumer, Raphaël",
+      "orcid": "0000-0002-8185-1020",
+      "affiliation": "Swiss Ornithological Institute"
+    }
+  ],
+  "license": "MIT",
+  "keywords": ["geolocator", "barometric altimetry", "ERA5", "bird migration", "flight altitude", "validation"],
+  "communities": [{ "identifier": "geolocator-dp" }],
+  "related_identifiers": [
+    { "relation": "isSupplementTo", "identifier": "https://github.com/GeoPressure/GeoPressureR", "scheme": "url" },
+    { "relation": "isSupplementTo", "identifier": "https://github.com/GeoPressure/GeoPressureAPI", "scheme": "url" },
+    { "relation": "references", "identifier": "10.24381/cds.adbb2d47", "scheme": "doi" },
+    { "relation": "references", "identifier": "10.24381/cds.e2161bac", "scheme": "doi" },
+    { "relation": "references", "identifier": "10.7289/V5X63K0Q", "scheme": "doi" }
+  ]
+}

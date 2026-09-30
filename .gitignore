@@ -1,0 +1,11 @@
+# Raw and intermediate data are large and re-downloadable: see Makefile.
+data/
+*.tmp
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+report/*_files/
+report/*_cache/
+report/.quarto/
+report/index.html
