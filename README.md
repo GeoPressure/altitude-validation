@@ -8,8 +8,9 @@ measurement using ERA5 reanalysis, against:
   worldwide, 2022–2024 (plus 1990, 2005, 2015 for a subset).
 - **Tier B – radiosondes (0–6 km above ground):** IGRA2, 326 stations, 2023–2024.
 
-The full methods and results are in the report (`report/index.qmd`, rendered to
-`report/index.html`). This page summarises what users need.
+The full methods and results are in the **[report](report/index.md)** (source
+`report/index.qmd`; a self-contained HTML version is rendered locally to `report/index.html`). This
+page summarises what users need.
 
 ## Results in one table
 

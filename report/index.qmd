@@ -4,6 +4,8 @@ subtitle: "A global validation of GeoPressureR altitude against station baromete
 author: "Raphaël Nussbaumer"
 date: today
 format:
+  gfm:
+    toc: false
   html:
     toc: true
     toc-depth: 3
@@ -30,7 +32,8 @@ h <- function(k, digits = 1) {
   formatC(v, format = "f", digits = digits, big.mark = ",")
 }
 hi <- function(k) h(k, 0)
-fig <- function(f) knitr::include_graphics(normalizePath(file.path("output/figures", f)), rel_path = FALSE)
+# Paths relative to report/, so the figures resolve both on GitHub (index.md) and in the HTML.
+fig <- function(f) knitr::include_graphics(file.path("..", "output/figures", f), error = FALSE)
 A <- tab("A_summary.csv")
 B <- tab("B_height.csv")
 gp_version <- readLines("output/tables/geopressurer_version.txt")
