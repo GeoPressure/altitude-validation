@@ -9,6 +9,11 @@ A_sd_p90,8.75843991001393
 A_mae,16.795715713189
 A_rmse,81.3011258923032
 A_p95,43.9394312800255
+A_n_candidates,2534
+A_n_coverage,1833
+B_n_candidates,361
+B_n_with_data,351
+B_n_levels,5881928
 A_n_inconsistent,50
 A_n_step,14
 A_n_step_only,14

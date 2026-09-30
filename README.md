@@ -79,8 +79,9 @@ N_CORES=4 make  # fewer parallel workers
 | 06 | `06_errors.R` | Altitude errors (Tier A, Tier B, formula variants) |
 | 08 | `08_api_crosscheck.R` | GeoPressureAPI vs ARCO |
 | 09 | `09_reference_checks.R` | Step changes, SRTM/ASTER DEM and neighbour checks of the surface stations |
-| 07 | `07_analysis.R` | Summaries, driver models, figures → `output/` |
+| 07 | `07_analysis.R` | Summaries and driver models → `output/tables` |
 | 07b | `07b_formula.R` | Formula variants: virtual temperature and a lapse rate fitted to the radiosondes (cross-validated) |
+| 10 | `10_figures.R` | All figures, from the tables in `output/tables` |
 
 Every step skips work already on disk, so the pipeline can be interrupted and resumed.
 Raw and intermediate data (`data/`, ~2 GB) are not committed; `output/` holds the derived tables and

@@ -20,8 +20,6 @@
 # ground-level altitude (Tier A) is evaluated with the fitted lapse rate.
 
 source("R/utils.R")
-suppressPackageStartupMessages(library(ggplot2))
-theme_set(theme_minimal(base_size = 11))
 set.seed(7)
 
 st <- load_stations()
@@ -178,38 +176,6 @@ ground <- data.table(
   median_abs_dz = median(abs(stA$dz_sl))
 )
 fwrite(ground, file.path(dir_tables, "formula_ground.csv"))
-
-# ---- Figures ----------------------------------------------------------------------------------------
-save_fig <- function(p, name, w = 9, h = 5) {
-  ggsave(file.path(dir_figures, paste0(name, ".png")), p, width = w, height = h, dpi = 150,
-    bg = "white")
-}
-cols <- setNames(c("#444444", "#1f77b4", "#ff7f0e", "#2ca02c"), variants$method)
-p1 <- ggplot(height_tab, aes(agl_mid, bias, colour = method)) +
-  geom_hline(yintercept = 0, colour = "grey60") +
-  geom_line(linewidth = 0.8) + geom_point(size = 1) +
-  scale_colour_manual(values = cols) + coord_flip() +
-  labs(x = "Height above ground (m)", y = "Bias (m)", colour = NULL)
-p2 <- ggplot(height_tab, aes(agl_mid, sd, colour = method)) +
-  geom_line(linewidth = 0.8) + geom_point(size = 1) +
-  scale_colour_manual(values = cols) + coord_flip() +
-  labs(x = NULL, y = "SD (m)", colour = NULL)
-p3 <- ggplot(bb[, .(lo = pmax(lo, 0), hi, prop)]) +
-  geom_rect(aes(xmin = 0, xmax = prop / (hi - lo) * 1000, ymin = lo, ymax = hi), fill = "grey60",
-    colour = "white") +
-  labs(y = NULL, x = "Flight points\n(share per km)")
-save_fig(patchwork::wrap_plots(p1, p2, p3, widths = c(2, 2, 1), guides = "collect") &
-  theme(legend.position = "bottom", legend.direction = "vertical"), "B_formula", 11, 6)
-
-clim_tab[, formula := factor(code, c("current", "tv_lapse"), c("GeoPressureR (current)",
-  sprintf("Tv + fitted lapse rate (%.1f K/km)", 1000 * L_tv)))]
-p <- ggplot(clim_tab[n_st >= 3], aes(agl_mid, bias, colour = climate, linetype = season)) +
-  geom_hline(yintercept = 0, colour = "grey60") +
-  geom_line(linewidth = 0.7) +
-  facet_wrap(~formula) + coord_flip() +
-  labs(x = "Height above ground (m)", y = "Bias vs surface level (m)", colour = NULL,
-    linetype = NULL)
-save_fig(p, "B_formula_climate", 10, 5.5)
 
 print(fit_tab)
 print(cv_sum)

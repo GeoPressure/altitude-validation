@@ -43,7 +43,10 @@ output/tables/formula_fit.csv: output/tables/headline.csv
 bird-heights:
 	$(R) scripts/00_bird_heights.R
 
-report: output/tables/headline.csv output/tables/formula_fit.csv
+figures: output/tables/headline.csv output/tables/formula_fit.csv
+	$(R) scripts/10_figures.R
+
+report: figures
 	quarto render report/index.qmd
 
-.PHONY: all report bird-heights
+.PHONY: all report figures bird-heights

@@ -1,4 +1,4 @@
-# Summaries, driver models and figures for Tier A and Tier B.
+# Summaries and driver models for Tier A and Tier B (figures: 10_figures.R).
 #
 # Vocabulary used throughout:
 #   accuracy  = the per-station mean error (bias). Constant in time, so it only matters for
@@ -9,11 +9,7 @@
 # networks do not dominate.
 
 source("R/utils.R")
-suppressPackageStartupMessages({
-  library(ggplot2)
-  library(mgcv)
-})
-theme_set(theme_minimal(base_size = 11))
+suppressPackageStartupMessages(library(mgcv))
 set.seed(5)
 
 st <- load_stations()
@@ -262,6 +258,11 @@ headline <- list(
   A_mae = g(tabA, "all stations", "sl", "mae"),
   A_rmse = g(tabA, "all stations", "sl", "rmse"),
   A_p95 = g(tabA, "all stations", "sl", "p95_abs"),
+  A_n_candidates = nrow(fread(file.path(dir_interim, "hadisd_candidates.csv"))),
+  A_n_coverage = nrow(fread(file.path(dir_interim, "stations_A_all.csv"))),
+  B_n_candidates = nrow(fread(file.path(dir_interim, "igra_candidates.csv"))),
+  B_n_with_data = nrow(st[tier == "B"]),
+  B_n_levels = nrow(B),
   A_n_inconsistent = sum(!stA$consistent),
   A_n_step = sum(stA$step_flag),
   A_n_step_only = sum(stA$step_flag & stA$consistent),
@@ -303,126 +304,18 @@ headline <- data.table(
 fwrite(headline, file.path(dir_tables, "headline.csv"))
 writeLines(geopressurer_version(), file.path(dir_tables, "geopressurer_version.txt"))
 
-# ==== Figures =================================================================================
-world <- rnaturalearth::ne_countries(scale = 110, returnclass = "sf")
-save_fig <- function(p, name, w = 9, h = 5) {
-  ggsave(file.path(dir_figures, paste0(name, ".png")), p, width = w, height = h, dpi = 150,
-    bg = "white")
-}
-basemap <- ggplot() +
-  geom_sf(data = world, fill = "grey93", colour = "grey75", linewidth = 0.2) +
-  coord_sf(expand = FALSE, ylim = c(-60, 85)) +
-  theme(axis.title = element_blank())
-
-p <- basemap +
-  geom_point(data = stA[order(abs(bias_sl))], aes(lon, lat, fill = pmax(pmin(bias_sl, 30), -30)),
-    shape = 21, size = 1.4, stroke = 0.15, colour = "grey30") +
-  scale_fill_distiller(palette = "RdBu", limits = c(-30, 30), direction = 1,
-    name = "Bias (m)\nclipped at\n+/-30 m") +
-  labs(title = "Accuracy: mean altitude error per station (ERA5 single-levels)")
-save_fig(p, "A_map_bias")
-
-p <- basemap +
-  geom_point(data = stA[order(sd_sl)], aes(lon, lat, fill = pmin(sd_sl, 15)), shape = 21,
-    size = 1.4, stroke = 0.15, colour = "grey30") +
-  scale_fill_viridis_c(option = "magma", direction = -1, limits = c(0, 15),
-    name = "SD (m)\nclipped\nat 15 m") +
-  labs(title = "Precision: temporal SD of the altitude error per station")
-save_fig(p, "A_map_sd")
-
-dl <- melt(stA[, .(id, `ERA5 single-levels` = abs(bias_sl), `ERA5-Land` = abs(bias_land))],
-  id.vars = "id", variable.name = "dataset", value.name = "abs_bias")
-p <- ggplot(dl[is.finite(abs_bias)], aes(abs_bias, colour = dataset)) +
-  stat_ecdf(linewidth = 0.8) +
-  scale_x_log10(breaks = c(0.1, 0.3, 1, 3, 10, 30, 100, 300)) +
-  scale_colour_manual(values = c("#1f77b4", "#d62728")) +
-  labs(x = "|bias| per station (m, log scale)", y = "Cumulative share of stations", colour = NULL,
-    title = "Station accuracy: ERA5 single-levels vs ERA5-Land") +
-  theme(legend.position = "bottom")
-save_fig(p, "A_sl_vs_land", 7, 4.5)
-
-stA[, screen_class := fifelse(!consistent, "excluded: implausible offset",
-  fifelse(step_flag, "excluded: step change", "reference set"))]
-bound <- data.table(dz = seq(-2500, 2500, 10))[, .(dz, hi = 30 + 0.1 * abs(dz))]
-p1 <- ggplot(stA, aes(dz_sl, bias_sl, colour = screen_class)) +
-  geom_hline(yintercept = 0, colour = "grey60") +
-  geom_line(aes(dz, hi), data = bound, inherit.aes = FALSE, colour = "grey70", linetype = 2) +
-  geom_line(aes(dz, -hi), data = bound, inherit.aes = FALSE, colour = "grey70", linetype = 2) +
-  geom_point(size = 0.8, alpha = 0.6) +
-  scale_colour_manual(values = c(`reference set` = "#1f77b4",
-    `excluded: implausible offset` = "#ff7f0e", `excluded: step change` = "#2ca02c")) +
-  coord_cartesian(ylim = c(-80, 80)) +
-  labs(x = "Station elevation - ERA5 orography (m)", y = "Bias (m)", colour = NULL) +
-  theme(legend.position = "bottom")
-p2 <- ggplot(stC, aes(sdor, sd_sl)) +
-  geom_point(size = 0.8, alpha = 0.5, colour = "grey30") +
-  geom_smooth(method = "gam", formula = y ~ s(x, k = 6), colour = "#d62728") +
-  scale_x_continuous(trans = "log1p", breaks = c(0, 10, 30, 100, 300, 1000)) +
-  coord_cartesian(ylim = c(0, 20)) +
-  labs(x = "Sub-grid orography SD in the ERA5 cell (m)", y = "Temporal SD of error (m)")
-save_fig(patchwork::wrap_plots(p1, p2), "A_drivers", 10, 4.5)
-
-p1 <- ggplot(cyc_h[!is.na(climate)], aes(hour_bin + 0.5, sd, colour = climate)) +
-  geom_line(linewidth = 0.8) +
-  labs(x = "Local solar hour", y = "RMS of de-biased error (m)", colour = NULL)
-p2 <- ggplot(cyc_m[!is.na(climate)], aes(month_seas, sd, colour = climate)) +
-  geom_line(linewidth = 0.8) +
-  scale_x_continuous(breaks = 1:12, labels = c("Jan", "", "", "Apr", "", "", "Jul", "", "",
-    "Oct", "", "")) +
-  labs(x = "Month (southern hemisphere shifted by 6 months)", y = NULL, colour = NULL)
-save_fig(patchwork::wrap_plots(p1, p2, guides = "collect") &
-  theme(legend.position = "bottom"), "A_cycles", 10, 4.5)
-
-if (exists("eraA")) {
-  p <- ggplot(melt(eraA, id.vars = c("year", "n_stations")), aes(year, value, colour = variable)) +
-    geom_line() + geom_point() +
-    labs(x = NULL, y = "m", colour = NULL,
-      title = sprintf("Change over time (%d stations with data in every year)", eraA$n_stations[1]))
-  save_fig(p, "A_era", 7, 4)
-}
-
-tabB[, agl_mid := hbin_mid[as.integer(hbin)]]
-p1 <- ggplot(tabB, aes(agl_mid, bias, colour = method)) +
-  geom_hline(yintercept = 0, colour = "grey60") +
-  geom_line(linewidth = 0.8) + geom_point(size = 1) +
-  coord_flip() +
-  labs(x = "Height above ground (m)", y = "Bias (m)", colour = NULL)
-p2 <- ggplot(tabB, aes(agl_mid, sd, colour = method)) +
-  geom_line(linewidth = 0.8) + geom_point(size = 1) +
-  coord_flip() +
-  labs(x = NULL, y = "SD (m)", colour = NULL)
-bb <- bird_bins[, .(lo = pmax(lo, 0), hi, prop)]
-p3 <- ggplot(bb) +
-  geom_rect(aes(xmin = 0, xmax = prop / (hi - lo) * 1000, ymin = lo, ymax = hi), fill = "grey60",
-    colour = "white") +
-  labs(y = NULL, x = "Flight points\n(share per km)")
-save_fig(patchwork::wrap_plots(p1, p2, p3, widths = c(2, 2, 1), guides = "collect") &
-  theme(legend.position = "bottom", legend.direction = "vertical"), "B_height", 11, 6)
-
+# ==== Tables behind the figures (drawn by 10_figures.R) ========================================
 bc <- B[!is.na(climate) & is.finite(err_sl_rel) & !is.na(hbin), .(bias = wmean(err_sl_rel, w),
   sd = sqrt(wmean((err_sl_rel - wmean(err_sl_rel, w))^2, w)), n_st = uniqueN(id)),
   by = .(hbin, climate, season)]
 bc[, agl_mid := hbin_mid[as.integer(hbin)]]
 fwrite(bc, file.path(dir_tables, "B_height_climate_season.csv"))
-p <- ggplot(bc[n_st >= 3], aes(agl_mid, bias, colour = climate, linetype = season)) +
-  geom_hline(yintercept = 0, colour = "grey60") +
-  geom_line(linewidth = 0.7) +
-  coord_flip() +
-  labs(x = "Height above ground (m)", y = "Bias vs surface level (m)", colour = NULL,
-    linetype = NULL, title = "Tier B: height-dependent bias by climate zone and season")
-save_fig(p, "B_height_climate", 8, 5.5)
-
-bs <- B[agl > 200 & is.finite(pred_temp)][sample(.N, min(.N, 50000))]
-p <- ggplot(bs, aes(pred_temp, err_sl_rel)) +
-  geom_bin_2d(bins = 80) +
-  geom_abline(slope = 1, intercept = 0, colour = "#d62728") +
-  scale_fill_viridis_c(trans = "log10") +
-  coord_cartesian(xlim = c(-150, 100), ylim = c(-150, 100)) +
-  labs(x = "Predicted from temperature profile: height x (T assumed - T observed) / T (m)",
-    y = "Observed error vs surface level (m)",
-    title = sprintf("Tier B: error explained by the assumed temperature profile (r = %.2f)",
-      fit_t$r))
-save_fig(p, "B_temperature", 7, 6)
+# Observed error vs the error predicted from the temperature profile, counted in 5 m bins
+bt <- B[agl > 200 & is.finite(pred_temp) & is.finite(err_sl_rel),
+  .N, by = .(pred = 5 * round(pred_temp / 5), obs = 5 * round(err_sl_rel / 5))]
+fwrite(bt, file.path(dir_tables, "B_temperature_bins.csv"))
+fwrite(B[, .(n_soundings = uniqueN(sounding), n_levels = .N), by = id],
+  file.path(dir_tables, "B_stations_used.csv"))
 
 cat("Analysis done.\n")
 print(tabA[group == "all"])
