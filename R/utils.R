@@ -84,6 +84,21 @@ era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orograp
   pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography)
 }
 
+#' GeoPressureR's barometric formula with the lapse rate (K/m) exposed, for the formula variants in
+#' `07b_formula.R`. With `lapse = -0.0065` it is `pressure_to_altitude()` (checked in
+#' `06_errors.R`).
+altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
+  z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
+}
+
+#' 2 m virtual temperature (K) from 2 m temperature and dewpoint (K) and surface pressure (Pa):
+#' Tv = T (1 + 0.608 q), with the vapour pressure from Bolton (1980).
+virtual_temperature <- function(t, td, sp) {
+  e <- 611.2 * exp(17.67 * (td - 273.15) / (td - 273.15 + 243.5))
+  q <- 0.622 * e / (sp - 0.378 * e)
+  t * (1 + 0.608 * q)
+}
+
 # ---- Misc -----------------------------------------------------------------------------------
 
 #' Run `fun` over `x` in socket workers, retrying a failed element a few times (ARCO occasionally
@@ -149,4 +164,77 @@ summarise_error <- function(e) {
     p50_abs = unname(quantile(abs(e), 0.5)),
     p95_abs = unname(quantile(abs(e), 0.95))
   )
+}
+
+# ---- Shared by the analysis scripts ---------------------------------------------------------
+
+wmean <- function(x, w) sum(x * w) / sum(w)
+wquant <- function(x, w, p) {
+  o <- order(x)
+  cw <- cumsum(w[o]) / sum(w)
+  x[o][which(cw >= p)[1]]
+}
+
+#' Station table with the classes used to break down the results.
+load_stations <- function() {
+  st <- fread(file.path(dir_tables, "stations.csv"))
+  st[, abs_lat := abs(lat)]
+  st[, terrain := cut(sdor, c(-Inf, 20, 50, 150, 300, Inf),
+    labels = c("flat (<20 m)", "gentle (20-50 m)", "hilly (50-150 m)", "rough (150-300 m)",
+      "mountain (>300 m)"))]
+  st[, elev_class := cut(elev, c(-Inf, 200, 500, 1000, 2000, Inf),
+    labels = c("<200 m", "200-500 m", "500-1000 m", "1000-2000 m", ">2000 m"))]
+  st[, lat_band := cut(abs_lat, c(0, 23.5, 45, 66.5, 90), include.lowest = TRUE,
+    labels = c("tropics (0-23.5)", "subtropics (23.5-45)", "mid-latitude (45-66.5)",
+      "polar (>66.5)"))]
+  climate_names <- c(A = "A tropical", B = "B arid", C = "C temperate", D = "D continental",
+    E = "E polar")
+  st[, climate := climate_names[koppen_main]]
+  # Stations whose reported elevation agrees with an independent DEM: used for accuracy statements.
+  st[, trusted := is.finite(dem_diff) & abs(dem_diff) <= 20]
+  st[]
+}
+
+hbin_breaks <- c(-10, 1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
+hbin_mid <- c(0, 50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
+
+#' Tier B levels used in the analysis: stations with at least 100 soundings (stations weigh
+#' equally, so they must be representative), gross errors removed (levels more than 150 m and 10
+#' robust SD from the median of their height bin), and station weights `w`.
+load_tier_b <- function(st) {
+  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_B.parquet")))
+  B <- merge(B, st[tier == "B", .(id, climate, lat_band, terrain, trusted, abs_lat, z_sl)],
+    by = "id")
+  B <- B[id %in% B[, uniqueN(sounding), by = id][V1 >= 100, id]]
+  B[, hbin := cut(agl, hbin_breaks, right = TRUE)]
+  B[, gross := {
+    m <- median(err_sl_rel, na.rm = TRUE)
+    r <- mad(err_sl_rel, na.rm = TRUE)
+    abs(err_sl_rel - m) > max(150, 10 * r)
+  }, by = hbin]
+  gross_frac <- mean(B$gross, na.rm = TRUE)
+  B <- B[!gross %in% TRUE]
+  B[, w := 1 / .N, by = id]
+  B[, daynight := fifelse(lsh >= 7 & lsh < 19, "day", "night")]
+  B[, season := fifelse(sdoy >= 80 & sdoy < 266, "summer half", "winter half")]
+  setattr(B, "gross_frac", gross_frac)
+  B[]
+}
+
+#' Share of geolocator flight points in each Tier B height bin (below-ground points go to the
+#' lowest bin, points above 6 km to the highest).
+bird_height_weights <- function() {
+  bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
+  bb <- data.table(
+    hbin = levels(cut(0, hbin_breaks, right = TRUE))[-1],
+    lo = c(1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000),
+    hi = c(100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
+  )
+  bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
+  bb <- merge(bb, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
+  bb[lo == 1, prop := bird[lo == 0, prop]]
+  bb[lo == 1, prop := prop + bird[lo == -Inf, prop]]
+  bb[lo == 5000, prop := prop + bird[lo == 6000, prop]]
+  bb[, prop := prop / sum(prop)]
+  bb[]
 }

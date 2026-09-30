@@ -25,21 +25,10 @@ add_era5_covariates <- function(e) {
   e
 }
 
-# The GeoPressureR formula with the lapse rate exposed, for sensitivity tests only. With
-# lapse = -0.0065 it is identical to `pressure_to_altitude()` (checked below).
-altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
-  z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
-}
+# The formula variants of 07b_formula.R rely on altitude_lapse() reproducing GeoPressureR.
 stopifnot(isTRUE(all.equal(
   altitude_lapse(80000, 95000, 280, 500), pressure_to_altitude(80000, 95000, 280, 500)
 )))
-
-# 2 m virtual temperature from ERA5 2 m dewpoint and surface pressure (Pa).
-virtual_temperature <- function(t, td, sp) {
-  e <- 611.2 * exp(17.67 * (td - 273.15) / (td - 273.15 + 243.5))
-  q <- 0.622 * e / (sp - 0.378 * e)
-  t * (1 + 0.608 * q)
-}
 
 # ---- Tier A ---------------------------------------------------------------------------------
 errA_station <- function(i) {
@@ -67,7 +56,7 @@ errA_station <- function(i) {
     sdoy = seasonal_doy(date, s$lat)
   )]
   d[, .(id, date, year, lsh, sdoy, pressure, err_sl, err_land, gross, blh, skt_t2m, wind10, dsp6,
-    dpd2m, t2m_sl)]
+    dpd2m, t2m_sl, sp_sl)]
 }
 
 nA <- nrow(st[tier == "A"])
@@ -121,20 +110,11 @@ errB_station <- function(i) {
   d <- merge(o, e, by = "date")
   d[, err_sl := era5_altitude(press, sp_sl, t2m_sl, s$z_sl) - gph]
   d[, err_land := era5_altitude(press, sp_land, t2m_land, s$z_land) - gph]
-  # Sensitivity of the formula (not what GeoPressureR does): virtual instead of dry-bulb 2 m
-  # temperature, and a -5 K/km instead of -6.5 K/km lapse rate.
-  d[, tv2m := virtual_temperature(t2m_sl, d2m, sp_sl)]
-  d[, err_tv := altitude_lapse(press, sp_sl, tv2m, s$z_sl) - gph]
-  d[, err_l5 := altitude_lapse(press, sp_sl, t2m_sl, s$z_sl, -0.005) - gph]
-  d[, err_tv_l5 := altitude_lapse(press, sp_sl, tv2m, s$z_sl, -0.005) - gph]
   # Error relative to the sounding's own surface level: cancels the station elevation (and any
   # error in it), leaving only how the error grows with height above the ground.
   d[, surface := lvl2 == 1]
   d[, err_sl_rel := err_sl - err_sl[surface][1], by = sounding]
   d[, err_land_rel := err_land - err_land[surface][1], by = sounding]
-  for (v in c("err_tv", "err_l5", "err_tv_l5")) {
-    d[, paste0(v, "_rel") := get(v) - get(v)[surface][1], by = sounding]
-  }
 
   # Mean temperature of the layer from the surface to this level, observed by the sonde
   # (log-pressure weighted) vs assumed by the formula (t2m + L * dz / 2 for a linear profile).
@@ -157,15 +137,14 @@ errB_station <- function(i) {
     lsh = local_solar_hour(date, s$lon),
     sdoy = seasonal_doy(date, s$lat)
   )]
+  # sp_sl, t2m_sl and d2m are kept so that 07b_formula.R can evaluate formula variants.
   d[, .(id, sounding, date, year, lsh, sdoy, surface, press, gph, agl, err_sl, err_land, err_sl_rel,
-    err_land_rel, err_tv, err_l5, err_tv_l5, err_tv_rel, err_l5_rel, err_tv_l5_rel, tmean_obs,
-    tmean_assumed, blh, skt_t2m, wind10, dsp6, dpd2m, t2m_sl)]
+    err_land_rel, tmean_obs, tmean_assumed, blh, skt_t2m, wind10, dsp6, dpd2m, t2m_sl, sp_sl, d2m)]
 }
 
 nB <- nrow(st[tier == "B"])
 resB <- par_map(seq_len(nB), errB_station, cores = n_cores, geopressurer = TRUE,
-  export = c("st", "era5_dir", "add_era5_covariates", "parse_hhmm", "altitude_lapse",
-    "virtual_temperature"))
+  export = c("st", "era5_dir", "add_era5_covariates", "parse_hhmm"))
 B <- rbindlist(Filter(is.data.frame, resB))
 write_parquet(B, file.path(dir_interim, "errors_B.parquet"))
 cat("Tier B:", uniqueN(B$id), "stations,", uniqueN(B[, paste(id, sounding)]), "soundings,",

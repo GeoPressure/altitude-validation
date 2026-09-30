@@ -1,0 +1,5 @@
+method,code,bias,mae,rmse
+"GeoPressureR (T2m, -6.5 K/km)",current,-10.7286175881431,15.6359315072732,30.5804115108351
+"virtual temperature (Tv, -6.5 K/km)",tv,-6.25650595486781,13.5453142444271,28.3287014911488
+"fitted lapse rate (T2m, -4.1 K/km)",lapse,-3.74610661211261,13.2090979618005,25.8953632189066
+"virtual temperature + fitted lapse rate (Tv, -5.0 K/km)",tv_lapse,-1.80463499168863,13.2737849923272,26.3690518826459

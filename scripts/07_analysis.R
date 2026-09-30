@@ -16,28 +16,7 @@ suppressPackageStartupMessages({
 theme_set(theme_minimal(base_size = 11))
 set.seed(5)
 
-st <- fread(file.path(dir_tables, "stations.csv"))
-st[, abs_lat := abs(lat)]
-st[, terrain := cut(sdor, c(-Inf, 20, 50, 150, 300, Inf),
-  labels = c("flat (<20 m)", "gentle (20-50 m)", "hilly (50-150 m)", "rough (150-300 m)",
-    "mountain (>300 m)"))]
-st[, elev_class := cut(elev, c(-Inf, 200, 500, 1000, 2000, Inf),
-  labels = c("<200 m", "200-500 m", "500-1000 m", "1000-2000 m", ">2000 m"))]
-st[, lat_band := cut(abs_lat, c(0, 23.5, 45, 66.5, 90), include.lowest = TRUE,
-  labels = c("tropics (0-23.5)", "subtropics (23.5-45)", "mid-latitude (45-66.5)",
-    "polar (>66.5)"))]
-climate_names <- c(A = "A tropical", B = "B arid", C = "C temperate", D = "D continental",
-  E = "E polar")
-st[, climate := climate_names[koppen_main]]
-# Stations whose reported elevation agrees with an independent DEM: used for accuracy statements.
-st[, trusted := is.finite(dem_diff) & abs(dem_diff) <= 20]
-
-wmean <- function(x, w) sum(x * w) / sum(w)
-wquant <- function(x, w, p) {
-  o <- order(x)
-  cw <- cumsum(w[o]) / sum(w)
-  x[o][which(cw >= p)[1]]
-}
+st <- load_stations()
 
 # ==== Tier A ==================================================================================
 A <- as.data.table(read_parquet(file.path(dir_interim, "errors_A.parquet")))
@@ -53,15 +32,36 @@ stA <- Am[, c(
     paste0(c("bias", "sd", "mae", "rmse", "p95"), "_land"))
 ), by = id]
 stA <- merge(st[tier == "A"], stA, by = "id")
-# Physical consistency of the reference: a station whose constant offset is larger than any
-# plausible extrapolation error (30 m + 10% of the height difference to the ERA5 surface, i.e. a
-# ~28 K error in the assumed layer temperature) almost certainly reports its pressure at a different
-# height than its listed elevation (datum or metadata error). Such stations track ERA5 closely with a
-# fixed offset (low SD). They are kept in "all stations" and excluded from "consistent" statistics.
+# Reference screen. Two reasons to distrust a station as a reference:
+#  1. Implausible offset: a constant offset larger than ERA5 can produce, i.e. 30 m (~3.6 hPa, about
+#     twice the p95 where no extrapolation is needed) plus 10% of the gap between station elevation
+#     and ERA5 orography (radiosondes show the extrapolation error rarely exceeds 3-6% of the gap).
+#     Such a station reports its pressure at a different height than its listed elevation (datum,
+#     metadata or barometer error).
+#  2. Step change: a clear jump in its error during 2022-2024 (09_reference_checks.R). ERA5 does not
+#     jump at one site; the station moved, changed barometer or changed its reference height.
+# Both are kept in "all stations" and excluded from the reference set used everywhere else.
 stA[, consistent := abs(bias_sl) <= 30 + 0.1 * abs(dz_sl)]
+chk <- fread(file.path(dir_tables, "A_reference_checks.csv"))
+stA <- merge(stA, chk[, !"bias"], by = "id", all.x = TRUE)
+stA[is.na(step_flag), step_flag := FALSE]
+stA[, reference := consistent & !step_flag]
 fwrite(stA, file.path(dir_tables, "A_station_stats.csv"))
 
-Am <- merge(Am, stA[, .(id, bias_sl, bias_land, n, consistent)], by = "id")
+# Excluded stations and the independent evidence about them
+flag <- stA[reference == FALSE][order(-abs(bias_sl)), .(
+  id, name, elev, z_sl = round(z_sl), dz_sl = round(dz_sl), bias = round(bias_sl, 1),
+  sd = round(sd_sl, 1),
+  reason = fifelse(!consistent & step_flag, "implausible offset + step",
+    fifelse(!consistent, "implausible offset", "step change")),
+  step = fifelse(step_flag, round(step), NA_real_),
+  step_at = fifelse(step_flag, step_at, NA_character_),
+  dem_srtm = dem_srtm_centre, dem_aster = dem_aster_centre, dem_refutes,
+  nb_n, nb_km_min = round(nb_km_min), nb_bias_median = round(nb_bias_median, 1)
+)]
+fwrite(flag, file.path(dir_tables, "A_excluded.csv"))
+
+Am <- merge(Am, stA[, .(id, bias_sl, bias_land, n, consistent, reference)], by = "id")
 Am[, e_db := err_sl - bias_sl]
 Am[, w := 1 / n]
 
@@ -90,14 +90,12 @@ summ_A <- function(ids, label, group) {
 groups <- list(
   terrain = "terrain", elevation = "elev_class", latitude = "lat_band", climate = "climate"
 )
-lab_cons <- "consistent reference (excl. datum/metadata errors)"
-lab_cons_dem <- "consistent reference and elevation agrees with DEM (<=20 m)"
-stC <- stA[consistent == TRUE]
+lab_cons <- "reference set (plausible offset, no step change)"
+stC <- stA[reference == TRUE]
 tabA <- rbind(
   summ_A(stA$id, "all stations", "all"),
   summ_A(stC$id, lab_cons, "all"),
-  summ_A(stC[trusted == TRUE]$id, lab_cons_dem, "all"),
-  # Breakdowns use consistent stations: otherwise a handful of reference errors dominate MAE/RMSE.
+  # Breakdowns use the reference set: otherwise a handful of reference errors dominate MAE/RMSE.
   rbindlist(lapply(names(groups), function(g) {
     rbindlist(lapply(levels(factor(stC[[groups[[g]]]])), function(l) {
       summ_A(stC[get(groups[[g]]) == l]$id, l, g)
@@ -106,13 +104,30 @@ tabA <- rbind(
 )
 fwrite(tabA, file.path(dir_tables, "A_summary.csv"))
 
+# Sensitivity of the pooled statistics to the screen (appendix)
+sens_rules <- data.table(
+  rule = c("no screen", "15 m + 5%", "30 m + 10% (used)", "60 m + 20%", "100 m + 30%"),
+  a = c(Inf, 15, 30, 60, 100), b = c(Inf, 0.05, 0.1, 0.2, 0.3)
+)
+sensA <- rbindlist(lapply(seq_len(nrow(sens_rules)), function(i) {
+  r <- sens_rules[i]
+  ok <- stA[, abs(bias_sl) <= r$a + r$b * abs(dz_sl)]
+  rbind(
+    cbind(rule = r$rule, steps = "kept", summ_A(stA$id[ok], "", "")[dataset == "sl"]),
+    cbind(rule = r$rule, steps = "excluded",
+      summ_A(stA$id[ok & !stA$step_flag], "", "")[dataset == "sl"])
+  )
+}))
+sensA[, c("group", "subset", "dataset") := NULL]
+fwrite(sensA, file.path(dir_tables, "A_sensitivity.csv"))
+
 # Diurnal and seasonal cycle of the de-biased error (precision), by climate zone
 Am[, hour_bin := floor(lsh)]
 Am[, month_seas := pmin(12, floor((sdoy - 1) / 30.5) + 1)]
 Am <- merge(Am, stA[, .(id, climate, terrain)], by = "id")
-cyc_h <- Am[consistent == TRUE, .(mean = wmean(e_db, w), sd = sqrt(wmean(e_db^2, w)), n = .N), by = .(climate,
+cyc_h <- Am[reference == TRUE, .(mean = wmean(e_db, w), sd = sqrt(wmean(e_db^2, w)), n = .N), by = .(climate,
   hour_bin)]
-cyc_m <- Am[consistent == TRUE, .(mean = wmean(e_db, w), sd = sqrt(wmean(e_db^2, w)), n = .N), by = .(climate,
+cyc_m <- Am[reference == TRUE, .(mean = wmean(e_db, w), sd = sqrt(wmean(e_db^2, w)), n = .N), by = .(climate,
   month_seas)]
 fwrite(cyc_h, file.path(dir_tables, "A_cycle_hour.csv"))
 fwrite(cyc_m, file.path(dir_tables, "A_cycle_month.csv"))
@@ -131,10 +146,10 @@ if (nrow(Ae) > 0) {
 }
 
 # ---- Drivers: station level ------------------------------------------------------------------
-dA <- stA[consistent == TRUE & is.finite(sd_sl) & is.finite(sdor) & !is.na(climate)]
+dA <- stA[reference == TRUE & is.finite(sd_sl) & is.finite(sdor) & !is.na(climate)]
 dA[, climate := factor(climate)]
 m_bias <- gam(log(abs(bias_sl) + 0.5) ~ s(dz_sl, k = 8) + s(log1p(sdor), k = 6) +
-  s(abs_lat, k = 6) + climate, data = dA[trusted == TRUE], method = "REML")
+  s(abs_lat, k = 6) + climate, data = dA, method = "REML")
 m_sd <- gam(log(sd_sl) ~ s(dz_sl, k = 8) + s(log1p(sdor), k = 6) + s(abs_lat, k = 6) + climate,
   data = dA, method = "REML")
 
@@ -159,13 +174,13 @@ drop_importance <- function(m, data, fit = function(f) gam(f, data = data, metho
   )
 }
 drivers_st <- rbind(
-  cbind(response = "log |bias| (consistent, DEM-trusted)", drop_importance(m_bias, dA[trusted == TRUE])),
+  cbind(response = "log |bias|", drop_importance(m_bias, dA)),
   cbind(response = "log SD", drop_importance(m_sd, dA))
 )
 fwrite(drivers_st, file.path(dir_tables, "A_drivers_station.csv"))
 
 # ---- Drivers: observation level (precision) --------------------------------------------------
-dobs <- Am[consistent == TRUE & is.finite(blh) & is.finite(skt_t2m) & is.finite(dsp6)][sample(.N, min(.N, 2e6))]
+dobs <- Am[reference == TRUE & is.finite(blh) & is.finite(skt_t2m) & is.finite(dsp6)][sample(.N, min(.N, 2e6))]
 dobs[, `:=`(abs_e = abs(e_db), id_f = factor(id), log_blh = log(blh), abs_dsp6 = abs(dsp6) / 100)]
 m_obs <- bam(abs_e ~ s(lsh, bs = "cc", k = 12) + s(sdoy, bs = "cc", k = 12) + s(log_blh, k = 8) +
   s(skt_t2m, k = 8) + s(abs_dsp6, k = 8) + s(id_f, bs = "re"),
@@ -177,32 +192,14 @@ fwrite(imp, file.path(dir_tables, "A_drivers_obs.csv"))
 saveRDS(m_obs, file.path(dir_interim, "m_obs.rds"))
 
 # ==== Tier B ==================================================================================
-B <- as.data.table(read_parquet(file.path(dir_interim, "errors_B.parquet")))
-B <- merge(B, st[tier == "B", .(id, climate, lat_band, terrain, trusted, abs_lat)], by = "id")
-# Stations weigh equally, so require enough soundings for a station to be representative.
-B <- B[id %in% B[, uniqueN(sounding), by = id][V1 >= 100, id]]
-# Gross errors: levels more than 150 m (and 10 robust SD) from the median of their height bin.
-B[, hbin := cut(agl, c(-10, 1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000),
-  right = TRUE)]
-B[, gross := {
-  m <- median(err_sl_rel, na.rm = TRUE)
-  r <- mad(err_sl_rel, na.rm = TRUE)
-  abs(err_sl_rel - m) > max(150, 10 * r)
-}, by = hbin]
-gross_frac_B <- mean(B$gross, na.rm = TRUE)
-B <- B[!gross %in% TRUE]
-B[, w := 1 / .N, by = id]
-B[, daynight := fifelse(lsh >= 7 & lsh < 19, "day", "night")]
-B[, season := fifelse(sdoy >= 80 & sdoy < 266, "summer half", "winter half")]
+B <- load_tier_b(st)
+gross_frac_B <- attr(B, "gross_frac")
 
+# Formula variants are evaluated separately in 07b_formula.R.
 err_vars <- c(
   "GeoPressureR (ERA5 single-levels)" = "err_sl_rel",
-  "ERA5-Land" = "err_land_rel",
-  "virtual temperature" = "err_tv_rel",
-  "lapse rate -5 K/km" = "err_l5_rel",
-  "virtual temperature + lapse -5 K/km" = "err_tv_l5_rel"
+  "ERA5-Land" = "err_land_rel"
 )
-err_vars <- err_vars[err_vars %in% names(B)]
 
 height_stats <- function(d, by) {
   rbindlist(lapply(names(err_vars), function(lab) {
@@ -230,18 +227,7 @@ tabB_abs <- B[is.finite(err_sl), .(
 fwrite(tabB_abs, file.path(dir_tables, "B_height_absolute.csv"))
 
 # Bird-weighted error: height bins weighted by the share of geolocator flight points in them
-bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
-bird_bins <- data.table(
-  hbin = levels(B$hbin)[-1],
-  lo = c(1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000)
-)
-bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
-bird_bins <- merge(bird_bins, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
-bird_bins[lo == 1, prop := bird[lo == 0, prop]]
-# below-ground flight points (<0 m) are attributed to the lowest bin; >6 km to the highest
-bird_bins[lo == 1, prop := prop + bird[lo == -Inf, prop]]
-bird_bins[lo == 5000, prop := prop + bird[lo == 6000, prop]]
-bird_bins[, prop := prop / sum(prop)]
+bird_bins <- bird_height_weights()
 bw <- merge(tabB, bird_bins[, .(hbin, prop)], by = "hbin")
 bird_w <- bw[, .(
   mae = sum(mae * prop), rmse = sqrt(sum(rmse^2 * prop)), bias = sum(bias * prop)
@@ -263,7 +249,6 @@ api <- if (file.exists(file.path(dir_tables, "api_crosscheck_summary.csv"))) {
   fread(file.path(dir_tables, "api_crosscheck_summary.csv"))
 } else NULL
 bsl <- tabB[method == names(err_vars)[1]]
-tr <- lab_cons_dem
 bw1 <- bird_w[method == names(err_vars)[1]]
 hb <- function(bin, col) bsl[hbin == bin][[col]]
 headline <- list(
@@ -278,6 +263,12 @@ headline <- list(
   A_rmse = g(tabA, "all stations", "sl", "rmse"),
   A_p95 = g(tabA, "all stations", "sl", "p95_abs"),
   A_n_inconsistent = sum(!stA$consistent),
+  A_n_step = sum(stA$step_flag),
+  A_n_step_only = sum(stA$step_flag & stA$consistent),
+  A_n_excluded = sum(!stA$reference),
+  A_n_dem_refutes = sum(stA$dem_refutes, na.rm = TRUE),
+  A_n_dem_refutes_reference = sum(stA$dem_refutes & stA$reference, na.rm = TRUE),
+  A_n_minute_coord = sum(stA$minute_coord, na.rm = TRUE),
   A_cons_n_stations = g(tabA, lab_cons, "sl", "n_stations"),
   A_cons_abs_bias_median = g(tabA, lab_cons, "sl", "abs_bias_median"),
   A_cons_abs_bias_p90 = g(tabA, lab_cons, "sl", "abs_bias_p90"),
@@ -288,9 +279,6 @@ headline <- list(
   A_cons_p95 = g(tabA, lab_cons, "sl", "p95_abs"),
   A_cons_land_mae = g(tabA, lab_cons, "land", "mae"),
   A_cons_land_abs_bias_median = g(tabA, lab_cons, "land", "abs_bias_median"),
-  A_trusted_n_stations = g(tabA, tr, "sl", "n_stations"),
-  A_trusted_mae = g(tabA, tr, "sl", "mae"),
-  A_trusted_abs_bias_median = g(tabA, tr, "sl", "abs_bias_median"),
   A_land_mae = g(tabA, "all stations", "land", "mae"),
   A_land_abs_bias_median = g(tabA, "all stations", "land", "abs_bias_median"),
   B_n_stations = uniqueN(B$id),
@@ -353,12 +341,16 @@ p <- ggplot(dl[is.finite(abs_bias)], aes(abs_bias, colour = dataset)) +
   theme(legend.position = "bottom")
 save_fig(p, "A_sl_vs_land", 7, 4.5)
 
-p1 <- ggplot(stA, aes(dz_sl, bias_sl, colour = consistent)) +
+stA[, screen_class := fifelse(!consistent, "excluded: implausible offset",
+  fifelse(step_flag, "excluded: step change", "reference set"))]
+bound <- data.table(dz = seq(-2500, 2500, 10))[, .(dz, hi = 30 + 0.1 * abs(dz))]
+p1 <- ggplot(stA, aes(dz_sl, bias_sl, colour = screen_class)) +
   geom_hline(yintercept = 0, colour = "grey60") +
-  geom_abline(slope = c(-0.1, 0.1), intercept = 0, colour = "grey80", linetype = 2) +
+  geom_line(aes(dz, hi), data = bound, inherit.aes = FALSE, colour = "grey70", linetype = 2) +
+  geom_line(aes(dz, -hi), data = bound, inherit.aes = FALSE, colour = "grey70", linetype = 2) +
   geom_point(size = 0.8, alpha = 0.6) +
-  scale_colour_manual(values = c(`TRUE` = "#1f77b4", `FALSE` = "#ff7f0e"),
-    labels = c(`TRUE` = "consistent", `FALSE` = "flagged: datum/metadata error")) +
+  scale_colour_manual(values = c(`reference set` = "#1f77b4",
+    `excluded: implausible offset` = "#ff7f0e", `excluded: step change` = "#2ca02c")) +
   coord_cartesian(ylim = c(-80, 80)) +
   labs(x = "Station elevation - ERA5 orography (m)", y = "Bias (m)", colour = NULL) +
   theme(legend.position = "bottom")
@@ -389,7 +381,7 @@ if (exists("eraA")) {
   save_fig(p, "A_era", 7, 4)
 }
 
-tabB[, agl_mid := c(0, 50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)[as.integer(hbin)]]
+tabB[, agl_mid := hbin_mid[as.integer(hbin)]]
 p1 <- ggplot(tabB, aes(agl_mid, bias, colour = method)) +
   geom_hline(yintercept = 0, colour = "grey60") +
   geom_line(linewidth = 0.8) + geom_point(size = 1) +
@@ -399,8 +391,7 @@ p2 <- ggplot(tabB, aes(agl_mid, sd, colour = method)) +
   geom_line(linewidth = 0.8) + geom_point(size = 1) +
   coord_flip() +
   labs(x = NULL, y = "SD (m)", colour = NULL)
-bb <- bird_bins[, .(lo = pmax(lo, 0), hi = c(100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000,
-  6000)[match(lo, c(1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000))], prop)]
+bb <- bird_bins[, .(lo = pmax(lo, 0), hi, prop)]
 p3 <- ggplot(bb) +
   geom_rect(aes(xmin = 0, xmax = prop / (hi - lo) * 1000, ymin = lo, ymax = hi), fill = "grey60",
     colour = "white") +
@@ -411,7 +402,7 @@ save_fig(patchwork::wrap_plots(p1, p2, p3, widths = c(2, 2, 1), guides = "collec
 bc <- B[!is.na(climate) & is.finite(err_sl_rel) & !is.na(hbin), .(bias = wmean(err_sl_rel, w),
   sd = sqrt(wmean((err_sl_rel - wmean(err_sl_rel, w))^2, w)), n_st = uniqueN(id)),
   by = .(hbin, climate, season)]
-bc[, agl_mid := c(0, 50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)[as.integer(hbin)]]
+bc[, agl_mid := hbin_mid[as.integer(hbin)]]
 fwrite(bc, file.path(dir_tables, "B_height_climate_season.csv"))
 p <- ggplot(bc[n_st >= 3], aes(agl_mid, bias, colour = climate, linetype = season)) +
   geom_hline(yintercept = 0, colour = "grey60") +

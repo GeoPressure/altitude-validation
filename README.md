@@ -18,13 +18,19 @@ ERA5 single-levels (the GeoPressureR / GeoPressureAPI default), assuming a perfe
 
 | Situation | Typical error |
 |---|---|
-| **Ground, absolute altitude** (919 stations, 2022–2024) | median bias **3.2 m** (90% of sites < 15.5 m); MAE **7.4 m**; 95% of errors < 25 m |
-| Ground, flat terrain → mountains | MAE 5.0 m → 15.8 m; median bias 2.2 m → 7.6 m |
+| **Ground, absolute altitude** (905 reference stations, 2022–2024) | median bias **3.2 m** (90% of sites < 15 m); MAE **7.3 m**; 95% of errors < 25 m |
+| Ground, flat terrain → mountains | MAE 4.9 m → 15.7 m; median bias 2.2 m → 7.1 m |
 | **Ground, altitude changes at one site** (precision) | SD **4.1 m** (3.2 m flat → 9.3 m mountains); almost no diurnal/seasonal cycle |
 | **In flight** (326 radiosonde stations, 2023–2024) | underestimated by ~1–1.5% of height above ground: −14 m at 1–1.5 km, −35 m at 2–3 km, −91 m at 5–6 km |
 | In flight, averaged over the heights birds fly | adds bias −10.7 m, MAE **15.6 m**, RMSE 30.6 m |
-| ERA5-Land instead | ground MAE 28.9 m, median bias ~4× larger: do not use for altitude |
+| ERA5-Land instead | ground MAE 29.0 m, median bias ~4× larger: do not use for altitude |
 | GeoPressureAPI vs GeoPressureR ARCO | identical to < 0.09 m |
+
+**Reference screen.** 64 of 969 surface stations (7%) are excluded from the reference set: 50
+with a constant offset larger than ERA5 can produce (a wrong elevation, pressure datum or barometer,
+as documented by ECMWF for SYNOP stations), and 14 with a clear step change during 2022–2024.
+Neighbouring stations, SRTM/ASTER DEMs and the radiosondes confirm that these are station errors,
+not ERA5 errors; the report's appendix shows the results are robust to the screen.
 
 **Main drivers.** On the ground: terrain the 0.25° ERA5 grid cannot resolve (gap between true
 elevation and ERA5 orography, sub-grid roughness). The error there is a fixed offset per place, not
@@ -32,6 +38,12 @@ noise. In flight: the formula's standard temperature profile (−6.5 K/km from t
 dry air). The real atmosphere is usually warmer, so birds come out too low. This explains 93% of
 the variance of the in-flight error, and it is worst in continental and polar winters (surface
 inversions). ERA5 has also improved over time: the median ground-level bias was ~6 m in 1990.
+
+**The formula can be improved.** Using the 2 m virtual temperature (humidity) and a lapse rate of
+−5.0 K/km fitted to the radiosondes, instead of dry air and −6.5 K/km, reduces the in-flight bias
+averaged over bird flight heights from −10.7 m to −1.8 m (MAE 15.5 → 13.1 m) on held-out stations,
+without changing ground-level altitude. The scatter in flight stays. See the report for details; this
+is not (yet) implemented in GeoPressureR.
 
 ![Error with height](output/figures/B_height.png)
 
@@ -66,7 +78,9 @@ N_CORES=4 make  # fewer parallel workers
 | 05 | `05_era5_extract.R` | Hourly ERA5 at every station from ARCO |
 | 06 | `06_errors.R` | Altitude errors (Tier A, Tier B, formula variants) |
 | 08 | `08_api_crosscheck.R` | GeoPressureAPI vs ARCO |
+| 09 | `09_reference_checks.R` | Step changes, SRTM/ASTER DEM and neighbour checks of the surface stations |
 | 07 | `07_analysis.R` | Summaries, driver models, figures → `output/` |
+| 07b | `07b_formula.R` | Formula variants: virtual temperature and a lapse rate fitted to the radiosondes (cross-validated) |
 
 Every step skips work already on disk, so the pipeline can be interrupted and resumed.
 Raw and intermediate data (`data/`, ~2 GB) are not committed; `output/` holds the derived tables and
@@ -82,7 +96,8 @@ figures.
   commercial use by the data owners.* Only derived error statistics are published here.
 - **IGRA v2.2**: NOAA NCEI, Durre et al. (2006, 2018), doi:10.7289/V5X63K0Q.
 - **Bird heights**: GeoLocator master data package, doi:10.5281/zenodo.18187092 (binned counts only).
-- **DEM check**: Mapzen terrain tiles via the OpenTopoData public API.
+- **DEM checks**: Mapzen terrain tiles, SRTM GL1 (doi:10.5067/MEaSUREs/SRTM/SRTMGL1.003) and ASTER
+  GDEM v3 (doi:10.5067/ASTER/ASTGTM.003) via the OpenTopoData public API.
 
 Code: MIT. Derived tables and figures in `output/`: CC BY 4.0 (subject to the HadISD attribution
 above).

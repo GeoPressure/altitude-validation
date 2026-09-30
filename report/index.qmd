@@ -23,6 +23,7 @@ knitr:
 ---
 
 ```{r setup}
+invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 library(data.table)
 tab <- function(f) fread(file.path("output/tables", f))
 hl <- tab("headline.csv")
@@ -37,6 +38,19 @@ fig <- function(f) knitr::include_graphics(file.path("..", "output/figures", f),
 A <- tab("A_summary.csv")
 B <- tab("B_height.csv")
 gp_version <- readLines("output/tables/geopressurer_version.txt")
+# Formula variants (07b_formula.R)
+ff <- tab("formula_fit.csv")
+fcv <- tab("formula_cv.csv")
+fbw <- tab("formula_bird_weighted.csv")
+fh <- tab("formula_height.csv")
+fg <- tab("formula_ground.csv")
+fgrp <- tab("formula_lapse_by_group.csv")
+ftv <- tab("formula_tv_correction.csv")
+L_tv <- ff[temperature == "Tv", L_fit]
+L_t2m <- ff[temperature == "T2m", L_fit]
+fb <- function(k, col, digits = 1) formatC(fbw[code == k][[col]], format = "f", digits = digits)
+fc <- function(k, col, digits = 1) formatC(fcv[code == k][[col]], format = "f", digits = digits)
+fhb <- function(k, bin) round(fh[code == k & hbin == bin, bias])
 ```
 
 ::: {.callout-note appearance="simple"}
@@ -58,6 +72,11 @@ the heights at which tracked birds fly, flight adds a mean absolute error of
 
 **ERA5-Land** is much worse for absolute altitude (MAE `r h("A_cons_land_mae")` m) and should not be
 used for it.
+
+**The formula can be improved.** Using the virtual temperature (which accounts for humidity) and a
+lapse rate of `r sprintf("%.1f", L_tv)` K/km estimated from the radiosondes reduces the in-flight
+bias from `r fb("current", "bias")` m to `r fb("tv_lapse", "bias")` m on stations not used for the
+fit, without changing ground-level altitude. It is not (yet) what GeoPressureR does.
 :::
 
 # Why this study
@@ -92,6 +111,58 @@ applies to both entry points.
 Two ERA5 products are compared: **ERA5 single-levels** (0.25°, the default) and **ERA5-Land**
 (0.1°). The mixed `"both"` option is not evaluated separately: over land it is ERA5-Land.
 
+## Altitude formula and alternatives
+
+**Why a formula error grows with height.** In hydrostatic balance, the thickness of the layer
+between the surface pressure $p_0$ and the pressure $p$ is given by the hypsometric equation
+(Wallace & Hobbs 2006, ch. 3)
+
+$$
+z - z_0 = \frac{R_d}{g}\,\bar T_v \,\ln\frac{p_0}{p},
+$$
+
+where $R_d = R/M$ is the gas constant of dry air and $\bar T_v$ the (log-pressure weighted) mean
+*virtual* temperature of the layer. GeoPressureR's formula is this equation for a particular
+assumed profile: a temperature that starts at the ERA5 2 m temperature $T_0$ and decreases linearly
+at the lapse rate $L = -6.5$ K/km of the ICAO standard atmosphere (ICAO 1993; ISO 2533:1975), with
+dry air ($T_v = T$). Because the thickness is proportional to $\bar T_v$, an error in the assumed
+mean temperature translates into the same *relative* error in height above the ground,
+
+$$
+\frac{\delta (z - z_0)}{z - z_0} = \frac{\bar T_\text{assumed} - \bar T_{v,\text{true}}}{\bar T_{v,\text{true}}},
+$$
+
+so 3 K (≈1%) too cold puts a bird 2 km above the ground about 20 m too low. On the ground,
+$z - z_0$ is only the gap between the station and the ERA5 orography (median
+`r round(fg$median_abs_dz)` m), so the temperature assumption hardly matters there.
+
+The assumed layer is too cold for two separate reasons, each addressed by one change:
+
+1. **Virtual temperature.** Water vapour is lighter than dry air, so moist air occupies a thicker
+   layer than dry air at the same temperature. The hypsometric equation requires the virtual
+   temperature $T_v = T\,(1 + 0.608\,q)$, where $q$ is the specific humidity; using $T$ is a
+   simplification, not a modelling choice. We compute $q$ from the ERA5 2 m dewpoint and surface
+   pressure, with the saturation vapour pressure of Bolton (1980), and replace $T_0$ by $T_{v,0}$.
+   The correction has no free parameter. At the radiosonde stations it averages
+   `r sprintf("%.1f", min(ftv$tv_minus_t))` K in polar winter and up to
+   `r sprintf("%.1f", max(ftv$tv_minus_t))` K in the tropics (0.1–1.2% of height). As in pressure reduction to sea level (WMO 1968), humidity at
+   the surface is assumed to hold through the layer, which slightly overestimates it aloft.
+2. **Lapse rate.** −6.5 K/km is a mean over the whole troposphere (0–11 km). Lapse rates in the
+   lowest kilometres vary with latitude, season and time of day (Stone & Carlson 1979; Rolland
+   2003) and are often shallower: for example 3.9–5.2 K/km annual mean near-surface lapse rates in
+   the Cascade Mountains (Minder et al. 2010), and much shallower still, or inverted, in winter
+   inversions. Rather than adopt a value from the literature, we **estimate $L$ from the
+   radiosondes**.
+
+**Estimating and testing the lapse rate.** $L$ is the value that minimises the bird-weighted mean
+squared error relative to the surface level (Tier B; height bins weighted by the share of
+geolocator flight points, stations weighted equally), found by one-dimensional optimisation. It is
+estimated separately with $T_0$ and with $T_{v,0}$. Its robustness is tested in three ways:
+(i) 20 repeated random 50/50 splits of the stations, fitting on one half and evaluating on the
+other; (ii) separate fits for each climate zone and half-year; (iii) an alternative objective that
+weights all height bins equally. Its effect at ground level is evaluated on Tier A. These variants
+are evaluated here only; all other results use the formula as implemented in GeoPressureR.
+
 ## Reference data
 
 **Tier A — surface barometers (ground level).** HadISD v3.4.3.2025f (Dunn et al. 2012, 2016), a
@@ -118,8 +189,8 @@ numbers:
   time, relevant for absolute altitude) and the SD around that mean (*precision*: relevant for
   altitude changes). A wrong station elevation shifts only the bias, so precision is robust to
   metadata errors.
-- **Trusted metadata subset.** Accuracy is also reported for stations whose HadISD elevation agrees
-  within 20 m with an independent DEM (Mapzen terrain tiles via OpenTopoData).
+- **Reference screen (Tier A).** Stations whose own elevation or pressure cannot be trusted are
+  excluded from the reference set (below).
 - **Height relative to the surface level (Tier B).** The error at a level minus the error at the same
   sounding's surface level cancels the station elevation entirely, isolating how the error grows
   with height.
@@ -130,14 +201,118 @@ SD from the station's (or height bin's) median error: `r h("A_gross_fraction", 5
 
 Pooled statistics give every station equal weight.
 
-**Reference consistency screen.** 
-`r hi("A_n_inconsistent")` of `r hi("A_n_stations")` Tier A stations (5%) carry a constant offset
-larger than any plausible extrapolation error (|bias| > 30 m + 10% of the gap between station
-elevation and ERA5 orography, equivalent to a ~28 K error in the assumed layer temperature). Their
-pressure tracks ERA5 hour by hour (median SD ~5 m) but at a fixed offset of typically 75 m: the
-signature of a pressure reported at a different height than the listed elevation (datum or
-metadata error), not of a reanalysis error. They are included in the "all stations" row and
-excluded elsewhere. A few could be genuine errors in deep valleys; this is a limitation.
+### Screening the surface stations
+
+```{r screen}
+sa <- tab("A_station_stats.csv")
+ex <- tab("A_excluded.csv")
+nbp <- tab("A_neighbours.csv")
+bf <- tab("A_screen_basis_flat.csv")
+bg <- tab("A_screen_basis_gap.csv")
+ex_nb <- ex[is.finite(nb_bias_median)]
+ref_nb <- nbp[id %in% sa[reference == TRUE, id] & abs(bias) > 15,
+  .(bias = bias[1], nb = median(nb_bias)), by = id]
+n_shared <- ref_nb[sign(nb) == sign(bias) & abs(nb) >= 0.5 * abs(bias), .N]
+imp <- sa[consistent == FALSE]
+dem_ok <- sa[is.finite(dem_srtm_centre) & is.finite(dem)]
+dem_sa <- sa[is.finite(dem_srtm_centre) & is.finite(dem_aster_centre)]
+rr <- sa[reference == TRUE & dem_refutes == TRUE]
+rr[, dem_best := fifelse(is.finite(dem_srtm_centre), dem_srtm_centre, dem_aster_centre)]
+pct <- function(x) paste0(round(100 * x), "%")
+nm <- function(x) paste(tools::toTitleCase(tolower(x)), collapse = ", ")
+```
+
+A station's listed elevation and reported station pressure are not always what they seem, and this
+is well documented. At ECMWF, surface pressure reports from several hundred SYNOP stations are
+biased, often by several hPa. These biases are "mostly related to incorrect assumptions about the
+station heights" and stay fairly constant in time (Vasiljevic et al. 2006). ECMWF's monitoring
+guidance lists the usual causes (ECMWF 2025):
+
+- wrong latitude, longitude or elevation metadata;
+- GNSS-derived elevations without the geoid correction;
+- stations that report only mean sea-level pressure;
+- sensor or encoding errors;
+- step changes when the barometer height or the station position changes.
+
+WMO distinguishes the datum to which station pressure refers ($H_p$) from the ground elevation of
+the station, and at aerodromes from the aerodrome elevation (WMO 2023). A listed elevation can
+therefore legitimately differ from the height the pressure refers to. HadISD takes its station
+metadata from ISD (Smith et al. 2011). It is quality-controlled but not homogenised, and it merges
+records of co-located stations (Dunn et al. 2012, 2016). ERA5 bias-corrects or rejects such
+stations when it assimilates them (Vasiljevic et al. 2006; Hersbach et al. 2020), so where a single
+station and ERA5 disagree by a constant offset, the station is usually at fault.
+
+Two rules remove such stations from the **reference set** used for all statistics except the "all
+stations" row:
+
+1. **Implausible offset** (`r hi("A_n_inconsistent")` stations): |bias| > 30 m + 10% of the gap
+   between station elevation and ERA5 orography. The bound is set from data that do not use the
+   bias of the station being tested (Appendix):
+   - Where ERA5 needs no extrapolation (flat terrain, gap < 30 m, `r bf$n` stations), 95% of
+     stations are within `r round(bf$p95)` m, so 30 m is about twice that.
+   - Over a height gap, the radiosondes measure the extrapolation error directly. The per-station
+     mean is `r round(max(bg$median_pct), 1)`% to `r round(min(bg$median_pct), 1)`% of the gap, and
+     99% of stations stay within `r round(min(bg$p99_abs_pct))`–`r round(max(bg$p99_abs_pct))`%.
+     The 10% allowance is therefore generous.
+2. **Step change** (`r hi("A_n_step")` stations): a clear jump in the station's error during
+   2022–2024. Monthly median errors are fitted with a month-of-year effect plus one step at the
+   best breakpoint; a station is flagged if |step| ≥ 10 m and |t| ≥ 10. ERA5 does not jump at one
+   site, but a station does when it moves, changes barometer or changes its reference height (ECMWF
+   2025). Examples are `r nm(head(ex[reason == "step change"][order(-abs(step))]$name, 3))`
+   (`r paste(head(ex[reason == "step change"][order(-abs(step))]$step, 3), collapse = ", ")` m).
+
+In total `r hi("A_n_excluded")` of `r hi("A_n_stations")` stations
+(`r pct(as.numeric(h("A_n_excluded", 0)) / as.numeric(h("A_n_stations", 0)))`) are excluded.
+The Appendix lists them.
+
+**Independent checks that the screen removes reference errors, not ERA5 errors.**
+
+- *Neighbours.* ERA5's bias was computed in 2023 at up to two other HadISD stations within 50 km of
+  every station with |bias| > 15 m. `r nrow(ex_nb)` excluded stations have such a neighbour. ERA5
+  matches the neighbours of all of them to within `r ceiling(max(abs(ex_nb$nb_bias_median)))` m,
+  while the excluded stations themselves are off by up to `r format(max(abs(ex_nb$bias)), big.mark = ",")` m.
+  Their offsets belong to the station, not to ERA5 (the same logic ECMWF uses to decide whether a
+  station or the model is biased; Vasiljevic et al. 2006). Conversely, `r n_shared` of the
+  `r nrow(ref_nb)` tested reference stations with |bias| > 15 m share their offset with a
+  neighbour. These are genuine ERA5 errors (mostly in mountains), and the screen keeps them.
+- *No mechanism in ERA5.* `r sum(imp$dem_refutes == FALSE, na.rm = TRUE)` of the
+  `r nrow(imp)` implausible offsets are at stations whose elevation an independent DEM confirms,
+  often in flat terrain close to ERA5's orography (e.g. `r nm(head(imp[dem_refutes == FALSE & abs(dz_sl) < 30][order(-abs(bias_sl))]$name, 3))`).
+  There, ERA5 has nothing to extrapolate. The offset must come from the pressure's datum or from
+  the barometer.
+- *Constant in time.* The excluded stations track ERA5 hour by hour (median SD
+  `r round(median(imp$sd_sl), 1)` m, vs `r h("A_cons_sd_median")` m in the reference set) at a fixed offset. That is the
+  signature ECMWF reports for station-height errors, not what a reanalysis error would look like.
+
+**Why the DEM is not used as a filter.** Earlier versions also reported a "DEM-trusted" subset.
+The check was replaced because it measures the precision of the station coordinates more than the
+elevation:
+
+- `r pct(mean(sa$minute_coord, na.rm = TRUE))` of the coordinates fall on whole arc-minutes, i.e.
+  ±0.5′ (up to ±900 m). A single DEM point can then be off by tens to hundreds of metres in rough
+  terrain.
+- The DEM was therefore sampled on a 5×5 grid covering that uncertainty, in SRTM and in ASTER GDEM.
+  The Mapzen terrain tiles used before are SRTM wherever SRTM exists (median difference
+  `r round(median(abs(dem_ok$dem_srtm_centre - dem_ok$dem)))` m), so SRTM would not have helped.
+  SRTM's own 90% absolute height error is 5–9 m (Rodríguez et al. 2006), and SRTM and ASTER differ
+  by a median `r round(median(abs(dem_sa$dem_srtm_centre - dem_sa$dem_aster_centre)))` m
+  (p90 `r round(quantile(abs(dem_sa$dem_srtm_centre - dem_sa$dem_aster_centre), 0.9))` m). A DEM
+  cannot verify an elevation to better than ~15 m.
+- At `r nrow(rr)` reference stations, every available DEM contradicts the listed elevation
+  (median difference `r round(median(abs(rr$elev - rr$dem_best), na.rm = TRUE))` m). Yet ERA5 reproduces the listed
+  elevation (median |bias| `r round(median(abs(rr$bias_sl)), 1)` m). At those stations the
+  coordinates are wrong, not the elevation, so a DEM filter would have removed good stations and
+  kept bad ones.
+
+The DEM is kept only as supporting evidence in the table of excluded stations.
+
+**What remains.** The reference set still contains smaller reference errors that no screen can
+detect: steps below 10 m, barometers a few metres above the listed ground, rounded elevations. Its
+accuracy is therefore an upper bound on ERA5's own error. The Appendix shows how the
+pooled statistics change with the screen. The median bias barely moves
+(`r round(min(tab("A_sensitivity.csv")$abs_bias_median), 1)`–`r round(max(tab("A_sensitivity.csv")$abs_bias_median), 1)` m
+across all variants), but MAE and RMSE depend on it, because a handful of stations with offsets of
+hundreds of metres dominate them when included.
 
 ## Drivers
 
@@ -147,9 +322,10 @@ level); local solar hour, season, boundary layer height, skin − 2 m temperatur
 surface inversions) and 6 h surface pressure tendency (observation level). Their effect is
 estimated with GAMs (mgcv) and ranked by the deviance explained lost when each is dropped.
 
-For Tier B, the error expected from the temperature assumption alone is
-$\Delta z \cdot (\bar T_\text{assumed} - \bar T_\text{obs}) / \bar T_\text{obs}$, where
-$\bar T_\text{obs}$ is the sonde's log-pressure-weighted mean temperature of the layer below the level.
+For Tier B, the error expected from the temperature assumption alone follows from the relative-error
+equation above: $\Delta z \cdot (\bar T_\text{assumed} - \bar T_\text{obs}) / \bar T_\text{obs}$, where
+$\bar T_\text{obs}$ is the sonde's log-pressure-weighted mean (dry-bulb) temperature of the layer
+below the level.
 
 # Results: ground level (Tier A)
 
@@ -241,7 +417,7 @@ knitr::kable(
 ```
 
 ```{r}
-#| fig-cap: "Bias and SD of the altitude error against height above ground, for GeoPressureR and alternative formulations, with the height distribution of geolocator flight points (right)."
+#| fig-cap: "Bias and SD of the altitude error against height above ground, for ERA5 single-levels and ERA5-Land, with the height distribution of geolocator flight points (right)."
 fig("B_height.png")
 ```
 
@@ -269,6 +445,84 @@ knitr::kable(dcast(d, hbin ~ daynight + season, value.var = "bias", fun.aggregat
   round(x, 1)), caption = "Bias by height, day/night and season (m).")
 ```
 
+## Can the formula be improved?
+
+**Fitted lapse rate.** With the 2 m temperature, the lapse rate that best fits the radiosondes is
+`r sprintf("%.1f", L_t2m)` K/km; with the virtual temperature it is `r sprintf("%.1f", L_tv)` K/km.
+Both are well determined: across the 20 station splits the fitted value varies by
+±`r sprintf("%.1f", ff[temperature == "Tv", L_cv_sd])` K/km (SD). Weighting all height bins equally
+instead of by bird flight heights gives `r sprintf("%.1f", ff[temperature == "T2m", L_equal_bins])`
+and `r sprintf("%.1f", ff[temperature == "Tv", L_equal_bins])` K/km. Accounting for humidity
+explicitly thus brings the lapse rate back towards the standard value: about a third of the gap
+between −6.5 K/km and the fitted dry-air lapse rate is a humidity effect.
+
+```{r}
+knitr::kable(
+  fcv[, .(formula = method, `L fitted (K/km)` = sprintf("%.2f ± %.2f", 1000 * L_mean, 1000 * L_sd),
+    bias = sprintf("%.1f ± %.1f", bias_mean, bias_sd), MAE = sprintf("%.1f ± %.1f", mae_mean, mae_sd),
+    RMSE = sprintf("%.1f ± %.1f", rmse_mean, rmse_sd),
+    `MAE gain (worst split)` = sprintf("%.1f (%.1f)", mae_gain_mean, mae_gain_min))],
+  caption = "Bird-weighted error on held-out stations (mean ± SD over 20 random 50/50 station splits; the lapse rate is fitted on the other half). MAE gain: reduction of MAE relative to the current formula on the same held-out stations (m)."
+)
+```
+
+**Out-of-sample performance.** On held-out stations, the virtual temperature alone reduces the
+bird-weighted bias from `r fc("current", "bias_mean")` m to `r fc("tv", "bias_mean")` m, and
+together with the fitted lapse rate to `r fc("tv_lapse", "bias_mean")` m. The mean absolute error
+falls from `r fc("current", "mae_mean")` m to `r fc("tv_lapse", "mae_mean")` m, and it improves in
+every one of the 20 splits. Held-out and in-sample errors are practically identical, as expected for a
+single parameter estimated from ~300 stations.
+
+```{r}
+#| fig-cap: "Bias and SD against height above ground for the current formula and the three alternatives (all stations; lapse rates fitted on all stations), with the height distribution of geolocator flight points (right)."
+fig("B_formula.png")
+```
+
+```{r}
+knitr::kable(
+  dcast(fh[, .(code = factor(code, c("current", "tv", "lapse", "tv_lapse")), agl_mid, hbin,
+    bias = round(bias, 1))], agl_mid + hbin ~ code, value.var = "bias")[, !"agl_mid"],
+  col.names = c("height above ground", fbw$method[match(c("current", "tv", "lapse", "tv_lapse"),
+    fbw$code)]),
+  caption = "Bias relative to the surface level, by height (m)."
+)
+```
+
+**Error by height.** The corrected formula removes the systematic underestimation up to about 3 km
+(`r fhb("tv_lapse", "(1e+03,1.5e+03]")` m at 1–1.5 km and `r fhb("tv_lapse", "(2e+03,3e+03]")` m
+at 2–3 km, compared with `r fhb("current", "(1e+03,1.5e+03]")` m and
+`r fhb("current", "(2e+03,3e+03]")` m). Above that it slightly overestimates
+(`r fhb("tv_lapse", "(5e+03,6e+03]")` m at 5–6 km), because the fit is dominated by the heights at
+which birds fly most. **The scatter does not change**: the SD at each height is the same for all four
+formulas, because a constant lapse rate cannot follow the day-to-day temperature profile.
+
+```{r}
+#| fig-cap: "Height-dependent bias by climate zone and season, current formula (left) and virtual temperature with the fitted lapse rate (right). Solid: summer half-year; dashed: winter half-year."
+fig("B_formula_climate.png")
+```
+
+```{r}
+knitr::kable(
+  fgrp[, .(climate, season, stations = n_st, `L with T2m (K/km)` = round(L_t2m, 1),
+    `L with Tv (K/km)` = round(L_tv, 1))],
+  caption = "Lapse rate fitted separately for each climate zone and half-year."
+)
+```
+
+**Regional differences remain.** Fitted separately, the lapse rate (with virtual temperature)
+ranges from `r sprintf("%.1f", min(fgrp$L_tv))` K/km (arid summer: steeper than standard, as a deep, well-mixed
+boundary layer approaches the dry adiabatic 9.8 K/km) to `r sprintf("%.1f", max(fgrp$L_tv))` K/km
+(polar winter, with persistent surface inversions). Continental and polar winters stay
+underestimated with the global value, and arid summers become overestimated. A single global lapse
+rate removes the mean bias, not these regional and seasonal patterns.
+
+**Ground level.** With the fitted lapse rate, ground-level altitude is practically unchanged:
+pooled MAE `r sprintf("%.2f", fg$mae)` m → `r sprintf("%.2f", fg$mae_new)` m, median station bias
+`r sprintf("%.2f", fg$abs_bias_median)` m → `r sprintf("%.2f", fg$abs_bias_median_new)` m, largest
+change of a single observation `r sprintf("%.1f", fg$max_abs_change)` m
+(`r fg$n_stations` Tier A reference stations; the virtual-temperature factor, not available for
+Tier A, changes ground-level altitude by less than 1.2% of the station-to-orography gap).
+
 # Discussion and guidance for users
 
 ```{r}
@@ -276,8 +530,6 @@ tr <- A[dataset == "sl"]
 t <- function(sub, col) round(tr[subset == sub][[col]], 1)
 e <- if (file.exists("output/tables/A_era.csv")) tab("A_era.csv") else NULL
 te <- tab("B_temperature_explanation.csv")
-bwv <- tab("B_bird_weighted.csv")
-bws <- function(m, col) round(bwv[method == m][[col]], 1)
 ```
 
 ## What users can expect
@@ -304,7 +556,9 @@ virtual-temperature effect of water vapour), so the layer is too cold in the for
 placed too low. The error predicted from the sonde's own temperature profile explains
 `r round(100 * te$r2)`% of the variance (r = `r round(te$r, 2)`, slope `r round(te$slope, 2)`); the
 remaining offset of `r round(te$intercept)` m is consistent with humidity, which the dry-bulb
-comparison leaves out. It is worst over cold continental and polar surfaces in winter, where strong
+comparison leaves out (the virtual-temperature correction alone removes
+`r sprintf("%.1f", fbw[code == "current", bias] - fbw[code == "tv", bias])` m of the bird-weighted
+bias). It is worst over cold continental and polar surfaces in winter, where strong
 inversions sit under much warmer air, and in the humid tropics.
 
 **Flight altitudes from GeoPressureR are therefore conservative (slightly too low).** For a bird at
@@ -325,18 +579,32 @@ problem is a fixed spatial offset
 ([GeoPressureAPI#27](https://github.com/GeoPressure/GeoPressureAPI/issues/27)), which matters
 for absolute altitude and for comparing altitudes between places.
 
-## Could the formula do better?
+## Improving the formula
 
-Two simple changes remove most of the average bias in flight: using the 2 m virtual temperature
-(from ERA5 2 m dewpoint), and a −5 K/km lapse rate. Averaged over bird flight heights, the bias drops
-from `r bws("GeoPressureR (ERA5 single-levels)", "bias")` m to
-`r bws("virtual temperature + lapse -5 K/km", "bias")` m and the RMSE from
-`r bws("GeoPressureR (ERA5 single-levels)", "rmse")` m to
-`r bws("virtual temperature + lapse -5 K/km", "rmse")` m. The scatter barely changes, though. It
-comes from day-to-day and seasonal departures from any fixed profile, mainly inversions. Removing it
-needs the actual temperature profile, i.e. ERA5 pressure-level temperature or geopotential. That
-would be worth evaluating as a GeoPressureR improvement for in-flight altitude; it is not what
-GeoPressureR does today, and nothing here changes its ground-level behaviour.
+**Recommendation for GeoPressureR.** The virtual temperature is a correction of a simplification in
+the current formula, has no free parameter, and removes about 40% of the in-flight bias on its
+own; it only requires reading the ERA5 2 m dewpoint in addition to surface pressure and 2 m
+temperature. Combined with a lapse rate of `r sprintf("%.1f", L_tv)` K/km, the in-flight bias
+averaged over bird flight heights drops from `r fc("current", "bias_mean")` m to
+`r fc("tv_lapse", "bias_mean")` m and the MAE from `r fc("current", "mae_mean")` m to
+`r fc("tv_lapse", "mae_mean")` m, on stations not used for the fit, with no effect on ground-level
+altitude. The lapse rate is an empirical estimate, but a robust one: it is stable across station
+splits and objectives, and it lies in the range reported for the lower troposphere near the
+surface. Fitting the lapse rate alone (with the dry 2 m temperature, `r sprintf("%.1f", L_t2m)` K/km)
+performs about as well statistically. We nevertheless recommend the combination: the virtual
+temperature is required by the physics, whereas a lapse rate fitted without it mixes the humidity
+and temperature-profile effects into one constant with no physical meaning, which is harder to
+interpret and to refine (e.g. into a lapse rate varying with location and season).
+
+**What a constant lapse rate cannot fix.** The scatter in flight, and the remaining regional and
+seasonal biases (continental and polar winters too low, arid summers too high), come from
+departures of the actual temperature profile from any fixed one, mainly surface inversions and
+deep convective boundary layers. Two further steps could address them: a lapse rate that varies with
+location and season (e.g. the climate-zone values above, or a climatology derived from ERA5), or
+using the actual ERA5 temperature profile on pressure levels, or ERA5 geopotential at the bird's
+pressure directly. The latter would remove most of the temperature-driven variance, which explains
+`r round(100 * te$r2)`% of the in-flight error, but it needs far more ERA5 data per point and is
+left for future evaluation.
 
 ## Limitations
 
@@ -349,8 +617,10 @@ GeoPressureR does today, and nothing here changes its ground-level behaviour.
 - **Radiosonde geometry.** The ERA5 column at the launch site is used; balloon drift (typically a few
   km below 5 km) is ignored. Sonde heights are themselves derived hypsometrically. The ~10 m scatter
   within the first 100 m partly reflects integer-metre reporting and interpolated low levels.
-- **Reference screen.** 5% of surface stations were excluded as datum/metadata errors. A few may be
-  genuine valley errors, so the mountain numbers may be slightly optimistic.
+- **Reference screen.** `r hi("A_n_excluded")` surface stations were excluded for an implausible
+  offset or a step change. Neighbours and DEMs support this where available, but not every excluded
+  station could be checked independently. Conversely, the reference set still contains undetected
+  small reference errors, so its accuracy is an upper bound on ERA5's.
 - **Sampling.** Stations are thinned for spatial balance, but coverage is still sparse in parts of
   Africa, South America and over the oceans (Tier A is land-only).
 
@@ -361,3 +631,97 @@ Change Service (Hersbach et al. 2020; Muñoz-Sabater et al. 2021), via the ECMWF
 HadISD: Met Office Hadley Centre, Non-Commercial Government Licence; this product may contain data
 governed by WMO Resolution 40 Annex 1. IGRA2: NOAA NCEI. Bird heights: GeoLocator master data
 package (<https://doi.org/10.5281/zenodo.18187092>).
+
+# Appendix: reference screen {#sec-appendix}
+
+## Sensitivity to the screen
+
+```{r}
+sens <- tab("A_sensitivity.csv")
+knitr::kable(sens[, .(`offset rule` = rule, `step-change stations` = steps, stations = n_stations,
+  `median |bias|` = round(abs_bias_median, 1), `p90 |bias|` = round(abs_bias_p90, 1),
+  `median SD` = round(sd_median, 1), MAE = round(mae, 1), RMSE = round(rmse, 1),
+  `p95 |err|` = round(p95_abs, 1))],
+  caption = "Ground-level statistics (ERA5 single-levels, 2022-2024, m) for looser and stricter plausibility bounds (|bias| <= a + b x |station elevation - ERA5 orography|), with the step-change stations kept or excluded. The row used in the report is '30 m + 10% (used)' with step-change stations excluded.")
+```
+
+The median bias and median SD are insensitive to the screen. MAE, RMSE and the 95th percentile are
+dominated by the few stations with offsets of hundreds of metres when those are included. Loosening
+the bound to 60 m + 20% adds back `r sens[rule == "60 m + 20%" & steps == "excluded", n_stations] - sens[rule == "30 m + 10% (used)" & steps == "excluded", n_stations]`
+stations and raises the MAE from `r round(sens[rule == "30 m + 10% (used)" & steps == "excluded", mae], 1)`
+to `r round(sens[rule == "60 m + 20%" & steps == "excluded", mae], 1)` m.
+
+## Basis of the plausibility bound
+
+```{r}
+knitr::kable(bf[, lapply(.SD, function(x) round(x, 1))],
+  caption = "|bias| where ERA5 needs no extrapolation: flat terrain (sub-grid SD < 20 m) and station within 30 m of ERA5 orography (m).")
+knitr::kable(bg[, .(`height above ground (m)` = hbin, stations = n_stations,
+  `median (% of height)` = round(median_pct, 2), `99th pct of |.| (%)` = round(p99_abs_pct, 1),
+  `max |.| (%)` = round(max_abs_pct, 1))],
+  caption = "Extrapolation error over a height gap, measured by radiosondes: per-station mean error relative to the surface level, divided by the height above ground.")
+```
+
+## Excluded stations
+
+```{r}
+options(knitr.kable.NA = "")
+ex[!grepl("step", reason), `:=`(step = NA, step_at = NA)]
+knitr::kable(ex[, .(station = name, reason, `elev.` = elev, `ERA5 orog.` = z_sl, bias, SD = sd,
+  step, `step from` = step_at, SRTM = dem_srtm, ASTER = dem_aster,
+  `DEM refutes elev.` = dem_refutes, `neighbour bias` = nb_bias_median,
+  `neighbour km` = nb_km_min)],
+  caption = "Stations excluded from the reference set (m). SRTM/ASTER: DEM at the listed coordinates; 'DEM refutes' = listed elevation more than 15 m outside the DEM range over the coordinate-uncertainty box in every available DEM. Neighbour bias: median ERA5 bias in 2023 at up to two HadISD stations within 50 km (blank: none, or not tested).")
+```
+
+# References
+
+- Bolton D (1980) The computation of equivalent potential temperature. *Monthly Weather Review*
+  108:1046–1053. <https://doi.org/10.1175/1520-0493(1980)108%3C1046:TCOEPT%3E2.0.CO;2>
+- Dunn RJH, Willett KM, Thorne PW, et al. (2012) HadISD: a quality-controlled global synoptic report
+  database for selected variables at long-term stations from 1973–2011. *Climate of the Past*
+  8:1649–1679. <https://doi.org/10.5194/cp-8-1649-2012>
+- Dunn RJH, Willett KM, Parker DE, Mitchell L (2016) Expanding HadISD: quality-controlled, sub-daily
+  station data from 1931. *Geoscientific Instrumentation, Methods and Data Systems* 5:473–491.
+  <https://doi.org/10.5194/gi-5-473-2016>
+- Durre I, Vose RS, Wuertz DB (2006) Overview of the Integrated Global Radiosonde Archive. *Journal
+  of Climate* 19:53–68. <https://doi.org/10.1175/JCLI3594.1>
+- Durre I, Yin X, Vose RS, et al. (2018) Enhancing the data coverage in the Integrated Global
+  Radiosonde Archive. *Journal of Atmospheric and Oceanic Technology* 35:1753–1770.
+  <https://doi.org/10.1175/JTECH-D-17-0223.1>
+- ECMWF (2025) Guidance on SYNOP surface pressure monitoring issues. ECMWF Confluence (E. Kuscu).
+  <https://confluence.ecmwf.int/pages/viewpage.action?pageId=298952900>
+- Hersbach H, Bell B, Berrisford P, et al. (2020) The ERA5 global reanalysis. *Quarterly Journal of
+  the Royal Meteorological Society* 146:1999–2049. <https://doi.org/10.1002/qj.3803>
+- ICAO (1993) *Manual of the ICAO Standard Atmosphere*, Doc 7488/3, 3rd ed. International Civil
+  Aviation Organization, Montreal.
+- ISO (1975) *ISO 2533:1975 Standard Atmosphere*. International Organization for Standardization.
+- Minder JR, Mote PW, Lundquist JD (2010) Surface temperature lapse rates over complex terrain:
+  lessons from the Cascade Mountains. *Journal of Geophysical Research* 115:D14122.
+  <https://doi.org/10.1029/2009JD013493>
+- Muñoz-Sabater J, Dutra E, Agustí-Panareda A, et al. (2021) ERA5-Land: a state-of-the-art global
+  reanalysis dataset for land applications. *Earth System Science Data* 13:4349–4383.
+  <https://doi.org/10.5194/essd-13-4349-2021>
+- NASA/METI/AIST/Japan Spacesystems and U.S./Japan ASTER Science Team (2019) ASTER Global Digital
+  Elevation Model V003. NASA EOSDIS Land Processes DAAC. <https://doi.org/10.5067/ASTER/ASTGTM.003>
+- NASA JPL (2013) NASA Shuttle Radar Topography Mission Global 1 arc second. NASA EOSDIS Land
+  Processes DAAC. <https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL1.003>
+- Rodríguez E, Morris CS, Belz JE (2006) A global assessment of the SRTM performance.
+  *Photogrammetric Engineering & Remote Sensing* 72:249–260. <https://doi.org/10.14358/PERS.72.3.249>
+- Rolland C (2003) Spatial and seasonal variations of air temperature lapse rates in Alpine regions.
+  *Journal of Climate* 16:1032–1046.
+  <https://doi.org/10.1175/1520-0442(2003)016%3C1032:SASVOA%3E2.0.CO;2>
+- Smith A, Lott N, Vose R (2011) The Integrated Surface Database: recent developments and
+  partnerships. *Bulletin of the American Meteorological Society* 92:704–708.
+  <https://doi.org/10.1175/2011BAMS3015.1>
+- Stone PH, Carlson JH (1979) Atmospheric lapse rate regimes and their parameterization. *Journal
+  of the Atmospheric Sciences* 36:415–423.
+  <https://doi.org/10.1175/1520-0469(1979)036%3C0415:ALRRAT%3E2.0.CO;2>
+- Vasiljevic D, Andersson E, Isaksen L, Garcia-Mendez A (2006) Surface pressure bias correction in
+  data assimilation. *ECMWF Newsletter* 108:20–27. <https://doi.org/10.21957/uv295rfmx5>
+- Wallace JM, Hobbs PV (2006) *Atmospheric Science: An Introductory Survey*, 2nd ed., ch. 3.
+  Academic Press. <https://doi.org/10.1016/B978-0-12-732951-2.50008-9>
+- WMO (1968) *Methods in Use for the Reduction of Atmospheric Pressure*. Technical Note 91,
+  WMO-No. 226. World Meteorological Organization, Geneva.
+- WMO (2023) *Guide to Instruments and Methods of Observation*, Volume I (WMO-No. 8), chapters 1
+  (station elevation) and 3 (atmospheric pressure). World Meteorological Organization, Geneva.
