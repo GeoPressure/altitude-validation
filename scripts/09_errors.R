@@ -25,7 +25,7 @@ add_era5_covariates <- function(e) {
 
 # The formula variants of 16_formula.R rely on altitude_lapse() reproducing GeoPressureR.
 stopifnot(isTRUE(all.equal(
-  altitude_lapse(80000, 95000, 280, 500), pressure_to_altitude(80000, 95000, 280, 500)
+  altitude_lapse(80000, 95000, 280, 500), era5_altitude(80000, 95000, 280, 500)
 )))
 
 # ---- HadISD --------------------------------------------------------------------------------

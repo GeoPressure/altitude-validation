@@ -1,7 +1,8 @@
 # Cross-check: GeoPressureAPI (Earth Engine) vs the ARCO path used throughout this study.
 #
 # For a random subset of HadISD stations, one week of observed station pressure is sent to
-# GeoPressureAPI's pressurePath endpoint (dataset = "single-levels") and the returned altitude is
+# GeoPressureAPI's pressurePath endpoint (dataset = "single-levels", altitudeFormula = "standard",
+# the formula evaluated here) and the returned altitude is
 # compared with the altitude this pipeline computed from ARCO. Agreement means every result here
 # holds for both entry points of GeoPressureR.
 
@@ -23,6 +24,7 @@ out <- rbindlist(lapply(ids, function(i) {
     time = as.numeric(d$date),
     variable = list("surface_pressure"),
     dataset = "single-levels",
+    altitudeFormula = "standard",
     pressure = d$pressure * 100,
     workers = 1
   )

@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use these results or this code, please cite it as below."
 type: software
-# doi: 10.5281/zenodo.XXXXXXX  (uncomment once the Zenodo DOI is reserved)
+doi: 10.5281/zenodo.23085093
 title: "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes"
 abstract: >-
   Validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure

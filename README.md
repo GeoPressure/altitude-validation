@@ -21,7 +21,7 @@ Rscript run_all.R
 
 This runs the scripts in `scripts/` in order and renders the report; `Rscript run_all.R 12` starts at step 12, `Rscript run_all.R 12 15` runs steps 12 to 15. Every step skips work already on disk, so the pipeline can be interrupted and resumed. `N_CORES` (default 8) sets the number of parallel workers.
 
-To skip the slow downloads (several hours of ERA5 reads), first unzip `altitude-validation-data.zip` from the [Zenodo record](https://doi.org/10.5281/zenodo.XXXXXXX) at the root of the project: only HadISD (about 2 GB) is then downloaded.
+To skip the slow downloads (several hours of ERA5 reads), first unzip `altitude-validation-data.zip` from the [Zenodo record](https://doi.org/10.5281/zenodo.23085093) at the root of the project: only HadISD (about 2 GB) is then downloaded.
 
 | Steps | Scripts |
 |---|---|
@@ -36,4 +36,4 @@ Step `00` (flight heights of tracked birds) needs the GeoLocator master data pac
 
 Code: MIT. Tables, figures and report: CC BY 4.0. The data sources and their licences are listed in the report's [Data and code availability](https://geopressure.github.io/altitude-validation/#data-and-code-availability) section. HadISD: *this product may contain data which are governed by WMO Policy following WMO Resolution 40 Annex 1 alongside additional data that may have restrictions placed on their commercial use by the data owners*; only derived statistics are published here.
 
-Please cite the Zenodo record, [doi:10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX) (see [`CITATION.cff`](CITATION.cff)). The record is built with `zenodo/make_archive.R` (see `zenodo/record.md`).
+Please cite the Zenodo record, [doi:10.5281/zenodo.23085093](https://doi.org/10.5281/zenodo.23085093) (see [`CITATION.cff`](CITATION.cff)). The record is built with `zenodo/make_archive.R` (see `zenodo/record.md`).

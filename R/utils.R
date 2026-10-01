@@ -79,9 +79,16 @@ era5_orography <- function(lon, lat, era5_dataset) {
   era5_surface_elevation(g$lon, g$lat, rep(era5_dataset, length(lon)), quiet = TRUE)
 }
 
-#' Altitude [m] from pressure [Pa] with the GeoPressureR formula.
+#' Altitude [m] from pressure [Pa] with the GeoPressureR formula evaluated in this study: 2 m
+#' temperature and -6.5 K/km. From v3.7.0, GeoPressureR defaults to the formula recommended by
+#' `16_formula.R` (`altitude_formula = "virtual"`), so the original one is requested explicitly.
 era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orography) {
-  pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography)
+  if ("altitude_formula" %in% names(formals(pressure_to_altitude))) {
+    pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography,
+      altitude_formula = "standard")
+  } else {
+    pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography)
+  }
 }
 
 #' GeoPressureR's barometric formula with the lapse rate (K/m) exposed, for the formula variants in
