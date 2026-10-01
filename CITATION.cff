@@ -1,19 +1,26 @@
 cff-version: 1.2.0
 message: "If you use these results or this code, please cite it as below."
 type: software
+# doi: 10.5281/zenodo.XXXXXXX  (uncomment once the Zenodo DOI is reserved)
 title: "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes"
 abstract: >-
   Validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure
-  measurement using ERA5 reanalysis, against HadISD surface station barometers (ground level)
-  and IGRA2 radiosondes (0-6 km above ground). Separates accuracy (static per-site bias) from
-  precision (temporal scatter), quantifies their drivers, and compares ERA5 single-levels with
-  ERA5-Land.
+  measurement using ERA5 reanalysis, against HadISD surface station barometers, GNSS and
+  MeteoSwiss stations with documented barometer heights (ground level), and IGRA2 radiosondes
+  (0-6 km above ground). Separates accuracy (per-site bias) from precision (temporal scatter),
+  shows what they depend on, compares ERA5 single-levels with ERA5-Land, and tests improvements
+  of the pressure-to-altitude formula.
 authors:
   - family-names: Nussbaumer
     given-names: Raphaël
     orcid: https://orcid.org/0000-0002-8185-1020
-    affiliation: Swiss Ornithological Institute
+    affiliation: Swiss Ornithological Institute, Sempach, Switzerland
+  - family-names: Gravey
+    given-names: Mathieu
+    orcid: https://orcid.org/0000-0002-0871-1507
+    affiliation: Institute for Interdisciplinary Mountain Research, Austrian Academy of Sciences, Innsbruck, Austria
 repository-code: https://github.com/GeoPressure/altitude-validation
+url: https://geopressure.github.io/altitude-validation/
 license: MIT
 keywords:
   - geolocator
