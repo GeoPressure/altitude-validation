@@ -43,8 +43,9 @@ extract_station <- function(id) {
   TRUE
 }
 
-res <- par_map(cand$id, extract_station, cores = 8, export = c("out_dir", "base", "years"))
-cat(sum(vapply(res, isTRUE, logical(1))), "of", nrow(cand), "stations extracted\n")
+res <- par_map(cand$id, extract_station, cores = n_cores, export = c("out_dir", "base", "years"))
+# A few stations have no file for the period: reported, not fatal.
+check_failures(res, cand$id, "stations")
 
 # Coverage: keep stations with station pressure on >= 50% of days in each main year, at a typical
 # resolution of 6 h or better (most report 3-hourly).
@@ -62,6 +63,6 @@ fwrite(cov, file.path(dir_interim, "hadisd_coverage.csv"))
 ok <- cov[year %in% years_main, .(
   years_ok = sum(days >= 183 & n / days >= 4)
 ), by = id][years_ok == length(years_main), id]
-sel <- merge(cand[, .(id, name, reason)], meta, by = "id")[id %in% ok]
-fwrite(sel, file.path(dir_interim, "stations_A_all.csv"))
+sel <- merge(cand[, .(id, name)], meta, by = "id")[id %in% ok]
+fwrite(sel, file.path(dir_interim, "hadisd_stations_all.csv"))
 cat(nrow(sel), "stations with adequate station pressure in", paste(years_main, collapse = ", "), "\n")

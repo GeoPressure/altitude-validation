@@ -1,6 +1,6 @@
 # Cross-check: GeoPressureAPI (Earth Engine) vs the ARCO path used throughout this study.
 #
-# For a random subset of Tier A stations, one week of observed station pressure is sent to
+# For a random subset of HadISD stations, one week of observed station pressure is sent to
 # GeoPressureAPI's pressurePath endpoint (dataset = "single-levels") and the returned altitude is
 # compared with the altitude this pipeline computed from ARCO. Agreement means every result here
 # holds for both entry points of GeoPressureR.
@@ -8,8 +8,8 @@
 source("R/utils.R")
 set.seed(2)
 
-A <- as.data.table(read_parquet(file.path(dir_interim, "errors_A.parquet")))
-st <- fread(file.path(dir_tables, "stations.csv"))[tier == "A"]
+A <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet")))
+st <- fread(file.path(dir_tables, "stations.csv"))[network == "hadisd"]
 ids <- sample(unique(A$id), 25)
 week <- c(as.POSIXct("2023-07-10", tz = "UTC"), as.POSIXct("2023-07-17", tz = "UTC"))
 
@@ -45,7 +45,6 @@ out <- rbindlist(lapply(ids, function(i) {
 }))
 
 out[, diff := alt_api - alt_arco]
-fwrite(out, file.path(dir_tables, "api_crosscheck.csv"))
 summ <- out[, .(stations = uniqueN(id), n = .N, mean_diff = mean(diff), mad_diff = mean(abs(diff)),
   max_abs_diff = max(abs(diff)))]
 fwrite(summ, file.path(dir_tables, "api_crosscheck_summary.csv"))

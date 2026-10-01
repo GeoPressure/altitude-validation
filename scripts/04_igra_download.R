@@ -1,11 +1,12 @@
-# Tier B: select IGRA2 radiosonde stations and extract their soundings for `years_sonde`.
+# Select IGRA2 radiosonde stations and extract their soundings for `years_sonde`.
 #
 # IGRA2 period-of-record files are large (tens of MB zipped), so each one is streamed through
 # funzip and awk, which keep only the study years and levels at or below 400 hPa (~7 km) plus the
 # surface level. One parquet file per station.
 #
-# Selection mirrors Tier A: within each 10 x 10 degree cell the highest and one random active
-# station, plus every active station above 1000 m.
+# All stations active over the study years are downloaded. Those with at least 100 soundings are
+# then thinned with the same rule as the surface stations (03_hadisd_thin.R): one random station
+# per 2 x 2 degree cell, plus every station above 1000 m.
 
 source("R/utils.R")
 set.seed(1)
@@ -29,9 +30,7 @@ st <- data.table(
   nobs = as.integer(substr(x, 83, 88))
 )
 st <- st[first <= min(years_sonde) - 1 & last >= max(years_sonde) + 1 & elev > -900]
-st[, cell := paste(floor(lat / 10), floor(lon / 10))]
-pick <- st[, .SD[unique(c(which.max(elev), sample(.N, 1)))], by = cell]
-cand <- unique(rbind(pick, st[elev > 1000]), by = "id")
+cand <- st
 fwrite(cand, file.path(dir_interim, "igra_candidates.csv"))
 cat(nrow(cand), "IGRA candidate stations\n")
 
@@ -76,5 +75,19 @@ extract_sonde <- function(id) {
   TRUE
 }
 
-res <- par_map(cand$id, extract_sonde, cores = 3, export = c("out_dir", "awk_prog", "cols"))
-cat(sum(vapply(res, isTRUE, logical(1))), "of", nrow(cand), "stations extracted\n")
+# At most 3 parallel streams: the NCEI server throttles more.
+res <- par_map(cand$id, extract_sonde, cores = min(n_cores, 3),
+  export = c("out_dir", "awk_prog", "cols"))
+check_failures(res, cand$id, "stations")
+
+n_sound <- vapply(cand$id, function(i) {
+  f <- file.path(out_dir, paste0(i, ".parquet"))
+  if (!file.exists(f)) return(0L)
+  d <- read_parquet(f)
+  if (nrow(d) == 0) 0L else nrow(unique(d[, c("year", "month", "day", "hour")]))
+}, integer(1))
+cand[, n_soundings := n_sound]
+fwrite(cand, file.path(dir_interim, "igra_candidates.csv"))
+sel <- thin_stations(cand[n_soundings >= 100])
+fwrite(sel, file.path(dir_interim, "igra_stations.csv"))
+cat(nrow(sel), "radiosonde stations kept of", sum(cand$n_soundings >= 100), "with >= 100 soundings\n")

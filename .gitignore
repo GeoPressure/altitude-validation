@@ -1,4 +1,4 @@
-# Raw and intermediate data are large and re-downloadable: see Makefile.
+# Raw and intermediate data are large and re-downloadable: see run_all.R.
 data/
 *.tmp
 .Rhistory
@@ -9,3 +9,5 @@ report/*_files/
 report/*_cache/
 report/.quarto/
 report/index.html
+logs/
+_site/

@@ -1,4 +1,4 @@
-# Static, per-station covariates for Tier A and Tier B stations.
+# Static, per-station covariates for HadISD and IGRA2 stations.
 #
 #  - ERA5 orography at the cell GeoPressureR samples, for single-levels (0.25 deg) and land (0.1 deg)
 #  - ERA5 standard deviation of sub-grid orography (`sdor`, terrain roughness) and land-sea mask
@@ -29,16 +29,9 @@ names(inv) <- ifelse(grepl("sdor", names(inv)), "sdor", "lsm")
 if (terra::xmax(inv) > 180) inv <- terra::rotate(inv)
 
 # ---- Stations -------------------------------------------------------------------------------
-stA <- fread(file.path(dir_interim, "stations_A.csv"))[, .(id, name, lat, lon, elev, tier = "A", land)]
-# Radiosonde stations with 2023-2024 soundings; ERA5-Land is read for a random 100 of them.
-has_data <- sub("\\.parquet$", "", list.files(file.path(dir_interim, "igra"), "\\.parquet$"))
-has_data <- has_data[vapply(has_data, function(i) {
-  nrow(read_parquet(file.path(dir_interim, "igra", paste0(i, ".parquet")))) > 0
-}, logical(1))]
-stB <- fread(file.path(dir_interim, "igra_candidates.csv"))[id %in% has_data,
-  .(id, name, lat, lon, elev, tier = "B")]
-set.seed(7)
-stB[, land := id %in% sample(id, min(.N, 100))]
+stA <- fread(file.path(dir_interim, "hadisd_stations.csv"))[, .(id, name, lat, lon, elev, network = "hadisd")]
+# Radiosonde stations selected in 04_igra_download.R.
+stB <- fread(file.path(dir_interim, "igra_stations.csv"))[, .(id, name, lat, lon, elev, network = "igra")]
 st <- rbind(stA, stB)
 
 g <- era5_snap(st$lon, st$lat, "single-levels")
@@ -89,4 +82,4 @@ st[, dem_diff := elev - dem]
 
 fwrite(st, file.path(dir_tables, "stations.csv"))
 print(st[, .(n = .N, sdor_med = median(sdor, na.rm = TRUE), abs_dem_diff_med = median(abs(dem_diff),
-  na.rm = TRUE)), by = tier])
+  na.rm = TRUE)), by = network])

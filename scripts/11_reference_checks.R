@@ -1,13 +1,13 @@
-# Independent checks of the Tier A reference (station elevation and station pressure).
+# Independent checks of the HadISD reference (station elevation and station pressure).
 #
 # A station's constant offset (bias) can come from ERA5 or from the station itself: a wrong listed
 # elevation, a pressure reported at another datum than the listed elevation, a barometer offset, or
-# a change of site or instrument. Three checks that do not use the bias itself help tell them apart:
+# a change of site or instrument. Three checks that do not use the bias itself help tell them apart, plus the basis of the bound:
 #
 #   1. Step changes. ERA5 does not jump at one site; a station can (relocation, new barometer,
 #      changed reference height). Monthly median errors 2022-2024 are fitted with a month-of-year
 #      effect plus one step at the best breakpoint. Stations with a clear step (|step| >= 10 m and
-#      |t| >= 10) are excluded from the reference set in 07_analysis.R.
+#      |t| >= 10) are excluded from the reference set in 12_analysis.R.
 #   2. DEM. SRTM (30 m) and ASTER GDEM (30 m) on a 5 x 5 grid covering the coordinate uncertainty
 #      (+/- 0.5 arc-minute when the coordinates are whole arc-minutes, else +/- 0.0005 deg), via the
 #      OpenTopoData public API. The listed elevation is "refuted" when it lies more than 15 m outside
@@ -16,15 +16,15 @@
 #   3. Neighbours. For every station with |bias| > 15 m, and 60 random stations with |bias| <= 10 m
 #      as controls, the ERA5 bias in 2023 at up to two other HadISD stations within 50 km. An error
 #      of ERA5 should be shared by nearby stations; an error of the station should not.
-#   4. The basis of the plausibility bound used in 07_analysis.R: the bias where ERA5 needs no
+#   4. The basis of the plausibility bound used in 12_analysis.R: the bias where ERA5 needs no
 #      extrapolation, and the extrapolation error over a height gap measured by the radiosondes.
 
 source("R/utils.R")
 load_geopressurer()
 set.seed(11)
 
-st <- fread(file.path(dir_tables, "stations.csv"))[tier == "A"]
-A <- as.data.table(read_parquet(file.path(dir_interim, "errors_A.parquet")))
+st <- fread(file.path(dir_tables, "stations.csv"))[network == "hadisd"]
+A <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet")))
 A <- A[!gross %in% TRUE & year %in% years_main]
 bias <- A[, .(bias = mean(err_sl)), by = id]
 
@@ -157,7 +157,7 @@ nbr <- rbindlist(lapply(file.path(nb_dir, paste0(todo$id, ".csv")), function(f) 
 pairs <- merge(pairs, nbr, by = "nb")[is.finite(nb_bias)]
 pairs <- merge(pairs, tg[, .(id, bias)], by = "id")
 setcolorder(pairs, c("id", "bias", "nb", "km"))
-fwrite(pairs[order(id, km)], file.path(dir_tables, "A_neighbours.csv"))
+fwrite(pairs[order(id, km)], file.path(dir_tables, "ground_neighbours.csv"))
 nb_sum <- pairs[, .(nb_n = .N, nb_km_min = min(km), nb_bias_median = median(nb_bias)), by = id]
 nb_sum[, nb_tested := TRUE]
 
@@ -167,24 +167,24 @@ nb_sum[, nb_tested := TRUE]
 flat <- merge(st[, .(id, sdor, dz_sl)], bias, by = "id")[sdor < 20 & abs(dz_sl) < 30]
 basis_flat <- flat[, .(n = .N, p50 = median(abs(bias)), p90 = quantile(abs(bias), 0.9),
   p95 = quantile(abs(bias), 0.95), p99 = quantile(abs(bias), 0.99))]
-fwrite(basis_flat, file.path(dir_tables, "A_screen_basis_flat.csv"))
+fwrite(basis_flat, file.path(dir_tables, "ground_screen_basis_flat.csv"))
 # (b) Extrapolating over a height gap: the radiosondes measure it directly. Per station, mean
 #     error relative to the surface level divided by the height above ground.
-Bx <- as.data.table(read_parquet(file.path(dir_interim, "errors_B.parquet"),
+Bx <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet"),
   col_select = c("id", "surface", "agl", "err_sl_rel")))[!surface & agl > 300 & agl <= 3000]
 Bx[, hbin := cut(agl, c(300, 600, 1000, 1500, 2000, 3000))]
 env <- Bx[is.finite(err_sl_rel), .(n = .N, rel = median(err_sl_rel) / median(agl)),
   by = .(id, hbin)][n >= 200]
 basis_gap <- env[, .(n_stations = .N, median_pct = 100 * median(rel),
   p99_abs_pct = 100 * quantile(abs(rel), 0.99), max_abs_pct = 100 * max(abs(rel))), keyby = hbin]
-fwrite(basis_gap, file.path(dir_tables, "A_screen_basis_gap.csv"))
+fwrite(basis_gap, file.path(dir_tables, "ground_screen_basis_gap.csv"))
 
 # ---- Combine ---------------------------------------------------------------------------------
 chk <- Reduce(function(a, b) merge(a, b, by = "id", all.x = TRUE), list(st[, .(id)], bias, steps,
   dem, nb_sum))
 chk[is.na(nb_tested), nb_tested := id %in% tg$id]
 chk[is.na(step_flag), step_flag := FALSE]
-fwrite(chk, file.path(dir_tables, "A_reference_checks.csv"))
+fwrite(chk, file.path(dir_tables, "ground_reference_checks.csv"))
 cat(sum(chk$step_flag), "stations with a step change;", sum(chk$dem_refutes, na.rm = TRUE),
   "with elevation refuted by the DEM;", uniqueN(pairs$id), "of", nrow(tg),
   "tested stations have a neighbour within 50 km\n")

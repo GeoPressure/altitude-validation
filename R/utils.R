@@ -3,7 +3,7 @@
 # The altitude retrieval itself is never re-implemented here: `era5_altitude()` calls the exact
 # GeoPressureR internals that `pressurepath_create(source = "arco")` uses (grid snapping, nearest
 # hour, ARCO reads, ERA5 orography and `pressure_to_altitude()`), so what is validated is what users
-# get. `scripts/06_api_crosscheck.R` checks that the ARCO path agrees with GeoPressureAPI.
+# get. `scripts/10_api_crosscheck.R` checks that the ARCO path agrees with GeoPressureAPI.
 
 suppressPackageStartupMessages({
   library(data.table)
@@ -22,11 +22,11 @@ for (d in c(dir_raw, dir_interim, dir_tables, dir_figures)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-# Tier A (surface): recent years for the main result, plus sparse historical years to test whether
+# HadISD (surface): recent years for the main result, plus sparse historical years to test whether
 # accuracy depends on the ERA5 observing system.
 years_main <- 2022:2024
 years_era <- c(1990, 2005, 2015)
-# Tier B (upper air)
+# IGRA2 (upper air)
 years_sonde <- 2023:2024
 max_agl_sonde <- 6000
 
@@ -85,8 +85,8 @@ era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orograp
 }
 
 #' GeoPressureR's barometric formula with the lapse rate (K/m) exposed, for the formula variants in
-#' `07b_formula.R`. With `lapse = -0.0065` it is `pressure_to_altitude()` (checked in
-#' `06_errors.R`).
+#' `16_formula.R`. With `lapse = -0.0065` it is `pressure_to_altitude()` (checked in
+#' `09_errors.R`).
 altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
   z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
 }
@@ -132,6 +132,19 @@ par_map <- function(x, fun, cores = n_cores, retries = 3, geopressurer = FALSE, 
   parallel::parLapplyLB(cl, x, safe)
 }
 
+#' Report the elements of `x` for which par_map() failed; with `fatal = TRUE`, stop so that the
+#' step is rerun (it resumes from what is already on disk) rather than silently left incomplete.
+check_failures <- function(res, x, what = "elements", fatal = FALSE) {
+  ok <- vapply(res, function(r) !inherits(r, "par_map_error"), logical(1))
+  cat(sum(ok), "of", length(x), what, "done\n")
+  if (!all(ok)) {
+    msg <- paste0(sum(!ok), " ", what, " failed: ", paste(head(format(x[!ok]), 10), collapse = ", "),
+      if (sum(!ok) > 10) ", ..." else "")
+    if (fatal) stop(msg, ". Rerun this step to retry them.", call. = FALSE) else warning(msg, call. = FALSE)
+  }
+  invisible(ok)
+}
+
 #' Download with the system curl (robust, resumable-safe, no R libcurl state).
 curl_download <- function(url, dest) {
   status <- system2("curl", c("-sfL", "--retry", "3", "-o", shQuote(dest), shQuote(url)))
@@ -175,13 +188,25 @@ wquant <- function(x, w, p) {
   x[o][which(cw >= p)[1]]
 }
 
+#' Thin stations for spatial balance: one random station per `res`-degree cell, plus every station
+#' above `high` m (mountain stations are scarce and are where errors are largest).
+thin_stations <- function(s, res = 2, high = 1000) {
+  cell <- paste(floor(s$lat / res), floor(s$lon / res))
+  pick <- unlist(lapply(split(seq_len(nrow(s)), cell), function(i) i[sample.int(length(i), 1)]))
+  s[sort(unique(c(pick, which(s$elev > high))))]
+}
+
+#' Terrain roughness class from the SD of the sub-grid orography (ERA5 `sdor`, m).
+terrain_class <- function(sdor) {
+  cut(sdor, c(-Inf, 20, 50, 150, 300, Inf), labels = c("flat (<20 m)", "gentle (20-50 m)",
+    "hilly (50-150 m)", "rough (150-300 m)", "mountain (>300 m)"))
+}
+
 #' Station table with the classes used to break down the results.
 load_stations <- function() {
   st <- fread(file.path(dir_tables, "stations.csv"))
   st[, abs_lat := abs(lat)]
-  st[, terrain := cut(sdor, c(-Inf, 20, 50, 150, 300, Inf),
-    labels = c("flat (<20 m)", "gentle (20-50 m)", "hilly (50-150 m)", "rough (150-300 m)",
-      "mountain (>300 m)"))]
+  st[, terrain := terrain_class(sdor)]
   st[, elev_class := cut(elev, c(-Inf, 200, 500, 1000, 2000, Inf),
     labels = c("<200 m", "200-500 m", "500-1000 m", "1000-2000 m", ">2000 m"))]
   st[, lat_band := cut(abs_lat, c(0, 23.5, 45, 66.5, 90), include.lowest = TRUE,
@@ -190,20 +215,22 @@ load_stations <- function() {
   climate_names <- c(A = "A tropical", B = "B arid", C = "C temperate", D = "D continental",
     E = "E polar")
   st[, climate := climate_names[koppen_main]]
-  # Stations whose reported elevation agrees with an independent DEM: used for accuracy statements.
-  st[, trusted := is.finite(dem_diff) & abs(dem_diff) <= 20]
+  # Cell weight: stations sharing a 2 x 2 degree cell share one weight, so that the stations kept
+  # above 1000 m (see thin_stations()) add precision without tilting global summaries to mountains.
+  st[, cw := 1 / .N, by = .(network, floor(lat / 2), floor(lon / 2))]
   st[]
 }
 
 hbin_breaks <- c(-10, 1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
 hbin_mid <- c(0, 50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
 
-#' Tier B levels used in the analysis: stations with at least 100 soundings (stations weigh
-#' equally, so they must be representative), gross errors removed (levels more than 150 m and 10
-#' robust SD from the median of their height bin), and station weights `w`.
-load_tier_b <- function(st) {
-  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_B.parquet")))
-  B <- merge(B, st[tier == "B", .(id, climate, lat_band, terrain, trusted, abs_lat, z_sl)],
+#' Radiosonde levels used in the analysis: stations with at least 100 soundings (each station has a
+#' fixed weight, so it must be representative), gross errors removed (levels more than 150 m and 10
+#' robust SD from the median of their height bin), and weights `w` (the station's cell weight `cw`
+#' spread over its levels).
+load_radiosondes <- function(st) {
+  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet")))
+  B <- merge(B, st[network == "igra", .(id, climate, abs_lat, z_sl, cw)],
     by = "id")
   B <- B[id %in% B[, uniqueN(sounding), by = id][V1 >= 100, id]]
   B[, hbin := cut(agl, hbin_breaks, right = TRUE)]
@@ -214,14 +241,14 @@ load_tier_b <- function(st) {
   }, by = hbin]
   gross_frac <- mean(B$gross, na.rm = TRUE)
   B <- B[!gross %in% TRUE]
-  B[, w := 1 / .N, by = id]
+  B[, w := cw / .N, by = id]
   B[, daynight := fifelse(lsh >= 7 & lsh < 19, "day", "night")]
   B[, season := fifelse(sdoy >= 80 & sdoy < 266, "summer half", "winter half")]
   setattr(B, "gross_frac", gross_frac)
   B[]
 }
 
-#' Share of geolocator flight points in each Tier B height bin (below-ground points go to the
+#' Share of geolocator flight points in each radiosonde height bin (below-ground points go to the
 #' lowest bin, points above 6 km to the highest).
 bird_height_weights <- function() {
   bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
@@ -233,8 +260,8 @@ bird_height_weights <- function() {
   bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
   bb <- merge(bb, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
   bb[lo == 1, prop := bird[lo == 0, prop]]
-  bb[lo == 1, prop := prop + bird[lo == -Inf, prop]]
-  bb[lo == 5000, prop := prop + bird[lo == 6000, prop]]
+  bb[lo == 1, prop := prop + sum(bird[lo == -Inf, prop])]
+  bb[lo == 5000, prop := prop + sum(bird[lo == 6000, prop])]
   bb[, prop := prop / sum(prop)]
   bb[]
 }

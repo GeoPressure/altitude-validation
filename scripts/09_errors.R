@@ -1,8 +1,8 @@
-# Compute altitude errors for Tier A (surface barometers) and Tier B (radiosondes).
+# Compute altitude errors at the HadISD surface stations and the IGRA2 radiosondes.
 #
 # error = altitude retrieved by GeoPressureR from the observed pressure - reference altitude
-#   Tier A reference: the station elevation (HadISD metadata)
-#   Tier B reference: the radiosonde's geopotential height at that pressure level
+#   HadISD reference: the station elevation (HadISD metadata)
+#   IGRA2 reference:  the radiosonde's geopotential height at that pressure level
 #
 # Both ERA5 single-levels (`_sl`, the GeoPressureR/GeoPressureAPI default) and ERA5-Land (`_land`)
 # are evaluated with otherwise identical code.
@@ -17,24 +17,22 @@ add_era5_covariates <- function(e) {
   setorder(e, date)
   # 6-hour surface pressure tendency (Pa), centred
   e[, dsp6 := shift(sp_sl, -3) - shift(sp_sl, 3)]
-  e[, wind10 := if ("u10" %in% names(e)) sqrt(u10^2 + v10^2) else NA_real_]
   # skin minus 2 m temperature: negative when the surface is colder than the air (stable,
   # typically nocturnal/winter inversion); positive under daytime heating
   e[, skt_t2m := skt - t2m_sl]
-  e[, dpd2m := if ("d2m" %in% names(e)) t2m_sl - d2m else NA_real_]
   e
 }
 
-# The formula variants of 07b_formula.R rely on altitude_lapse() reproducing GeoPressureR.
+# The formula variants of 16_formula.R rely on altitude_lapse() reproducing GeoPressureR.
 stopifnot(isTRUE(all.equal(
   altitude_lapse(80000, 95000, 280, 500), pressure_to_altitude(80000, 95000, 280, 500)
 )))
 
-# ---- Tier A ---------------------------------------------------------------------------------
+# ---- HadISD --------------------------------------------------------------------------------
 errA_station <- function(i) {
-  s <- st[tier == "A"][i]
+  s <- st[network == "hadisd"][i]
   o <- as.data.table(read_parquet(file.path(dir_interim, "hadisd", paste0(s$id, ".parquet"))))
-  f <- file.path(era5_dir, paste0("A_", s$id, ".parquet"))
+  f <- file.path(era5_dir, paste0("hadisd_", s$id, ".parquet"))
   if (!file.exists(f) || nrow(o) == 0) return(NULL)
   e <- add_era5_covariates(as.data.table(read_parquet(f)))
   o[, date := era5_hour(date)]
@@ -55,19 +53,19 @@ errA_station <- function(i) {
     lsh = local_solar_hour(date, s$lon),
     sdoy = seasonal_doy(date, s$lat)
   )]
-  d[, .(id, date, year, lsh, sdoy, pressure, err_sl, err_land, gross, blh, skt_t2m, wind10, dsp6,
-    dpd2m, t2m_sl, sp_sl)]
+  d[, .(id, date, year, lsh, sdoy, pressure, err_sl, err_land, gross, blh, skt_t2m, dsp6,
+    t2m_sl, sp_sl)]
 }
 
-nA <- nrow(st[tier == "A"])
+nA <- nrow(st[network == "hadisd"])
 resA <- par_map(seq_len(nA), errA_station, cores = n_cores, geopressurer = TRUE,
   export = c("st", "era5_dir", "add_era5_covariates"))
 A <- rbindlist(Filter(is.data.frame, resA))
-write_parquet(A, file.path(dir_interim, "errors_A.parquet"))
-cat("Tier A:", uniqueN(A$id), "stations,", nrow(A), "observations,",
+write_parquet(A, file.path(dir_interim, "errors_hadisd.parquet"))
+cat("HadISD:", uniqueN(A$id), "stations,", nrow(A), "observations,",
   sprintf("%.3f%%", 100 * mean(A$gross, na.rm = TRUE)), "flagged gross\n")
 
-# ---- Tier B ---------------------------------------------------------------------------------
+# ---- IGRA2 ---------------------------------------------------------------------------------
 parse_hhmm <- function(x) {
   x <- sprintf("%04d", as.integer(x))
   hh <- as.integer(substr(x, 1, 2))
@@ -77,9 +75,9 @@ parse_hhmm <- function(x) {
 }
 
 errB_station <- function(i) {
-  s <- st[tier == "B"][i]
+  s <- st[network == "igra"][i]
   f_obs <- file.path(dir_interim, "igra", paste0(s$id, ".parquet"))
-  f <- file.path(era5_dir, paste0("B_", s$id, ".parquet"))
+  f <- file.path(era5_dir, paste0("igra_", s$id, ".parquet"))
   if (!file.exists(f_obs) || !file.exists(f)) return(NULL)
   o <- as.data.table(read_parquet(f_obs))
   if (nrow(o) == 0) return(NULL)
@@ -137,15 +135,15 @@ errB_station <- function(i) {
     lsh = local_solar_hour(date, s$lon),
     sdoy = seasonal_doy(date, s$lat)
   )]
-  # sp_sl, t2m_sl and d2m are kept so that 07b_formula.R can evaluate formula variants.
+  # sp_sl, t2m_sl and d2m are kept so that 16_formula.R can evaluate formula variants.
   d[, .(id, sounding, date, year, lsh, sdoy, surface, press, gph, agl, err_sl, err_land, err_sl_rel,
-    err_land_rel, tmean_obs, tmean_assumed, blh, skt_t2m, wind10, dsp6, dpd2m, t2m_sl, sp_sl, d2m)]
+    err_land_rel, tmean_obs, tmean_assumed, blh, skt_t2m, dsp6, t2m_sl, sp_sl, d2m)]
 }
 
-nB <- nrow(st[tier == "B"])
+nB <- nrow(st[network == "igra"])
 resB <- par_map(seq_len(nB), errB_station, cores = n_cores, geopressurer = TRUE,
   export = c("st", "era5_dir", "add_era5_covariates", "parse_hhmm"))
 B <- rbindlist(Filter(is.data.frame, resB))
-write_parquet(B, file.path(dir_interim, "errors_B.parquet"))
-cat("Tier B:", uniqueN(B$id), "stations,", uniqueN(B[, paste(id, sounding)]), "soundings,",
+write_parquet(B, file.path(dir_interim, "errors_igra.parquet"))
+cat("IGRA2:", uniqueN(B$id), "stations,", uniqueN(B[, paste(id, sounding)]), "soundings,",
   nrow(B), "levels\n")
