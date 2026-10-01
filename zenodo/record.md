@@ -5,7 +5,7 @@ One record, two files, built by `Rscript zenodo/make_archive.R` into `data/zenod
 1. `altitude-validation-code.zip`: code, derived tables and figures, report.
 2. `altitude-validation-data.zip`: the data needed to rerun the study without the slow downloads (see `zenodo/data_README.md`, included in the archive as `data/README.md`).
 
-Steps: create a new upload on Zenodo, reserve the DOI, put it in `README.md` and `CITATION.cff`, commit, run `Rscript zenodo/make_archive.R`, upload the two files with the metadata below, publish. For a new version, use "New version" on the record.
+Steps: create a new upload on Zenodo, reserve the DOI, replace `XXXXXXX` with it in `README.md`, `CITATION.cff` and `report/index.qmd`, commit, run `Rscript zenodo/make_archive.R`, upload the two files with the metadata below, publish. For a new version, use "New version" on the record.
 
 ## Metadata
 
