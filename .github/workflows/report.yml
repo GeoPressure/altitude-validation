@@ -1,0 +1,47 @@
+# Render the report from the committed tables and figures (output/) and publish it on GitHub Pages.
+name: report
+
+on:
+  push:
+    branches: [main]
+    paths: [report/index.qmd, output/**, R/palette.R, .github/workflows/report.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: any::data.table, any::knitr, any::rmarkdown, any::leaflet
+      - name: Render
+        run: |
+          quarto render report/index.qmd --to html
+          mkdir -p _site && cp report/index.html _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

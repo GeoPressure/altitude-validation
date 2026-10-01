@@ -1,11 +1,11 @@
 climate,season,tv_minus_t
-A tropical,summer half,3.32977173818172
-A tropical,winter half,3.02103419622753
-B arid,summer half,1.41849882420782
-B arid,winter half,0.820313448103318
-C temperate,summer half,1.99134346398148
-C temperate,winter half,1.31606647123617
-D continental,summer half,1.12006771584846
-D continental,winter half,0.406476894710123
-E polar,summer half,0.54608115549662
-E polar,winter half,0.286007336387383
+A tropical,summer half,3.37051303933344
+A tropical,winter half,3.072188483053
+B arid,summer half,1.63049590756871
+B arid,winter half,1.01964669092438
+C temperate,summer half,2.07603345081978
+C temperate,winter half,1.26460838358545
+D continental,summer half,1.17872120757507
+D continental,winter half,0.428896009857783
+E polar,summer half,0.568525398358188
+E polar,winter half,0.289999171799223
