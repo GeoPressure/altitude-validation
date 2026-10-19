@@ -1,0 +1,849 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        27
+      ]
+    ],
+    "date-time": "2026-09-27T05:11:50Z",
+    "timestamp": 1790485910220,
+    "version": "4.1.0"
+  },
+  "reference-count": 53,
+  "publisher": "Elsevier BV",
+  "issue": "17",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2018,
+            9,
+            1
+          ]
+        ],
+        "date-time": "2018-09-01T00:00:00Z",
+        "timestamp": 1535760000000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2019,
+            9,
+            11
+          ]
+        ],
+        "date-time": "2019-09-11T00:00:00Z",
+        "timestamp": 1568160000000
+      },
+      "content-version": "vor",
+      "delay-in-days": 375,
+      "URL": "http://www.elsevier.com/open-access/userlicense/1.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100001711",
+      "name": "Swiss National Science Foundation",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "31003A_160265"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "31003A_160265"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100001711",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "name": "The Swiss Federal Office for the Environment (FOEN)",
+      "award": [
+        "UTF 400.34.11"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "UTF 400.34.11"
+          ]
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "cell.com",
+      "elsevier.com",
+      "sciencedirect.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Current Biology"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2018,
+        9
+      ]
+    ]
+  },
+  "DOI": "10.1016/j.cub.2018.06.054",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2018,
+        8,
+        23
+      ]
+    ],
+    "date-time": "2018-08-23T10:49:12Z",
+    "timestamp": 1535021352000
+  },
+  "page": "2824-2830.e3",
+  "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 51,
+  "title": [
+    "Spatiotemporal Group Dynamics in a Long-Distance Migratory Bird"
+  ],
+  "prefix": "10.1016",
+  "volume": "28",
+  "author": [
+    {
+      "given": "Kiran L.",
+      "family": "Dhanjal-Adams",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Silke",
+      "family": "Bauer",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Tamara",
+      "family": "Emmenegger",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Steffen",
+      "family": "Hahn",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Simeon",
+      "family": "Lisovski",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Felix",
+      "family": "Liechti",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "78",
+  "reference": [
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib1",
+      "doi-asserted-by": "crossref",
+      "first-page": "87",
+      "DOI": "10.3354/esr00095",
+      "article-title": "Travelling through a warming world: climate change and migratory species",
+      "volume": "7",
+      "author": "Robinson",
+      "year": "2009",
+      "journal-title": "Endangered Species Res."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib2",
+      "doi-asserted-by": "crossref",
+      "first-page": "12793",
+      "DOI": "10.1038/ncomms12793",
+      "article-title": "Experience drives innovation of new migration patterns of whooping cranes in response to global change",
+      "volume": "7",
+      "author": "Teitelbaum",
+      "year": "2016",
+      "journal-title": "Nat. Commun."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib3",
+      "doi-asserted-by": "crossref",
+      "first-page": "138",
+      "DOI": "10.1017/S0030605314000222",
+      "article-title": "A newly discovered wildlife migration in Namibia and Botswana is the longest in Africa",
+      "volume": "50",
+      "author": "Naidoo",
+      "year": "2016",
+      "journal-title": "Oryx"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib4",
+      "doi-asserted-by": "crossref",
+      "first-page": "1759",
+      "DOI": "10.1139/z78-240",
+      "article-title": "Autumnal migration routes of the eastern population of the monarch butterfly (Danaus p. plexippus L.; Danaidae; Lepidoptera) in North America to the overwintering site in the Neovolcanic Plateau of Mexico",
+      "volume": "56",
+      "author": "Urquhart",
+      "year": "1978",
+      "journal-title": "Can. J. Zool."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib5",
+      "doi-asserted-by": "crossref",
+      "first-page": "86",
+      "DOI": "10.1038/nature10082",
+      "article-title": "Tracking apex marine predator movements in a dynamic ocean",
+      "volume": "475",
+      "author": "Block",
+      "year": "2011",
+      "journal-title": "Nature"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib6",
+      "series-title": "Antipredator defenses in birds and mammals",
+      "author": "Caro",
+      "year": "2005"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib7",
+      "doi-asserted-by": "crossref",
+      "first-page": "999",
+      "DOI": "10.1126/science.1237139",
+      "article-title": "Social learning of migratory performance",
+      "volume": "341",
+      "author": "Mueller",
+      "year": "2013",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib8",
+      "doi-asserted-by": "crossref",
+      "first-page": "399",
+      "DOI": "10.1038/nature12939",
+      "article-title": "Upwash exploitation and downwash avoidance by flap phasing in ibis formation flight",
+      "volume": "505",
+      "author": "Portugal",
+      "year": "2014",
+      "journal-title": "Nature"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib9",
+      "doi-asserted-by": "crossref",
+      "first-page": "296",
+      "DOI": "10.1126/science.1194694",
+      "article-title": "Animal migration and infectious disease risk",
+      "volume": "331",
+      "author": "Altizer",
+      "year": "2011",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib10",
+      "doi-asserted-by": "crossref",
+      "first-page": "355",
+      "DOI": "10.1890/13-1446.1",
+      "article-title": "Competition, predation, and migration: individual choice patterns of Serengeti migrants captured by hierarchical models",
+      "volume": "84",
+      "author": "Hopcraft",
+      "year": "2014",
+      "journal-title": "Ecol. Monogr."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib11",
+      "doi-asserted-by": "crossref",
+      "first-page": "1608",
+      "DOI": "10.1111/j.1600-0706.2011.19685.x",
+      "article-title": "Collective decision-making and fission–fusion dynamics: a conceptual framework",
+      "volume": "120",
+      "author": "Sueur",
+      "year": "2011",
+      "journal-title": "Oikos"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib12",
+      "doi-asserted-by": "crossref",
+      "first-page": "701",
+      "DOI": "10.1111/ibi.12191",
+      "article-title": "The importance of fission–fusion social group dynamics in birds",
+      "volume": "156",
+      "author": "Silk",
+      "year": "2014",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib13",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Krause, J., and Ruxton, G.D. (2002). Living in groups (Oxford University Press).",
+      "DOI": "10.1093/oso/9780198508175.001.0001"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib14",
+      "doi-asserted-by": "crossref",
+      "first-page": "449",
+      "DOI": "10.1016/j.tree.2005.05.008",
+      "article-title": "Consensus decision making in animals",
+      "volume": "20",
+      "author": "Conradt",
+      "year": "2005",
+      "journal-title": "Trends Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib15",
+      "doi-asserted-by": "crossref",
+      "first-page": "129",
+      "DOI": "10.1007/BF00343203",
+      "article-title": "Space, time and the pattern of individual associations in a group-living species: Sanderlings have no friends",
+      "volume": "12",
+      "author": "Myers",
+      "year": "1983",
+      "journal-title": "Behav. Ecol. Sociobiol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib16",
+      "doi-asserted-by": "crossref",
+      "DOI": "10.1098/rstb.2010.0216",
+      "article-title": "Personality in the context of social networks",
+      "volume": "365",
+      "author": "Krause",
+      "year": "2010",
+      "journal-title": "Philos. Trans. R. Soc. B Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib17",
+      "doi-asserted-by": "crossref",
+      "first-page": "671",
+      "DOI": "10.1016/j.anbehav.2006.10.008",
+      "article-title": "Hierarchical dominance structure and social organization in African elephants, Loxodonta africana",
+      "volume": "73",
+      "author": "Wittemyer",
+      "year": "2007",
+      "journal-title": "Anim. Behav."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib18",
+      "doi-asserted-by": "crossref",
+      "first-page": "1699",
+      "DOI": "10.1038/s41559-017-0336-y",
+      "article-title": "The social and cultural roots of whale and dolphin brains",
+      "volume": "1",
+      "author": "Fox",
+      "year": "2017",
+      "journal-title": "Nat. Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib19",
+      "doi-asserted-by": "crossref",
+      "first-page": "737",
+      "DOI": "10.1641/B580810",
+      "article-title": "Causes and Consequences of Sociality in Bats",
+      "volume": "58",
+      "author": "Kerth",
+      "year": "2008",
+      "journal-title": "Bioscience"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib20",
+      "doi-asserted-by": "crossref",
+      "first-page": "380",
+      "DOI": "10.1038/s41598-017-00404-4",
+      "article-title": "Fission-fusion dynamics over large distances in raven non-breeders",
+      "volume": "7",
+      "author": "Loretto",
+      "year": "2017",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib21",
+      "doi-asserted-by": "crossref",
+      "first-page": "4199",
+      "DOI": "10.1098/rspb.2012.1591",
+      "article-title": "Social networks predict patch discovery in a wild population of songbirds",
+      "volume": "279",
+      "author": "Aplin",
+      "year": "2012",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib22",
+      "series-title": "The social life of Greylag Geese",
+      "author": "Scheiber",
+      "year": "2013"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib23",
+      "doi-asserted-by": "crossref",
+      "first-page": "63",
+      "DOI": "10.1016/j.anbehav.2016.01.016",
+      "article-title": "Tracking mated pairs in a long-distance migratory songbird: migration schedules are not synchronized within pairs",
+      "volume": "114",
+      "author": "Stutchbury",
+      "year": "2016",
+      "journal-title": "Anim. Behav."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib24",
+      "series-title": "DNA Fingerprinting: Approaches and Applications",
+      "first-page": "169",
+      "article-title": "Helpers-at-the-nest in European Bee-eaters (Merops apiaster): a Genetic Analysis",
+      "author": "Jones",
+      "year": "1991"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib25",
+      "doi-asserted-by": "crossref",
+      "first-page": "237",
+      "DOI": "10.1080/08927014.2007.9522565",
+      "article-title": "Information transfer determined by association of neighbours in European bee-eater (Merops apiaster) colonies",
+      "volume": "19",
+      "author": "Campobello",
+      "year": "2007",
+      "journal-title": "Ethol. Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib26",
+      "doi-asserted-by": "crossref",
+      "first-page": "2",
+      "DOI": "10.1111/j.1474-919X.1998.tb04535.x",
+      "article-title": "Competition and coexistence of the European Bee-eater Merops apiaster and the Blue-cheeked Bee-eater Merops persicus in Asia",
+      "volume": "140",
+      "author": "Kossenko",
+      "year": "1998",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib27",
+      "series-title": "eBird: An online database of bird distribution and abundance",
+      "year": "2018"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib28",
+      "doi-asserted-by": "crossref",
+      "first-page": "378",
+      "DOI": "10.1676/09-135.1",
+      "article-title": "Thermoregulatory behavior in migratory European bee-eaters (Merops apiaster)",
+      "volume": "122",
+      "author": "Yosef",
+      "year": "2010",
+      "journal-title": "Wilson J. Ornithol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib29",
+      "doi-asserted-by": "crossref",
+      "first-page": "1353",
+      "DOI": "10.1007/s00265-011-1146-x",
+      "article-title": "Timing and flight mode of departure in migrating European bee-eaters in relation to multi-scale meteorological processes",
+      "volume": "65",
+      "author": "Sapir",
+      "year": "2011",
+      "journal-title": "Behav. Ecol. Sociobiol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib30",
+      "first-page": "615",
+      "article-title": "Sobre la migración postnupcial del Abejaruco (Merops apiaster) en el Estrecho de Gibraltar",
+      "volume": "21",
+      "author": "López-Gordo",
+      "year": "1975",
+      "journal-title": "Ardeola"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib31",
+      "doi-asserted-by": "crossref",
+      "first-page": "155",
+      "DOI": "10.1007/s10336-015-1262-x",
+      "article-title": "Strong cascading effect of weather conditions on prey availability and annual breeding performance in European bee-eaters Merops apiaster",
+      "volume": "157",
+      "author": "Arbeiter",
+      "year": "2016",
+      "journal-title": "J. Ornithol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib32",
+      "doi-asserted-by": "crossref",
+      "first-page": "121",
+      "DOI": "10.1007/s102110000028",
+      "article-title": "Spatial proximity among adult siblings in greylag geese (Anser anser): evidence for female bonding?",
+      "volume": "3",
+      "author": "Frigerio",
+      "year": "2001",
+      "journal-title": "Acta Ethol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib33",
+      "doi-asserted-by": "crossref",
+      "first-page": "133",
+      "DOI": "10.1016/j.yhbeh.2008.09.006",
+      "article-title": "Benefits of family reunions: social support in secondary greylag goose families",
+      "volume": "55",
+      "author": "Scheiber",
+      "year": "2009",
+      "journal-title": "Horm. Behav."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib34",
+      "doi-asserted-by": "crossref",
+      "first-page": "16172",
+      "DOI": "10.1073/pnas.1006874107",
+      "article-title": "Social interactions, information use, and the evolution of collective migration",
+      "volume": "107",
+      "author": "Guttal",
+      "year": "2010",
+      "journal-title": "Proc. Natl. Acad. Sci. USA"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib35",
+      "doi-asserted-by": "crossref",
+      "DOI": "10.1098/rspb.2013.3305",
+      "article-title": "Decision accuracy in complex environments is often maximized by small group sizes",
+      "volume": "281",
+      "author": "Kao",
+      "year": "2014",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib36",
+      "doi-asserted-by": "crossref",
+      "first-page": "3380",
+      "DOI": "10.1098/rspb.2011.0358",
+      "article-title": "Migration by soaring or flapping: numerical atmospheric simulations reveal that turbulence kinetic energy dictates bee-eater flight mode",
+      "volume": "278",
+      "author": "Sapir",
+      "year": "2011",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib37",
+      "doi-asserted-by": "crossref",
+      "first-page": "27865",
+      "DOI": "10.1038/srep27865",
+      "article-title": "Adult vultures outperform juveniles in challenging thermal soaring conditions",
+      "volume": "6",
+      "author": "Harel",
+      "year": "2016",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib38",
+      "doi-asserted-by": "crossref",
+      "DOI": "10.1098/rstb.2017.0011",
+      "article-title": "Synchronization, coordination and collective sensing during thermalling flight of freely migrating white storks",
+      "volume": "373",
+      "author": "Nagy",
+      "year": "2018",
+      "journal-title": "Philos. Trans. R. Soc. B Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib39",
+      "doi-asserted-by": "crossref",
+      "first-page": "911",
+      "DOI": "10.1126/science.aap7781",
+      "article-title": "From local collective behavior to global migratory patterns in white storks",
+      "volume": "360",
+      "author": "Flack",
+      "year": "2018",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib40",
+      "first-page": "33",
+      "article-title": "Das Zugverhalten und die Ausbreitung von in Sachsen-Anhalt brütenden Bienenfressern (Merops apiaster)",
+      "volume": "21",
+      "author": "Arbeiter",
+      "year": "2012",
+      "journal-title": "Ber Vogelwarte Hiddensee"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib41",
+      "doi-asserted-by": "crossref",
+      "first-page": "194",
+      "DOI": "10.1016/j.ympev.2016.03.015",
+      "article-title": "Population genetic structure and long-distance dispersal of a recently expanding migratory bird",
+      "volume": "99",
+      "author": "Ramos",
+      "year": "2016",
+      "journal-title": "Mol. Phylogenet. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib42",
+      "doi-asserted-by": "crossref",
+      "first-page": "177",
+      "DOI": "10.1007/s12064-008-0040-1",
+      "article-title": "Information transfer in moving animal groups",
+      "volume": "127",
+      "author": "Sumpter",
+      "year": "2008",
+      "journal-title": "Theory Biosci."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib43",
+      "doi-asserted-by": "crossref",
+      "first-page": "15049",
+      "DOI": "10.1038/ncomms15049",
+      "article-title": "Cumulative culture can emerge from collective intelligence in animal groups",
+      "volume": "8",
+      "author": "Sasaki",
+      "year": "2017",
+      "journal-title": "Nat. Commun."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib44",
+      "doi-asserted-by": "crossref",
+      "first-page": "S49",
+      "DOI": "10.1017/S0959270908000439",
+      "article-title": "Key conservation issues for migratory land- and waterbird species on the world’s major flyways",
+      "volume": "18",
+      "author": "Kirby",
+      "year": "2008",
+      "journal-title": "Bird Conserv. Int."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib45",
+      "first-page": "1",
+      "article-title": "Der Bienenfresser – Brutvogel im Landkreis Hettstedt",
+      "volume": "9",
+      "author": "Keil",
+      "year": "1995",
+      "journal-title": "Apus"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib46",
+      "doi-asserted-by": "crossref",
+      "first-page": "367",
+      "DOI": "10.1093/beheco/11.4.367",
+      "article-title": "Prolonged offspring dependence and cooperative breeding in birds",
+      "volume": "11",
+      "author": "Langen",
+      "year": "2000",
+      "journal-title": "Behav. Ecol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib47",
+      "doi-asserted-by": "crossref",
+      "first-page": "603",
+      "DOI": "10.1111/j.2041-210X.2012.00185.x",
+      "article-title": "Geolocation by light: accuracy and precision affected by environmental factors",
+      "volume": "3",
+      "author": "Lisovski",
+      "year": "2012",
+      "journal-title": "Methods Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib48",
+      "unstructured": "Wotherspoon, S., Sumner, M., and Lisovski, S. (2016). TwGeos: Basic data processing for light-level geolocation archival tags."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib49",
+      "unstructured": "Wotherspoon, S., Sumner, M., and Lisovski, S. (2013). R package SGAT: solar/satellite geolocation for animal tracking."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib50",
+      "doi-asserted-by": "crossref",
+      "first-page": "1055",
+      "DOI": "10.1111/j.2041-210X.2012.00248.x",
+      "article-title": "GeoLight – processing and analysing light-based geolocator data in R",
+      "volume": "3",
+      "author": "Lisovski",
+      "year": "2012",
+      "journal-title": "Methods Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib51",
+      "first-page": "1",
+      "article-title": "depmixS4: An R Package for Hidden Markov Models",
+      "volume": "36",
+      "author": "Visser",
+      "year": "2010",
+      "journal-title": "J. Stat. Softw."
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib52",
+      "first-page": "373",
+      "article-title": "Estimating predation impact on honeybees Apis mellifera L. by European bee-eaters Merops apiaster L",
+      "volume": "56",
+      "author": "Galeotti",
+      "year": "2001",
+      "journal-title": "Rev. Ecol. Terre Vie"
+    },
+    {
+      "key": "10.1016/j.cub.2018.06.054_bib53",
+      "first-page": "1",
+      "article-title": "changepoint: An R Package for Changepoint Analysis",
+      "volume": "58",
+      "author": "Killick",
+      "year": "2014",
+      "journal-title": "J. Stat. Softw."
+    }
+  ],
+  "container-title": [
+    "Current Biology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0960982218308455?httpAccept=text/xml",
+      "content-type": "text/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0960982218308455?httpAccept=text/plain",
+      "content-type": "text/plain",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2024,
+        7,
+        9
+      ]
+    ],
+    "date-time": "2024-07-09T10:44:56Z",
+    "timestamp": 1720521896000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0960982218308455"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2018,
+        9
+      ]
+    ]
+  },
+  "references-count": 53,
+  "journal-issue": {
+    "issue": "17",
+    "published-print": {
+      "date-parts": [
+        [
+          2018,
+          9
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "S0960982218308455"
+  ],
+  "URL": "https://doi.org/10.1016/j.cub.2018.06.054",
+  "relation": {},
+  "ISSN": [
+    "0960-9822"
+  ],
+  "issn-type": [
+    {
+      "value": "0960-9822",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2018,
+        9
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "Elsevier",
+      "name": "publisher",
+      "label": "This article is maintained by"
+    },
+    {
+      "value": "Spatiotemporal Group Dynamics in a Long-Distance Migratory Bird",
+      "name": "articletitle",
+      "label": "Article Title"
+    },
+    {
+      "value": "Current Biology",
+      "name": "journaltitle",
+      "label": "Journal Title"
+    },
+    {
+      "value": "https://doi.org/10.1016/j.cub.2018.06.054",
+      "name": "articlelink",
+      "label": "CrossRef DOI link to publisher maintained version"
+    },
+    {
+      "value": "article",
+      "name": "content_type",
+      "label": "Content Type"
+    },
+    {
+      "value": "© 2018 Elsevier Ltd.",
+      "name": "copyright",
+      "label": "Copyright"
+    }
+  ]
+}

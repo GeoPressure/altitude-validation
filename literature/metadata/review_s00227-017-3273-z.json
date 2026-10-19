@@ -1,0 +1,515 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        4,
+        30
+      ]
+    ],
+    "date-time": "2026-04-30T04:43:14Z",
+    "timestamp": 1777524194578,
+    "version": "3.51.4"
+  },
+  "reference-count": 24,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "1",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2017,
+            12,
+            4
+          ]
+        ],
+        "date-time": "2017-12-04T00:00:00Z",
+        "timestamp": 1512345600000
+      },
+      "content-version": "unspecified",
+      "delay-in-days": 0,
+      "URL": "http://www.springer.com/tdm"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100005910",
+      "name": "Bundesministerium für Umwelt, Naturschutz, Bau und Reaktorsicherheit",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "0327689A/FTZ3"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "0327689A/FTZ3"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100005910",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100006360",
+      "name": "Bundesministerium für Wirtschaft und Energie",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "0325281"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "0325281"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100006360",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "name": "Bundesamt für Naturschutz (BfN)"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "link.springer.com"
+    ],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Mar Biol"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2018,
+        1
+      ]
+    ]
+  },
+  "DOI": "10.1007/s00227-017-3273-z",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2017,
+        12,
+        4
+      ]
+    ],
+    "date-time": "2017-12-04T02:05:57Z",
+    "timestamp": 1512353157000
+  },
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 22,
+  "title": [
+    "Estimating flight heights of seabirds using optical rangefinders and GPS data loggers: a methodological comparison"
+  ],
+  "prefix": "10.1007",
+  "volume": "165",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0001-7533-0766",
+      "authenticated-orcid": false,
+      "given": "Kai",
+      "family": "Borkenhagen",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "role": "author",
+          "vocabulary": "crossref"
+        }
+      ]
+    },
+    {
+      "given": "Anna-Marie",
+      "family": "Corman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "role": "author",
+          "vocabulary": "crossref"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-0548-9346",
+      "authenticated-orcid": false,
+      "given": "Stefan",
+      "family": "Garthe",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "role": "author",
+          "vocabulary": "crossref"
+        }
+      ]
+    }
+  ],
+  "member": "297",
+  "published-online": {
+    "date-parts": [
+      [
+        2017,
+        12,
+        4
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "3273_CR1",
+      "volume-title": "Das Kompendium der Vögel Mitteleuropas: Nonpasseriformes—Nichtsperlingsvögel",
+      "author": "H-G Bauer",
+      "year": "2005",
+      "unstructured": "Bauer H-G, Bezzel E, Fiedler W (2005) Das Kompendium der Vögel Mitteleuropas: Nonpasseriformes—Nichtsperlingsvögel, 2nd edn. Aula, Wiebelsheim",
+      "edition": "2"
+    },
+    {
+      "key": "3273_CR2",
+      "doi-asserted-by": "publisher",
+      "first-page": "571",
+      "DOI": "10.1007/s10336-012-0908-1",
+      "volume": "154",
+      "author": "W Bouten",
+      "year": "2013",
+      "unstructured": "Bouten W, Baaij EW, Shamoun-Baranes J, Camphuysen CJ (2013) A flexible GPS tracking system for studying bird behaviour at multiple scales. J Ornithol 154:571–580. https://doi.org/10.1007/s10336-012-0908-1",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "key": "3273_CR3",
+      "unstructured": "Camphuysen KJ, Fox AD, Leopold MF, Petersen IK (2004) Towards standardised seabirds at sea census techniques in connection with environmental impact assessments for offshore wind farms in the U.K.: a comparison of ship and aerial sampling methods for marine birds, and their applicability to offshore wind farm assessments (No. BAM—02-2002). NIOZ Commissioned by Cowie Ltd"
+    },
+    {
+      "key": "3273_CR4",
+      "doi-asserted-by": "publisher",
+      "first-page": "1474",
+      "DOI": "10.1111/1365-2664.12529",
+      "volume": "52",
+      "author": "IR Cleasby",
+      "year": "2015",
+      "unstructured": "Cleasby IR, Wakefield ED, Bearhop S, Bodey TW, Votier SC, Hamer KC, Österblom H (2015) Three-dimensional tracking of a wide-ranging marine predator: flight heights and vulnerability to offshore wind farms. J Appl Ecol 52:1474–1482. https://doi.org/10.1111/1365-2664.12529",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "3273_CR5",
+      "unstructured": "Cook ASCP, Johnston A, Wright LJ, Burton NHK (2012) A review of flight heights and avoidance rates of birds in relation to offshore wind farms. Strategic Ornithological Support Services SOSS-02. BTO Research Report No. 618. BTO, Thetford"
+    },
+    {
+      "key": "3273_CR6",
+      "doi-asserted-by": "crossref",
+      "first-page": "1037",
+      "DOI": "10.1007/s10336-014-1094-0",
+      "volume": "155",
+      "author": "A Corman",
+      "year": "2014",
+      "unstructured": "Corman A, Garthe S (2014) What flight heights tell us about foraging and potential conflicts with wind farms: a case study in Lesser Black-backed Gulls (Larus fuscus). J Ornithol 155:1037–1043",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "key": "3273_CR7",
+      "doi-asserted-by": "crossref",
+      "first-page": "296",
+      "DOI": "10.1098/rsbl.2005.0336",
+      "volume": "1",
+      "author": "M Desholm",
+      "year": "2005",
+      "unstructured": "Desholm M, Kahlert J (2005) Avian collision risk at an offshore wind farm. Biol Lett 1:296",
+      "journal-title": "Biol Lett"
+    },
+    {
+      "issue": "s1",
+      "key": "3273_CR8",
+      "doi-asserted-by": "publisher",
+      "first-page": "76",
+      "DOI": "10.1111/j.1474-919X.2006.00509.x",
+      "volume": "148",
+      "author": "M Desholm",
+      "year": "2006",
+      "unstructured": "Desholm M, Fox AD, Beasley PDL, Kahlert J (2006) Remote techniques for counting and estimating the number of bird-wind turbine collisions at sea: a review. Ibis 148(s1):76–89. https://doi.org/10.1111/j.1474-919X.2006.00509.x",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "3273_CR9",
+      "doi-asserted-by": "crossref",
+      "first-page": "59",
+      "DOI": "10.1016/j.biocon.2016.08.016",
+      "volume": "202",
+      "author": "V Dierschke",
+      "year": "2016",
+      "unstructured": "Dierschke V, Furness RW, Garthe S (2016) Seabirds and offshore wind farms in European waters: avoidance and attraction. Biol Cons 202:59–68",
+      "journal-title": "Biol Cons"
+    },
+    {
+      "issue": "9",
+      "key": "3273_CR10",
+      "doi-asserted-by": "crossref",
+      "first-page": "e74129",
+      "DOI": "10.1371/journal.pone.0074129",
+      "volume": "8",
+      "author": "AM Dokter",
+      "year": "2013",
+      "unstructured": "Dokter AM, Baptist MJ, Ens BJ, Krijgsveld KL, van Loon EE (2013) Bird radar validation in the field by time-referencing line-transect surveys. PLoS ONE 8(9):e74129",
+      "journal-title": "PLoS ONE"
+    },
+    {
+      "issue": "3",
+      "key": "3273_CR11",
+      "doi-asserted-by": "crossref",
+      "first-page": "558",
+      "DOI": "10.1111/ibi.12259",
+      "volume": "157",
+      "author": "RC Fijn",
+      "year": "2015",
+      "unstructured": "Fijn RC, Krijgsveld K, Poot MJM, Dirksen S (2015) Bird movements at rotor heights measured continuously with vertical radar at a Dutch offshore wind farm. Ibis 157(3):558–566",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "3273_CR12",
+      "doi-asserted-by": "crossref",
+      "first-page": "56",
+      "DOI": "10.1016/j.jenvman.2013.01.025",
+      "volume": "119",
+      "author": "RW Furness",
+      "year": "2013",
+      "unstructured": "Furness RW, Wade HM, Masden EA (2013) Assessing vulnerability of marine bird populations to offshore wind farms. J Environ Manage 119:56–66",
+      "journal-title": "J Environ Manage"
+    },
+    {
+      "key": "3273_CR13",
+      "doi-asserted-by": "crossref",
+      "first-page": "724",
+      "DOI": "10.1111/j.0021-8901.2004.00918.x",
+      "volume": "41",
+      "author": "S Garthe",
+      "year": "2004",
+      "unstructured": "Garthe S, Hüppop O (2004) Scaling possible adverse effects of marine wind farms on seabirds: developing and applying a vulnerability index. J Appl Ecol 41:724–734",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "3273_CR14",
+      "doi-asserted-by": "publisher",
+      "first-page": "345",
+      "DOI": "10.1007/s10336-016-1402-y",
+      "volume": "158",
+      "author": "S Garthe",
+      "year": "2016",
+      "unstructured": "Garthe S, Markones N, Corman A-M (2016) Possible impacts of offshore wind farms on seabirds: a pilot study in Northern Gannets in the southern North Sea. J Ornithol 158:345–349. https://doi.org/10.1007/s10336-016-1402-y",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "key": "3273_CR15",
+      "unstructured": "Johnston A, Cook ASCP (2016) How high do birds fly? Development of methods and analysis of digital aerial data of seabird flight heights. BTO Research Report No. 676. BTO, Thetford"
+    },
+    {
+      "key": "3273_CR16",
+      "doi-asserted-by": "crossref",
+      "first-page": "31",
+      "DOI": "10.1111/1365-2664.12191",
+      "volume": "51",
+      "author": "A Johnston",
+      "year": "2014",
+      "unstructured": "Johnston A, Cook ASCP, Wright LJ, Humphreys EM, Burton NHK (2014) Modelling flight heights of marine birds to more accurately assess collision risk with offshore wind turbines. J Appl Ecol 51:31–41",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "3273_CR17",
+      "doi-asserted-by": "crossref",
+      "first-page": "241",
+      "DOI": "10.51812/of.133812",
+      "volume": "89",
+      "author": "JA Kahlert",
+      "year": "2012",
+      "unstructured": "Kahlert JA, Leito A, Laubek B, Luigujoe L, Kuresoo A, Aaen K, Luud A (2012) Factors affecting the flight altitude of migrating waterbirds in Western Estonia. Ornis Fenn 89:241–253",
+      "journal-title": "Ornis Fenn"
+    },
+    {
+      "issue": "1",
+      "key": "3273_CR18",
+      "doi-asserted-by": "crossref",
+      "first-page": "58",
+      "DOI": "10.1093/beheco/arr150",
+      "volume": "23",
+      "author": "RHG Klaassen",
+      "year": "2011",
+      "unstructured": "Klaassen RHG, Ens BJ, Shamoun-Baranes J, Exo K-M, Bairlein F (2011) Migration strategy of a flight generalist, the Lesser Black-backed Gull Larus fuscus. Behav Ecol 23(1):58–68",
+      "journal-title": "Behav Ecol"
+    },
+    {
+      "key": "3273_CR24",
+      "doi-asserted-by": "publisher",
+      "first-page": "1676",
+      "DOI": "10.1111/1365-2664.12760",
+      "volume": "53",
+      "author": "VH Ross-Smith",
+      "year": "2016",
+      "unstructured": "Ross-Smith VH, Thaxter CB, Masden EA, Shamoun-Baranes J, Burton NHK, Wright LJ, Rehfisch MM, Johnston A (2016) Modelling flight heights of Lesser Black-backed Gulls and Great Skuas from GPS: a Bayesian approach. J Appl Ecol 53:1676–1685. https://doi.org/10.1111/1365-2664.12760",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "3273_CR19",
+      "doi-asserted-by": "crossref",
+      "first-page": "3489",
+      "DOI": "10.1242/jeb.02385",
+      "volume": "209",
+      "author": "J Shamoun-Baranes",
+      "year": "2006",
+      "unstructured": "Shamoun-Baranes J, van Loon E (2006) Energetic influence on gull flight strategy selection. J Exp Biol 209:3489–3498",
+      "journal-title": "J Exp Biol"
+    },
+    {
+      "issue": "1",
+      "key": "3273_CR23",
+      "doi-asserted-by": "crossref",
+      "first-page": "47",
+      "DOI": "10.1175/BAMS-87-1-47",
+      "volume": "87",
+      "author": "J Shamoun-Baranes",
+      "year": "2006",
+      "unstructured": "Shamoun-Baranes J, van Loon E, van Gasteren H, van Belle J, Bouten W, Buurma L (2006) A comparative analysis of the influence of weather on the flight altitudes of birds. Bull Am Meteorol Soc 87(1):47–61",
+      "journal-title": "Bull Am Meteorol Soc"
+    },
+    {
+      "key": "3273_CR20",
+      "doi-asserted-by": "publisher",
+      "first-page": "347",
+      "DOI": "10.1016/j.biocon.2015.03.027",
+      "volume": "186",
+      "author": "CB Thaxter",
+      "year": "2015",
+      "unstructured": "Thaxter CB, Ross-Smith VH, Bouten W, Clark NA, Conway GJ, Rehfisch MM, Burton NHK (2015) Seabird-wind farm interactions during the breeding season vary within and between years: the case study of Lesser Black-backed Gull Larus fuscus in the UK. Biol Conserv 186:347–358. https://doi.org/10.1016/j.biocon.2015.03.027",
+      "journal-title": "Biol Conserv"
+    },
+    {
+      "key": "3273_CR21",
+      "doi-asserted-by": "crossref",
+      "first-page": "51",
+      "DOI": "10.1007/s10750-014-2088-x",
+      "volume": "756",
+      "author": "N Vanermen",
+      "year": "2015",
+      "unstructured": "Vanermen N, Onkelinx T, Courtens W, Van de Walle M, Verstraete H, Stienen EWM (2015) Seabird avoidance and attraction at an offshore wind farm in the Belgian part of the North Sea. Hydrobiologia 756:51–61",
+      "journal-title": "Hydrobiologia"
+    },
+    {
+      "issue": "2",
+      "key": "3273_CR22",
+      "first-page": "14",
+      "volume": "37",
+      "author": "F Weiß",
+      "year": "2016",
+      "unstructured": "Weiß F, Büttger H, Baer J, Welcker J, Nehls G (2016) Erfassung von Seevögeln und Meeressäugetieren mit dem HiDef Kamerasystem aus der Luft. Seevögel 37(2):14–21",
+      "journal-title": "Seevögel"
+    }
+  ],
+  "container-title": [
+    "Marine Biology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://link.springer.com/article/10.1007/s00227-017-3273-z/fulltext.html",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "http://link.springer.com/content/pdf/10.1007/s00227-017-3273-z.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "http://link.springer.com/content/pdf/10.1007/s00227-017-3273-z.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2024,
+        6,
+        29
+      ]
+    ],
+    "date-time": "2024-06-29T10:30:17Z",
+    "timestamp": 1719657017000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "http://link.springer.com/10.1007/s00227-017-3273-z"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2017,
+        12,
+        4
+      ]
+    ]
+  },
+  "references-count": 24,
+  "journal-issue": {
+    "issue": "1",
+    "published-print": {
+      "date-parts": [
+        [
+          2018,
+          1
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "3273"
+  ],
+  "URL": "https://doi.org/10.1007/s00227-017-3273-z",
+  "relation": {},
+  "ISSN": [
+    "0025-3162",
+    "1432-1793"
+  ],
+  "issn-type": [
+    {
+      "value": "0025-3162",
+      "type": "print"
+    },
+    {
+      "value": "1432-1793",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2017,
+        12,
+        4
+      ]
+    ]
+  },
+  "article-number": "17"
+}

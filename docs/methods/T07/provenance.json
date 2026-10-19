@@ -1,0 +1,22 @@
+{
+  "generated_utc": "2026-10-18 12:08:35 UTC",
+  "doi": "10.5281/zenodo.18187093",
+  "version": "2026.0",
+  "raw_input": "/Users/rafnuss/Documents/GitHub/GeoLocatorMaster/data/master/pressurepaths.csv",
+  "raw_input_md5": "5ebef117b9aa4533addffb53fe284799",
+  "metadata_md5": "c136b64b800e3745cf144e0f1760806d",
+  "source_md5": {
+    "R/utils.R": "6ab40781b4bedc2da3f87b0000fc2468",
+    "scripts/00_bird_heights.R": "202002f21da47bd2c1bd16a9cc0c14d4",
+    "docs/methods/T07/assess_flight_targets.R": "2aa5340e107d66f95ada83d0693abd3a",
+    "output/tables/paper_flight_height.csv": "a9e1e650a3618e7f654df9cb060ce881",
+    "output/tables/paper_flight_bird.csv": "2ebdff9540bd6046234ac1a6f047407b",
+    "output/tables/bird_height_distribution.csv": "5bcf79ddf574142be0bb0b639fe34c07"
+  },
+  "conventions": {
+    "duration": "Sum of capped point intervals within tag and floor(stap_id); comparison with elapsed span plus last capped interval",
+    "weighting": "Pooled represented flight time unless equal_bird",
+    "height": "Primary uses step-00 pressure-offset-adjusted fixed 288.15 K conversion; alternatives reuse existing master weather annotations",
+    "privacy": "No tracking coordinates, individual identities or point records exported"
+  }
+}

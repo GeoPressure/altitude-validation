@@ -1,4 +1,4 @@
-# Static, per-station covariates for HadISD and IGRA2 stations.
+# Static, per-station covariates for GHCNh and IGRA2 stations.
 #
 #  - ERA5 orography at the cell GeoPressureR samples, for single-levels (0.25 deg) and land (0.1 deg)
 #  - ERA5 standard deviation of sub-grid orography (`sdor`, terrain roughness) and land-sea mask
@@ -29,10 +29,10 @@ names(inv) <- ifelse(grepl("sdor", names(inv)), "sdor", "lsm")
 if (terra::xmax(inv) > 180) inv <- terra::rotate(inv)
 
 # ---- Stations -------------------------------------------------------------------------------
-stA <- fread(file.path(dir_interim, "hadisd_stations.csv"))[, .(id, name, lat, lon, elev, network = "hadisd")]
+stA <- fread(file.path(dir_interim, "ghcnh_stations.csv"))[, .(id, name, lat, lon, elev, selected_year, network = "ghcnh")]
 # Radiosonde stations selected in 04_igra_download.R.
 stB <- fread(file.path(dir_interim, "igra_stations.csv"))[, .(id, name, lat, lon, elev, network = "igra")]
-st <- rbind(stA, stB)
+st <- rbindlist(list(stA, stB), use.names = TRUE, fill = TRUE)
 
 g <- era5_snap(st$lon, st$lat, "single-levels")
 st[, z_sl := era5_orography(lon, lat, "single-levels")]

@@ -1,0 +1,170 @@
+{
+  "audit_date": "2026-10-18",
+  "original_generation_commit": "not recorded; not inferred from file timestamps",
+  "saved_version": "3.6.3.9000",
+  "current_package_commit": "ba0a7ef5e0ebe481b9b58e62f57d6a552cfedd1f",
+  "current_package_version": "Version: 3.6.5.9000",
+  "note": "Hashes identify current audit inputs; they do not establish historical retrieval or execution dates. Standard-formula cached checks are consistency checks, not reconstruction of the original environment.",
+  "files": {
+    "R/utils.R": {
+      "bytes": 13169,
+      "sha256": "a8d2cfb264ecc6a1591e72ac1912f04ffe4aa39d89fb49be6bfe4cab0eab526c"
+    },
+    "scripts/00_bird_heights.R": {
+      "bytes": 5261,
+      "sha256": "373eb20c6eaa1280c2528c106a5ea3667b1fadace6baeeeb14393a8043b17236"
+    },
+    "scripts/01_hadisd_select.R": {
+      "bytes": 1112,
+      "sha256": "0f7f62a2bc233fcb3160343aea98973eb667681a2f1beffec1fbfa820dc2cd29"
+    },
+    "scripts/02_hadisd_download.R": {
+      "bytes": 2972,
+      "sha256": "b28ed33c5549a1fe5be6a3e811532a00aded134580d62a1fc211624cbd89508b"
+    },
+    "scripts/03_hadisd_thin.R": {
+      "bytes": 752,
+      "sha256": "e1642c024838ac58641461a73f6d583b41879b4e8d405aaa01d4725f6ea46366"
+    },
+    "scripts/04_igra_download.R": {
+      "bytes": 3676,
+      "sha256": "61027a033d5a5c9c58950005aecadaf07cf05b32f0c99659a38c930d4dfee006"
+    },
+    "scripts/05_gnss_download.R": {
+      "bytes": 7198,
+      "sha256": "8e7cf5d6d8349573edced2c56643df78310fb9801179c175ed24f951cda7868b"
+    },
+    "scripts/06_meteoswiss_download.R": {
+      "bytes": 2644,
+      "sha256": "ca69d445b1c06014efda1a0d8f3bc4d6a6582b665861be6d5999ad28e14432ed"
+    },
+    "scripts/07_static.R": {
+      "bytes": 3780,
+      "sha256": "c2119a35e09a82d9b47a7fcd7be3f566f4a407ac8efab44969622e358d59cfa4"
+    },
+    "scripts/08_era5_extract.R": {
+      "bytes": 5014,
+      "sha256": "4ca9efc5511faa515a8e36dc9ee2f28aa85c005699aa8a90f0ecfb6b74f03975"
+    },
+    "scripts/09_errors.R": {
+      "bytes": 6966,
+      "sha256": "be8b5bed8b31886dab5bad70183ea7d0a34533e27ab02338f4245bd79398dae4"
+    },
+    "scripts/10_api_crosscheck.R": {
+      "bytes": 2102,
+      "sha256": "f9cfe10a4f0d50c72ebae93c84af232740e27f3650dc329760b26ec50e93e48a"
+    },
+    "scripts/11_reference_checks.R": {
+      "bytes": 10618,
+      "sha256": "cc9fdad98db0182f157146dc422f03aa26a9d2223b841f26e0d8a8655566579d"
+    },
+    "scripts/12_analysis.R": {
+      "bytes": 12924,
+      "sha256": "6de8f8248397b29fd406f83b24e87505608c4ad121e74bcef2ed49e942069f47"
+    },
+    "scripts/13_bird_weighted.R": {
+      "bytes": 731,
+      "sha256": "7c033146ea13cd62c9cb66a8fbd306c81202d2848e9b3c6bbd860297fde609ab"
+    },
+    "scripts/14_independent_errors.R": {
+      "bytes": 14694,
+      "sha256": "eee560353cbee8e856e0b5b6c38c0bcf68c27bc04be14d741bf3c8d64c80495d"
+    },
+    "scripts/15_variation.R": {
+      "bytes": 5820,
+      "sha256": "82e496ed4f263b4ccafad31c0080d4808cc342dfefffa53aebef2f1192b7fea1"
+    },
+    "scripts/16_formula.R": {
+      "bytes": 18006,
+      "sha256": "ad057829bfeb28b7995642cd43751cc98e95e2d95a487ec651629061a832028f"
+    },
+    "scripts/17_figures.R": {
+      "bytes": 21415,
+      "sha256": "bec0740ca0cf3a88d0c2c20e0706249bcc976de618ce91c3b87c6d961577225b"
+    },
+    "scripts/18_three_formulas.R": {
+      "bytes": 8185,
+      "sha256": "3620b4ce25fd07e39af96e2dbb3e48090805db93ece1fada6f2c5617d7ac89ca"
+    },
+    "scripts/19_paper_figures.R": {
+      "bytes": 17115,
+      "sha256": "114f1eb7d40529facd90419d46cf89adbd6a347fc583b176b63dd39664e38e8f"
+    },
+    "data/interim/errors_hadisd.parquet": {
+      "bytes": 2003358627,
+      "sha256": "2edbd09d4b55eddf43fe8ac76d26614b0f70ce900ef4671e6751d0a798e66299"
+    },
+    "data/interim/errors_igra.parquet": {
+      "bytes": 649602554,
+      "sha256": "259467f50b53f524a358d90a977d974d1dc59f542fc8295610bfe50dbf161324"
+    },
+    "data/raw/hadisd_station_fullinfo_v343_2025f.txt": {
+      "bytes": 946855,
+      "sha256": "a6091bca462a48ccf5826fdc991f03964d18225d2fd316020f905c85e09f0ad7"
+    },
+    "data/raw/igra2-station-list.txt": {
+      "bytes": 260950,
+      "sha256": "9a8c37f874be253ea7cea6ac0499ffb0b8f307a35b56541012327e6f14d0a802"
+    },
+    "data/raw/ogd-smn_meta_stations.csv": {
+      "bytes": 151779,
+      "sha256": "8087e755a9ec71b50313bd9be61d1159c53afb03fa34b9750fae49dcc111854b"
+    },
+    "data/raw/isd-history.csv": {
+      "bytes": 2914601,
+      "sha256": "1994747ab4af1b97e63adb434b4d0d022f2daee76f0c144ea9ab46be2d906604"
+    },
+    "output/tables/geopressurer_version.txt": {
+      "bytes": 11,
+      "sha256": "64616a284a0cd39885be8e76aaec1e0447452731b1dafba9bb688ac0fbaa3d42"
+    },
+    "docs/methods/T05/cached_formula_check.csv": {
+      "bytes": 140007,
+      "sha256": "6019993a04c41b9540f9119574c20bb8dd5c5ec134191f573f308653e937211b"
+    },
+    "docs/methods/T05/radiosonde_input_timing.csv": {
+      "bytes": 22749,
+      "sha256": "5eeff5e5c4fc3d6998742af4b17d26c04f9423df33b7b88f2956682979c449ba"
+    },
+    "docs/methods/T05/dataset-provenance.csv": {
+      "bytes": 2482,
+      "sha256": "289fbe6a5ed295b456cf9006192ab686ff53a5f15708d4de7a701e1b95cbe8cc"
+    },
+    "docs/methods/T05/ground_station_year.csv": {
+      "bytes": 966558,
+      "sha256": "9de7286a705811d5b6c5fb8844681501db287c28772113a07534cfeeede080c2"
+    },
+    "docs/methods/T05/ground_coverage.csv": {
+      "bytes": 308,
+      "sha256": "8a5fabf450c5114fd399745418ed89ae718d52d5332dcdee9449b61817ccfcd4"
+    },
+    "docs/methods/T05/ground_cadence.csv": {
+      "bytes": 68456,
+      "sha256": "7e292a81e9a44fdcbc40064b2e79f4fcf35aa2b485f569ff31304731ceff1f29"
+    },
+    "docs/methods/T05/radiosonde_station_year.csv": {
+      "bytes": 49969,
+      "sha256": "d0e115eb943b9aadcf812b112f4eb1ec998eb23a09a220604c4908b59a601739"
+    },
+    "/Users/rafnuss/Documents/GitHub/GeoPressureR/DESCRIPTION": {
+      "sha256": "24474a2b2be79aff3f6f6cdd18c3dc9bed40864488880c374a199fb018203605"
+    },
+    "/Users/rafnuss/Documents/GitHub/GeoPressureR/R/pressure_to_altitude.R": {
+      "sha256": "481dce7b900111ae99b3b23920868fc1ec940b62ba9735aed87af4d556ce7b5f"
+    },
+    "/Users/rafnuss/Documents/GitHub/GeoPressureR/R/gpt3_lapse_rate.R": {
+      "sha256": "3c7af36a50e55e80bff81875dd161157b996b049ae0a59f144dee543044c7c41"
+    },
+    "/Users/rafnuss/Documents/GitHub/GeoPressureR/R/era5_surface_elevation.R": {
+      "sha256": "2976113acd48ac3c0c7b0a9bd7f61a0076f69a677b1a0664a029c09dc0ed6c42"
+    },
+    "docs/methods/T05/audit_sampling.R": {
+      "bytes": 5550,
+      "sha256": "fac4ca9ebffea1bbe34039efc708657dc730243d7cb9b4d377011fb228d73a8f"
+    },
+    "docs/methods/T05/igra2-data-format.txt": {
+      "bytes": 13740,
+      "sha256": "dfd7b4d2dd18a255477455a7caefd12cb21c30549a1e70cbc3a51db9f41c1dfe"
+    }
+  }
+}

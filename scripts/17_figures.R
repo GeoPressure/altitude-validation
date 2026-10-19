@@ -76,7 +76,7 @@ ind <- tab("indep_station_stats.csv")
 
 # ==== Data: where the stations are ============================================================
 pts <- rbind(
-  ref[, .(lon, lat, elev, what = "HadISD")],
+  ref[, .(lon, lat, elev, what = "GHCNh")],
   ind[source == "MeteoSwiss" | height_ok, .(lon, lat, elev, what = source)],
   stB[, .(lon, lat, elev, what = "IGRA2")]
 )
@@ -229,7 +229,7 @@ if (file.exists(file.path(dir_tables, "ground_var_year.csv"))) {
 # ERA5 single-levels vs ERA5-Land at the three ground references
 ind_ref <- ind[source == "MeteoSwiss" | height_ok == TRUE]
 sl <- rbind(
-  ref[, .(reference = "HadISD", bias_sl, sd_sl, bias_land, sd_land, w = cw)],
+  ref[, .(reference = "GHCNh", bias_sl, sd_sl, bias_land, sd_land, w = cw)],
   ind_ref[, .(reference = source, bias_sl, sd_sl, bias_land, sd_land, w = 1)]
 )
 sl <- rbind(sl[, .(reference, dataset = "ERA5 single-levels", ab = abs(bias_sl), sd = sd_sl, w)],
@@ -240,7 +240,7 @@ qs <- function(x, w) as.list(setNames(vapply(c(0.1, 0.25, 0.5, 0.75, 0.9), funct
 }, 1), c("q10", "q25", "q50", "q75", "q90")))
 ql <- rbind(cbind(metric = "abs_bias", sl[, qs(ab, w), by = .(reference, dataset)]),
   cbind(metric = "sd", sl[, qs(sd, w), by = .(reference, dataset)]))
-ql[, reference := factor(reference, c("HadISD", "GNSS", "MeteoSwiss"))]
+ql[, reference := factor(reference, c("GHCNh", "GNSS", "MeteoSwiss"))]
 land_panel <- function(m, ylab, tag, ...) {
   ggplot(ql[metric == m], aes(reference, colour = dataset, group = dataset)) +
     zero_line +
@@ -258,24 +258,24 @@ p1 <- land_panel("abs_bias", "Accuracy: |bias| (m, log scale)", "a",
 p2 <- land_panel("sd", lab_pre, "b", expand_limits(y = 0))
 save_fig(p1 + p2 + plot_layout(guides = "collect"), "ground_sl_vs_land", 8, 4)
 
-# Appendix: at Swiss stations, HadISD's bias follows the error of its listed elevation
-ms <- tab("meteoswiss_vs_hadisd.csv")[is.finite(bias_hadisd)]
-ms <- rbind(ms[, .(d_barometer, bias = bias_hadisd, with = "HadISD elevation")],
+# Appendix: at Swiss stations, GHCNh's bias follows the error of its listed elevation
+ms <- tab("meteoswiss_vs_ghcnh.csv")[is.finite(bias_ghcnh)]
+ms <- rbind(ms[, .(d_barometer, bias = bias_ghcnh, with = "GHCNh elevation")],
   ms[, .(d_barometer, bias = bias_meteoswiss, with = "MeteoSwiss barometer height")])
 p <- ggplot(ms, aes(d_barometer, bias, colour = with)) +
   zero_line +
   geom_abline(slope = -1, intercept = 0, colour = pal[["slate"]], linetype = 2) +
   geom_point(size = 1.8, alpha = 0.85) +
-  scale_colour_manual(values = c(`HadISD elevation` = pal_reference[["HadISD"]],
+  scale_colour_manual(values = c(`GHCNh elevation` = pal_reference[["GHCNh"]],
     `MeteoSwiss barometer height` = pal_reference[["MeteoSwiss"]]), name = "Bias with the") +
-  labs(x = "HadISD elevation - MeteoSwiss barometer height (m)", y = lab_acc)
+  labs(x = "GHCNh elevation - MeteoSwiss barometer height (m)", y = lab_acc)
 save_fig(p, "ground_swiss_elevation", 6, 4.6)
 
 # ==== Radiosondes ====================================================================================
 # Bird flight heights: share of flight time in 100 m bins, with the median and 90th percentile
 bh <- tab("bird_height_hist.csv")
 bq <- tab("bird_height_quantiles.csv")[flight == TRUE]
-n_tags <- tab("bird_height_distribution.csv")$n_tags[1]
+n_tags <- tab("bird_height_distribution.csv")[flight == TRUE, n_tags][1]
 bird_base <- ggplot(bh[lo < 6000], aes(lo + 50, 100 * prop)) +
   geom_col(width = 100, fill = pal[["slate"]], colour = "white", linewidth = 0.2) +
   geom_vline(xintercept = c(bq$p50, bq$p90), colour = pal[["ink"]], linetype = "dashed",

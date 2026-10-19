@@ -7,7 +7,7 @@
 #   climate    main Koppen-Geiger zones
 pal <- c(ink = "#1F2937", grid = "#E5E7EB", slate = "#94A3B8", light = "#E8ECF2")
 pal_metric <- c(accuracy = "#3B6FB6", precision = "#2A9D8F")
-pal_reference <- c(HadISD = "#3B6FB6", GNSS = "#7E57C2", MeteoSwiss = "#D1495B",
+pal_reference <- c(GHCNh = "#3B6FB6", GNSS = "#7E57C2", MeteoSwiss = "#D1495B",
   IGRA2 = "#E9A23B")
 pal_product <- c(`ERA5 single-levels` = "#1F2937", `ERA5-Land` = "#E4572E")
 pal_formula <- c(current = "#1F2937", tv = "#E9A23B", tv_lapse = "#7E57C2",
@@ -17,3 +17,8 @@ pal_climate <- c(`A tropical` = "#4DAF4A", `B arid` = "#E6AB02", `C temperate` =
 # Diverging (negative blue, positive red) and sequential scales for maps
 pal_diverging <- c("#1E2F57", "#3B6FB6", "#E8ECF2", "#E4572E", "#8C2A12")
 pal_sequential <- c("#F1F5FB", "#B9CDEB", "#6E97D0", "#3B6FB6", "#1E2F57")
+
+# Three atmospheric conversions used in the manuscript.
+pal_conversion <- c(isa = "#C46532", standard = "#315B91", virtual = "#007F86")
+lt_conversion <- c(isa = "solid", standard = "solid", virtual = "solid")
+pch_conversion <- c(isa = 1, standard = 15, virtual = 16)

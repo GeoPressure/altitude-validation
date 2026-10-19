@@ -1,0 +1,485 @@
+      Erschienen in: Science ; 347 (2015), 6219. - S. 250-254
+           https://dx.doi.org/10.1126/science.1258732
+
+
+
+
+            The roller coaster flight strategy of
+            bar-headed geese conserves energy
+            during Himalayan migrations
+            C. M. Bishop/*+ R. J. Spivey,'* L . A. Hawkes/t+ N. Batbayar, 2 B. Chua,3
+            P. B. Frappell, 4 W. K. Milsom,3 T. Natsagdorj, 5 S . H . Newman, 6 G. R. Scott, 7
+            J . Y. Takekawa, 8 M. Wikelski, 9 ' 1 0 P. J. Butler"
+
+            The physiological and biomechanical requirements of flight at high altitude have been
+            the subject of much interest. Here, we uncover a steep relation between heart rate and
+            wingbeat frequency (raised to the exponent 3.5) and estimated metabolic power and
+            wingbeat frequency (exponent 7) of migratory bar-headed geese. Flight costs increase
+            more rapidly than anticipated as air density declines, which overturns prevailing
+            expectations that this species should maintain high-altitude flight when traversing the
+            Himalayas. Instead, a " roller coaster" strategy, of tracking the underlying terrain and
+            discarding large altitude gains only to recoup them later in the flight with occasional
+            benefits from orographic lift, is shown to be energetically advantageous for flights over
+            the Himalayas.
+
+                     igrating birds must overrome many chal                       annually traverses the high passes of the Tibetan
+
+
+
+
+             M
+                     lenging environmental obstacles, such as                     massif and snow capped Himalayan mountains
+                     arid deserts (1, 2) and featureless oceans                   (6 8). Over the years, there bas been much de
+                     (3 5), but few are capable of negotiating                     bate as to bow high these birds might fly and
+                     the formidably high mountains separat                         what physiological mechanisms could be in
+            ing the Indian subcontinent from central Asia.                         volved at the highest altitudes (8 12), but, al
+            Famously, one species that manages this feat                          ·though one g oose has been directly tracked as
+            is the bar beaded goa;e (Anser imicus), wbidl bi                       high as 7290 m for a brief period (12), no mea
+                                                                                   surements of thei r physiologic.al or biome
+                                                                                   cbanical flight performance have been made in
+            'school of Biological Sciences. Bangor University, Bangor.             the wild
+            GW)'Iledd, UK. 2 Wildlife Science and Conservation Center of
+            Mongolia, Ulaanbaaar, Mongofia 3 Departmmt of Zoology,
+                                                                                      To investigate the flight dynamics and ener
+            University of British Cdumbia, VanrotNer, British Columbia             getics of migratory bar beaded geese, we used
+            Canada 4 0ffice of the Dean of Graduate Reswrch, University            custom designed implantable instruments (13)
+            of Tasmania, Tasmania, Australia. 5Mongolian Academy of                to measure abdominal temperature and pres
+            Sciences. Ulaanbataar, Mongolia. 6 Emergency Prewntion
+                                                                                   sure (every 30 s), tri axial acceleration (100 Hz
+            Sljst1m (EMPRES) Wildlife and Ecology Unit Food and
+            Agriculture Organization of the United Nations (FAO). Rome,            in 18 s bursts every 2 min), and electrocardio
+            Italy. 7Departmmt of Biology, McMaster University, Ontario.            grapby (180 Hz in the same 18 s period) from
+            Ontario, Canada 8 San Francisro Bay E.stuaJy Field station,            seven birds, collecting data totaling 391 hours
+            Western Ecological Research Center. US. Geological Survey,
+            Vallejo, CA 94592 USA. 9 Max Planck lnstiliit filr Omithologie.
+                                                                                  :of migratory flight (Fig. 1). The data loggers
+            Radolfzell, Ge-many. 'Ooepartment of Biology, Uniwrsity of             weighed 32 g and were housed in biocompat
+            Konstanz, Konstan2, Germany. Uschool of Biosciences.                   ible tubing (dimensions 7 x 2 em) capped by
+            University of Birmingham. Binningham, UK.                              titanium electrodes.
+             'These aJthors contributed equaUy to this work. tpresenl address:
+                                                                                      Abdominal body temperature during flight
+            Centre for Ecology and Conservation. University of Exeter. Cornwall
+            Campus. UK. tcorrespondlng author. E mail: c.b!shop@lbangor.           (40.2"C + L2 SD) tended to increase in tandem
+            ac.uk (C.M.B.); l.hawkes@exeteuc.uk (LA.H.)                            with flight activity, especially during times of
+
+
+250
+
+          Konstanzer Online-Publikations-System (KOPS)
+      URL: http://nbn-resolving.de/urn:nbn:de:bsz:352-0-277440
+intense effat (Fig. 1) but was generally insensitive   apply an allometric proportionality derived for 12         mechanical body power (Pb, W kg- 1 ) during
+to changes in altitude (fig. SI). The frequency        species of birds during flight (14) to data ob             flight, using measures of dynamic body ac
+distribution of an pressure deternrined altitude       tained from bar headed geese flying in a wind              celeration (19 22). Here, we show that a single
+measurements recorded during the migratory             tunnel (17) (fig. S2), and obtain the calibration          Pb component is dominant when empirically cor
+flights is shown in Fig. 2A The median altitude        relationship:                                              relating several theoretical terms (22) for Pb
+while traversing the Tibetan plateau was <V/(11 m                                                                 against our estimates of Prw which determines
+(rnaximmn 6443 m, 90% of ohiervations <5000 m).                                                                   that time averaged body power during the
+Thus, pressure derived altitudes do not pro                                                                       flapping flight of geese could be predicted by
+vide evidence for a general paradigm of extreme        For wild migratory geese, we substitute values
+high altitude (>8000 m) migratory flight in this       for body mass (Mb) of 2.8 kg and heart mass
+species (12).                                          (Mh) of 1% of body mass (18). We then con                                                                       {2)
+   In order to estimate rate of oxygen ronsump         verted estimates of Vo, to estimates of meta
+                                                                                                                                   .. 2
+tion (V0 ,, ml min-1) during flight from mea           bolic flight power (Pm, W kg- 1 ) by assuming                  where Z nns is root mean square dorsoventral
+sures of heart rate Cftu beats min - 1) (14 17), we    1 ml 0 2 ;: 20.9 J. Additionally, we estimate bio              acceleration (z axis) andfw is wingbeat frequency.
+
+
+                                                       Goose 37                                                                               Goose 35
+
+
+
+
+           g
+           0
+
+
+
+
+                                                                                                                            8.,.
+
+                                                                                                                               0
+                                                                                                                               0
+                                                                                                                               <')
+
+
+
+
+                                                                                                                               0
+                                                                                                                               0
+                                                                                                                               N
+
+
+
+                                                                                                                               .,.
+                                                                                                                               ...
+                                                                                  ...
+                                                                                  <0
+
+
+
+                                                                                  ..."'                                        ...
+                                                                                                                               N
+
+
+                                                                                  ......
+                                                                                                                               ...
+                                                                                                                               0
+
+
+
+                                                                                  .. l
+                                                                                  C')
+
+
+
+
+                                                              r          r                                                                              r   r
+                                                                   '                                                           m
+                                                                                  m        1
+                                                                                  "'                                        "'
+                                                                                  ,._                                          ,._
+                                                                                  <0
+
+
+                                                                                  "'
+                                                                                  .,.
+                                                                                  "'
+                                                                                  :;
+
+
+
+
+           ~                                   ~                    I
+                                                                                                                  '
+                                                                                                                            •CO
+                                                                                                                               <')                      I
+               0   2   4    6   6 10      14       0     2    3    4    5     6            0   2     4    6       6       10         0    2   4     6   8   10 12 14
+                           Time (hours)                  Time (hours)                              Time (hours)                                   Time (hours)
+
+Fig. L Examples of aut umn migratory flights. Bar-headed goose (Anser indicus) P43 travelled South from Mongolia and ascended onto the Tibetan
+Plateau (column 1); goose P37 (column 2) and goose P41 (column 3) were traversing the Tibetan Plateau; goose P35 (column 4) crossed the Himalayas
+and descended into India. Pressure altitude (row 1). fh (row 2). fw (row 3).  z;:,s
+                                                                             (row 4), abdominal body temperature (row 5).
+
+
+                                                                                                                                                                       251
+This simple term maximized correlations be                         5000 m, any potential desaturation of oxygen                       predicted by aerodynamic theory (24). Similar
+tween the independently derived biomechanical                      bound hemoglobin in the blood of bar headed                        ly, flight theory predicts that wingbeat frequency
+Ph and metabolic Pm (mean-? = 0.91 + 0.05 SD)                      geese should still be relatively small, at around                  should be o: p~-38, whereas the present results
+(Fig. 2B).                                                         10% (18, 23). Indeed, captive bar headed geese                     for bar headed geese show median fw o: p~23
+   During flight, heart rate and wingbeat fre                      are able to run for 15 min at similar maximum                      (Fig. 2H). This is at the lower end of the pre
+quency were significantly correlated (mean -? >                    speeds, whether exposed to atmospheres of 21,                      dieted range but in keeping with the observa
+0.86 + 0.11 SD) (Fig. 2, C and D, and fig. S3A), as                10.5, or 7% oxygen, the last mentioned condi                       tions of large Cironiiformes (herons, spoonbill,
+wen as heart rate and .Z!,. (mean              r
+                                             = 0.91 +              tion resulting in a desaturation of between 20                     ibis) migrating high above the Negev Desert in
+0.05 SD) (Fig. -~r and fig. S3B) and wingbeat                      and 23% (18).                                                      Israel (25).
+frequency and Z rms (mean r'l= 0.89 + 0.09 SD)                        Our data show that median heart rate during                         Bar headed geese exhibit an extreme sensitiv
+(fig. S3C). Median wingbeat frequency increased                    llight scales with air density (p) as fh o: p~.s..                 ity of heart rate and, therefore, metabolic llight
+with pressure derived altitude as air density de                   (Fig. 2G) and, therefore, that estimated Pm                        power to small changes in wingbeat frequency,
+clined (medianfw = 3.94 Hz at altitude < 2300 m;                   should scale approximately as Pm o: p ~-91 (if                     when a precise method is used for extracting
+fw = 4.35 Hz at altitude >4800 m) (Fig. 2E).                       one assumes that Pm o: jj, 2 but allowing for a                    values of fw (26). For example, a 5% increase in
+Similarly, median heart rate during flight in                      10% additional increase offh for a given value                    fw from 4.0 to 4.2 Hz equates to a 19% increase
+creased with altitude and was generally higher                     of V0 , at 5500 m due to a hemoglobin de                           infh and, therefore, a 41% increase in estimated
+on the Tibetan plateau (fh = 364 beats min- 1 at                   saturation of 10%). Thus, the relative metabolic                  .Pm· Across all migratory flights, fh correlated in
+altitude >4800 m) (Fig. 2F) than at lower al                       !light power of the geese at 5000 m compared                       the range ofjj, o: fw 1.95 10 6·65 and estimated Pm
+titudes (jj, = 300 beats min- 1 at altitude <2300 m).              with that at sea level is estimated to be around                   as Pm o: fw 39 to 1.1·3 , the latter exponent ex
+Although the partial pressure of oxygen de                         1.7 fold. This is higher than the anticipated sen                  ceeding 3 in every case (median exponent 6.96)
+creases with increasing altitude, up to around                     sitivity of flight power to air density of Pm o: p~.s.             (Fig. 21). For steady horizontal flight, the inertial
+
+
+
+Fig. 2. Descriptive
+fli ght s tatistics. Fre·
+                              A                                                       B                                                          c ~-                                                     : ··I
+                                                                                                                                                                                                          ~ ~··
+quency histograms of
+(A) altitude reported
+                                                                                                                                                 =d
+                                                                                                                                                 ..E
+                                                                                                                                                 ·~
+                                                                                                                                                               +0""0~~···----·············----~~··~· ..
+                                                                                                                                                                                                    I
+                                                                                                                                                                                                          !f···-
+                                                                                                                                                                                                          !' • •
+                                                                                                                                                                                                                 ··
+                                                                                                                                                 ~~
+during migratory
+flights of bar-headed
+                              i)'
+                              cQ) 00
+                                                                                                                                                                                                          ! .
+                              cr "'
+geese (Anser indicus)
+                                                                                                                                                                                                          I
+                              :;:)
+
+and (B) correlation of                                                                                                                           c       ...
+estimated Pm versus           ~8     N
+                                                                                           ...                                                   .Q      a                                                l
+                                                                                                                                                 iii
+                                                                                                                                                                                                          l
+estimated Ph. (C) Cor-                                                                                                                           ~
+relation of fh versl.5 fw                                                                  N
+                                                                                                                                                   N
+                                                                                                                                                 0 0
+                                                                                                                                                 (.)
+                                                                                                                                                                                                          l
+plotted against correla-
+tion of Z~ms versus fw
+                                                                                                                                                         0
+                                                                                                                                                         00~.0----
+                                                                                                                                                                 0-.2---0~.4----
+                                                                                                                                                                               0-.6---0~.8----
+                                                                                                                                                                                             1.0
+                                                                                                                                                                                                          !
+                                               1000         3000       5000                                   0.8         0.9              1.0
+(D) Examples of fh                                                                                   Correlation of Pm with Pb                                   Correlation (r-2) of fwwith Z~ms
+                                               Altitude du ring flight (m)
+against fw for four indi-
+vidual flights. Fre-          D g                                                     E                                                          F
+                                                                                                                                Altitude
+quency distribution of                                                                                                       >4800m
+( E) fw and (F) fh within                                                                                                  2300-4800m
+three altitude zones.
+Scatter plots of (G) fh
+and (H) fw plotted
+against altitude. ( I)
+Frequency distribution
+of power exponents for
+f w against estilll3ted Pm·
+
+                                     0
+                                     0
+                                     ~
+                                               3.5              4.0           4.5                             4.0           4.5                                        250            350               450
+                                               Wingbeat frequency (Hz)                               Wingbeat Frequency (Hz)                                           Heart Rate (beats min- 1)
+
+                              G                                                      H
+                                     0                                                     0
+                                     §                                                     §                                                      ~
+                                                                                                                                                  c:
+                                                                                                                                                  Q)
+
+                              I
+                              Q)
+                                                                                      .s
+                                                                                      Q)
+                                                                                                                                                  :;:)
+                                                                                                                                                  cr
+                                                                                                                                                  !!?
+                              -o §                                                    -o §                                                       LL
+                              ~ "'                                                    .a
+                                                                                           "'                                                     Q)
+                                                                                                                                                  >
+                              <(                                                      ~                                                          :;:>
+
+                                                                                                                                                  "'
+                                                                                                                                                 Qj
+                                                                                                                                                 0::
+
+                                                                                           -
+                                     0                                                     0
+
+
+                                     -
+                                     0                                                     0
+                                     0                                                     0
+
+
+                                                       <1-...                                                 _J
+
+                                         150          250       350        4~0                 3.0      3.5         4.0     4.5            5.0                     4         5       7       9          12         15
+                                               Heart Rate (beats min- )                              Wingbeat frequency (Hz)                                    Exponent of fw-Pm relationship
+
+
+252
+               A                                                                                         B
+               ~
+
+
+
+
+               ·eC:
+                   o;"'
+                z "'      N
+                                                                                                                                                                                     E:
+                                                                                                                                                                                     o·
+                                                                                                                                                                                     o.
+                                                                                                                                                                                     ~,
+
+
+
+
+                                    M
+                                   Pa1r
+                                          407
+                                                =304 I fh
+                                                                         '       .
+                                 -0.15      -0.10      -Q.05      0.00   0 .05                                           150       200       250    300    35()    400           450       50()
+                                           Log1o {Air Density, kg.m·3)                                                                        Heart Rate {beats min·1)
+
+                                                                                                         c                                          Goose 38 flight d
+
+Fig. 3. Modeling of horizontal flight energetics with variation in alti-                                           0
+
+tude. (A) Calculated relation between log fh during horizontal flight plotted                                      .,.
+                                                                                                                   0
+                                                                                                                   0
+
+against log p (see t ext). ( B) Frequency plot of all fh values recorded from                            g
+t he same bar-headed geese. Dotted lines represent the estimated fh re-                                  "0
+                                                                                                             Cl)   0
+                                                                                                                   0
+                                                                                                                   0
+quired to fly horizontally at each specified altitude. taken from the relation                           ~
+calculated from (A). (C) Following an initial climb at the beginning of a long
+                                                                                                         ".C
+                                                                                                         :(
+                                                                                                                   "'
+migratory flight. the flight costs are estimated to be around 8% more
+costly (see text) for the most direct theoretical route compared with the                                          8
+                                                                                                                   N
+
+actual undulating path taken by the bar-headed goose (Anser indicus).
+                                                                                                                         0     2         4      6       8      10    12     14        16    18
+                                                                                                                                                      Time (hours)
+
+
+
+A                         Goose 41 flight d                  B
+                                                                             6 4
+                                                                                  Goose 35 flight h                                              c
+     Ol
+     0                                                                       r--... . . . . _
+                                                                         sf                  .
+                                                            ......       '·..,·... .             ........~
+                                                               in                      ······•     '··"'-...
+                                                             .§.....,                       "-·..1_0 -.........,,!!
+                                                              'E ci                      --<
+                                                               Q)
+
+                                                               ~
+                                                             <
+Q)   0
+                                                             0 0
+                                                               Q)
+-;                                                           -;
+a:                                                           a:
+                                                                                                                                                        <D
+                                                                                                                                                        9
+               1                                   r                                                                                                                         r
+             200         300         400                                   300          400                                                                   200        300         400
+               Heart Rate (beats min·1)                                   Heart Rate (beats min·1)                                                                   Heart Rate (beats m ln·1)
+
+                                                                                                                                                    D                     Goose 43 flight h
+Fig. 4. Environmentally assisted flights. (A to D) Rate of ascent and/or descent plotted against
+                                                                                                                                                        <D
+f h for an single migratory flight from four individual Bar-headed geese (Ansar indicus). Intensity of
+                                                                                                                                                        c:i
+color from red to yellow indicates density of observations, with a temporal resolution of 2 min. Black
+lines link up sequential data points (numbered with t ime in minutes) to indicate an event lying
+outside the typical distribution, highlighting periods of assisted lift, along with a single difficult
+landing event in (C).
+
+
+
+
+                                                                                                                                                                                 I
+                                                                                                                                                              200           300         400
+                                                                                                                                                                     Heart Rate (beats mln·1)
+
+
+                                                                                                                                                                                                  253
+costs of flapping the wings should be propor            pensive, the increase in energy consumption                          5. R. E. Gill Jr. et al., Proc. Biol. Sci. 276, 447 457 (2009).
+tional to the product of wingbeat frequency             due to occasional climbs is not as important                         6. L. A. Hawkes et al., Proc. Natl. Acad. Sci. U.S.A. 108,
+                                                                                                                                 9516 9519 (2011).
+cubed and the wing amplitude squared. If the            as the effect of reducing the general costs of
+                                                                                                                             7. A. Blum, Annapurna: A Woman’s Place (Sierra Club, San
+body of the bird undergoes sinusoidal ampli             flying by seeking higher density air at lower                            Francisco, 1998).
+:: 2 displacements on the vertical axis (B) then
+tude                                                    altitudes.                                                           8. L. W. Swan, Nat. Hist. 70, 68 75 (1970).
+Z rms = 2 √2p2 B fw2 (22) and so Eq. 2 can be              Rates of ascent and descent during four                           9. F. M. Faraci, Annu. Rev. Physiol. 53, 59 70 (1991).
+                                                                                                                             10. G. R. Scott, W. K. Milsom, Respir. Physiol. Neurobiol. 154,
+rewritten                                               migratory flights are plotted against fh (Fig. 4)
+                                                                                                                                 284 301 (2006).
+                                                        and against fw (fig. S5), with maximum ascent                        11. B. Pinshow, M. H. Bernstein, Z. Arad, Am. J. Physiol. 249,
+                Pb = 4p2 B2 fw3 (3).             (3)    rates of up to at least 0.8 m s−1, lasting for sev                       R758 R764 (1985).
+                                                        eral minutes. However, such extreme ascent                           12. L. A. Hawkes et al., Proc. Biol. Sci. 280, 20122114 (2013).
+Because B should be positively correlated with          rates were generally not associated with in                          13. R. J. Spivey, C. M. Bishop, Rev. Sci. Instrum. 85, 014301
+                                                                                                                                 (2014).
+wingbeat amplitude, the implication of our              creases in fh and fw. A particularly clear ex                        14. C. M. Bishop, R. J. Spivey, J. Theor. Biol. 323, 11 19
+experimental data, showing that Pm º fw6.96,            ample of such an episode that occurred during a                          (2013).
+is that the angular travel of the wing increases        13 hour migratory flight is shown in Fig. 4A.                        15. P. J. Butler, J. A. Green, I. L. Boyd, J. R. Speakman, Funct. Ecol.
+with higher fw. Thus, the exquisite sensitivity         The central cluster of Fig. 4A exhibits a sloping                        18, 168 183 (2004).
+                                                                                                                             16. J. A. Green, Comp. Biochem. Physiol. A Mol. Integr. Physiol.
+of Pm to fw in geese stems from wingbeat am             relation between fh and rate of ascent (typical of                       158, 287 304 (2011).
+plitude that is positively correlated with changes      a number of flights), but there was a dramatic                       17. S. Ward, C. M. Bishop, A. J. Woakes, P. J. Butler, J. Exp. Biol.
+in wingbeat frequency.                                  departure from this pattern lasting ~30 min in                           205, 3347 3356 (2002).
+   In the present study, there was no evidence          volving unusually high rates of ascent despite                       18. L. A. Hawkes et al., PLOS ONE 9, e94015 (2014).
+                                                                                                                             19. L. G. Halsey, S. J. Portugal, J. A. Smith, C. P. Murn,
+of gliding behavior in bar headed geese, even           “normal” values of heart rate. Although the de                           R. P. Wilson, J. Field Ornithol. 80, 171 177 (2009).
+when descending rapidly from the Himalayas              gree of central clustering varied between flights,                   20. K. H. Elliott, M. Le Vaillant, A. Kato, J. R. Speakman,
+into India (fig. S4). During the steepest de            presumably according to the prevailing wind                              Y. Ropert Coudert, Biol. Lett. 9, 20120919 (2013).
+scent phases, fw remained above 3:6 Hz for 98%          conditions and underlying terrain, similar un                        21. O. Duriez et al., PLOS ONE 9, e84887 (2014).
+                                                                                                                             22. R. J. Spivey, C. M. Bishop, J. R. Soc. Interface 10, 20130404
+of observations, whereas fh decreased to be             usually high ascent rates occurred on other
+                                                                                                                                 (2013).
+tween 150 and 200 beats min−1. Indeed, fh               flights (Fig. 4, B to D). These unique results                       23. J. U. Meir, W. K. Milsom, J. Exp. Biol. 216, 2172 2175
+was surprisingly low in general throughout              are interpreted as evidence of sustained as                              (2013).
+the entire migration (overall mean fh = 328 +           sistance from updrafts due to orographic lift                        24. C. Pennycuick, J. Exp. Biol. 199, 1613 1618 (1996).
+64 beats min−1) (Fig. 2F), with geese only spend        (27, 28), presumably indicative of geese flying                      25. F. Liechti, E. Schaller, Naturwissenschaften 86, 549 551
+                                                                                                                                 (1999).
+ing 2.3% of their flight time at altitudes above        along the windward side of a ridge. Thus, it is                      26. R. J. Spivey, S. Stansfield, C. M. Bishop, Prog. Oceanogr. 125,
+4800 m with a fh greater than 455 beats min−1           logical to conclude that weaker vertical updrafts                        62 73 (2014).
+(and 0.37% of their flight time when below              could also provide more gentle assistance during                     27. P. J. Butler, Comp. Biochem. Physiol. A Mol. Integr. Physiol. 156,
+2300 m altitude). A simple extrapolation of the         other phases of the migratory flights, perhaps                           325 329 (2010).
+                                                                                                                             28. G. Bohrer et al., Ecol. Lett. 15, 96 103 (2012).
+relations between heart rate and air density            comparable in magnitude to the assistance                            29. H. Weimerskirch, J. Martin, Y. Clerquin, P. Alexandre,
+(Fig. 3A), with data filtered so that only rates        geese might at times receive from V formation                            S. Jiraskova, Nature 413, 697 698 (2001).
+of ascent or descent lying between +0.1 m s−1           flight (29, 30).                                                     30. S. J. Portugal et al., Nature 505, 399 402 (2014).
+are included (an approximation of horizontal               When traversing mountainous areas, a terrain
+                                                                                                                             AC KNOWLED GME NTS
+flight), demonstrates that a minimum heart              tracking strategy or flying in the cool of the night
+rate of around 460 beats min−1 might just suf
+                                                                                                                             The work was conducted with permission from the Mongolian
+                                                        (12) can reduce the cost of flight in bar headed                     Academy of Sciences and the Wildlife Science and Conservation
+fice at around 8000 m in still air conditions           geese through exposure to higher air density.                        Centre. Primary funding was from a UK Biotechnology and
+(Fig. 3B). However, even this assessment might          Ground hugging flight may also confer additional                     Biological Sciences Research Council (BBSRC) award to C.M.B.
+seem unduly optimistic, given that it ignores           advantages including maximizing the potential                        and P.J.B. (grant no. BB/FO15615/1) and a Natural Sciences
+                                                                                                                             and Engineering Research Council of Canada award to W.K.M.,
+the energetics and time required to make the            of any available updrafts of air, reduced expo                       with additional support from the Max Planck Institute for
+climb itself and the steepness of the relation for      sure to crosswinds and headwinds, greater                            Ornithology, the U.S. Geological Survey, Western Ecological and
+hemoglobin desaturation once the partial pres           safety through improved ground visibility, and                       Patuxent Wildlife Research Centers, Avian Influenza Programme,
+sures of oxygen fall below a critical value (18, 23).   increased landing opportunities. The atmospheric                     and the FAO through the Animal Health Service EMPRES
+                                                                                                                             surveillance program. We are grateful to the support of all the
+Thus, unaided horizontal flights over 8000 m            challenges encountered at the very highest alti                      field team members in Mongolia, to A. Davies for developing
+are likely to be approaching the limit for sus          tudes, coupled with the need for near maximal                        the first generation of heart rate data loggers, and to the work
+tained aerobic capacity in this species.                physical performance in such conditions, likely                      of Beaumaris Instruments Ltd. in the development of housings
+   Previous low temporal resolution global po           explains why bar headed geese rarely fly close                       for the instruments. Thanks also to S. Ward for providing the
+                                                                                                                             wind tunnel heart rate calibration data. The use of trade names
+sitioning system altitude data (12) indicated           to their altitude ceiling, typically remaining                       in this document is for descriptive purposes only and does not
+that bar headed geese tend to fly closest to the        below 6000 m. Given that aerodynamic mass                            imply endorsement by the U.S. government. Links to the data
+ground when traversing the Tibetan massif,              specific flight costs are thought to increase                        presented in the figures are provided in the supplementary
+with a median height of only 62 m. This is con          with body mass and that bar headed geese are                         materials. Author contributions. C.M.B. and P.J.B. led the study.
+                                                                                                                             C.M.B., P.J.B., L.A.H., N.B., W.K.M, G.R.S, J.Y.T., S.H.N., P.B.F.,
+sistent with the high resolution pressure alti          heavier than 98% of avian species, it is partic                      and M.W. conceived and/or designed the fieldwork. B.C. led and
+tude results of the present study, which imply          ularly impressive that these birds are able to                       conducted the veterinary work, with assistance from the field
+that geese opt repeatedly to shed hard won al           migrate across the world’s highest land massif                       team. N.B., L.A.H., T.N., C.M.B., G.R.S, and J.Y.T. conducted
+titude only subsequently to regain height later         while remaining comfortably within their phys                        the fieldwork. C.M.B. and R.J.S. wrote the paper, which was
+                                                                                                                             then reviewed by all authors. R.J.S. designed the instruments,
+in the same flight. An example of this tactic           iological capabilities.                                              analyzed the data collected and generated the figures, in
+can be seen in a 15.2 hour section of a 17 hour                                                                              consultation with C.M.B.
+flight (Fig. 3C) in which, after an initial climb       RE FERENCES AND NOTES
+to 3200 m, the goose followed an undulating             1. H. Schmaljohann, F. Liechti, B. Bruderer, Proc. Biol. Sci. 274,
+profile involving a total ascent of 6340 m with a          735 739 (2007).
+total descent of 4950 m for a net altitude gain of      2. R. H. G. Klaassen, T. Alerstam, P. Carlsson, J. W. Fox,
+only 1390 m. Revealingly, calculations show that           A. Lindström, Biol. Lett. 7, 833 835 (2011).
+                                                        3. P. J. Butler, A. J. Woakes, C. M. Bishop, J. Avian Biol. 29,
+steadily ascending in a straight line would have           536 545 (1998).
+increased the journey cost by around 8%. As             4. S. A. Shaffer et al., Proc. Natl. Acad. Sci. U.S.A. 103,
+even horizontal flapping flight is relatively ex           12799 12802 (2006).
+
+
+
+254
+

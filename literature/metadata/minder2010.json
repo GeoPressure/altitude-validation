@@ -1,0 +1,441 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        9
+      ]
+    ],
+    "date-time": "2026-10-09T04:00:28Z",
+    "timestamp": 1791518428377,
+    "version": "4.3.4"
+  },
+  "reference-count": 44,
+  "publisher": "American Geophysical Union (AGU)",
+  "issue": "D14",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2010,
+            7,
+            30
+          ]
+        ],
+        "date-time": "2010-07-30T00:00:00Z",
+        "timestamp": 1280448000000
+      },
+      "content-version": "vor",
+      "delay-in-days": 3,
+      "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "J. Geophys. Res."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2010,
+        7,
+        27
+      ]
+    ]
+  },
+  "abstract": "<jats:p>\n                    The typically sparse distribution of weather stations in mountainous terrain inadequately resolves temperature variability. Accordingly, high‐resolution gridding of climate data (for applications such as hydrological modeling) often relies on assumptions such as a constant surface temperature lapse rate (i.e., decrease of surface temperature with altitude) of 6.5°C km\n                    <jats:sup>−1</jats:sup>\n                    . Using an example of the Cascade Mountains, we describe the temporal and spatial variability of the surface temperature lapse rate, combining data from: (1) COOP stations, (2) nearby radiosonde launches, (3) a temporary dense network of sensors, (4) forecasts from the MM5 regional model, and (5) PRISM geo‐statistical analyses. On the windward side of the range, the various data sources reveal annual mean lapse rates of 3.9–5.2°C km\n                    <jats:sup>−1</jats:sup>\n                    , substantially smaller than the often‐assumed 6.5°C km\n                    <jats:sup>−1</jats:sup>\n                    . The data sets show similar seasonal and diurnal variability, with lapse rates smallest (2.5–3.5°C km\n                    <jats:sup>−1</jats:sup>\n                    ) in late‐summer minimum temperatures, and largest (6.5–7.5°C km\n                    <jats:sup>−1</jats:sup>\n                    ) in spring maximum temperatures. Geographic (windward versus lee side) differences in lapse rates are found to be substantial. Using a simple runoff model, we show the appreciable implications of these results for hydrological modeling.\n                  </jats:p>",
+  "DOI": "10.1029/2009jd013493",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2010,
+        8,
+        2
+      ]
+    ],
+    "date-time": "2010-08-02T12:06:36Z",
+    "timestamp": 1280750796000
+  },
+  "source": "Crossref",
+  "is-referenced-by-count": 367,
+  "title": [
+    "Surface temperature lapse rates over complex terrain: Lessons from the Cascade Mountains"
+  ],
+  "prefix": "10.1029",
+  "volume": "115",
+  "author": [
+    {
+      "given": "Justin R.",
+      "family": "Minder",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Department of Atmospheric Science University of Washington  Seattle Washington USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Philip W.",
+      "family": "Mote",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Oregon Climate Change Research Institute, College of Oceanic and Atmospheric Sciences Oregon State University  Corvallis Oregon USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jessica D.",
+      "family": "Lundquist",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Civil and Environmental Engineering University of Washington  Seattle Washington USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "13",
+  "published-online": {
+    "date-parts": [
+      [
+        2010,
+        7,
+        30
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_7_2_1",
+      "unstructured": "Anderson E. A.(1976) A point energy and mass balance model of a snow cover NOAA Tech. Rep. 19 U.S. Dept. of Comm. Silver Spring Md."
+    },
+    {
+      "key": "e_1_2_7_3_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2005JF000426"
+    },
+    {
+      "key": "e_1_2_7_4_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2005WR004387"
+    },
+    {
+      "key": "e_1_2_7_5_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0493(1988)116<0137:ACAD>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_7_6_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2007JAMC1565.1"
+    },
+    {
+      "key": "e_1_2_7_7_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/S0168-1923(98)00076-8"
+    },
+    {
+      "key": "e_1_2_7_8_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2008JCLI2397.1"
+    },
+    {
+      "key": "e_1_2_7_9_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2008JCLI2612.1"
+    },
+    {
+      "key": "e_1_2_7_10_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/cr022099"
+    },
+    {
+      "key": "e_1_2_7_11_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/joc.1688"
+    },
+    {
+      "key": "e_1_2_7_12_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/cr008001"
+    },
+    {
+      "key": "e_1_2_7_13_1",
+      "unstructured": "Dooge J.(1976) Linear theory of hydrologic systems Tech. Bull. 1468 Agric. Res. Serv. U.S. Dept. of Agric. Alexandria Va."
+    },
+    {
+      "key": "e_1_2_7_14_1",
+      "volume-title": "The Washington Climate Change Impacts Assesment: Evaluating Washington's Future in a Changing Climate",
+      "author": "Elsner M.",
+      "year": "2009"
+    },
+    {
+      "key": "e_1_2_7_15_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2009JCLI2845.1"
+    },
+    {
+      "key": "e_1_2_7_16_1",
+      "unstructured": "Grell G. A. J.Dudhia andD. R.Stauffer(1995) A description of the fifth‐generation Penn State/NCAR mesoscale model (MM5) NCAR Tech. Note NCAR/TN‐398 1 STR Natl. Cent. for Atmos. Res. Boulder Colo."
+    },
+    {
+      "key": "e_1_2_7_17_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JHM420.1"
+    },
+    {
+      "key": "e_1_2_7_18_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI3538.1"
+    },
+    {
+      "key": "e_1_2_7_19_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/nature08649"
+    },
+    {
+      "key": "e_1_2_7_20_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2006JD007561"
+    },
+    {
+      "key": "e_1_2_7_21_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2008WR006979"
+    },
+    {
+      "key": "e_1_2_7_22_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2007JHM853.1"
+    },
+    {
+      "key": "e_1_2_7_23_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/joc.1396"
+    },
+    {
+      "key": "e_1_2_7_24_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/BAMS-84-10-1353"
+    },
+    {
+      "key": "e_1_2_7_25_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0442(2002)015<3237:ALTHBD>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_7_26_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.258"
+    },
+    {
+      "key": "e_1_2_7_27_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/BAMS-86-1-39"
+    },
+    {
+      "key": "e_1_2_7_28_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1120808"
+    },
+    {
+      "key": "e_1_2_7_29_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2004JD005047"
+    },
+    {
+      "key": "e_1_2_7_30_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/1552603"
+    },
+    {
+      "key": "e_1_2_7_31_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/2845499"
+    },
+    {
+      "key": "e_1_2_7_32_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3189/172756409787769762"
+    },
+    {
+      "key": "e_1_2_7_33_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3189/002214309790152438"
+    },
+    {
+      "key": "e_1_2_7_34_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0442(2003)016<1032:SASVOA>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_7_35_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1146/annurev.earth.35.031306.140155"
+    },
+    {
+      "key": "e_1_2_7_36_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.advwatres.2005.06.010"
+    },
+    {
+      "key": "e_1_2_7_37_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JAS-3376.1"
+    },
+    {
+      "key": "e_1_2_7_38_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/BAMS-84-11-1513"
+    },
+    {
+      "key": "e_1_2_7_39_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0434(1997)012<0208:TIOTIC>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_7_40_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI3321.1"
+    },
+    {
+      "key": "e_1_2_7_41_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.agrformet.2006.07.001"
+    },
+    {
+      "key": "e_1_2_7_42_1",
+      "volume-title": "Atmospheric Science: An Introductory Survey",
+      "author": "Wallace J.",
+      "year": "2006"
+    },
+    {
+      "key": "e_1_2_7_43_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2009JCLI2905.1"
+    },
+    {
+      "key": "e_1_2_7_44_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0426(2002)019<0687:AABHDA>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_7_45_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0434(2001)016<0432:CPITCB>2.0.CO;2"
+    }
+  ],
+  "container-title": [
+    "Journal of Geophysical Research: Atmospheres"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1029%2F2009JD013493",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2009JD013493",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        11,
+        2
+      ]
+    ],
+    "date-time": "2023-11-02T15:05:13Z",
+    "timestamp": 1698937513000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2009JD013493"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2010,
+        7,
+        27
+      ]
+    ]
+  },
+  "references-count": 44,
+  "journal-issue": {
+    "issue": "D14",
+    "published-print": {
+      "date-parts": [
+        [
+          2010,
+          7,
+          27
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1029/2009JD013493"
+  ],
+  "URL": "https://doi.org/10.1029/2009jd013493",
+  "archive": [
+    "Portico"
+  ],
+  "relation": {},
+  "ISSN": [
+    "0148-0227"
+  ],
+  "issn-type": [
+    {
+      "value": "0148-0227",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2010,
+        7,
+        27
+      ]
+    ]
+  },
+  "article-number": "2009JD013493"
+}

@@ -1,11 +1,8 @@
 # Reference screen, summaries, and models of what the error depends on, for the surface stations
-# (HadISD) and the radiosondes (IGRA2) (figures: 17_figures.R).
+# (GHCNh) and the radiosondes (IGRA2) (figures: 17_figures.R).
 #
-# Vocabulary used throughout:
-#   accuracy  = the per-station mean error (bias). Constant in time, so it only matters for
-#               absolute altitude and for comparing altitudes across locations.
-#   precision = the temporal SD of the error at a station once its bias is removed. This is what
-#               limits relative altitude (e.g. flight climbs, or changes at one site).
+# Station bias is the persistent signed offset; station SD is scatter about that offset.
+# They describe components of altitude discrepancies, rather than complete accuracy.
 # Pooled statistics weight every station by its cell weight `cw` (1 / stations in its 2 x 2 degree
 # cell, see load_stations()), spread over its observations, so neither dense networks nor the extra
 # mountain stations dominate. Station-level medians and quantiles use the same weights.
@@ -16,11 +13,17 @@ set.seed(5)
 
 st <- load_stations()
 
-# ==== HadISD =================================================================================
-A <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet")))
+# ==== GHCNh =================================================================================
+A <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet")))
+selected_years <- st[network == "ghcnh", .(id, year = selected_year)]
+A <- A[selected_years, on = .(id, year)]
 gross_frac <- mean(A$gross, na.rm = TRUE)
-gross_st <- A[year %in% years_main, .(gross_st = mean(gross %in% TRUE)), by = id]
-Am <- A[year %in% years_main & !gross %in% TRUE]
+gross_st <- A[, .(gross_st = mean(gross %in% TRUE)), by = id]
+Am <- A[!gross %in% TRUE & is.finite(err_sl)]
+matched_coverage <- Am[, .(matched_days = uniqueN(as.Date(date)), matched_hours = uniqueN(date)), by = id]
+matched_coverage[, coverage_ok := matched_days >= 183 & matched_hours / pmax(matched_days, 1) >= 4]
+fwrite(matched_coverage, file.path(dir_tables, "ground_matched_coverage.csv"))
+Am <- Am[id %in% matched_coverage[coverage_ok == TRUE, id]]
 rm(A)
 
 stA <- Am[, c(
@@ -30,19 +33,12 @@ stA <- Am[, c(
   setNames(summarise_error(err_land)[c("bias", "sd", "mae", "rmse", "p95_abs")],
     paste0(c("bias", "sd", "mae", "rmse", "p95"), "_land"))
 ), by = id]
-stA <- merge(st[network == "hadisd"], stA, by = "id")
+stA <- merge(st[network == "ghcnh"], stA, by = "id")
 stA <- merge(stA, gross_st, by = "id")
-# Reference screen. Three reasons to distrust a station as a reference:
-#  1. Implausible offset: a constant offset larger than ERA5 can produce, i.e. 30 m (~3.6 hPa, about
-#     twice the p95 where no extrapolation is needed) plus 10% of the gap between station elevation
-#     and ERA5 orography (radiosondes show the extrapolation error rarely exceeds 3-6% of the gap).
-#     Such a station reports its pressure at a different height than its listed elevation (datum,
-#     metadata or barometer error).
-#  2. Step change: a clear jump in its error during 2022-2024 (11_reference_checks.R). ERA5 does not
-#     jump at one site; the station moved, changed barometer or changed its reference height.
-#  3. Unreliable barometer: more than 1% of its observations flagged as gross errors. Isolated gross
-#     errors (typos, unit slips) are dropped everywhere; many of them mean the rest is suspect too.
-# All are kept in "all stations" and excluded from the reference set used everywhere else.
+# Reference-plausibility screen, conditional on ERA5-standard residuals.
+# Persistent offsets, fitted steps and frequent gross flags can reflect reference metadata,
+# pressure error or conversion discrepancies; none is a unique diagnosis of a faulty station.
+# The main comparison (step 18) therefore also reports unscreened and step/noise-only results.
 stA[, consistent := abs(bias_sl) <= 30 + 0.1 * abs(dz_sl)]
 chk <- fread(file.path(dir_tables, "ground_reference_checks.csv"))
 stA <- merge(stA, chk[, !"bias"], by = "id", all.x = TRUE)
@@ -161,7 +157,10 @@ drivers_st <- rbind(
 fwrite(drivers_st, file.path(dir_tables, "ground_importance_station.csv"))
 
 # ---- What the error depends on: observation level (precision) --------------------------------------------------
-dobs <- Am[reference == TRUE & is.finite(blh) & is.finite(skt_t2m) & is.finite(dsp6)][sample(.N, min(.N, 2e6))]
+# Bound the station-effect fit; all error summaries above still use every eligible observation.
+dobs <- Am[reference == TRUE & is.finite(blh) & is.finite(skt_t2m) & is.finite(dsp6)]
+model_ids <- sample(sort(unique(dobs$id)), min(uniqueN(dobs$id), 200L))
+dobs <- dobs[id %in% model_ids][sample(.N, min(.N, 1e5))]
 dobs[, `:=`(abs_e = abs(e_db), id_f = factor(id), log_blh = log(blh), abs_dsp6 = abs(dsp6) / 100)]
 m_obs <- bam(abs_e ~ s(lsh, bs = "cc", k = 12) + s(sdoy, bs = "cc", k = 12) + s(log_blh, k = 8) +
   s(skt_t2m, k = 8) + s(abs_dsp6, k = 8) + s(id_f, bs = "re"),
@@ -169,6 +168,8 @@ m_obs <- bam(abs_e ~ s(lsh, bs = "cc", k = 12) + s(sdoy, bs = "cc", k = 12) + s(
 imp <- drop_importance(m_obs, dobs, function(f) {
   bam(f, data = dobs, discrete = TRUE, nthreads = n_cores)
 })
+imp[, n_stations := uniqueN(dobs$id)]
+fwrite(dobs[, .(n = .N), by = id], file.path(dir_tables, "ground_importance_sample.csv"))
 fwrite(imp, file.path(dir_tables, "ground_importance_obs.csv"))
 
 # ==== IGRA2 ==================================================================================
@@ -214,20 +215,20 @@ api <- if (file.exists(file.path(dir_tables, "api_crosscheck_summary.csv"))) {
 bsl <- tabB[method == names(err_vars)[1]]
 hb <- function(bin, col) bsl[hbin == bin][[col]]
 key <- list(
-  hadisd_n_stations = uniqueN(Am$id),
-  hadisd_gross_fraction = gross_frac,
-  hadisd_n_candidates = nrow(fread(file.path(dir_interim, "hadisd_candidates.csv"))),
-  hadisd_n_coverage = nrow(fread(file.path(dir_interim, "hadisd_stations_all.csv"))),
+  ghcnh_n_stations = uniqueN(Am$id),
+  ghcnh_gross_fraction = gross_frac,
+  ghcnh_n_candidates = nrow(fread(file.path(dir_interim, "ghcnh_match_frame.csv"))),
+  ghcnh_n_coverage = nrow(fread(file.path(dir_interim, "ghcnh_stations_all.csv"))),
   igra_n_candidates = nrow(fread(file.path(dir_interim, "igra_candidates.csv"))),
   igra_n_with_data = fread(file.path(dir_interim, "igra_candidates.csv"))[n_soundings >= 100, .N],
-  hadisd_n_inconsistent = sum(!stA$consistent),
-  hadisd_n_step = sum(stA$step_flag),
-  hadisd_n_noisy = sum(stA$noisy),
-  hadisd_high_frac = mean(stA$elev > 1000),
-  hadisd_high_weight = stA[, sum(cw[elev > 1000]) / sum(cw)],
-  hadisd_ref_n_stations = g(tabA, lab_cons, "sl", "n_stations"),
-  hadisd_ref_abs_bias_median = g(tabA, lab_cons, "sl", "abs_bias_median"),
-  hadisd_ref_sd_median = g(tabA, lab_cons, "sl", "sd_median"),
+  ghcnh_n_inconsistent = sum(!stA$consistent),
+  ghcnh_n_step = sum(stA$step_flag),
+  ghcnh_n_noisy = sum(stA$noisy),
+  ghcnh_high_frac = mean(stA$elev > 1000),
+  ghcnh_high_weight = stA[, sum(cw[elev > 1000]) / sum(cw)],
+  ghcnh_ref_n_stations = g(tabA, lab_cons, "sl", "n_stations"),
+  ghcnh_ref_abs_bias_median = g(tabA, lab_cons, "sl", "abs_bias_median"),
+  ghcnh_ref_sd_median = g(tabA, lab_cons, "sl", "sd_median"),
   igra_n_stations = uniqueN(B$id),
   igra_gross_fraction = gross_frac_B,
   igra_rel_bias_1000_1500 = hb("(1e+03,1.5e+03]", "bias"),

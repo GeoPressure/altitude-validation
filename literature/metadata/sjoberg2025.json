@@ -1,0 +1,782 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        5,
+        27
+      ]
+    ],
+    "date-time": "2026-05-27T13:46:34Z",
+    "timestamp": 1779889594206,
+    "version": "3.53.1"
+  },
+  "reference-count": 62,
+  "publisher": "The Royal Society",
+  "issue": "2057",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            1
+          ]
+        ],
+        "date-time": "2025-10-01T00:00:00Z",
+        "timestamp": 1759276800000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            1
+          ]
+        ],
+        "date-time": "2025-10-01T00:00:00Z",
+        "timestamp": 1759276800000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100004359",
+      "name": "Vetenskapsrådet",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100004359",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/100010663",
+      "name": "H2020 European Research Council",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/100010663",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100000781",
+      "name": "European Research Council",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100000781",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "royalsocietypublishing.org"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Proc. R. Soc. B."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "abstract": "<jats:p>\n                    Migratory songbirds have an internal circannual genetic programme that controls the timing and extent of migratory flight activity, as demonstrated by experiments with birds held in cages. We used multisensor data loggers to record the timing and duration of all migratory flights during the annual cycle of 15 free-living individuals of red-backed shrikes\n                    <jats:italic toggle=\"yes\">Lanius collurio</jats:italic>\n                    . Annual actograms unexpectedly revealed that the nocturnal migratory flights of the shrikes were organized in a highly structured way, with flights aggregated into segments that could be readily identified for all individuals, showing low variability and thus high consistency between individuals. These results suggest that the execution of migratory flights is under a high degree of control according to a rather detailed internal travelling plan for the annual migration cycle. Potentially, the control of migratory flight under natural conditions depends on a complex feedback process where external cues associated with the geographic, temporal and nutritional situation of the bird are required for the internal programme to properly regulate the successive segmental flight steps of the migratory journey. This would mean that the internal/genetic programme for control of bird migration is much more dynamic and complex than hereto assumed.\n                  </jats:p>",
+  "DOI": "10.1098/rspb.2025.0958",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2025,
+        10,
+        14
+      ]
+    ],
+    "date-time": "2025-10-14T23:09:25Z",
+    "timestamp": 1760483365000
+  },
+  "update-policy": "https://doi.org/10.1098/crossmark-policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 3,
+  "title": [
+    "The structure of the annual migratory flight activity in a songbird"
+  ],
+  "prefix": "10.1098",
+  "volume": "292",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0002-1392-7441",
+      "authenticated-orcid": true,
+      "given": "Sissel",
+      "family": "Sjöberg",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Department of Biology, Lund University, Lund, Skåne County SE-223 62, Sweden"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-4503-164X",
+      "authenticated-orcid": true,
+      "given": "Pablo",
+      "family": "Macías-Torres",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biology, Lund University, Lund, Skåne County SE-223 62, Sweden"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-1363-4403",
+      "authenticated-orcid": true,
+      "given": "Arne",
+      "family": "Andersson",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biology, Lund University, Lund, Skåne County SE-223 62, Sweden"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-4203-9793",
+      "authenticated-orcid": true,
+      "given": "Johan",
+      "family": "Bäckman",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biology, Lund University, Lund, Skåne County SE-223 62, Sweden"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-0320-0601",
+      "authenticated-orcid": true,
+      "given": "Kasper",
+      "family": "Thorup",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Center for Macroecology, Evolution and Climate, Globe Institute, University of Copenhagen, Copenhagen DK-2100, Denmark"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-8776-9629",
+      "authenticated-orcid": true,
+      "given": "Anders Peter",
+      "family": "Tøttrup",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Natural History Museum Denmark, University of Copenhagen, Copenhagen DK-1350, Denmark"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-5329-4514",
+      "authenticated-orcid": true,
+      "given": "Thomas",
+      "family": "Alerstam",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biology, Lund University, Lund, Skåne County SE-223 62, Sweden"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "175",
+  "published-online": {
+    "date-parts": [
+      [
+        2025,
+        10,
+        15
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_3_8_2_2",
+      "first-page": "912",
+      "article-title": "Der Zug der Vögel",
+      "volume": "21",
+      "author": "Brehm C",
+      "year": "1828",
+      "unstructured": "Brehm C. 1828 Der Zug der Vögel. Isis von Oken 21, 912–922.",
+      "journal-title": "Isis von Oken"
+    },
+    {
+      "key": "e_1_3_8_3_2",
+      "first-page": "153",
+      "article-title": "Strödda anteckningar on svenska flyttfoglarna, och i synnerhet tiden för deras ankomst och afflyttning i Södermanland (in Swedish - transl. title: Notes about Swedish migratory birds, especially their times of arrival and departure in the province of Södermanland)",
+      "volume": "1826",
+      "author": "Ekström CU",
+      "year": "1826",
+      "unstructured": "Ekström CU. 1826 Strödda anteckningar on svenska flyttfoglarna, och i synnerhet tiden för deras ankomst och afflyttning i Södermanland (in Swedish - transl. title: Notes about Swedish migratory birds, especially their times of arrival and departure in the province of Södermanland). KVA Handlingar 1826, 153–168.",
+      "journal-title": "KVA Handlingar"
+    },
+    {
+      "key": "e_1_3_8_4_2",
+      "volume-title": "Naturgeschichte der Vögel Deutschlands, nach eigenen Erfahrungen entworfen.",
+      "author": "Naumann J",
+      "year": "1820",
+      "unstructured": "Naumann J. 1820 Naturgeschichte der Vögel Deutschlands, nach eigenen Erfahrungen entworfen. Leipzig, Switzerland: Fleischer."
+    },
+    {
+      "key": "e_1_3_8_5_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF00337903"
+    },
+    {
+      "key": "e_1_3_8_6_2",
+      "first-page": "55",
+      "article-title": "Ein einfacher Apparat zur Registrierung der Intensitätsvariation der Zugunruhe bei gekäfigten Zugvögeln",
+      "volume": "12",
+      "author": "Palmgren P",
+      "year": "1935",
+      "unstructured": "Palmgren P. 1935 Ein einfacher Apparat zur Registrierung der Intensitätsvariation der Zugunruhe bei gekäfigten Zugvögeln. Ornis Fenn 12, 55–58.",
+      "journal-title": "Ornis Fenn"
+    },
+    {
+      "key": "e_1_3_8_7_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF01671132"
+    },
+    {
+      "key": "e_1_3_8_8_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF00603157"
+    },
+    {
+      "key": "e_1_3_8_9_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1474-919X.1973.tb01998.x"
+    },
+    {
+      "key": "e_1_3_8_10_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-642-82870-6"
+    },
+    {
+      "key": "e_1_3_8_11_2",
+      "volume-title": "Control of bird migration.",
+      "author": "Berthold P",
+      "year": "1996",
+      "unstructured": "Berthold P. 1996 Control of bird migration. London, UK: Chapman & Hall."
+    },
+    {
+      "key": "e_1_3_8_12_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/3543485"
+    },
+    {
+      "key": "e_1_3_8_13_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF00656605"
+    },
+    {
+      "key": "e_1_3_8_14_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2016.0252"
+    },
+    {
+      "key": "e_1_3_8_15_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00359-023-01688-w"
+    },
+    {
+      "key": "e_1_3_8_16_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01348"
+    },
+    {
+      "key": "e_1_3_8_17_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s10336-011-0694-1"
+    },
+    {
+      "key": "e_1_3_8_18_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-642-74542-3_22"
+    },
+    {
+      "key": "e_1_3_8_19_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/3677176"
+    },
+    {
+      "key": "e_1_3_8_20_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/3677175"
+    },
+    {
+      "key": "e_1_3_8_21_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01068"
+    },
+    {
+      "key": "e_1_3_8_22_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2011.1323"
+    },
+    {
+      "key": "e_1_3_8_23_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462-022-00355-0"
+    },
+    {
+      "key": "e_1_3_8_24_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00265-018-2553-z"
+    },
+    {
+      "key": "e_1_3_8_25_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2024.12.033"
+    },
+    {
+      "key": "e_1_3_8_26_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/pnas.2322063121"
+    },
+    {
+      "key": "e_1_3_8_27_2",
+      "unstructured": "Becker RA Wilks AR Brownrigg R Minka TP Deckmyn A. 2024 Draw Geographical Maps. See https://cran.r-project.org/package=maps."
+    },
+    {
+      "key": "e_1_3_8_28_2",
+      "first-page": "56",
+      "article-title": "Endogene Kontrolle der Mauser und der Zugdisposition bei südfinnischen und südfranzösischen Neuntötern (Lanius collurio)",
+      "volume": "29",
+      "author": "Gwinner E",
+      "year": "1977",
+      "unstructured": "Gwinner E, Biebach H. 1977 Endogene Kontrolle der Mauser und der Zugdisposition bei südfinnischen und südfranzösischen Neuntötern (Lanius collurio). Vogelwarte 29, 56–63. https://hdl.handle.net/11858/00-001M-0000-0028-44E7-8",
+      "journal-title": "Vogelwarte"
+    },
+    {
+      "key": "e_1_3_8_29_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01821"
+    },
+    {
+      "key": "e_1_3_8_30_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2023.08.035"
+    },
+    {
+      "key": "e_1_3_8_31_2",
+      "unstructured": "Nussbaumer R. 2022 A user manual for GeoPressureR. See https://rapha elnussbaumer.com/GeoPressureManual/."
+    },
+    {
+      "key": "e_1_3_8_32_2",
+      "unstructured": "Hersbach H et al. 2023 ERA5 hourly data on single levels from 1940 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS) (doi:10.24381/cds.adbb2d47)"
+    },
+    {
+      "key": "e_1_3_8_33_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041-210X.14043"
+    },
+    {
+      "key": "e_1_3_8_34_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041-210X.14082"
+    },
+    {
+      "key": "e_1_3_8_35_2",
+      "unstructured": "R.Core Team. 2017 R: a language and environment for statistical computing. Vienna Austria: R Foundation for Statistical Computing."
+    },
+    {
+      "key": "e_1_3_8_36_2",
+      "unstructured": "Revelle W. 2024 psych: Procedures for Psychological Psychometric and Personality Research. Northwestern University Evanston Illinios. See https://CRAN.R-project.org/package=psych."
+    },
+    {
+      "key": "e_1_3_8_37_2",
+      "volume-title": "An R Companion to Applied Regression",
+      "author": "Fox J",
+      "year": "2019",
+      "unstructured": "Fox J, Weisberg S. 2019 An R Companion to Applied Regression, 3rd edn. Thousand Oaks, CA: Sage.",
+      "edition": "3"
+    },
+    {
+      "key": "e_1_3_8_38_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/srep21560"
+    },
+    {
+      "key": "e_1_3_8_39_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41598-019-56677-4"
+    },
+    {
+      "key": "e_1_3_8_40_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsbl.2015.1060"
+    },
+    {
+      "key": "e_1_3_8_41_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.abe7291"
+    },
+    {
+      "key": "e_1_3_8_42_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2023.0496"
+    },
+    {
+      "key": "e_1_3_8_43_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.02475"
+    },
+    {
+      "key": "e_1_3_8_44_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01352"
+    },
+    {
+      "key": "e_1_3_8_45_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s10336-023-02102-7"
+    },
+    {
+      "key": "e_1_3_8_46_2",
+      "article-title": "Migration and daily flight activity patterns in the barred warbler Curruca nisoria over the annual cycle",
+      "volume": "73",
+      "author": "Wong JB",
+      "year": "2024",
+      "unstructured": "Wong JB, Adamík P, Bažant M, Hahn S. 2024 Migration and daily flight activity patterns in the barred warbler Curruca nisoria over the annual cycle. J. Vertebr. Biol. 73, 23085. (doi:10.25225/jvb.23085)",
+      "journal-title": "J. Vertebr. Biol."
+    },
+    {
+      "key": "e_1_3_8_47_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s10336-024-02237-1"
+    },
+    {
+      "key": "e_1_3_8_48_2",
+      "first-page": "77",
+      "article-title": "Beziehungen zwischen Zugunruhe und Zug bei der Sperbergsrasmücke Sylvia nisoria: eine ökophysiologische Untersuchung",
+      "volume": "30",
+      "author": "Berthold P",
+      "year": "1979",
+      "unstructured": "Berthold P. 1979 Beziehungen zwischen Zugunruhe und Zug bei der Sperbergsrasmücke Sylvia nisoria: eine ökophysiologische Untersuchung. Vogelwarte 30, 77–84.",
+      "journal-title": "Vogelwarte"
+    },
+    {
+      "key": "e_1_3_8_49_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.02546"
+    },
+    {
+      "key": "e_1_3_8_50_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/35102115"
+    },
+    {
+      "key": "e_1_3_8_51_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2007.0554"
+    },
+    {
+      "key": "e_1_3_8_52_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2002.2273"
+    },
+    {
+      "key": "e_1_3_8_53_2",
+      "first-page": "1955",
+      "volume-title": "Acta 19th Congressus Internationalis Ornitologici",
+      "author": "Beck W",
+      "year": "1988",
+      "unstructured": "Beck W, Wiltschko W. 1988 Magnetic factors control the migratory direction of pied flycatchers (Ficedula hypoleuca PALLAS). In Acta 19th Congressus Internationalis Ornitologici (ed. H Ouellet), pp. 1955–1962. Ottawa, Canada: University of Ottawa Press."
+    },
+    {
+      "key": "e_1_3_8_54_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1064557"
+    },
+    {
+      "key": "e_1_3_8_55_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2014.01.017"
+    },
+    {
+      "key": "e_1_3_8_56_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2017.03.015"
+    },
+    {
+      "key": "e_1_3_8_57_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2017.07.024"
+    },
+    {
+      "key": "e_1_3_8_58_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2008.01.018"
+    },
+    {
+      "key": "e_1_3_8_59_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2015.08.012"
+    },
+    {
+      "key": "e_1_3_8_60_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01285"
+    },
+    {
+      "key": "e_1_3_8_61_2",
+      "unstructured": "Sjöberg S Macías Torres P Andersson A Bäckman J Thorup K Tøttrup AP Alerstam T. Data from: The structure of the annual migratory flight activity in a songbird. Dryad Digital Repository. (doi:10.5061/dryad.gqnk98szz)"
+    },
+    {
+      "key": "e_1_3_8_62_2",
+      "unstructured": "pamat0. 2025 pamat0/Lanius_collurio_positioning_GeopressureR: v.1.0.0. Zenodo. (doi:10.5281/zenodo.16875775)"
+    },
+    {
+      "key": "e_1_3_8_63_2",
+      "unstructured": "Sjöberg S Macías Torres P Andersson A Bäckman J Kasper T Tøttrup AP Alerstam T. 2025 Supplementary material from: The structure of the annual migratory flight activity in a songbird. Figsahre. (doi:10.6084/m9.figshare.c.8022532)"
+    }
+  ],
+  "container-title": [
+    "Proceedings of the Royal Society B: Biological Sciences"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2025.0958",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://royalsocietypublishing.org/doi/full-xml/10.1098/rspb.2025.0958",
+      "content-type": "application/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2025.0958",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2025,
+        10,
+        14
+      ]
+    ],
+    "date-time": "2025-10-14T23:09:48Z",
+    "timestamp": 1760483388000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://royalsocietypublishing.org/doi/10.1098/rspb.2025.0958"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "references-count": 62,
+  "journal-issue": {
+    "issue": "2057",
+    "published-print": {
+      "date-parts": [
+        [
+          2025,
+          10
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1098/rspb.2025.0958"
+  ],
+  "URL": "https://doi.org/10.1098/rspb.2025.0958",
+  "relation": {
+    "has-review": [
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v3/decision1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v1/review1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v3/response1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v1/review2",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v2/decision1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v2/review1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v2/response1",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.1098/RSPB.2025.0958/v1/decision1",
+        "asserted-by": "object"
+      }
+    ]
+  },
+  "ISSN": [
+    "1471-2954"
+  ],
+  "issn-type": [
+    {
+      "value": "1471-2954",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2025-04-09",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2025-07-03",
+      "order": 1,
+      "name": "revised",
+      "label": "Revised",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2025-09-03",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2025-10-15",
+      "order": 3,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ],
+  "article-number": "20250958"
+}

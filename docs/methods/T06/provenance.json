@@ -1,0 +1,643 @@
+{
+  "date": "2026-10-18",
+  "repository_head": "e9ab400961cc0755c6d147e8f3ac7f8e0c725740",
+  "note": "Current working-tree source/input hashes identify the sensitivity analysis. Main output tables were not rewritten. Working tree contains pre-existing changes; HEAD alone does not identify the analysed sources. No downloads were run.",
+  "files": {
+    "R/utils.R": {
+      "bytes": 13169,
+      "sha256": "a8d2cfb264ecc6a1591e72ac1912f04ffe4aa39d89fb49be6bfe4cab0eab526c"
+    },
+    "scripts/18_three_formulas.R": {
+      "bytes": 8185,
+      "sha256": "3620b4ce25fd07e39af96e2dbb3e48090805db93ece1fada6f2c5617d7ac89ca"
+    },
+    "data/interim/errors_hadisd.parquet": {
+      "bytes": 2003358627,
+      "sha256": "2edbd09d4b55eddf43fe8ac76d26614b0f70ce900ef4671e6751d0a798e66299"
+    },
+    "data/interim/errors_igra.parquet": {
+      "bytes": 649602554,
+      "sha256": "259467f50b53f524a358d90a977d974d1dc59f542fc8295610bfe50dbf161324"
+    },
+    "data/raw/gpt3/gpt3_1.grd": {
+      "bytes": 28642040,
+      "sha256": "a0a3307ede882b8794ca429ace019e90a04dd61aa7378c67379ffc2aaf05c439"
+    },
+    "docs/methods/T06/summarise_review.R": {
+      "bytes": 5339,
+      "sha256": "87c36000e25d8f4617770ade9ac6c4ec70a1a49335e8794adfcf94bb24bd0451"
+    },
+    "docs/methods/T06/assess_bin_coverage.R": {
+      "bytes": 3949,
+      "sha256": "1b26eb1e8b469765442e477354a463ed5e48fa46088e51ac4d54ebe8a204a027"
+    },
+    "docs/methods/T06/compare_designs.R": {
+      "bytes": 11262,
+      "sha256": "8c6f72ac31bf5d08a9c8cda29104dc450fef1b7c371a1b626e6125190cce8909"
+    },
+    "docs/methods/T06/one_station_draw_summary.csv": {
+      "bytes": 429,
+      "sha256": "36a20552af981ae21b5d2cebcc8e7f498123843307b5b0ec268ca38f70442c07"
+    },
+    "docs/methods/T06/flight_sampling_bin.csv": {
+      "bytes": 230044,
+      "sha256": "f73b9d149877143672dced56c2de02242d1829bf77130bf77fe74bcb475c54c3"
+    },
+    "docs/methods/T06/flight_weighting.csv": {
+      "bytes": 14956,
+      "sha256": "b8dea8f3e1c26ba9ca907b757f4e2801d5c47ee733d926164e3728ec0d4dcb75"
+    },
+    "docs/methods/T06/cell_summary.csv": {
+      "bytes": 185,
+      "sha256": "90e99fbcb6da7b4ebea9f14b3693bef93136ec280e0f891e380712a8dd8619bb"
+    },
+    "docs/methods/T06/gnss_duplicate_sensitivity.csv": {
+      "bytes": 544,
+      "sha256": "b2d0e5aa26c017d8e95927f4e2cec71542d00a34571a5b9c39265422972d9c83"
+    },
+    "docs/methods/T06/flight_weighting_changes.csv": {
+      "bytes": 22253,
+      "sha256": "1813a0960bc9fb460a088f41441323800106fab2374963b5992afa364ca3f9ee"
+    },
+    "docs/methods/T06/ground_station_diagnostics.csv": {
+      "bytes": 3291414,
+      "sha256": "71c5e48589c66055825b618f4388d1858b264be3d9927dda952ca202784efdbf"
+    },
+    "docs/methods/T06/flight_bin_minimum_bird.csv": {
+      "bytes": 434,
+      "sha256": "e2d6f86114c830567d25afb788fba2a0455d11a79dbc291022e8f729c8bdba1e"
+    },
+    "docs/methods/T06/swiss_height_summary.csv": {
+      "bytes": 303,
+      "sha256": "eebc7fe6c818994383f0ec8644e5d3b142ffe98cdd00bb2e6e45cc1363245520"
+    },
+    "docs/methods/T06/cell_counts.csv": {
+      "bytes": 135265,
+      "sha256": "3a6a853f520df7da376ec2775f50b5dcb66e1568e55b93c415b3490f511c05b9"
+    },
+    "docs/methods/T06/ground_elevation_strata.csv": {
+      "bytes": 364,
+      "sha256": "b977fe50bb028b0f1086496c8bfcd35e33edf09f859e966fa7fb1c99fa70450d"
+    },
+    "docs/methods/T06/reproduction_checks.csv": {
+      "bytes": 117,
+      "sha256": "4718ca7f108c61d054b905109556bfd0dfb079851cdd936336c02565f85d50b3"
+    },
+    "docs/methods/T06/flight_station_bin_metrics.csv": {
+      "bytes": 1349126,
+      "sha256": "b57ec61031cee243eabec24c6ed77162e1b25242a04586c78c09dd7090666dc6"
+    },
+    "docs/methods/T06/ground_filter_tails.csv": {
+      "bytes": 556,
+      "sha256": "a5d2dae6ae8a802d918685262672a80f73b1efc71ebe98f3b2c778cc463d4123"
+    },
+    "docs/methods/T06/flight_bin_minimum_sensitivity.csv": {
+      "bytes": 8620,
+      "sha256": "99d589a88ef6dc5bdb4ea492373506beedf721c73756e648fdab4efa01ecdbcb"
+    },
+    "docs/methods/T06/coverage_reproduction_checks.csv": {
+      "bytes": 51,
+      "sha256": "aca4c9908ed3222e326a3fa318f54d3e239b43810885473916e06ec04f7a070c"
+    },
+    "docs/methods/T06/swiss_height_only.csv": {
+      "bytes": 3847,
+      "sha256": "8e0c02f1a31de5f128f0d9ed13285eb11339d0f4202f490bbd5d672c165937df"
+    },
+    "docs/methods/T06/ground_filter_weighting.csv": {
+      "bytes": 8945,
+      "sha256": "276c783b8c0b33360c8539d6b217af54b484df0dad51b480d04bed4d0671f6e3"
+    },
+    "docs/methods/T06/flight_bin_support.csv": {
+      "bytes": 722,
+      "sha256": "dbf3660b0d036d442663eb1402cbd846ac7e400114547b5bd130dc00fa8bafd8"
+    },
+    "docs/methods/T06/one_station_per_cell_draws.csv": {
+      "bytes": 42170,
+      "sha256": "da3cb67893314eaa75d7c2d3f75a5142f672840174f6befc84e853734f8c312b"
+    },
+    "docs/methods/T06/flight_weighting_bird.csv": {
+      "bytes": 955,
+      "sha256": "bdb5d11fb17752e04dd8faa225062658c5d18ca67e158c40a6381ec695d0699b"
+    },
+    "docs/manuscript/s1-simplification-proposal.md": {
+      "bytes": 6287,
+      "sha256": "735804cfec8ea1ddc92d4fbab0825d433ac3ecf94e7e0c4fb4a10be688bc544b"
+    },
+    "paper/paper.qmd": {
+      "bytes": 50223,
+      "sha256": "adf1d499d354e6d1735328898dceda05f072da34d1666d2f1ff560450493be4f"
+    },
+    "paper/supplement.qmd": {
+      "bytes": 24509,
+      "sha256": "496ba175350045d1b87f32eb620224c0c167e62e922026dd2411d4a8603cf60b"
+    },
+    "output/tables/ground_era.csv": {
+      "bytes": 403,
+      "sha256": "eb4047a69e93e7a20d8b7528a3c4b16297ce8e7f9a38243a791450e377171bc8"
+    },
+    "output/tables/formula_height.csv": {
+      "bytes": 12009,
+      "sha256": "b3ed28f6dfd252cc7fa722174ab164b2692c288dc851517ae3343c1e120753cd"
+    },
+    "output/tables/paper_flight_bird.csv": {
+      "bytes": 199,
+      "sha256": "b1a0f8a20f3e2d95b77171b0ed4bab2ce31113c39d67262c66cdcb252e5d2cc0"
+    },
+    "output/tables/paper_ground.csv": {
+      "bytes": 3247,
+      "sha256": "1f8ea27b45bffdfea7c1676ea765baecca70498b6fee039ce3b512da84a5ae4e"
+    },
+    "output/tables/formula_ground.csv": {
+      "bytes": 3531,
+      "sha256": "a0dace66fcfb9aa382547ff3013e3c95ce9d37011ddaa48e49566f7606efa240"
+    },
+    "output/tables/flight_daynight_season.csv": {
+      "bytes": 14170,
+      "sha256": "409552f1cd86ca40952c0889df715dc108dbb7a2fa9d64b0bac5807f1d347d87"
+    },
+    "output/tables/key_numbers.csv": {
+      "bytes": 715,
+      "sha256": "8c41c6eb83d739708b8c8888af8a2d7414f086bb1c74413548dcda705a6d4fe6"
+    },
+    "output/tables/formula_lapse_var_grid.csv": {
+      "bytes": 6209,
+      "sha256": "cf29906635e72bd0f805d65a8ee53d55f582f5aa785b89a3b86d297f09885d65"
+    },
+    "output/tables/ground_main.csv": {
+      "bytes": 574,
+      "sha256": "98e62945d1e827f53bdde33df539c144d2fa7c7fdbdb27277d768efe27833f17"
+    },
+    "output/tables/ground_sensitivity.csv": {
+      "bytes": 1606,
+      "sha256": "18c53a924e3232ae72e3c7c2769bae1772c86fce30015c75e45d73fb6f07b6bc"
+    },
+    "output/tables/assim_density.csv": {
+      "bytes": 224,
+      "sha256": "169940a20b780b43709d6306923268474c8202af7f8216bef7a7e821a4b6e013"
+    },
+    "output/tables/formula_cv.csv": {
+      "bytes": 1806,
+      "sha256": "34f50739a0581ea73f9ead3065f0ff8278968601ab3db2a8c444e19efe171319"
+    },
+    "output/tables/paper_flight_climate.csv": {
+      "bytes": 36260,
+      "sha256": "5f680b0b7288ba8bd61d1a9f054cbd2d9d5ab5e0ecde841e5a92ac8b94c9afe0"
+    },
+    "output/tables/ground_neighbours.csv": {
+      "bytes": 11492,
+      "sha256": "eef4fc173bd29b7637d79a0fe49f7b462de36957e9261722fe2abfdc20f13ce3"
+    },
+    "output/tables/formula_clamp.csv": {
+      "bytes": 143,
+      "sha256": "507ae202dfe0201b15e53599892a75d48473f5491e2db3fe00ac3182cdae6269"
+    },
+    "output/tables/ground_var_climate.csv": {
+      "bytes": 1083,
+      "sha256": "285464ea16959698ffabef199dc449a3607351f383e024d2e9bc2e60fc17e854"
+    },
+    "output/tables/ground_reference_checks.csv": {
+      "bytes": 369529,
+      "sha256": "9a3aedfabe57ee7c616bd99372f03176796a254b6c1414f8502267f34dec95bd"
+    },
+    "output/tables/bird_height_distribution.csv": {
+      "bytes": 1198,
+      "sha256": "ba15d4e38c16bf55f586eb0a47b5ee77967c8c1251ae1ba91aaf1b75e3e79ad3"
+    },
+    "output/tables/geopressurer_version.txt": {
+      "bytes": 11,
+      "sha256": "64616a284a0cd39885be8e76aaec1e0447452731b1dafba9bb688ac0fbaa3d42"
+    },
+    "output/tables/indep_counts.csv": {
+      "bytes": 100,
+      "sha256": "db17791eacb8ca7975469ec63875036cdaa9c2627aaca6dcccb0bf80b49f1b87"
+    },
+    "output/tables/formula_tv_correction.csv": {
+      "bytes": 421,
+      "sha256": "9a739965e7de55417243febef13ad4b24a96d005b11a1c4dec3c1a52dd3098f9"
+    },
+    "output/tables/formula_fit.csv": {
+      "bytes": 294,
+      "sha256": "c58ef9416023c6bd870fd02d89ff2df3f2b093e1288081e8ac7cbbf6d181d89f"
+    },
+    "output/tables/flight_temperature_bins.csv": {
+      "bytes": 99985,
+      "sha256": "4a6b8259b87dbdf36144233da70624404f4fe2049b49d0649e349be3e6305409"
+    },
+    "output/tables/flight_station_height.csv": {
+      "bytes": 384402,
+      "sha256": "0e335d5ff903f8aba4bfc18e95bf8c0ed433a2366d459067b09045a9a8e6deff"
+    },
+    "output/tables/paper_ground_station.csv": {
+      "bytes": 1081941,
+      "sha256": "d2ce4bd7f90b117847f9fc4f1f610e093d6a946b0396bdf84bfb721b63abea08"
+    },
+    "output/tables/meteoswiss_vs_hadisd.csv": {
+      "bytes": 6331,
+      "sha256": "7d1ff49ba3d13186538bd49a6d0e817e99156f14c732d02d4c4a9ae5a7e0f1ec"
+    },
+    "output/tables/formula_lapse_by_group.csv": {
+      "bytes": 642,
+      "sha256": "c6a82004bfca75e7eb59fae2bf5de72f7ad02e421ec6c6ea2d5f54d83b2a7129"
+    },
+    "output/tables/ground_var_month.csv": {
+      "bytes": 2382,
+      "sha256": "24ae85b20e7fa6dc89e877fb21612d234f9c968e2c0eda9b045edfcb661ecfa8"
+    },
+    "output/tables/flight_bird_weighted.csv": {
+      "bytes": 168,
+      "sha256": "951c8853f958062e5d3c486fea001ffc57c897a9f70908d5c3e3853b3aaf5bf1"
+    },
+    "output/tables/indep_station_stats.csv": {
+      "bytes": 51474,
+      "sha256": "28cfc1b08c9d5cec55f8e97ffe6c6c5450e18c883ba10ea7bf39a1789f7a1c88"
+    },
+    "output/tables/bird_height_hist.csv": {
+      "bytes": 2258,
+      "sha256": "9830ab725f225a64034dc6b7095db074727edc85794e281ce7f812a6fd6c120c"
+    },
+    "output/tables/flight_stations_used.csv": {
+      "bytes": 14216,
+      "sha256": "c229348a6e0ade756255cec97402767b8909f49ec6c8d9d5ee8c6b176df28580"
+    },
+    "output/tables/ground_station_stats.csv": {
+      "bytes": 1401204,
+      "sha256": "2e2ccb1b49be679e7f80123ace487a50de0b00ee55598cdee8cb244f6f126b8b"
+    },
+    "output/tables/formula_climate_season.csv": {
+      "bytes": 36742,
+      "sha256": "1d875badd704717eaf8d2fca479c1fbd1f0ccfde3529aaa554026baa930f91f4"
+    },
+    "output/tables/meteoswiss_vs_hadisd_summary.csv": {
+      "bytes": 238,
+      "sha256": "cb725d005e7aabb440d1398f7eecb94b3f160a75cd28df5ef14365d83be622b6"
+    },
+    "output/tables/ground_gap_dev_expl.csv": {
+      "bytes": 64,
+      "sha256": "a4c1c598c89102058ab67ecace924adc1bd6f3c64042bfd1c4fbd824f5a866ab"
+    },
+    "output/tables/paper_flight_height.csv": {
+      "bytes": 3015,
+      "sha256": "c8391e8ff925cb1026816eb94963d49d4bbb34b3cb4a14654ded1440a1c5c805"
+    },
+    "output/tables/flight_climate_season.csv": {
+      "bytes": 8785,
+      "sha256": "d7a675481ba3a077fa730929a0756eaec948b5e7409f5429eae50f01204c0b92"
+    },
+    "output/tables/ground_gap_residual.csv": {
+      "bytes": 368087,
+      "sha256": "a7942a02b5eabc2a2d4bda4a4a9da0f245477b1eaea754712688ff5c2c6287d0"
+    },
+    "output/tables/bird_height_quantiles.csv": {
+      "bytes": 270,
+      "sha256": "dc732dd46e1b6b62d981919b8fed4f10a28175a16230c36478639a8264d7154a"
+    },
+    "output/tables/ground_screen_basis_gap.csv": {
+      "bytes": 413,
+      "sha256": "70a16071870f5383b25850552a9957de76bb4f3e56fa5d269f99a75782d059c8"
+    },
+    "output/tables/stations.csv": {
+      "bytes": 565975,
+      "sha256": "082a8a98403e559486ab699300ace2a83c1fb5583d204199b89486f9f791a572"
+    },
+    "output/tables/ground_gap_fit.csv": {
+      "bytes": 4087,
+      "sha256": "ce5ec5d8161792ec1360c86f4f97301276233b55da3246f911d6a90a1dc8cf28"
+    },
+    "output/tables/api_crosscheck_summary.csv": {
+      "bytes": 109,
+      "sha256": "f1f08b522f6658ea1cbc92bd1a8e67e7b74a06ccb830031922685ceaa87c8c0d"
+    },
+    "output/tables/ground_excluded.csv": {
+      "bytes": 12496,
+      "sha256": "de6f4803b382b1eae23d7cb33ee1ac81596621fe4946a57b95c8fb149307b0f1"
+    },
+    "output/tables/indep_by_terrain.csv": {
+      "bytes": 1267,
+      "sha256": "dbf8880ac105d660bfe6a7da17175b41745e625bb763ba8d988192d2a4115c01"
+    },
+    "output/tables/ground_summary.csv": {
+      "bytes": 6757,
+      "sha256": "bb0694dbea426081b9e608b23d8ebc5a7b32e92384f67fecc82bcda70c784d96"
+    },
+    "output/tables/ground_var_hour.csv": {
+      "bytes": 1635,
+      "sha256": "43e15d8287e83eccf8eec7d207e1d1c3f922962114bd02cef367b1a93609b004"
+    },
+    "output/tables/flight_height.csv": {
+      "bytes": 3193,
+      "sha256": "09402757bb926f4f5adbdb1d41a8d87986bae8feb4de0e79f206980f3de6bc17"
+    },
+    "output/tables/ground_var_year.csv": {
+      "bytes": 1214,
+      "sha256": "3134b93291f602a905cb2a410186e263201f500e8626d4c5603dc11bcadac863"
+    },
+    "output/tables/ground_importance_station.csv": {
+      "bytes": 651,
+      "sha256": "37a8cea4ac830b88ec81f8752c1742766b2dc27ac37cbbbfe13ed7fb75c99abb"
+    },
+    "output/tables/paper_fig1_soundings.csv": {
+      "bytes": 509,
+      "sha256": "e1d953f9c1feeb22f9d94d9a8df1f11e8d454a2b103f57b275f66b75b6d067d0"
+    },
+    "output/tables/paper_flight_tails.csv": {
+      "bytes": 1178,
+      "sha256": "8e879bf39ea8f45b0d73627f8e25e04362bbb7464c1695b408268427f42f6bad"
+    },
+    "output/tables/flight_temperature_explanation.csv": {
+      "bytes": 104,
+      "sha256": "8af16d4918f14570ccab13c908e59ad1bc5f2d170b8b2a9123c1d97d47e22a63"
+    },
+    "output/tables/bird_height_below0.csv": {
+      "bytes": 55,
+      "sha256": "2724197cedb611a732095172bd52a44dffba07ef746834808a732dbfad0e89e7"
+    },
+    "output/tables/ground_screen_basis_flat.csv": {
+      "bytes": 90,
+      "sha256": "4a70fa84920e319f5465704c38f3eaed69b7a4215c0949202b47742d0c0e92ad"
+    },
+    "output/tables/formula_lapse_var.csv": {
+      "bytes": 220,
+      "sha256": "e44a151f9a0069f02f7766a32b76a3142c00a991ddefacf61dfd9f45c0d4a9c9"
+    },
+    "output/tables/paper_flight_station.csv": {
+      "bytes": 1670632,
+      "sha256": "14e6da27975df57c19bff814ff7e2a019bbb6b9054376b6be6e999e8261c8adb"
+    },
+    "output/tables/paper_flight_daynight.csv": {
+      "bytes": 13957,
+      "sha256": "fc5c04b09625a7718e54c1d77462f4e55ed879ab57700ebfe78f7121818b2a97"
+    },
+    "output/tables/paper_ground_tails.csv": {
+      "bytes": 753,
+      "sha256": "e3ec5281a258d697f736c3a6460fed127fd24328123d059e4e60b2cd43ee2f4f"
+    },
+    "output/tables/ground_importance_obs.csv": {
+      "bytes": 420,
+      "sha256": "aeaf7805960f938e5f9b3c30cfb6fd2e68c6e25a0758c9e04aaff6ce8d994348"
+    },
+    "data/interim/indep/GNSS_ACRG.parquet": {
+      "bytes": 852504,
+      "sha256": "ce680f3b3346551a0228db92d1deb0ecab30a7cddf647a5947b0319124aad73d"
+    },
+    "data/interim/indep/GNSS_AUBG.parquet": {
+      "bytes": 1291582,
+      "sha256": "44b2b2b03c59da8e761ccbafaee82150536279f932352a58bd0d3475c35e9a5a"
+    },
+    "data/interim/indep/GNSS_BAUT.parquet": {
+      "bytes": 1405207,
+      "sha256": "84faa62610139353e31cf27d24955d6e3f2d037e35e8b84bc8793fcfd04622dc"
+    },
+    "data/interim/indep/GNSS_BIK0.parquet": {
+      "bytes": 1292304,
+      "sha256": "ac339da51cf8562c26deda22ed943ac261eccfc7a4ba8590a88b2d82a824aa87"
+    },
+    "data/interim/indep/GNSS_BORJ.parquet": {
+      "bytes": 926541,
+      "sha256": "35da675941c174185ecfaa4e767c3addcd3eed8aec522ff46777357fccceabcd"
+    },
+    "data/interim/indep/GNSS_BRMG.parquet": {
+      "bytes": 1295139,
+      "sha256": "1a41ac4cf6df6c1042014035a666dfa789168c3e72a4a24b7d33da523925ed72"
+    },
+    "data/interim/indep/GNSS_CMEL.parquet": {
+      "bytes": 308152,
+      "sha256": "9148596929a43381260ac1796429dec5c2a14709ffa07d73c7ce3615f85482b6"
+    },
+    "data/interim/indep/GNSS_DIEP.parquet": {
+      "bytes": 1396806,
+      "sha256": "b8d205f2efc4e3539c328c4caa3b5ca031fc795d4ee3eb62a44c6d853b3c241a"
+    },
+    "data/interim/indep/GNSS_DILL.parquet": {
+      "bytes": 1271210,
+      "sha256": "2428529bd3840a1e87b132b7f10a4a5e92cd97d3d61765ec33c578f60d997493"
+    },
+    "data/interim/indep/GNSS_ENAO.parquet": {
+      "bytes": 1009101,
+      "sha256": "8732a9bc8d2cb46031e7d4c5c43ad9c4498562788067115fe99fffe3d0860182"
+    },
+    "data/interim/indep/GNSS_ENZA.parquet": {
+      "bytes": 285509,
+      "sha256": "629c7e520c2421351e5a9195e467db6fc6cf7598de80de9fa1cc8d23c4139117"
+    },
+    "data/interim/indep/GNSS_GELL.parquet": {
+      "bytes": 1403984,
+      "sha256": "13ac19a188dbee5db5f50dd32cfa3194479656e846f99dc6b8f96fc9a1f26aef"
+    },
+    "data/interim/indep/GNSS_GOET.parquet": {
+      "bytes": 822233,
+      "sha256": "e5fc814914dcc9ce041cf80ad18ec89e04e67e9efa37b712443583175537250e"
+    },
+    "data/interim/indep/GNSS_GOP6.parquet": {
+      "bytes": 434537,
+      "sha256": "906561738ba493427e02fc5785ca52969950f704ead4ca1ffb64a3bcb87e9c9a"
+    },
+    "data/interim/indep/GNSS_GOP7.parquet": {
+      "bytes": 379024,
+      "sha256": "6e8ba329bcdd0e75a410ba8652d1c8960b298d9ca7194159c4a746765a64f336"
+    },
+    "data/interim/indep/GNSS_GOPE.parquet": {
+      "bytes": 957447,
+      "sha256": "2c34391223952fac471f2deec7b3cc2b62d8761881c8467cd2f819c5bea6efd8"
+    },
+    "data/interim/indep/GNSS_GOR2.parquet": {
+      "bytes": 1341401,
+      "sha256": "39d09f9177bfefc62a6954920468e325cb8acb9cc7fa01dbea2a43e98722f62c"
+    },
+    "data/interim/indep/GNSS_HEL2.parquet": {
+      "bytes": 1064146,
+      "sha256": "7a172d29b31b6fee9d6983aced4f36c9a980654ba265fed77f4c25fdb0c9e29e"
+    },
+    "data/interim/indep/GNSS_HELG.parquet": {
+      "bytes": 1058232,
+      "sha256": "76c166932b486af7ab85067c0246cc293f2583a89edc3137395fdeef1e7bcd70"
+    },
+    "data/interim/indep/GNSS_HOFJ.parquet": {
+      "bytes": 1394477,
+      "sha256": "af975dc111f1fd4c8e63400c7732512d405d1ce7c746a7af62b1c1888fda3415"
+    },
+    "data/interim/indep/GNSS_HOFN.parquet": {
+      "bytes": 1259091,
+      "sha256": "ea14f62af3da693e1aeb7acba9c455932239639174979558a3b2f44a6a84b44c"
+    },
+    "data/interim/indep/GNSS_ISTA.parquet": {
+      "bytes": 1197126,
+      "sha256": "c538bce44f1bf14f7a9876632f54010ffc8a23094999a9b2e90a6d21b5826cec"
+    },
+    "data/interim/indep/GNSS_JOG2.parquet": {
+      "bytes": 1226251,
+      "sha256": "e0a6db21de5889418f937491650f1d95319a076e6a9fd494b67037a032e18949"
+    },
+    "data/interim/indep/GNSS_KARL.parquet": {
+      "bytes": 1382966,
+      "sha256": "6448ef1b7d5aa53cd9254eca58be0739c21170c9cfa5f8cb7feb3885b121df6b"
+    },
+    "data/interim/indep/GNSS_KIT3.parquet": {
+      "bytes": 1178659,
+      "sha256": "064b0db50d65b3ca9c696289b2f84d9bd2d733c74776a77b0d047ceb37f9b760"
+    },
+    "data/interim/indep/GNSS_KLSQ.parquet": {
+      "bytes": 487123,
+      "sha256": "a685d13cb8bbb963f303bc2387cc277eaecf1fa2d98f7f7ed6847acfb5dc33b6"
+    },
+    "data/interim/indep/GNSS_KUNZ.parquet": {
+      "bytes": 1087278,
+      "sha256": "3a72b55612dfa61a43cdaceba443fd60217025e7aa7d5d9e9668df643644e2da"
+    },
+    "data/interim/indep/GNSS_LDB2.parquet": {
+      "bytes": 1415318,
+      "sha256": "d7b16ee1d2d0ac37e486b35cb1e6d54f8cf01192b6e6201a668e98a630947a08"
+    },
+    "data/interim/indep/GNSS_LEIJ.parquet": {
+      "bytes": 1180021,
+      "sha256": "0f56e59557af035ccfd3b63f8fff492fc96c1174f51494e73cc7fd7cb7ca537b"
+    },
+    "data/interim/indep/GNSS_LHAZ.parquet": {
+      "bytes": 182776,
+      "sha256": "708475e97c1ac6c2947ae8952e60b25e2da46f9f0d4d44e4103573ec51842e06"
+    },
+    "data/interim/indep/GNSS_LPGS.parquet": {
+      "bytes": 1324591,
+      "sha256": "727dc7a543ecb9788ae5c6c3ae1730b05dfe90672cd3f67123b230fee198f36e"
+    },
+    "data/interim/indep/GNSS_MIZU.parquet": {
+      "bytes": 1326962,
+      "sha256": "0b2bf353b7d6051e09152d1d44921cc8408be63f970b61c0700d76fbc3871250"
+    },
+    "data/interim/indep/GNSS_NVSK.parquet": {
+      "bytes": 1275282,
+      "sha256": "74d07a2e47ed263807f108a8131c8c71438b6dc294c88e21fad996f309f54c32"
+    },
+    "data/interim/indep/GNSS_NYA2.parquet": {
+      "bytes": 1334312,
+      "sha256": "d8047ec9adab599b44f09630bddb9fc9af93a85cc69a85462dea1416aa38aa34"
+    },
+    "data/interim/indep/GNSS_OBE4.parquet": {
+      "bytes": 1333088,
+      "sha256": "fca72a5738d8750ccef8404032609251f311e59fdd0f88f81aaa25aed6ba8342"
+    },
+    "data/interim/indep/GNSS_OUS2.parquet": {
+      "bytes": 1335860,
+      "sha256": "6852555434ea59ce37dd2663ae1eb4ef7a98c910e6dd946f81433fc522585bcf"
+    },
+    "data/interim/indep/GNSS_PALB.parquet": {
+      "bytes": 242606,
+      "sha256": "962a784d2ce0b4777097c78f5a7ba819e28d64e4298c2753e3214d2e14df05ab"
+    },
+    "data/interim/indep/GNSS_PASA.parquet": {
+      "bytes": 1117175,
+      "sha256": "56c688af0137904f7c7d7d59e59fb33c163c0e5c30ee13e1f9ce4618c1130a05"
+    },
+    "data/interim/indep/GNSS_POTS.parquet": {
+      "bytes": 1316038,
+      "sha256": "c1a3915df06c252759deac26aa99f840c8684530339caa8fed828a4919892d4b"
+    },
+    "data/interim/indep/GNSS_PTBB.parquet": {
+      "bytes": 1284886,
+      "sha256": "b9e276ae4ed8d7187e70b5c9a5a26146db3326e430be42487a1dceb062cf2114"
+    },
+    "data/interim/indep/GNSS_QAQ1.parquet": {
+      "bytes": 1256015,
+      "sha256": "9c9c690931ddde9cdbf5da3827483b2622c465df47fe5091d673b758cf4b1375"
+    },
+    "data/interim/indep/GNSS_RANT.parquet": {
+      "bytes": 488522,
+      "sha256": "e243f6f384f5df8ea241b03c0b932d591b3ac57625d320b6cb01beb9ede43b60"
+    },
+    "data/interim/indep/GNSS_REYK.parquet": {
+      "bytes": 1257552,
+      "sha256": "9257efc5db25fe884466bec11bbbfb7a1fc6119d8be0f0690b1b7d1d4219819d"
+    },
+    "data/interim/indep/GNSS_SAS2.parquet": {
+      "bytes": 1372550,
+      "sha256": "097232060c2a32bf0179cb97f9c235594bbbf836e87f3b9890c13af868a957f8"
+    },
+    "data/interim/indep/GNSS_SCOR.parquet": {
+      "bytes": 949682,
+      "sha256": "945afd1b4b85f798a0cb482e9411754e549dabe644358e891be670563d58c41c"
+    },
+    "data/interim/indep/GNSS_SCUB.parquet": {
+      "bytes": 1126083,
+      "sha256": "149fce0fe0c47ab58ba95f02542724d47bc61f59398d428dadd1e06f7fb36337"
+    },
+    "data/interim/indep/GNSS_SGOC.parquet": {
+      "bytes": 1213837,
+      "sha256": "f65e08f17fed5d95e0558988c648e98c2f97d210b8e0c6b297f5a10ffa3f680e"
+    },
+    "data/interim/indep/GNSS_SGPO.parquet": {
+      "bytes": 392124,
+      "sha256": "e428f2d9a87015f4d0e833343705ebc519033f2ee45e8cf7f87f2a3931389502"
+    },
+    "data/interim/indep/GNSS_SOFI.parquet": {
+      "bytes": 1151001,
+      "sha256": "eaa7495f0661270c8bf5ba40e43c535d02186298e321c874b895f84fabf93b02"
+    },
+    "data/interim/indep/GNSS_SUTM.parquet": {
+      "bytes": 1323649,
+      "sha256": "f618150b22d88f252e7920d42998dc37e5db3114ca63178f7f3d2b00cd2dbd51"
+    },
+    "data/interim/indep/GNSS_TASH.parquet": {
+      "bytes": 1310895,
+      "sha256": "93a5dec5e13035093c3a7b82ed4a1fe1c4129c645b73bd6eb3f19c89e90af949"
+    },
+    "data/interim/indep/GNSS_THU2.parquet": {
+      "bytes": 1154521,
+      "sha256": "ca21e25d893b47490ce7013173c1e8d75f8a313f0e6ed2e7199099285c234aa4"
+    },
+    "data/interim/indep/GNSS_TIT2.parquet": {
+      "bytes": 1281352,
+      "sha256": "e0e265fa0d7993277bb823ad6d33d1a3fad6709243ec9a3c219a246475fdf58c"
+    },
+    "data/interim/indep/GNSS_TUBO.parquet": {
+      "bytes": 917954,
+      "sha256": "34dc6011e75226271fcc6f2db800843df9b85b73661ae36136b2514fac7b7858"
+    },
+    "data/interim/indep/GNSS_TUC2.parquet": {
+      "bytes": 1218076,
+      "sha256": "31139478460f964dfe1f61980832b0f83063fb34ff465eb9aedbe5107dd9809b"
+    },
+    "data/interim/indep/GNSS_ULAB.parquet": {
+      "bytes": 1263171,
+      "sha256": "cdeaccb86379ab98676d94c3447f2eb0232fc303e0afbb835a4f3ee52376cbff"
+    },
+    "data/interim/indep/GNSS_UNSA.parquet": {
+      "bytes": 1307899,
+      "sha256": "7e5a449f386337813287e9ecad81a071599e95df29c29d16e84e3af8ab41622e"
+    },
+    "data/interim/indep/GNSS_URUM.parquet": {
+      "bytes": 1328321,
+      "sha256": "0fade06552f6f6c0025f375789d85e9862e9f645c74ddaccd921114d93e7b0ae"
+    },
+    "data/interim/indep/GNSS_UTQI.parquet": {
+      "bytes": 1328759,
+      "sha256": "867c08bd4ab35e361aace4e62d077d31b95663a56a8e67331a93d1b400a8a31e"
+    },
+    "data/interim/indep/GNSS_VLFR.parquet": {
+      "bytes": 326502,
+      "sha256": "d27eb3751039dbfc46358743f12e40f698dd1c30677044afcb291c9963e033e5"
+    },
+    "data/interim/indep/GNSS_VOIM.parquet": {
+      "bytes": 711313,
+      "sha256": "96954102ebb87c3c64c65bab5b8eefdbc2ae8f2c72d1ac5abebb0dc41e9a0adf"
+    },
+    "data/interim/indep/GNSS_VTRB.parquet": {
+      "bytes": 225235,
+      "sha256": "76a29cb8e19615cd1ae5b008c27255e7d7929e30d1685687c2ab0ae251b282e8"
+    },
+    "data/interim/indep/GNSS_WARN.parquet": {
+      "bytes": 1139590,
+      "sha256": "c0d2c80691e7b3a611dda9cf2488a88e332ba4cb8a937cea4f44a45d1fcfac85"
+    },
+    "data/interim/indep/GNSS_WIND.parquet": {
+      "bytes": 1286168,
+      "sha256": "25a064bdab75619d8466892dc86f0f2a2f939641dcd64bccef8bfd1bdee70a0d"
+    },
+    "data/interim/indep/GNSS_WUH2.parquet": {
+      "bytes": 1327425,
+      "sha256": "8ab140f3d3f969415da273b90be1c3005af4991c60ab5fde768a96cd68ca2986"
+    },
+    "data/interim/indep/GNSS_ZECK.parquet": {
+      "bytes": 439671,
+      "sha256": "3255ab461dbe0a818856c57066a55a21003b74aa1d70b4359eed6651d5b25595"
+    }
+  }
+}

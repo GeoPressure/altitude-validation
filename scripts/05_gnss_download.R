@@ -1,14 +1,15 @@
-# GNSS stations with co-located meteorological sensors: an ERA5-independent reference.
+# GNSS stations with co-located meteorological sensors: a complementary pressure/height reference.
 #
 # IGS and EUREF permanent GNSS stations often carry a barometer, reported in daily RINEX
-# meteorological files. Their pressure is not exchanged on the GTS and so is not assimilated by ERA5,
-# and the barometer height is tied to a geodetic antenna whose ellipsoidal height is known to mm.
+# meteorological files. Barometer-height metadata can be checked against the site logs;
+# record-specific ERA5 assimilation status is not established (docs/methods/T05/audit.md).
 #
 # This script lists the daily met files of 2022-2024 on the BKG mirror (anonymous), keeps stations
 # with at least 180 days, and stores for every station the hourly pressure (mean of the samples
 # within +/- 1 min of each hour) with the per-file header metadata: sensor model and the barometer
-# position (SENSOR POS XYZ/H). Daily files are deleted after parsing. Site logs are downloaded for
-# the independent sensor-height check in 14_independent_errors.R.
+# position (SENSOR POS XYZ/H). Overlapping daily-file hours are consolidated before analysis QC.
+# Daily files are deleted after parsing. Site logs are downloaded for
+# the separate height-metadata check in 14_independent_errors.R.
 
 source("R/utils.R")
 

@@ -1,6 +1,6 @@
 # Cross-check: GeoPressureAPI (Earth Engine) vs the ARCO path used throughout this study.
 #
-# For a random subset of HadISD stations, one week of observed station pressure is sent to
+# For a random subset of GHCNh stations, one week of observed station pressure is sent to
 # GeoPressureAPI's pressurePath endpoint (dataset = "single-levels", altitudeFormula = "standard",
 # the formula evaluated here) and the returned altitude is
 # compared with the altitude this pipeline computed from ARCO. Agreement means every result here
@@ -9,15 +9,16 @@
 source("R/utils.R")
 set.seed(2)
 
-A <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet")))
-st <- fread(file.path(dir_tables, "stations.csv"))[network == "hadisd"]
+A <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet")))
+st <- fread(file.path(dir_tables, "stations.csv"))[network == "ghcnh"]
 ids <- sample(unique(A$id), 25)
-week <- c(as.POSIXct("2023-07-10", tz = "UTC"), as.POSIXct("2023-07-17", tz = "UTC"))
 
 out <- rbindlist(lapply(ids, function(i) {
+  s <- st[id == i]
+  week <- as.POSIXct(sprintf("%d-07-10", s$selected_year), tz = "UTC")
+  week <- c(week, week + 7 * 24 * 60 * 60)
   d <- A[id == i & date >= week[1] & date < week[2] & !gross]
   if (nrow(d) == 0) return(NULL)
-  s <- st[id == i]
   body <- list(
     lon = rep(s$lon, nrow(d)),
     lat = rep(s$lat, nrow(d)),

@@ -1,0 +1,350 @@
+{
+  "date": "2026-10-18",
+  "note": "Final artifacts after adoption of published Master GeoLocator Data Package 2026.0. Earlier baseline and T06 generation records are historical snapshots; bird_height_provenance.json and paper_bird_reweight_provenance.json describe the current biological update.",
+  "files": {
+    "README.md": {
+      "bytes": 5913,
+      "sha256": "978d5a340c9de867816fe24cfe57b96a5ab5ab559c8800f4d93369b0fdbd5c53"
+    },
+    "zenodo/data_README.md": {
+      "bytes": 2827,
+      "sha256": "cde065a9ec092819f4b4299d2050c196fd1a88a3480311d12a97e26505585b0f"
+    },
+    "R/utils.R": {
+      "bytes": 13430,
+      "sha256": "21fc93b814f9ba4c3cd0a7fc2afbc3408732dfdb5590dff97e29ed543463d612"
+    },
+    "scripts/00_bird_heights.R": {
+      "bytes": 6185,
+      "sha256": "f8a490c14ec3109bab496fa535d99d0ec60dc844b11640c55cf7ed098b3d9f78"
+    },
+    "scripts/13_bird_weighted.R": {
+      "bytes": 731,
+      "sha256": "7c033146ea13cd62c9cb66a8fbd306c81202d2848e9b3c6bbd860297fde609ab"
+    },
+    "scripts/16_formula.R": {
+      "bytes": 17994,
+      "sha256": "52fe5e68fa401c0748382e0fad08df94e41f44f732e6a64e035c219c758d90fe"
+    },
+    "scripts/17_figures.R": {
+      "bytes": 21432,
+      "sha256": "fd66f51ecd2e9ff1a0483b5cbca34b65e7bb8f8a20f841d4557f1736238aa10c"
+    },
+    "scripts/19_paper_figures.R": {
+      "bytes": 18047,
+      "sha256": "ff2ddb2c97be8b671608b1629c104f6b4f882eadb255315ee6ce3dd9e0ab5d9d"
+    },
+    "scripts/20_paper_sensitivity.R": {
+      "bytes": 6412,
+      "sha256": "b5f7802ffe0c6796e0efb421736edba659a0c27aef18575c3fa51238c50b709e"
+    },
+    "docs/manuscript/comment-response-plan.md": {
+      "bytes": 43256,
+      "sha256": "1a9a828ef50d6887d90a999ffb75fdf3881af7028f0c8aa9eff2366f3e53c0c1"
+    },
+    "docs/methods/T07/implementation.md": {
+      "bytes": 4273,
+      "sha256": "279efa2df09bc30f8b7dd1dcec649087d4db003f54022d6a067a70dd66a80902"
+    },
+    "docs/methods/T07/session-info.txt": {
+      "bytes": 913,
+      "sha256": "d4e5b96b07229c228378a057fba60e84566c515a73dc06b952b7d47b235da478"
+    },
+    "docs/methods/T07/tag_counts.csv": {
+      "bytes": 52,
+      "sha256": "8df2c23d6dc8e9b72e56bd847f60c300bbcad9568a367564146758f3a6265b63"
+    },
+    "docs/methods/T07/offset_support.csv": {
+      "bytes": 181,
+      "sha256": "203fbfce82a1f6dabde6ca70bb07dbd3b62aa5acff0993d14ca07a3bbf53aa2c"
+    },
+    "docs/methods/T07/provenance.json": {
+      "bytes": 1251,
+      "sha256": "4536fd462ff98ea57885cf948b664682d18a4e38e3d62dd5ca9f62cf6942439e"
+    },
+    "docs/methods/T07/weighted_errors.csv": {
+      "bytes": 2695,
+      "sha256": "bffd312e4a98592fb4bea1c9dc73e74ccd84c3c869f7c7e21280a8f3fded0b75"
+    },
+    "docs/methods/T07/species_contributions.csv": {
+      "bytes": 17471,
+      "sha256": "64515e8062e318c4a0099ae7dc9b6a200b491f0a31664bcc2281a658f22d0c0c"
+    },
+    "docs/methods/T07/target_support.csv": {
+      "bytes": 1287,
+      "sha256": "0a0c136ec51aad18a3cfa916e902f0d5cc99c820cb99da6d1fde76341c635b32"
+    },
+    "docs/methods/T07/height_and_gaps.csv": {
+      "bytes": 152,
+      "sha256": "9792e7da9325aee5bf6f5b706963e24262e533e80d0f6e193ed281eaf62728e5"
+    },
+    "docs/methods/T07/cadence.csv": {
+      "bytes": 235,
+      "sha256": "c4a527b5961ddbd3a5bbbd8061fc9cff01cfd58670154af8725274590d74296d"
+    },
+    "docs/methods/T07/implementation-verification.json": {
+      "bytes": 4567,
+      "sha256": "40d639f267a14692ab725089f4db41378b721294fddce1ffd4524133ae4d2722"
+    },
+    "docs/methods/T07/reference_curve_checks.csv": {
+      "bytes": 47,
+      "sha256": "e12b0ffe79c8e72acaaf3602824e840969c1e71fcedc01e204f4e0220e25c64b"
+    },
+    "docs/methods/T07/published-file-checks.json": {
+      "bytes": 826,
+      "sha256": "4efd0d047d3356e5a9e2ea936a769187d5941910ae25fa0a6ae3deccbe462955"
+    },
+    "docs/methods/T07/reproduction_checks.csv": {
+      "bytes": 187,
+      "sha256": "d5d0a0cf1a05252bbc0b1ec7f7c022d107f792bbb79cad218879f1985ca4c433"
+    },
+    "docs/methods/T07/primary_weight_checks.csv": {
+      "bytes": 189,
+      "sha256": "48e040b8b10ef36c3087466d0ec2309b7428041120240bbd318824d01fe5e448"
+    },
+    "docs/methods/T07/update_cached_weights.R": {
+      "bytes": 2714,
+      "sha256": "a978e672e0422d10b90c1e659773906f92b1e249933f2ad1b6eb6fa99168ef4a"
+    },
+    "docs/methods/T07/duration_agreement.csv": {
+      "bytes": 128,
+      "sha256": "c9e02dc484669f3e6be1ca0630335d598f806103b76d3319f81107c5007a3f9d"
+    },
+    "docs/methods/T07/bird_concentration.csv": {
+      "bytes": 1167,
+      "sha256": "59f9d4b0e461dc3abb9b0b9e8df1a9eb9ae7096e6e15e355769e77cfefdf5253"
+    },
+    "docs/methods/T07/published-release.json": {
+      "bytes": 23101,
+      "sha256": "410353deb3f7db74a694760c383d6e05ccc99cc9fa65108aa5bcbfa47c823734"
+    },
+    "docs/methods/T07/height_weights.csv": {
+      "bytes": 8435,
+      "sha256": "c6c34baa85d183d59b37b548c68ea58d67cc1282ed49d7863a3b2c42a67855cf"
+    },
+    "docs/methods/T07/recommendations.md": {
+      "bytes": 8056,
+      "sha256": "16ef5f8d887d40526585626f502c32b728991a22f02f5cbae1aa153f5695b0b0"
+    },
+    "docs/methods/T07/assess_flight_targets.R": {
+      "bytes": 10348,
+      "sha256": "20c790a471a1242e037b323800980109c24ce1ed3861854820d5cb01606dad9c"
+    },
+    "output/tables/bird_height_provenance.json": {
+      "bytes": 1091,
+      "sha256": "adca7a6a88c432462bf50ccbc772257b875017a0a89fdfb045e55f835c5cc6d8"
+    },
+    "output/tables/paper_ground_coverage.csv": {
+      "bytes": 175,
+      "sha256": "e8abef23540c07eeb7c862fdfc09cf536759c6786a0ffd8495f7a43eb1e4f639"
+    },
+    "output/tables/formula_height.csv": {
+      "bytes": 12019,
+      "sha256": "29710a1adbe2f8c8ec9d453b9950406d945a50751c27dc405f8b61375f5c4079"
+    },
+    "output/tables/bird_target_support.csv": {
+      "bytes": 1287,
+      "sha256": "0a0c136ec51aad18a3cfa916e902f0d5cc99c820cb99da6d1fde76341c635b32"
+    },
+    "output/tables/paper_analysis_provenance.json": {
+      "bytes": 3847,
+      "sha256": "db50f26ad7451cbc2966f16e1af0c7b22464edabc0f2f30fe93e2a2080da4f5b"
+    },
+    "output/tables/paper_flight_bird.csv": {
+      "bytes": 198,
+      "sha256": "5af82daf41af1c8766b172b06cc74248aee2d9e3f0142cc27bde108f2579802d"
+    },
+    "output/tables/paper_ground.csv": {
+      "bytes": 3248,
+      "sha256": "ac8c3c83714d9ba2d2a21c1de06004d616a0a9581a25c44b0c1461bc85ab5ee0"
+    },
+    "output/tables/bird_target_height_weights.csv": {
+      "bytes": 8435,
+      "sha256": "c6c34baa85d183d59b37b548c68ea58d67cc1282ed49d7863a3b2c42a67855cf"
+    },
+    "output/tables/formula_ground.csv": {
+      "bytes": 3444,
+      "sha256": "064da2f7ce0b6a1256c22811f30095f05e4295582fdd1fa8a895f554eca196ea"
+    },
+    "output/tables/paper_flight_support.csv": {
+      "bytes": 365,
+      "sha256": "add00c681aabac4a86444a306c1793fc4d7db029b6a30b6d8f8b27e4370514a0"
+    },
+    "output/tables/formula_lapse_var_grid.csv": {
+      "bytes": 6207,
+      "sha256": "8f0c63ff611720fccbceffa05d0878a56a5c29c2bc551590c88ab9152bc497d2"
+    },
+    "output/tables/formula_cv.csv": {
+      "bytes": 1801,
+      "sha256": "9fadd0b5ee25e6d0b5346b02c53faf4be2ad165f8ecf7d53098150992dd6925b"
+    },
+    "output/tables/paper_gnss_hour_sensitivity.csv": {
+      "bytes": 409,
+      "sha256": "abd9e320f4d3eaf2e50b29c9d3aa41289c5dd622e99b168bd107a580a84690af"
+    },
+    "output/tables/paper_flight_climate.csv": {
+      "bytes": 36260,
+      "sha256": "5f680b0b7288ba8bd61d1a9f054cbd2d9d5ab5e0ecde841e5a92ac8b94c9afe0"
+    },
+    "output/tables/formula_clamp.csv": {
+      "bytes": 142,
+      "sha256": "dda2f6e8c453bf70f8821d2b1256f05aa40ff86199313e5d1185d4ff33c64396"
+    },
+    "output/tables/paper_ground_screen_sensitivity.csv": {
+      "bytes": 1383,
+      "sha256": "c3b753b866c173f6fa0a4bdaa9f4ddcb49f2bc3be39e1d1852b0fc730065b348"
+    },
+    "output/tables/bird_height_distribution.csv": {
+      "bytes": 1199,
+      "sha256": "cfccb244e6f9e09287e60d2d6e6092960b4de25c1981649c8db6fc89ff6a8112"
+    },
+    "output/tables/formula_tv_correction.csv": {
+      "bytes": 421,
+      "sha256": "9a739965e7de55417243febef13ad4b24a96d005b11a1c4dec3c1a52dd3098f9"
+    },
+    "output/tables/formula_fit.csv": {
+      "bytes": 296,
+      "sha256": "4e237548d79d1342b64fa04c10fa93515caf27130b6c85b3c93450106baf517a"
+    },
+    "output/tables/paper_swiss_height.csv": {
+      "bytes": 3847,
+      "sha256": "8e0c02f1a31de5f128f0d9ed13285eb11339d0f4202f490bbd5d672c165937df"
+    },
+    "output/tables/paper_ground_station.csv": {
+      "bytes": 1206591,
+      "sha256": "b277ce91567f276955eab85ecd8a6a77ce4c30eb4786de24f16dda535bc94339"
+    },
+    "output/tables/formula_lapse_by_group.csv": {
+      "bytes": 648,
+      "sha256": "cb013ac4a99abbe3256517498d79b0fe4a2ae380f57567ff51c7ec36546867d1"
+    },
+    "output/tables/paper_bird_target_sensitivity.csv": {
+      "bytes": 5830,
+      "sha256": "2a16cc35bb3e54fa91582440a0b6b317dc502f68e553e47966f147fd245ff50e"
+    },
+    "output/tables/flight_bird_weighted.csv": {
+      "bytes": 168,
+      "sha256": "baff3ba5aaf6a185ad56532061a8487563d8fa9dfcccb43c4e2c3dda526c8a0d"
+    },
+    "output/tables/bird_height_hist.csv": {
+      "bytes": 2284,
+      "sha256": "f307e278b2b106311c31652fa7d41e0b59259ffab757cda2c8c7d624e7d4a668"
+    },
+    "output/tables/formula_climate_season.csv": {
+      "bytes": 36754,
+      "sha256": "07abe3920aeeb43e3b360cd4c4c83dcc2b3cdc444c8e5b683c107ad9a11ceae4"
+    },
+    "output/tables/paper_swiss_height_summary.csv": {
+      "bytes": 119,
+      "sha256": "f22f8ff565b48f877f47bf3d38b06ad93b56cda7c533c82ecbc18fbedb3e86f8"
+    },
+    "output/tables/paper_flight_height.csv": {
+      "bytes": 3015,
+      "sha256": "c8391e8ff925cb1026816eb94963d49d4bbb34b3cb4a14654ded1440a1c5c805"
+    },
+    "output/tables/bird_height_sample.csv": {
+      "bytes": 117,
+      "sha256": "95ce099d40819a54c15eed98e23045d68238f12c2728e9dff4280a3a381ec76c"
+    },
+    "output/tables/bird_height_quantiles.csv": {
+      "bytes": 268,
+      "sha256": "cb0e987f5e28dcaf1d6dc3833d0608cdcdbbdd4d7116234724e16f927091598d"
+    },
+    "output/tables/paper_figures_provenance.json": {
+      "bytes": 196,
+      "sha256": "470df4a0928275c25ff9a533e7094812182b3df1952ea6665ccea6bab4a06c0a"
+    },
+    "output/tables/paper_flight_weighting_sensitivity.csv": {
+      "bytes": 851,
+      "sha256": "20cdd539129d6ba1857efefb54ccd0177339f71d0cc6fcdba3d8acc23a4a7b1d"
+    },
+    "output/tables/paper_sensitivity_provenance.json": {
+      "bytes": 198,
+      "sha256": "1f9bdd481feeeb6c27cbf7a32043be9dfd65f7225b7869c4069cdd71fa760c5a"
+    },
+    "output/tables/paper_bird_reweight_provenance.json": {
+      "bytes": 1032,
+      "sha256": "e06d312f611886753e1ea9cc66ce2fdfe6878e53cceff90bcb37563cf4f0f62e"
+    },
+    "output/tables/paper_fig1_soundings.csv": {
+      "bytes": 509,
+      "sha256": "e1d953f9c1feeb22f9d94d9a8df1f11e8d454a2b103f57b275f66b75b6d067d0"
+    },
+    "output/tables/paper_flight_tails.csv": {
+      "bytes": 1178,
+      "sha256": "8e879bf39ea8f45b0d73627f8e25e04362bbb7464c1695b408268427f42f6bad"
+    },
+    "output/tables/paper_ground_station_year.csv": {
+      "bytes": 421285,
+      "sha256": "d9fe682ac54c97835cd2ede7c4227e471995914026c787454d437610856ab83b"
+    },
+    "output/tables/bird_height_below0.csv": {
+      "bytes": 55,
+      "sha256": "ed36f752b38869ff6ca4779980c48673017c51ca51f1d92f3c8c2b2a625937b9"
+    },
+    "output/tables/formula_lapse_var.csv": {
+      "bytes": 221,
+      "sha256": "3aeed9cc9343c8142aa6bcc73c7cc20bac31f862b533b8375ae4af9adba8a53a"
+    },
+    "output/tables/paper_flight_station.csv": {
+      "bytes": 1670632,
+      "sha256": "14e6da27975df57c19bff814ff7e2a019bbb6b9054376b6be6e999e8261c8adb"
+    },
+    "output/tables/paper_flight_weighting_height.csv": {
+      "bytes": 13633,
+      "sha256": "f831d2765cfa5e998a38a9ec33898fc5120838cce6576457b0199704f4bf56c1"
+    },
+    "output/tables/paper_flight_daynight.csv": {
+      "bytes": 13957,
+      "sha256": "fc5c04b09625a7718e54c1d77462f4e55ed879ab57700ebfe78f7121818b2a97"
+    },
+    "output/tables/paper_ground_tails.csv": {
+      "bytes": 753,
+      "sha256": "f495090a53fd469a0c7debc594ff6cfb360d6df8d07128d2067f38e99da5d040"
+    },
+    "output/tables/paper_reference_terrain.csv": {
+      "bytes": 842,
+      "sha256": "b0108454999ba141b1eb4b6e41f6dd9652f3a8635cfaec14b3cc6500f5068159"
+    },
+    "paper/paper.qmd": {
+      "bytes": 49034,
+      "sha256": "c7367748160351dd7ede501b38d0d1650a44097a573200630f60e3ad4e3d9b0f"
+    },
+    "paper/paper.pdf": {
+      "bytes": 375271,
+      "sha256": "c91ed930dcff5507e3670078b6a59c1311b920666363a422c25b922a756830de"
+    },
+    "paper/paper.html": {
+      "bytes": 3651614,
+      "sha256": "271cfe1131593adbc4c33441fc67c9bc1060da277d3b696a2e0e6b60179603de"
+    },
+    "paper/supplement.qmd": {
+      "bytes": 29259,
+      "sha256": "a6cc65af195f831f6f7d7bfeaef5bde3b7229b4683e9fcdcfcdc8330498c6291"
+    },
+    "paper/supplement.pdf": {
+      "bytes": 1897351,
+      "sha256": "498f8423462ab2d2713df441a1e4f7e664282d0e83275c2941047201cf305a93"
+    },
+    "paper/supplement.html": {
+      "bytes": 4517113,
+      "sha256": "76cc2b24ed78db08eab81bd752ead917a22d35ffb1329dfa5f96811c2caefe4f"
+    },
+    "paper/references.bib": {
+      "bytes": 32078,
+      "sha256": "7909caf2a16b30558a9eb0116e0c52650f239b87fe1faf6f535e80adb6c58e37"
+    },
+    "paper/figures/fig4_flight.png": {
+      "bytes": 182421,
+      "sha256": "88b29d39f086e547f0e4a4e6336a9114910597744fd133d7a6d9e6083a9e7be0"
+    },
+    "paper/figures/fig4_flight.pdf": {
+      "bytes": 16456,
+      "sha256": "096836713e868156b64ac54f13583aa7a0f960ba3be3e6398a91b6ad69887b5c"
+    },
+    "output/figures/formula_height.png": {
+      "bytes": 100530,
+      "sha256": "fd8fdf8a222eeed4e67f7952edb3ba96f12b03280dc55f752572ff765d8bca16"
+    }
+  }
+}

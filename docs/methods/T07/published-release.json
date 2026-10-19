@@ -1,0 +1,724 @@
+{
+  "created": "2026-10-16T07:15:38.584481+00:00",
+  "modified": "2026-10-16T07:15:39.077573+00:00",
+  "id": 18187093,
+  "conceptrecid": "18187092",
+  "doi": "10.5281/zenodo.18187093",
+  "conceptdoi": "10.5281/zenodo.18187092",
+  "doi_url": "https://doi.org/10.5281/zenodo.18187093",
+  "metadata": {
+    "title": "Master GeoLocator Data Package",
+    "doi": "10.5281/zenodo.18187093",
+    "publication_date": "2026-10",
+    "description": "<h1>GeoLocator Master Data Package</h1>\n<p>The <span><strong>GeoLocator Master Data Package</strong></span> is an aggregated, community-curated dataset that brings together all <em>open-access</em> GeoLocator Data Packages published on the <a href=\"https://zenodo.org/communities/geolocator-dp/records?q=&amp;l=list&amp;p=1&amp;s=10\">GeoLocator Data Package community</a>. Its primary goal is to provide a single, easy-to-use entry point for researchers wishing to work across multiple projects, species, and regions, while preserving full provenance and attribution to the original data contributors.</p>\n<p>This master package is derived exclusively from project-level GeoLocator Data Packages and follows the same standardized data-exchange format. It is updated on a regular basis (typically once or twice per year), with each release representing a stable, citable snapshot of all eligible open-access contributions at that time.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Nussbaumer, Raphaël",
+        "affiliation": "Swiss Ornithological Institute, A Rocha Kenya",
+        "orcid": "0000-0002-8185-1020"
+      },
+      {
+        "name": "Adamik, Peter",
+        "affiliation": "Palacký University Olomouc, Museum of Natural History",
+        "orcid": "0000-0003-1566-1234"
+      },
+      {
+        "name": "Alerstam, Thomas",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0001-5329-4514"
+      },
+      {
+        "name": "Andersson, Arne",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0002-1363-4403"
+      },
+      {
+        "name": "Arlettaz, Raphaël",
+        "affiliation": "University of Bern",
+        "orcid": "0000-0001-6360-5339"
+      },
+      {
+        "name": "Bächler, Erich",
+        "affiliation": "Swiss Ornithological Institute"
+      },
+      {
+        "name": "Bäckman, Johan",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0002-4203-9793"
+      },
+      {
+        "name": "Barras, Arnaud Gian",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0003-0850-6965"
+      },
+      {
+        "name": "Bauer, Silke",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0002-0844-164X"
+      },
+      {
+        "name": "Bayrgur, Soddelgerekh",
+        "affiliation": "Mongolian National University of Education"
+      },
+      {
+        "name": "Bažant, Miroslav",
+        "affiliation": null,
+        "orcid": "0000-0001-9404-2815"
+      },
+      {
+        "name": "Beam, Johanna",
+        "affiliation": "Pennsylvania State University",
+        "orcid": "0000-0001-5407-5751"
+      },
+      {
+        "name": "Beran, Václav",
+        "affiliation": "Department of Zoology, Faculty of Science, Palacký University, Olomouc, Czech Republic"
+      },
+      {
+        "name": "Bocher, Pierrick",
+        "affiliation": "La Rochelle Université"
+      },
+      {
+        "name": "Brelsford, Alan",
+        "affiliation": null,
+        "orcid": "0000-0002-5074-7765"
+      },
+      {
+        "name": "Briedis, Martins",
+        "affiliation": "University of Latvia, Swiss Ornithological Institute",
+        "orcid": "0000-0002-9434-9056"
+      },
+      {
+        "name": "Bull, Kerstin",
+        "affiliation": null
+      },
+      {
+        "name": "Capilla-Lasheras, Pablo",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0001-6091-7089"
+      },
+      {
+        "name": "Chengula, Augustino",
+        "affiliation": null
+      },
+      {
+        "name": "Coulomb, Yannig",
+        "affiliation": "Muséum national d'Histoire naturelle"
+      },
+      {
+        "name": "Davaasuren, Batmunkh",
+        "affiliation": "Wildlife Science and Conservation Centre",
+        "orcid": "0000-0002-8496-1508"
+      },
+      {
+        "name": "de Grissac, Sophie",
+        "affiliation": "Muséum national d'Histoire naturelle"
+      },
+      {
+        "name": "Delacroix, Rose",
+        "affiliation": "Muséum national d'Histoire naturelle"
+      },
+      {
+        "name": "Doniol-Valcroze, Paul",
+        "affiliation": "Muséum national d'Histoire naturelle",
+        "orcid": "0000-0002-2523-5979"
+      },
+      {
+        "name": "Emmenegger, Tamara",
+        "affiliation": "Swiss Ornithological Institute"
+      },
+      {
+        "name": "Erselius, Monty",
+        "affiliation": null
+      },
+      {
+        "name": "Evens, Ruben",
+        "affiliation": "UCLouvain",
+        "orcid": "0000-0002-2602-4516"
+      },
+      {
+        "name": "Fossøy, Frode",
+        "affiliation": "Norwegian Institute for Nature Research",
+        "orcid": "0000-0002-7535-9574"
+      },
+      {
+        "name": "Hahn, Steffen",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0002-4924-495X"
+      },
+      {
+        "name": "Hedenström, Anders",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0002-1757-0945"
+      },
+      {
+        "name": "Heim, Wieland",
+        "affiliation": "Carl von Ossietzky Universität Oldenburg",
+        "orcid": "0000-0002-3262-2491"
+      },
+      {
+        "name": "Helm, Barbara",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0002-6648-1463"
+      },
+      {
+        "name": "Illa Llobet, Marc",
+        "affiliation": "Institut Català d'Ornitologia, Cory's SCCL",
+        "orcid": "0009-0000-0405-8638"
+      },
+      {
+        "name": "Jackson, Colin",
+        "affiliation": "A Rocha Kenya",
+        "orcid": "0000-0003-2280-1397"
+      },
+      {
+        "name": "Jensen, Flemming",
+        "affiliation": "Technical University of Denmark",
+        "orcid": "0000-0003-3535-8726"
+      },
+      {
+        "name": "Jiguet, Frédéric",
+        "affiliation": "Muséum national d'Histoire naturelle",
+        "orcid": "0000-0002-0606-7332"
+      },
+      {
+        "name": "Joisten, Frank",
+        "affiliation": null
+      },
+      {
+        "name": "Kemper, Dörthe Melanie",
+        "affiliation": null
+      },
+      {
+        "name": "Kirao, Lennox",
+        "affiliation": "A Rocha Kenya",
+        "orcid": "0000-0002-3548-5787"
+      },
+      {
+        "name": "Kishkinev, Dmitry",
+        "affiliation": null
+      },
+      {
+        "name": "Kowalczyk, Céline",
+        "affiliation": "Hasselt University"
+      },
+      {
+        "name": "Kristin, Anton",
+        "affiliation": "Institute of Forest Ecology of the Slovak Academy of Sciences",
+        "orcid": "0000-0001-7422-6393"
+      },
+      {
+        "name": "Lathouwers, Michiel",
+        "affiliation": "Research Institute for Nature and Forest",
+        "orcid": "0000-0002-8426-4788"
+      },
+      {
+        "name": "Lei, Fumin",
+        "affiliation": "Institute of Zoology, Chinese Academy of Sciences",
+        "orcid": "0000-0001-9920-8167"
+      },
+      {
+        "name": "Libana, Frank",
+        "affiliation": null
+      },
+      {
+        "name": "Liechti, Felix",
+        "affiliation": "Swiss Ornithological Institute, Swiss BirdRadar Solutions",
+        "orcid": "0000-0001-9473-0837"
+      },
+      {
+        "name": "Macías Torres, Pablo",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0002-4503-164X"
+      },
+      {
+        "name": "Moore, Mads",
+        "affiliation": null
+      },
+      {
+        "name": "Mulungu, Elia",
+        "affiliation": null
+      },
+      {
+        "name": "Osinubi, Samuel Temidayo",
+        "affiliation": null,
+        "orcid": "0000-0002-5143-6985"
+      },
+      {
+        "name": "Prochazka, Petr",
+        "affiliation": null
+      },
+      {
+        "name": "Rey, Fanny",
+        "affiliation": "La Rochelle Université"
+      },
+      {
+        "name": "Rhyne, Garrett",
+        "affiliation": "American Bird Conservancy",
+        "orcid": "0000-0003-4318-7840"
+      },
+      {
+        "name": "Rime, Yann",
+        "affiliation": "Swiss Ornithological Institute, FitzPatrick Institute of African Ornithology",
+        "orcid": "0009-0005-7264-6753"
+      },
+      {
+        "name": "Schaub, Michael",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0003-2745-0557"
+      },
+      {
+        "name": "Schmitz Ornés, Angela",
+        "affiliation": "Universität Greifswald",
+        "orcid": "0000-0001-5298-9365"
+      },
+      {
+        "name": "Sjöberg, Sissel",
+        "affiliation": "Lund University, Department of Biology",
+        "orcid": "0000-0002-1392-7441"
+      },
+      {
+        "name": "Song, Gang",
+        "affiliation": "Institute of Zoology, Chinese Academy of Sciences"
+      },
+      {
+        "name": "Stokke, Bård G.",
+        "affiliation": "Norwegian Institute for Nature Research",
+        "orcid": "0000-0001-5589-6738"
+      },
+      {
+        "name": "Stolz, Christian",
+        "affiliation": "Norwegian University of Science and Technology",
+        "orcid": "0000-0002-1572-3776"
+      },
+      {
+        "name": "Szarmach, Stephanie",
+        "affiliation": "Pennsylvania State University",
+        "orcid": "0000-0003-1538-8127"
+      },
+      {
+        "name": "Thorup, Kasper",
+        "affiliation": "University of Copenhagen",
+        "orcid": "0000-0002-0320-0601"
+      },
+      {
+        "name": "Toews, David",
+        "affiliation": "Pennsylvania State University",
+        "orcid": "0000-0002-9763-0476"
+      },
+      {
+        "name": "Tøttrup, Anders",
+        "affiliation": "University of Copenhagen",
+        "orcid": "0000-0001-8776-9629"
+      },
+      {
+        "name": "Van Doren, Benjamin",
+        "affiliation": "University of Illinois Urbana-Champaign",
+        "orcid": "0000-0002-7355-6005"
+      },
+      {
+        "name": "van Wijk, Rien E.",
+        "affiliation": null,
+        "orcid": "0000-0002-6887-3153"
+      },
+      {
+        "name": "Werema, Chacha",
+        "affiliation": "University of Dar es Salaam",
+        "orcid": "0000-0002-7692-0263"
+      },
+      {
+        "name": "Wong, Joanna",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0000-0003-4607-2803"
+      },
+      {
+        "name": "Zacmane, Elza Marija",
+        "affiliation": "Swiss Ornithological Institute",
+        "orcid": "0009-0006-9353-8687"
+      },
+      {
+        "name": "Zhao, Tianhao",
+        "affiliation": "University of Groningen",
+        "orcid": "0000-0002-6500-4526"
+      }
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.13829929",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.14191023",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.14364135",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.14439689",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.14883860",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.16730669",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.16795313",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.16804931",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.16813863",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17084708",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17193484",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17195973",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17257520",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17367319",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17405243",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17542294",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17631330",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17703423",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.17779416",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18311204",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18340650",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18467921",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18755137",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18776553",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.18792171",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.19659775",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.20160803",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21209234",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21376504",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21785695",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21817958",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.22012039",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.23211896",
+        "relation": "compiles",
+        "resource_type": "dataset",
+        "scheme": "doi"
+      }
+    ],
+    "version": "2026.0",
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "18187092"
+          }
+        }
+      ]
+    },
+    "notes": "<h2>How to cite?</h2>\n<p>When using data from the GeoLocator Master Data Package, users should cite <span><strong>both</strong></span>:</p>\n<ol>\n<li>\n<p><strong>The master data package itself </strong>(Zenodo DOI for the specific version used).</p>\n</li>\n<li>\n<p><span><strong>The associated data paper</strong></span> describing the GeoLocator Data Package framework and analysis pipeline</p>\n<p>(citation placeholder; to be updated upon publication)</p>\n</li>\n</ol>\n<p>In addition, users are strongly encouraged to cite the original project-level data packages relevant to their analyses, using the DOIs provided in <span>datapackages.csv</span>, to ensure appropriate credit to individual data contributors.</p>"
+  },
+  "title": "Master GeoLocator Data Package",
+  "links": {
+    "self": "https://zenodo.org/api/records/18187093",
+    "self_html": "https://zenodo.org/records/18187093",
+    "preview_html": "https://zenodo.org/records/18187093?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.18187093",
+    "self_doi": "https://doi.org/10.5281/zenodo.18187093",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.18187093",
+    "reserve_doi": "https://zenodo.org/api/records/18187093/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/18187092",
+    "parent_html": "https://zenodo.org/records/18187092",
+    "parent_doi": "https://doi.org/10.5281/zenodo.18187092",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.18187092",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:18187093/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:18187093/sequence/default",
+    "files": "https://zenodo.org/api/records/18187093/files",
+    "media_files": "https://zenodo.org/api/records/18187093/media-files",
+    "latest": "https://zenodo.org/api/records/18187093/versions/latest",
+    "latest_html": "https://zenodo.org/records/18187093/latest",
+    "versions": "https://zenodo.org/api/records/18187093/versions",
+    "draft": "https://zenodo.org/api/records/18187093/draft",
+    "access_links": "https://zenodo.org/api/records/18187093/access/links",
+    "access_grants": "https://zenodo.org/api/records/18187093/access/grants",
+    "access_users": "https://zenodo.org/api/records/18187093/access/users",
+    "access_request": "https://zenodo.org/api/records/18187093/access/request",
+    "access": "https://zenodo.org/api/records/18187093/access",
+    "communities": "https://zenodo.org/api/records/18187093/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/18187093/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/18187093/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/18187093/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/18187093/quota-increase",
+    "requests": "https://zenodo.org/api/records/18187093/requests"
+  },
+  "updated": "2026-10-16T07:15:39.077573+00:00",
+  "recid": "18187093",
+  "revision": 4,
+  "files": [
+    {
+      "id": "4100b1fe-1777-403a-bdf9-5b928cd4fbdd",
+      "key": "observations.csv",
+      "size": 458247,
+      "checksum": "md5:1bec46bce5c86cf1de068a654fc7baab",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/observations.csv/content"
+      }
+    },
+    {
+      "id": "26d2fdd7-8871-43b5-8ea0-7dc97004de2a",
+      "key": "paths.csv",
+      "size": 3317620,
+      "checksum": "md5:d715057e05b9c2df5017532677f8594b",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/paths.csv/content"
+      }
+    },
+    {
+      "id": "4e357ce4-9fe3-4be6-838f-089d108ce8e5",
+      "key": "params.json",
+      "size": 732062,
+      "checksum": "md5:d0bac531683c58ecc0aa8904244328b8",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/params.json/content"
+      }
+    },
+    {
+      "id": "3877e273-7019-4bc7-8b59-4eedb1558ab5",
+      "key": "species.csv",
+      "size": 10871,
+      "checksum": "md5:f073b8cc8f0ff6be247c65d069930372",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/species.csv/content"
+      }
+    },
+    {
+      "id": "e49c1637-6c5d-4631-bc0f-1dd374cc28c2",
+      "key": "staps.csv",
+      "size": 363248,
+      "checksum": "md5:23b4f1145ee2ddf4fc06f5eb87566e38",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/staps.csv/content"
+      }
+    },
+    {
+      "id": "0ef31d71-ff10-4b2f-89f3-4f6af5c41fd1",
+      "key": "edges.csv",
+      "size": 17471147,
+      "checksum": "md5:be5b5b11b5950712aab4a885fbecf053",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/edges.csv/content"
+      }
+    },
+    {
+      "id": "7563bb81-4a58-42b8-9926-6fe58f1362a3",
+      "key": "datapackage.json",
+      "size": 198060,
+      "checksum": "md5:b88edeb2202b30d209f61182ea8afd3f",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/datapackage.json/content"
+      }
+    },
+    {
+      "id": "c9c512a7-c3b4-4e57-a4f2-4f5e3fdcc89e",
+      "key": "tags.csv",
+      "size": 361401,
+      "checksum": "md5:c136b64b800e3745cf144e0f1760806d",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/tags.csv/content"
+      }
+    },
+    {
+      "id": "00b1606d-fd30-4a6b-82f9-9a74445e2b69",
+      "key": "twilights.csv",
+      "size": 3557624,
+      "checksum": "md5:3eb59765813e46f11d8df5bea441db54",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/twilights.csv/content"
+      }
+    },
+    {
+      "id": "a7849349-e04b-4da6-aff8-6c43fe279724",
+      "key": "datapackages.csv",
+      "size": 32497,
+      "checksum": "md5:64dab367f3c9a0c3b2415a4b093c9eb8",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/datapackages.csv/content"
+      }
+    },
+    {
+      "id": "77f5fb08-a5c7-487a-bc24-e22150713624",
+      "key": "pressurepaths.csv",
+      "size": 1160795235,
+      "checksum": "md5:5ebef117b9aa4533addffb53fe284799",
+      "links": {
+        "self": "https://zenodo.org/api/records/18187093/files/pressurepaths.csv/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "54484"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 137,
+    "unique_downloads": 77,
+    "views": 13,
+    "unique_views": 12,
+    "version_downloads": 137,
+    "version_unique_downloads": 77,
+    "version_unique_views": 12,
+    "version_views": 13
+  },
+  "state": "done",
+  "submitted": true
+}

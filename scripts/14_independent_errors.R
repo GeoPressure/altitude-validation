@@ -1,7 +1,7 @@
 # Altitude errors at references with a documented barometer height: GNSS stations with met sensors
-# (not assimilated by ERA5) and MeteoSwiss SwissMetNet (barometer height published separately).
+# (assimilation status unverified) and MeteoSwiss SwissMetNet (barometer height published separately).
 #
-# GNSS barometer height. Two independent estimates are compared:
+# GNSS barometer height. Two documented estimates are compared:
 #   - log:    marker ellipsoidal height (site log XYZ) + Marker->ARP Up + "Height Diff to Ant" of the
 #             pressure sensor, each taken from the site-log entry valid on that day;
 #   - header: SENSOR POS H of the daily RINEX met file (and the height of SENSOR POS XYZ when given).
@@ -9,7 +9,7 @@
 # days). The log height is used where the log covers the day, else the header height. Ellipsoidal heights are converted to heights above the geoid with EGM96, the geoid of
 # ERA5's orography (SRTM30) south of 60N; EGM2008 is used as a sensitivity.
 #
-# The altitude is computed exactly as for the HadISD stations (ERA5 single-levels and ERA5-Land,
+# The altitude is computed exactly as for the GHCNh stations (ERA5 single-levels and ERA5-Land,
 # GeoPressureR's `pressure_to_altitude()`), and gross errors are removed with the same rule.
 
 source("R/utils.R")
@@ -36,7 +36,7 @@ log_field <- function(block, name) {
   if (length(m) == 0) return(NA_character_)
   trimws(sub("^[^:]*:", "", m))
 }
-log_num <- function(x) suppressWarnings(as.numeric(regmatches(x, regexpr("[-+]?[0-9]+(\\.[0-9]+)?", x))))
+log_num <- function(x) suppressWarnings(as.numeric(regmatches(x, regexpr("[-+]?[0-9]+(\\.[0-9]+)?", x)))[1])
 log_date <- function(x, default) {
   x <- substr(x, 1, 10)
   if (length(x) == 0 || is.na(x) || !grepl("^[0-9]{4}-[0-9]{2}-[0-9]{2}$", x)) return(default)
@@ -46,7 +46,7 @@ log_date <- function(x, default) {
 #' Periods of the site log: marker position, and per period the ARP height and the pressure
 #' sensor (model, accuracy, height above the ARP).
 parse_log <- function(path) {
-  s <- paste(readLines(path, warn = FALSE), collapse = "\n")
+  s <- paste(readLines(path, warn = FALSE, encoding = "latin1"), collapse = "\n")
   xyz <- vapply(c("X", "Y", "Z"), function(k) log_num(log_field(s, paste(k, "coordinate \\(m\\)"))),
     numeric(1))
   g <- ecef_to_geodetic(xyz[1], xyz[2], xyz[3])
@@ -88,7 +88,7 @@ G <- rbindlist(lapply(list.files(gnss_dir, "\\.parquet$", full.names = TRUE), fu
   }
   lg <- parse_log(lf[1])
   if (!is.finite(lg$h_marker)) return(NULL)
-  day <- as.Date(d$date)
+  day <- unique(as.Date(d$date))
   arp <- vapply(day, function(x) {
     v <- lg$ant[from <= x & to > x, arp_up]
     if (length(v)) v[1] else NA_real_
@@ -97,6 +97,8 @@ G <- rbindlist(lapply(list.files(gnss_dir, "\\.parquet$", full.names = TRUE), fu
     v <- which(lg$pr$from <= x & lg$pr$to > x)
     if (length(v)) v[length(v)] else NA_integer_
   }, integer(1))
+  arp <- arp[match(as.Date(d$date), day)]
+  ip <- ip[match(as.Date(d$date), day)]
   d[, `:=`(lat = lg$lat, lon = lg$lon, h_marker = lg$h_marker, arp_up = arp,
     hdiff = lg$pr$hdiff[ip], log_model = lg$pr$log_model[ip], log_acc = lg$pr$log_acc[ip])]
   d[, h_log := h_marker + arp_up + hdiff]
@@ -129,10 +131,11 @@ hc[, sensor_class := fcase(
   grepl("wxt|wtx|weather transmitter", sensor, ignore.case = TRUE), "weather transmitter (WXT)",
   default = "other/unknown")]
 G <- merge(G, hc[, .(station, height_ok, sensor_class)], by = "station")
-# The site-log height is used where available (independent of the met file), else the header's.
+# The site-log height is used where available (documented separately from the met file), else the header's.
 G[, h_use := fifelse(is.finite(h_log), h_log, hdr_H)]
 G[, `:=`(elev = h_use - N96, elev_08 = h_use - N08)]
 G <- G[is.finite(elev) & is.finite(pressure)]
+# GNSS in_isd below is a legacy placeholder, not a verified membership/assimilation flag.
 G <- G[, .(source = "GNSS", id = station, lat, lon, date, pressure, elev, elev_08,
   elev_hdr = hdr_H - N96, height_ok, sensor_class, in_isd = FALSE)]
 
@@ -163,29 +166,46 @@ st[, sdor := {
 
 err_dir <- file.path(dir_interim, "indep")
 dir.create(err_dir, showWarnings = FALSE)
+var_sl <- c("surface_pressure", "temperature_2m", "dewpoint_temperature_2m")
 one <- function(k) {
   s <- st[k]
   out <- file.path(err_dir, paste0(s$source, "_", s$id, ".parquet"))
-  if (file.exists(out)) return(TRUE)
+  if (file.exists(out)) {
+    d <- as.data.table(read_parquet(out))
+    if ("d2m" %in% names(d)) return(TRUE)
+    # Written before the ERA5 inputs were kept: read them again, for 16_formula.R.
+    a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date, var_sl, "single-levels")
+    d[, `:=`(sp_sl = a$surface_pressure, t2m_sl = a$temperature_2m,
+      d2m = a$dewpoint_temperature_2m)]
+    write_parquet(d, out)
+    return(TRUE)
+  }
   d <- X[source == s$source & id == s$id]
-  a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date,
-    c("surface_pressure", "temperature_2m"), "single-levels")
+  a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date, var_sl, "single-levels")
   l <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date,
     c("surface_pressure", "temperature_2m"), "land")
   d[, err_sl := era5_altitude(pressure * 100, a$surface_pressure, a$temperature_2m, s$z_sl) - elev]
   d[, err_land := era5_altitude(pressure * 100, l$surface_pressure, l$temperature_2m, s$z_land) -
     elev]
+  # ERA5 inputs, kept so that 16_formula.R can evaluate formula variants
+  d[, `:=`(sp_sl = a$surface_pressure, t2m_sl = a$temperature_2m,
+    d2m = a$dewpoint_temperature_2m)]
   write_parquet(d, out)
   TRUE
 }
 res <- par_map(seq_len(nrow(st)), one, cores = n_cores, geopressurer = TRUE,
-  export = c("st", "X", "err_dir"))
+  export = c("st", "X", "err_dir", "var_sl"))
 cat(sum(vapply(res, isTRUE, logical(1))), "of", nrow(st), "stations done\n")
 
 E <- rbindlist(lapply(list.files(err_dir, "\\.parquet$", full.names = TRUE), function(f) {
   as.data.table(read_parquet(f))
 }))
-# Gross errors, as for HadISD: more than 100 m and 10 robust SD from the station's median error
+# Daily met files can overlap at midnight. Average repeated hours before QC and coverage.
+E <- average_reference_hours(E)
+E[st, on = .(source, id), z_sl := i.z_sl]
+E[, err_sl := era5_altitude(pressure * 100, sp_sl, t2m_sl, z_sl) - elev]
+# Cached ERA5-Land errors are averaged at repeated hours; primary comparisons use single-levels.
+# Gross errors, as for GHCNh: more than 100 m and 10 robust SD from the station's median error
 E[, gross := {
   m <- median(err_sl, na.rm = TRUE)
   abs(err_sl - m) > max(100, 10 * mad(err_sl, na.rm = TRUE))
@@ -217,12 +237,12 @@ fwrite(counts, file.path(dir_tables, "indep_counts.csv"))
 print(counts)
 
 
-# ---- Comparison with HadISD ------------------------------------------------------------------
-# Same statistics by terrain for the HadISD reference set and the independent references, so that
-# assimilated and non-assimilated stations are compared in similar terrain.
+# ---- Comparison with GHCNh ------------------------------------------------------------------
+# Same statistics by terrain for the GHCNh reference set and the complementary references, so that
+# complementary reference archives are compared in similar terrain.
 hz <- fread(file.path(dir_tables, "ground_station_stats.csv"))[reference == TRUE]
 cmp <- rbind(
-  hz[, .(set = "HadISD reference set", terrain = terrain_class(sdor), bias_sl, sd_sl)],
+  hz[, .(set = "GHCNh reference set", terrain = terrain_class(sdor), bias_sl, sd_sl)],
   ss[source == "GNSS" & height_ok, .(set = "GNSS, height-checked", terrain = terrain_class(sdor), bias_sl,
     sd_sl)],
   ss[source == "MeteoSwiss", .(set = fifelse(in_isd, "MeteoSwiss, in ISD", "MeteoSwiss, not in ISD"),
@@ -235,7 +255,7 @@ print(cmp)
 
 # Station density: if ERA5 fitted each assimilated station tightly, isolated stations (largest
 # observation influence) would show the smallest scatter.
-all_st <- fread(file.path(dir_interim, "hadisd_stations_all.csv"))
+all_st <- fread(file.path(dir_interim, "ghcnh_stations_all.csv"))
 hav <- function(la1, lo1, la2, lo2) {
   r <- pi / 180
   6371 * 2 * asin(sqrt(sin((la2 - la1) * r / 2)^2 + cos(la1 * r) * cos(la2 * r) *
@@ -249,26 +269,31 @@ dens <- hz[sdor < 20, .(n_stations = .N, sd_median = median(sd_sl),
 fwrite(dens, file.path(dir_tables, "assim_density.csv"))
 print(dens)
 
-# MeteoSwiss barometer heights vs the elevation HadISD lists for the same stations
-had <- fread(file.path(dir_interim, "hadisd_stations_all.csv"))
-had[, wmo := substr(id, 1, 5)]
+# MeteoSwiss barometer heights vs the elevation GHCNh lists for the same stations
+crosswalk <- fread(file.path(dir_interim, "ghcnh", "legacy_station_matches.csv"))
+crosswalk[, wmo := substr(legacy_id, 1, 5)]
+crosswalk <- crosswalk[grepl("^[0-9]{5}$", wmo) & distance_km <= 1,
+  .(match_distance_km = min(distance_km)), by = .(wmo, ghcnh_id)]
+ghc <- fread(file.path(dir_interim, "ghcnh_stations_all.csv"))
+crosswalk <- merge(crosswalk, ghc[, .(id, ghcnh_elev = elev)],
+  by.x = "ghcnh_id", by.y = "id")
 ms <- merge(ms_st[!is.na(wmo), .(wmo = sprintf("%05d", as.integer(wmo)), id, name, elev_station,
-  elev)], had[, .(wmo, hadisd_id = id, hadisd_elev = elev)], by = "wmo")
-ms[, `:=`(d_station = hadisd_elev - elev_station, d_barometer = hadisd_elev - elev)]
-# ERA5 bias at the same Swiss stations with HadISD's elevation and with the published barometer
-# height: if HadISD's biases there come from its elevations, they follow -(HadISD - barometer).
+  elev)], crosswalk[, .(wmo, ghcnh_id, ghcnh_elev, match_distance_km)], by = "wmo")
+ms[, `:=`(d_station = ghcnh_elev - elev_station, d_barometer = ghcnh_elev - elev)]
+# ERA5 bias at the same Swiss stations with GHCNh's elevation and with the published barometer
+# height: if GHCNh's biases there come from its elevations, they follow -(GHCNh - barometer).
 hz_all <- fread(file.path(dir_tables, "ground_station_stats.csv"))
-ms <- merge(ms, hz_all[, .(hadisd_id = id, bias_hadisd = bias_sl, reference)], by = "hadisd_id",
+ms <- merge(ms, hz_all[, .(ghcnh_id = id, bias_ghcnh = bias_sl, reference, ghcnh_year = selected_year)], by = "ghcnh_id",
   all.x = TRUE)
 ms <- merge(ms, ss[source == "MeteoSwiss", .(id, bias_meteoswiss = bias_sl)], by = "id", all.x = TRUE)
-fwrite(ms, file.path(dir_tables, "meteoswiss_vs_hadisd.csv"))
-both <- ms[is.finite(bias_hadisd) & is.finite(bias_meteoswiss)]
+fwrite(ms, file.path(dir_tables, "meteoswiss_vs_ghcnh.csv"))
+both <- ms[is.finite(bias_ghcnh) & is.finite(bias_meteoswiss)]
 fwrite(both[, .(n = .N, n_diff5 = sum(abs(d_barometer) > 5),
-  r_bias_vs_height = cor(bias_hadisd, -d_barometer),
-  abs_bias_median_hadisd = median(abs(bias_hadisd)),
+  r_bias_vs_height = cor(bias_ghcnh, -d_barometer),
+  abs_bias_median_ghcnh = median(abs(bias_ghcnh)),
   abs_bias_median_meteoswiss = median(abs(bias_meteoswiss)),
-  mean_abs_bias_hadisd = mean(abs(bias_hadisd)), mean_abs_bias_meteoswiss = mean(abs(bias_meteoswiss)),
+  mean_abs_bias_ghcnh = mean(abs(bias_ghcnh)), mean_abs_bias_meteoswiss = mean(abs(bias_meteoswiss)),
   n_ref = sum(reference), n_ref_diff5 = sum(reference & abs(d_barometer) > 5))],
-  file.path(dir_tables, "meteoswiss_vs_hadisd_summary.csv"))
-cat(nrow(ms), "MeteoSwiss stations in HadISD; |HadISD elevation - barometer height| > 5 m at",
+  file.path(dir_tables, "meteoswiss_vs_ghcnh_summary.csv"))
+cat(nrow(ms), "MeteoSwiss stations in GHCNh; |GHCNh elevation - barometer height| > 5 m at",
   ms[abs(d_barometer) > 5, .N], "\n")

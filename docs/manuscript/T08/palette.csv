@@ -1,0 +1,16 @@
+group,key,label,colour,linetype,shape
+conversion,isa,Standard atmosphere,#C46532,solid,1
+conversion,standard,ERA5 · standard lapse rate,#315B91,solid,15
+conversion,virtual,ERA5 · virtual temperature + GPT3,#007F86,solid,16
+reference,profile,Observed radiosonde,#3B6FB6,solid,1
+reference,HadISD,HadISD,#3B6FB6,solid,16
+reference,GNSS,GNSS,#7E57C2,solid,15
+reference,IGRA2,IGRA2,#B87816,solid,17
+reference,MeteoSwiss,MeteoSwiss,#B74763,solid,18
+neutral,ink,Text / zero / benchmark,#263442,solid,16
+neutral,muted,Supporting text,#586575,solid,16
+neutral,empirical,Unclassified empirical detail,#8793A1,solid,16
+neutral,grid,Major grid,#E6EAEE,solid,16
+neutral,land,Map land,#EEF1F4,solid,16
+neutral,paper,Background,#FFFFFF,solid,16
+product,land,ERA5-Land,#C46532,longdash,17

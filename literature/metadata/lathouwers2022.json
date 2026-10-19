@@ -1,0 +1,1172 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        27
+      ]
+    ],
+    "date-time": "2026-09-27T05:11:54Z",
+    "timestamp": 1790485914047,
+    "version": "4.1.0"
+  },
+  "reference-count": 65,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "1",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2022,
+            3,
+            23
+          ]
+        ],
+        "date-time": "2022-03-23T00:00:00Z",
+        "timestamp": 1647993600000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2022,
+            3,
+            23
+          ]
+        ],
+        "date-time": "2022-03-23T00:00:00Z",
+        "timestamp": 1647993600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/4.0"
+    }
+  ],
+  "funder": [
+    {
+      "name": "Bijzonder Onderzoeksfonds UHasselt UNamur, Belgium",
+      "award": [
+        "R-9983"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "R-9983"
+          ]
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100003130",
+      "name": "Fonds Wetenschappelijk Onderzoek",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "K216419N"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "K216419N"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100003130",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "name": "Koning Leopold III Fonds"
+    },
+    {
+      "DOI": "10.13039/501100003338",
+      "name": "Bundesamt für Umwelt",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "254, 332, 363, 400"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "254, 332, 363, 400"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100003338",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100004189",
+      "name": "Max-Planck-Gesellschaft",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100004189",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "link.springer.com"
+    ],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Sci Rep"
+  ],
+  "abstract": "<jats:title>Abstract</jats:title><jats:p>During their annual migration, avian migrants alternate stopover periods, for refuelling, with migratory flight bouts. We hypothesise that European Nightjars (<jats:italic>Caprimulgus europaeus</jats:italic>) adapt their daily migration tactics in association with biomes. We tracked the autumn migration of 24 European Nightjars, from breeding populations in Mongolia, Belgium and UK, using GPS-loggers and multi-sensor data loggers. We quantified crepuscular and nocturnal migration and foraging probabilities, as well as daily travel speed and flight altitude during active migration in response to biomes. Nightjars adopt a rush tactic, reflected in high daily travel speed, flight altitude and high migration probabilities at dusk and at night, when travelling through ecological barriers. Migration is slower in semi-open, hospitable biomes. This is reflected in high foraging probabilities at dusk, lower daily travel speed and lower migration probabilities at dusk. Our study shows how nightjars switch migration tactics during autumn migration, and suggest nightjars alternate between feeding and short migratory flight bouts within the same night when travelling through suitable habitats. How this may affect individuals’ fuel stores and whether different biomes provide refuelling opportunities<jats:italic>en route</jats:italic>remains to be investigated, to understand how future land-use change may affect migration patterns and survival probabilities.</jats:p>",
+  "DOI": "10.1038/s41598-022-09106-y",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2022,
+        3,
+        23
+      ]
+    ],
+    "date-time": "2022-03-23T11:04:41Z",
+    "timestamp": 1648033481000
+  },
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 11,
+  "title": [
+    "Rush or relax: migration tactics of a nocturnal insectivore in response to ecological barriers"
+  ],
+  "prefix": "10.1038",
+  "volume": "12",
+  "author": [
+    {
+      "given": "Michiel",
+      "family": "Lathouwers",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Tom",
+      "family": "Artois",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Nicolas",
+      "family": "Dendoncker",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Natalie",
+      "family": "Beenaerts",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Greg",
+      "family": "Conway",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Ian",
+      "family": "Henderson",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Céline",
+      "family": "Kowalczyk",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Batmunkh",
+      "family": "Davaasuren",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Soddelgerekh",
+      "family": "Bayrgur",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Mike",
+      "family": "Shewring",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Tony",
+      "family": "Cross",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Eddy",
+      "family": "Ulenaers",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Felix",
+      "family": "Liechti",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Ruben",
+      "family": "Evens",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "297",
+  "published-online": {
+    "date-parts": [
+      [
+        2022,
+        3,
+        23
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "issue": "1",
+      "key": "9106_CR1",
+      "doi-asserted-by": "publisher",
+      "first-page": "11",
+      "DOI": "10.1890/12-0737.1",
+      "volume": "94",
+      "author": "JA Alves",
+      "year": "2013",
+      "unstructured": "Alves, J. A. et al. Costs, benefits, and fitness consequences of different migratory strategies. Ecology 94(1), 11–17 (2013).",
+      "journal-title": "Ecology"
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR2",
+      "doi-asserted-by": "publisher",
+      "first-page": "387",
+      "DOI": "10.2307/3677157",
+      "volume": "29",
+      "author": "RM Alexander",
+      "year": "1998",
+      "unstructured": "Alexander, R. M. When is migration worthwhile for animals that walk, swim or fly?. J. Avian Biol. 29(4), 387–394 (1998).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "9106_CR3",
+      "doi-asserted-by": "publisher",
+      "first-page": "704",
+      "DOI": "10.1038/423704a",
+      "volume": "423",
+      "author": "M Wikelski",
+      "year": "2003",
+      "unstructured": "Wikelski, M. et al. Costs of migration in free-flying songbirds. Nature 423, 704 (2003).",
+      "journal-title": "Nature"
+    },
+    {
+      "issue": "2",
+      "key": "9106_CR4",
+      "doi-asserted-by": "publisher",
+      "first-page": "247",
+      "DOI": "10.1034/j.1600-0706.2003.12559.x",
+      "volume": "103",
+      "author": "T Alerstam",
+      "year": "2003",
+      "unstructured": "Alerstam, T., Hedenström, A. & Åkesson, S. Long-distance migration: evolution and determinants. Oikos 103(2), 247–260 (2003).",
+      "journal-title": "Oikos"
+    },
+    {
+      "key": "9106_CR5",
+      "doi-asserted-by": "publisher",
+      "first-page": "5",
+      "DOI": "10.1007/s10336-011-0694-1",
+      "volume": "152",
+      "author": "T Alerstam",
+      "year": "2011",
+      "unstructured": "Alerstam, T. Optimal bird migration revisited. J. Ornithol. 152, 5–23 (2011).",
+      "journal-title": "J. Ornithol."
+    },
+    {
+      "key": "9106_CR6",
+      "doi-asserted-by": "publisher",
+      "first-page": "227",
+      "DOI": "10.1006/jtbi.1997.0505",
+      "volume": "189",
+      "author": "A Hedenstrom",
+      "year": "1997",
+      "unstructured": "Hedenstrom, A. & Alerstam, T. Optimum fuel loads in migratory birds: Distinguishing between time and energy minimization. J. Theor. Biol. 189, 227–234 (1997).",
+      "journal-title": "J. Theor. Biol."
+    },
+    {
+      "key": "9106_CR7",
+      "doi-asserted-by": "publisher",
+      "first-page": "78",
+      "DOI": "10.3389/fevo.2020.00078",
+      "volume": "8",
+      "author": "S Åkesson",
+      "year": "2020",
+      "unstructured": "Åkesson, S. & Helm, B. Endogenous programs and flexibility in bird migration. Front. Ecol. Evol. 8, 78 (2020).",
+      "journal-title": "Front. Ecol. Evol."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR8",
+      "doi-asserted-by": "publisher",
+      "first-page": "20248",
+      "DOI": "10.1038/s41598-019-56677-4",
+      "volume": "9",
+      "author": "F Jiguet",
+      "year": "2019",
+      "unstructured": "Jiguet, F. et al. Desert crossing strategies of migrant songbirds vary between and within species. Sci. Rep. 9(1), 20248 (2019).",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "key": "9106_CR9",
+      "doi-asserted-by": "publisher",
+      "first-page": "111",
+      "DOI": "10.3389/fevo.2020.00111",
+      "volume": "8",
+      "author": "NR Senner",
+      "year": "2020",
+      "unstructured": "Senner, N. R., Morbey, Y. E. & Sandercock, B. K. Editorial: Flexibility in the migration strategies of animals. Front. Ecol. Evol. 8, 111 (2020).",
+      "journal-title": "Front. Ecol. Evol."
+    },
+    {
+      "key": "9106_CR10",
+      "doi-asserted-by": "crossref",
+      "first-page": "417",
+      "DOI": "10.1111/j.1600-048X.2013.00139.x",
+      "volume": "44",
+      "author": "U Mellone",
+      "year": "2013",
+      "unstructured": "Mellone, U., López-López, P., Limiñana, R., Piasevoli, G. & Urios, V. The trans-equatorial loop migration system of Eleonora’s falcon: Differences in migration patterns between age classes, regions and seasons. J. Avian Biol. 44, 417–426 (2013).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "1695",
+      "key": "9106_CR11",
+      "first-page": "2755",
+      "volume": "277",
+      "author": "D Chevallier",
+      "year": "2010",
+      "unstructured": "Chevallier, D. et al. Influence of weather conditions on the flight of migrating black storks. Proc. Biol. Sci. 277(1695), 2755–2764 (2010).",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "9106_CR12",
+      "doi-asserted-by": "publisher",
+      "first-page": "137",
+      "DOI": "10.5253/078.099.0203",
+      "volume": "99",
+      "author": "B Verhelst",
+      "year": "2011",
+      "unstructured": "Verhelst, B., Jansen, J. & Vansteelant, W. South West Georgia: An important bottleneck for raptor migration during autumn. Ardea 99, 137–146 (2011).",
+      "journal-title": "Ardea"
+    },
+    {
+      "issue": "9",
+      "key": "9106_CR13",
+      "doi-asserted-by": "publisher",
+      "first-page": "1427",
+      "DOI": "10.1007/s00265-008-0572-x",
+      "volume": "62",
+      "author": "RHG Klaassen",
+      "year": "2008",
+      "unstructured": "Klaassen, R. H. G., Strandberg, R., Hake, M. & Alerstam, T. Flexibility in daily travel routines causes regional variation in bird migration speed. Behav. Ecol. Sociobiol. 62(9), 1427–1432 (2008).",
+      "journal-title": "Behav. Ecol. Sociobiol."
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR14",
+      "doi-asserted-by": "publisher",
+      "first-page": "319",
+      "DOI": "10.1006/jtbi.2001.2266",
+      "volume": "209",
+      "author": "T Alerstam",
+      "year": "2001",
+      "unstructured": "Alerstam, T. Detours in bird migration. J. Theor. Biol. 209(3), 319–331 (2001).",
+      "journal-title": "J. Theor. Biol."
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR15",
+      "doi-asserted-by": "publisher",
+      "first-page": "343",
+      "DOI": "10.2307/3677155",
+      "volume": "29",
+      "author": "T Alerstam",
+      "year": "1998",
+      "unstructured": "Alerstam, T. & Hedenström, A. The development of bird migration theory. J. Avian Biol. 29(4), 343–369 (1998).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "9106_CR16",
+      "doi-asserted-by": "publisher",
+      "first-page": "205",
+      "DOI": "10.1093/auk/117.1.205",
+      "volume": "117",
+      "author": "F Liechti",
+      "year": "2000",
+      "unstructured": "Liechti, F., Klaassen, M. & Bruderer, B. Predicting migratory flight altitudes by physiological migration models. Auk 117, 205–214 (2000).",
+      "journal-title": "Auk"
+    },
+    {
+      "key": "9106_CR17",
+      "first-page": "285",
+      "volume": "2018",
+      "author": "NR Senner",
+      "year": "1881",
+      "unstructured": "Senner, N. R. et al. High-altitude shorebird migration in the absence of topographical barriers: Avoiding high air temperatures and searching for profitable winds. Proc. Biol. Sci. 2018, 285 (1881).",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "issue": "20",
+      "key": "9106_CR18",
+      "doi-asserted-by": "publisher",
+      "first-page": "jeb242836",
+      "DOI": "10.1242/jeb.242836",
+      "volume": "224",
+      "author": "G Norevik",
+      "year": "2021",
+      "unstructured": "Norevik, G., Akesson, S., Andersson, A., Backman, J. & Hedenstrom, A. Flight altitude dynamics of migrating European nightjars across regions and seasons. J. Exp. Biol. 224(20), jeb242836 (2021).",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "9106_CR19",
+      "doi-asserted-by": "publisher",
+      "first-page": "10",
+      "DOI": "10.1186/s40462-020-0190-4",
+      "volume": "8",
+      "author": "TG Hadjikyriakou",
+      "year": "2020",
+      "unstructured": "Hadjikyriakou, T. G., Nwankwo, E. C., Virani, M. Z. & Kirschel, A. N. G. Habitat availability influences migration speed, refueling patterns and seasonal flyways of a fly-and-forage migrant. Mov. Ecol. 8, 10 (2020).",
+      "journal-title": "Mov. Ecol."
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR20",
+      "doi-asserted-by": "publisher",
+      "first-page": "287",
+      "DOI": "10.5253/078.097.0304",
+      "volume": "97",
+      "author": "R Strandberg",
+      "year": "2009",
+      "unstructured": "Strandberg, R., Klaassen, R. H. G., Olofsson, P. & Alerstam, T. Daily travel schedules of adult Eurasian Hobbies Falco subbuteo—Variability in flight hours and migration speed along the route. Ardea 97(3), 287–295 (2009).",
+      "journal-title": "Ardea"
+    },
+    {
+      "issue": "12",
+      "key": "9106_CR21",
+      "doi-asserted-by": "publisher",
+      "first-page": "1865",
+      "DOI": "10.1007/s00265-007-0426-y",
+      "volume": "61",
+      "author": "R Strandberg",
+      "year": "2007",
+      "unstructured": "Strandberg, R. & Alerstam, T. The strategy of fly-and-forage migration, illustrated for the osprey (Pandion haliaetus). Behav. Ecol. Sociobiol. 61(12), 1865–1875 (2007).",
+      "journal-title": "Behav. Ecol. Sociobiol."
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR22",
+      "doi-asserted-by": "publisher",
+      "first-page": "834",
+      "DOI": "10.1642/AUK-17-202.1",
+      "volume": "135",
+      "author": "EA McKinnon",
+      "year": "2018",
+      "unstructured": "McKinnon, E. A. & Love, O. P. Ten years tracking the migrations of small landbirds: Lessons learned in the golden age of bio-logging. Auk 135(4), 834–856 (2018).",
+      "journal-title": "Auk"
+    },
+    {
+      "issue": "6–7",
+      "key": "9106_CR23",
+      "doi-asserted-by": "publisher",
+      "first-page": "543",
+      "DOI": "10.1007/s00359-017-1165-9",
+      "volume": "203",
+      "author": "J Backman",
+      "year": "2017",
+      "unstructured": "Backman, J. et al. Actogram analysis of free-flying migratory birds: New perspectives based on acceleration logging. J. Comp. Physiol. A Neuroethol. Sens. Neural Behav. Physiol. 203(6–7), 543–564 (2017).",
+      "journal-title": "J. Comp. Physiol. A Neuroethol. Sens. Neural Behav. Physiol."
+    },
+    {
+      "issue": "9",
+      "key": "9106_CR24",
+      "doi-asserted-by": "publisher",
+      "first-page": "1238",
+      "DOI": "10.1111/jav.00996",
+      "volume": "48",
+      "author": "R Evens",
+      "year": "2017",
+      "unstructured": "Evens, R., Beenaerts, N., Witters, N. & Artois, T. Study on the foraging behaviour of the European nightjar Caprimulgus europaeus reveals the need for a change in conservation strategy in Belgium. J. Avian Biol. 48(9), 1238–1245 (2017).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "14",
+      "key": "9106_CR25",
+      "doi-asserted-by": "publisher",
+      "first-page": "7106",
+      "DOI": "10.1002/ece3.6412",
+      "volume": "10",
+      "author": "R Evens",
+      "year": "2020",
+      "unstructured": "Evens, R. et al. Lunar synchronization of daily activity patterns in a crepuscular avian insectivore. Ecol. Evol. 10(14), 7106–7116 (2020).",
+      "journal-title": "Ecol. Evol."
+    },
+    {
+      "key": "9106_CR26",
+      "doi-asserted-by": "publisher",
+      "first-page": "19",
+      "DOI": "10.1186/s40462-018-0137-1",
+      "volume": "6",
+      "author": "F Liechti",
+      "year": "2018",
+      "unstructured": "Liechti, F. et al. Miniaturized multi-sensor loggers provide new insight into year-round flight behaviour of small trans-Sahara avian migrants. Mov. Ecol. 6, 19 (2018).",
+      "journal-title": "Mov. Ecol."
+    },
+    {
+      "key": "9106_CR27",
+      "doi-asserted-by": "publisher",
+      "first-page": "2554",
+      "DOI": "10.1038/ncomms3554",
+      "volume": "4",
+      "author": "F Liechti",
+      "year": "2013",
+      "unstructured": "Liechti, F., Witvliet, W., Weber, R. & Bachler, E. First evidence of a 200-day non-stop flight in a bird. Nat. Commun. 4, 2554 (2013).",
+      "journal-title": "Nat. Commun."
+    },
+    {
+      "key": "9106_CR28",
+      "unstructured": "Dhanjal-Adams, K. L. PAMLr: Suite of functions for manipulating pressure, activity, magnetism and light data in R. (2020)."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR29",
+      "doi-asserted-by": "publisher",
+      "first-page": "221",
+      "DOI": "10.1111/1365-2656.13036",
+      "volume": "89",
+      "author": "S Lisovski",
+      "year": "2020",
+      "unstructured": "Lisovski, S. et al. Light-level geolocator analyses: A user’s guide. J. Anim. Ecol. 89(1), 221–236 (2020).",
+      "journal-title": "J. Anim. Ecol."
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR30",
+      "doi-asserted-by": "publisher",
+      "first-page": "603",
+      "DOI": "10.1111/j.2041-210X.2012.00185.x",
+      "volume": "3",
+      "author": "S Lisovski",
+      "year": "2012",
+      "unstructured": "Lisovski, S. et al. Geolocation by light: Accuracy and precision affected by environmental factors. Methods Ecol. Evol. 3(3), 603–612 (2012).",
+      "journal-title": "Methods Ecol. Evol."
+    },
+    {
+      "key": "9106_CR31",
+      "unstructured": "Wotherspoon, S., Sumner, M., Lisovski, S. SGAT-Package: Solar/Satellite Geolocation for Animal Tracking. (2021). R package version 0.1.3. GitHub Repository."
+    },
+    {
+      "key": "9106_CR32",
+      "unstructured": "Bauer, R. RchivalTag: Analyzing Archival Tagging Data. R package version 0.1.2. (2020)."
+    },
+    {
+      "issue": "9",
+      "key": "9106_CR33",
+      "doi-asserted-by": "publisher",
+      "first-page": "e01821",
+      "DOI": "10.1111/jav.01821",
+      "volume": "49",
+      "author": "S Sjöberg",
+      "year": "2018",
+      "unstructured": "Sjöberg, S. et al. Barometer logging reveals new dimensions of individual songbird migration. J. Avian Biol. 49(9), e01821 (2018).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR34",
+      "doi-asserted-by": "publisher",
+      "first-page": "680",
+      "DOI": "10.1111/ibi.12469",
+      "volume": "159",
+      "author": "R Evens",
+      "year": "2017",
+      "unstructured": "Evens, R. et al. Migratory pathways, stopover zones and wintering destinations of Western European Nightjars Caprimulgus europaeus. Ibis 159(3), 680–686 (2017).",
+      "journal-title": "Ibis"
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR35",
+      "doi-asserted-by": "publisher",
+      "first-page": "355",
+      "DOI": "10.1080/01490410903297766",
+      "volume": "32",
+      "author": "JJ Becker",
+      "year": "2009",
+      "unstructured": "Becker, J. J. et al. Global bathymetry and elevation data at 30 arc seconds resolution: SRTM30_PLUS. Mar. Geodesy 32(4), 355–371 (2009).",
+      "journal-title": "Mar. Geodesy"
+    },
+    {
+      "key": "9106_CR36",
+      "volume-title": "Terrestrial Ecoregions of North America: A Conservation Assessment",
+      "author": "TH Ricketts",
+      "year": "1999",
+      "unstructured": "Ricketts, T. H. Terrestrial Ecoregions of North America: A Conservation Assessment (Island Press, 1999)."
+    },
+    {
+      "issue": "11",
+      "key": "9106_CR37",
+      "doi-asserted-by": "publisher",
+      "first-page": "933",
+      "DOI": "10.1641/0006-3568(2001)051[0933:TEOTWA]2.0.CO;2",
+      "volume": "51",
+      "author": "DM Olson",
+      "year": "2001",
+      "unstructured": "Olson, D. M. et al. Terrestrial ecoregions of the world: A new map of life on earth. Bioscience 51(11), 933–938 (2001).",
+      "journal-title": "Bioscience"
+    },
+    {
+      "key": "9106_CR38",
+      "unstructured": "QGIS-Development-Team: QGIS Geographic Information System. Open Source Geospatial Foundation (2021)."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR39",
+      "doi-asserted-by": "publisher",
+      "first-page": "37",
+      "DOI": "10.1186/s40462-021-00272-8",
+      "volume": "9",
+      "author": "WMG Vansteelant",
+      "year": "2021",
+      "unstructured": "Vansteelant, W. M. G., Gangoso, L., Bouten, W., Viana, D. S. & Figuerola, J. Adaptive drift and barrier-avoidance by a fly-forage migrant along a climate-driven flyway. Mov. Ecol. 9(1), 37 (2021).",
+      "journal-title": "Mov. Ecol."
+    },
+    {
+      "issue": "2",
+      "key": "9106_CR40",
+      "doi-asserted-by": "publisher",
+      "first-page": "378",
+      "DOI": "10.32614/RJ-2017-066",
+      "volume": "9",
+      "author": "ME Brooks",
+      "year": "2017",
+      "unstructured": "Brooks, M. E. et al. glmmTMB balances speed and flexibility among packages for zero-inflated generalized linear mixed modeling. R J. 9(2), 378–400 (2017).",
+      "journal-title": "R J."
+    },
+    {
+      "key": "9106_CR41",
+      "unstructured": "Hartig, F. DHARMa: Residual Diagnostics for Hierarchical Multi-Level/Mixed) Regression Models. R package version 0.3.3.0. (2020)."
+    },
+    {
+      "key": "9106_CR42",
+      "unstructured": "Lenth, R. emmeans: Estimated Marginal Means, aka Least-Squares Means. R package version 1.5.1. (2020)."
+    },
+    {
+      "issue": "1704",
+      "key": "9106_CR43",
+      "doi-asserted-by": "publisher",
+      "first-page": "20150393",
+      "DOI": "10.1098/rstb.2015.0393",
+      "volume": "371",
+      "author": "S Akesson",
+      "year": "2016",
+      "unstructured": "Akesson, S., Bianco, G. & Hedenstrom, A. Negotiating an ecological barrier: Crossing the Sahara in relation to winds by common swifts. Philos. Trans. R. Soc. Lond. B Biol. Sci. 371(1704), 20150393 (2016).",
+      "journal-title": "Philos. Trans. R. Soc. Lond. B Biol. Sci."
+    },
+    {
+      "key": "9106_CR44",
+      "doi-asserted-by": "publisher",
+      "first-page": "727",
+      "DOI": "10.1098/rspb.2008.1202",
+      "volume": "276",
+      "author": "R Strandberg",
+      "year": "2009",
+      "unstructured": "Strandberg, R., Klaassen, R. H. G., Hake, M., Olofsson, P. & Alerstam, T. Converging migration routes of Eurasian Hobbies Falco subbuteo crossing the African equatorial rain forest. Proc. R. Soc. B 276, 727–733 (2009).",
+      "journal-title": "Proc. R. Soc. B"
+    },
+    {
+      "issue": "12",
+      "key": "9106_CR45",
+      "doi-asserted-by": "publisher",
+      "first-page": "e115615",
+      "DOI": "10.1371/journal.pone.0115615",
+      "volume": "9",
+      "author": "J Rodriguez-Ruiz",
+      "year": "2014",
+      "unstructured": "Rodriguez-Ruiz, J. et al. Disentangling migratory routes and wintering grounds of Iberian near-threatened European Rollers Coracias garrulus. PLoS ONE 9(12), e115615 (2014).",
+      "journal-title": "PLoS ONE"
+    },
+    {
+      "key": "9106_CR46",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1111/ibi.12118",
+      "volume": "156",
+      "author": "JA Vickery",
+      "year": "2014",
+      "unstructured": "Vickery, J. A. et al. The decline of Afro-Palaearctic migrants and an assessment of potential causes. Ibis 156, 1–22 (2014).",
+      "journal-title": "Ibis"
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR47",
+      "doi-asserted-by": "publisher",
+      "first-page": "3008",
+      "DOI": "10.1038/s41598-018-21321-0",
+      "volume": "8",
+      "author": "R Evens",
+      "year": "2018",
+      "unstructured": "Evens, R. et al. Proximity of breeding and foraging areas affects foraging effort of a crepuscular, insectivorous bird. Sci. Rep. 8(1), 3008 (2018).",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR48",
+      "doi-asserted-by": "publisher",
+      "first-page": "11",
+      "DOI": "10.5751/ACE-01352-140111",
+      "volume": "14",
+      "author": "CM Conring",
+      "year": "2019",
+      "unstructured": "Conring, C. M., Brautigam, K., Grisham, B. A., Collins, D. P. & Conway, W. C. Identifying the migratory strategy of the Lower Colorado River Valley population of Greater Sandhill Cranes. Avian Conserv. Ecol. 14(1), 11 (2019).",
+      "journal-title": "Avian Conserv. Ecol."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR49",
+      "doi-asserted-by": "publisher",
+      "first-page": "2",
+      "DOI": "10.5751/ACE-01463-150102",
+      "volume": "15",
+      "author": "TL Imlay",
+      "year": "2020",
+      "unstructured": "Imlay, T. L., Saldanha, S. & Taylor, P. D. The fall migratory movements of Bank Swallows, Riparia riparia: Fly-and-forage migration?. Avian Conserv. Ecol. 15(1), 2 (2020).",
+      "journal-title": "Avian Conserv. Ecol."
+    },
+    {
+      "key": "9106_CR50",
+      "first-page": "185",
+      "volume": "60",
+      "author": "T Piersma",
+      "year": "1987",
+      "unstructured": "Piersma, T. Hop, skip, or jump? Constraints on migration of arctic waders by feeding, fattening, and flight speed. Limosa 60, 185–194 (1987).",
+      "journal-title": "Limosa"
+    },
+    {
+      "issue": "6",
+      "key": "9106_CR51",
+      "doi-asserted-by": "publisher",
+      "first-page": "621",
+      "DOI": "10.1111/j.1600-048X.2010.05155.x",
+      "volume": "41",
+      "author": "N Warnock",
+      "year": "2010",
+      "unstructured": "Warnock, N. Stopping vs. staging: The difference between a hop and a jump. J. Avian Biol. 41(6), 621–626 (2010).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR52",
+      "doi-asserted-by": "publisher",
+      "first-page": "3405",
+      "DOI": "10.1038/s41598-017-03503-4",
+      "volume": "7",
+      "author": "C Gomez",
+      "year": "2017",
+      "unstructured": "Gomez, C. et al. Fuel loads acquired at a stopover site influence the pace of intercontinental migration in a boreal songbird. Sci. Rep. 7(1), 3405 (2017).",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "issue": "1730",
+      "key": "9106_CR53",
+      "first-page": "1008",
+      "volume": "279",
+      "author": "AP Tottrup",
+      "year": "2012",
+      "unstructured": "Tottrup, A. P. et al. The annual cycle of a trans-equatorial Eurasian-African passerine migrant: different spatio-temporal strategies for autumn and spring migration. Proc. Biol. Sci. 279(1730), 1008–1016 (2012).",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR54",
+      "doi-asserted-by": "publisher",
+      "first-page": "R99",
+      "DOI": "10.1016/j.cub.2017.11.072",
+      "volume": "28",
+      "author": "S Lisovski",
+      "year": "2018",
+      "unstructured": "Lisovski, S. et al. Inherent limits of light-level geolocation may lead to over-interpretation. Curr. Biol. 28(3), R99–R100 (2018).",
+      "journal-title": "Curr. Biol."
+    },
+    {
+      "issue": "7",
+      "key": "9106_CR55",
+      "doi-asserted-by": "publisher",
+      "first-page": "1789",
+      "DOI": "10.1890/06-1871.1",
+      "volume": "88",
+      "author": "JJ Buler",
+      "year": "2007",
+      "unstructured": "Buler, J. J., Moore, F. R. & Woltmann, S. A multi-scale examination of stopover habitat use by birds. Ecology 88(7), 1789–1802 (2007).",
+      "journal-title": "Ecology"
+    },
+    {
+      "issue": "3",
+      "key": "9106_CR56",
+      "doi-asserted-by": "publisher",
+      "first-page": "745",
+      "DOI": "10.1007/s10336-017-1435-x",
+      "volume": "158",
+      "author": "AV Loon",
+      "year": "2017",
+      "unstructured": "Loon, A. V. et al. Migratory stopover timing is predicted by breeding latitude, not habitat quality, in a long-distance migratory songbird. J. Ornithol. 158(3), 745–752 (2017).",
+      "journal-title": "J. Ornithol."
+    },
+    {
+      "issue": "2",
+      "key": "9106_CR57",
+      "doi-asserted-by": "publisher",
+      "first-page": "635",
+      "DOI": "10.1111/1365-2656.13112",
+      "volume": "89",
+      "author": "G Norevik",
+      "year": "2020",
+      "unstructured": "Norevik, G. et al. Wind-associated detours promote seasonal migratory connectivity in a flapping flying long-distance avian migrant. J. Anim. Ecol. 89(2), 635–646 (2020).",
+      "journal-title": "J. Anim. Ecol."
+    },
+    {
+      "issue": "5",
+      "key": "9106_CR58",
+      "doi-asserted-by": "publisher",
+      "first-page": "738",
+      "DOI": "10.1111/jav.01071",
+      "volume": "48",
+      "author": "G Norevik",
+      "year": "2017",
+      "unstructured": "Norevik, G., Åkesson, S. & Hedenström, A. Migration strategies and annual space-use in an Afro-Palaearctic aerial insectivore—The European nightjar Caprimulgus europaeus. J. Avian Biol. 48(5), 738–747 (2017).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR59",
+      "doi-asserted-by": "publisher",
+      "first-page": "77",
+      "DOI": "10.1080/00063657.2012.748714",
+      "volume": "60",
+      "author": "B Cresswell",
+      "year": "2013",
+      "unstructured": "Cresswell, B. & Edwards, D. Geolocators reveal wintering areas of European Nightjar (Caprimulgus europaeus). Bird Study 60(1), 77–86 (2013).",
+      "journal-title": "Bird Study"
+    },
+    {
+      "issue": "1",
+      "key": "9106_CR60",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40317-017-0119-x",
+      "volume": "5",
+      "author": "LB Jacobsen",
+      "year": "2017",
+      "unstructured": "Jacobsen, L. B. et al. Annual spatiotemporal migration schedules in three larger insectivorous birds: European nightjar, common swift and common cuckoo. Anim. Biotelem. 5(1), 1–11 (2017).",
+      "journal-title": "Anim. Biotelem."
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR61",
+      "doi-asserted-by": "publisher",
+      "first-page": "561",
+      "DOI": "10.2307/3677176",
+      "volume": "29",
+      "author": "F Liechti",
+      "year": "1998",
+      "unstructured": "Liechti, F. & Bruderer, B. The relevance of wind for optimal migration theory. J. Avian Biol. 29(4), 561–568 (1998).",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "issue": "4",
+      "key": "9106_CR62",
+      "doi-asserted-by": "publisher",
+      "first-page": "1133",
+      "DOI": "10.1016/j.anbehav.2008.05.024",
+      "volume": "76",
+      "author": "H Schmaljohann",
+      "year": "2008",
+      "unstructured": "Schmaljohann, H., Bruderer, B. & Liechti, F. Sustained bird flights occur at temperatures far beyond expected limits. Anim. Behav. 76(4), 1133–1138 (2008).",
+      "journal-title": "Anim. Behav."
+    },
+    {
+      "issue": "11",
+      "key": "9106_CR63",
+      "doi-asserted-by": "publisher",
+      "first-page": "1609",
+      "DOI": "10.1007/s00265-009-0758-x",
+      "volume": "63",
+      "author": "H Schmaljohann",
+      "year": "2009",
+      "unstructured": "Schmaljohann, H., Liechti, F. & Bruderer, B. Trans-Sahara migrants select flight altitudes to minimize energy costs rather than water loss. Behav. Ecol. Sociobiol. 63(11), 1609–1619 (2009).",
+      "journal-title": "Behav. Ecol. Sociobiol."
+    },
+    {
+      "key": "9106_CR64",
+      "doi-asserted-by": "publisher",
+      "first-page": "646",
+      "DOI": "10.1126/science.abe7291",
+      "volume": "372",
+      "author": "S Sjöberg",
+      "year": "2021",
+      "unstructured": "Sjöberg, S. et al. Extreme altitudes during diurnal flights in a nocturnal songbird migrant. Science 372, 646–648 (2021).",
+      "journal-title": "Science"
+    },
+    {
+      "issue": "2",
+      "key": "9106_CR65",
+      "doi-asserted-by": "publisher",
+      "first-page": "315",
+      "DOI": "10.1007/s10336-017-1506-z",
+      "volume": "159",
+      "author": "B Bruderer",
+      "year": "2018",
+      "unstructured": "Bruderer, B., Peter, D. & Korner-Nievergelt, F. Vertical distribution of bird migration between the Baltic Sea and the Sahara. J. Ornithol. 159(2), 315–336 (2018).",
+      "journal-title": "J. Ornithol."
+    }
+  ],
+  "container-title": [
+    "Scientific Reports"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://www.nature.com/articles/s41598-022-09106-y.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://www.nature.com/articles/s41598-022-09106-y",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://www.nature.com/articles/s41598-022-09106-y.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        11,
+        19
+      ]
+    ],
+    "date-time": "2023-11-19T05:14:29Z",
+    "timestamp": 1700370869000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://www.nature.com/articles/s41598-022-09106-y"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2022,
+        3,
+        23
+      ]
+    ]
+  },
+  "references-count": 65,
+  "journal-issue": {
+    "issue": "1",
+    "published-online": {
+      "date-parts": [
+        [
+          2022,
+          12
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "9106"
+  ],
+  "URL": "https://doi.org/10.1038/s41598-022-09106-y",
+  "relation": {},
+  "ISSN": [
+    "2045-2322"
+  ],
+  "issn-type": [
+    {
+      "value": "2045-2322",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2022,
+        3,
+        23
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "15 December 2021",
+      "order": 1,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "15 March 2022",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "23 March 2022",
+      "order": 3,
+      "name": "first_online",
+      "label": "First Online",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "The authors declare no competing interests.",
+      "order": 1,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Competing interests"
+      }
+    }
+  ],
+  "article-number": "4964"
+}

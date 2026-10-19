@@ -1,0 +1,726 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        7
+      ]
+    ],
+    "date-time": "2026-10-07T17:05:43Z",
+    "timestamp": 1791392743982,
+    "version": "4.3.3"
+  },
+  "reference-count": 46,
+  "publisher": "American Meteorological Society",
+  "issue": "6",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [],
+  "published-print": {
+    "date-parts": [
+      [
+        2016,
+        6,
+        1
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title><jats:p>Bird flight is strongly influenced by local meteorological conditions. With increasing amounts of high-frequency GPS data of bird movement becoming available, as tags become cheaper and lighter, opportunities are created to obtain large datasets of quantitative meteorological information from observations conducted by bird-borne tags. In this article we propose a method for estimating wind velocity and convective velocity scale from tag-based high-frequency GPS data of soaring birds in flight.</jats:p><jats:p>The flight patterns of soaring birds are strongly influenced by the interactions between atmospheric boundary layer processes and the morphology of the bird; climb rates depend on vertical air motion, flight altitude depends on boundary layer height, and drift off the bird’s flight path depends on wind speed and direction. We combine aerodynamic theory of soaring bird flight, the bird’s morphological properties, and three-dimensional GPS measurements at 3-s intervals to estimate the convective velocity scale and horizontal wind velocity at the locations and times of flight.</jats:p><jats:p>We use wind speed and direction observations from meteorological ground stations and estimates of convective velocity from the Ocean–Land–Atmosphere Model (OLAM) to evaluate our findings. Although not collocated, our wind velocity estimates are consistent with ground station data, and convective velocity–scale estimates are consistent with the meteorological model. Our work demonstrates that biologging offers a novel alternative approach for estimating atmospheric conditions on a spatial and temporal scale that complements existing meteorological measurement systems.</jats:p>",
+  "DOI": "10.1175/bams-d-14-00234.1",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2015,
+        10,
+        1
+      ]
+    ],
+    "date-time": "2015-10-01T17:53:27Z",
+    "timestamp": 1443722007000
+  },
+  "page": "951-961",
+  "source": "Crossref",
+  "is-referenced-by-count": 46,
+  "title": [
+    "Using High-Resolution GPS Tracking Data of Bird Flight for Meteorological Observations"
+  ],
+  "prefix": "10.1175",
+  "volume": "97",
+  "author": [
+    {
+      "given": "Jelle",
+      "family": "Treep",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Computational Geo-Ecology, IBED, University of Amsterdam, Amsterdam, Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Gil",
+      "family": "Bohrer",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Civil, Environmental and Geodetic Engineering, The Ohio State University, Columbus, Ohio"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Judy",
+      "family": "Shamoun-Baranes",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Computational Geo-Ecology, IBED, University of Amsterdam, Amsterdam, Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Olivier",
+      "family": "Duriez",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "CEFE UMR 5175, CNRS - Université de Montpellier - Université Paul-Valéry Montpellier - EPHE, Montpellier, France"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Renato",
+      "family": "Prata de Moraes Frasson",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Civil, Environmental and Geodetic Engineering, The Ohio State University, Columbus, Ohio"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Willem",
+      "family": "Bouten",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Computational Geo-Ecology, IBED, University of Amsterdam, Amsterdam, Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "12",
+  "published-online": {
+    "date-parts": [
+      [
+        2016,
+        7,
+        8
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "2020062008121049400_bib1",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.18637/jss.v031.i10",
+      "article-title": "CircStat: A MATLAB toolbox for circular statistics",
+      "volume": "31",
+      "author": "Berens",
+      "year": "2009",
+      "journal-title": "J. Stat. Software"
+    },
+    {
+      "key": "2020062008121049400_bib2",
+      "doi-asserted-by": "publisher",
+      "first-page": "96",
+      "DOI": "10.1111/j.1461-0248.2011.01713.x",
+      "article-title": "Estimating updraft velocity components over large spatial scales: Contrasting migration strategies of golden eagles and turkey vultures",
+      "volume": "15",
+      "author": "Bohrer",
+      "year": "2012",
+      "journal-title": "Ecol. Lett."
+    },
+    {
+      "key": "2020062008121049400_bib3",
+      "doi-asserted-by": "publisher",
+      "first-page": "571",
+      "DOI": "10.1007/s10336-012-0908-1",
+      "article-title": "A flexible GPS tracking system for studying bird behaviour at multiple scales",
+      "volume": "154",
+      "author": "Bouten",
+      "year": "2013",
+      "journal-title": "J. Ornithol."
+    },
+    {
+      "key": "2020062008121049400_bib4",
+      "doi-asserted-by": "publisher",
+      "first-page": "11 634",
+      "DOI": "10.1073/pnas.0800790105",
+      "article-title": "Southern Ocean frontal structure and sea-ice formation rates revealed by elephant seals",
+      "volume": "105",
+      "author": "Charrassin",
+      "year": "2008",
+      "journal-title": "Proc. Natl. Acad. Sci. USA"
+    },
+    {
+      "key": "2020062008121049400_bib5",
+      "doi-asserted-by": "publisher",
+      "first-page": "553",
+      "DOI": "10.1002/qj.828",
+      "article-title": "The ERA-Interim reanalysis: configuration and performance of the data assimilation system",
+      "volume": "137",
+      "author": "Dee",
+      "year": "2011",
+      "journal-title": "Quart. J. Roy. Meteor. Soc."
+    },
+    {
+      "issue": "3",
+      "key": "2020062008121049400_bib6",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/2051-3933-1-3",
+      "article-title": "The environmental-data automated track annotation (Env-DATA) system: Linking animal tracks with environmental data",
+      "volume": "1",
+      "author": "Dodge",
+      "year": "2013",
+      "journal-title": "Mov. Ecol."
+    },
+    {
+      "key": "2020062008121049400_bib7",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2013.0195",
+      "article-title": "Environmental drivers of variability in the movement ecology of turkey vultures (Cathartes aura) in North and South America",
+      "volume": "369B",
+      "author": "Dodge",
+      "year": "2014",
+      "journal-title": "Philos. Trans. Roy. Soc. London"
+    },
+    {
+      "key": "2020062008121049400_bib8",
+      "doi-asserted-by": "publisher",
+      "first-page": "61",
+      "DOI": "10.1016/j.pocean.2010.09.025",
+      "article-title": "Linking foraging behaviour to physical oceanographic structures: Southern elephant seals and mesoscale eddies east of Kerguelen Islands",
+      "volume": "87",
+      "author": "Dragon",
+      "year": "2010",
+      "journal-title": "Prog. Oceanogr."
+    },
+    {
+      "key": "2020062008121049400_bib9",
+      "doi-asserted-by": "publisher",
+      "first-page": "e84887",
+      "DOI": "10.1371/journal.pone.0084887",
+      "article-title": "How cheap is soaring flight in raptors? A preliminary investigation in freely-flying vultures",
+      "volume": "9",
+      "author": "Duriez",
+      "year": "2014",
+      "journal-title": "PloS ONE"
+    },
+    {
+      "key": "2020062008121049400_bib10",
+      "unstructured": "EEA, 2006: Corine land cover types. European Environment Agency, accessed 30 October 2012. [Available online at www.eea.europa.eu/data-and-maps.]"
+    },
+    {
+      "key": "2020062008121049400_bib11",
+      "doi-asserted-by": "publisher",
+      "first-page": "353",
+      "DOI": "10.1098/rstb.1993.0164",
+      "article-title": "Migration by soaring or flapping flight in birds: The relative importance of energy cost and speed",
+      "volume": "342B",
+      "author": "Hedenstrom",
+      "year": "1993",
+      "journal-title": "Philos. Trans. Roy. Soc. London"
+    },
+    {
+      "key": "2020062008121049400_bib12",
+      "author": "Huffaker",
+      "year": "1898"
+    },
+    {
+      "key": "2020062008121049400_bib13",
+      "author": "Kerlinger",
+      "year": "1989"
+    },
+    {
+      "key": "2020062008121049400_bib14",
+      "doi-asserted-by": "publisher",
+      "first-page": "1021",
+      "DOI": "10.1016/S0003-3472(84)80216-X",
+      "article-title": "Flight behaviour of sharp-shinned hawks during migration. I: Over land",
+      "volume": "32",
+      "author": "Kerlinger",
+      "year": "1984",
+      "journal-title": "Anim. Behav."
+    },
+    {
+      "key": "2020062008121049400_bib15",
+      "doi-asserted-by": "publisher",
+      "first-page": "710",
+      "DOI": "10.1098/rsbl.2012.0359",
+      "article-title": "Flight responses by a migratory soaring raptor to changing meteorological conditions",
+      "volume": "8",
+      "author": "Lanzone",
+      "year": "2012",
+      "journal-title": "Biol. Lett."
+    },
+    {
+      "key": "2020062008121049400_bib16",
+      "doi-asserted-by": "publisher",
+      "first-page": "509",
+      "DOI": "10.1007/BF00122351",
+      "article-title": "The role of thermals in the convective boundary layer",
+      "volume": "19",
+      "author": "Lenschow",
+      "year": "1980",
+      "journal-title": "Bound.-Layer Meteor."
+    },
+    {
+      "key": "2020062008121049400_bib17",
+      "doi-asserted-by": "publisher",
+      "first-page": "1007",
+      "DOI": "10.1175/BAMS-D-12-00044.1",
+      "article-title": "Realizing the potential of vehicle-based observations",
+      "volume": "94",
+      "author": "Mahoney",
+      "year": "2013",
+      "journal-title": "Bull. Amer. Meteor. Soc."
+    },
+    {
+      "key": "2020062008121049400_bib18",
+      "doi-asserted-by": "publisher",
+      "first-page": "19 102",
+      "DOI": "10.1073/pnas.0801789105",
+      "article-title": "Movement ecology of migration in turkey vultures",
+      "volume": "105",
+      "author": "Mandel",
+      "year": "2008",
+      "journal-title": "Proc. Natl. Acad. Sci. USA"
+    },
+    {
+      "key": "2020062008121049400_bib19",
+      "doi-asserted-by": "publisher",
+      "first-page": "2258",
+      "DOI": "10.1890/10-1651.1",
+      "article-title": "Migration path annotation: Cross-continental study of migration-flight response to environmental conditions",
+      "volume": "21",
+      "author": "Mandel",
+      "year": "2011",
+      "journal-title": "Ecol. Appl."
+    },
+    {
+      "key": "2020062008121049400_bib20",
+      "doi-asserted-by": "publisher",
+      "first-page": "1343",
+      "DOI": "10.1175/BAMS-D-13-00188.1",
+      "article-title": "Surface pressure observations from smartphones: A potential revolution for high-resolution weather prediction?",
+      "volume": "95",
+      "author": "Mass",
+      "year": "2014",
+      "journal-title": "Bull. Amer. Meteor. Soc."
+    },
+    {
+      "key": "2020062008121049400_bib21",
+      "doi-asserted-by": "publisher",
+      "first-page": "e53077",
+      "DOI": "10.1371/journal.pone.0053077",
+      "article-title": "How predictability of feeding patches affects home range and foraging habitat selection in avian social scavengers?",
+      "volume": "8",
+      "author": "Monsarrat",
+      "year": "2013",
+      "journal-title": "PloS ONE"
+    },
+    {
+      "key": "2020062008121049400_bib22",
+      "unstructured": "NASA, 2012: Srtm 90. CGIAR Consortium for Spatial Information, accessed 26 October 2012. [Available online at http://srtm.csi.cgiar.org.]"
+    },
+    {
+      "key": "2020062008121049400_bib23",
+      "doi-asserted-by": "publisher",
+      "first-page": "19 052",
+      "DOI": "10.1073/pnas.0800375105",
+      "article-title": "A movement ecology paradigm for unifying organismal movement research",
+      "volume": "105",
+      "author": "Nathan",
+      "year": "2008",
+      "journal-title": "Proc. Natl. Acad. Sci. USA"
+    },
+    {
+      "key": "2020062008121049400_bib24",
+      "doi-asserted-by": "crossref",
+      "first-page": "13",
+      "DOI": "10.1242/jeb.55.1.13",
+      "article-title": "Gliding flight of the white-backed vulture",
+      "volume": "55",
+      "author": "Pennycuick",
+      "year": "1971",
+      "journal-title": "Gyps africanus. J. Exp. Biol."
+    },
+    {
+      "key": "2020062008121049400_bib25",
+      "doi-asserted-by": "publisher",
+      "first-page": "437",
+      "DOI": "10.1890/1540-9295(2005)003[0437:TAPIAR]2.0.CO;2",
+      "article-title": "Trends and perspectives in animal-attached remote sensing",
+      "volume": "3",
+      "author": "Ropert-Coudert",
+      "year": "2005",
+      "journal-title": "Front. Ecol. Environ."
+    },
+    {
+      "key": "2020062008121049400_bib26",
+      "doi-asserted-by": "publisher",
+      "first-page": "289",
+      "DOI": "10.1098/rsbl.2009.0089",
+      "article-title": "New frontiers in biologging science",
+      "volume": "5",
+      "author": "Rutz",
+      "year": "2009",
+      "journal-title": "Biol. Lett."
+    },
+    {
+      "key": "2020062008121049400_bib27",
+      "doi-asserted-by": "publisher",
+      "first-page": "10",
+      "DOI": "10.1186/2051-3933-1-4",
+      "article-title": "Flying with the wind: Scale dependency of speed and direction measurements in modelling wind support in avian flight",
+      "volume": "1",
+      "author": "Safi",
+      "year": "2013",
+      "journal-title": "Mov. Ecol."
+    },
+    {
+      "key": "2020062008121049400_bib28",
+      "doi-asserted-by": "publisher",
+      "first-page": "3175",
+      "DOI": "10.1242/jeb.079905",
+      "article-title": "Heart rate and estimated energy expenditure of flapping and gliding in black-browed albatrosses",
+      "volume": "216",
+      "author": "Sakamoto",
+      "year": "2013",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "2020062008121049400_bib29",
+      "doi-asserted-by": "publisher",
+      "first-page": "1446",
+      "DOI": "10.1175/1520-0469(2001)058&lt;1446:SEFWAT&gt;2.0.CO;2",
+      "article-title": "2001: Similarity equations for wind and temperature profiles in the radix layer, at the bottom of the convective boundary layer",
+      "volume": "58",
+      "author": "Santoso",
+      "journal-title": "J. Atmos. Sci."
+    },
+    {
+      "key": "2020062008121049400_bib30",
+      "doi-asserted-by": "publisher",
+      "first-page": "3380",
+      "DOI": "10.1098/rspb.2011.0358",
+      "article-title": "Migration by soaring or flapping: Numerical atmospheric simulations reveal that turbulence kinetic energy dictates bee-eater flight mode",
+      "volume": "278B",
+      "author": "Sapir",
+      "year": "2011",
+      "journal-title": "Proc. Roy. Soc."
+    },
+    {
+      "key": "2020062008121049400_bib31",
+      "doi-asserted-by": "publisher",
+      "first-page": "97",
+      "DOI": "10.1034/j.1600-048X.2003.03079.x",
+      "article-title": "The effect of wind, season and latitude on the migration speed of white storks Ciconia ciconia, along the eastern migration route",
+      "volume": "34",
+      "author": "Shamoun-Baranes",
+      "year": "2003",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "2020062008121049400_bib32",
+      "doi-asserted-by": "publisher",
+      "first-page": "208",
+      "DOI": "10.1650/0010-5422(2003)105[0208:DUOTCB]2.0.CO;2",
+      "article-title": "Differential use of thermal convection by soaring birds over central Israel",
+      "volume": "105",
+      "author": "Shamoun-Baranes",
+      "year": "2003",
+      "journal-title": "Condor"
+    },
+    {
+      "key": "2020062008121049400_bib33",
+      "doi-asserted-by": "publisher",
+      "first-page": "280",
+      "DOI": "10.1093/icb/icq011",
+      "article-title": "Integrating meteorology into research on migration",
+      "volume": "50",
+      "author": "Shamoun-Baranes",
+      "year": "2010",
+      "journal-title": "Integr. Comp. Biol."
+    },
+    {
+      "key": "2020062008121049400_bib34",
+      "doi-asserted-by": "publisher",
+      "first-page": "411",
+      "DOI": "10.1111/j.1474-919X.2010.01096.x",
+      "article-title": "Riding the tide: Intriguing observations of gulls resting at sea during breeding",
+      "volume": "153",
+      "author": "Shamoun-Baranes",
+      "year": "2011",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "2020062008121049400_bib35",
+      "doi-asserted-by": "publisher",
+      "first-page": "679",
+      "DOI": "10.1650/0010-5422(2002)104[0679:AWPSFT]2.0.CO;2",
+      "article-title": "American white pelican soaring flight times and altitudes relative to changes in thermal depth and intensity",
+      "volume": "104",
+      "author": "Shannon",
+      "year": "2002",
+      "journal-title": "Condor"
+    },
+    {
+      "key": "2020062008121049400_bib36",
+      "doi-asserted-by": "publisher",
+      "first-page": "167",
+      "DOI": "10.1023/A:1016095804357",
+      "article-title": "Measurements of thermal updraft intensity over complex terrain using American white pelicans and a simple boundary-layer forecast model",
+      "volume": "104",
+      "author": "Shannon",
+      "year": "2002",
+      "journal-title": "Bound.-Layer Meteor."
+    },
+    {
+      "key": "2020062008121049400_bib37",
+      "doi-asserted-by": "publisher",
+      "first-page": "e27375",
+      "DOI": "10.1371/journal.pone.0027375",
+      "article-title": "Energy beyond food: Foraging theory informs time spent in thermals by a large soaring bird",
+      "volume": "6",
+      "author": "Shepard",
+      "year": "2011",
+      "journal-title": "PloS ONE"
+    },
+    {
+      "key": "2020062008121049400_bib38",
+      "doi-asserted-by": "publisher",
+      "first-page": "298",
+      "DOI": "10.1086/671257",
+      "article-title": "Energy landscapes shape animal movement ecology",
+      "volume": "182",
+      "author": "Shepard",
+      "year": "2013",
+      "journal-title": "Amer. Nat."
+    },
+    {
+      "key": "2020062008121049400_bib39",
+      "doi-asserted-by": "publisher",
+      "first-page": "289",
+      "DOI": "10.2307/3677260",
+      "article-title": "Soaring migration of steppe eagles Aquila nipalensis in southern Israel: Flight behaviour under various wind and thermal conditions",
+      "volume": "27",
+      "author": "Spaar",
+      "year": "1996",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "2020062008121049400_bib40",
+      "doi-asserted-by": "crossref",
+      "DOI": "10.1007/978-94-009-3027-8",
+      "article-title": "An Introduction to Boundary Layer Meteorology",
+      "author": "Stull",
+      "year": "1988"
+    },
+    {
+      "key": "2020062008121049400_bib41",
+      "doi-asserted-by": "crossref",
+      "first-page": "33",
+      "DOI": "10.1242/jeb.133.1.33",
+      "article-title": "Gliding birds: The effect of variable wing span",
+      "volume": "133",
+      "author": "Tucker",
+      "year": "1987",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "2020062008121049400_bib42",
+      "doi-asserted-by": "publisher",
+      "first-page": "112",
+      "DOI": "10.1016/j.jtbi.2010.10.038",
+      "article-title": "Understanding soaring bird migration through interactions and decisions at the individual level",
+      "volume": "270",
+      "author": "Van Loon",
+      "year": "2011",
+      "journal-title": "J. Theor. Biol."
+    },
+    {
+      "key": "2020062008121049400_bib43",
+      "doi-asserted-by": "publisher",
+      "first-page": "25",
+      "DOI": "10.1111/jav.00457",
+      "article-title": "Regional and seasonal flight speeds of soaring migrants and the role of weather conditions at hourly and daily scales",
+      "volume": "46",
+      "author": "Vansteelant",
+      "year": "2014",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "2020062008121049400_bib44",
+      "doi-asserted-by": "publisher",
+      "first-page": "4033",
+      "DOI": "10.1175/2008MWR2522.1",
+      "article-title": "The Ocean–Land–Atmosphere Model (OLAM). Part I: Shallow-water tests",
+      "volume": "136",
+      "author": "Walko",
+      "year": "2008",
+      "journal-title": "Mon. Wea. Rev."
+    },
+    {
+      "key": "2020062008121049400_bib45",
+      "author": "Welch",
+      "year": "1977"
+    },
+    {
+      "key": "2020062008121049400_bib46",
+      "first-page": "248",
+      "article-title": "Convection and soaring over the open sea",
+      "volume": "3",
+      "author": "Woodcock",
+      "year": "1940",
+      "journal-title": "J. Mar. Res."
+    }
+  ],
+  "container-title": [
+    "Bulletin of the American Meteorological Society"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://journals.ametsoc.org/bams/article-pdf/97/6/951/3744991/bams-d-14-00234_1.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "syndication"
+    },
+    {
+      "URL": "http://journals.ametsoc.org/bams/article-pdf/97/6/951/3744991/bams-d-14-00234_1.pdf",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2022,
+        5,
+        22
+      ]
+    ],
+    "date-time": "2022-05-22T14:38:49Z",
+    "timestamp": 1653230329000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://journals.ametsoc.org/doi/10.1175/BAMS-D-14-00234.1"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2016,
+        6,
+        1
+      ]
+    ]
+  },
+  "references-count": 46,
+  "journal-issue": {
+    "issue": "6",
+    "published-online": {
+      "date-parts": [
+        [
+          2016,
+          7,
+          8
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2016,
+          6,
+          1
+        ]
+      ]
+    }
+  },
+  "URL": "https://doi.org/10.1175/bams-d-14-00234.1",
+  "relation": {},
+  "ISSN": [
+    "0003-0007",
+    "1520-0477"
+  ],
+  "issn-type": [
+    {
+      "value": "0003-0007",
+      "type": "print"
+    },
+    {
+      "value": "1520-0477",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2016,
+        6,
+        1
+      ]
+    ]
+  }
+}

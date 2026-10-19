@@ -1,6 +1,6 @@
-# Run the pipeline: every script in scripts/ in order, then the report.
+# Run the pipeline: every script in scripts/ in order, then the manuscript and supplement.
 #
-#   Rscript run_all.R          # steps 01-17 and the report
+#   Rscript run_all.R          # steps 01-20 and the manuscript
 #   Rscript run_all.R 12       # from step 12 (analysis) onwards
 #   Rscript run_all.R 12 15    # steps 12 to 15 only
 #
@@ -22,6 +22,6 @@ for (s in steps[num >= from & num <= to]) {
   message("     done in ", format(round(Sys.time() - t0, 1)))
 }
 if (to >= max(num)) {
-  message("==== report")
-  if (system2("quarto", c("render", "report/index.qmd")) != 0) stop("report failed", call. = FALSE)
+  message("==== manuscript and supplement")
+  if (system2("bash", "paper/render.sh") != 0) stop("manuscript render failed", call. = FALSE)
 }

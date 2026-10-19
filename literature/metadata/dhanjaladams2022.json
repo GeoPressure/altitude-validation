@@ -1,0 +1,610 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        7,
+        9
+      ]
+    ],
+    "date-time": "2026-07-09T03:19:16Z",
+    "timestamp": 1783567156915,
+    "version": "3.55.0"
+  },
+  "reference-count": 65,
+  "publisher": "Wiley",
+  "issue": "7",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2022,
+            4,
+            22
+          ]
+        ],
+        "date-time": "2022-04-22T00:00:00Z",
+        "timestamp": 1650585600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by-nc/4.0/"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "besjournals.onlinelibrary.wiley.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Journal of Animal Ecology"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2022,
+        7
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>\n                    <jats:list>\n                      <jats:list-item>\n                        <jats:p>Light‐level geolocators have revolutionised the study of animal behaviour. However, lacking spatial precision, their usage has been primary targeted towards the analysis of large‐scale movements. Recent technological developments have allowed the integration of magnetometers and accelerometers into geolocator tags in addition to barometers and thermometers, offering new behavioural insights.</jats:p>\n                      </jats:list-item>\n                      <jats:list-item>\n                        <jats:p>Here, we introduce an R toolbox for identifying behavioural patterns from multisensor geolocator tags, with functions specifically designed for data visualisation, calibration, classification and error estimation. More specifically, the package allows for the flexible analysis of any combination of sensor data using k‐means clustering, expectation maximisation binary clustering, hidden Markov models and changepoint analyses. Furthermore, the package integrates tailored algorithms for identifying periods of prolonged high activity (most commonly used for identifying migratory flapping flight), and pressure changes (most commonly used for identifying dive or flight events).</jats:p>\n                      </jats:list-item>\n                      <jats:list-item>\n                        <jats:p>Finally, we highlight some of the limitations, implications and opportunities of using these methods.</jats:p>\n                      </jats:list-item>\n                    </jats:list>\n                  </jats:p>",
+  "DOI": "10.1111/1365-2656.13695",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2022,
+        4,
+        1
+      ]
+    ],
+    "date-time": "2022-04-01T00:29:26Z",
+    "timestamp": 1648772966000
+  },
+  "page": "1345-1360",
+  "update-policy": "https://doi.org/10.1002/crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 8,
+  "title": [
+    "<i>pamlr</i>\n                    : A toolbox for analysing animal behaviour using pressure, acceleration, temperature, magnetic or light data in R"
+  ],
+  "prefix": "10.1111",
+  "volume": "91",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0002-0496-8428",
+      "authenticated-orcid": false,
+      "given": "Kiran L.",
+      "family": "Dhanjal‐Adams",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Swiss ornithological institute Sempach Switzerland"
+        },
+        {
+          "name": "Centre for the Advanced Study of Collective Behavior University of Konstanz Constance Germany"
+        },
+        {
+          "name": "Max Planck Institute of Animal Behavior Constance Germany"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Astrid S. T.",
+      "family": "Willener",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Swiss ornithological institute Sempach Switzerland"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-9473-0837",
+      "authenticated-orcid": false,
+      "given": "Felix",
+      "family": "Liechti",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Swiss ornithological institute Sempach Switzerland"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "311",
+  "published-online": {
+    "date-parts": [
+      [
+        2022,
+        4,
+        22
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_10_2_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01068"
+    },
+    {
+      "key": "e_1_2_10_3_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00359‐017‐1165‐9"
+    },
+    {
+      "key": "e_1_2_10_4_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/JAV.02860"
+    },
+    {
+      "key": "e_1_2_10_5_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐015‐0055‐4"
+    },
+    {
+      "key": "e_1_2_10_6_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1525/BIO.2011.61.9.7"
+    },
+    {
+      "key": "e_1_2_10_7_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/JAV.02546"
+    },
+    {
+      "key": "e_1_2_10_8_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365‐2656.12962"
+    },
+    {
+      "key": "e_1_2_10_9_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/nature20563"
+    },
+    {
+      "key": "e_1_2_10_10_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1748-7692.1998.tb00760.x"
+    },
+    {
+      "key": "e_1_2_10_11_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.13172"
+    },
+    {
+      "key": "e_1_2_10_12_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1201/9781420055139"
+    },
+    {
+      "key": "e_1_2_10_13_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2018.06.054"
+    },
+    {
+      "key": "e_1_2_10_14_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5281/zenodo.6327701"
+    },
+    {
+      "key": "e_1_2_10_15_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3389/fevo.2018.00182"
+    },
+    {
+      "key": "e_1_2_10_16_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365‐2664.12751"
+    },
+    {
+      "key": "e_1_2_10_17_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/pnas.0909493107"
+    },
+    {
+      "key": "e_1_2_10_18_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/ece3.6412"
+    },
+    {
+      "key": "e_1_2_10_19_1",
+      "unstructured": "Frisius R. G.(1544).De principiis astronomiae & cosmographiae deque usu blobi ab eodem editi. in aedibus Ioan. Stelsii 1548. Retrieved fromhttps://books.google.ch/books?id=IEFmAAAAcAAJ"
+    },
+    {
+      "key": "e_1_2_10_20_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0151984"
+    },
+    {
+      "key": "e_1_2_10_21_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.13698"
+    },
+    {
+      "key": "e_1_2_10_22_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/2346830"
+    },
+    {
+      "key": "e_1_2_10_23_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0177892"
+    },
+    {
+      "key": "e_1_2_10_24_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/RSPB.1999.0688"
+    },
+    {
+      "key": "e_1_2_10_25_1",
+      "unstructured": "International Organization for Standardization. (1975).International organization for standardization.ISO2533."
+    },
+    {
+      "key": "e_1_2_10_26_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18637/jss.v058.i03"
+    },
+    {
+      "key": "e_1_2_10_27_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Killick R. Haynes K. Eckley I. Fearnhead P. &Lee J.(2016).Package “changepoint” type package: Methods for changepoint detection(2.2.2).CRAN.",
+      "DOI": "10.32614/CRAN.package.changepoint.np"
+    },
+    {
+      "key": "e_1_2_10_28_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.12657"
+    },
+    {
+      "key": "e_1_2_10_29_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐018‐0137‐1"
+    },
+    {
+      "key": "e_1_2_10_30_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/ncomms3554"
+    },
+    {
+      "key": "e_1_2_10_31_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365‐2656.13036"
+    },
+    {
+      "key": "e_1_2_10_32_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.2041‐210X.2012.00248.x"
+    },
+    {
+      "key": "e_1_2_10_33_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/JOURNAL.PONE.0015850"
+    },
+    {
+      "key": "e_1_2_10_34_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365‐2664.12755"
+    },
+    {
+      "key": "e_1_2_10_35_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Mcmahon C. Chiaradia A. &Reina R.(2011).Taking the time to assess the effects of remote sensing and tracking devices on animals. Retrieved fromwww.seaturtle.org",
+      "DOI": "10.1017/S0962728600003158"
+    },
+    {
+      "key": "e_1_2_10_36_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00265‐017‐2438‐6"
+    },
+    {
+      "key": "e_1_2_10_37_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/ece3.4721"
+    },
+    {
+      "key": "e_1_2_10_38_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1046/J.1365‐2419.2003.00229.X"
+    },
+    {
+      "key": "e_1_2_10_39_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/1368676"
+    },
+    {
+      "key": "e_1_2_10_40_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.13056"
+    },
+    {
+      "key": "e_1_2_10_41_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/JOURNAL.PONE.0031187"
+    },
+    {
+      "key": "e_1_2_10_42_1",
+      "volume-title": "R: A language and environment for statistical computing",
+      "author": "R Core Team",
+      "year": "2019"
+    },
+    {
+      "key": "e_1_2_10_43_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐014‐0027‐0"
+    },
+    {
+      "key": "e_1_2_10_44_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0005379"
+    },
+    {
+      "key": "e_1_2_10_45_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Sander M. Chamberlain D. Alba R. Jähnig S. Rosselli D. &Lisovski S.(2021).Reduced breeding success suggests trophic mismatch despite timely arrival in an alpine songbird.https://doi.org/10.21203/rs.3.rs‐137126/v1",
+      "DOI": "10.21203/rs.3.rs-137126/v1"
+    },
+    {
+      "key": "e_1_2_10_46_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1080/13658816.2018.1498097"
+    },
+    {
+      "key": "e_1_2_10_47_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00227‐005‐1631‐8"
+    },
+    {
+      "key": "e_1_2_10_48_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.12893"
+    },
+    {
+      "key": "e_1_2_10_49_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/SCIENCE.ABE7291/SUPPL_FILE/ABE7291‐SJOBERG‐SM.PDF"
+    },
+    {
+      "key": "e_1_2_10_50_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01821"
+    },
+    {
+      "key": "e_1_2_10_51_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/MEPS08146"
+    },
+    {
+      "key": "e_1_2_10_52_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.00363"
+    },
+    {
+      "key": "e_1_2_10_53_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/J.ANBEHAV.2016.12.005"
+    },
+    {
+      "key": "e_1_2_10_54_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s003380050067"
+    },
+    {
+      "key": "e_1_2_10_55_1",
+      "unstructured": "Vanderkam D. Allaire J. Owen J. Gromer D. &Thieurmel B.(2018).“Dygraphs” interactive time series charting library. Indygraphs: Interface R(1.1.1.6.)."
+    },
+    {
+      "key": "e_1_2_10_56_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18637/jss.v036.i07"
+    },
+    {
+      "key": "e_1_2_10_57_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3161/15081109ACC2019.21.2.008"
+    },
+    {
+      "key": "e_1_2_10_58_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐015‐0030‐0"
+    },
+    {
+      "key": "e_1_2_10_59_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978‐94‐017‐3245‐1_16"
+    },
+    {
+      "key": "e_1_2_10_60_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0147784"
+    },
+    {
+      "key": "e_1_2_10_61_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐017‐0097‐x"
+    },
+    {
+      "key": "e_1_2_10_62_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/PNAS.1907360117/‐/DCSUPPLEMENTAL"
+    },
+    {
+      "key": "e_1_2_10_63_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041‐210X.13069"
+    },
+    {
+      "key": "e_1_2_10_64_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462‐016‐0088‐3"
+    },
+    {
+      "key": "e_1_2_10_65_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/AB00221"
+    },
+    {
+      "key": "e_1_2_10_66_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1201/b20790"
+    }
+  ],
+  "container-title": [
+    "Journal of Animal Ecology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1111/1365-2656.13695",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://onlinelibrary.wiley.com/doi/full-xml/10.1111/1365-2656.13695",
+      "content-type": "application/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://besjournals.onlinelibrary.wiley.com/doi/pdf/10.1111/1365-2656.13695",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2024,
+        9,
+        21
+      ]
+    ],
+    "date-time": "2024-09-21T07:43:37Z",
+    "timestamp": 1726904617000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2656.13695"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2022,
+        4,
+        22
+      ]
+    ]
+  },
+  "references-count": 65,
+  "journal-issue": {
+    "issue": "7",
+    "published-print": {
+      "date-parts": [
+        [
+          2022,
+          7
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1111/1365-2656.13695"
+  ],
+  "URL": "https://doi.org/10.1111/1365-2656.13695",
+  "archive": [
+    "Portico"
+  ],
+  "relation": {
+    "has-preprint": [
+      {
+        "id-type": "doi",
+        "id": "10.1101/2021.08.02.454456",
+        "asserted-by": "object"
+      }
+    ]
+  },
+  "ISSN": [
+    "0021-8790",
+    "1365-2656"
+  ],
+  "issn-type": [
+    {
+      "value": "0021-8790",
+      "type": "print"
+    },
+    {
+      "value": "1365-2656",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2022,
+        4,
+        22
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2021-08-02",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2022-03-09",
+      "order": 1,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2022-04-22",
+      "order": 2,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

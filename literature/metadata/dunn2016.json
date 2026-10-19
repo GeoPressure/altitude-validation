@@ -1,0 +1,403 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        7
+      ]
+    ],
+    "date-time": "2026-10-07T21:40:32Z",
+    "timestamp": 1791409232465,
+    "version": "4.3.3"
+  },
+  "reference-count": 21,
+  "publisher": "Copernicus GmbH",
+  "issue": "2",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2016,
+            9,
+            29
+          ]
+        ],
+        "date-time": "2016-09-29T00:00:00Z",
+        "timestamp": 1475107200000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/3.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/100008428",
+      "name": "Department of Energy and Climate Change",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "GA01101"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "GA01101"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/100008428",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100004963",
+      "name": "Seventh Framework Programme",
+      "doi-asserted-by": "publisher",
+      "award": [
+        "ERA-CLIM2 - 607029"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "ERA-CLIM2 - 607029"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100004963",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Geosci. Instrum. Method. Data Syst."
+  ],
+  "abstract": "<jats:p>Abstract. HadISD is a sub-daily, station-based, quality-controlled dataset designed to study past extremes of temperature, pressure and humidity and allow comparisons to future projections. Herein we describe the first major update to the HadISD dataset. The temporal coverage of the dataset has been extended to 1931 to present, doubling the time range over which data are provided. Improvements made to the station selection and merging procedures result in 7677 stations being provided in version 2.0.0.2015p of this dataset. The selection of stations to merge together making composites has also been improved and made more robust. The underlying structure of the quality control procedure is the same as for HadISD.1.0.x, but a number of improvements have been implemented in individual tests. Also, more detailed quality control tests for wind speed and direction have been added. The data will be made available as NetCDF files at http://www.metoffice.gov.uk/hadobs/hadisd and updated annually.</jats:p>",
+  "DOI": "10.5194/gi-5-473-2016",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2016,
+        9,
+        29
+      ]
+    ],
+    "date-time": "2016-09-29T09:14:10Z",
+    "timestamp": 1475140450000
+  },
+  "page": "473-491",
+  "source": "Crossref",
+  "is-referenced-by-count": 122,
+  "title": [
+    "Expanding HadISD: quality-controlled, sub-daily station data from 1931"
+  ],
+  "prefix": "10.5194",
+  "volume": "5",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0003-2469-5989",
+      "authenticated-orcid": false,
+      "given": "Robert J. H.",
+      "family": "Dunn",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-5151-0076",
+      "authenticated-orcid": false,
+      "given": "Kate M.",
+      "family": "Willett",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "David E.",
+      "family": "Parker",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Lorna",
+      "family": "Mitchell",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "3145",
+  "published-online": {
+    "date-parts": [
+      [
+        2016,
+        9,
+        29
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "ref1",
+      "unstructured": "ACSM: Prevention of thermal injuries during distance running, Med. Sci. Sports Exerc., 16, iv–xiv, 1984."
+    },
+    {
+      "key": "ref2",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Buck, A. L.: New equations for computing vapor pressure and enhancement factor, J. Appl. Meteorol., 20, 1527–1532, 1981.",
+      "DOI": "10.1175/1520-0450(1981)020<1527:NEFCVP>2.0.CO;2"
+    },
+    {
+      "key": "ref3",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Compo, G. P., Whitaker, J. S., Sardeshmukh, P. D., Matsui, N., Allan, R. J., Yin, X., Gleason, B. E., Vose, R., Rutledge, G., Bessemoulin, P., Brönnimann, S., Brunet, M., Crouthamel, R. I., Grant, A. N., Groisman, P. Y., Jones, P. D., Kruk, M. C., Kruger, A. C., Marshall, G. J., Maugeri, M., Mok, H. Y., Nordli, Ø., Ross, T. F., Trigo, R. M., Wang, X. L., Woodruff, S. D., and Worley, S. J.: The twentieth century reanalysis project, Q. J. Roy. Meteorol. Soc., 137, 1–28, 2011.",
+      "DOI": "10.1002/qj.776"
+    },
+    {
+      "key": "ref4",
+      "doi-asserted-by": "crossref",
+      "unstructured": "DeGaetano, A. T.: A quality-control routine for hourly wind observations, J. Atmos. Ocean. Tech., 14, 308–317, 1997.",
+      "DOI": "10.1175/1520-0426(1997)014<0308:AQCRFH>2.0.CO;2"
+    },
+    {
+      "key": "ref5",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Dikmen, S. and Hansen, P.: Is the temperature-humidity index the best indicator of heat stress in lactating dairy cows in a subtropical environment?, J. Dairy Sci., 92, 109–116, 2009.",
+      "DOI": "10.3168/jds.2008-1370"
+    },
+    {
+      "key": "ref6",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Dunn, R. J. H., Willett, K. M., Thorne, P. W., Woolley, E. V., Durre, I., Dai, A., Parker, D. E., and Vose, R. S.: HadISD: a quality-controlled global synoptic report database for selected variables at long-term stations from 1973–2011, Clim. Past, 8, 1649–1679, https://doi.org/10.5194/cp-8-1649-2012, 2012.",
+      "DOI": "10.5194/cp-8-1649-2012"
+    },
+    {
+      "key": "ref7",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Dunn, R. J. H., Willett, K. M., Morice, C. P., and Parker, D. E.: Pairwise homogeneity assessment of HadISD, Clim. Past, 10, 1501–1522, https://doi.org/10.5194/cp-10-1501-2014, 2014.",
+      "DOI": "10.5194/cp-10-1501-2014"
+    },
+    {
+      "key": "ref8",
+      "doi-asserted-by": "crossref",
+      "unstructured": "El Fadli, K. I., Cerveny, R. S., Burt, C. C., Eden, P., Parker, D., Brunet, M., Peterson, T. C., Mordacchini, G., Pelino, V., Bessemoulin, P., and Stella, J. L.: World Meteorological organization assessment of the Purported World record 58 °C temperature extreme at el azizia, libya (13 September 1922), B. Am. Meteorol. Soc., 94, 199–204, 2013.",
+      "DOI": "10.1175/BAMS-D-12-00093.1"
+    },
+    {
+      "key": "ref9",
+      "unstructured": "Jaccard, P.: Étude comparative de la distribution florale dans une portion des Alpes et des Jura, Bulletin de la Société Vaudoise des Sciences Naturelle, 37, 547–579, 1901."
+    },
+    {
+      "key": "ref10",
+      "unstructured": "Jensen, M. E., Burman, R. D., and Allen, R. G.: Evapotranspiration and irrigation water requirements, American Society of Civil Engineers, New York, NY, 1990."
+    },
+    {
+      "key": "ref11",
+      "doi-asserted-by": "crossref",
+      "unstructured": "List, R. J.: Smithsonian Meteorological Tables, in: Vol. 114, 6th Edn., Smithsonian Institution, Washington, D.C., 268 pp., https://doi.org/10.1002/qj.49707833627, 1963.",
+      "DOI": "10.1002/qj.49707833627"
+    },
+    {
+      "key": "ref12",
+      "unstructured": "Lott, J. N.: The quality control of the integrated surface hourly database, American Meteorological Society Paper 71929, 14th Conference on Applied Climatology, Seattle, WA, available at: https://ams.confex.com/ams/84Annual/webprogram/Paper71929.html (last access: September 2016), 2004."
+    },
+    {
+      "key": "ref13",
+      "unstructured": "Lucio-Eceiza, E. E., González-Rouco, J. F., Navarro, J., Beltrami, H., Hidalgo, A., and Conte, J.: Quality Control of surface wind observations in North Eastern North America. Part II: Measurement Errors, J. Atmos. Ocean. Tech., submitted, 2015."
+    },
+    {
+      "key": "ref14",
+      "unstructured": "Masterton, J. and Richardson, F.: Humidex: a method of quantifying human discomfort due to excessive heat and humidity, Downsview, Ont., Atmos. Environ., Environment Canada, 1979."
+    },
+    {
+      "key": "ref15",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Menne, M. J. and Williams Jr., C. N.: Homogenization of temperature series via pairwise comparisons, J. Climate, 22, 1700–1717, 2009.",
+      "DOI": "10.1175/2008JCLI2263.1"
+    },
+    {
+      "key": "ref16",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Peixoto, J. and Oort, A. H.: The climatology of relative humidity in the atmosphere, J. Climate, 9, 3443–3463, 1996.",
+      "DOI": "10.1175/1520-0442(1996)009<3443:TCORHI>2.0.CO;2"
+    },
+    {
+      "key": "ref17",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Rennie, J., Lawrimore, J., Gleason, B., Thorne, P., Morice, C., Menne, M., Williams, C., Almeida, W. G., Christy, J., Flannery, M., Ishihara, M., Kamiguchi, K., Klein-Tank, A. M. G., Mhanda, A., Lister, D. H., Razuvaev, V., Renom, M., Rusticucci, M., Tandy, J., Worley, S. J., Venema, V., Angel, W., Brunet, M., Dattore, B., Diamond, H., Lazzara, M. A., Le Blancq, F., Luterbacher, J., Mächel, H., Revadekar, J., Vose, R. S., and Yin, X.: The international surface temperature initiative global land surface databank: monthly temperature data release description and methods, Geosci. Data J., 1, 75–102, https://doi.org/10.1002/gdj3.8, 2014.",
+      "DOI": "10.1002/gdj3.8"
+    },
+    {
+      "key": "ref18",
+      "unstructured": "Rothfusz, L. P.: The heat index equation (or, more than you ever wanted to know about heat index), National Oceanic and Atmospheric Administration, National Weather Service, Office of Meteorology, Fort Worth, Texas, 90–23, 1990."
+    },
+    {
+      "key": "ref19",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Smith, A., Lott, N., and Vose, R.: The integrated surface database: Recent developments and partnerships, B. Am. Meteorol. Soc., 92, 704–708, 2011.",
+      "DOI": "10.1175/2011BAMS3015.1"
+    },
+    {
+      "key": "ref20",
+      "unstructured": "Steadman, R. G.: Norms of apparent temperature in Australia, Aust. Met. Mag., 43, 1–16, 1994."
+    },
+    {
+      "key": "ref21",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Willett, K. M., Dunn, R. J. H., Thorne, P. W., Bell, S., de Podesta, M., Parker, D. E., Jones, P. D., and Williams Jr., C. N.: HadISDH land surface multi-variable humidity and temperature record for climate monitoring, Clim. Past, 10, 1983–2006, https://doi.org/10.5194/cp-10-1983-2014, 2014.",
+      "DOI": "10.5194/cp-10-1983-2014"
+    }
+  ],
+  "container-title": [
+    "Geoscientific Instrumentation, Methods and Data Systems"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://gi.copernicus.org/articles/5/473/2016/gi-5-473-2016.pdf",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2025,
+        2,
+        8
+      ]
+    ],
+    "date-time": "2025-02-08T03:32:00Z",
+    "timestamp": 1738985520000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://gi.copernicus.org/articles/5/473/2016/"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2016,
+        9,
+        29
+      ]
+    ]
+  },
+  "references-count": 21,
+  "journal-issue": {
+    "issue": "2",
+    "published-online": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    }
+  },
+  "URL": "https://doi.org/10.5194/gi-5-473-2016",
+  "relation": {
+    "has-preprint": [
+      {
+        "id-type": "doi",
+        "id": "10.5194/gi-2016-9",
+        "asserted-by": "subject"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.5194/gi-2016-9",
+        "asserted-by": "object"
+      }
+    ],
+    "has-review": [
+      {
+        "id-type": "doi",
+        "id": "10.5194/gi-2016-9-SC1",
+        "asserted-by": "subject"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.5194/gi-2016-9-SC1",
+        "asserted-by": "object"
+      }
+    ],
+    "is-referenced-by": [
+      {
+        "id-type": "doi",
+        "id": "10.1186/s12940-025-01179-2",
+        "asserted-by": "object"
+      }
+    ],
+    "has-part": [
+      {
+        "id-type": "doi",
+        "id": "10.5194/esd-10-765-2019",
+        "asserted-by": "object"
+      },
+      {
+        "id-type": "doi",
+        "id": "10.5194/wcd-6-1857-2025",
+        "asserted-by": "object"
+      }
+    ]
+  },
+  "ISSN": [
+    "2193-0864"
+  ],
+  "issn-type": [
+    {
+      "value": "2193-0864",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2016,
+        9,
+        29
+      ]
+    ]
+  }
+}

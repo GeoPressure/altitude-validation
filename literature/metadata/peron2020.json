@@ -1,0 +1,1048 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        30
+      ]
+    ],
+    "date-time": "2026-09-30T18:56:51Z",
+    "timestamp": 1790794611662,
+    "version": "4.1.0"
+  },
+  "reference-count": 66,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "1",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2020,
+            2,
+            19
+          ]
+        ],
+        "date-time": "2020-02-19T00:00:00Z",
+        "timestamp": 1582070400000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2020,
+            2,
+            19
+          ]
+        ],
+        "date-time": "2020-02-19T00:00:00Z",
+        "timestamp": 1582070400000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "link.springer.com"
+    ],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Anim Biotelemetry"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2020,
+        12
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:sec>\n                    <jats:title>Background</jats:title>\n                    <jats:p>Global positioning systems (GPS) and altimeters are increasingly used to monitor vertical space use by aerial species, a key aspect of their ecological niche, that we need to know to manage our own use of the airspace, and to protect those species. However, there are various sources of error in flight height data (“height” above ground, as opposed to “altitude” above a reference like the sea level). First the altitude is measured with a vertical error from the devices themselves. Then there is error in the ground elevation below the tracked animals, which translates into error in flight height computed as the difference between altitude and ground elevation. Finally, there is error in the horizontal position of the animals, which translates into error in the predicted ground elevation below the animals. We used controlled field trials, simulations, and the reanalysis of raptor case studies with state-space models to illustrate the effect of improper error management.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Results</jats:title>\n                    <jats:p>Errors of a magnitude of 20 m appear in benign conditions for barometric altimeters and GPS vertical positioning (expected to be larger in more challenging context). These errors distort the shape of the distribution of flight heights, inflate the variance in flight height, bias behavioural state assignments, correlations with environmental covariates, and airspace management recommendations. Improper data filters such as removing all negative flight height records introduce several biases in the remaining dataset, and preclude the opportunity to leverage unambiguous errors to help with model fitting. Analyses that ignore the variance around the mean flight height, e.g., those based on linear models of flight height, and those that ignore the variance inflation caused by telemetry errors, lead to incorrect inferences.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Conclusion</jats:title>\n                    <jats:p>The state-space modelling framework, now in widespread use by ecologists and increasingly often automatically implemented within on-board GPS data processing algorithms, makes it possible to fit flight models directly to the output of GPS devices, with minimal data pre-selection, and to analyse the full distribution of flight heights, not just the mean. In addition to basic research about aerial niches, behaviour quantification, and environmental interactions, we highlight the applied relevance of our recommendations for airspace management and the conservation of aerial wildlife.</jats:p>\n                  </jats:sec>",
+  "DOI": "10.1186/s40317-020-00194-z",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2020,
+        2,
+        19
+      ]
+    ],
+    "date-time": "2020-02-19T08:03:25Z",
+    "timestamp": 1582099405000
+  },
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 54,
+  "title": [
+    "The challenges of estimating the distribution of flight heights from telemetry or altimetry data"
+  ],
+  "prefix": "10.1186",
+  "volume": "8",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0002-6311-4377",
+      "authenticated-orcid": false,
+      "given": "Guillaume",
+      "family": "Péron",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Justin M.",
+      "family": "Calabrese",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Olivier",
+      "family": "Duriez",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Christen H.",
+      "family": "Fleming",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Ruth",
+      "family": "García-Jiménez",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Alison",
+      "family": "Johnston",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sergio A.",
+      "family": "Lambertucci",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Kamran",
+      "family": "Safi",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Emily L. C.",
+      "family": "Shepard",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "297",
+  "published-online": {
+    "date-parts": [
+      [
+        2020,
+        2,
+        19
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "194_CR1",
+      "doi-asserted-by": "publisher",
+      "first-page": "19052",
+      "DOI": "10.1073/pnas.0800375105",
+      "volume": "105",
+      "author": "R Nathan",
+      "year": "2008",
+      "unstructured": "Nathan R, Getz WMWM, Revilla E, Holyoak M, Kadmon R, Saltz D, et al. A movement ecology paradigm for unifying organismal movement research. Proc Natl Acad Sci USA. 2008;105:19052–9.",
+      "journal-title": "Proc Natl Acad Sci USA"
+    },
+    {
+      "key": "194_CR2",
+      "doi-asserted-by": "publisher",
+      "first-page": "53",
+      "DOI": "10.1098/rspb.2004.2918",
+      "volume": "272",
+      "author": "H Weimerskirch",
+      "year": "2005",
+      "unstructured": "Weimerskirch H, Le Corre M, Ropert-Coudert Y, Kato A, Marsac F. The three-dimensional flight of red-footed boobies: adaptations to foraging in a tropical environment? Proc Biol Sci. 2005;272:53–61.",
+      "journal-title": "Proc Biol Sci"
+    },
+    {
+      "key": "194_CR3",
+      "doi-asserted-by": "publisher",
+      "first-page": "19",
+      "DOI": "10.1186/s40462-018-0137-1",
+      "volume": "6",
+      "author": "F Liechti",
+      "year": "2018",
+      "unstructured": "Liechti F, Bauer S, Dhanjal-Adams KL, Emmenegger T, Zehtindjiev P, Hahn S. Miniaturized multi-sensor loggers provide new insight into year-round flight behaviour of small trans-Sahara avian migrants. Mov Ecol. 2018;6:19. https://doi.org/10.1186/s40462-018-0137-1.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "key": "194_CR4",
+      "doi-asserted-by": "publisher",
+      "first-page": "250",
+      "DOI": "10.1126/science.1258732",
+      "volume": "347",
+      "author": "CM Bishop",
+      "year": "2015",
+      "unstructured": "Bishop CM, Spivey RJ, Hawkes LA, Batbayar N, Chua B, Frappell PB, et al. The roller coaster flight strategy of bar-headed geese conserves energy during Himalayan migrations. Science. 2015;347:250–4.",
+      "journal-title": "Science"
+    },
+    {
+      "key": "194_CR5",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1093/icb/icn037",
+      "volume": "48",
+      "author": "TH Kunz",
+      "year": "2007",
+      "unstructured": "Kunz TH, Gauthreaux SA, Hristov NI, Horn JW, Jones G, Kalko EKV, et al. Aeroecology: probing and modeling the aerosphere. Integr Comp Biol. 2007;48:1–11. https://doi.org/10.1093/icb/icn037.",
+      "journal-title": "Integr Comp Biol"
+    },
+    {
+      "key": "194_CR6",
+      "doi-asserted-by": "publisher",
+      "first-page": "897",
+      "DOI": "10.2307/6005",
+      "volume": "66",
+      "author": "R Arlettaz",
+      "year": "1997",
+      "unstructured": "Arlettaz R, Perrin N, Hausser J. Trophic resource partitioning and competition between the two sibling bat species Myotis myotis and Myotis blythii. J Anim Ecol. 1997;66:897.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "key": "194_CR7",
+      "doi-asserted-by": "publisher",
+      "first-page": "657",
+      "DOI": "10.1038/nature02547",
+      "volume": "429",
+      "author": "BM Siemers",
+      "year": "2004",
+      "unstructured": "Siemers BM, Schnitzler H-U. Echolocation signals reflect niche differentiation in five sympatric congeneric bat species. Nature. 2004;429:657–61.",
+      "journal-title": "Nature"
+    },
+    {
+      "key": "194_CR8",
+      "doi-asserted-by": "publisher",
+      "first-page": "6788",
+      "DOI": "10.1002/ece3.4189",
+      "volume": "8",
+      "author": "M Murgatroyd",
+      "year": "2018",
+      "unstructured": "Murgatroyd M, Photopoulou T, Underhill LG, Bouten W, Amar A. Where eagles soar: fine-resolution tracking reveals the spatiotemporal use of differential soaring modes in a large raptor. Ecol Evol. 2018;8:6788–99. https://doi.org/10.1002/ece3.4189.",
+      "journal-title": "Ecol Evol"
+    },
+    {
+      "key": "194_CR9",
+      "doi-asserted-by": "publisher",
+      "first-page": "1116",
+      "DOI": "10.1111/1365-2656.12830",
+      "volume": "87",
+      "author": "E Pirotta",
+      "year": "2018",
+      "unstructured": "Pirotta E, Edwards EWJ, New L, Thompson PM. Central place foragers and moving stimuli: a hidden-state model to discriminate the processes affecting movement. J Anim Ecol. 2018;87:1116–25.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "key": "194_CR10",
+      "doi-asserted-by": "publisher",
+      "first-page": "1895",
+      "DOI": "10.1111/1365-2664.12909",
+      "volume": "54",
+      "author": "G Péron",
+      "year": "2017",
+      "unstructured": "Péron G, Fleming CH, Duriez O, Fluhr J, Itty C, Lambertucci S, et al. The energy landscape predicts flight height and wind turbine collision hazard in three species of large soaring raptor. J Appl Ecol. 2017;54:1895–906. https://doi.org/10.1111/1365-2664.12909.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "issue": "6234",
+      "key": "194_CR11",
+      "doi-asserted-by": "publisher",
+      "first-page": "502",
+      "DOI": "10.1126/science.aaa6743",
+      "volume": "348",
+      "author": "S. A. Lambertucci",
+      "year": "2015",
+      "unstructured": "Lambertucci SA, Shepard ELC, Wilson RP. Human–wildlife conflicts in a crowded airspace. Science. 2015;348:502–4. http://www.academia.edu/12206414/Human-wildlife_conflicts_in_a_crowded_airspace. Accessed 19 July 2018.",
+      "journal-title": "Science"
+    },
+    {
+      "key": "194_CR12",
+      "doi-asserted-by": "publisher",
+      "first-page": "773",
+      "DOI": "10.1111/conl.12347",
+      "volume": "10",
+      "author": "CM Davy",
+      "year": "2017",
+      "unstructured": "Davy CM, Ford AT, Fraser KC. Aeroconservation for the fragmented skies. Conserv Lett. 2017;10:773–80. https://doi.org/10.1111/conl.12347.",
+      "journal-title": "Conserv Lett"
+    },
+    {
+      "key": "194_CR13",
+      "doi-asserted-by": "publisher",
+      "first-page": "545",
+      "DOI": "10.1016/j.anbehav.2012.12.006",
+      "volume": "85",
+      "author": "AM Dokter",
+      "year": "2013",
+      "unstructured": "Dokter AM, Åkesson S, Beekhuis H, Bouten W, Buurma L, van Gasteren H, et al. Twilight ascents by common swifts, Apus apus, at dawn and dusk: acquisition of orientation cues? Anim Behav. 2013;85:545–52.",
+      "journal-title": "Anim Behav"
+    },
+    {
+      "key": "194_CR14",
+      "doi-asserted-by": "publisher",
+      "first-page": "1041",
+      "DOI": "10.1098/rsif.2007.1349",
+      "volume": "5",
+      "author": "S Zaugg",
+      "year": "2008",
+      "unstructured": "Zaugg S, Saporta G, van Loon E, Schmaljohann H, Liechti F. Automatic identification of bird targets with radar via patterns produced by wing flapping. J R Soc Interface. 2008;5:1041–53. https://doi.org/10.1098/rsif.2007.1349.",
+      "journal-title": "J R Soc Interface"
+    },
+    {
+      "key": "194_CR15",
+      "doi-asserted-by": "publisher",
+      "first-page": "103",
+      "DOI": "10.13157/arla.63.1.2016.rp5",
+      "volume": "63",
+      "author": "P López-López",
+      "year": "2016",
+      "unstructured": "López-López P. Individual-based tracking systems in ornithology: welcome to the era of Big Data. Ardeola. 2016;63:103–36. https://doi.org/10.13157/arla.63.1.2016.rp5.",
+      "journal-title": "Ardeola"
+    },
+    {
+      "key": "194_CR16",
+      "doi-asserted-by": "publisher",
+      "first-page": "20180687",
+      "DOI": "10.1098/rsbl.2018.0687",
+      "volume": "14",
+      "author": "O Duriez",
+      "year": "2018",
+      "unstructured": "Duriez O, Péron G, Gremillet D, Sforzi A, Monti F. Migrating ospreys use thermal uplift over the open sea. Biol Lett. 2018;14:20180687. https://doi.org/10.1098/rsbl.2018.0687.",
+      "journal-title": "Biol Lett"
+    },
+    {
+      "key": "194_CR17",
+      "doi-asserted-by": "publisher",
+      "first-page": "201",
+      "DOI": "10.1111/j.0021-8901.2004.00902.x",
+      "volume": "41",
+      "author": "JL Frair",
+      "year": "2004",
+      "unstructured": "Frair JL, Nielsen SE, Merrill EH, Lele SR, Boyce MS, Munro RHM, et al. Removing GPS collar bias in habitat selection studies. J Appl Ecol. 2004;41:201–12. https://doi.org/10.1111/j.0021-8901.2004.00902.x.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "194_CR18",
+      "doi-asserted-by": "publisher",
+      "first-page": "806",
+      "DOI": "10.1890/04-0895",
+      "volume": "15",
+      "author": "CL Jerde",
+      "year": "2005",
+      "unstructured": "Jerde CL, Visscher DR. GPS measurement error influences on movement model parameterization. Ecol Appl. 2005;15:806–10. https://doi.org/10.1890/04-0895.",
+      "journal-title": "Ecol Appl"
+    },
+    {
+      "key": "194_CR19",
+      "first-page": "430",
+      "volume": "30",
+      "author": "RG D’Eon",
+      "year": "2002",
+      "unstructured": "D’Eon RG, Serrouya R, Smith G, Kochanny CO. GPS radiotelemetry error and bias in mountainous terrain. Wildl Soc Bull. 2002;30:430–9.",
+      "journal-title": "Wildl Soc Bull"
+    },
+    {
+      "key": "194_CR20",
+      "doi-asserted-by": "publisher",
+      "first-page": "2590",
+      "DOI": "10.1890/15-0472.1",
+      "volume": "96",
+      "author": "BM Brost",
+      "year": "2015",
+      "unstructured": "Brost BM, Hooten MB, Hanks EM, Small RJ. Animal movement constraints improve resource selection inference in the presence of telemetry error. Ecology. 2015;96:2590–7.",
+      "journal-title": "Ecology"
+    },
+    {
+      "key": "194_CR21",
+      "doi-asserted-by": "publisher",
+      "first-page": "11",
+      "DOI": "10.1186/s40462-018-0131-7",
+      "volume": "6",
+      "author": "M Roeleke",
+      "year": "2018",
+      "unstructured": "Roeleke M, Teige T, Hoffmeister U, Klingler F, Voigt CC. Aerial-hawking bats adjust their use of space to the lunar cycle. Mov Ecol. 2018;6:11. https://doi.org/10.1186/s40462-018-0131-7.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "key": "194_CR22",
+      "doi-asserted-by": "publisher",
+      "first-page": "1676",
+      "DOI": "10.1111/1365-2664.12760",
+      "volume": "53",
+      "author": "VH Ross-Smith",
+      "year": "2016",
+      "unstructured": "Ross-Smith VH, Thaxter CB, Masden EA, Shamoun-Baranes J, Burton NHK, Wright LJ, et al. Modelling flight heights of lesser black-backed gulls and great skuas from GPS: a Bayesian approach. J Appl Ecol. 2016;53:1676–85.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "194_CR23",
+      "doi-asserted-by": "publisher",
+      "first-page": "74",
+      "DOI": "10.1126/science.aaf4374",
+      "volume": "353",
+      "author": "H Weimerskirch",
+      "year": "2016",
+      "unstructured": "Weimerskirch H, Bishop C, Jeanniard-du-Dot T, Prudor A, Sachs G. Frigate birds track atmospheric conditions over months-long transoceanic flights. Science. 2016;353:74–8.",
+      "journal-title": "Science"
+    },
+    {
+      "key": "194_CR24",
+      "doi-asserted-by": "publisher",
+      "first-page": "1178",
+      "DOI": "10.1111/j.1365-2664.2012.02185.x",
+      "volume": "49",
+      "author": "TE Katzner",
+      "year": "2012",
+      "unstructured": "Katzner TE, Brandes D, Miller T, Lanzone M, Maisonneuve C, Tremblay JA, et al. Topography drives migratory flight altitude of golden eagles: implications for on-shore wind energy development. J Appl Ecol. 2012;49:1178–86. https://doi.org/10.1111/j.1365-2664.2012.02185.x.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "194_CR25",
+      "doi-asserted-by": "publisher",
+      "first-page": "1367",
+      "DOI": "10.1002/jwmg.21488",
+      "volume": "82",
+      "author": "O Krone",
+      "year": "2018",
+      "unstructured": "Krone O, Treu G. Movement patterns of white-tailed sea eagles near wind turbines. J Wildl Manage. 2018;82:1367–75. https://doi.org/10.1002/jwmg.21488.",
+      "journal-title": "J Wildl Manage"
+    },
+    {
+      "key": "194_CR26",
+      "doi-asserted-by": "publisher",
+      "first-page": "2598",
+      "DOI": "10.1890/14-2101.1",
+      "volume": "96",
+      "author": "CM Albertsen",
+      "year": "2015",
+      "unstructured": "Albertsen CM, Whoriskey K, Yurkowski D, Nielsen A, Flemming JM. Fast fitting of non-Gaussian state-space models to animal movement data via Template Model Builder. Ecology. 2015;96:2598–604. https://doi.org/10.1890/14-2101.1.",
+      "journal-title": "Ecology"
+    },
+    {
+      "key": "194_CR27",
+      "doi-asserted-by": "publisher",
+      "first-page": "315",
+      "DOI": "10.1111/j.1748-7692.2007.00180.x",
+      "volume": "24",
+      "author": "C Freitas",
+      "year": "2008",
+      "unstructured": "Freitas C, Lydersen C, Fedak MA, Kovacs KM. A simple new algorithm to filter marine mammal Argos locations. Mar Mamm Sci. 2008;24:315–25. https://doi.org/10.1111/j.1748-7692.2007.00180.x.",
+      "journal-title": "Mar Mamm Sci"
+    },
+    {
+      "key": "194_CR28",
+      "doi-asserted-by": "publisher",
+      "first-page": "576",
+      "DOI": "10.1890/15-1607.1",
+      "volume": "97",
+      "author": "CH Fleming",
+      "year": "2016",
+      "unstructured": "Fleming CH, Fagan WF, Mueller T, Olson KA, Leimgruber P, Calabrese JM. Estimating where and how animals travel: an optimal framework for path reconstruction from autocorrelated tracking data. Ecology. 2016;97:576–82. https://doi.org/10.1890/15-1607.1.",
+      "journal-title": "Ecology"
+    },
+    {
+      "key": "194_CR29",
+      "doi-asserted-by": "publisher",
+      "first-page": "2064",
+      "DOI": "10.1111/1365-2664.13135",
+      "volume": "55",
+      "author": "SA Poessel",
+      "year": "2018",
+      "unstructured": "Poessel SA, Duerr AE, Hall JC, Braham MA, Katzner TE. Improving estimation of flight altitude in wildlife telemetry studies. J Appl Ecol. 2018;55:2064–70. https://doi.org/10.1111/1365-2664.13135.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "194_CR30",
+      "volume-title": "The solid earth: an introduction to global geophysics",
+      "author": "CM Fowler",
+      "year": "2005",
+      "unstructured": "Fowler CM. The solid earth: an introduction to global geophysics. Cambridge: Cambridge University Press; 2005."
+    },
+    {
+      "key": "194_CR31",
+      "isbn-type": "print",
+      "volume-title": "Global positioning system: theory and applications",
+      "year": "1996",
+      "unstructured": "Parkinson BW, Spilker JJJ, editors. Global positioning system: theory and applications, vol. 1. Washington, D.C.: American Institute of Aeronautics and Astronautics; 1996. ISBN 1-56347-106-X.",
+      "ISBN": "https://id.crossref.org/isbn/156347106X"
+    },
+    {
+      "key": "194_CR32",
+      "volume-title": "GNSS data processing volume I: fundamentals and algorithms",
+      "author": "J Sanz Subirana",
+      "year": "2013",
+      "unstructured": "Sanz Subirana J, Juan Zornoza JM, Hernandez-Pajares M. GNSS data processing volume I: fundamentals and algorithms. Noordwijk: ESA Communications; 2013."
+    },
+    {
+      "key": "194_CR33",
+      "doi-asserted-by": "publisher",
+      "first-page": "1208",
+      "DOI": "10.1890/07-1032.1",
+      "volume": "89",
+      "author": "DS Johnson",
+      "year": "2008",
+      "unstructured": "Johnson DS, London JM, Lea M-AMA, Durban JW. Continuous-time correlated random walk model for animal telemetry data. Ecology. 2008;89:1208–15. https://doi.org/10.1890/07-1032.1.",
+      "journal-title": "Ecology"
+    },
+    {
+      "key": "194_CR34",
+      "doi-asserted-by": "publisher",
+      "first-page": "571",
+      "DOI": "10.1007/s10336-012-0908-1",
+      "volume": "154",
+      "author": "W Bouten",
+      "year": "2013",
+      "unstructured": "Bouten W, Baaij EW, Shamoun-Baranes J, Camphuysen KCJ. A flexible GPS tracking system for studying bird behaviour at multiple scales. J Ornithol. 2013;154:571–80. https://doi.org/10.1007/s10336-012-0908-1.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "key": "194_CR35",
+      "doi-asserted-by": "publisher",
+      "first-page": "2345",
+      "DOI": "10.1029/JC091iC02p02345",
+      "volume": "91",
+      "author": "FM Monaldo",
+      "year": "1986",
+      "unstructured": "Monaldo FM, Goldhirsh J, Walsh EJ. Altimeter height measurement error introduced by the presence of variable cloud and rain attenuation. J Geophys Res. 1986;91:2345. https://doi.org/10.1029/JC091iC02p02345.",
+      "journal-title": "J Geophys Res"
+    },
+    {
+      "key": "194_CR36",
+      "unstructured": "Crocker C, Jackson G. The use of altimeters in height measurement. 2018. http://www.hills-database.co.uk/altim.html."
+    },
+    {
+      "key": "194_CR37",
+      "doi-asserted-by": "publisher",
+      "first-page": "17",
+      "DOI": "10.1007/s00227-017-3273-z",
+      "volume": "165",
+      "author": "K Borkenhagen",
+      "year": "2018",
+      "unstructured": "Borkenhagen K, Corman A-M, Garthe S. Estimating flight heights of seabirds using optical rangefinders and GPS data loggers: a methodological comparison. Mar Biol. 2018;165:17. https://doi.org/10.1007/s00227-017-3273-z.",
+      "journal-title": "Mar Biol"
+    },
+    {
+      "key": "194_CR38",
+      "first-page": "76",
+      "volume": "371",
+      "author": "ELC Shepard",
+      "year": "2016",
+      "unstructured": "Shepard ELC, Williamson C, Windsor SP. Fine-scale flight strategies of gulls in urban airflows indicate risk and reward in city living. Philos Trans R Soc Lond B Biol Sci. 2016;371:76–93.",
+      "journal-title": "Philos Trans R Soc Lond B Biol Sci"
+    },
+    {
+      "key": "194_CR39",
+      "doi-asserted-by": "publisher",
+      "first-page": "1035",
+      "DOI": "10.1006/anbe.2001.1685",
+      "volume": "61",
+      "author": "GC Hays",
+      "year": "2001",
+      "unstructured": "Hays GC, Åkesson S, Godley BJ, Luschi P, Santidrian P. The implications of location accuracy for the interpretation of satellite-tracking data. Anim Behav. 2001;61:1035–40.",
+      "journal-title": "Anim Behav"
+    },
+    {
+      "key": "194_CR40",
+      "doi-asserted-by": "publisher",
+      "first-page": "628",
+      "DOI": "10.1890/06-0964",
+      "volume": "17",
+      "author": "CJA Bradshaw",
+      "year": "2007",
+      "unstructured": "Bradshaw CJA, Sims DW, Hays GC. Measurement error causes scale-dependent threshold erosion of biological signals in animal movement data. Ecol Appl. 2007;17:628–38. https://doi.org/10.1890/06-0964.",
+      "journal-title": "Ecol Appl"
+    },
+    {
+      "key": "194_CR41",
+      "doi-asserted-by": "publisher",
+      "first-page": "1327",
+      "DOI": "10.1080/13658811003591680",
+      "volume": "24",
+      "author": "SR Januchowski",
+      "year": "2010",
+      "unstructured": "Januchowski SR, Pressey RL, VanDerWal J, Edwards A. Characterizing errors in digital elevation models and estimating the financial costs of accuracy. Int J Geogr Inf Sci. 2010;24:1327–47. https://doi.org/10.1080/13658811003591680.",
+      "journal-title": "Int J Geogr Inf Sci"
+    },
+    {
+      "key": "194_CR42",
+      "doi-asserted-by": "publisher",
+      "first-page": "409",
+      "DOI": "10.1016/j.rse.2006.05.012",
+      "volume": "104",
+      "author": "Y Gorokhovich",
+      "year": "2006",
+      "unstructured": "Gorokhovich Y, Voustianiouk A. Accuracy assessment of the processed SRTM-based elevation data by CGIAR using field data from USA and Thailand and its relation to the terrain characteristics. Remote Sens Environ. 2006;104:409–15.",
+      "journal-title": "Remote Sens Environ"
+    },
+    {
+      "key": "194_CR43",
+      "doi-asserted-by": "publisher",
+      "first-page": "85",
+      "DOI": "10.2307/2529305",
+      "volume": "33",
+      "author": "JE Dunn",
+      "year": "1977",
+      "unstructured": "Dunn JE, Gipson PS. Analysis of radio telemetry data in studies of home range. Biometrics. 1977;33:85–101.",
+      "journal-title": "Biometrics"
+    },
+    {
+      "key": "194_CR44",
+      "doi-asserted-by": "publisher",
+      "first-page": "26677",
+      "DOI": "10.1038/srep26677",
+      "volume": "6",
+      "author": "M Auger-Méthé",
+      "year": "2016",
+      "unstructured": "Auger-Méthé M, Field C, Albertsen CM, Derocher AE, Lewis MA, Jonsen ID, et al. State-space models’ dirty little secrets: even simple linear Gaussian models can have estimation problems. Sci Rep. 2016;6:26677.",
+      "journal-title": "Sci Rep"
+    },
+    {
+      "key": "194_CR45",
+      "doi-asserted-by": "publisher",
+      "first-page": "2531",
+      "DOI": "10.1890/0012-9658(1998)079[2531:eotvos]2.0.co;2",
+      "volume": "79",
+      "author": "WR Gould",
+      "year": "1998",
+      "unstructured": "Gould WR, Nichols JD. Estimation of temporal variability of survival in animal populations. Ecology. 1998;79:2531–8. https://doi.org/10.1890/0012-9658(1998)079%5b2531:eotvos%5d2.0.co;2.",
+      "journal-title": "Ecology"
+    },
+    {
+      "key": "194_CR46",
+      "doi-asserted-by": "publisher",
+      "first-page": "53",
+      "DOI": "10.1016/j.apgeog.2012.05.002",
+      "volume": "35",
+      "author": "WD Walter",
+      "year": "2012",
+      "unstructured": "Walter WD, Fischer JW, Humphrey JS, Daughtery TS, Milleson MP, Tillman EA, et al. Using three-dimensional flight patterns at airfields to identify hotspots for avian–aircraft collisions. Appl Geogr. 2012;35:53–9.",
+      "journal-title": "Appl Geogr"
+    },
+    {
+      "key": "194_CR47",
+      "doi-asserted-by": "publisher",
+      "first-page": "251",
+      "DOI": "10.1016/j.landurbplan.2018.05.012",
+      "volume": "177",
+      "author": "F Balotari-Chiebao",
+      "year": "2018",
+      "unstructured": "Balotari-Chiebao F, Brommer JE, Saurola P, Ijäs A, Laaksonen T. Assessing space use by pre-breeding white-tailed eagles in the context of wind-energy development in Finland. Landsc Urban Plan. 2018;177:251–8.",
+      "journal-title": "Landsc Urban Plan"
+    },
+    {
+      "key": "194_CR48",
+      "doi-asserted-by": "publisher",
+      "first-page": "1474",
+      "DOI": "10.1111/1365-2664.12529",
+      "volume": "52",
+      "author": "IR Cleasby",
+      "year": "2015",
+      "unstructured": "Cleasby IR, Wakefield ED, Bearhop S, Bodey TW, Votier SC, Hamer KC. Three-dimensional tracking of a wide-ranging marine predator: flight heights and vulnerability to offshore wind farms. J Appl Ecol. 2015;52:1474–82. https://doi.org/10.1111/1365-2664.12529.",
+      "journal-title": "J Appl Ecol"
+    },
+    {
+      "key": "194_CR49",
+      "doi-asserted-by": "publisher",
+      "first-page": "120",
+      "DOI": "10.1016/j.eiar.2018.04.006",
+      "volume": "71",
+      "author": "H Tikkanen",
+      "year": "2018",
+      "unstructured": "Tikkanen H, Rytkönen S, Karlin O-P, Ollila T, Pakanen V-M, Tuohimaa H, et al. Modelling golden eagle habitat selection and flight activity in their home ranges for safer wind farm planning. Environ Impact Assess Rev. 2018;71:120–31.",
+      "journal-title": "Environ Impact Assess Rev"
+    },
+    {
+      "key": "194_CR50",
+      "doi-asserted-by": "publisher",
+      "first-page": "57",
+      "DOI": "10.1890/0012-9615(2002)072[0057:fpmipn]2.0.co;2/full",
+      "volume": "72",
+      "author": "P de Valpine",
+      "year": "2002",
+      "unstructured": "de Valpine P, Hastings A. Fitting population models incorporating process noise and observation error. Ecol Monogr. 2002;72:57–76. https://doi.org/10.1890/0012-9615(2002)072%5b0057:fpmipn%5d2.0.co;2/full.",
+      "journal-title": "Ecol Monogr"
+    },
+    {
+      "key": "194_CR51",
+      "doi-asserted-by": "publisher",
+      "first-page": "264",
+      "DOI": "10.1111/2041-210X.12465",
+      "volume": "7",
+      "author": "FE Buderman",
+      "year": "2015",
+      "unstructured": "Buderman FE, Hooten MB, Ivan JS, Shenk TM. A functional model for characterizing long-distance movement behaviour. Methods Ecol Evol. 2015;7:264–73. https://doi.org/10.1111/2041-210X.12465.",
+      "journal-title": "Methods Ecol Evol"
+    },
+    {
+      "key": "194_CR52",
+      "doi-asserted-by": "publisher",
+      "first-page": "8",
+      "DOI": "10.1016/j.ecoinf.2017.04.008",
+      "volume": "40",
+      "author": "CH Fleming",
+      "year": "2017",
+      "unstructured": "Fleming CH, Sheldon D, Gurarie E, Fagan WF, LaPoint S, Calabrese JM. Kálmán filters for continuous-time movement models. Ecol Inform. 2017;40:8–21.",
+      "journal-title": "Ecol Inform"
+    },
+    {
+      "key": "194_CR53",
+      "doi-asserted-by": "publisher",
+      "first-page": "87",
+      "DOI": "10.1016/j.tree.2007.10.009",
+      "volume": "23",
+      "author": "TA Patterson",
+      "year": "2008",
+      "unstructured": "Patterson TA, Thomas L, Wilcox C, Ovaskainen O, Matthiopoulos J. State-space models of individual animal movement. Trends Ecol Evol. 2008;23:87–94.",
+      "journal-title": "Trends Ecol Evol"
+    },
+    {
+      "key": "194_CR54",
+      "doi-asserted-by": "publisher",
+      "first-page": "69",
+      "DOI": "10.1111/1365-2656.12379",
+      "volume": "85",
+      "author": "E Gurarie",
+      "year": "2016",
+      "unstructured": "Gurarie E, Bracis C, Delgado M, Meckley TD, Kojola I, Wagner CM. What is the animal doing? Tools for exploring behavioral structure in animal movements. J Anim Ecol. 2016;85:69–84. https://doi.org/10.1111/1365-2656.12379.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "key": "194_CR55",
+      "doi-asserted-by": "publisher",
+      "first-page": "1055",
+      "DOI": "10.1111/j.0006-341X.2000.01055.x",
+      "volume": "56",
+      "author": "ES Garrett",
+      "year": "2000",
+      "unstructured": "Garrett ES, Zeger SL. Latent class model diagnosis. Biometrics. 2000;56:1055–67. https://doi.org/10.1111/j.0006-341X.2000.01055.x.",
+      "journal-title": "Biometrics"
+    },
+    {
+      "key": "194_CR56",
+      "doi-asserted-by": "publisher",
+      "first-page": "7841",
+      "DOI": "10.1073/pnas.1002645107",
+      "volume": "107",
+      "author": "M Rebke",
+      "year": "2010",
+      "unstructured": "Rebke M, Coulson T, Becker PH, Vaupel JW. Reproductive improvement and senescence in a long-lived bird. Proc Natl Acad Sci USA. 2010;107:7841–6.",
+      "journal-title": "Proc Natl Acad Sci USA"
+    },
+    {
+      "key": "194_CR57",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Péron G, Nicolai CA, Koons DN. Demographic response to perturbations: the role of compensatory density dependence in a North American duck under variable harvest regulations and changing habitat. J Anim Ecol. 2012;81:960–9. Ahttp://apps.isiknowledge.com/full_record.do?product=UA&search_mode=GeneralSearch&qid=9&SID=U24vljJMo88xoTWSEgn&page=1&doc=8. Accessed 7 Aug 2013.",
+      "DOI": "10.1111/j.1365-2656.2012.01980.x"
+    },
+    {
+      "key": "194_CR58",
+      "doi-asserted-by": "publisher",
+      "first-page": "439",
+      "DOI": "10.1007/s10182-017-0304-5",
+      "volume": "101",
+      "author": "P Besbeas",
+      "year": "2017",
+      "unstructured": "Besbeas P, Morgan BJT. Variance estimation for integrated population models. Adv Stat Anal. 2017;101:439–60. https://doi.org/10.1007/s10182-017-0304-5.",
+      "journal-title": "Adv Stat Anal"
+    },
+    {
+      "key": "194_CR59",
+      "doi-asserted-by": "publisher",
+      "first-page": "1124",
+      "DOI": "10.1111/2041-210X.12559",
+      "volume": "7",
+      "author": "JM Calabrese",
+      "year": "2016",
+      "unstructured": "Calabrese JM, Fleming CH, Gurarie E. ctmm: an r package for analyzing animal relocation data as a continuous-time stochastic process. Methods Ecol Evol. 2016;7:1124–32. https://doi.org/10.1111/2041-210X.12559.",
+      "journal-title": "Methods Ecol Evol"
+    },
+    {
+      "key": "194_CR60",
+      "first-page": "1",
+      "volume": "2014",
+      "author": "K Kristensen",
+      "year": "2014",
+      "unstructured": "Kristensen K, Nielsen A, Berg CW, Skaug H, Bell B. TMB: automatic differentiation and laplace approximation. J Stat Softw. 2014;2014:1–21.",
+      "journal-title": "J Stat Softw"
+    },
+    {
+      "key": "194_CR61",
+      "first-page": "1",
+      "volume": "2",
+      "author": "D Spiegelhalter",
+      "year": "2003",
+      "unstructured": "Spiegelhalter D, Thomas A, Best N, Way R. WinBUGS user manual. Components. 2003;2:1–60.",
+      "journal-title": "Components"
+    },
+    {
+      "key": "194_CR62",
+      "doi-asserted-by": "publisher",
+      "first-page": "410",
+      "DOI": "10.1016/j.tree.2010.04.001",
+      "volume": "25",
+      "author": "K Csilléry",
+      "year": "2010",
+      "unstructured": "Csilléry K, Blum MGB, Gaggiotti OE, François O. Approximate Bayesian computation (ABC) in practice. Trends Ecol Evol. 2010;25:410–8.",
+      "journal-title": "Trends Ecol Evol"
+    },
+    {
+      "key": "194_CR63",
+      "unstructured": "Plummer M. JAGS: a program for analysis of Bayesian graphical models using Gibbs sampling. In: Proceedings of the 3rd international workshop on distributed statistical computing. 2003;20–22. http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.13.3406. Accessed 24 Aug 2018."
+    },
+    {
+      "key": "194_CR64",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1474-919x.2004.00295.x",
+      "author": "G Sachs",
+      "year": "2005",
+      "unstructured": "Sachs G. Minimum shear wind strength required for dynamic soaring of albatrosses. Ibis. 2005. https://doi.org/10.1111/j.1474-919x.2004.00295.x.",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "194_CR65",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Bruder JA. Bird hazard detection with airport surveillance radar. Radar Syst. (RADAR 97). IEE; 1997. p. 160–3. https://digital-library.theiet.org/content/conferences/10.1049/cp_19971652. Accessed 14 June 2019.",
+      "DOI": "10.1049/cp:19971652"
+    },
+    {
+      "key": "194_CR66",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Rebolo-Ifrán N, Graña Grilli M, Lambertucci SA. Drones as a threat to wildlife: YouTube complements science in providing evidence about their effect. Environ Conserv. 2019;1–6. https://www.cambridge.org/core/product/identifier/S0376892919000080/type/journal_article.",
+      "DOI": "10.1017/S0376892919000080"
+    }
+  ],
+  "container-title": [
+    "Animal Biotelemetry"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://link.springer.com/content/pdf/10.1186/s40317-020-00194-z.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "http://link.springer.com/article/10.1186/s40317-020-00194-z/fulltext.html",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "http://link.springer.com/content/pdf/10.1186/s40317-020-00194-z.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2022,
+        10,
+        15
+      ]
+    ],
+    "date-time": "2022-10-15T20:25:48Z",
+    "timestamp": 1665865548000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://animalbiotelemetry.biomedcentral.com/articles/10.1186/s40317-020-00194-z"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2020,
+        2,
+        19
+      ]
+    ]
+  },
+  "references-count": 66,
+  "journal-issue": {
+    "issue": "1",
+    "published-print": {
+      "date-parts": [
+        [
+          2020,
+          12
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "194"
+  ],
+  "URL": "https://doi.org/10.1186/s40317-020-00194-z",
+  "relation": {
+    "has-preprint": [
+      {
+        "id-type": "doi",
+        "id": "10.1101/751271",
+        "asserted-by": "object"
+      }
+    ]
+  },
+  "ISSN": [
+    "2050-3385"
+  ],
+  "issn-type": [
+    {
+      "value": "2050-3385",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2020,
+        2,
+        19
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "22 October 2019",
+      "order": 1,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "6 February 2020",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "19 February 2020",
+      "order": 3,
+      "name": "first_online",
+      "label": "First Online",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "Permissions to trap and tag griffon vultures and lesser kestrels were given by the Centre de Recherche sur la Biologie des Populations d’Oiseaux, Museum National d’Histoire Naturelle, Paris, to O. Duriez (Personal Program PP961) and to P. Pilard (PP311). Permissions to trap and tag osprey were given by Instituto Nazionale per la Protezione e la Ricerca Ambientale (ISPRA) under the authorization of Law 157/1992 [Art. 4 (1) and Art. 7 (5)] and under authorization no. 2502 05.05.2016 and no. 4254 27.03.2018 issued by Regione Toscana. Permissions to trap and tag condors were given by the Dirección de Fauna de Río Negro (DFRN), the Administración de Parques Nacionales (APN) from Argentina and the owners and managers of local farms. All condor procedures were approved by the DFRN, RN132.730-DF, and APN, 14/2011.",
+      "order": 1,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Ethics approval and consent to participate"
+      }
+    },
+    {
+      "value": "Not applicable.",
+      "order": 2,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Consent for publication"
+      }
+    },
+    {
+      "value": "The authors declare that they have no competing interests.",
+      "order": 3,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Competing interests"
+      }
+    }
+  ],
+  "article-number": "5"
+}

@@ -1,0 +1,391 @@
+     Ostrich 2025, 96(1): 69–73                                                                                        Copyright © 2025 NISC (Pty) Ltd
+     Printed in South Africa — All rights reserved                                                                               OSTRICH
+                                                                                                                     ISSN 0030–6525 EISSN 1727-947X
+                                                                                                                    https://doi.org/10.2989/00306525.2025.2481468
+
+
+
+
+                                                                                                                                            Short Note
+
+     Seasonal altitudinal migration of White-chested Alethe Chamaetylas
+     fuelleborni in Tanzania documented with a barometric pressure logger
+     Flemming P Jensen1* and Chacha Werema2
+
+     1
+      Natural History Museum of Denmark, University of Copenhagen, Denmark
+     2
+      Department of Zoology and Wildlife Conservation, University of Dar es Salaam, Tanzania
+     * Correspondence: fpaghj@gmail.com
+
+               Seasonal altitudinal movements from breeding areas in montane forests to non-breeding or wintering areas at
+               lower elevations, during the cool dry season from April–June to September–October, has long been suspected for
+               several species of birds breeding in Tanzania’s Eastern Arc Mountains. This study provides new insight into the
+               altitudinal migration of a White-chested Alethe Chamaetylas fuelleborni, which was deployed with a barometric
+               pressure logger during the cool dry season at 350 m altitude in Kimboza Forest, a lowland forest at the base of
+               Uluguru Mountains in eastern Tanzania. The bird was found to move up to 1 500 m altitude in mid-October, most
+               likely to montane forest in the Uluguru Mountains about 15 km away, and remained at this elevation for 3½ months,
+               a period corresponding to the presumed breeding season, before moving down to the lowlands by the end of
+               January. Unexpectedly, it returned to 1 500 m in mid-April where it stayed for five weeks before moving down to
+               Kimboza Forest again where it was recaptured in July. The altitudinal migration movements were mostly started at
+               first light about half an hour before sunrise, lasted, with one exception, no more than an hour each day and were
+               completed in two or three days. Food is often believed to be the primary driver of altitudinal migration. The timing
+               of the two upward movements we recorded support this hypothesis, as both coincided with the beginning of the
+               two rainy seasons in eastern Tanzania, when army ant swarms, with which the Alethe is closely associated when
+               foraging, become more active.
+
+
+     Migration altitudinale saisonnière du Cossyphe à poitrine blanche Chamaetylas fuelleborni en
+     Tanzanie, documentée à l’aide d’un enregistreur de pression barométrique
+
+               Les mouvements saisonniers dans les forêts de montagne entre les zones de reproduction en haute altitude vers
+               les zones de non-reproduction ou d’hivernage à basse altitude pendant la saison sèche (avril-juin à septembre-
+               octobre) ont longtemps été suspectés pour plusieurs espèces d’oiseaux se reproduisant dans les montagnes
+               de l’Arc oriental de la Tanzanie. Cette étude donne un nouvel aperçu de la migration altitudinale des oiseaux
+               de forêts de montagne en Afrique à partir du suivi d’un Cossyphe à poitrine blanche Chamaetylas fuelleborni
+               muni d’un enregistreur de pression barométrique, capturé pendant la saison sèche dans la forêt de plaine de
+               Kimboza à 350 m d’altitude, au pied des monts Uluguru dans l’est de la Tanzanie. L’oiseau s’est déplacé jusqu’à
+               1 500 m d’altitude à la mi-octobre, très probablement vers une forêt de montagne dans les monts Uluguru à environ
+               15 km de là, et est resté à cette altitude pendant 3½ mois, une période correspondant à la saison de reproduction
+               présumée, avant de redescendre dans la forêt de plaine à la fin du mois de janvier. De manière inattendue, il est
+               retourné à 1 500 m à la mi-avril (début de la petite saison des pluies), où il est resté pendant cinq semaines avant
+               de redescendre dans la forêt de Kimboza, où il a été recapturé en juillet. Les mouvements de migration altitudinale
+               commençaient le plus souvent environ une demi-heure avant le lever du soleil, ne duraient, à une exception près,
+               pas plus d›une heure par jour, et s’achevaient en deux ou trois jours. La nourriture est souvent considérée comme
+               le principal moteur de la migration altitudinale. Les deux déplacements en altitude du Cossyphe à poitrine blanche
+               supportent cette hypothèse puisqu’ils ont coincidé avec le début des deux saisons des pluies dans l’est de la
+               Tanzanie, lorsque les essaims de fourmis légionnaires — auxquels le Cossyphe est étroitement associé lorsqu’il
+               cherche de la nourriture — deviennent plus actifs.
+
+     Keywords: afromontane forests, altitudinal movements, Eastern Arc, Uluguru Mountains
+
+
+
+
+     Seasonal altitudinal movements from breeding areas in                         1966). In the 1980s, observations indicative of seasonal
+     montane forests to non-breeding or wintering areas at lower                   movements found that at least some individuals of 26 bird
+     elevations have long been suspected for a community                           species breeding in highland forest in Tanzania’s Eastern
+     of birds in Africa (e.g. Chapin 1932; Irwin 1957; Oatley                      Arc Mountains move to lower elevations during the cool
+
+
+                               Ostrich is co-published by NISC (Pty) Ltd and Informa UK Limited (trading as Taylor & Francis Group)
+
+
+
+Published online 25 Apr 2025
+70                                                                                                                           Jensen and Werema
+
+
+
+dry season from April–June to September–October (e.g.                                                                  37°48′ E
+Stuart and Jensen 1981; Stuart and Jensen 1985; Stuart
+et al. 1987; Burgess and Mlingwa 2000). More recently,
+studies in the Uluguru Mountains finally provided tangible
+evidence for such movements in the Eastern Arc Mountains            Uluguru
+when Little Greenbuls Eurillas virens and Olive Sunbirds            Mountain
+Cyanomitra olivacea were recaptured during the cold                  Forest                               0              5         10 km
+and dry season at lower elevations than where they were
+initially captured during the hot and wet season, and other
+individuals were recaptured during the hot and wet season
+at higher elevations than where they were initially captured                                             Mangala Forest
+during the cold and dry season (Werema 2015, 2016).                                  Milawilila Forest                                            7° S
+   Here we provide further insights into seasonal altitudinal
+                                                                                             Kimboza Forest
+migration in Tanzania from a White-chested Alethe
+Chamaetylas fuelleborni deployed with a barometric
+pressure logger. The White-chested Alethe is a fairly large
+thrush-like chat that is a common inhabitant of the ground                                                                          AFRICA
+                                                                                                                                       Tanzania
+stratum of mid-elevation and montane forests at about                                             Kisewe Forest
+750–2 600 m in eastern Tanzania, northern Malawi and
+northeastern Zambia (Britton 1980; Jensen and Brøgger-
+Jensen 1992; Dowsett-Lemaire 2006; Dowsett et al. 2008).
+                                                                                                                                  Lake Victoria
+It also occurs in central Mozambique, where it is mostly                                                                                   See
+found in coastal lowland forest (Clancey and Lawson                                                                                      enlarged
+                                                                                                                                           area
+1969; Davies et al. 2011). It is often strongly associated
+with army ant swarms when foraging in montane forests
+                                                                                                                       Tanzania
+
+
+                                                                                                                                                    INDIAN OCEAN
+(Dowsett-Lemaire 1989), where it feeds mainly on other
+arthropods flushed by the ants (Willis 1985; Dowsett-                                                          e
+                                                                                                           Lak nyika
+Lemaire 2006). It has long been suspected that some                                                          ga
+                                                                                                         Tan
+alethes in Tanzania and northern Malawi leave the montane
+forests after breeding and spend the cool dry season at                                                                  Lake
+                                                                                                                         Nyasa
+lower elevations, with some moving to lower elevations on                                                                         Morogoro Region
+the mountains where they breed, and others leaving the
+montane forest blocks and moving to isolated patches of           Figure 1: The distribution of highland forest in the Uluguru
+lowland forest in the foothills (Jensen et al. 1985; Stuart and   Mountains, Tanzania, and the location of Kimboza Forest and other
+Jensen 1985; Dowsett-Lemaire 1989).                               lowland forest remnants at the eastern foothills
+   One of these isolated lowland forests is Kimboza Forest
+Reserve at the eastern base of the Uluguru Mountains
+(Figure 1), where considerable numbers of White-chested           Mountains, is shown as a dotted line in Figure 1 (DHV
+Alethes have been recorded in June–July during the cool           Consulting Engineers 1980).
+dry season but not in the warm and wet time of the year             In Kimboza Forest we deployed barometric pressure
+(Stuart and Jensen 1985; Svendsen et al. 1995; Werema             loggers (Intigeo-CARW30Z11-DIP from Migrate Technology)
+et al. 2016b). Kimboza Forest is a remnant of lowland             on nine White-chested Alethes caught in mist nets on 22–25
+forest that was probably once continuous with forest              August 2023. The loggers were deployed using a leg-loop
+on the Uluguru Mountains. Today, it includes 4 km2 of             harness of 1 mm nylon cord with glued knots to mount them
+semi-evergreen forest with a closed canopy to 20–30 m,            on the back of the bird (Rappole and Tipton 1991). The
+and with emergent trees up to 40 m (Rodgers et al. 1983).         weight of the logger including harness (1.2 g) represented a
+The lowest altitude of significant areas of forest in the         maximum of 2.5% of the body weight of the birds (48–61 g).
+Uluguru Mountains is at ~1 000 m elevation (Burgess               The loggers stored information on barometric pressure
+et al. 2002), around 12 km from Kimboza Forest. The area          every 20 minutes (as well as several parameters not used
+in between is covered by open woodland with scattered             here) with an accuracy of ±1 hPa corresponding to ±10 m.
+villages surrounded by cultivated land, but there are also        By recording barometric pressure changes, it was possible
+a few fragments of closed forest including Mangala Forest         to collect information on the bird’s altitudinal migration,
+Reserve (29 ha) at 300–675 m elevation, Milawilila Forest         including the time spent at different altitudes.
+Reserve (13 ha) at 320–400 m, and Kisewe Forest Reserve             One logger was retrieved on 24 July 2024 within 100 m
+at 500–600 m (Werema et al. 2016a; Kacholi 2020) (see             of where it was deployed on the bird 11 months earlier.
+Figure 1). The northeastern regions of Tanzania, including        The collected data were first compensated for day-to-day
+the Uluguru Mountains, have a bimodal rainfall regime with        variations in atmospheric pressure using local pressure-
+‘short rains’ during October to January and ‘long rains’ from     level data from a metrological station in Morogoro (06°50’S,
+March to May (Kimaro et al. 2008; Mbigi and Xiao 2021).           37°39’E; altitude 525 m) 25 km from Kimboza Forest, and
+The average monthly precipitation at Tegetero Mission,            we then converted the logger data to altitude in meters
+at 990 m elevation on the eastern slope of the Uluguru            using the following version of the barometric formula (from
+Ostrich 2025, 96(1): 69–73                                                                                                       71
+
+
+
+Shipley et al. 2017):                                               time, strongly suggest that the bird migrated to the Uluguru
+                                                                    Mountains, ~15 km from Kimboza, where montane forest is
+                                1
+                                                                   present at 1 500 m (Figure 2). The closest alternatives would
+                        P0  5.257  1 T  273.15 
+                        P                                   be the montane forest on Nguru Mountains, 95 km away, or
+                                                                  Ukaguru Mountains, 105 km away.
+                   A
+                                    0.0065                             The breeding phenology of the White-chested Alethe
+                                                                    is well studied on the Nyika Plateau in northern Malawi,
+where A = data-logger altitude (in meters), P0 = sea-level          where it peaks at the end of the dry season and beginning
+pressure (in pascals), P = data-logger pressure (in pascals)        of the rainy season with egg-laying mostly in November
+and T = temperature at sea level (in degrees Celsius). All          (Dowsett and Dowsett-Lemaire 1984; Dowsett-Lemaire
+altitudes given here correspond to height above sea level,          and Dowsett 2006). Breeding in the Uluguru Mountains is
+rounded to the nearest 10 metres; all times given are local         likely to follow the phenology of the Nyika Plateau since:
+time in Tanzania.                                                   the rainy season starts at about the same time throughout
+   During the 11-month period, the bird made the following          the species’ breeding range; in the Udzungwa Mountains
+significant altitude changes:                                       (100 km southwest of Uluguru Mountains) an active nest
+• In mid-October, it moved from 340 m elevation up to               was recorded in November (Jensen et al. 1985) and
+   1 500 m where it stayed until the end of January, when it        fledged young in late December and mid-February (Jensen
+   returned to the lowlands at 340 m elevation.                     2022; Natural History Museum of Denmark specimens).
+• In mid-April, it moved up to 1 500 m elevation again, and         The arrival of the bird with the logger to montane forest in
+   stayed there until the end of May, when it moved down to         mid-October would coincide with the start of the breeding
+   350 m elevation.                                                 season. During the first 36 days, the bird spent the night
+   The altitudinal migration movements were mostly started          at variable elevations before settling in at 1 500 m from
+at first light about half an hour before sunrise and were           22 November for the next 63 days (Table 1). This could
+completed in two or three days:                                     suggest that the bird started breeding in late November and
+1. The first upward movement started at 05:20 on 15                 spent the nights in its territory from this date. The incubation
+     October, when the bird moved from 340 m elevation              period and duration of the nestling period are unknown but
+     up to 980 m in 40–60 minutes. The same afternoon,              if laying was started in late November, young would most
+     at 18:00, it continued up to 1 100 m in 20–40 minutes.         probably be independent by late January, when the bird
+     The next morning, at 05:40, it reached the elevation of        with the logger left the mountain.
+     1 500 m in 20–40 minutes.                                         Seasonal altitudinal migration in the Eastern Arc
+2. The first downward movement was initiated at 06:00 on            Mountains is believed to include one movement down to
+     25 January when the bird moved from 1 500 m altitude           lower elevations at the beginning of the cool dry season,
+     down to 590 m in 20 minutes at the most. The next              in April-June, and a return to the highland forests in
+     morning, at 06:00, it continued down to 390 m elevation        September–October, with the start of the warmer and
+     in 20 minutes at the most.                                     wetter season (Stuart and Jensen 1981; Stuart and Jensen
+3. On 16 April, at 06:00, the bird moved from 330 m up to           1985; Burgess and Mlingwa 2000). The early return to the
+     500 m elevation in 20–40 minutes. The next morning, at         lowlands at the end of January of the bird with the logger
+     06:00, it moved up to 750 m elevation in 20–40 minutes.        and a second, but much shorter visit to the highlands in
+     At 10:40 on the same day it moved on to 950 m elevation        April–May was therefore unexpected. It seems unlikely
+     in 40–60 minutes. The following day (18 April), at 06:00,      the bird returned to breed again in April, as this time of
+     it continued up to 1 400 m elevation in 40–60 minutes. In      the year is outside the species’ known breeding season
+     the next days it slowly moved up to 1 500 m elevation.         and the stay was also too short to be able to complete a
+4. The second downward movement started at 06:00 on                 breeding cycle. Instead, this movement could be linked to
+     21 May when the bird moved from 1 500 m elevation              food availability. Food is often believed to be the primary
+     down to 650 m in a maximum of 20 minutes. The next             extrinsic driver of altitudinal migration, although little work
+     day, at 06:00, it continued down to 350 m elevation in 20      has been dedicated to the role of insect abundance in these
+     minutes at the most.                                           movements (Pageau et al. 2020). White-chested Alethe
+   Data from the barometric pressure logger do not make it          is highly dependent on army ant swarms when feeding
+possible to determine the bird’s migration route. However,          (Willis 1985; Dowsett-Lemaire 1989), and ants are known
+by combining the time taken by the bird to reach locations          to become irregular and local or inactive in the dry season
+at other altitudes with the topography of the surroundings,         in the montane forests in north Malawi (Dowsett-Lemaire
+it is possible to suggest the bird’s likely route. Following        1987; Dowsett-Lemaire and Dowsett 2006) – and most
+deployment of the data logger in late-August, the                   likely also in the highlands of Tanzania. The arrival of the
+White-chested Alethe stayed at about 340 m elevation until          bird at 1 500 m elevation coincided with the start of the two
+mid-October (Table 1, Figure 2). Since Kimboza Forest is            rainy seasons (Figure 2), when increased ant activity and
+at 220–400 m elevation and surrounded by hills with open            food is expected, strongly supporting that the altitudinal
+vegetation it must be assumed that this forest bird remained        movement is associated with insect abundance.
+in Kimboza Forest throughout this period. When leaving the             We cannot explain why only one of the nine birds with a
+lowlands on 15 October, the short flying time to 1 500 m            logger was recaptured. The mortality of adult White-chested
+elevation, together with the two return flights to lowland forest   Alethe was found to be low in a study in Malawi (Dowsett
+in January and May completed in less than an hour’s flying          1985), suggesting that most of the birds with loggers should
+72                                                                                                                                                       Jensen and Werema
+
+
+
+                       Table 1: Data measured at midnight during the time when a White-chested Alethe Chamaetylas
+                       fuelleborni fitted with a barometric pressure logger was not making migration movements
+
+
+                       Period                                  Days                     Average altitude (m)              Altitudinal range (m)
+                       2023: 24 Aug–14 Oct                      52                             340                           25 (320–355)
+                       2023: 17 Oct–21Nov                       36                           1 449                         189 (1 349–1 538)
+                       2023-2024: 22 Nov–25 Jan                 63                           1 504                           35 (1 488–1 523)
+                       2024: 28 Jan–31 Jan                       4                             260                         100 (210–310)
+                       2024: 1 Feb–13 Apr                       69                             335                           34 (322–356)
+                       2024: 17 Apr–22 Apr                       5                           1 478                         165 (1 356–1 521)
+                       2024: 23 Apr–21 May                      29                           1 517                           46 (1 485–1 531)
+                       2024: 24 May–23 Jul                      61                             345                           40 (327–367)
+                       Note: The pressure sensor has an absolute accuracy of ±1 hPa corresponding to ±10 m
+
+
+
+         0             5        10 km
+                                                   0m                                                                                                               1500
+                                                  0m      0m   0m
+                                                90   70   50   30                     600                                                                           1400
+
+                                                                                                                                                                    1300
+     Uluguru
+     Mountain                   m                                                                                                                                   1200
+                             10                                                       500
+      Forest                    00                                                                                                                                  1100
+
+                                                                                                                                                                    1000
+             15                 Tegetero                                              400
+
+
+
+
+                                                                      RAINFALL (mm)
+                00                                                                                                                                                  900
+
+
+
+
+                                                                                                                                                                           ELEVATION (m)
+                   m             Mission
+                                                                                                                                                                    800
+
+                                                                                      300                                                                           700
+
+                                                                                                                                                                    600
+                                                          Kimboza
+                                                           Forest                                                                                                   500
+                                                                                      200
+                                                                                                                                                                    400
+
+                                                                                                                                                                    300
+                                                                                      100
+                                           Pressure logger                                                                                                          200
+                                           Rainfall                                                                                                                 100
+                                           Stopover points
+                                           Lowland forest                               0                                                                           0
+                                           Montane forest
+                                                                                            3
+                                                                                            ‘2   3
+                                                                                                 ‘2    3
+                                                                                                      ‘2       3
+                                                                                                               ‘2    3
+                                                                                                                     ‘2   ‘2  4   4
+                                                                                                                                  ‘2    4
+                                                                                                                                        ‘2    24    4
+                                                                                                                                                    ‘2    4
+                                                                                                                                                         ‘2    24
+                                                                                      Au     Se       ct   ov       ec    n   Fe       ar   Apr‘   ay   Ju
+                                                                                                                                                              l‘
+                                                                                                                                                              Ju
+                                           High elevation occurence                     g      p   O       N    D        Ja     b   M          M          n
+                                                                                                                              MONTH
+
+
+Figure 2: A altitudinal positioning of an individual White-chested Alethe Chamaetylas fuelleborni fitted with a barometric pressure logger
+during a 11-month study period (black line), with stopovers during the migration between lowland and montane forest (small circles). The star
+in Kimboza Forest indicates where the Alethe was deployed with the logger and later recaptured. The hatched area in the Uluguru Mountains
+indicates the likely position of the Alethe when at 1 500 m elevation, and the arrow between this area and Kimboza Forest indicates the likely
+migration route. The dotted line indicates the average monthly precipitation at Tegetero Mission, at 990 m elevation on the eastern slope of
+the Uluguru Mountains
+
+
+
+still be alive when we tried to catch them again 11 months                                   pressure loggers have the potential to reveal many new
+later. When trying to retrieve the loggers in Kimboza Forest,                                aspects of seasonal altitudinal migration.
+we used a high number of mist nets (up to 35, 12.5 x 2 m
+nets) for 11 days, initially focusing on the part of the forest                              Acknowledgements — We thank the Tanzania Commission for
+where the alethes were caught in 2023, but later we also                                     Science and Technology (COSTECH), the Tanzania Wildlife
+set up nets in the more distant parts of the small forest.                                   Research Institute (TAWIRI), and the Forestry Division of the
+                                                                                             Ministry of Natural Resources and Tourism for permission to carry
+Loggers may have fallen off, although the harness we
+                                                                                             out this study in Kimboza Forest in 2023 and 2024 (Research
+used is a well proven set-up, and perhaps the most likely                                    Permit No. 2022-867-NA-2022-565 and CST00000399-2024-2024-
+explanation for our low recovery rate is that most of the                                    00595). We would like to thank Elia Mulungu, Augustino Chengula
+birds have moved to other nearby lowland forests. Although                                   and Frank Libana for assistance in the field. We would also like
+we only succeeded in recapturing a single bird with logger,                                  to thank Peter A Hosner for valuable comments that improved an
+we believe the results of this study show that barometric                                    earlier version of this manuscript.
+Ostrich 2025, 96(1): 69–73                                                                                                               73
+
+
+
+References                                                                Mountains, Tanzania: Interrill and rill erosion. Catena 75: 38–44.
+                                                                          https://doi.org/10.1016/j.catena.2008.04.007
+Britton PL. (ed.) 1980. Birds of East Africa. Nairobi: East Africa      Mbigi D, Xiao Z. 2021. Tanzanian rainfall responses to El Niño
+   Natural History Society.                                               and positive Indian Ocean Dipole events during 1951– 2015.
+Burgess ND, Mlingwa COF. 2000. Evidence for altitudinal migration         Atmospheric and Oceanic Science Letters 14: 100093.
+   of forest birds between montane Eastern Arc and lowland forests        https://doi.org/10.1016/j.aosl.2021.100093
+   in East Africa. Ostrich 71: 184–190. https://doi.org/10.1080/0030    Oatley TB. 1966. Competition and local migration of some African
+   6525.2000.9639908                                                      Turdidae. Ostrich 37: 409–418. https://doi.org/10.1080/0030652
+Burgess N, Doggart N, Lovett JC. 2002. The Uluguru Mountains of           5.1966.9639818
+   eastern Tanzania: The effect of forest loss on biodiversity. Oryx    Pageau C, Vale MM, de Menezes MA, Barçante L, Shaikh M,
+   36: 140–152. https://doi.org/10.1017/S0030605302000212                 Alves MAS, Reudink MW. 2020. Evolution of altitudinal migration
+Chapin JP. 1932. The birds of the Belgian Congo. Part 1. Bulletin of      in passerines is linked to diet. Ecology and Evolution 10:
+   the American Museum of Natural History 65.                             3338–3345. https://doi.org/10.1002/ ece3.612.
+Clancey PA, Lawson WJ. 1969. A new race of White-breasted               Rappole JH, Tipton AR. 1991. New harness design for attachment
+   Alethe from Mozambique. Bulletin of the British Ornithologists’        of radio transmitters to small passerines. Journal of Field
+   Club 89: 4–6.                                                          Ornithology 62: 335–337. https://www.jstor.org/stable/20065798
+Davies GBP, Symes CT, Pietersen DW. 2011. Inhamtianga Forest            Rodgers WA, Hall JB, Mwasumbi LB, Griffiths CJ, Vollesen K.
+   – The largest indigenous forest in Mozambique and aspects of its       1983. The conservation values and status of Kimboza Forest
+   avifauna. Honeyguide 57: 92–101.                                       Reserve, Tanzania. Unpublished report. University of Dar es
+DHV Consulting Engineers. 1980. Morogoro domestic water                   Salaam, Tanzania.
+   supply plan. Volume III, Hydrology. United Republic of Tanzania,     Shipley J, Ryan K, Dreelin J, Andrew R, Winkler SW. 2017. An
+   Ministry of Water, Energy and Minerals and Kingdom of the              open-source sensor-logger for recording vertical movement
+   Netherlands, Ministry of Foreign Affairs DGIS.                         in free-living organisms. Methods in Ecology and Evolution 9:
+Dowsett RJ. 1985. Site fidelity and survival rates of some montane        465–471. https://doi.org/10.1111/2041-210X.12893
+   forest birds in Malawi, south-central Africa. Biotropica 17:         Stuart SN, Jensen FP. 1981. Further range extensions and other
+   145–154. https://doi.org/10.2307/2388507                               notable records of forest birds from Tanzania. Scopus 5: 106–115.
+Dowsett RJ, Aspinwall DR, Dowsett-Lemaire F. 2008. The birds of           https://www.biodiversitylibrary.org/item/137749#page/124/
+   Zambia. Liège: Tauraco Press and Aves.                                 mode/1up
+Dowsett RJ, Dowsett-Lemaire F. 1984. Breeding and moult                 Stuart SN, Jensen FP. 1985. The avifauna of the Uluguru
+   cycles of some montane forest birds in south-central Africa.           Mountains, Tanzania. Le Gerfaut 75: 155–197.
+   Revue d’Écologie (Terre Vie) 39: 89–111. https://hal.science/        Stuart SN, Jensen FP, Brøgger-Jensen S. 1987. Altitudinal
+   hal-03529416v1                                                         zonation of the avifauna in Mwanihana and Magombera forests,
+Dowsett-Lemaire F. 1987. On the distribution, ecology and voice of        eastern Tanzania. Le Gerfaut 77: 165–186.
+   two Alethe species in Malawi. Scopus 11: 25–32. https://www.         Svendsen JO, Hansen LA, Fjeldså J, Rahner M, Petersen M,
+   biodiversitylibrary.org/item/130655#page/37/mode/1up                   Kisbye C et al. 1995. Section 5. Ornithology. In: Svendsen JO,
+Dowsett-Lemaire F. 1989. Ecological and biogeographical                   Hansen LA (eds), Report on The Uluguru Biodiversity Survey
+   aspects of forest bird communities in Malawi. Scopus 13:1–80.          1993. The Royal Society for the Protection of Birds, Danish
+   https://www.biodiversitylibrary.org/item/130708#page/7/mode/1up        Centre for Tropical Biodiversity and Tanzania Forestry Research
+Dowsett-Lemaire F. 2006. A contribution to the ornithology of             Institute. pp 33–55.
+   Malawi. Tauraco Research Report 8. Liège: Tauraco Press.             Werema C. 2015. Seasonal elevational movements of the
+Dowsett-Lemaire F, Dowsett RJ. 2006. The birds of Malawi: An              Little Greenbul Andropadus virens in the Uluguru Mountains,
+   atlas and handbook. T Liège: Tauraco Press & Aves.                     Tanzania. African Journal of Ecology 53: 253–256.
+Irwin MPS. 1957. Seasonal change in altitude by some southern             https://doi.org/10.1111/aje.12190
+   Rhodesian birds. Ibis 99: 338–340.                                   Werema C. 2016. Seasonal elevational movements of Eastern
+Jensen FP. 2022. White-chested Alethe (Chamaetylas fuelleborni),          Olive Sunbird Cyanomitra olivacea in the Uluguru Mountains,
+   version 2.0. In: Rodewald PG (ed.), Birds of the World. Ithaca:        Tanzania. Ostrich 87: 189–192. https://doi.org/10.2989/0030652
+   Cornell Lab of Ornithology. https://doi.org/10.2173/bow.whcale1.02     5.2016.1186121
+Jensen, FP, Brøgger-Jensen S. 1992. The forest avifauna of the          Werema C, Howell KM, Ndangalasi HJ. 2016a. Kimboza Forest
+   Uzungwa Mountains, Tanzania. Scopus 15: 65–83. https://www.            Reserve, Tanzania: an important cold season refugium for
+   biodiversitylibrary.org/item/130706#page/77/mode/1up                   altitudinal migrating birds. African Journal of Ecology 54:
+Jensen FP, Brøgger-Jensen S, Petersen G. 1985. The White-chested          375–378. https://doi.org/10.1111/aje.12327
+   Alethe Alethe fuelleborni in Tanzania. Scopus 9: 127–132.            Werema C, Howell KM, Ndangalasi HJ. 2016b. Seasonal use
+   https://www.biodiversitylibrary.org/item/132558#page/141/mode/1up      of remnant forest fragments by understorey forest birds in the
+Kacholi DS. 2020. Density and aboriginal uses of wild tree species        Uluguru Mountains, Tanzania: a conservation priority. Ostrich 87:
+   in Milawilila Forest Reserve in Morogoro Region, Tanzania.             255–262. https://doi.org/10.2989/00306525.2016.1212120
+   Tanzania Journal of Science 46: 85–100.                              Willis EO. 1985. East African Turdidae as safari ant followers. Le
+Kimaro DN, Poesen J, Msanyac BM, Deckers JA. 2008.                        Gerfaut 75: 140–153.
+   Magnitude of soil erosion on the northern slope of the Uluguru
+
+
+
+
+                                   Manuscript received: 4 December 2024, revised: 17 February 2025, accepted: 13 March 2025
+                                                                                                    Associate Editor: M Melo
+

@@ -1,0 +1,568 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        29
+      ]
+    ],
+    "date-time": "2026-09-29T11:55:02Z",
+    "timestamp": 1790682902235,
+    "version": "4.1.0"
+  },
+  "reference-count": 64,
+  "publisher": "Cambridge University Press (CUP)",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2026,
+            9,
+            29
+          ]
+        ],
+        "date-time": "2026-09-29T00:00:00Z",
+        "timestamp": 1790640000000
+      },
+      "content-version": "unspecified",
+      "delay-in-days": 271,
+      "URL": "http://creativecommons.org/licenses/by/4.0"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Bird Conservation International"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2026
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Summary</jats:title>\n                  <jats:p>\n                    Offshore wind farm development is expanding into the Southern Hemisphere, the core range of albatross, petrels and shearwaters (Order Procellariiformes). The risk of collision with offshore turbines is poorly understood for Procellariiformes, primarily because of limited data on how high they fly. Timely filling of this data gap supports decision making with better collision estimates and can embed impact mitigation measures into offshore wind farm design (e.g. increasing turbine hub heights) before construction begins in the Southern Hemisphere. Here, we introduce a new method for flight height estimation in Procellariiformes by recording the characteristic patterns that they exhibit during dynamic soaring flight (cyclical ascent and descent) with bird-borne altimeters. During dynamic soaring flight, Procellariiformes regularly skim the sea surface (altitudes &lt;1 m), which is ideal for setting sea level reference pressure in barometric altitude calculation (here termed altimeter ‘zeroing’). We field test our method on breeding Shy Albatross\n                    <jats:italic>Thalassarche cauta</jats:italic>\n                    in Tasmania, Australia. As proof of concept, we show that albatross-borne altimeters can record fine-scale vertical movements, such as 10 second dynamic soaring cycles, and wave height and periodicity when albatross float on the sea surface. We found agreement between altimeters zeroed with dynamic soaring and GPS altitudes on mean flight heights of c.4 m for Shy Albatross. Altimeters showed a clearer right skew to the flight height distribution, which is crucial for determining how often albatrosses fly at higher altitudes also may be occupied by turbine blades. As a measure of uncertainty, we estimated that altimeter flight heights had a plausible range of 2.1 m between upper and lower scenarios under our method, while GPS altitudes were characterised by high variance around their mean. Our pilot study was limited to three tracked birds and further study is warranted to validate our methods over a broader sample of individuals and environmental conditions. To account for platform-specific error sources, we recommend complimentary use of altimeters and GPS to estimate seabird flight heights. The tiny power demand of altimeters compared to GPS, makes our method attractive for efficient biologger estimation of flight heights in dynamic soaring seabirds (including &gt;100 Procellariiform species).\n                  </jats:p>",
+  "DOI": "10.1017/s095927092610063x",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        29
+      ]
+    ],
+    "date-time": "2026-09-29T10:56:08Z",
+    "timestamp": 1790679368000
+  },
+  "source": "Crossref",
+  "is-referenced-by-count": 0,
+  "title": [
+    "Altimeters on albatrosses: quantifying flight heights for dynamic soaring seabirds"
+  ],
+  "prefix": "10.1017",
+  "volume": "36",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0003-3690-5576",
+      "authenticated-orcid": false,
+      "given": "Mark G.R.",
+      "family": "Miller",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "id": [
+            {
+              "id": "https://ror.org/02bfwt286",
+              "id-type": "ROR",
+              "asserted-by": "publisher"
+            }
+          ],
+          "name": "Monash University"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sheryl Ann",
+      "family": "Hamilton",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "id": [
+            {
+              "id": "https://ror.org/00jwytm78",
+              "id-type": "ROR",
+              "asserted-by": "publisher"
+            }
+          ],
+          "name": "Department of Natural Resources and Environment"
+        },
+        {
+          "id": [
+            {
+              "id": "https://ror.org/01nfmeh72",
+              "id-type": "ROR",
+              "asserted-by": "publisher"
+            }
+          ],
+          "name": "University of Tasmania"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Rohan Ha.",
+      "family": "Clarke",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "id": [
+            {
+              "id": "https://ror.org/02bfwt286",
+              "id-type": "ROR",
+              "asserted-by": "publisher"
+            }
+          ],
+          "name": "Monash University"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "56",
+  "published-online": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        29
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "S095927092610063X_r35",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5038/2074-1235.51.1.1517"
+    },
+    {
+      "key": "S095927092610063X_r63",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1467-9868.2010.00749.x"
+    },
+    {
+      "key": "S095927092610063X_r20",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.jenvman.2013.01.025"
+    },
+    {
+      "key": "S095927092610063X_r5",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1119/1.18555"
+    },
+    {
+      "key": "S095927092610063X_r15",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1017/S0959270912000020"
+    },
+    {
+      "key": "S095927092610063X_r10",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.61350/sbj.32.1"
+    },
+    {
+      "key": "S095927092610063X_r24",
+      "unstructured": "JNCC. (2023). ProcBe (Procellariiform Behaviour and Demographics). Available at https://jncc.gov.uk/our-work/procbe/ (accessed 3 April 2026)"
+    },
+    {
+      "key": "S095927092610063X_r36",
+      "first-page": "877",
+      "volume-title": "Proceedings of the 2002 National Technical Meeting of The Institute of Navigation",
+      "author": "Olynik",
+      "year": "2002"
+    },
+    {
+      "key": "S095927092610063X_r49",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2664.12760"
+    },
+    {
+      "key": "S095927092610063X_r12",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462-021-00243-z"
+    },
+    {
+      "key": "S095927092610063X_r44",
+      "volume-title": "R: A language and environment for statistical computing",
+      "year": "2023"
+    },
+    {
+      "key": "S095927092610063X_r33",
+      "first-page": "50",
+      "article-title": "Oceanic flights of the Northern Royal Albatross Diomedea epomophora sanfordi using satellite telemetry",
+      "volume": "18",
+      "author": "Nicholls",
+      "year": "1994",
+      "journal-title": "Corella"
+    },
+    {
+      "key": "S095927092610063X_r16",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00227-024-04508-0"
+    },
+    {
+      "key": "S095927092610063X_r9",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsif.2017.0496"
+    },
+    {
+      "key": "S095927092610063X_r3",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.1993.0048"
+    },
+    {
+      "key": "S095927092610063X_r28",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/sciadv.abo0200"
+    },
+    {
+      "key": "S095927092610063X_r29",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0276098"
+    },
+    {
+      "key": "S095927092610063X_r19",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/2051-3933-1-3"
+    },
+    {
+      "key": "S095927092610063X_r14",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Courbin, N. , Besnard, A. , Boncourt, E. and Grémillet, D. (2023). Flight heights of Scopoli’s shearwaters Calonectris diomedea in the context of offshore wind farm developments bioRxiv preprint 2023.05.14.540698. Available at http://biorxiv.org/lookup/doi/10.1101/2023.05.14.540698 (accessed 04 January 2025)",
+      "DOI": "10.1101/2023.05.14.540698"
+    },
+    {
+      "key": "S095927092610063X_r26",
+      "volume-title": "How high do birds fly? Development of methods and analysis of digital aerial data of seabird flight heights",
+      "author": "Johnston",
+      "year": "2016"
+    },
+    {
+      "key": "S095927092610063X_r18",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.biocon.2019.06.033"
+    },
+    {
+      "key": "S095927092610063X_r27",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462-023-00431-z"
+    },
+    {
+      "key": "S095927092610063X_r55",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/meps14265"
+    },
+    {
+      "key": "S095927092610063X_r6",
+      "unstructured": "Berwick Bank Wind Farm (2021). Offshore Environmental Impact Assessment - Appendix 6.1: Scoping Report. Available at https://berwickbank-eia.com/documents-offshore.html (accessed 01 April 2025)."
+    },
+    {
+      "key": "S095927092610063X_r11",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2664.12529"
+    },
+    {
+      "key": "S095927092610063X_r23",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1080/03014223.2012.757243"
+    },
+    {
+      "key": "S095927092610063X_r2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5038/2074-1235.43.1.1098"
+    },
+    {
+      "key": "S095927092610063X_r37",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0129342"
+    },
+    {
+      "key": "S095927092610063X_r45",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/aec.13278"
+    },
+    {
+      "key": "S095927092610063X_r48",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.jenvman.2014.07.031"
+    },
+    {
+      "key": "S095927092610063X_r1",
+      "volume-title": "Habitat affinities and at-sea ranging behaviors among main Hawaiian Island seabirds: breeding seabird telemetry, 2013–2016",
+      "author": "Adams",
+      "year": "2020"
+    },
+    {
+      "key": "S095927092610063X_r8",
+      "unstructured": "Borchers, H.W . (2023). pracma: Practical Numerical Math Functions. R package version 2.4.4. Available at https://CRAN.R-project.org/package=pracma"
+    },
+    {
+      "key": "S095927092610063X_r47",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40462-018-0121-9"
+    },
+    {
+      "key": "S095927092610063X_r21",
+      "volume-title": "Global Offshore Wind Report 2023",
+      "year": "2023"
+    },
+    {
+      "key": "S095927092610063X_r17",
+      "unstructured": "Deakin, Z. , Cook, A. , Daunt, F. , Mccluskie, A. , Morley, N. , Witcutt, E. et al. (2022). A review to inform the assessment of the risk of collision and displacement in petrels and shearwaters from offshore wind developments in Scotland. Scottish Government ISBN 9781805250296. Available at https://www.gov.scot/publications/review-inform-assessment-risk-collision-displacement-petrels-shearwaters-offshore-wind-developments-scotland/ (accessed 04 February 2025)"
+    },
+    {
+      "key": "S095927092610063X_r42",
+      "volume-title": "Wildlife and Wind Farms - Conflicts and Solutions",
+      "volume": "3",
+      "author": "Perrow",
+      "year": "2019a"
+    },
+    {
+      "key": "S095927092610063X_r54",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40317-023-00342-1"
+    },
+    {
+      "key": "S095927092610063X_r40",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40317-020-00194-z"
+    },
+    {
+      "key": "S095927092610063X_r4",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041-210X.13713"
+    },
+    {
+      "key": "S095927092610063X_r57",
+      "unstructured": "Star of the South Offshore Wind Farm. (2024). Environment Impact Statement (EIS) and Environment Effects Statement (EES) preparation. Available at https://www.starofthesouth.com.au/news-media-releases/latest-project-update (accessed 27 June 2024)"
+    },
+    {
+      "key": "S095927092610063X_r60",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/meps275297"
+    },
+    {
+      "key": "S095927092610063X_r39",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/3677141"
+    },
+    {
+      "key": "S095927092610063X_r13",
+      "first-page": "59",
+      "article-title": "Estimating Seabird Flight Height Using LiDAR",
+      "volume": "9",
+      "author": "Cook",
+      "year": "2018",
+      "journal-title": "Scottish Marine and Freshwater Science"
+    },
+    {
+      "key": "S095927092610063X_r43",
+      "volume-title": "Wildlife and Wind Farms - Conflicts and Solutions",
+      "volume": "4",
+      "author": "Perrow",
+      "year": "2019b"
+    },
+    {
+      "key": "S095927092610063X_r61",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2004.2918"
+    },
+    {
+      "key": "S095927092610063X_r59",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1068034"
+    },
+    {
+      "key": "S095927092610063X_r53",
+      "first-page": "3175",
+      "article-title": "Heart rate and estimated energy expenditure of flapping and gliding in Black-browed Albatrosses",
+      "volume": "216",
+      "author": "Sakamoto",
+      "year": "2013",
+      "journal-title": "Journal of Experimental Biology"
+    },
+    {
+      "key": "S095927092610063X_r41",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2664.12909"
+    },
+    {
+      "key": "S095927092610063X_r34",
+      "unstructured": "NINA. (2025). Offshore wind farm wake effects on seabird flight energetics (BIRDWAKE). Available at https://www.nina.no/english/Sustainable-society/Renewable-energy/BIRDWAKE (accessed 3 April 2026)"
+    },
+    {
+      "key": "S095927092610063X_r22",
+      "volume-title": "Foraging ecology of Shy Albatrosses Thalassarche cauta breeding in Australia: implications for interactions with longline fisheries",
+      "author": "Hedd",
+      "year": "1999"
+    },
+    {
+      "key": "S095927092610063X_r62",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.enconman.2018.09.059"
+    },
+    {
+      "key": "S095927092610063X_r51",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1474-919x.2004.00295.x"
+    },
+    {
+      "key": "S095927092610063X_r7",
+      "volume-title": "Seabird GPS tracking on the Isle of May, St Abb’s Head and Fowlsheugh in 2021 in relation to offshore wind farms in the Forth/Tay region",
+      "author": "Bogdanova",
+      "year": "2021"
+    },
+    {
+      "key": "S095927092610063X_r25",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2664.12191"
+    },
+    {
+      "key": "S095927092610063X_r50",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2989/00306525.2021.1984998"
+    },
+    {
+      "key": "S095927092610063X_r30",
+      "unstructured": "Miller, L. and Neumeier, U. (2021). oceanwaves: Ocean Wave Statistics. R package version 0.2.0. Available at https://cran.r-project.org/package=oceanwaves"
+    },
+    {
+      "key": "S095927092610063X_r31",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2664.70088"
+    },
+    {
+      "key": "S095927092610063X_r56",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1650/0010-5422(2002)104[0679:AWPSFT]2.0.CO;2"
+    },
+    {
+      "key": "S095927092610063X_r58",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.pocean.2021.102713"
+    },
+    {
+      "key": "S095927092610063X_r52",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0041449"
+    },
+    {
+      "key": "S095927092610063X_r46",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.pocean.2010.08.001"
+    },
+    {
+      "key": "S095927092610063X_r32",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.asr.2017.01.011"
+    },
+    {
+      "key": "S095927092610063X_r64",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/pnas.1523853113"
+    },
+    {
+      "key": "S095927092610063X_r38",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.1982.0158"
+    }
+  ],
+  "container-title": [
+    "Bird Conservation International"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S095927092610063X",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        29
+      ]
+    ],
+    "date-time": "2026-09-29T10:56:14Z",
+    "timestamp": 1790679374000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://www.cambridge.org/core/product/identifier/S095927092610063X/type/journal_article"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2026
+      ]
+    ]
+  },
+  "references-count": 64,
+  "alternative-id": [
+    "S095927092610063X"
+  ],
+  "URL": "https://doi.org/10.1017/s095927092610063x",
+  "relation": {},
+  "ISSN": [
+    "0959-2709",
+    "1474-0001"
+  ],
+  "issn-type": [
+    {
+      "value": "0959-2709",
+      "type": "print"
+    },
+    {
+      "value": "1474-0001",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2026
+      ]
+    ]
+  },
+  "article-number": "e39"
+}

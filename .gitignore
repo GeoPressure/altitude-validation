@@ -5,9 +5,13 @@ data/
 .RData
 .Rproj.user/
 .DS_Store
-report/*_files/
-report/*_cache/
-report/.quarto/
-report/index.html
 logs/
 _site/
+
+# Reproducible document build files and visual-check previews.
+**/*_files/
+**/*_cache/
+**/.quarto/
+paper/*.tex
+!paper/title-block.tex
+tmp/

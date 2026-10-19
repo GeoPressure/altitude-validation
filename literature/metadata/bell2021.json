@@ -1,0 +1,868 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        17
+      ]
+    ],
+    "date-time": "2026-10-17T12:36:45Z",
+    "timestamp": 1792240605861,
+    "version": "4.4.0"
+  },
+  "reference-count": 69,
+  "publisher": "Wiley",
+  "issue": "741",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2021,
+            11,
+            9
+          ]
+        ],
+        "date-time": "2021-11-09T00:00:00Z",
+        "timestamp": 1636416000000
+      },
+      "content-version": "vor",
+      "delay-in-days": 39,
+      "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "rmets.onlinelibrary.wiley.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Quart J Royal Meteoro Soc"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2021,
+        10
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>The extension of the ERA5 reanalysis back to 1950 supplements the previously published segment covering 1979 to the present. It features the assimilation of additional conventional observations, as well as improved use of early satellite data. The number of observations assimilated increases from 53,000 per day in early 1950 to 570,000 per day by the end of 1978. Accordingly, the quality of the reanalysis improves throughout the period, generally joining seamlessly with the segment covering 1979 to the present. The fidelity of the extension is illustrated by the accurate depiction of the North Sea storm of 1953, and the events leading to the first discovery of sudden stratospheric warmings in 1952. Time series of ERA5 global surface temperature anomalies show temperatures to be relatively stable from 1950 until the late 1970s, in agreement with the other contemporary full‐input reanalysis covering this period and with independent data sets, although there are significant differences in the accuracy of representing specific regions, Europe being well represented in the early period but Australia less so. The variability of ERA5 precipitation from month to month agrees well with observations for all continents, with correlations above 90% for most of Europe and generally in excess of 70% for North America, Asia and Australia. The evolution of upper air temperatures, humidities and winds shows smoothly varying behaviour, including tropospheric warming and stratospheric cooling, modulated by volcanic eruptions. The Quasi‐Biennial Oscillation is well represented throughout. Aspects to be improved upon in future reanalyses include the assimilation of tropical cyclone data, the spin‐up of soil moisture and stratospheric humidity, and the representation of surface temperatures over Australia.</jats:p>",
+  "DOI": "10.1002/qj.4174",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2021,
+        9,
+        24
+      ]
+    ],
+    "date-time": "2021-09-24T11:32:48Z",
+    "timestamp": 1632483168000
+  },
+  "page": "4186-4227",
+  "update-policy": "https://doi.org/10.1002/crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 634,
+  "title": [
+    "The ERA5 global reanalysis: Preliminary extension to 1950"
+  ],
+  "prefix": "10.1002",
+  "volume": "147",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0002-8151-5449",
+      "authenticated-orcid": false,
+      "given": "Bill",
+      "family": "Bell",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-5330-7071",
+      "authenticated-orcid": false,
+      "given": "Hans",
+      "family": "Hersbach",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Adrian",
+      "family": "Simmons",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Paul",
+      "family": "Berrisford",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Per",
+      "family": "Dahlgren",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "The Norwegian Meteorological Institute  Oslo Norway"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "András",
+      "family": "Horányi",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-5997-290X",
+      "authenticated-orcid": false,
+      "given": "Joaquín",
+      "family": "Muñoz‐Sabater",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Julien",
+      "family": "Nicolas",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Raluca",
+      "family": "Radu",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Dinand",
+      "family": "Schepers",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Cornel",
+      "family": "Soci",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sebastien",
+      "family": "Villaume",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jean‐Raymond",
+      "family": "Bidlot",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Leo",
+      "family": "Haimberger",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Universität Wien  Vienna Austria"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jack",
+      "family": "Woollen",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "National Center for Environmental Prediction NOAA  College Park MA USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Carlo",
+      "family": "Buontempo",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jean‐Noël",
+      "family": "Thépaut",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "European Centre for Medium‐Range Weather Forecasts  Reading UK"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "311",
+  "published-online": {
+    "date-parts": [
+      [
+        2021,
+        11,
+        9
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_11_2_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1525-7541(2003)004<1147:TVGPCP>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_11_3_1",
+      "article-title": "Quasi‐biennial oscillation disrupted by abnormal southern hemisphere stratosphere",
+      "volume": "16",
+      "author": "Anstey J.A.",
+      "year": "2020",
+      "journal-title": "Earth and Space Science Open Archive"
+    },
+    {
+      "key": "e_1_2_11_4_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5194/acp-19-9469-2019"
+    },
+    {
+      "key": "e_1_2_11_5_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5194/essd-5-71-2013"
+    },
+    {
+      "key": "e_1_2_11_6_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.2652"
+    },
+    {
+      "key": "e_1_2_11_7_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/BAMS-D-17-0229.1"
+    },
+    {
+      "key": "e_1_2_11_8_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/gdj3.56"
+    },
+    {
+      "key": "e_1_2_11_9_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5194/essd-9-63-2017"
+    },
+    {
+      "key": "e_1_2_11_10_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI3996.1"
+    },
+    {
+      "key": "e_1_2_11_11_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.776"
+    },
+    {
+      "key": "e_1_2_11_12_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2017JD028200"
+    },
+    {
+      "key": "e_1_2_11_13_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/2015GL064888"
+    },
+    {
+      "key": "e_1_2_11_14_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/gdj3.25"
+    },
+    {
+      "key": "e_1_2_11_15_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1256/qj.05.108"
+    },
+    {
+      "key": "e_1_2_11_16_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49708637011"
+    },
+    {
+      "key": "e_1_2_11_17_1",
+      "unstructured": "ECMWF C.D.(2016a).Copernicus Knowledge Base. Available at:https://confluence.ecmwf.int/display/CKB."
+    },
+    {
+      "key": "e_1_2_11_18_1",
+      "unstructured": "ECMWF R.‐D.(2016b).IFS documentation cy41r2. Available at:https://www.ecmwf.int/en/forecasts/documentation‐and‐support/changes‐ecmwf‐model/ifs‐documentation."
+    },
+    {
+      "key": "e_1_2_11_19_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2008JCLI2539.1"
+    },
+    {
+      "key": "e_1_2_11_20_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI-D-11-00668.1"
+    },
+    {
+      "key": "e_1_2_11_21_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.3870"
+    },
+    {
+      "key": "e_1_2_11_22_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.3803"
+    },
+    {
+      "key": "e_1_2_11_23_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.3040"
+    },
+    {
+      "key": "e_1_2_11_24_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.2528"
+    },
+    {
+      "key": "e_1_2_11_25_1",
+      "first-page": "29",
+      "volume-title": "The Observation Feedback Archive for the ICOADS and ISPD Data Sets",
+      "author": "Hersbach H.",
+      "year": "2015"
+    },
+    {
+      "key": "e_1_2_11_26_1",
+      "first-page": "25",
+      "volume-title": "Sea Surface Temperature and Sea Ice Concentration for ERA5",
+      "author": "Hirahara S.",
+      "year": "2016"
+    },
+    {
+      "key": "e_1_2_11_27_1",
+      "article-title": "The COSMIC/FORMOSAT‐3 Radio Occultation Mission after 12 years: accomplishments, remaining challenges, and potential impacts of COSMIC‐2",
+      "author": "Ho S.‐P.",
+      "year": "2019",
+      "journal-title": "Bulletin of the American Meteorological Society."
+    },
+    {
+      "key": "e_1_2_11_28_1",
+      "volume-title": "Assimilation and Modelling of the Hydrological Cycle: ECMWF's Status and Plans",
+      "author": "Hólm E.",
+      "year": "2002"
+    },
+    {
+      "key": "e_1_2_11_29_1",
+      "volume-title": "Document for the Creating a Long Term Multi‐Sensor Ozone Data Record Project",
+      "author": "Johnson J.E.",
+      "year": "2012"
+    },
+    {
+      "key": "e_1_2_11_30_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5194/acp-16-6681-2016"
+    },
+    {
+      "key": "e_1_2_11_31_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2018JD029867"
+    },
+    {
+      "key": "e_1_2_11_32_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2009BAMS2755.1"
+    },
+    {
+      "key": "e_1_2_11_33_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2151/jmsj.2015-001"
+    },
+    {
+      "key": "e_1_2_11_34_1",
+      "volume-title": "Assimilation of tropical cyclone best track reports in CERA‐20C",
+      "author": "Kosaka Y.",
+      "year": "2018"
+    },
+    {
+      "key": "e_1_2_11_35_1",
+      "volume-title": "Revision of the HIRS Cloud Detection at ECMWF",
+      "author": "Krzeminski B.",
+      "year": "2009"
+    },
+    {
+      "key": "e_1_2_11_36_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2018MS001273"
+    },
+    {
+      "key": "e_1_2_11_37_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2018JD029522"
+    },
+    {
+      "key": "e_1_2_11_38_1",
+      "volume-title": "ECMWF ERA‐40 Project Report Series No. 21: The use of VTPR raw radiances in ERA‐40",
+      "author": "Li X.",
+      "year": "2005"
+    },
+    {
+      "key": "e_1_2_11_39_1",
+      "volume-title": "Operational Implementation of RTTOV‐11 in the IFS",
+      "author": "Lupu C.",
+      "year": "2015"
+    },
+    {
+      "key": "e_1_2_11_40_1",
+      "volume-title": "Satellite Infrared Soundings from NOAA Spacecraft",
+      "author": "McMillin L.M.",
+      "year": "1973"
+    },
+    {
+      "key": "e_1_2_11_41_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/jgrd.50597"
+    },
+    {
+      "key": "e_1_2_11_42_1",
+      "volume-title": "The Monthly Weather Report for the Year 1953",
+      "author": "MetOffice",
+      "year": "1954"
+    },
+    {
+      "key": "e_1_2_11_43_1",
+      "first-page": "e2019JD032361",
+      "article-title": "An updated assessment of near‐surface temperature change from 1850: the HadCRUT5 dataset",
+      "author": "Morice C.P.",
+      "year": "2020",
+      "journal-title": "Journal of Geophysical Research: Atmospheres"
+    },
+    {
+      "key": "e_1_2_11_44_1",
+      "unstructured": "NCAR(2014).Research Data Archive/Computational and Information Systems Laboratory/National Center for Atmospheric Research/University Corporation for Atmospheric Research NCAR Upper Air Database 1920‐ongoing. Research Data Archive at the National Center for Atmospheric Research Computational and Information Systems Laboratory Boulder CO. [Available online athttps://rda.ucar.edu/datasets/ds370.1/.] Accessed 01 Jun 201"
+    },
+    {
+      "key": "e_1_2_11_45_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/2016GL070373"
+    },
+    {
+      "key": "e_1_2_11_46_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI-D-15-0556.1"
+    },
+    {
+      "key": "e_1_2_11_47_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/wea.2044"
+    },
+    {
+      "key": "e_1_2_11_48_1",
+      "first-page": "22",
+      "article-title": "Climate Service Develops User‐friendly Data Store",
+      "volume": "151",
+      "author": "Raoult B.",
+      "year": "2017",
+      "journal-title": "ECMWF Newsletter"
+    },
+    {
+      "key": "e_1_2_11_49_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2002JD002670"
+    },
+    {
+      "key": "e_1_2_11_50_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/JZ066i003p00813"
+    },
+    {
+      "key": "e_1_2_11_51_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5194/essd-12-3469-2020"
+    },
+    {
+      "key": "e_1_2_11_52_1",
+      "first-page": "51",
+      "article-title": "Die explosionsartige Stratosphärenerwärmung des Spätwinters 1951‐1952",
+      "volume": "6",
+      "author": "Scherhag R.",
+      "year": "1952",
+      "journal-title": "Berichte des Deutschen Wetterdienstes"
+    },
+    {
+      "key": "e_1_2_11_53_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.2949"
+    },
+    {
+      "key": "e_1_2_11_54_1",
+      "volume-title": "Low Frequency Variability and Trends in Surface Air Temperature and Humidity from ERA5 and Other Datasets",
+      "author": "Simmons A.",
+      "year": "2021"
+    },
+    {
+      "key": "e_1_2_11_55_1",
+      "volume-title": "Global Stratospheric Temperature Bias and Other Stratospheric Aspects of ERA5 and ERA5.1",
+      "author": "Simmons A.",
+      "year": "2020"
+    },
+    {
+      "key": "e_1_2_11_56_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.2317"
+    },
+    {
+      "key": "e_1_2_11_57_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2009JD012442"
+    },
+    {
+      "key": "e_1_2_11_58_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.3598"
+    },
+    {
+      "key": "e_1_2_11_59_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/BAMS-D-13-00147.1"
+    },
+    {
+      "key": "e_1_2_11_60_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/2009BAMS2852.1"
+    },
+    {
+      "key": "e_1_2_11_61_1",
+      "first-page": "119",
+      "volume-title": "Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change",
+      "author": "Stocker T.F.",
+      "year": "2013"
+    },
+    {
+      "key": "e_1_2_11_62_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.2440"
+    },
+    {
+      "key": "e_1_2_11_63_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0493(1958)086<0377:AWOTSO>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_11_64_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/IGARSS.2018.8518067"
+    },
+    {
+      "key": "e_1_2_11_65_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/2013JD020316"
+    },
+    {
+      "key": "e_1_2_11_66_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/JCLI-3299.1"
+    },
+    {
+      "key": "e_1_2_11_67_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/joc.3530"
+    },
+    {
+      "key": "e_1_2_11_68_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1256/qj.04.176"
+    },
+    {
+      "key": "e_1_2_11_69_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/joc.2103"
+    },
+    {
+      "key": "e_1_2_11_70_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1029/2019EO128229"
+    }
+  ],
+  "container-title": [
+    "Quarterly Journal of the Royal Meteorological Society"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/qj.4174",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://onlinelibrary.wiley.com/doi/full-xml/10.1002/qj.4174",
+      "content-type": "application/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1002/qj.4174",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        8,
+        24
+      ]
+    ],
+    "date-time": "2023-08-24T06:31:34Z",
+    "timestamp": 1692858694000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.4174"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2021,
+        10
+      ]
+    ]
+  },
+  "references-count": 69,
+  "journal-issue": {
+    "issue": "741",
+    "published-print": {
+      "date-parts": [
+        [
+          2021,
+          10
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1002/qj.4174"
+  ],
+  "URL": "https://doi.org/10.1002/qj.4174",
+  "archive": [
+    "Portico"
+  ],
+  "relation": {},
+  "ISSN": [
+    "0035-9009",
+    "1477-870X"
+  ],
+  "issn-type": [
+    {
+      "value": "0035-9009",
+      "type": "print"
+    },
+    {
+      "value": "1477-870X",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2021,
+        10
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2021-02-22",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2021-08-20",
+      "order": 1,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2021-11-09",
+      "order": 2,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

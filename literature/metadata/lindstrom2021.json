@@ -1,0 +1,819 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        8,
+        28
+      ]
+    ],
+    "date-time": "2026-08-28T20:09:50Z",
+    "timestamp": 1787947790717,
+    "version": "build-2784847793"
+  },
+  "reference-count": 44,
+  "publisher": "Elsevier BV",
+  "issue": "15",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2021,
+            8,
+            1
+          ]
+        ],
+        "date-time": "2021-08-01T00:00:00Z",
+        "timestamp": 1627776000000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2021,
+            8,
+            1
+          ]
+        ],
+        "date-time": "2021-08-01T00:00:00Z",
+        "timestamp": 1627776000000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/legal/tdmrep-license"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2021,
+            5,
+            21
+          ]
+        ],
+        "date-time": "2021-05-21T00:00:00Z",
+        "timestamp": 1621555200000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100004359",
+      "name": "Swedish Research Council",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100004359",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "cell.com",
+      "elsevier.com",
+      "sciencedirect.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Current Biology"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2021,
+        8
+      ]
+    ]
+  },
+  "DOI": "10.1016/j.cub.2021.05.047",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2021,
+        6,
+        30
+      ]
+    ],
+    "date-time": "2021-06-30T10:27:09Z",
+    "timestamp": 1625048829000
+  },
+  "page": "3433-3439.e3",
+  "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 55,
+  "title": [
+    "Extreme altitude changes between night and day during marathon flights of great snipes"
+  ],
+  "prefix": "10.1016",
+  "volume": "31",
+  "author": [
+    {
+      "given": "Åke",
+      "family": "Lindström",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Thomas",
+      "family": "Alerstam",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Arne",
+      "family": "Andersson",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Johan",
+      "family": "Bäckman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Peter",
+      "family": "Bahlenberg",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Roeland",
+      "family": "Bom",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Robert",
+      "family": "Ekblom",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Raymond H.G.",
+      "family": "Klaassen",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Michał",
+      "family": "Korniluk",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sissel",
+      "family": "Sjöberg",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Julia K.M.",
+      "family": "Weber",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "78",
+  "reference": [
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib1",
+      "series-title": "Bird Migration",
+      "author": "Alerstam",
+      "year": "1990"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib2",
+      "doi-asserted-by": "crossref",
+      "first-page": "549",
+      "DOI": "10.1007/s001140050673",
+      "article-title": "The use of low-level jets by migrating birds",
+      "volume": "86",
+      "author": "Liechti",
+      "year": "1999",
+      "journal-title": "Naturwissenschaften"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib3",
+      "doi-asserted-by": "crossref",
+      "first-page": "509",
+      "DOI": "10.1007/s00359-017-1181-9",
+      "article-title": "Atmospheric conditions create freeways, detours and tailbacks for migrating birds",
+      "volume": "203",
+      "author": "Shamoun-Baranes",
+      "year": "2017",
+      "journal-title": "J. Comp. Physiol. A Neuroethol. Sens. Neural Behav. Physiol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib4",
+      "first-page": "20180569",
+      "article-title": "High-altitude shorebird migration in the absence of topographical barriers: avoiding high air temperatures and searching for profitable winds",
+      "volume": "285",
+      "author": "Senner",
+      "year": "2018",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib5",
+      "doi-asserted-by": "crossref",
+      "first-page": "21232",
+      "DOI": "10.1038/s41598-020-77897-z",
+      "article-title": "Shorebirds wintering in Southeast Asia demonstrate trans-Himalayan flights",
+      "volume": "10",
+      "author": "Li",
+      "year": "2020",
+      "journal-title": "Sci. Rep."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib6",
+      "doi-asserted-by": "crossref",
+      "first-page": "646",
+      "DOI": "10.1126/science.abe7291",
+      "article-title": "Extreme altitudes during diurnal flights in a nocturnal songbird migrant",
+      "volume": "372",
+      "author": "Sjöberg",
+      "year": "2021",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib7",
+      "doi-asserted-by": "crossref",
+      "first-page": "250",
+      "DOI": "10.1126/science.1258732",
+      "article-title": "The roller coaster flight strategy of bar-headed geese conserves energy during Himalayan migrations",
+      "volume": "347",
+      "author": "Bishop",
+      "year": "2015",
+      "journal-title": "Science"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib8",
+      "doi-asserted-by": "crossref",
+      "first-page": "808",
+      "DOI": "10.1642/AUK-15-33.1",
+      "article-title": "Unexplained altitude changes in a migrating thrush: long-flight altitude data from radio-telemetry",
+      "volume": "132",
+      "author": "Bowlin",
+      "year": "2015",
+      "journal-title": "Auk"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib9",
+      "doi-asserted-by": "crossref",
+      "first-page": "833",
+      "DOI": "10.1098/rsbl.2011.0343",
+      "article-title": "Great flights by great snipes: long and fast non-stop migration over benign habitats",
+      "volume": "7",
+      "author": "Klaassen",
+      "year": "2011",
+      "journal-title": "Biol. Lett."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib10",
+      "doi-asserted-by": "crossref",
+      "first-page": "321",
+      "DOI": "10.1111/jav.00829",
+      "article-title": "The migration of the great snipe Gallinago media: intriguing variations on a grand theme",
+      "volume": "47",
+      "author": "Lindström",
+      "year": "2016",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib11",
+      "first-page": "20122114",
+      "article-title": "The paradox of extreme high-altitude migration in bar-headed geese Anser indicus",
+      "volume": "280",
+      "author": "Hawkes",
+      "year": "2013",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib12",
+      "doi-asserted-by": "crossref",
+      "first-page": "e01821",
+      "DOI": "10.1111/jav.01821",
+      "article-title": "Barometer logging reveals new dimensions of individual songbird migration",
+      "volume": "49",
+      "author": "Sjöberg",
+      "year": "2018",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib21",
+      "doi-asserted-by": "crossref",
+      "first-page": "1873",
+      "DOI": "10.1111/1365-2656.13075",
+      "article-title": "Urban areas affect flight altitudes of nocturnally migrating birds",
+      "volume": "88",
+      "author": "Cabrera-Cruz",
+      "year": "2019",
+      "journal-title": "J. Anim. Ecol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib13",
+      "doi-asserted-by": "crossref",
+      "first-page": "63",
+      "DOI": "10.1242/jeb.130.1.63",
+      "article-title": "Bird migration across a strong magnetic anomaly",
+      "volume": "130",
+      "author": "Alerstam",
+      "year": "1987",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib14",
+      "series-title": "Current Ornithology",
+      "first-page": "109",
+      "article-title": "Atmospheric structure and avian migration",
+      "volume": "Volume 6",
+      "author": "Kerlinger",
+      "year": "1989"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib15",
+      "first-page": "117",
+      "article-title": "Oriented bird migration in or between opaque cloud layers",
+      "volume": "117",
+      "author": "Griffin",
+      "year": "1973",
+      "journal-title": "Proc. Am. Philos. Soc."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib16",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.18194/ws.00187",
+      "article-title": "Waders flying with folded legs – which species, when, where and why?",
+      "volume": "127",
+      "author": "Lindström",
+      "year": "2020",
+      "journal-title": "Wader Study"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib17",
+      "doi-asserted-by": "crossref",
+      "first-page": "56",
+      "DOI": "10.3356/JRR-17-94",
+      "article-title": "Hunting altitude of Eleonora’s falcon (Falco eleonorae) over a breeding colony",
+      "volume": "53",
+      "author": "Xirouchakis",
+      "year": "2019",
+      "journal-title": "J. Raptor Res."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib18",
+      "series-title": "Eleonora’s Falcon: Adaptations to Prey and Habitat in a Social Raptor",
+      "author": "Walter",
+      "year": "1979"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib19",
+      "doi-asserted-by": "crossref",
+      "first-page": "7",
+      "DOI": "10.1111/j.1474-919X.1964.tb03679.x",
+      "article-title": "Dawn ascent and re-orientation of Scandinavian thrushes (Turdus spp.) migrating at night over the northeastern Atlantic Ocean in autumn",
+      "volume": "106",
+      "author": "Myres",
+      "year": "1964",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib20",
+      "doi-asserted-by": "crossref",
+      "first-page": "4",
+      "DOI": "10.1111/j.0908-8857.2004.03308.x",
+      "article-title": "May dehydration risk govern long-distance migratory behaviour?",
+      "volume": "35",
+      "author": "Klaassen",
+      "year": "2004",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib22",
+      "doi-asserted-by": "crossref",
+      "first-page": "672",
+      "DOI": "10.1016/S0003-3472(74)80015-1",
+      "article-title": "Sounds audible to migrating birds",
+      "volume": "22",
+      "author": "Griffin",
+      "year": "1974",
+      "journal-title": "Anim. Behav."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib23",
+      "doi-asserted-by": "crossref",
+      "first-page": "224",
+      "DOI": "10.2307/3543482",
+      "article-title": "Timing and amount of bird migration in relation to weather: a review",
+      "volume": "30",
+      "author": "Richardson",
+      "year": "1978",
+      "journal-title": "Oikos"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib24",
+      "first-page": "136",
+      "article-title": "Behavioral responses of migrating birds to daylight and darkness: a radar and direct visual study",
+      "volume": "84",
+      "author": "Gauthreaux",
+      "year": "1972",
+      "journal-title": "Wilson Bull."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib25",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1029/2004JD005526",
+      "article-title": "Diurnal cycle of upper-air temperature estimated from radiosondes",
+      "volume": "110",
+      "author": "Seidel",
+      "year": "2005",
+      "journal-title": "J. Geophys. Res. Atmos."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib26",
+      "doi-asserted-by": "crossref",
+      "first-page": "446",
+      "DOI": "10.1175/1520-0493(1969)097<0446:DWVSTK>2.3.CO;2",
+      "article-title": "Diurnal wind variations, surface to 30 kilometers",
+      "volume": "97",
+      "author": "Wallace",
+      "year": "1969",
+      "journal-title": "Mon. Weather Rev."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib27",
+      "doi-asserted-by": "crossref",
+      "first-page": "313",
+      "DOI": "10.1111/j.1474-919X.1983.tb03117.x",
+      "article-title": "Heat stress in tropical birds: behavioural thermoregulation during flight",
+      "volume": "125",
+      "author": "Bryant",
+      "year": "1983",
+      "journal-title": "Ibis"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib28",
+      "doi-asserted-by": "crossref",
+      "first-page": "726",
+      "DOI": "10.1111/j.1365-2656.2010.01689.x",
+      "article-title": "Maximal heat dissipation capacity and hyperthermia risk: neglected key factors in the ecology of endotherms",
+      "volume": "79",
+      "author": "Speakman",
+      "year": "2010",
+      "journal-title": "J. Anim. Ecol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib29",
+      "doi-asserted-by": "crossref",
+      "first-page": "427",
+      "DOI": "10.1089/ham.2019.0032",
+      "article-title": "Natural climbers: insights from avian physiology at high altitude",
+      "volume": "20",
+      "author": "Parr",
+      "year": "2019",
+      "journal-title": "High Alt. Med. Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib30",
+      "doi-asserted-by": "crossref",
+      "first-page": "446",
+      "DOI": "10.1175/1520-0493(1969)097<0446:DWVSTK>2.3.CO;2",
+      "article-title": "Diurnal variations in precipitation and thunderstorm frequency over the conterminous United States",
+      "volume": "97",
+      "author": "Wallace",
+      "year": "1975",
+      "journal-title": "Mon. Weather Rev."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib31",
+      "doi-asserted-by": "crossref",
+      "first-page": "1401",
+      "DOI": "10.1016/S1352-2310(02)01023-3",
+      "article-title": "Analysis of dust storms observed in Mongolia during 1937-1999",
+      "volume": "37",
+      "author": "Natsagdorj",
+      "year": "2003",
+      "journal-title": "Atmos. Environ."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib32",
+      "first-page": "1",
+      "article-title": "Spring migration of birds across the Greenland Inlandice",
+      "volume": "21",
+      "author": "Alerstam",
+      "year": "1986",
+      "journal-title": "Medd. Gronl. Biosci."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib33",
+      "doi-asserted-by": "crossref",
+      "first-page": "1",
+      "DOI": "10.1111/jav.02464",
+      "article-title": "A red knot as a black swan: how a single bird shows navigational abilities during repeat crossings of the Greenland Icecap",
+      "volume": "51",
+      "author": "Kok",
+      "year": "2020",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib34",
+      "first-page": "459",
+      "article-title": "Swans flying at 8000 metres",
+      "volume": "71",
+      "author": "Stewart",
+      "year": "1978",
+      "journal-title": "Br. Birds"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib35",
+      "first-page": "461",
+      "article-title": "Collision between a vulture and an aircraft at an altitude of 37,000 feet",
+      "volume": "86",
+      "author": "Laybourne",
+      "year": "1974",
+      "journal-title": "Wilson Bull."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib36",
+      "doi-asserted-by": "crossref",
+      "first-page": "2272",
+      "DOI": "10.21105/joss.02272",
+      "article-title": "rgee: An R package for interacting with Google Earth Engine",
+      "volume": "5",
+      "author": "Aybar",
+      "year": "2020",
+      "journal-title": "J. Open Source Softw."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib37",
+      "doi-asserted-by": "crossref",
+      "first-page": "37",
+      "DOI": "10.34080/os.v17.22705",
+      "article-title": "An estimate of the great snipe Gallinago media population in Sweden based on recent surveys at Ånnsjön and Storlien",
+      "volume": "17",
+      "author": "Ekblom",
+      "year": "2007",
+      "journal-title": "Ornis Svec."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib38",
+      "doi-asserted-by": "crossref",
+      "first-page": "309",
+      "DOI": "10.1111/jav.01068",
+      "article-title": "Activity and migratory flights of individual free-flying songbirds throughout the annual cycle: method and first case study",
+      "volume": "48",
+      "author": "Bäckman",
+      "year": "2017",
+      "journal-title": "J. Avian Biol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib39",
+      "doi-asserted-by": "crossref",
+      "first-page": "543",
+      "DOI": "10.1007/s00359-017-1165-9",
+      "article-title": "Actogram analysis of free-flying migratory birds: new perspectives based on acceleration logging",
+      "volume": "203",
+      "author": "Bäckman",
+      "year": "2017",
+      "journal-title": "J. Comp. Physiol. A Neuroethol. Sens. Neural Behav. Physiol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib40",
+      "doi-asserted-by": "crossref",
+      "first-page": "1055",
+      "DOI": "10.1111/j.2041-210X.2012.00248.x",
+      "article-title": "GeoLight - processing and analysing light-based geolocator data in R",
+      "volume": "3",
+      "author": "Lisovski",
+      "year": "2012",
+      "journal-title": "Methods Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib41",
+      "series-title": "Global Multi-resolution Terrain Elevation Data 2010 (GMTED2010), Volume 2011-1073",
+      "author": "Danielson",
+      "year": "2011"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib42",
+      "series-title": "R: A language and environment for statistical computing",
+      "year": "2017"
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib43",
+      "doi-asserted-by": "crossref",
+      "first-page": "65",
+      "DOI": "10.1111/j.2041-210X.2011.00138.x",
+      "article-title": "RNCEP: global weather and climate data at your fingertips",
+      "volume": "3",
+      "author": "Kemp",
+      "year": "2012",
+      "journal-title": "Methods Ecol. Evol."
+    },
+    {
+      "key": "10.1016/j.cub.2021.05.047_bib44",
+      "series-title": "Spectral Analysis and Its Applications",
+      "author": "Jenkins",
+      "year": "1968"
+    }
+  ],
+  "container-title": [
+    "Current Biology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0960982221007454?httpAccept=text/xml",
+      "content-type": "text/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0960982221007454?httpAccept=text/plain",
+      "content-type": "text/plain",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2026,
+        7,
+        2
+      ]
+    ],
+    "date-time": "2026-07-02T21:19:45Z",
+    "timestamp": 1783027185000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0960982221007454"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2021,
+        8
+      ]
+    ]
+  },
+  "references-count": 44,
+  "journal-issue": {
+    "issue": "15",
+    "published-print": {
+      "date-parts": [
+        [
+          2021,
+          8
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "S0960982221007454"
+  ],
+  "URL": "https://doi.org/10.1016/j.cub.2021.05.047",
+  "relation": {},
+  "ISSN": [
+    "0960-9822"
+  ],
+  "issn-type": [
+    {
+      "value": "0960-9822",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2021,
+        8
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "Elsevier",
+      "name": "publisher",
+      "label": "This article is maintained by"
+    },
+    {
+      "value": "Extreme altitude changes between night and day during marathon flights of great snipes",
+      "name": "articletitle",
+      "label": "Article Title"
+    },
+    {
+      "value": "Current Biology",
+      "name": "journaltitle",
+      "label": "Journal Title"
+    },
+    {
+      "value": "https://doi.org/10.1016/j.cub.2021.05.047",
+      "name": "articlelink",
+      "label": "CrossRef DOI link to publisher maintained version"
+    },
+    {
+      "value": "https://doi.org/10.1016/j.cub.2021.06.066",
+      "name": "associatedlink",
+      "label": "CrossRef DOI link to the associated document"
+    },
+    {
+      "value": "article",
+      "name": "content_type",
+      "label": "Content Type"
+    },
+    {
+      "value": "© 2021 The Author(s). Published by Elsevier Inc.",
+      "name": "copyright",
+      "label": "Copyright"
+    }
+  ]
+}

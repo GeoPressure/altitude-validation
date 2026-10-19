@@ -1,38 +1,29 @@
-# Typical heights of birds tracked with pressure geolocators, used to weight the radiosonde results.
-#
-# Source: the GeoLocator master data package (https://doi.org/10.5281/zenodo.18187092), including
-# its restricted tags (only aggregated distributions are written here), most-likely
-# pressurepaths; flight points are those between stationary periods (non-integer stap_id). Height
-# above ground is derived from tag pressure vs ERA5 surface pressure with a standard atmosphere: a
-# rough estimate, enough to know at which heights the radiosonde errors matter.
-#
-# Raw, 13% of flight points come out below the ERA5 surface, for two reasons:
-# - At rest, tags read on average a few hPa more than ERA5's surface pressure (tag calibration, and
-#   resting sites lower than the ERA5 grid-cell mean): 74% of stationary time is "below ground".
-#   As in GeoPressureR's `surface_pressure_norm`, each flight is referenced to the bird's own
-#   ground: the tag minus ERA5 pressure offset at departure (last 6 h of the previous stationary
-#   period) and at arrival (first 6 h of the next), interpolated in time over the flight.
-# - The remaining 9% of flight time below 0 is either within 100 m of the ground (4%: low flight,
-#   take-off and landing, 1 hPa tag resolution = 8 m) or deeper, mostly over mountains (5%; half of it
-#   where ERA5's surface is above 1000 m), where the straight line between stationary periods
-#   crosses ERA5's smoothed terrain while the bird flies along valleys below it. These points are
-#   counted as flying at ground level (lowest bin).
-# Tags sample pressure every 5 to 60 min, so each point is weighted by its time step: the
-# distribution is the share of flight *time* in each height bin. Only binned values are written, so
-# this step is optional: the resulting CSV is committed in output/tables/.
+# Flight-time height weights from the published Master GeoLocator Data Package, version 2026.0.
+# https://doi.org/10.5281/zenodo.18187093 (open-access release; no restricted additions).
+# Flight records are non-integer stap_id values on most-likely pressurepaths.
+# Keep all classified flight, weight by represented intervals capped at 60 min, and retain
+# adjacent stationary records to estimate departure/arrival pressure offsets.
+# Heights use a fixed 288.15 K temperature and standard lapse rate relative to ERA5 surface
+# pressure. Residual negative heights enter the lowest band; these are approximate biological
+# weights, not validated terrain clearances. Only aggregate outputs are written.
 
 source("R/utils.R")
 
 master <- Sys.getenv(
   "GEOLOCATOR_MASTER",
-  "~/Documents/GitHub/GeoLocatorMaster/data/master_restricted/pressurepaths.csv"
+  "~/Documents/GitHub/GeoLocatorMaster/data/master/pressurepaths.csv"
 )
+release <- jsonlite::read_json("docs/methods/T07/published-release.json", simplifyVector = TRUE)
+input_md5 <- unname(tools::md5sum(path.expand(master)))
+stopifnot(paste0("md5:", input_md5) == release$files$checksum[release$files$key == "pressurepaths.csv"])
 d <- fread(master, select = c(
   "tag_id", "datetime", "stap_id", "type", "pressure_tag", "surface_pressure", "label"
 ))
 d <- d[type == "most_likely" & is.finite(pressure_tag) & is.finite(surface_pressure) &
   (is.na(label) | label != "discard")]
 d[, flight := stap_id != round(stap_id)]
+n_tags_pressure <- uniqueN(d$tag_id)
+d <- d[tag_id %in% d[flight == TRUE, unique(tag_id)]]
 # Time step of each point (min): to the next point of the same tag, capped at 60 min; the last
 # point of a tag takes the tag's median step.
 d[, t := as.POSIXct(datetime, format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")]
@@ -71,7 +62,7 @@ breaks <- c(-Inf, 0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, In
 h <- d[, .(n = .N, hours = sum(dt) / 60), by = .(flight, bin = cut(agl, breaks, right = FALSE))]
 h[, prop := hours / sum(hours), by = flight]
 setorder(h, flight, bin)
-h[, n_tags := uniqueN(d$tag_id)]
+h <- merge(h, d[, .(n_tags = uniqueN(tag_id)), by = flight], by = "flight")
 fwrite(h, file.path(dir_tables, "bird_height_distribution.csv"))
 
 # Flight time in 100 m bins (for the figure) and time-weighted quantiles of flight height
@@ -88,3 +79,9 @@ q <- d[, {
 fwrite(q, file.path(dir_tables, "bird_height_quantiles.csv"))
 print(h)
 print(q)
+
+# Contributing sample and versioned input provenance ------------------------
+tags <- fread(file.path(dirname(path.expand(master)), "tags.csv"), select = c("tag_id", "scientific_name"))
+stopifnot(paste0("md5:", unname(tools::md5sum(file.path(dirname(path.expand(master)), "tags.csv")))) == release$files$checksum[release$files$key == "tags.csv"])
+fwrite(f[, .(n_tags = uniqueN(tag_id), n_species = uniqueN(tags[tag_id %in% f$tag_id, scientific_name]), n_flights = uniqueN(paste(tag_id, prev)), n_points = .N, hours = sum(dt) / 60, n_tags_pressure = n_tags_pressure, n_tags_no_flight = n_tags_pressure - uniqueN(tag_id))], file.path(dir_tables, "bird_height_sample.csv"))
+jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), doi = release$doi, version = release$metadata$version, raw_input = path.expand(master), input_md5 = input_md5, published_checksum = release$files$checksum[release$files$key == "pressurepaths.csv"], metadata_md5 = unname(tools::md5sum(file.path(dirname(path.expand(master)), "tags.csv"))), source_md5 = as.list(tools::md5sum(c("scripts/00_bird_heights.R", "R/utils.R"))), sample = as.list(fread(file.path(dir_tables, "bird_height_sample.csv"))), height_formula = "288.15 K and -6.5 K/km relative to ERA5 surface pressure, interpolated adjacent-stationary pressure offsets; negative flight heights clamped to zero", flight_filter = "All classified flight; tags without usable flight pressurepaths excluded", time_weighting = "Interval to next retained tag record capped at 60 min; final record uses median positive interval"), file.path(dir_tables, "bird_height_provenance.json"), pretty = TRUE, auto_unbox = TRUE)

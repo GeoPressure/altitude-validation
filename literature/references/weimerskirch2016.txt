@@ -1,0 +1,482 @@
+R ES E A RC H | R E PO R TS
+
+
+16. M. C. Brundrett, New Phytol. 154, 275–304 (2002).                    32. B. N. Sulman, R. P. Phillips, A. C. Oishi, E. Shevliakova,           1153401) and DOE (Environmental System Science Program). R.P.
+17. S. Vicca et al., Ecol. Lett. 15, 520–526 (2012).                         S. W. Pacala, Nat. Clim. Change 4, 1099–1102 (2014).                 and C.T. thank the Royal Netherlands Academy of Arts and
+18. M. G. A. van der Heijden et al., Nature 396, 69–72 (1998).           33. Z. Zhu et al., Nat. Clim. Change 10.1038/nclimate3004 (2016).        Sciences, DOE, INTERFACE, and the New Phytologist trust for
+19. N. C. Johnson, G. W. T. Wilson, J. A. Wilson, R. M. Miller,          34. V. B. Chaudhary et al., Sci. Data 3, 160028 (2016).                  funding the Workshop “Climate models revisited: the
+    M. A. Bowker, New Phytol. 205, 1473–1484 (2015).                                                                                              biogeochemical consequences of mycorrhizal dynamics.” The data
+20. R. P. Phillips, E. Brzostek, M. G. Midgley, New Phytol. 199,         ACKN OWLED GMEN TS                                                       reported in this paper are available online as supplementary
+    41–51 (2013).                                                        We thank A. Talhelm, A. Finzi, L. Andresen, I. Kappel, C. Calfapietra,   materials. C.T. conceived the initial idea, collected the data, and
+21. C. Averill, B. L. Turner, A. C. Finzi, Nature 505, 543–545 (2014).   B. Sigurdsson, J. Dukes, P. Newton, D. Blumenthal, B. Kimball,           conducted the data synthesis and meta-analysis. S.V. developed
+22. K. K. Treseder, New Phytol. 164, 347–355 (2004).                     J. Heath, P. Reich, R. Norby, C. Körner, N. Chiariello, C. Field, and    the nitrogen classification. B.A.H. refined model selection,
+23. O. Alberton, T. W. Kuyper, A. Gorissen, New Phytol. 167,             M. Schneider, who provided additional data and advice. This              meta-analysis, and framework. All authors contributed to the
+    859–868 (2005).                                                      research is a contribution to the Imperial College initiative Grand      development of the conceptual framework and to the writing
+24. M. Shi, J. B. Fisher, E. R. Brzostek, R. P. Phillips, Glob. Change   Challenges in Ecosystems and the Environment and the AXA Chair           of the manuscript.
+    Biol. 22, 1299–1314 (2016).                                          Programme in Biosphere and Climate Impacts. C.T. is supported
+25. J. E. Drake et al., Ecol. Lett. 14, 349–357 (2011).                  by an Imperial College Ph.D. studentship within this program.            SUPPLEMENTARY MATERIALS
+26. R. J. Norby et al., New Phytol. 209, 17–28 (2016).                   C.T. and S.V. acknowledge support of ClimMani COST Action
+                                                                                                                                                  www.sciencemag.org/content/353/6294/72/suppl/DC1
+27. J. Perez-Moreno, D. J. Read, New Phytol. 145, 301–309 (2000).        (ES1308). S.V. is a postdoctoral fellow of the Research
+                                                                                                                                                  Materials and Methods
+28. R. P. Phillips, A. C. Finzi, E. S. Bernhardt, Ecol. Lett. 14,        Foundation–Flanders (FWO) and acknowledges support from
+                                                                                                                                                  Figs. S1 to S8
+    187–194 (2011).                                                      the European Research Council grant ERC-SyG-610028
+                                                                                                                                                  Tables S1 to S4
+29. B. A. Hungate et al., New Phytol. 200, 767–777 (2013).               IMBALANCE-P. B.A.H. was supported by the Biological and
+                                                                                                                                                  References (35–139)
+30. J. Cornelissen, R. Aerts, B. Cerabolini, M. Werger,                  Environmental Research program, Office of Science, U.S.
+    M. van der Heijden, Oecologia 129, 611–619 (2001).                   Department of Energy (DOE) grant DE SC0008270. R.P.                      11 February 2016; accepted 6 June 2016
+31. M. F. Cotrufo et al., Nat. Geosci. 8, 776–779 (2015).                acknowledges support from NSF (Ecosystem Studies Program                 10.1126/science.aaf4610
+
+
+
+
+                                                                                                                                                                                                                        Downloaded from http://science.sciencemag.org/ on July 1, 2016
+BIRD FLIGHT                                                                                                                                       for days when they are foraging from their nest
+                                                                                                                                                  when breeding (9). Probably as a consequence of
+                                                                                                                                                  these extreme attributes, frigate birds have the
+Frigate birds track atmospheric                                                                                                                   longest period of parental care in birds, suggest-
+                                                                                                                                                  ing a long period of learning to acquire flight and
+conditions over months-long                                                                                                                       foraging abilities in early life (10). Their ability to
+                                                                                                                                                  remain airborne continuously for days is probably
+
+transoceanic flights                                                                                                                              possible because of the capability of frigate birds
+                                                                                                                                                  to use thermals over the sea as a main energy
+                                                                                                                                                  source for soaring (11, 12).
+Henri Weimerskirch,1,2* Charles Bishop,3 Tiphaine Jeanniard-du-Dot,4                                                                                  We asked how frigate birds can perform long
+Aurélien Prudor,1,2 Gottfried Sachs5                                                                                                              migrations over oceans without landing and wheth-
+                                                                                                                                                  er oceanic thermals are reliable enough in space
+Understanding how animals respond to atmospheric conditions across space is critical for                                                          and time to allow birds to stay airborne over long
+understanding the evolution of flight strategies and long-distance migrations. We studied the                                                     periods. To address these questions, we inves-
+three-dimensional movements and energetics of great frigate birds (Fregata minor) and                                                             tigated the movement of frigate birds at several
+showed that they can stay aloft for months during transoceanic flights. To do this, birds track                                                   spatial scales with regard to (i) how frigate birds
+the edge of the doldrums to take advantage of favorable winds and strong convection. Locally,                                                     make use of large-scale weather systems to perform
+they use a roller-coaster flight, relying on thermals and wind to soar within a 50- to 600-meter                                                  long-range movements, and (ii) how flight dynamics
+altitude band under cumulus clouds and then glide over kilometers at low energy costs. To                                                         and energetics at a finer scale contribute to these
+deal with the local scarcity of clouds and gain longer gliding distances, birds regularly soar                                                    long ranges.
+inside cumulus clouds to use their strong updraft, and they can reach altitudes of                                                                   We studied the three-dimensional movements
+4000 meters, where freezing conditions occur.                                                                                                     and energetics of frigate birds on Europa Island
+                                                                                                                                                  (Fig. 1) between 2011 and 2015 (13). To study large-
+
+
+
+
+T
+                                                                                                                                                  scale migratory movements, 24 adults and 25
+       he movement of animals is driven by pro-                          rations can be done over inhospitable areas as dif-                      juvenile birds were equipped with solar-powered
+       cesses that act across multiple spatial and                       ferent as deserts, high mountains, or oceans, which                      Argos transmitters (13). To study the relationship
+       temporal scales. Long-distance movements                          come with specific environmental constraints to                          between heart rate, activity (flapping frequency),
+       such as the migrations of birds have evolved                      which birds need to behaviorally and physiolog-                          and behavior (ascent rates and horizontal speed),
+       in response to large-scale environmental gra-                     ically adapt their flight strategies (5, 6). How these                   11 adult females were equipped with external
+dients (1). In particular, atmospheric conditions                        long restless flights can be energetically achieved                      custom-designed loggers measuring triaxial accel-
+play a large role in determining the efficiency of                       has attracted much interest, but remains largely                         eration and electrocardiography and a Global
+migratory routes, whose consistency over years has                       unknown because of the inherent difficulties of                          Positioning System (GPS) device (13). To study
+allowed evolutionary processes to act at population                      studying such behaviors in situ.                                         movements, activity, and ambient temperature, 37
+levels (2). At smaller time and spatial scales, long-                       Biologists have long been attracted to locomo-                        adult females and males were equipped with solar-
+range movements have to constantly be adjusted                           tor extremes because they provide clear examples                         powered GPS accelerometers, whose data were
+to local conditions, in particular to minimize energy                    from which information about structure-function                          recovered regularly by an automatic recording
+expenditure (3, 4). These long movements or mig-                         relationships can be drawn (7). Among birds, frig-                       station (13).
+                                                                         ate birds are extreme in many aspects of their life                         During the southwest Indian monsoon from
+1
+  Centre d’Etudes Biologiques de Chizé, CNRS, 79360 Villiers
+                                                                         history, including having the lowest wing loading,                       June to October, strong trade winds occur in the
+en Bois, France. 2UMR 9220 ENTROPIE, Université de la                    with a specialized capacity for soaring flight (8).                      southern Indian Ocean and cross the equator to
+Réunion, Saint Denis, La Réunion. 3School of Biological                  They are also unusual seabirds because their                             form southwest winds in the northern Indian
+Sciences, Bangor University, Bangor, Gwynedd, UK.                        feathers are not waterproof and their legs are                           Ocean (14) (Fig. 1). During this season, adult frigate
+4
+  Department of Zoology, University of British Columbia,
+Vancouver, Canada. 5Institute of Flight System Dynamics,
+                                                                         small, so they are unable to land on the sea surface                     birds finishing the breeding season left Europa
+Technische Universität München, Garching, Germany.                       even though they feed exclusively at sea. They deal                      and migrated northward to take advantage of the
+*Corresponding author. Email: henriw@cebc.cnrs.fr                        with these conflicting constraints by staying aloft                      southerly winds. They settled on roosting sites in
+
+
+74      1 JULY 2016 • VOL 353 ISSUE 6294                                                                                                                                         sciencemag.org SCIENCE
+                                                                                                                                               RE S EAR CH | R E P O R T S
+
+
+
+                                              Adult Male                                                           Juveniles
+
+
+                         20°N
+
+
+                         10°N
+                                                                                16
+                                                                                15
+                     MAY    0°
+                                                                                14
+                                                                                13
+                           10°S                                                                    Seychelles
+                                                                                12
+
+                           20°S                                                 11                                       Chagos
+                                                                                                Aldabra
+                                                                                10
+                                                                                9
+
+                           20°N                                                 8
+                                                                                4                   20°N
+                           10°N                                                 6
+                                                                                       Europa       10°N
+                                                                                5
+                     JUNE 0°                                                    4
+                                                                                                     0°
+                                                                                m/s     June
+
+
+
+
+                                                                                                                                                                                    Downloaded from http://science.sciencemag.org/ on July 1, 2016
+                         10°S
+                                                                                         to     10°S
+
+                         20°S
+                                                                                      September
+                                                                                                    20°S
+                             30°E   40°E   50°E   60°E    70°E   80°E    90°E
+                                                                                                          30°E   50°E      70°E      90°E     110°E
+
+
+Fig. 1. Movements of adult and juvenile frigate birds in relation to wind conditions in the Indian Ocean. (Left) Two successive clockwise movements
+from Aldabra Island (Seychelles) of an adult male great frigate bird (no. 138502) in relation to wind strength (in meters per second, color scale) and direction (arrows). (A) In
+May 2015, a 24-day foraging trip around the doldrums (shown by the absence of wind, in white), with 1 day of rest in Chagos. (B) In June 2015, a 28-day foraging trip, with a
+36-hour rest in Chagos. (C) Movements between June and September 2015 of six young frigate birds fledged from Europa Island, moving around the doldrums zone.
+(D) Climatology of wind speed and direction (average values over 4 months) in June to September 2015, showing the average position of the doldrums (white) on
+the equator.
+
+
+the Seychelles from where they foraged for                  distances at night (Fig. 2). Two clear behavioral               Traveling at low cost is achieved by successive
+months. Some adults performed long looping                  modes were identified during movements at sea.               climbs, mainly through soaring with no or few wing
+movements around the equator, where a belt of               Traveling occurred with high ground speeds and               flaps and low heart rate, and descents, by gliding
+converging air and wind occurs, with no wind in             low wing beat frequencies (82 ± 9% of travelling             (Figs. 2 and 3). A close examination of flight paths
+the center, named the doldrums zone by ancient              time with no or rare wing beats), with birds remain-         shows that when soaring, birds move with the wind
+mariners (Fig. 1). On successive loops, adults              ing at altitudes ranging from 30 to 2000 m, reach-           (fig. S8), using circling movements to soar (Fig. 3C)
+closely followed the edges of the doldrums,                 ing up to 4120 m. Foraging can only occur when               in thermals below cumulus clouds where rising air
+which oscillate longitudinally (Fig. 1, A and B).           birds descend close to the sea surface (altitudes 0          creates updrafts (15). Because of the strong trade
+Birds stayed continuously on the wing for pe-               to 30 m), and during these periods they are very             winds, they drift with the wind while climbing
+riods lasting up to 48 days and traveled on av-             active, flapping during 75 ± 18% of the foraging             (Fig. 3), resulting in “wind-drift circling soaring.”
+erage 420 ± 220 km daily.                                   phase (Fig. 2). Active foraging occurred only                Conversely, when gliding, they preferentially fly
+   Young frigate birds left their birthplace at the         episodically (10 ± 7% of time at sea), indicating            with side winds and achieve the highest ground
+same time as adults, but independently of their             rare feeding opportunities, mainly during the day            speeds (Figs. 2 and 3 and fig. S8). The resulting
+parents. They crossed the equator and turned east-          (86.4% of bouts of active foraging occurred                  movement is a complex zig-zagging, roller-coaster
+ward to enter into a circular transoceanic move-            during the daytime).                                         movement, with an average altitude xgain of 59.1 ±
+ment into the wind belt around the doldrums (Fig.              When in flight at sea, heart rate was on average          43.8 m per kilometer covered (ground distance);
+1, C and D). During these dispersive movements,             203 ± 84 beats min−1 but varied extensively (Fig. 2          i.e., 15.4 ± 3.0 km climbed daily. These vertical
+juvenile birds stayed continuously aloft for flights        and figs. S3 and S4), occasionally attaining values          movements take place generally up to 600 to 700 m,
+lasting up to 2.1 months (average maximum time              as low as when resting on the nest (71 ± 25 beats            corresponding to the base of the cumulus clouds
+spent aloft, 41.2 ± 15.1 days, n = 8 birds). They           min−1, range 57 to 215). Heart rate and dynamic              that is relatively constant throughout the trade
+travelled on average 450 ± 220 km daily. They               body acceleration were generally well correlated             wind zone (16).
+episodically stopped on isolated islands such as            (13) (figs. S3 and S4); therefore, we used dynamic              However, birds regularly climbed up to 1000 to
+Chagos, islets off Indonesia, or on islets of the           body acceleration, measured on all individuals, as           2000 m, with a maximum of 4120 m (fig. S9). The
+Seychelles archipelago for very short rests (8 to           the main proxy for energy expenditure. Whereas               frequency of climbs at altitudes higher than 700 m
+48 hours) before continuing their large-scale wan-          active foraging is very costly for frigate birds, re-        increased throughout the day to peak during the
+dering movement tracking the edge of the dol-               quiring high dynamic body acceleration and heart             first hours of night (fig. S10). Climbing to high
+drums (Fig. 1C and fig. S1). They flew at altitudes         rates, traveling periods have a remarkably low               altitudes can be separated into a phase of slow
+ranging between the sea surface and 3000 m,                 energy expenditure, with few wingbeats (Fig. 2               climb up to the base of the cumulus clouds at 600
+but mainly between 0 and 600 m (fig. S2).                   and fig. S3), suggesting that overall field metabolic        to 700 m, followed by a more rapid climb to 1600 m
+   To understand how frigate birds are able to stay         rate during months at sea is likely to be exceptionally      (Fig. 2D) or higher. This second phase of the ascent
+aloft for such long periods, we studied their flight        low (13) (figs. S5 and S6). Excluding periods of             is performed without flapping the wings (Fig. 2D);
+dynamics and energetics during 2- to 15-day forag-          active foraging close to the surface, dynamic body           i.e., in pure soaring flight and with climb rates
+ing trips from Europa. Breeding frigate birds trav-         acceleration was the lowest at altitudes between             reaching 4 to 5 m s−1 at 2000 to 3000 m (fig. S11).
+elled on average 410 ± 142 km per day (n = 18 birds),       300 and 600 m (fig. S7), indicating an optimal               Ascent to high altitude can only take place inside
+mainly during the daytime, traveling over shorter           altitude for traveling at low cost.                          cumulus clouds, where updrafts reach 5 m s−1 and
+
+
+SCIENCE sciencemag.org                                                                                                                 1 JULY 2016 • VOL 353 ISSUE 6294      75
+R ES E A RC H | R E PO R TS
+
+
+                                                                                                                for low-cost flight; i.e., steady winds and updrafts
+                                                                                                                from convection under clouds (Fig. 4). These alti-
+                                                                                                                tudes are also convenient to spot feeding oppor-
+                                                                                                                tunities from long distances away during the
+                                                                                                                daytime; birds then descend close to the surface
+                                                                                                                to forage actively when feeding opportunities have
+                                                                                                                been detected (9).
+                                                                                                                   Although birds are not thought to carry out
+                                                                                                                intentional, sustained cloud climbs (17, 18), our
+                                                                                                                study shows the ability of frigate birds to frequent-
+                                                                                                                ly ascend to very high altitudes inside clouds. At
+                                                                                                                an altitude of 4000 m, air temperatures are nega-
+                                                                                                                tive and air density and oxygen availability are
+                                                                                                                almost half of those at sea level (17), suggesting
+                                                                                                                that this tropical bird encounters extreme con-
+                                                                                                                ditions at such altitudes. Cumulus clouds and
+                                                                                                                cloud fields are considered to be randomly dis-
+                                                                                                                tributed in space in the trade wind zone (16). In
+                                                                                                                these conditions, climbing higher than 1000 m
+                                                                                                                presents a fundamental advantage by allowing
+
+
+
+
+                                                                                                                                                                        Downloaded from http://science.sciencemag.org/ on July 1, 2016
+                                                                                                                frigate birds to cover much longer distances by
+                                                                                                                gliding to reach the next updraft under clouds; for
+                                                                                                                example, >60 km of glide from 4000 m as com-
+                                                                                                                pared to 17 km when starting a glide just at the
+                                                                                                                base of cumulus clouds. Therefore, when clouds
+                                                                                                                are sparsely distributed, birds can adjust their
+                                                                                                                gliding distance by climbing higher to avoid the
+                                                                                                                risk of switching to costly flapping flight. Juvenile
+                                                                                                                individuals are able to master the flight strategy
+                                                                                                                of adults as soon as they become independent.
+                                                                                                                When they leave their birthplace, they all head
+                                                                                                                north to reach the equator and circle the entire
+                                                                                                                Indian Ocean. This stereotyped movement sug-
+                                                                                                                gests a genetically encoded behavior that brings
+                                                                                                                young individuals directly to a predictable, favor-
+                                                                                                                able, and large-scale atmospheric feature located
+                                                                                                                thousands of kilometers from their birthplace.
+                                                                                                                   Great frigate birds are the only birds other than
+                                                                                                                swifts (19) to be able to stay aloft for months.
+                                                                                                                Long periods in continuous flight are interrupted
+                                                                                                                by very short periods of rest on land, suggesting
+                                                                                                                that frigate birds might sleep while airborne (20).
+                                                                                                                Periods of low activity (no flapping) occur mainly
+                                                                                                                during soaring episodes and may allow sleep.
+                                                                                                                However, periods of completely motionless (no
+                                                                                                                flapping at all) flight, potentially corresponding
+                                                                                                                to periods of sleep, are relatively short, (~2 min,
+                                                                                                                never exceeding 12 min). Animals such as frigate
+                                                                                                                birds may have evolved the ability to dispense
+                                                                                                                with sleep when ecological demands favor wake-
+Fig. 2. Movement, changes in altitude, heart rate, and flight parameters during a 2-day trip at sea.
+                                                                                                                fulness such as during extended flights (21), but
+(A) 1130-km-long movement from Europa during the daytime (green) and night (blue) with foraging
+                                                                                                                studies are needed to determine how they sleep
+bouts in red, with recorded (B) heart rate and (C) altitude. Shaded blue areas represent nighttime, and
+                                                                                                                during much longer-lasting flights
+red blocks represent foraging bouts. (D) A 2-hour period during the trip at sea, with an active foraging
+                                                                                                                   Frigate birds clearly encounter several atmos-
+phase followed by a traveling phase, showing the changes in altitude and corresponding heart rate, wing-
+                                                                                                                pheric challenges during their movements at sea,
+flapping rate, climb rate, and ground speed. On the altitude panel, the predicted presence of cumulus
+                                                                                                                such as low temperatures, low air density and
+clouds is indicated (gray).
+                                                                                                                oxygen levels during high climbs, and the un-
+                                                                                                                predictable distribution of cumulus clouds at small
+are strong enough to provide such climb rates (15).    an atmospheric feature whose location is predict-        scale, together with the presence of powerful cy-
+During the gliding phase made outside the clouds,      able. Locally, they display a specific flight strategy   clones in their optimal range. This dependence on
+the minimum sink rate was 23.6 ± 19.1 m of ground      based on an energy-efficient use of convection and       atmospheric systems could make them particularly
+distance covered per meter lost between 500- to        wind. By using wind-drift circling soaring and long      sensitive to future climate changes, along with
+700-m altitudes, compared to 14.3 ± 11.7 m at high-    periods of gliding, frigate birds are able to simul-     some other seabirds (22). Climate models for the
+er altitudes (F1,7 = 8.4, P = 0.045).                  taneously use convection and wind as energy              tropical ocean forecast an increase in the intensity
+   Our study shows that frigate birds can remain       sources and move over extensive distances at low         of tropical storms and of convections around the
+almost indefinitely on the wing by tracking, at a      energy costs. They favor altitudes between 50 and        equator, where the doldrums and strong con-
+basin-wide scale, the wind belt around the doldrums,   600 m, where atmospheric conditions are optimal          vections occur (23). More variable atmospheric
+
+
+76    1 JULY 2016 • VOL 353 ISSUE 6294                                                                                                  sciencemag.org SCIENCE
+                                                                                                                                           RE S EAR CH | R E P O R T S
+
+
+
+
+                                                                                                                                                                                        Downloaded from http://science.sciencemag.org/ on July 1, 2016
+Fig. 3. Three-dimensional movement of a frigate bird at three scales.
+(A) Section of a track of a frigate bird traveling with side winds. (B) En-
+largement showing the movement alternating gliding and soaring, resulting
+in a zig-zag and roller-coaster movement. (C) Detailed schematic repre-
+sentation of a single cycle of soaring and gliding, illustrating the climb by
+circling, with a resulting drift due to wind, followed by the descent.
+
+
+
+
+                                                                                                               conditions in the future may become too chal-
+                                                                                                               lenging for a species that already seems to
+                                                                                                               encounter extreme conditions during its life-
+                   Altitude (m)
+                                                                                                               time movements.
+                         2500
+                                                                                      Shear
+                                                   Trade wind inversion layer                                  REFERENCES AND NOTES
+                                                                                                               1. G.-R. Walther et al., Nature 416, 389–395 (2002).
+                         2000                                                                                  2. B. Kranstauber, R. Weinzierl, M. Wikelski, K. Safi, Ecol. Lett. 18,
+                                                                                                                   1338–1345 (2015).
+                                                                                                               3. T. Alerstam, Ã. Lindström, in Bird Migration: Physiology
+                                                                                                                   and Ecophysiology, E. Gwinner, Ed. (Springer, 1990),
+                         1500                                                                                      pp. 331–351.
+                                                                                                               4. J. Rayner, performance, in Bird Migration: Physiology and
+
+
+
+
+                                                                                                 Trade winds
+                                                                                                                   Ecophysiology, E. Gwinner, Ed. (Springer, 1990),
+                                                                                                                   pp. 283–299.
+                                                                                                               5. C. M. Bishop et al., Science 347, 250–254 (2015).
+                         1000                                                                                  6. R. E. Gill et al., Proc. Biol. Sci. 276, 447–457 (2009).
+                                                                                                               7. M. H. Dickinson et al., Science 288, 100–106 (2000).
+                                                                                       Base of                 8. C. Pennycuick, Bird Flight Performance: A Practical
+                                                                                       cumulus                     Calculation Manual (Oxford Univ. Press, Oxford,
+                          500                                                                                      1989).
+                                                                                                               9. H. Weimerskirch, M. Le Corre, S. Jaquemet, M. Potier,
+                   Convection                                                                                      F. Marsac, Mar. Ecol. Prog. Ser. 275, 297–308 (2004).
+                                                                                       Turbulence              10. J. B. Nelson, The Living Bird 14, 113–155 (1976).
+                             0                                                                                 11. C. J. Pennycuick, J. Exp. Biol. 102, 307–325 (1983).
+                                                                                                               12. H. Weimerskirch, O. Chastel, C. Barbraud, O. Tostain,
+                                                                                                                   Nature 421, 333–334 (2003).
+                                                                                                               13. See the supplementary materials on Science Online.
+                                                                                                               14. A. Laing, J. M. Evans, Introduction to Tropical Meteorology:
+Fig. 4. Altitudinal movement of a frigate bird in relation to potential atmospheric conditions.                    A Comprehensive Online & Print Textbook, Comet Program,
+The traveling flight is performed between 30 and 600 to 700 m altitude in a band with regular winds,               A. Laing, Ed. (University Corporation for Atmospheric
+                                                                                                                   Research, Boulder, CO, 2011).
+avoiding the turbulence close to the surface. The bird occasionally climbs to 2000 m within cumulus
+                                                                                                               15. J. S. Malkus, J. Meteorol. 11, 220–237 (1954).
+clouds that form by convection, whose base is at 600 to 700 m and whose vertical extension is                  16. U. Nair, R. Weger, K. Kuo, R. Welch, J. Geophys. Res. Atmos.
+limited by the inversion layer where strong shear occurs. A schematic presentation of the updrafts                 103, 11363–11380 (1998).
+and downdrafts characteristic of cumulus clouds is shown at left (24).                                         17. C. J. Pennycuick, Modelling the Flying Bird (Elsevier, 2008).
+
+
+
+SCIENCE sciencemag.org                                                                                                          1 JULY 2016 • VOL 353 ISSUE 6294                77
+R ES E A RC H | R E PO R TS
+
+
+18. T. Alerstam, D. Christie, A. Ulfstrand, Bird Migration              ACKN OWLED GMEN TS                                              H.W.). We thank Y. Ropert-Coudert, Y. Cherel, and two
+    (Cambridge Univ. Press, 1993).                                      The tracking data presented in the paper are available          anonymous reviewers for helpful comments on earlier versions
+19. F. Liechti, W. Witvliet, R. Weber, E. Bächler, Nat. Commun. 4,      from the Dryad Digital Repository. We thank the Forces Armées   of the manuscript.
+    2554 (2013).                                                        de la Zone Sud de l’Océan Indien for transport and logistical
+20. N. C. Rattenborg, Naturwissenschaften 93, 413–425                   support on Europa Island and the TAAF Administration
+    (2006).                                                                                                                             SUPPLEMENTARY MATERIALS
+                                                                        for allowing us to work on Europa Island. We thank the
+21. J. A. Lesku et al., Science 337, 1654–1658 (2012).                  fieldworkers involved in the study on Europa, in particular     www.sciencemag.org/content/353/6294/74/suppl/DC1
+22. H. Weimerskirch, M. Louzao, S. de Grissac, K. Delord, Science       J. B. Pons and R. Weimerskirch; R. Spivey for help with         Materials and Methods
+    335, 211–214 (2012).                                                preparing the electrocardiogram and acceleration tags           Supplementary Text
+23. U. C. Mohanty, M. Mohapatra, O. P. Singh, B. K. Bandyopadhyay,      and for the data processing of the heart rate recording;        Figs. S1 to S10
+    L. S. Rathore, Monitoring and Prediction of Tropical Cyclones in    and A. Corbeau for help with data analyses. The study is a      Table S1
+    the Indian Ocean and Climate Change (Springer, Dordrecht,           contribution to the Program EARLYLIFE funded by a               References (25–34)
+    Netherlands, 2014).                                                 European Research Council Advanced Grant under the
+24. H. J. J. Jonker, T. Heus, P. P. Sullivan, Geophys. Res. Lett. 35,   European Community’s Seven Framework Program FP7/               11 February 2016; accepted 20 May 2016
+    L07810 (2008).                                                      2007–2013 (grant agreement ERC-2012-ADG_20120314 to             10.1126/science.aaf4374
+
+
+
+
+TRANSCRIPTION                                                                                                                           synthesized cDNA (Fig. 1A and fig. S1). The tissue
+                                                                                                                                        was then enzymatically removed, which left cDNA
+                                                                                                                                        coupled to the arrayed oligonucleotides on the slide
+Visualization and analysis of gene                                                                                                      (6). The fluorescent cDNA showed a pattern in detail
+                                                                                                                                        corresponding to the tissue structure revealed by the
+
+
+
+
+                                                                                                                                                                                                       Downloaded from http://science.sciencemag.org/ on July 1, 2016
+expression in tissue sections by                                                                                                        general histology (Fig. 1, B and C), and the cDNA was
+                                                                                                                                        strictly localized directly under individual cells (Fig. 1,
+                                                                                                                                        D to G′). By comparing the hematoxylin-and-eosin
+spatial transcriptomics                                                                                                                 and fluorescent signals, we could measure the aver-
+                                                                                                                                        age distance of diffusion outside the border of a
+Patrik L. Ståhl,1,2* Fredrik Salmén,2* Sanja Vickovic,2† Anna Lundmark,2,3†                                                             cell to 1.7 ± 2 mm (mean ± SD) (fig. S1, E to H).
+José Fernández Navarro,1,2 Jens Magnusson,1 Stefania Giacomello,2 Michaela Asp,2                                                           The realization that it is possible to capture
+Jakub O. Westholm,4 Mikael Huss,4 Annelie Mollbrink,2 Sten Linnarsson,5
+                                                                                                                                        mRNA in tissue sections with minimal diffusion
+                                                                                                                                        and maintained positional representation moti-
+Simone Codeluppi,5,6 Åke Borg,7 Fredrik Pontén,8 Paul Igor Costea,2 Pelin Sahlén,2
+                                                                                                                                        vated us to array oligonucleotides with positional
+Jan Mulder,9 Olaf Bergmann,1 Joakim Lundeberg,2‡ Jonas Frisén1
+                                                                                                                                        barcodes (Fig. 2A), and we denoted this strategy
+                                                                                                                                        “spatial transcriptomics.” We deposited ~200 million
+Analysis of the pattern of proteins or messenger RNAs (mRNAs) in histological tissue sections
+                                                                                                                                        oligonucleotides in each of 1007 features, with a
+is a cornerstone in biomedical research and diagnostics.This typically involves the visualization
+                                                                                                                                        diameter of 100 mm and a center-to-center distance
+of a few proteins or expressed genes at a time. We have devised a strategy, which we call “spatial
+                                                                                                                                        of 200 mm, over an area of 6.2 mm by 6.6 mm (fig. S2).
+transcriptomics,” that allows visualization and quantitative analysis of the transcriptome with
+                                                                                                                                           After capturing and reverse-transcribing mRNA,
+spatial resolution in individual tissue sections. By positioning histological sections on arrayed
+                                                                                                                                        we generated sequencing libraries based on
+reverse transcription primers with unique positional barcodes, we demonstrate high-quality
+                                                                                                                                        amplification by in vitro transcription (fig. S3, A
+RNA-sequencing data with maintained two-dimensional positional information from the mouse
+                                                                                                                                        and B) (7, 8). Comparison with data from RNA
+brain and human breast cancer. Spatial transcriptomics provides quantitative gene expression data
+                                                                                                                                        extracted and fragmented in solution revealed
+and visualization of the distribution of mRNAs within tissue sections and enables novel types of
+                                                                                                                                        that ~95% of the genes found with one of the
+bioinformatics analyses, valuable in research and diagnostics.
+                                                                                                                                        methods was also found with the other (fig. S3C).
+
+
+
+
+T
+                                                                                                                                        The correlation between the surface and in-solution
+     issue transcriptomes are typically studied                         ing tissue functionality and pathological changes.              libraries was r = 0.94, with even representation
+     by RNA-sequencing (RNA-seq) (1) of ho-                             Several strategies have recently been developed                 of genes having high or low expression (fig. S3D).
+     mogenized biopsies, which results in an                            with this aim (2–5), but they have limitations in               Replicates of surface-based experiments of adja-
+     averaged transcriptome and loss of spatial                         the number of transcripts that can be analyzed,                 cent tissue sections showed a correlation of r =
+     information. The positional context of gene                        rely on rich preexisting data sets, and/or are costly           0.97 (fig. S3E). Thus, cDNA synthesis from tissue
+expression is of key importance to understand-                          and labor-intensive, and none of them are opera-                with arrayed oligonucleotides on a surface is ef-
+                                                                        tional in the standard research and diagnostic                  ficient and does not introduce bias compared
+1
+ Department of Cell and Molecular Biology, Karolinska                   setting of regular histological tissue sections.                with in-solution protocols (fig. S3F and table S1).
+Institute, SE-171 77 Stockholm, Sweden. 2Science for Life                  We asked whether it would be possible to in-                    We sorted the RNA-seq data to its correspond-
+Laboratory, Division of Gene Technology, KTH Royal Institute
+of Technology, SE-106 91 Stockholm, Sweden. 3Department
+                                                                        troduce positional molecular barcodes in the                    ing array features by using the spatial barcodes
+of Dental Medicine, Division of Periodontology, Karolinska              complementary DNA (cDNA) synthesis reac-                        and aligned the tissue image with the features of
+Institute, SE-141 04 Huddinge, Sweden. 4Science for Life                tion within the context of an intact tissue section             the array, which enabled visualization and analy-
+Laboratory, Department of Biochemistry and Biophysics,                  before RNA-seq. We first assessed whether it was                ses. Examples of gene-expression patterns revealed
+Stockholm University, Box 1031, SE-171 21 Solna, Sweden.
+5
+  Division of Molecular Neuroscience, Department of Medical
+                                                                        feasible to generate cDNA from messenger RNA                    by spatial transcriptomics and validation by in situ
+Biochemistry and Biophysics, Karolinska Institute, SE-17177             (mRNA) in tissue sections on a surface. We im-                  hybridization are shown in Fig. 2B and fig. S4, A to
+Stockholm, Sweden. 6Department of Physiology and                        mobilized reverse-transcription oligo(dT) primers               C. Transcripts expressed at very low levels, such as
+Pharmacology, Karolinska Institute, SE-17177 Stockholm,                 on glass slides and placed on the slides sections               olfactory receptor mRNAs (9), were also detected
+Sweden. 7Division of Oncology and Pathology, Department of
+Clinical Sciences Lund, Lund University, SE-223 81 Lund,
+                                                                        of adult mouse olfactory bulb, a brain region                   with spatial transcriptomics (fig. S4D).
+Sweden. 8Department of Immunology, Genetics and                         with clear histological landmarks and ample gene-                  The number of genes (10) (Fig. 2C) and unique
+Pathology, Uppsala University, SE-751 85 Uppsala, Sweden.               expression reference data. The tissue was fixed,                transcripts (fig. S5A) per individual feature varied
+9
+  Science for Life Laboratory, Department of Neuroscience,              stained, and imaged (Fig. 1A) (6).                              between cell layers with different cell density (Fig.
+Karolinska Institute, SE-171 77 Stockholm, Sweden.
+*These authors contributed equally to this work. †These authors
+                                                                           After permeabilization, we added reverse-                    2D and table S2). For the vast majority of genes,
+contributed equally to this work. ‡Corresponding author. Email:         transcription reagents on top of the tissue. We used            the coefficient of variation decreased as the aver-
+joakim.lundeberg@scilifelab.se                                          fluorescently labeled nucleotides to visualize the              age expression increased (fig. S5B). The number of
+
+
+78      1 JULY 2016 • VOL 353 ISSUE 6294                                                                                                                            sciencemag.org SCIENCE
+                                    Frigate birds track atmospheric conditions over months-long
+                                    transoceanic flights
+                                    Henri Weimerskirch, Charles Bishop, Tiphaine Jeanniard-du-Dot,
+                                    Aurélien Prudor and Gottfried Sachs (June 30, 2016)
+                                    Science 353 (6294), 74-78. [doi: 10.1126/science.aaf4374]
+
+
+Editor's Summary
+
+
+
+
+                                                                                                        Downloaded from http://science.sciencemag.org/ on July 1, 2016
+                       This copy is for your personal, non-commercial use only.
+
+
+
+
+       Article Tools       Visit the online version of this article to access the personalization and
+                           article tools:
+                           http://science.sciencemag.org/content/353/6294/74
+
+        Permissions        Obtain information about reproducing this article:
+                           http://www.sciencemag.org/about/permissions.dtl
+
+
+
+
+ Science (print ISSN 0036-8075; online ISSN 1095-9203) is published weekly, except the last week
+ in December, by the American Association for the Advancement of Science, 1200 New York
+ Avenue NW, Washington, DC 20005. Copyright 2016 by the American Association for the
+ Advancement of Science; all rights reserved. The title Science is a registered trademark of AAAS.
+

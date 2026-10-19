@@ -1,0 +1,4 @@
+comparison,max_abs_difference_m
+HadISD current MAE,0
+GNSS current MAE,2.71995759248966e-11
+flight current bird MAE,0

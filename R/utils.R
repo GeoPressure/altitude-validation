@@ -22,8 +22,9 @@ for (d in c(dir_raw, dir_interim, dir_tables, dir_figures)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-# HadISD (surface): recent years for the main result, plus sparse historical years to test whether
-# accuracy depends on the ERA5 observing system.
+# GHCNh (surface): screen each station-year and select the most recent year meeting QC and coverage.
+years_ghcnh <- 2022:2026
+# Other ground references retain the shared 2022-2024 comparison window.
 years_main <- 2022:2024
 years_era <- c(1990, 2005, 2015)
 # IGRA2 (upper air)
@@ -39,11 +40,12 @@ load_geopressurer <- function() {
 
 geopressurer_version <- function() {
   sha <- tryCatch(
-    system2("git", c("-C", GEOPRESSURER_PATH, "rev-parse", "--short", "HEAD"), stdout = TRUE),
-    error = function(e) NA_character_
+    suppressWarnings(system2("git", c("-C", shQuote(path.expand(GEOPRESSURER_PATH)), "rev-parse",
+      "--short", "HEAD"), stdout = TRUE, stderr = FALSE)),
+    error = function(e) character()
   )
   desc <- read.dcf(file.path(GEOPRESSURER_PATH, "DESCRIPTION"), fields = "Version")[1, 1]
-  paste0(desc, " (", sha, ")")
+  if (length(sha) == 1 && nzchar(sha)) paste0(desc, " (", sha, ")") else desc
 }
 
 # ---- ERA5 extraction ------------------------------------------------------------------------
@@ -80,8 +82,8 @@ era5_orography <- function(lon, lat, era5_dataset) {
 }
 
 #' Altitude [m] from pressure [Pa] with the GeoPressureR formula evaluated in this study: 2 m
-#' temperature and -6.5 K/km. From v3.7.0, GeoPressureR defaults to the formula recommended by
-#' `16_formula.R` (`altitude_formula = "virtual"`), so the original one is requested explicitly.
+#' temperature and -6.5 K/km. Package defaults can change, so the standard formula is
+#' requested explicitly when the selector is available.
 era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orography) {
   if ("altitude_formula" %in% names(formals(pressure_to_altitude))) {
     pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography,
@@ -104,6 +106,38 @@ virtual_temperature <- function(t, td, sp) {
   e <- 611.2 * exp(17.67 * (td - 273.15) / (td - 273.15 + 243.5))
   q <- 0.622 * e / (sp - 0.378 * e)
   t * (1 + 0.608 * q)
+}
+
+#' GPT3 empirical troposphere model (Landskron & Böhm 2018): read the temperature lapse rate of a
+#' grid file (`gpt3_1.grd` or `gpt3_5.grd` from https://vmf.geo.tuwien.ac.at/codes/), as the
+#' mean and annual and semi-annual harmonics of dT/dh (K/m) at each grid centre.
+gpt3_read <- function(res = 1) {
+  g <- fread(file.path(dir_raw, "gpt3", sprintf("gpt3_%d.grd", res)), skip = 1, header = FALSE)
+  list(res = res, dT = as.matrix(g[, 18:22]) / 1000)
+}
+
+#' GPT3 temperature lapse rate (K/m) at points, bilinear between the four nearest grid centres as
+#' in the reference implementation (gpt3_*_fast.m), and nearest along latitude in the edge rows.
+#' @param doy day of year (calendar, not shifted by hemisphere)
+gpt3_lapse <- function(g, lon, lat, doy) {
+  r <- g$res
+  nlon <- 360 / r
+  nlat <- 180 / r
+  doy <- rep_len(doy, length(lat))
+  fi <- pmin(pmax((90 - lat) / r - 0.5, 0), nlat - 1)
+  fj <- (lon %% 360) / r - 0.5
+  i0 <- floor(fi)
+  j0 <- floor(fj)
+  di <- fi - i0
+  dj <- fj - j0
+  i1 <- pmin(i0 + 1, nlat - 1)
+  j1 <- (j0 + 1) %% nlon
+  j0 <- j0 %% nlon
+  h <- cbind(1, cos(2 * pi * doy / 365.25), sin(2 * pi * doy / 365.25), cos(4 * pi * doy / 365.25),
+    sin(4 * pi * doy / 365.25))
+  v <- function(i, j) rowSums(g$dT[i * nlon + j + 1, , drop = FALSE] * h)
+  (1 - di) * (1 - dj) * v(i0, j0) + di * (1 - dj) * v(i1, j0) + (1 - di) * dj * v(i0, j1) +
+    di * dj * v(i1, j1)
 }
 
 # ---- Misc -----------------------------------------------------------------------------------
@@ -271,4 +305,15 @@ bird_height_weights <- function() {
   bb[lo == 5000, prop := prop + sum(bird[lo == 6000, prop])]
   bb[, prop := prop / sum(prop)]
   bb[]
+}
+
+# Average repeated hourly reference records before coverage checks and summaries.
+# Numeric observations/height inputs are averaged; station metadata use the first record.
+average_reference_hours <- function(d) {
+  duplicate <- duplicated(d, by = c("source", "id", "date")) |
+    duplicated(d, by = c("source", "id", "date"), fromLast = TRUE)
+  if (!any(duplicate)) return(d)
+  # Most hours occur once; only overlapping daily-file hours need averaging.
+  rbindlist(list(d[!duplicate], d[duplicate,
+    lapply(.SD, function(x) if (is.numeric(x)) mean(x) else x[1]), by = .(source, id, date)]), use.names = TRUE)
 }

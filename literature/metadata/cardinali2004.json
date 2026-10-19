@@ -1,0 +1,397 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        5
+      ]
+    ],
+    "date-time": "2026-10-05T15:42:31Z",
+    "timestamp": 1791214951782,
+    "version": "4.1.0"
+  },
+  "reference-count": 31,
+  "publisher": "Wiley",
+  "issue": "603",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2006,
+            12,
+            29
+          ]
+        ],
+        "date-time": "2006-12-29T00:00:00Z",
+        "timestamp": 1167350400000
+      },
+      "content-version": "vor",
+      "delay-in-days": 819,
+      "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "rmets.onlinelibrary.wiley.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Quart J Royal Meteoro Soc"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2004,
+        10
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title><jats:p>The influence matrix is used in ordinary least‐squares applications for monitoring statistical multiple‐regression analyses. Concepts related to the influence matrix provide diagnostics on the influence of individual data on the analysis—the analysis change that would occur by leaving one observation out, and the effective information content (degrees of freedom for signal) in any sub‐set of the analysed data. In this paper, the corresponding concepts have been derived in the context of linear statistical data assimilation in numerical weather prediction. An approximate method to compute the diagonal elements of the influence matrix (the self‐sensitivities) has been developed for a large‐dimension variational data assimilation system (the four‐dimensional variational system of the European Centre for Medium‐Range Weather Forecasts). Results show that, in the boreal spring 2003 operational system, 15% of the global influence is due to the assimilated observations in any one analysis, and the complementary 85% is the influence of the prior (background) information, a short‐range forecast containing information from earlier assimilated observations. About 25% of the observational information is currently provided by surface‐based observing systems, and 75% by satellite systems.</jats:p><jats:p>Low‐influence data points usually occur in data‐rich areas, while high‐influence data points are in data‐sparse areas or in dynamically active regions. Background‐error correlations also play an important role: high correlation diminishes the observation influence and amplifies the importance of the surrounding real and pseudo observations (prior information in observation space). Incorrect specifications of background and observation‐error covariance matrices can be identified, interpreted and better understood by the use of influence‐matrix diagnostics for the variety of observation types and observed variables used in the data assimilation system. Copyright © 2004 Royal Meteorological Society</jats:p>",
+  "DOI": "10.1256/qj.03.205",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2005,
+        1,
+        12
+      ]
+    ],
+    "date-time": "2005-01-12T23:05:28Z",
+    "timestamp": 1105571128000
+  },
+  "page": "2767-2786",
+  "update-policy": "https://doi.org/10.1002/crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 163,
+  "title": [
+    "Influence‐matrix diagnostic of a data assimilation system"
+  ],
+  "prefix": "10.1002",
+  "volume": "130",
+  "author": [
+    {
+      "given": "Carla",
+      "family": "Cardinali",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Sergio",
+      "family": "Pezzulli",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Erik",
+      "family": "Andersson",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "311",
+  "published-online": {
+    "date-parts": [
+      [
+        2006,
+        12,
+        29
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_1_2_1",
+      "unstructured": "Andersson E.andFisher M.1999‘Background errors for observed quantities and their propagation in time’. Pp.81–90in Proceedings of the ECMWF workshop on the diagnosis of data assimilation systems Reading 1–4 November 1998. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_3_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1256/smsqj.56511"
+    },
+    {
+      "key": "e_1_2_1_4_1",
+      "first-page": "21",
+      "article-title": "Some large scale matrix computation problems",
+      "volume": "74",
+      "author": "Bay Z.",
+      "year": "1996",
+      "journal-title": "J. Comput. Appl. Math."
+    },
+    {
+      "key": "e_1_2_1_5_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0493(2003)131<0706:TSSOOE>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_1_6_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49712757419"
+    },
+    {
+      "key": "e_1_2_1_7_1",
+      "first-page": "1783",
+      "article-title": "The ECMWF implementation of three‐dimensional variational assimilation (3D‐Var). Part I: Formulation",
+      "volume": "124",
+      "author": "Courtier P.",
+      "year": "1998",
+      "journal-title": "Q. J. R. Meteorol. Soc."
+    },
+    {
+      "key": "e_1_2_1_8_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF01404567"
+    },
+    {
+      "key": "e_1_2_1_9_1",
+      "unstructured": "Fisher M.1996‘The specification of background error variances in the ECMWF variational analysis system’. Pp.645–652in Proceedings of the ECMWF workshop on non‐linear aspects of data assimilation Reading 9–11 September 1996. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_10_1",
+      "unstructured": "2003‘Estimation of entropy reduction and degrees of freedom for signal for large variational analysis systems’. P.18in ECMWF Technical Memorandum No. 397. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_11_1",
+      "unstructured": "Fisher M.andAndersson E.2001‘Developments in 4D‐Var and Kalman filtering’. P.36in ECMWF Technical Memorandum No. 347. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_12_1",
+      "unstructured": "Fisher M.andCourtier P.1995‘Estimating the covariance matrices of analysis and forecast error in variational data assimilation’. P.26in ECMWF Technical Memorandum No. 220. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_13_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1256/qj.02.210"
+    },
+    {
+      "key": "e_1_2_1_14_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/2683469"
+    },
+    {
+      "key": "e_1_2_1_14_2",
+      "first-page": "146",
+      "volume": "32",
+      "journal-title": "Corrigenda"
+    },
+    {
+      "key": "e_1_2_1_15_1",
+      "series-title": "Seriesin probability and statistics",
+      "volume-title": "Understanding robust and exploratory data analysis",
+      "author": "Hoaglin D. C.",
+      "year": "1982"
+    },
+    {
+      "key": "e_1_2_1_16_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49711247414"
+    },
+    {
+      "key": "e_1_2_1_17_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0450(1993)032<1092:EEDDIA>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_1_18_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49711850604"
+    },
+    {
+      "key": "e_1_2_1_19_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49712656415"
+    },
+    {
+      "key": "e_1_2_1_20_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1256/0035900021643638"
+    },
+    {
+      "key": "e_1_2_1_21_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1198/016214502388618933"
+    },
+    {
+      "key": "e_1_2_1_22_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2151/jmsj1965.75.1B_191"
+    },
+    {
+      "key": "e_1_2_1_23_1",
+      "unstructured": "Thépaut J. N.andAndersson E.2003‘Assimilation of high‐resolution satellite data’. Pp.6–12in ECMWF Newsletter No. 97. ECMWF Shinfield Reading UK"
+    },
+    {
+      "key": "e_1_2_1_24_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0493(1993)121<3393:IODAOI>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_1_25_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.49712253012"
+    },
+    {
+      "key": "e_1_2_1_26_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1090/qam/99740"
+    },
+    {
+      "key": "e_1_2_1_27_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/2683296"
+    },
+    {
+      "key": "e_1_2_1_28_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1137/1.9781611970128"
+    },
+    {
+      "key": "e_1_2_1_29_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1175/1520-0493(1995)123<3358:ATONWP>2.0.CO;2"
+    },
+    {
+      "key": "e_1_2_1_30_1",
+      "volume-title": "Guide to meteorological instruments and methods of observation",
+      "author": "WMO",
+      "year": "1996"
+    },
+    {
+      "key": "e_1_2_1_31_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1080/01621459.1998.10474094"
+    }
+  ],
+  "container-title": [
+    "Quarterly Journal of the Royal Meteorological Society"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1256%2Fqj.03.205",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1256/qj.03.205",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        10,
+        17
+      ]
+    ],
+    "date-time": "2023-10-17T19:56:28Z",
+    "timestamp": 1697572588000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://rmets.onlinelibrary.wiley.com/doi/10.1256/qj.03.205"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2004,
+        10
+      ]
+    ]
+  },
+  "references-count": 31,
+  "journal-issue": {
+    "issue": "603",
+    "published-print": {
+      "date-parts": [
+        [
+          2004,
+          10
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1256/qj.03.205"
+  ],
+  "URL": "https://doi.org/10.1256/qj.03.205",
+  "archive": [
+    "Portico"
+  ],
+  "relation": {},
+  "ISSN": [
+    "0035-9009",
+    "1477-870X"
+  ],
+  "issn-type": [
+    {
+      "value": "0035-9009",
+      "type": "print"
+    },
+    {
+      "value": "1477-870X",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2004,
+        10
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2003-11-10",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2006-12-29",
+      "order": 2,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-# Compute altitude errors at the HadISD surface stations and the IGRA2 radiosondes.
+# Compute altitude errors at the GHCNh surface stations and the IGRA2 radiosondes.
 #
 # error = altitude retrieved by GeoPressureR from the observed pressure - reference altitude
-#   HadISD reference: the station elevation (HadISD metadata)
+#   GHCNh reference: the station elevation (GHCNh metadata)
 #   IGRA2 reference:  the radiosonde's geopotential height at that pressure level
 #
 # Both ERA5 single-levels (`_sl`, the GeoPressureR/GeoPressureAPI default) and ERA5-Land (`_land`)
@@ -28,11 +28,11 @@ stopifnot(isTRUE(all.equal(
   altitude_lapse(80000, 95000, 280, 500), era5_altitude(80000, 95000, 280, 500)
 )))
 
-# ---- HadISD --------------------------------------------------------------------------------
+# ---- GHCNh --------------------------------------------------------------------------------
 errA_station <- function(i) {
-  s <- st[network == "hadisd"][i]
-  o <- as.data.table(read_parquet(file.path(dir_interim, "hadisd", paste0(s$id, ".parquet"))))
-  f <- file.path(era5_dir, paste0("hadisd_", s$id, ".parquet"))
+  s <- st[network == "ghcnh"][i]
+  o <- as.data.table(read_parquet(file.path(dir_interim, "ghcnh", "pressure", paste0(s$id, ".parquet"))))
+  f <- file.path(era5_dir, paste0("ghcnh_", s$id, ".parquet"))
   if (!file.exists(f) || nrow(o) == 0) return(NULL)
   e <- add_era5_covariates(as.data.table(read_parquet(f)))
   o[, date := era5_hour(date)]
@@ -42,27 +42,29 @@ errA_station <- function(i) {
   d[, h_land := era5_altitude(pressure * 100, sp_land, t2m_land, s$z_land)]
   d[, err_sl := h_sl - s$elev]
   d[, err_land := h_land - s$elev]
-  # Gross observation errors (typos, unit slips that survived HadISD QC): more than 100 m and 10
+  # Gross-discrepancy flag (not a unique diagnosis of observation error): more than 100 m and 10
   # robust SD away from the station's own median error.
-  med <- median(d$err_sl, na.rm = TRUE)
-  rsd <- mad(d$err_sl, na.rm = TRUE)
-  d[, gross := abs(err_sl - med) > max(100, 10 * rsd)]
+  d[, year := as.integer(format(date, "%Y"))]
+  d[, gross := abs(err_sl - median(err_sl, na.rm = TRUE)) >
+    max(100, 10 * mad(err_sl, na.rm = TRUE)), by = year]
   d[, `:=`(
     id = s$id,
     year = as.integer(format(date, "%Y")),
     lsh = local_solar_hour(date, s$lon),
     sdoy = seasonal_doy(date, s$lat)
   )]
-  d[, .(id, date, year, lsh, sdoy, pressure, err_sl, err_land, gross, blh, skt_t2m, dsp6,
-    t2m_sl, sp_sl)]
+  # t2m_sl, sp_sl and d2m are kept so that 16_formula.R can evaluate formula variants.
+  d[, .(id, date, year, lsh, sdoy, pressure, quality_code, source_code, err_sl, err_land, gross, blh, skt_t2m, dsp6,
+    t2m_sl, sp_sl, d2m)]
 }
 
-nA <- nrow(st[network == "hadisd"])
+nA <- nrow(st[network == "ghcnh"])
 resA <- par_map(seq_len(nA), errA_station, cores = n_cores, geopressurer = TRUE,
   export = c("st", "era5_dir", "add_era5_covariates"))
+check_failures(resA, st[network == "ghcnh", id], "GHCNh error series", fatal = TRUE)
 A <- rbindlist(Filter(is.data.frame, resA))
-write_parquet(A, file.path(dir_interim, "errors_hadisd.parquet"))
-cat("HadISD:", uniqueN(A$id), "stations,", nrow(A), "observations,",
+write_parquet(A, file.path(dir_interim, "errors_ghcnh.parquet"))
+cat("GHCNh:", uniqueN(A$id), "stations,", nrow(A), "observations,",
   sprintf("%.3f%%", 100 * mean(A$gross, na.rm = TRUE)), "flagged gross\n")
 
 # ---- IGRA2 ---------------------------------------------------------------------------------
@@ -143,6 +145,7 @@ errB_station <- function(i) {
 nB <- nrow(st[network == "igra"])
 resB <- par_map(seq_len(nB), errB_station, cores = n_cores, geopressurer = TRUE,
   export = c("st", "era5_dir", "add_era5_covariates", "parse_hhmm"))
+check_failures(resB, st[network == "igra", id], "IGRA error series", fatal = TRUE)
 B <- rbindlist(Filter(is.data.frame, resB))
 write_parquet(B, file.path(dir_interim, "errors_igra.parquet"))
 cat("IGRA2:", uniqueN(B$id), "stations,", uniqueN(B[, paste(id, sounding)]), "soundings,",

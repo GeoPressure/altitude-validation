@@ -5,7 +5,7 @@
 # surface level. One parquet file per station.
 #
 # All stations active over the study years are downloaded. Those with at least 100 soundings are
-# then thinned with the same rule as the surface stations (03_hadisd_thin.R): one random station
+# then thinned with the same rule as the surface stations (03_ghcnh_screen.R): one random station
 # per 2 x 2 degree cell, plus every station above 1000 m.
 
 source("R/utils.R")

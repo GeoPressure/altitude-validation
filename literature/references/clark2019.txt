@@ -1,0 +1,1077 @@
+                                      First three-dimensional tracks for the Ascension Frigatebird
+
+
+First three-dimensional tracks for the
+Ascension Frigatebird Fregata aquila
+highlight the importance of altitude
+for behavioural studies
+Bethany L. Clark1*, Tess Handby2, Eliza Leat3 and Sam B. Weber 2
+
+* Correspondence author. Email: bethany.louise.clark@gmail.com
+1 Environment and Sustainability Institute, and 2 Centre for Ecology and
+
+  Conservation, University of Exeter, Penryn Campus, Cornwall TR10 9EZ, UK;
+3 Conservation and Fisheries Department, Ascension Island Government,
+
+  Georgetown, ASCN 1ZZ, Ascension.
+
+Abstract
+Identifying at-sea foraging areas is a longstanding goal for seabird ecology and
+conservation. GPS tracks can reveal behaviour because slow, tortuous flight often
+indicates searching linked to feeding attempts, but two-dimensional (2D) paths may
+oversimplify three-dimensional (3D) flight. Here, we present the first 3D tracks for
+Ascension Frigatebirds Fregata aquila and assess whether incorporating flight
+altitude improves our ability to describe putative behavioural states. We compare
+results using altitude derived from GPS loggers and barometric altimeters deployed
+simultaneously. Tracked birds (three females) travelled at a mean altitude of 178 m
+and attained maximum heights of 1,658–1,871 m (measured by barometric
+altimeters). Hidden Markov models based on 2D tracks defined three states
+(interpreted as ‘search’, ‘slow travel’ and ‘fast travel’). However, with 59.5% of
+locations defined as ‘search’, identifying the most important foraging hotspots
+would be challenging. Including altitude was informative, allowing models to define
+two further states by introducing high-altitude ‘soaring/thermalling’ behaviour
+(3.4% of locations) and dividing ‘search’ into mid-altitude (44.7%) and low-altitude
+(12.2%), the latter being more likely to represent prey capture. Barometric altitude
+was less prone to large errors than GPS, but GPS altitude was highly correlated (r =
+0.94) and state assignments overlapped by 88% overall. Using GPS altitude would
+reduce potential tag effects and allow us to model tracks in 3D for males and lighter
+females, which are too small to carry both loggers. Overall, incorporating flight
+height from either barometric altimeters or GPS loggers into behavioural models
+improved our ability to distinguish putative foraging events from high-altitude flight.
+
+Introduction
+Breeding seabirds are central place foragers that can travel vast distances from the
+nest to feed. Many factors influence the distance travelled to forage, including
+species ecology (Thaxter et al. 2012; Oppel et al. 2018), prey availability (Hamer
+et al. 2007; Paiva et al. 2013; Thorne et al. 2015), and competition (Ashmole 1963;
+Lewis et al. 2001; Wakefield et al. 2013; Oppel et al. 2015; Corman et al. 2016).
+Our understanding of the patterns and processes involved in determining foraging
+
+
+                                                           SEABIRD 32 (2019): 1–19                   1
+    First three-dimensional tracks for the Ascension Frigatebird
+
+    behaviour is crucial to conserving seabirds both at their breeding colonies and their
+    often-distant foraging areas (Croxall et al. 2012; Lewison et al. 2012). A key goal is
+    to identify geographical areas or predictable environmental features associated
+    with foraging to prioritise areas for conservation measures (BirdLife International
+    2010). Foraging is often classified from tracking data by identifying slow and
+    tortuous flight as searching behaviour associated with feeding attempts
+    (Andersson 1981; Fauchald & Tveraa 2003). However, this approach generally
+    operates within a two-dimensional (2D) plane, whereas aerial and marine species
+    move in three dimensions (3D) (Bailleul et al. 2010; Belant et al. 2012). Many
+    wide-ranging species have evolved strategies such as thermalling and dynamic
+    soaring that improve flight efficiency when travelling over large distances
+    (Weimerskirch et al. 2003; Sachs et al. 2012; Yonehara et al. 2016). These
+    movements may not follow the direct trajectories that many species exhibit during
+    transit behaviour, so additional data streams may be needed to confidently
+    interpret behavioural patterns (McClintock et al. 2017).
+
+    Identifying important areas for seabirds is particularly challenging in the tropics,
+    where low productivity and unpredictable prey distributions mean that foraging is
+    often diffuse and not linked to stable environmental features (Ashmole 1963;
+    Boekelheide & Ainley 1983; Weimerskirch 2007). Frigatebirds provide an example of
+    extreme specialisation to such sparse environments. They are the only marine
+    animals that are physically unable to enter the water despite relying entirely on
+    marine resources, such as flying fish and squid (Weimerskirch et al. 2003, 2010),
+    which can be brought to the surface by other aquatic predators (Au & Pitman 1986;
+    Miller et al. 2018). Frigatebirds may also predate on seabird chicks or turtle
+    hatchlings and feed through kleptoparasitism, but this is more common in
+    immature birds (Stonehouse & Stonehouse 1963; Osorno et al. 1992; Lagarde et al.
+    2001). As their plumage is not waterproof and they cannot reliably take off when
+    wet (Mahoney 1984), they cannot rest on the water and must remain in flight for
+    the duration of a foraging trip (Weimerskirch et al. 2003; De Monte et al. 2012;
+    Weimerskirch et al. 2016). Consequently, frigatebirds have extremely low wing
+    loadings, allowing them to remain airborne for many days with very low energetic
+    output (Brewer & Hertel 2007). They use thermals to reach high altitudes, allowing
+    them to glide and soar to efficiently cover large distances (Weimerskirch et al.
+    2016), even sleeping on the wing in rising air currents (Rattenborg et al. 2016).
+    However, foraging can only take place when birds are near to sea level, and so
+    altitude data is likely to provide relevant information for behavioural models.
+
+    The Ascension Frigatebird Fregata aquila is endemic to Ascension Island, an isolated
+    peak in the central tropical Atlantic, 1,300 km from the nearest land. The species is
+    regarded as ‘vulnerable’ due to its restricted range (BirdLife International 2018a). The
+    Ascension Frigatebird only recently recolonised the main island from Boatswainbird
+    Islet after the successful eradication of Feral Cats Felis catus in 2006 (Ratcliffe et al.
+    2008, 2010). A previous study described the at-sea foraging distributions of this
+    species, showing them to roam over a large marine area with some trips extending
+    up to 1,100 km from the colony (Oppel et al. 2017). However, more detailed
+
+
+2    SEABIRD 32 (2019): 1–19
+                                     First three-dimensional tracks for the Ascension Frigatebird
+
+behavioural analyses are required to locate foraging hotspots within this very large
+area. In this study, we use a combination of GPS and barometric altimeter data to
+reconstruct the first 3D foraging tracks of the Ascension Frigatebird. GPS altitude is
+less accurate than latitude and longitude because four satellites are required for 3D
+positions, compared to three for 2D positions, and the location of those satellites
+affects accuracy (Dussault et al. 2019). These GPS altitude errors can occur at the
+scale of frigatebird flight (De Monte et al. 2012). Barometric pressure loggers are
+less prone to large errors but are affected by changing sea level air pressure
+(Berberan-Santos et al. 1997). Consequently, we first compare the distribution of
+error in the altitude recorded at a fixed point by GPS loggers and barometric
+pressure loggers. We then evaluate the implications of incorporating altitude into
+behavioural classifications performed using hidden Markov models (HMMs): a
+commonly used technique for decomposing tracking data into discrete movement
+patterns based primarily on speed and turning angle (Michelot et al. 2016; Bennison
+et al. 2017). Finally, we assess whether altitudes recorded by GPS loggers can be
+reliably used in place of barometric pressure data in future studies of this species
+(e.g. Rattenborg et al. 2016; Weimerskirch et al. 2016; Parr et al. 2017).
+
+Methods
+Study site and sampling: We studied Ascension Frigatebirds on the Letterbox
+Peninsula, Ascension Island (7°56’S 14°18’W), in September and October 2018. We
+caught five incubating females by hand on the nest and sheltered eggs from the sun
+during processing. Birds were first weighed to the nearest 10 g and only tagged if
+the logger and attachment weight was less than 3% of body mass. Due to consid-
+erable sexual dimorphism (Fairbairn & Shine 1993), males were too light to carry
+both a GPS and altimeter. Modular Signal Recorder (MSR) 145W air pressure and
+temperature loggers weighing 18 g and scheduled to record at 1 Hz, were attached
+to the underside of four central tail feathers using Tesa® tape. GPS loggers (iGot-U
+GT-120, Mobile Action Technology) waterproofed with heatshrink plastic, weighing
+18.5 g or 15.3 g (different battery sizes) and scheduled to record at five-minute
+intervals, were attached to the top of four central tail feathers using Tesa® tape.
+Three birds were tagged with large battery loggers; a total logger weight of 36.5 g
+(2.25–2.77% of body mass) and two birds with small battery loggers; a total logger
+weight of 33.3 g (2.73% and 2.67% of body mass). Handling time was limited to 10
+minutes. Due to issues with marking frigatebirds with leg rings owing to their short
+tarsus (Stonehouse & Stonehouse 1963; Schreiber 1999) or wing tags that reduce
+breeding success (Trefry et al. 2013), we marked birds on the forehead using gold
+nail varnish for re-sighting. Tagged individuals were recaptured after 7–14 days, and
+after logger removal, individuals were weighed to assess the impact of tagging on
+body mass. Three control birds of the same breeding stage and broad location were
+captured and processed using the same protocol. Both control and study nests were
+monitored throughout the study period, and after recapture if possible.
+
+GPS data: We located individual nests by taking the modal latitude and longitude
+of GPS locations within 3 km of the colony (rounded to four decimal places),
+checked against locations from a handheld GPS. Using the ‘geosphere’ (Hijmans
+
+
+                                                          SEABIRD 32 (2019): 1–19                   3
+    First three-dimensional tracks for the Ascension Frigatebird
+
+    2017) and ‘raster’ (Hijmans 2018) R packages, we split GPS tracks into trips when
+    the bird crossed a radius of 500 m from the nest, with one additional GPS location
+    at the start of each trip and the end of complete trips. We checked for erroneous
+    positions by visually assessing plots, and by calculating the ground speed between
+    each successive location. The maximum ground speed was 19.17 ms-1, which was
+    substantially lower than the 27.3 ms-1 used in a maximum velocity filter for
+    Christmas Island Frigatebirds F. andrewsi (Hennicke et al. 2015). We corrected the
+    GPS altitude for the difference between the ellipsoid and the local geoid using the
+    Earth Gravitation Model 2008-WGS84 version in a 2.5 x 2.5-minute grid (Pavlis
+    et al. 2012; downloaded from https://earth-info.nga.mil/GandG/wgs84/
+    gravitymod/egm2008/egm08_gis.html). We used the extract function from the
+    ‘raster’ package with a bilinear method that interpolates between the four nearest
+    cells (Hijmans 2018). For each bird, we calculated the track duration, total distance
+    travelled, and the maximum distance reached from the colony.
+
+    Barometric pressure data: Pressure data at 1 Hz were smoothed across the
+    previous five and next five records (an 11-second window) to reduce the impact of
+    very short-lived pressure changes, such as those caused by turbulence (Cleasby et
+    al. 2015). We used the barometric formula to estimate altitude in meters above
+    sea level (Berberan-Santos et al. 1997). Sea level pressure was calibrated using the
+    mean temperature and air pressure recorded by the loggers at the nest for 48 hours
+    before the foraging trip, and the altitude of the nest as the modal value recorded
+    by the GPS loggers (rounded to one decimal place). We calculated the error for
+    each altitude record from the fixed altitude at the nest within the 48-hour period
+    measured by both loggers. The relatively stable air pressure in the tropics allows for
+    birds to travel long distances from the calibration point without substantial
+    changes to sea level pressure. 3D tracks were visualised using the ‘rayshader’ R
+    package (Morgan-Wall 2019).
+
+    Behavioural modelling: Hidden Markov models (HMMs) implemented in the R
+    package ‘momentuHMM’ (McClintock & Michelot 2018) were used to differ-
+    entiate between discrete behavioural states in 2D (speed and turning angle) and
+    3D tracks (speed, turning angle and altitude; see R code available at
+    doi.org/10.5281/zenodo.3672124). We linearly interpolated the GPS data to the
+    five-minute sampling frequency to regularise the data. To make GPS and
+    barometric altitudes comparable, we linearly interpolated barometric altitudes
+    between each GPS position. Frigatebirds are unable to dive or rest on the water
+    so for the purposes of HMM-fitting we adjusted barometric and GPS altitudes <=
+    0 m to a nominal height of 0.1 m. This was a modelling constraint imposed by
+    the positive continuous gamma distribution used to model flight altitude and
+    affected a small proportion of locations (barometric: n = 11, 0.2%; GPS: n = 29,
+    0.6%; values below zero are included in all other calculations of summary
+    statistics and plots unless otherwise stated). A k-means clustering algorithm
+    (with k = number of states, 1–5) was used to select appropriate starting values
+    for the state-dependent probability distribution parameters of each data stream
+    (Dean et al. 2013), assuming a gamma distribution for speed and altitude, and a
+
+
+4    SEABIRD 32 (2019): 1–19
+                                        First three-dimensional tracks for the Ascension Frigatebird
+
+von Mises distribution with a mean of zero for turning angle. Starting values were
+then randomly perturbed over 10 optimisations to evaluate the impact on model
+likelihood and help avoid convergence towards local maxima (McClintock &
+Michelot, 2018). For both 2D and 3D analyses, we compared the fitted models
+with 1–5 putative latent behavioural states based on their Akaike Information
+Criterion (AIC) and used an ‘elbow criterion’ (i.e. the point at which adding
+additional states results in more marginal reductions in AIC) to select the best
+trade-off between minimising errors on state parameters and overfitting (Dean
+et al. 2013). The Viterbi algorithm was then used to decode the most probable
+sequence of underlying states from the selected model for each individual track
+(McClintock & Michelot, 2018). To assess how state assignments based on
+barometric altitude measurements compare with those based on GPS-derived
+altitudes we refitted the 3D HMM using the same starting parameters but with
+barometric altitude substituted by GPS altitude in the vertical dimension. We
+then calculated the state confusion matrix and overall assignment accuracy using
+the ‘confusionMatrix’ function in ‘caret’ R package (Kuhn et al. 2019).
+
+Statistics: To quantify the correlations between altitude derived from barometric
+pressure and from GPS, and between altitude and speed in travelling states, we first
+subsampled data locations to 50 minute intervals to provide altitude measures
+that were no longer autocorrelated. We then used Spearman’s rank tests performed
+in R (R Core Team 2019).
+
+Results
+Data recovery and tag effects: We recaptured all five of the tagged individuals
+and successfully recovered loggers from four, the fifth having shed the loggers
+along with the central tail feathers. One individual remained at the nest for 5–7
+days after deployment, meaning that the GPS logger battery was exhausted before
+the foraging trip started. Three foraging trips were therefore available for analysis.
+One control bird abandoned during the study, but this is unlikely to have been a
+handling response as the bird was observed on the nest for 14 days after the initial
+capture. The other two control nests were attended for at least 7–17 days after
+initial capture. We recorded no substantial difference in body mass before and after
+tagging (before: 1,160 g, 1,620 g, 1,400 g and 1,320 g; after: 1,250 g, 1,420 g, 1,400
+g and 1,380 g respectively; mean change -12.5 ± 65.2 g S.E., n = 4).
+
+
+
+ Table 1. Summary of partial foraging trips for Ascension Frigatebirds Fregata aquila tracked using GPS loggers
+ and barometric altimeters simultaneously. Means are given ± 1 S.E.
+
+ Individual        Mean          Maximum              Period                 Total            Maximum distance
+               altitude (m)     altitude (m)     recorded (days)        distance (km)        from the colony (km)
+ Bird 1             164             1,825              2.69                   908                    376
+ Bird 2             175             1,658              9.52                 3,644                    411
+ Bird 3             183             1,871              6.09                 2,169                    677
+ Mean ± SE      189 ± 2.4       1,678 ± 22         6.10 ± 1.97           2,240 ± 791              488 ± 95
+
+
+
+
+                                                             SEABIRD 32 (2019): 1–19                   5
+                                       First three-dimensional tracks for the Ascension Frigatebird
+
+
+
+
+      Figure 1. Three-dimensional tracks for three Ascension Frigatebirds Fregata aquila showing latitude and
+      longitude recorded by GPS loggers and altitude derived from barometric pressure loggers. The gap for Bird 2 was
+      due to missing GPS data.
+               1,900           a) Barometric altitude                                        b) GPS altitude   Foraging trip characteristics: We
+               1,800                                                   1,800
+                                                                                                               recorded a total of 18.3 days of the at-
+               1,700                                                   1,700
+               1,600                                                   1,600
+                                                                                                               sea foraging trips for three Ascension
+               1,500                                                   1,500
+                                                                                                               Frigatebirds (Figure 1), during which
+               1,400                                                   1,400                                   they travelled a total of 6,721 km,
+               1,300                                                   1,300                                   reaching up to 677 km from the colony
+               1,200                                                   1,200                                   (Table 1). These foraging trips fell within
+               1,100                                                   1,100                                   the range of Ascension Frigatebirds
+               1,000                                                   1,000                                   tracked from the main breeding colony
+
+Altitude (m)                                            Altitude (m)
+                900                                                     900
+                                                                                                               on Boatswainbird Island (260 m off the
+                800                                                     800
+                                                                                                               coast of Ascension Island near to the
+                700                                                     700
+                                                                                                               Letterbox Peninsula) in 2013 and 2014
+                600                                                     600
+                500                                                     500
+                                                                                                               (Oppel et al. 2017), so are likely to
+                400                                                     400
+                                                                                                               represent normal foraging behaviour for
+                300                                                     300                                    the species. Frigatebirds largely travelled
+                200                                                     200                                    within 100–200 m altitude (Figure 2),
+                100                                                     100                                    and we recorded similar mean altitudes
+                  0                                                       0                                    (164–183 m) and maximum altitudes
+               -100
+                   0.0   0.1     0.2     0.3   0.4
+                                                                       -100
+                                                                           0.0   0.1   0.2     0.3    0.4      (1,658–1,872 m) among individuals.
+                         Proportion of time                                      Proportion of time
+      Figure 2. Vertical utilisation distributions of Ascension
+                                                                                                               Behavioural models: Inspection of
+      Frigatebirds Fregata aquila tracked with a) barometric
+      altimeters and b) GPS loggers showing the mean (± 1 S.E.)
+                                                                                                               model AICs suggested that a three-state
+      proportion of time spent in 100 m altitude bands. The median                                             HMM adequately described the
+      flight height (144 m for barometric and 150 m for GPS) is                                                dominant behavioural patterns in 2D
+      marked with a red line.                                                                                  Ascension Frigatebird tracks, with state
+
+
+                                6       SEABIRD 32 (2019): 1–19
+                                        First three-dimensional tracks for the Ascension Frigatebird
+
+parameter estimates that were qualitatively similar to those recently reported by
+Austin et al. (2019) for the Magnificent Frigatebird F. magnificens. These consisted
+of: 1) a ‘travelling’ state characterised by sustained, directed flight with high speeds
+and low variance in turning angle; 2) an intermediate state with similarly low
+turning angle variance but lower travel speeds which Austin et al. (2019) described
+as ‘search/rest’ (which included resting on land) but which we refer to as ‘slow
+travel’ (as Ascension Frigatebirds have no access to land away from the colony);
+and 3) an ‘area restricted search’ type behaviour characterised by slow speeds and
+high variance in turning angle, which includes putative foraging events (Table 2;
+Austin et al. 2019).
+
+Our ability to discriminate potential foraging events was substantially improved
+when altitude derived from barometric pressure was also included in the model
+(Figures 3–5). In the 3D case, model AICs supported fitting a more complex five-
+state HMM. Parameter estimates maintained the two ‘travel’ classes identified in
+the 2D model with the additional distinction that ‘fast travel’ was associated with
+higher elevations than ‘slow travel’. This association was underscored by the
+significant positive correlation between flight altitude and travel speed across
+travel-associated locations (Spearman’s r = 0.22, S = 1,231,694, P = 0.001). A third
+high-speed state characterised by very high flight altitudes and more variable
+turning angles was also identified, which we interpret as the ‘thermalling/gliding’
+or soaring behaviour described in other frigatebird species (Weimerskirch et al.
+2003, 2016), along with two area-restricted search (ARS) states: a ‘mid-altitude
+ARS’ with a mean elevation of 155 m and a ‘low-altitude ARS’ with a mean
+
+ Table 2. Parameter estimates of the state-dependent probability distributions from hidden Markov models
+ fitted to 2D and 3D Ascension Frigatebird Fregata aquila tracks, along with the proportion of time spent in
+ each behavioural state. Estimates for speed and altitude (derived from barometric pressure unless labelled as
+ GPS) are presented as means ± 1 S.D., while turning angle as the concentration parameter (K) of a von Mises
+ distribution with mean = 0 (higher values of K indicate less variable angles and thus more directed flight).
+
+ Model         Behavioural mode             Speed (kph)           Angle (K)        Altitude (m)        % locations
+ 2D            Travel (fast)                 27.9 ± 8.9             5.1                  -                15.0
+               Travel (slow)                 15.7 ± 4.2             4.1                  -                25.5
+               Search                         9.6 ± 5.6             0.7                  -                59.5
+
+ 3D            Thermal/glide                 23.3 ± 10.5              2.7           908 ± 327               3.4
+               Travel (fast/high)            21.6 ± 10.9              1.9           255 ± 72               19.2
+               Travel (slow/mid)              17.9 ± 5.9              4.9           120 ± 41               20.4
+               Mid-altitude search            9.8 ± 5.5               0.7           155 ± 50               44.7
+               Low-altitude search             7.9 ± 4.3              1.0            64 ± 44               12.2
+
+ 3D GPS        Thermal/glide                 22.6 ± 10.9              2.6           890 ± 321               3.4
+               Travel (fast/high)            21.0 ± 10.9              1.8           263 ± 76               19.2
+               Travel (slow/mid)              18.0 ± 5.9              5.2           127 ± 45               20.4
+               Mid-altitude search            9.7 ± 5.4               0.7           156 ± 54               44.7
+               Low-altitude search             7.8 ± 4.1              1.1            58 ± 51               12.2
+
+
+
+
+                                                             SEABIRD 32 (2019): 1–19                   7
+                                      First three-dimensional tracks for the Ascension Frigatebird
+
+                                      elevation of 64 m coupled with very slow speeds and highly variable turning angles.
+                                      Of the 5,169 regularised track locations, 3,074 (59.6%) were classified as ARS in
+                                      the 2D model, of which, 408 (13.3%) were above the maximum flight height of
+                                      low-altitude ARS (232 m), and 95 (3.1%) were above the maximum flight height
+                                      of both ARS states (344 m). Furthermore, the 2D model identified 36 records in the
+                                      lowest 5% of altitude measures (below 38 m) as travel, while the 3D model classed
+                                      20 as travel. This suggests that the 2D model is a poorer predictor of the distri-
+                                      bution of potential prey capture events.
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                          1,000                                                                          a) States - 2D HMM
+                                                                                                           Forage/ARS
+                                                                                                           Travel fast
+                                                                                                           Travel slow
+                           500
+
+
+
+
+                             0
+
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                                                                                                         b) States - 3D HMM
+                          1,000                                                                            Low-altitude ARS
+                                                                                                           Mid-altitude ARS
+                                                                                                           Thermal/glide
+                                                                                                           Travel fast/high
+                           500                                                                             Travel slow/mid
+
+
+
+
+                             0
+
+
+
+                          1,500
+
+
+
+                                                                                                         c) States - 3D HMM
+
+
+
+GPS altitude (m)
+                          1,000                                                                            Low-altitude ARS
+                                                                                                           Mid-altitude ARS
+                                                                                                           Thermal/glide
+                                                                                                           Travel fast/high
+                           500                                                                             Travel slow/mid
+
+
+
+
+                             0
+                                                 1                                 2                 3
+                                                                   Time (days)
+
+  Figure 3. Flight altitude recorded for the foraging trip of Ascension Frigatebird Fregata aquila 1, with circle
+  colour indicating behavioural classification for each GPS location from a) a 2D hidden Markov model (HMM)
+  and b) a 3D HMM using barometric altitude and c) a 3D HMM using GPS altitude. The black horizontal line
+  shows the median altitude across all three birds (144 m).
+
+
+
+                                  8    SEABIRD 32 (2019): 1–19
+                                        First three-dimensional tracks for the Ascension Frigatebird
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                          1,000
+                                                                                                       a) States - 2D HMM
+                                                                                                         Forage/ARS
+                                                                                                         Travel fast
+                                                                                                         Travel slow
+                           500
+
+
+
+
+                             0
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                                                                                                       b) States - 3D HMM
+                          1,000
+                                                                                                         Low-altitude ARS
+                                                                                                         Mid-altitude ARS
+                                                                                                         Thermal/glide
+                                                                                                         Travel fast/high
+                           500                                                                           Travel slow/mid
+
+
+
+
+                             0
+
+
+                          1,500
+
+
+
+
+                                                                                                       c) States - 3D HMM
+
+
+
+GPS altitude (m)
+                          1,000
+                                                                                                         Low-altitude ARS
+                                                                                                         Mid-altitude ARS
+                                                                                                         Thermal/glide
+                                                                                                         Travel fast/high
+                           500                                                                           Travel slow/mid
+
+
+
+
+                             0
+
+                                  2                       4                              6
+                                            Time (days)
+
+Figure 4. Flight altitude recorded for the foraging trip of Ascension Frigatebird Fregata aquila 2, with circle
+colour indicating behavioural classification for each GPS location from a) a 2D hidden Markov model (HMM),
+b) a 3D HMM using barometric altitude, and c) a 3D HMM using GPS altitude. The black horizontal line shows
+the median altitude across all three birds (144 m).
+
+Comparison of GPS and pressure-derived altitudes: GPS altitude had a similar
+mean error from the reference point at the nest to barometric altitude (7.2 m and 8.0
+m, respectively; Table 3), but a much greater standard deviation (18.0 m and 4.9 m),
+minimum error (-236.1 m and -19.3 m) and maximum error (675.3 m and 23.2 m).
+GPS altitude had a mean difference compared to barometric altitude of 5.7 m ± 59.3
+SD (range: -1,397–1,219 m). However, the two altitude measures were highly
+correlated with a Spearman’s correlation coefficient of r = 0.94 (S = 1,168,360, P <
+0.001; Figure 6). Refitting the 3D HMM with GPS-derived altitude resulted in an overall
+
+
+                                                              SEABIRD 32 (2019): 1–19                   9
+                                             First three-dimensional tracks for the Ascension Frigatebird
+
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                                                                                                                  a) States - 2D HMM
+                          1,000
+                                                                                                                    Forage/ARS
+                                                                                                                    Travel fast
+                                                                                                                    Travel slow
+                           500
+
+
+
+
+                             0
+
+
+
+
+                          1,500
+
+
+
+
+Barometric altitude (m)
+                                                                                                                  b) States - 3D HMM
+                          1,000                                                                                     Low-altitude ARS
+                                                                                                                    Mid-altitude ARS
+                                                                                                                    Thermal/glide
+                                                                                                                    Travel fast/high
+                           500                                                                                      Travel slow/mid
+
+
+
+
+                             0
+
+
+
+
+                          1,500
+
+
+                                                                                                                  c) States - 3D HMM
+
+
+
+GPS altitude (m)
+                          1,000                                                                                     Low-altitude ARS
+                                                                                                                    Mid-altitude ARS
+                                                                                                                    Thermal/glide
+                                                                                                                    Travel fast/high
+                           500                                                                                      Travel slow/mid
+
+
+
+
+                             0
+                                  0.0                   2.5                      5.0                        7.5
+                                                                          Time (days)
+
+Figure 5. Flight altitude recorded for the foraging trip of Ascension Frigatebird Fregata aquila 3, with circle
+colour indicating behavioural classification for each GPS location from a) a 2D hidden Markov model (HMM),
+b) a 3D HMM using barometric altitude, and c) a 3D HMM using GPS altitude. The black horizontal line shows
+the median altitude across all three birds (144 m).
+
+                                             state assignment accuracy of 87.9% (95% CI = 86.9–88.7) compared to those based
+                                             on barometric pressures (Figure 7). Of the inferred ‘low-altitude search’ behaviours,
+                                             which includes putative foraging events, 74.3% were correctly identified using GPS
+                                             altitude along with 97.6% of apparent thermalling behaviour. Using GPS altitude
+                                             identified 26 bouts of thermalling/soaring compared to 21 for barometric altitude,
+                                             which relates to 21 matching bouts and 4 additional bouts that may relate to GPS
+                                             error given that they all contain only 1–3 locations (Figure 3–5). The most common
+                                             state confusions occurred between low-altitude and mid-altitude ‘search’ states.
+
+
+                                        10    SEABIRD 32 (2019): 1–19
+                                                                       First three-dimensional tracks for the Ascension Frigatebird
+
+
+                       Table 3. Measures of altitude at the nest during a 48-hour period before the start of the foraging trip. Means
+                       and standard deviations (SD) were calculated as the mean absolute difference (error) from the nest altitude
+                       (the modal value from the GPS and the measurement).
+
+                                                        GPS altitude error (m)                         Barometric altitude error (m)
+                       Individual               mean        SD        min      max                  mean       SD        min      max
+                       Bird 1                    11.9      27.1 -236.1        385.1                   9.4      6.4      -19.3      23.2
+                       Bird 2                     5.5      21.5     -66.7     675.3                   7.0      4.1      -16.8      16.5
+                       Bird 3                     4.1       5.5     -46.4      70.3                   7.6      4.1      -17.1      14.3
+                       All birds                  6.9      21.1 -236.1        675.3                  8.0      5.1       -19.3     23.2
+
+
+
+                                        Individual         1       2         3
+
+
+
+
+                                1,500
+
+
+
+
+Altitude derived from GPS (m)
+                                1,000
+
+
+
+
+                                 500
+
+
+
+
+                                   0
+
+
+
+                                           0                           500                             1,000                          1,500
+                                                                       Altitude derived from barometric pressure (m)
+
+Figure 6. Comparison of altitude measures derived from barometric pressure loggers (higher accuracy) and GPS
+loggers (lower accuracy) for three sections of foraging trips made by Ascension Frigatebirds Fregata aquila. The
+black line shows y = x.
+
+
+
+                                                                                             SEABIRD 32 (2019): 1–19                  11
+                             First three-dimensional tracks for the Ascension Frigatebird
+
+                                                                            AR              AR
+                      Tra                                         M
+                                                                              S
+                                                                                  Lo
+                                                                                              S                 Discussion
+                                     Tra            Th             id-              w-
+                         ve                           er
+                           l(slo
+                                        ve
+                                          l(fa
+                                                        mall
+                                                                      alt
+                                                                         itu
+                                                                                      alt
+                                                                                         itu                    We present the first 3D tracks of the
+                                w)            st)           ing             de              de
+                                                                                                                Ascension Frigatebird (n = 3 females) and
+                                                                                                                reveal the considerable altitudinal range
+    Travel (slow)     91             4.1            0.3            1.7             2.9
+                                                                                                                occupied by this species. Tagged
+                                                                                                                individuals periodically reached flight
+     Travel (fast)    4.1            89.2           0.8            5.8             0.1                          heights in excess of 1,000 m during
+                                                                                                                extended foraging trips that ranged up to
+
+                                                                                                 GPS altitude
+                                                                                                                677 km from their breeding colony. The
+     Thermalling       0             2.4            97.6            0               0                           mean maximum recorded altitude of
+                                                                                                                1,785 m (maximum 1,871 m) is similar
+                                                                                                                to the 1,764 ± 620 m (maximum 2,867
+Mid-altitude ARS      6.1            4.3             0            87.9             1.7
+                                                                                                                m) reported for the Great Frigatebird F.
+                                                                                                                minor in the Mozambique Channel
+Low-altitude ARS      24.4            0              0             1.4            74.3
+                                                                                                                (Weimerskirch et al. 2004), but
+                                                                                                                somewhat less than the record of 4,600
+                                           Barometric altitude                                                  m for Great Frigatebirds tracked from
+Figure 7. Confusion matrix showing state assignment discrep-                                                    Galápagos (Rattenborg et al. 2016).
+ancies in 3D hidden Markov models fit using GPS triangulation                                                   However, although tracks were
+and barometric pressure-derived altitudes for Ascension                                                         punctuated by periods of high-altitude
+Frigatebird Fregata aquila foraging trips. Values along the                                                     flight, birds spent the largest proportion
+diagonal represent the percentage of locations that are
+                                                                                                                of their time travelling at 100–200 m,
+classified consistently between the barometric pressure- and
+GPS-derived altitude (ARS = area-restricted search). The matrix                                                 which may allow them to maintain visual
+is read row-wise and shows the percentage of state assignments                                                  contact with the ocean to detect
+in the pressure model that are ‘misclassified’ in the GPS model.                                                potential foraging opportunities.
+
+                             As shown in Magnificent Frigatebirds (Austin et al. 2019), hidden Markov models
+                             using 2D movement parameters derived from GPS coordinates (step length and
+                             turning angle) were able to distinguish between broad behavioural modes in
+                             Ascension Frigatebirds, interpreted as ‘search’ (59.6% of locations), ‘fast travel’
+                             and ‘slow travel’. However, due to the large vertical range occupied by this
+                             species, our results suggest that they provide an overly simplified representation
+                             of Ascension Frigatebird behaviour and are limited in their ability to provide an
+                             effective means of identifying hotspots of putative foraging (i.e. prey capture)
+                             that must occur at low-altitudes. The 2D model placed 95 locations in the state
+                             interpreted as ‘search’ that were above the maximum flight height of ‘search’
+                             states from the 3D model (344 m), likely because high-altitude thermalling can
+                             resemble searching when measured in 2D (Figures 3–5). Furthermore, 2D models
+                             classified more low-altitude locations as ‘travel’ than 3D models, but some of
+                             these locations may represent foraging as frigatebirds prefer to travel at higher
+                             altitudes, particularly while sleeping (Rattenborg et al. 2016). By incorporating
+                             altitude into HMMs we were able to refine and further partition ‘travel’ and
+                             ‘search’ states to be more informative and representative of frigatebird behaviour
+                             (see McClintock et al. 2017). This included identifying periods of
+                             ‘soaring/thermalling’ behaviour, a defining characteristic of frigatebird flight, and
+                             separating mid- and low-altitude search, the latter of which is expected to
+
+
+                     12       SEABIRD 32 (2019): 1–19
+                                                          Ascension Frigatebirds
+                                                                © Bethany Clark
+First three-dimensional tracks for the Ascension Frigatebird
+
+
+
+
+                   SEABIRD 32 (2019): 00–00                    13
+     First three-dimensional tracks for the Ascension Frigatebird
+
+     encompass the vast majority of surface-orientated foraging and prey capture.
+     Consequently, the low-altitude ARS class allows us to narrow down foraging
+     hotspots from the 59.6% of locations classed as ‘search’ by the 2D model to the
+     12.2% classed as ‘low-altitude search’ by the 3D model. While searching could
+     begin at high altitudes, we are often interested in locating areas where search
+     may lead to prey capture, which must occur at low altitudes. This may mirror the
+     hierarchical spatial scales at which foraging pelagic seabirds have been shown to
+     operate in according to prey distribution and patchiness (Fauchald et al. 2000).
+     The ability to discriminate between these behavioural modes is an important
+     step that will allow for more detailed study of the underlying environmental
+     factors that may trigger them.
+
+     Incorporating vertical data has the potential to dramatically improve behavioural
+     inferences in seabird tracking studies, but its use has often been limited by the cost
+     or additional weight of standalone altimeters or combined loggers. Many GPS tags
+     record altitude data, although this is often considered to be error-prone and
+     unreliable (Dussault et al. 2019), however, the scale of the errors had not been
+     assessed in relation to frigatebird behaviour. At stable elevations, we found that the
+     altitude data recorded by GPS loggers were more likely to exhibit large errors than
+     the corresponding barometric altimeter data, with a maximum error of 675 m
+     compared to only 23 m (Table 3). At sea, we also found more erroneous negative
+     altitudes in the GPS data (29 compared to 11), down to a minimum of -53 m
+     (compared to -22 m). Despite this, GPS altitude still provided sufficient
+     information to inform behavioural models (Figure 3–5; Figure 7). Indeed, there was
+     a strong correlation between altitude derived from the two methods (Figure 6),
+     and overall state assignment accuracy was high between 3D HMMs fit using each
+     data stream (Figure 7). It may also be possible to further improve GPS data by
+     identifying a limit to possible rates of changes in altitude in order to filter
+     anomalous records. The additional high altitude thermalling/soaring bouts labelled
+     by the GPS altitude but not the barometric altitude (Figures 3–5) could be
+     corrected by filtering or smoothing (De Monte et al. 2012). Future studies of
+     Ascension Frigatebirds could therefore require only a single GPS logger to generate
+     useable tracks for analysis in three dimensions. Our results are important because
+     reducing logger weight and drag are key goals in biologging (Vandenabeele et al.
+     2011; Bodey et al. 2018; Kay et al. 2019).
+
+     Logger weight limited our study to individuals over 1,220 g with large loggers and
+     1,110 g with small loggers. This prevented us from tagging more than five
+     individuals, with only three deployments returning data. This is a small sample, but
+     all three showed a similar range of altitudes, maximum altitudes, and number of
+     high-altitude flights per day (Figures 3–5). Additionally, they performed long trips;
+     we recorded 5,169 locations over 18.3 days including 21 high altitude flights.
+     However, our samples contain only large females (the heavier sex) as many
+     females and all males were too light to be tagged with both loggers. Our study
+     only tracked incubating females, and so we cannot confirm that they occupy
+     similar altitudes to males or females during other breeding stages. Studies of flight
+
+
+14    SEABIRD 32 (2019): 1–19
+                                     First three-dimensional tracks for the Ascension Frigatebird
+
+altitude for other frigatebird species used either only females (Rattenborg et al.
+2016; Weimerskirch et al. 2016) or did not report the sex (De Monte et al. 2012)
+or the effect of sex (Weimerskirch et al. 2004; Sachs & Weimerskirch 2018).
+Moreover, other studies only tagged during a single breeding stage (Rattenborg et
+al. 2016) or did not compare breeding stages (Weimerskirch et al. 2016; Sachs &
+Weimerskirch 2018). In 2D, male Ascension Frigatebirds had longer trip durations,
+total distances and maximum distances reached from the colony, but sex
+accounted for less variation than season (hot/cool) or breeding stage
+(incubation/chick-rearing; Oppel et al. 2017). While our sample is limited, we
+cannot think of a reason why individual, sex or breeding stage would impact the
+relationship between barometric and GPS altitudes, and if a larger sample provided
+by GPS altitude shows that other groups occupy a different altitudinal range, a
+group-specific model could be produced.
+
+Improving our ability to identify important geographical areas or environmental
+features for foraging is key to conserving wide-ranging seabirds (BirdLife
+International 2010). Vertical data is particularly important for studies of
+frigatebird foraging ecology because they do not dive, meaning that feeding
+attempts cannot be identified using wet/dry sensors or dive depth loggers that
+can provide this information for many other species (e.g. Paredes et al. 2014; Cox
+et al. 2016). A better understanding of frigatebird foraging behaviour could also
+be useful for interpreting the behaviour of the other four frigatebird species,
+including the critically endangered Christmas Island Frigatebird (Hennicke et al.
+2015; BirdLife International 2018b). Furthermore, covariates could inform our
+understanding of the causes of particular state changes, such as wind speed and
+direction (Amélineau et al. 2014; Weimerskirch et al. 2000). Many other studies
+of birds make use of GPS loggers, but do not include the altitude data in
+behavioural models and may be able to improve classification by incorporating
+these data. However, models would have to be validated before applying to
+species that do not have such a large altitude range. A similar approach could be
+applied for many species as HMMs can make use of a variety of additional data
+streams, including immersion, dive depth, acceleration and environmental
+covariates (Dean et al. 2013; McClintock et al. 2017; McClintock & Michelot
+2018). In general, we advocate for more studies to incorporate different data
+streams and for more studies that use multiple measures of the same variables
+to assess relative error.
+
+In conclusion, Ascension Frigatebird foraging behaviour is better described when
+altitude is considered alongside speed and turning angle, both in terms of providing
+foraging hotspots at multiple scales and reducing potential misclassifications.
+Furthermore, we show that while altitude measured by barometric pressure is less
+prone to large errors, GPS altitude is almost as informative for frigatebird foraging
+trips. Overall, we present an example of how additional data streams can be used
+in behavioural classification models and how potentially poor-quality data can be
+validated by comparing multiple measures of the same variable.
+
+
+
+
+                                                          SEABIRD 32 (2019): 1–19                   15
+     First three-dimensional tracks for the Ascension Frigatebird
+
+     Acknowledgements
+     This project was funded by the Darwin Initiative project DPLUS063, The Ascension
+     Island Ocean Sanctuary Project (ASIOS) jointly managed by Ascension Island
+     Government Conservation and Fisheries Department (AIGCFD) and the University
+     of Exeter, in-kind funding from AIGCFD. Altitude loggers were previously used for a
+     NERC GW4+ Doctoral Training Partnership studentship awarded to Bethany Clark
+     from the Natural Environment Research Council [NE/L002434/1]. For assistance in
+     the field, we thank Sophie Tuppen, as well as Andy Richardson, Jolene Sim, Natasha
+     Williams, Megan Benjamin, Diane Baum and Matthew Stritch. We thank Annette
+     Broderick and Stephen Votier for advice, and two anonymous reviewers for their
+     valuable input. An Environmental Research Permit was provided by the Ascension
+     Island Government, and ethical approval was granted by the University of Exeter.
+
+     References
+     Amélineau, F., Péron, C., Lescroël, A., Authier, M., Provost, P. & Grémillet, D. 2014.
+      Windscape and tortuosity shape the flight costs of northern gannets. Journal of
+      Experimental Biology 217: 876–85.
+     Andersson, M. 1981. On optimal predator search. Theoretical Population Biology 19: 58–86.
+     Ashmole, N. P. 1963. The regulation of numbers of tropical oceanic birds. Ibis 103b: 458–473.
+     Au, D. W. K. & Pitman, R. L. 1986. Seabird interactions with dolphins and tuna in the eastern
+      tropical Pacific. The Condor 88: 304–317.
+     Austin, R. E., De Pascalis, F., Arnould, J. P. Y., Haakonsson, J., Votier, S. C., Ebanks-Petrie,
+      G., Austin, T., Morgan, G., Bennett, G. & Green, J. A. 2019. A sex-influenced flexible
+      foraging strategy in a tropical seabird, the magnificent frigatebird. Marine Ecology Progress
+      Series 611: 203–214.
+     Bailleul, F., Lesage, V. & Hammill, M. O. 2010. Spherical first passage time: A tool to
+      investigate area-restricted search in three-dimensional movements. Ecological Modelling
+      221: 1665–1673.
+     Belant, J. L., Millspaugh, J. J., Martin, J. A. & Gitzen, R. A. 2012. Multi-dimensional space
+      use: The final frontier. Frontiers in Ecology and the Environment 10: 11–12.
+     Bennison, A., Bearhop, S., Bodey, T. W., Votier, S. C., Grecian, W. J., Wakefield, E. D.,
+      Hamer, K. C. & Jessopp, M. 2017. Search and foraging behaviors from movement data: A
+      comparison of methods. Ecology and Evolution 8: 13–24.
+     Berberan-Santos, M. N., Bodunov, E. N. & Pogliani, L. 1997. On the barometric formula.
+      American Journal of Physics 65: 404–412.
+     BirdLife International. 2010. Marine Important Bird Areas toolkit: Standardised techniques
+      for identifying priority sites for the conservation of seabirds at sea. Version 1. BirdLife
+      International, Cambridge UK
+     BirdLife International, 2018a. Fregata aquila, Ascension Frigatebird. The IUCN Red List of
+      Threatened Species 2018: e.T22697728A132597828.
+     BirdLife International, 2018b. Fregata andrewsi, Christmas Frigatebird. The IUCN Red List
+      of Threatened Species 2018: e.T22697742A132599384.
+     Bodey, T. W., Cleasby, I. R., Bell, F., Parr, N., Schultz, A., Votier, S. C. & Bearhop, S. 2018. A
+      phylogenetically controlled meta-analysis of biologging device effects on birds:
+      Deleterious effects and a call for more standardized reporting of study data. Methods in
+      Ecology and Evolution 9: 946–955.
+     Boekelheide, R. J. & Ainley, D. G. 1983. An ecological comparison of oceanic seabird
+      communities of the South Pacific Ocean. Studies in Avian Biology 8, 2–23.
+     Brewer, M. L. & Hertel, F. 2007. Wing morphology and flight behavior of pelecaniform
+      seabirds. Journal of Morphology 268: 866–877.
+
+
+
+16    SEABIRD 32 (2019): 1–19
+                                            First three-dimensional tracks for the Ascension Frigatebird
+
+Cleasby, I. R., Wakefield, E. D., Bearhop, S., Bodey, T. W., Votier, S. C. & Hamer, K. C. 2015.
+ Three-dimensional tracking of a wide-ranging marine predator: flight heights and vulnera-
+ bility to offshore wind farms. Journal of Applied Ecology 52: 1474–1482.
+Corman, A. M., Mendel, B., Voigt, C. C. & Garthe, S. 2016. Varying foraging patterns in
+ response to competition? A multicolony approach in a generalist seabird. Ecology and
+ Evolution 6: 974–986.
+Cox, S. L., Miller, P. I., Embling, C. B., Scales, K. L., Bicknell, A. W. J., Hosegood, P. J., Morgan,
+ G., Ingram, S. N. & Votier, S. C. 2016. Seabird diving behaviour reveals the functional
+ significance of shelf-sea fronts as foraging hotspots. Royal Society Open Science 3: 160317.
+Croxall, J. P., Butchart, S. H. M., Lascelles, B., Stattersfield, A. J., Sullivan, B., Symes, A. &
+ Taylor, P. 2012. Seabird conservation status, threats and priority actions: A global
+ assessment. Bird Conservation International 22: 1–34.
+De Monte, S., Cotté, C., D’Ovidio, F., Lévy, M., Le Corre, M. & Weimerskirch, H. 2012.
+ Frigatebird behaviour at the ocean-atmosphere interface: integrating animal behaviour
+ with multi-satellite data. Journal of the Royal Society Interface 9: 3351–3358.
+Dean, B., Freeman, R., Kirk, H., Leonard, K., Phillips, R. A., Perrins, C. M. & Guilford, T.
+ 2013. Behavioural mapping of a pelagic seabird: combining multiple sensors and a hidden
+ Markov model reveals the distribution of at-sea behaviour. Journal of the Royal Society
+ Interface 10: 20120570.
+Dussault, C., Courtois, R., Ouellet, J. & Huot, J. 2001. lnfluence of satellite geometry and
+ differential correction on GPS location accuracy. Wildlife Society Bulletin 29: 171–179.
+Fairbairn, J. & Shine, R. 1993. Patterns of sexual size dimorphism in seabirds of the
+ Southern Hemisphere. Oikos 68: 139–145.
+Fauchald, P. & Tveraa, T. 2003. Using first-passage time in the analysis of area restricted
+ search and habitat selection. Ecology 84: 282–288.
+Hamer, K. C., Humphreys, E. M., Garthe, S., Hennicke, J., Peters, G., Grémillet, D., Phillips,
+ R. A., Harris, M. P. & Wanless, S. 2007. Annual variation in diets, feeding locations and
+ foraging behaviour of gannets in the North Sea: flexibility, consistency and constraint.
+ Marine Ecology Progress Series 338: 295–305.
+Hennicke, J. C., James, D. J. & Weimerskirch, H. 2015. Sex-specific habitat utilization and
+ differential breeding investments in Christmas Island frigatebirds throughout the breeding
+ cycle. PLoS One 10: e0129437.
+Hijmans, R. J. 2018. raster: Geographic Data Analysis and Modeling. R package version 2.8-4.
+Hijmans, R. J. 2017. geosphere: Spherical Trigonometry. R package version 1.5-7.
+Kay, W. P., Naumann, D. S., Bowen, H. J., Withers, S. J., Evans, B. J., Wilson, R. P., Stringell,
+ T. B., Bull, J .C., Hopkins, P. W. & Börger, L. 2019. Minimizing the impact of biologging
+ devices: Using computational fluid dynamics for optimizing tag design and positioning.
+ Methods in Ecology and Evolution 10, 1222–1233.
+Kuhn, M., Wing, J., Weston, S., Williams, A., Keefer, C., Engelhardt, A., Cooper, T., Mayer,
+ Z., Kenkel, B., Team, T. R. C., Benesty, M., Lescarbeau, R., Ziem, A., Scrucca, L., Tang, Y.,
+ Candan, C. & Hunt, T. 2019. caret: Classification and Regression Training. R package
+ version 6.0-84.
+Lagarde, F., Le Corre, M. & Lormée, H. 2001. Species and sex-biased predation on hatchling
+ green turtles by frigatebirds on Europa Island, Western Indian Ocean. The Condor 103: 405–408.
+Lewis, S., Sherratt, T. N., Hamer, K. C. & Wanless, S. 2001. Evidence of intra-specific
+ competition for food in a pelagic seabird. Nature 412: 816–819.
+Lewison, R., Oro, D., Godley, B. J., Underhill, L., Bearhop, S., Wilson, R. P., Ainley, D., Arcos,
+ J. M., Boersma, P. D., Borboroglu, P. G., Boulinier, T., Frederiksen, M., Genovart, M.,
+ González-Solís, J., Green, J. A., Grémillet, D., Hamer, K. C., Hilton, G. M., Hyrenbach, K. D.,
+ Martínez-Abraín, A., Montevecchi, W. A., Phillips, R. A., Ryan, P. G., Sagar, P., Sydeman, W.
+ J., Wanless, S., Watanuki, Y., Weimerskirch, H. & Yorio, P. 2012. Research priorities for
+ seabirds: Improving conservation and management in the 21st century. Endangered Species
+ Research 17: 93–121.
+
+                                                                 SEABIRD 32 (2019): 1–19                   17
+     First three-dimensional tracks for the Ascension Frigatebird
+
+     Mahoney, S. A. 1984. Plumage wettability of aquatic birds. The Auk 101: 181–185.
+     McClintock, B. T. & Michelot, T. 2018. momentuHMM: R package for generalized hidden
+      Markov models of animal movement. Methods in Ecology and Evolution 9: 1518–1530.
+     McClintock, B. T., London, J. M., Cameron, M. F. & Boveng, P. L. 2017. Bridging the gaps in
+      animal movement: hidden behaviors and ecological relationships revealed by integrated
+      data streams. Ecosphere 8: e01751.
+     Michelot, T., Langrock, R. & Patterson, T. A. 2016. moveHMM: an R package for the
+      statistical modelling of animal movement data using hidden Markov models. Methods in
+      Ecology and Evolution 7: 1308–1315.
+     Miller, M. G., Carlile, N., Phillips, J. S., Mcduie, F. & Congdon, B. C. 2018. Importance of
+      tropical tuna for seabird foraging over a marine productivity gradient. Marine Ecology
+      Progress Series 586: 233–249.
+     Morgan-Wall, T. 2019. rayshader: Create and visualize hillshaded maps from elevation
+      matrices. R package version 0.11.5. https://CRAN.R-project.org/package=rayshader.
+     Oppel, S., Beard, A., Fox, D., Mackley, E., Leat, E., Henry, L., Clingham, E., Fowler, N., Sim,
+      J., Sommerfeld, J., Weber, N., Weber, S. & Bolton, M. 2015. Foraging distribution of a
+      tropical seabird supports Ashmole’s hypothesis of population regulation. Behavioral
+      Ecology and Sociobiology 69: 915–926.
+     Oppel, S., Bolton, M., Carneiro, A. P. B., Dias, M. P., Green, J. A., Masello, J. F., Phillips, R.
+      A., Owen, E., Quillfeldt, P., Beard, A., Bertrand, S., Blackburn, J., Boersma, P. D., Borges,
+      A., Broderick, A. C., Catry, P., Cleasby, I., Clingham, E., Creuwels, J., Crofts, S., Cuthbert,
+      R. J., Dallmeijer, H., Davies, D., Davies, R., Dilley, B. J., Dinis, H. A., Dossa, J., Dunn, M. J.,
+      Efe, M. A., Fayet, A. L., Figueiredo, L., Frederico, A. P., Gjerdrum, C., Godley, B. J.,
+      Granadeiro, J. P., Guilford, T., Hamer, K. C., Hazin, C., Hedd, A., Henry, L., Hernández-
+      Montero, M., Hinke, J., Kokubun, N., Leat, E., McFarlane Tranquilla, L., Metzger, B.,
+      Militão, T., Montrond, G., Mullié, W., Padget, O., Pearmain, E. J., Pollet, I. L., Pütz, K.,
+      Quintana, F., Ratcliffe, N., Ronconi, R. A., Ryan, P. G., Saldanha, S., Shoji, A., Sim, J.,
+      Small, C., Soanes, L., Takahashi, A., Trathan, P., Trivelpiece, W., Veen, J., Wakefield, E.,
+      Weber, N., Weber, S., Zango, L., Daunt, F., Ito, M., Harris, M. P., Newell, M. A., Wanless,
+      S., González-Solís, J. & Croxall, J. 2018. Spatial scales of marine conservation
+      management for breeding seabirds. Marine Policy 98: 37–46.
+     Oppel, S., Weber, S., Weber, N., Fox, D., Leat, E., Sim, J., Sommerfeld, J., Bolton, M.,
+      Broderick, A. C. & Godley, B. J. 2017. Seasonal shifts in foraging distribution due to
+      individual flexibility in a tropical pelagic forager, the Ascension frigatebird. Marine Ecology
+      Progress Series 585: 199–212.
+     Osorno, J., Torres, R. & Macias Garcia, C. 1992. Kleptoparasitic behaviour of the
+      Magnificent Frigatebird: Sex bias and success. The Condor 94: 692–698.
+     Paiva, V. H., Geraldes, P., Ramirez, I., Werner, A. C., Garthe, S. & Ramos, J. A. 2013.
+      Overcoming difficult times: the behavioural resilience of a marine predator when facing
+      environmental stochasticity. Marine Ecology Progress Series 486: 277–288.
+     Paredes, R., Orben, R. A., Suryan, R. M., Irons, D. B., Roby, D. D., Harding, A. M. A., Young,
+      R. C., Benoit-Bird, K., Ladd, C., Renner, H., Heppell, S., Phillips, R. A. & Kitaysky, A. 2014.
+      Foraging responses of black-legged kittiwakes to prolonged food-shortages around
+      colonies on the Bering Sea shelf. PLoS One 9: e92520.
+     Parr, N., Bearhop, S., Douglas, D. C., Takekawa, J. Y., Prosser, D. J., Newman, S. H., Perry,
+      W. M., Balachandran, S., Witt, M. J., Hou, Y., Luo, Z. & Hawkes, L. A. 2017. High altitude
+      flights by ruddy shelduck Tadorna ferruginea during trans-Himalayan migrations. Journal of
+      Avian Biology 48: 1–6.
+     Pavlis, N. K., Holmes, S. A., Kenyon, S. C. & Factor, J. K. 2012. The development and
+      evaluation of the Earth Gravitational Model 2008 (EGM2008). Journal of Geophysical
+      Research 117: B04406.
+
+
+
+
+18    SEABIRD 32 (2019): 1–19
+                                          First three-dimensional tracks for the Ascension Frigatebird
+
+Ratcliffe, N., Bell, M., Pelembe, T., Boyle, D., Benjamin, R., White, R., Godley, B. J.,
+ Stevenson, J. & Sanders, S. 2010. The eradication of feral cats from Ascension Island and
+ its subsequent recolonization by seabirds. Oryx 44: 20–29.
+Ratcliffe, N., Pelembe, T. & White, R. 2008. Resolving the population status of Ascension
+ Frigatebird Fregata aquila using a ‘virtual ecologist’ model. Ibis 150: 300–306.
+Rattenborg, N. C., Voirin, B., Cruz, S. M., Tisdale, R., Dell’Omo, G., Lipp, H.-P., Wikelski, M.
+ & Vyssotski, A. L. 2016. Evidence that birds sleep in mid-flight. Nature Communications
+ 7: 12468.
+R Core Team. 2019. R: A language and environment for statistical computing. R Foundation
+ for Statistical Computing, Vienna, Austria. www.R-project.org.
+Sachs, G., Traugott, J., Nesterova, A. P., Dell’Omo, G., Kümmeth, F., Heidrich, W.,
+ Vyssotski, A. L. & Bonadonna, F. 2012. Flying at no mechanical energy cost: disclosing
+ the secret of wandering albatrosses. PLoS One 7, e41449.
+Schreiber, E. 1999. Problems encountered when banding frigatebirds and boobies.
+ Waterbirds 22: 310–313.
+Stonehouse, B. & Stonehouse, S. 1963. The Frigate Bird Fregata aquila of Ascension Island.
+ Ibis 103b: 409–422.
+Thaxter, C. B., Lascelles, B., Sugar, K., Cook, A. S. C. P., Roos, S., Bolton, M., Langston, R.
+ H. W. & Burton, N. H. K. 2012. Seabird foraging ranges as a preliminary tool for identifying
+ candidate Marine Protected Areas. Biological Conservation 156: 53–61.
+Thorne, L. H., Hazen, E. L., Bograd, S. J., Foley, D. G., Conners, M. G., Kappes, M. A., Kim, H.
+ M., Costa, D. P., Tremblay, Y. & Shaffer, S. A. 2015. Foraging behavior links climate
+ variability and reproduction in North Pacific albatrosses. Movement Ecology 3: 27.
+Trefry, S. A., Diamond, A. W. & Jesson, L. K. 2013. Wing marker woes: A case study and
+ meta-analysis of the impacts of wing and patagial tags. Journal of Ornithology 154: 1–11.
+Vandenabeele, S., Wilson, R. & Grogan, A. 2011. Tags on seabirds; how seriously are we
+ considering instrument-induced behaviors? Animal Welfare 20: 559–571.
+Wakefield, E. D., Bodey, T. W., Bearhop, S., Blackburn, J., Colhoun, K., Davies, R., Dwyer,
+ R. G., Green, J. A., Grémillet, D., Jackson, A. L., Jessopp, M. J., Kane, A., Langston, R. H.
+ W., Lescroël, A., Murray, S., Le Nuz, M., Patrick, S. C., Péron, C., Soanes, L. M., Wanless,
+ S., Votier, S. C. & Hamer, K. C. 2013. Space partitioning without territoriality in gannets.
+ Science 341: 68–70.
+Weimerskirch, H. 2007. Are seabirds foraging for unpredictable resources? Deep Sea
+ Research Part II: Topical Studies in Oceanography 54: 211–223.
+Weimerskirch, H., Guionnet, T., Martin, J., Shaffer, S. A. & Costa, D. P. 2000. Fast and fuel
+ efficient? Optimal use of wind by flying albatrosses. Proceedings of the Royal Society B:
+ Biological Sciences 267: 1869–1874.
+Weimerskirch, H., Chastel, O., Barbraud, C. & Tostain, O. 2003. Frigatebirds ride high on
+ thermals. Nature 421: 333–334.
+Weimerskirch, H., Le Corre, M., Jaquemet, S., Potier, M. & Marsac, F. 2004. Foraging
+ strategy of a top predator in tropical waters: great frigatebirds in the Mozambique
+ Channel. Marine Ecology Progress Series 275: 297–308.
+Weimerskirch, H., Le Corre, M., Tew Kai, E. & Marsac, F. 2010. Foraging movements of
+ great frigatebirds from Aldabra Island: Relationship with environmental variables and
+ interactions with fisheries. Progress in Oceanography 86: 204–213.
+Weimerskirch, H., Bishop, C., Jeanniard-du-Dot, T., Prudor, A. & Sachs, G. 2016. Frigate
+ birds track atmospheric conditions over months-long transoceanic flights. Science 353:
+ 74–78.
+Yonehara, Y., Goto, Y., Yoda, K., Watanuki, Y., Young, L. C., Weimerskirch, H., Bost, C. &
+ Sato, K. 2016. Flight paths of seabirds soaring over the ocean surface enable measurement
+ of fine-scale wind speed and direction. PNAS 113: 9039–9044.
+
+
+
+
+                                                               SEABIRD 32 (2019): 1–19                   19
+

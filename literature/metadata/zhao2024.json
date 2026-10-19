@@ -1,0 +1,1311 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        8,
+        19
+      ]
+    ],
+    "date-time": "2026-08-19T18:10:38Z",
+    "timestamp": 1787163038019,
+    "version": "build-2736575974"
+  },
+  "reference-count": 82,
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "1",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2024,
+            8,
+            1
+          ]
+        ],
+        "date-time": "2024-08-01T00:00:00Z",
+        "timestamp": 1722470400000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2024,
+            8,
+            1
+          ]
+        ],
+        "date-time": "2024-08-01T00:00:00Z",
+        "timestamp": 1722470400000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/4.0"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "link.springer.com"
+    ],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Mov Ecol"
+  ],
+  "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:sec>\n                    <jats:title>Background</jats:title>\n                    <jats:p>\n                      Small songbirds respond and adapt to various geographical barriers during their annual migration. Global flyways reveal the diverse migration strategies in response to different geographical barriers, among which are high-elevation plateaus. However, few studies have been focused on the largest and highest plateau in the world, the Qinghai–Tibet Plateau (QTP) which poses a significant barrier to migratory passerines. The present study explored the annual migration routes and strategies of a population of Siberian Rubythroats (\n                      <jats:italic>Calliope calliope</jats:italic>\n                      ) that breed on the north-eastern edge of the QTP.\n                    </jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Methods</jats:title>\n                    <jats:p>Over the period from 2021 to 2023, we applied light-level geolocators (13 deployed, seven recollected), archival GPS tags (45 deployed, 17 recollected), and CAnMove multi-sensor loggers (with barometer, accelerometer, thermometer, and light sensor, 20 deployed, six recollected) to adult males from the breeding population of Siberian Rubythroat on the QTP. Here we describe the migratory routes and phenology extracted or inferred from the GPS and multi-sensor logger data, and used a combination of accelerometric and barometric data to describe the elevational migration pattern, flight altitude, and flight duration. All light-level geolocators failed to collect suitable data.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Results</jats:title>\n                    <jats:p>Both GPS locations and positions derived from pressure-based inference revealed that during autumn, the migration route detoured from the bee-line between breeding and wintering grounds, leading to a gradual elevational decrease. The spring route was more direct, with more flights over mountainous areas in western China. This different migration route during spring probably reflects a strategy for faster migration, which corresponds with more frequent long nocturnal migration flights and shorter stopovers during spring migration than in autumn. The average flight altitude (1856 ± 781 m above sea level) was correlated with ground elevation but did not differ between the seasons.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                    <jats:title>Conclusions</jats:title>\n                    <jats:p>Our finding indicates strong, season-dependent impact of the Qinghai–Tibet Plateau on shaping passerine migration strategies. We hereby call for more attention to the unexplored central-China flyway to extend our knowledge on the environment-migration interaction among small passerines.</jats:p>\n                  </jats:sec>",
+  "DOI": "10.1186/s40462-024-00495-5",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2024,
+        8,
+        1
+      ]
+    ],
+    "date-time": "2024-08-01T12:02:20Z",
+    "timestamp": 1722513740000
+  },
+  "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 15,
+  "title": [
+    "Seasonal migration patterns of Siberian Rubythroat (Calliope calliope) facing the Qinghai–Tibet Plateau"
+  ],
+  "prefix": "10.1186",
+  "volume": "12",
+  "author": [
+    {
+      "given": "Tianhao",
+      "family": "Zhao",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Wieland",
+      "family": "Heim",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Raphaël",
+      "family": "Nussbaumer",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Mariëlle",
+      "family": "van Toor",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Guoming",
+      "family": "Zhang",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Arne",
+      "family": "Andersson",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Johan",
+      "family": "Bäckman",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Zongzhuang",
+      "family": "Liu",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Gang",
+      "family": "Song",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Magnus",
+      "family": "Hellström",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jacob",
+      "family": "Roved",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Yang",
+      "family": "Liu",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Staffan",
+      "family": "Bensch",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Bregje",
+      "family": "Wertheim",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Fumin",
+      "family": "Lei",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Barbara",
+      "family": "Helm",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "297",
+  "published-online": {
+    "date-parts": [
+      [
+        2024,
+        8,
+        1
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "issue": "6",
+      "key": "495_CR1",
+      "doi-asserted-by": "publisher",
+      "first-page": "741",
+      "DOI": "10.1111/ele.12772",
+      "volume": "20",
+      "author": "EO Aikens",
+      "year": "2017",
+      "unstructured": "Aikens EO, Kauffman MJ, Merkle JA, Dwinnell SPH, Fralick GL, Monteith KL. The greenscape shapes surfing of resource waves in a large migratory herbivore. Ecol Lett. 2017;20(6):741–50. https://doi.org/10.1111/ele.12772.",
+      "journal-title": "Ecol Lett"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR2",
+      "doi-asserted-by": "publisher",
+      "first-page": "123",
+      "DOI": "10.1641/b570207",
+      "volume": "57",
+      "author": "S Åkesson",
+      "year": "2007",
+      "unstructured": "Åkesson S, Hedenström A. How migrants get there: migratory performance and orientation. Bioscience. 2007;57(2):123–33. https://doi.org/10.1641/b570207.",
+      "journal-title": "Bioscience"
+    },
+    {
+      "key": "495_CR3",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Alerstam T, Lindström Å. Optimal bird migration: the relative importance of time, energy, and safety. In: Bird migration: physiology and ecophysiology. Berlin, Heidelberg: Springer Berlin Heidelberg; 1990, p. 331–51.",
+      "DOI": "10.1007/978-3-642-74542-3_22"
+    },
+    {
+      "key": "495_CR4",
+      "doi-asserted-by": "publisher",
+      "first-page": "202",
+      "DOI": "10.1007/978-3-0348-7208-9_10",
+      "volume": "46",
+      "author": "T Alerstam",
+      "year": "1991",
+      "unstructured": "Alerstam T. Ecological causes and consequences of bird orientation. Orientat Birds. 1991;46:202–25. https://doi.org/10.1007/978-3-0348-7208-9_10.",
+      "journal-title": "Orientat Birds"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR5",
+      "doi-asserted-by": "publisher",
+      "first-page": "319",
+      "DOI": "10.1006/jtbi.2001.2266",
+      "volume": "209",
+      "author": "T Alerstam",
+      "year": "2001",
+      "unstructured": "Alerstam T. Detours in bird migration. J Theor Biol. 2001;209(3):319–31. https://doi.org/10.1006/jtbi.2001.2266.",
+      "journal-title": "J Theor Biol"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR6",
+      "doi-asserted-by": "publisher",
+      "first-page": "247",
+      "DOI": "10.1034/j.1600-0706.2003.12559.x",
+      "volume": "103",
+      "author": "T Alerstam",
+      "year": "2003",
+      "unstructured": "Alerstam T, Hedenström A, Åkesson S. Long-distance migration: evolution and determinants. Oikos. 2003;103(2):247–60. https://doi.org/10.1034/j.1600-0706.2003.12559.x.",
+      "journal-title": "Oikos"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR7",
+      "doi-asserted-by": "publisher",
+      "first-page": "309",
+      "DOI": "10.1111/jav.01068",
+      "volume": "48",
+      "author": "J Bäckman",
+      "year": "2017",
+      "unstructured": "Bäckman J, Andersson A, Alerstam T, Pedersen L, Sjöberg S, Thorup K, Tøttrup AP. Activity and migratory flights of individual free-flying songbirds throughout the annual cycle: method and first case study. J Avian Biol. 2017;48(2):309–19. https://doi.org/10.1111/jav.01068.",
+      "journal-title": "J Avian Biol"
+    },
+    {
+      "key": "495_CR8",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Barras AG, Liechti F, Arlettaz R. Seasonal and daily movement patterns of an alpine passerine suggest high flexibility in relation to environmental conditions. J Avian Biol. 2021; 52(12).",
+      "DOI": "10.1111/jav.02860"
+    },
+    {
+      "key": "495_CR9",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1093/ornithology/ukab055",
+      "volume": "138",
+      "author": "NJ Bayly",
+      "year": "2021",
+      "unstructured": "Bayly NJ, Rosenberg KV, Norris DR, Taylor PD, Hobson KA. Rapid recovery by fat- and muscle-depleted Blackpoll Warblers following trans-oceanic migration is driven by time-minimization. Ornithology. 2021;138:1–15. https://doi.org/10.1093/ornithology/ukab055.",
+      "journal-title": "Ornithology"
+    },
+    {
+      "key": "495_CR10",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Bellrose FC. The distribution of nocturnal migrants in the air space. 1971; 88(2):397–424",
+      "DOI": "10.2307/4083887"
+    },
+    {
+      "key": "495_CR11",
+      "unstructured": "BirdLife International (2010) Spotlight on flyways. Presented as part of the BirdLife State of the world's birds website. Available from: http://www.birdlife.org/datazone"
+    },
+    {
+      "issue": "6219",
+      "key": "495_CR12",
+      "doi-asserted-by": "publisher",
+      "first-page": "250",
+      "DOI": "10.1126/science.1258732",
+      "volume": "347",
+      "author": "CM Bishop",
+      "year": "2015",
+      "unstructured": "Bishop CM, Spivey RJ, Hawkes LA, Batbayar N, Chua B, Frappell PB, Milsom WK, Natsagdorj T, Newman SH, Scott GR, Takekawa JY, Wikelski M, Butler PJ. The roller coaster flight strategy of bar-headed geese conserves energy during Himalayan migrations. Science. 2015;347(6219):250–4. https://doi.org/10.1126/science.1258732.",
+      "journal-title": "Science"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR13",
+      "doi-asserted-by": "publisher",
+      "first-page": "207",
+      "DOI": "10.1111/1365-2656.12962",
+      "volume": "89",
+      "author": "V Brlík",
+      "year": "2020",
+      "unstructured": "Brlík V, Koleček J, Burgess M, Hahn S, Humple D, Krist M, Procházka P. Weak effects of geolocators on small birds: a meta-analysis controlled for phylogeny and publication bias. J Anim Ecol. 2020;89(1):207–20.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR14",
+      "doi-asserted-by": "publisher",
+      "first-page": "53",
+      "DOI": "10.1007/s10336-020-01805-5",
+      "volume": "162",
+      "author": "L Bozó",
+      "year": "2021",
+      "unstructured": "Bozó L, Csörgő T, Heim W. Factors controlling the migration phenology of Siberian Phylloscopus species. J Ornithol. 2021;162(1):53–9. https://doi.org/10.1007/s10336-020-01805-5.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR15",
+      "doi-asserted-by": "publisher",
+      "first-page": "41",
+      "DOI": "10.1080/03078698.2016.1195213",
+      "volume": "31",
+      "author": "L Bozó",
+      "year": "2016",
+      "unstructured": "Bozó L, Heim W. Sex-specific migration of Phylloscopus warblers at a stopover site in Far Eastern Russia. Ringing Migr. 2016;31(1):41–6. https://doi.org/10.1080/03078698.2016.1195213.",
+      "journal-title": "Ringing Migr"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR16",
+      "doi-asserted-by": "publisher",
+      "first-page": "315",
+      "DOI": "10.1007/s10336-017-1506-z",
+      "volume": "159",
+      "author": "B Bruderer",
+      "year": "2018",
+      "unstructured": "Bruderer B, Peter D, Korner-Nievergelt F. Vertical distribution of bird migration between the Baltic Sea and the Sahara. J Ornithol. 2018;159(2):315–36.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "key": "495_CR17",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.02783",
+      "author": "D Ćiković",
+      "year": "2021",
+      "unstructured": "Ćiković D, Barišić S, Hahn S, Tutiš V, Kralj J, Briedis M. Tracking migration of black-headed buntings Emberiza melanocephala reveals the Iranian Plateau as an ecological barrier along the Indo-European flyway. J Avian Biol. 2021. https://doi.org/10.1111/jav.02783.",
+      "journal-title": "J Avian Biol"
+    },
+    {
+      "key": "495_CR18",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Collar, N. Siberian Rubythroat (Calliope calliope), version 1.0. In: del Hoyo J, Elliott A, Sargatal J, Christie DA, de Juana E, editors. Birds of the World. Ithaca, NY, USA: Cornell Lab of Ornithology; 2020. https://doi.org/10.2173/bow.sibrub.01",
+      "DOI": "10.2173/bow.sibrub.01"
+    },
+    {
+      "issue": "16",
+      "key": "495_CR19",
+      "doi-asserted-by": "publisher",
+      "first-page": "2167",
+      "DOI": "10.1016/j.cub.2016.06.015",
+      "volume": "26",
+      "author": "KE Delmore",
+      "year": "2016",
+      "unstructured": "Delmore KE, Toews DPL, Germain RR, Owens GL, Irwin DE. The genetics of seasonal migration and plumage color. Curr Biol. 2016;26(16):2167–73. https://doi.org/10.1016/j.cub.2016.06.015.",
+      "journal-title": "Curr Biol"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR20",
+      "doi-asserted-by": "publisher",
+      "first-page": "680",
+      "DOI": "10.1111/ibi.12469",
+      "volume": "159",
+      "author": "R Evens",
+      "year": "2017",
+      "unstructured": "Evens R, Conway GJ, Henderson IG, Cresswell B, Jiguet F, Moussy C, Sénécal D, Witters N, Beenaerts N, Artois T. Migratory pathways, stopover zones and wintering destinations of Western European Nightjars Caprimulgus europaeus. Ibis. 2017;159(3):680–6. https://doi.org/10.1111/ibi.12469.",
+      "journal-title": "Ibis"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR21",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40462-022-00302-z",
+      "volume": "10",
+      "author": "B Galtbalt",
+      "year": "2022",
+      "unstructured": "Galtbalt B, Batbayar N, Sukhbaatar T, Vorneweg B, Heine G, Müller U, Wikelski M, Klaassen M. Differences in on-ground and aloft conditions explain seasonally different migration paths in Demoiselle crane. Mov Ecol. 2022;10(1):1–11. https://doi.org/10.1186/s40462-022-00302-z.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "key": "495_CR22",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.isci.2022.104973",
+      "author": "L Gong",
+      "year": "2022",
+      "unstructured": "Gong L, Geng Y, Wang Z, Lin A, Wu H, Feng L, Huang Z, Wu H, Feng J, Jiang T. Behavioral innovation and genomic novelty are associated with the exploitation of a challenging dietary opportunity by an avivorous bat. IScience. 2022. https://doi.org/10.1016/j.isci.2022.104973.",
+      "journal-title": "IScience"
+    },
+    {
+      "issue": "13",
+      "key": "495_CR23",
+      "doi-asserted-by": "publisher",
+      "first-page": "8400",
+      "DOI": "10.1002/ece3.7667",
+      "volume": "11",
+      "author": "L Gong",
+      "year": "2021",
+      "unstructured": "Gong L, Shi B, Wu H, Feng J, Jiang T. Who’s for dinner? Bird prey diversity and choice in the great evening bat, Ia io. Ecol Evol. 2021;11(13):8400–9. https://doi.org/10.1002/ece3.7667.",
+      "journal-title": "Ecol Evol"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR24",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/pnas",
+      "volume": "120",
+      "author": "F Guo",
+      "year": "2023",
+      "unstructured": "Guo F, Buler JJ, Smolinsky JA, Wilcove DS. Autumn stopover hotspots and multiscale habitat associations of migratory landbirds in the eastern United States. Proc Natl Acad Sci. 2023;120(3): e2203511120. https://doi.org/10.1073/pnas.",
+      "journal-title": "Proc Natl Acad Sci"
+    },
+    {
+      "issue": "21",
+      "key": "495_CR25",
+      "doi-asserted-by": "publisher",
+      "first-page": "4150",
+      "DOI": "10.1002/ece3.1279",
+      "volume": "4",
+      "author": "S Hahn",
+      "year": "2014",
+      "unstructured": "Hahn S, Emmenegger T, Lisovski S, Amrhein V, Zehtindjiev P, Liechti F. Variable detours in long-distance migration across ecological barriers and their relation to habitat availability at ground. Ecol Evol. 2014;4(21):4150–60. https://doi.org/10.1002/ece3.1279.",
+      "journal-title": "Ecol Evol"
+    },
+    {
+      "issue": "23",
+      "key": "495_CR26",
+      "doi-asserted-by": "publisher",
+      "first-page": "9516",
+      "DOI": "10.1073/pnas.1017295108",
+      "volume": "108",
+      "author": "LA Hawkes",
+      "year": "2011",
+      "unstructured": "Hawkes LA, Balachandran S, Batbayar N, Butler PJ, Frappell PB, Milsom WK, Tseveenmyadag N, Newman SH, Scott GR, Sathiyaselvam P, Takekawa JY, Wikelski M, Bishop CM. The trans-Himalayan flights of bar-headed geese (Anser indicus). Proc Natl Acad Sci USA. 2011;108(23):9516–9. https://doi.org/10.1073/pnas.1017295108.",
+      "journal-title": "Proc Natl Acad Sci USA"
+    },
+    {
+      "key": "495_CR27",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.gecco.2020.e01215",
+      "volume": "24",
+      "author": "W Heim",
+      "year": "2020",
+      "unstructured": "Heim W, Heim RJ, Beermann I, Burkovskiy OA, Gerasimov Y, Ktitorov P, Ozaki K, Panov I, Sander MM, Sjöberg S, Smirenski SM, Thomas A, Tøttrup AP, Tiunov IM, Willemoes M, Hölzel N, Thorup K, Kamp J. Using geolocator tracking data and ringing archives to validate citizen-science based seasonal predictions of bird distribution in a data-poor region. Glob Ecol Conserv. 2020;24: e01215. https://doi.org/10.1016/j.gecco.2020.e01215.",
+      "journal-title": "Glob Ecol Conserv"
+    },
+    {
+      "issue": "4",
+      "key": "495_CR28",
+      "doi-asserted-by": "publisher",
+      "first-page": "893",
+      "DOI": "10.1007/s10336-018-1562-z",
+      "volume": "159",
+      "author": "W Heim",
+      "year": "2018",
+      "unstructured": "Heim W, Pedersen L, Heim R, Kamp J, Smirenski SM, Thomas A, Tøttrup AP, Thorup K. Full annual cycle tracking of a small songbird, the Siberian Rubythroat Calliope calliope, along the East Asian flyway. J Ornithol. 2018;159(4):893–9. https://doi.org/10.1007/s10336-018-1562-z.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR29",
+      "doi-asserted-by": "publisher",
+      "first-page": "9",
+      "DOI": "10.1007/BF00172133",
+      "volume": "28",
+      "author": "AJ Helbig",
+      "year": "1991",
+      "unstructured": "Helbig AJ. Inheritance of migratory direction in a bird species: a cross-breeding experiment with SE-and SW-migrating blackcaps (Sylvia atricapilla). Behav Ecol Sociobiol. 1991;28(1):9–12.",
+      "journal-title": "Behav Ecol Sociobiol"
+    },
+    {
+      "key": "495_CR30",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Hersbach H, Bell B, Berrisford P, Biavati G, Horányi A, Muñoz Sabater J, Nicolas J, Peubey C, Radu R, Rozum I, Schepers D, Simmons A, Soci C, Dee D, Thépaut J-N. ERA5 hourly data on pressure levels from 1940 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS), 2023. https://doi.org/10.24381/cds.bd0915c6",
+      "DOI": "10.24381/cds.bd0915c6"
+    },
+    {
+      "issue": "7",
+      "key": "495_CR31",
+      "first-page": "1",
+      "volume": "1",
+      "author": "RJ Hijmans",
+      "year": "2017",
+      "unstructured": "Hijmans RJ, Williams E, Vennes C, Hijmans MRJ. Package ‘geosphere.’ Spherical Trigonometry. 2017;1(7):1–45.",
+      "journal-title": "Spherical Trigonometry"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR32",
+      "doi-asserted-by": "publisher",
+      "first-page": "509",
+      "DOI": "10.2307/2992085",
+      "volume": "70",
+      "author": "H-Y Hou",
+      "year": "1983",
+      "unstructured": "Hou H-Y. Vegetation of China with reference to its geographical distribution. Mo Bot Gard Press. 1983;70(3):509–49.",
+      "journal-title": "Mo Bot Gard Press"
+    },
+    {
+      "issue": "14",
+      "key": "495_CR33",
+      "doi-asserted-by": "publisher",
+      "first-page": "2923",
+      "DOI": "10.1111/j.1365-294X.2009.04211.x",
+      "volume": "18",
+      "author": "DE Irwin",
+      "year": "2009",
+      "unstructured": "Irwin DE. Incipient ring speciation revealed by a migratory divide. Mol Ecol. 2009;18(14):2923–5. https://doi.org/10.1111/j.1365-294X.2009.04211.x.",
+      "journal-title": "Mol Ecol"
+    },
+    {
+      "issue": "6818",
+      "key": "495_CR34",
+      "doi-asserted-by": "publisher",
+      "first-page": "333",
+      "DOI": "10.1038/35053059",
+      "volume": "409",
+      "author": "DE Irwin",
+      "year": "2001",
+      "unstructured": "Irwin DE, Bensch S, Price TD. Speciation in a ring. Nature. 2001;409(6818):333–7.",
+      "journal-title": "Nature"
+    },
+    {
+      "key": "495_CR35",
+      "unstructured": "Irwin DE, Irwin JH. Siberian migratory divides: the role of seasonal migration in speciation. Birds of Two Worlds: The Ecology and Evolution of Migration, 2005; 27–40."
+    },
+    {
+      "key": "495_CR36",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Jehl Jr JR. Aspects of the molt migration. In: Bird migration: physiology and ecophysiology. Berlin, Heidelberg: Springer Berlin Heidelberg; 1990, p. 102–13.",
+      "DOI": "10.1007/978-3-642-74542-3_7"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR37",
+      "doi-asserted-by": "publisher",
+      "first-page": "406",
+      "DOI": "10.1080/00063657.2016.1214107",
+      "volume": "63",
+      "author": "TE Katzner",
+      "year": "2016",
+      "unstructured": "Katzner TE, Bragin EA, Bragin AE, McGrady M, Miller TA, Bildstein KL. Unusual clockwise loop migration lengthens travel distances and increases potential risks for a central Asian, long distance, trans-equatorial migrant, the Red-footed Falcon Falco vespertinus. Bird Study. 2016;63(3):406–12. https://doi.org/10.1080/00063657.2016.1214107.",
+      "journal-title": "Bird Study"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR38",
+      "doi-asserted-by": "publisher",
+      "first-page": "700",
+      "DOI": "10.1111/brv.12474",
+      "volume": "94",
+      "author": "Y Kiat",
+      "year": "2019",
+      "unstructured": "Kiat Y, Izhaki I, Sapir N. The effects of long-distance migration on the evolution of moult strategies in Western-Palearctic passerines. Biol Rev. 2019;94(2):700–20. https://doi.org/10.1111/brv.12474.",
+      "journal-title": "Biol Rev"
+    },
+    {
+      "issue": "6",
+      "key": "495_CR39",
+      "doi-asserted-by": "publisher",
+      "first-page": "833",
+      "DOI": "10.1098/rsbl.2011.0343",
+      "volume": "7",
+      "author": "RHG Klaassen",
+      "year": "2011",
+      "unstructured": "Klaassen RHG, Alerstam T, Carlsson P, Fox JW, Lindström Å. Great flights by great snipes: long and fast non-stop migration over benign habitats. Biol Let. 2011;7(6):833–5. https://doi.org/10.1098/rsbl.2011.0343.",
+      "journal-title": "Biol Let"
+    },
+    {
+      "issue": "5",
+      "key": "495_CR40",
+      "doi-asserted-by": "publisher",
+      "first-page": "940",
+      "DOI": "10.1046/j.1365-2656.1999.00343.x",
+      "volume": "68",
+      "author": "H Kokko",
+      "year": "1999",
+      "unstructured": "Kokko H. Competition for early arrival in migratory birds. J Anim Ecol. 1999;68(5):940–50. https://doi.org/10.1046/j.1365-2656.1999.00343.x.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR41",
+      "doi-asserted-by": "publisher",
+      "first-page": "12",
+      "DOI": "10.1186/s40657-021-00305-1",
+      "volume": "12",
+      "author": "M Korniluk",
+      "year": "2021",
+      "unstructured": "Korniluk M, Białomyzy P, Grygoruk G, Tumiel T, Świętochowski P, Wereszczuk M. Citrine Wagtail migration on the Indo-European flyway: a first geolocator track reveals alternative migration route and endurance flights to cross ecological barriers. Avian Res. 2021;12(1):12–7. https://doi.org/10.1186/s40657-021-00305-1.",
+      "journal-title": "Avian Res"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR42",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1038/s41598-020-72970-z",
+      "volume": "10",
+      "author": "N Kumar",
+      "year": "2020",
+      "unstructured": "Kumar N, Gupta U, Jhala YV, Qureshi Q, Gosler AG, Sergio F. GPS-telemetry unveils the regular high-elevation crossing of the Himalayas by a migratory raptor: implications for definition of a “Central Asian Flyway.” Sci Rep. 2020;10(1):1–9. https://doi.org/10.1038/s41598-020-72970-z.",
+      "journal-title": "Sci Rep"
+    },
+    {
+      "issue": "4",
+      "key": "495_CR43",
+      "doi-asserted-by": "publisher",
+      "first-page": "942",
+      "DOI": "10.1152/japplphysiol.00110.2017",
+      "volume": "123",
+      "author": "SL Laguë",
+      "year": "2017",
+      "unstructured": "Laguë SL. High-altitude champions: birds that live and migrate at altitude. J Appl Physiol. 2017;123(4):942–50. https://doi.org/10.1152/japplphysiol.00110.2017.",
+      "journal-title": "J Appl Physiol"
+    },
+    {
+      "key": "495_CR44",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40462-018-0137-1",
+      "volume": "6",
+      "author": "F Liechti",
+      "year": "2018",
+      "unstructured": "Liechti F, Bauer S, Dhanjal-Adams KL, Emmenegger T, Zehtindjiev P, Hahn S. Miniaturized multi-sensor loggers provide new insight into year-round flight behaviour of small trans-Sahara avian migrants. Mov Ecol. 2018;6:1–10.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "issue": "15",
+      "key": "495_CR45",
+      "doi-asserted-by": "publisher",
+      "first-page": "3433",
+      "DOI": "10.1016/j.cub.2021.05.047",
+      "volume": "31",
+      "author": "Å Lindström",
+      "year": "2021",
+      "unstructured": "Lindström Å, Alerstam T, Andersson A, Bäckman J, Bahlenberg P, Bom R, Ekblom R, Klaassen RHG, Korniluk M, Sjöberg S, Weber JKM. Extreme altitude changes between night and day during marathon flights of great snipes. Curr Biol. 2021;31(15):3433–9. https://doi.org/10.1016/j.cub.2021.05.047.",
+      "journal-title": "Curr Biol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR46",
+      "doi-asserted-by": "publisher",
+      "first-page": "221",
+      "DOI": "10.1111/1365-2656.13036",
+      "volume": "89",
+      "author": "S Lisovski",
+      "year": "2020",
+      "unstructured": "Lisovski S, Bauer S, Briedis M, Davidson SC, Dhanjal-Adams KL, Hallworth MT, Karagicheva J, Meier CM, Merkel B, Ouwehand J, Pedersen L, Rakhimberdiev E, Roberto-Charron A, Seavy NE, Sumner MD, Taylor CM, Wotherspoon SJ, Bridge ES. Light-level geolocator analyses: a user’s guide. J Anim Ecol. 2020;89(1):221–36. https://doi.org/10.1111/1365-2656.13036.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "issue": "6",
+      "key": "495_CR47",
+      "doi-asserted-by": "publisher",
+      "first-page": "1055",
+      "DOI": "10.1111/j.2041-210X.2012.00248.x",
+      "volume": "3",
+      "author": "S Lisovski",
+      "year": "2012",
+      "unstructured": "Lisovski S, Hahn S. GeoLight—processing and analysing light-based geolocator data in R. Methods Ecol Evol. 2012;3(6):1055–9. https://doi.org/10.1111/j.2041-210X.2012.00248.x.",
+      "journal-title": "Methods Ecol Evol"
+    },
+    {
+      "issue": "6",
+      "key": "495_CR48",
+      "doi-asserted-by": "publisher",
+      "first-page": "1255",
+      "DOI": "10.1111/jbi.14085",
+      "volume": "48",
+      "author": "S Lisovski",
+      "year": "2021",
+      "unstructured": "Lisovski S, Neumann R, Albrecht T, Munclinger P, Ahola MP, Bauer S, Cepak J, Fransson T, Jakobsson S, Jaakkonen T, Klvana P, Kullberg C, Laaksonen T, Metzger B, Piha M, Shurulinkov P, Stach R, Ström K, Velmala W, Briedis M. The Indo-European flyway: opportunities and constraints reflected by Common Rosefinches breeding across Europe. J Biogeogr. 2021;48(6):1255–66. https://doi.org/10.1111/jbi.14085.",
+      "journal-title": "J Biogeogr"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR49",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40462-021-00249-7",
+      "volume": "9",
+      "author": "KA Mancuso",
+      "year": "2021",
+      "unstructured": "Mancuso KA, Fylling MA, Bishop CA, Hodges KE, Lancaster MB, Stone KR. Migration ecology of western gray catbirds. Mov Ecol. 2021;9(1):1–16. https://doi.org/10.1186/s40462-021-00249-7.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "key": "495_CR50",
+      "doi-asserted-by": "publisher",
+      "first-page": "37",
+      "DOI": "10.1007/s10336-021-01931-8",
+      "volume": "163",
+      "author": "KA Mancuso",
+      "year": "2022",
+      "unstructured": "Mancuso KA, Hodges KE, Alexander JD, Grosselet M, Bezener AM, Morales L, Martinez SC, Castellanos-Labarcena J, Russello MA, Rockwell SM, Bieber ME, Bishop CA. Migration and non-breeding ecology of the Yellow-breasted Chat Icteria virens. J Ornithol. 2022;163:37–50. https://doi.org/10.1007/s10336-021-01931-8.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "issue": "4",
+      "key": "495_CR51",
+      "doi-asserted-by": "publisher",
+      "first-page": "834",
+      "DOI": "10.1642/auk-17-202.1",
+      "volume": "135",
+      "author": "EA McKinnon",
+      "year": "2018",
+      "unstructured": "McKinnon EA, Love OP. Ten years tracking the migrations of small landbirds: lessons learned in the golden age of bio-logging. Auk. 2018;135(4):834–56. https://doi.org/10.1642/auk-17-202.1.",
+      "journal-title": "Auk"
+    },
+    {
+      "issue": "8",
+      "key": "495_CR52",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.02932",
+      "volume": "2022",
+      "author": "CM Meier",
+      "year": "2022",
+      "unstructured": "Meier CM, Rime Y, Lisovski S, Buchmann M, Liechti F. Locally adapted migration strategies? Comparing routes and timing of northern wheatears from alpine and lowland European populations. J Avian Biol. 2022;2022(8): e02932. https://doi.org/10.1111/jav.02932.",
+      "journal-title": "J Avian Biol"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR53",
+      "doi-asserted-by": "publisher",
+      "first-page": "219",
+      "DOI": "10.1093/condor/105.2.219",
+      "volume": "105",
+      "author": "BU Meyburg",
+      "year": "2003",
+      "unstructured": "Meyburg BU, Paillat P, Meyburg C. Migration routes of Steppe Eagles between Asia and Africa: a study by means of satellite telemetry. Condor. 2003;105(2):219–27. https://doi.org/10.1093/condor/105.2.219.",
+      "journal-title": "Condor"
+    },
+    {
+      "issue": "5",
+      "key": "495_CR54",
+      "doi-asserted-by": "publisher",
+      "first-page": "715",
+      "DOI": "10.1111/1749-4877.12632",
+      "volume": "17",
+      "author": "C Mi",
+      "year": "2022",
+      "unstructured": "Mi C, Li X, Huettmann F, Goroshko O, Guo Y. Time and energy minimization strategy codetermine the loop migration of demoiselle cranes around the Himalayas. Integr Zool. 2022;17(5):715–30. https://doi.org/10.1111/1749-4877.12632.",
+      "journal-title": "Integr Zool"
+    },
+    {
+      "key": "495_CR55",
+      "first-page": "34",
+      "volume": "20",
+      "author": "FR Moore",
+      "year": "2000",
+      "unstructured": "Moore FR, Aborn DA. Mechanisms of en route habitat selection: how do migrants make habitat decisions during stopover? Stud Avian Biol. 2000;20:34–42.",
+      "journal-title": "Stud Avian Biol"
+    },
+    {
+      "key": "495_CR56",
+      "volume-title": "The migration ecology of birds",
+      "author": "I Newton",
+      "year": "2010",
+      "unstructured": "Newton I. The migration ecology of birds. Elsevier; 2010."
+    },
+    {
+      "key": "495_CR57",
+      "unstructured": "Norevik G, Hellström M, Liu D, Petersson B. Ageing & sexing of migratory East Asian passerines. Avium Förlag; 2020."
+    },
+    {
+      "issue": "4",
+      "key": "495_CR58",
+      "doi-asserted-by": "publisher",
+      "first-page": "1104",
+      "DOI": "10.1111/2041-210X.14043",
+      "volume": "14",
+      "author": "R Nussbaumer",
+      "year": "2023",
+      "unstructured": "Nussbaumer R, Gravey M, Briedis M, Liechti F. Global positioning with animal-borne pressure sensors. Methods Ecol Evol. 2023;14(4):1104–17. https://doi.org/10.1111/2041-210X.14043.",
+      "journal-title": "Methods Ecol Evol"
+    },
+    {
+      "issue": "4",
+      "key": "495_CR59",
+      "doi-asserted-by": "publisher",
+      "first-page": "1118",
+      "DOI": "10.1111/2041-210X.14082",
+      "volume": "14",
+      "author": "R Nussbaumer",
+      "year": "2023",
+      "unstructured": "Nussbaumer R, Gravey M, Briedis M, Liechti F, Sheldon D. Reconstructing bird trajectories from pressure and wind data using a highly optimized hidden Markov model. Methods Ecol Evol. 2023;14(4):1118–29. https://doi.org/10.1111/2041-210X.14082.",
+      "journal-title": "Methods Ecol Evol"
+    },
+    {
+      "key": "495_CR60",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Nussbaumer R, Gravey M, Liechti F. Global positioning by atmospheric pressure retrieved from multi-sensor geolocators. 2022. Preprint available at research square 10.21203/",
+      "DOI": "10.21203/rs.3.rs-1381915/v1"
+    },
+    {
+      "key": "495_CR61",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1017/9781316335420",
+      "volume-title": "Bird migration across the Himalayas: wetland functioning amidst mountains and glaciers",
+      "author": "HHT Prins",
+      "year": "2017",
+      "unstructured": "Prins HHT, Namgail T. Bird migration across the Himalayas: wetland functioning amidst mountains and glaciers. Cambridge University Press; 2017."
+    },
+    {
+      "key": "495_CR62",
+      "unstructured": "Rappole JH, Tipton AR. New harness design for attachment of radio transmitters to small passerines. J Field Ornithol. 1991; 335–337."
+    },
+    {
+      "key": "495_CR63",
+      "doi-asserted-by": "publisher",
+      "first-page": "e01346",
+      "DOI": "10.1016/j.gecco.2020.e01346",
+      "volume": "24",
+      "author": "J Resano-Mayor",
+      "year": "2020",
+      "unstructured": "Resano-Mayor J, Bettega C, Delgado MDM, Fernández-Martín Á, Hernández-Gómez S, Toranzo I, España A, de Gabriel M, Roa-Álvarez I, Gil JA, Strinella E, Hobson KA, Arlettaz R. Partial migration of White-winged snowfinches is correlated with winter weather conditions. Glob Ecol Conserv. 2020;24:e01346. https://doi.org/10.1016/j.gecco.2020.e01346.",
+      "journal-title": "Glob Ecol Conserv"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR64",
+      "doi-asserted-by": "publisher",
+      "first-page": "19",
+      "DOI": "10.1186/s40462-023-00381-6",
+      "volume": "11",
+      "author": "Y Rime",
+      "year": "2023",
+      "unstructured": "Rime Y, Nussbaumer R, Briedis M, Sander MM, Chamberlain D, Amrhein V, Helm B, Liechti F, Meier CM. Multi-sensor geolocators unveil global and local movements in an Alpine-breeding long-distance migrant. Mov Ecol. 2023;11(1):19.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "issue": "6",
+      "key": "495_CR65",
+      "doi-asserted-by": "publisher",
+      "first-page": "1627",
+      "DOI": "10.1111/1365-2656.12898",
+      "volume": "87",
+      "author": "S Rotics",
+      "year": "2018",
+      "unstructured": "Rotics S, Kaatz M, Turjeman S, Zurell D, Wikelski M, Sapir N, Eggers U, Fiedler W, Jeltsch F, Nathan R. Early arrival at breeding grounds: causes, costs and a trade-off with overwintering latitude. J Anim Ecol. 2018;87(6):1627–38. https://doi.org/10.1111/1365-2656.12898.",
+      "journal-title": "J Anim Ecol"
+    },
+    {
+      "issue": "7",
+      "key": "495_CR66",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/ece3.10223",
+      "volume": "13",
+      "author": "G Rüppel",
+      "year": "2023",
+      "unstructured": "Rüppel G, Hüppop O, Schmaljohann H, Brust V. The urge to breed early: similar responses to environmental conditions in short- and long- distance migrants during spring migration. Ecol Evol. 2023;13(7): e10223. https://doi.org/10.1002/ece3.10223.",
+      "journal-title": "Ecol Evol"
+    },
+    {
+      "issue": "2",
+      "key": "495_CR67",
+      "doi-asserted-by": "publisher",
+      "first-page": "231",
+      "DOI": "10.1111/ele.13420",
+      "volume": "23",
+      "author": "ESC Scordato",
+      "year": "2020",
+      "unstructured": "Scordato ESC, Smith CCR, Semenov GA, Liu Y, Wilkins MR, Liang W, Rubtsov A, Sundev G, Koyama K, Turbek SP, Wunder MB, Stricker CA, Safran RJ. Migratory divides coincide with reproductive barriers across replicated avian hybrid zones above the Tibetan Plateau. Ecol Lett. 2020;23(2):231–41. https://doi.org/10.1111/ele.13420.",
+      "journal-title": "Ecol Lett"
+    },
+    {
+      "issue": "6542",
+      "key": "495_CR68",
+      "doi-asserted-by": "publisher",
+      "first-page": "646",
+      "DOI": "10.1126/science.abe7291",
+      "volume": "372",
+      "author": "S Sjöberg",
+      "year": "2021",
+      "unstructured": "Sjöberg S, Malmiga G, Nord A, Andersson A, Bäckman J, Tarka M, Willemoes M, Thorup K, Hansson B, Alerstam T, Hasselquist D. Extreme altitudes during diurnal flights in a nocturnal songbird migrant. Science. 2021;372(6542):646–8. https://doi.org/10.1126/science.abe7291.",
+      "journal-title": "Science"
+    },
+    {
+      "issue": "9",
+      "key": "495_CR69",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1111/jav.01821",
+      "volume": "49",
+      "author": "S Sjöberg",
+      "year": "2018",
+      "unstructured": "Sjöberg S, Pedersen L, Malmiga G, Alerstam T, Hansson B, Hasselquist D, Thorup K, Tøttrup AP, Andersson A, Bäckman J. Barometer logging reveals new dimensions of individual songbird migration. J Avian Biol. 2018;49(9):1–9. https://doi.org/10.1111/jav.01821.",
+      "journal-title": "J Avian Biol"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR70",
+      "doi-asserted-by": "publisher",
+      "first-page": "231",
+      "DOI": "10.1007/s00265-004-0855-9",
+      "volume": "57",
+      "author": "RJ Smith",
+      "year": "2005",
+      "unstructured": "Smith RJ, Moore FR. Arrival timing and seasonal reproductive performance in a long-distance migratory landbird. Behav Ecol Sociobiol. 2005;57(3):231–9. https://doi.org/10.1007/s00265-004-0855-9.",
+      "journal-title": "Behav Ecol Sociobiol"
+    },
+    {
+      "key": "495_CR71",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40462-018-0138-0",
+      "volume": "6",
+      "author": "K Sokolovskis",
+      "year": "2018",
+      "unstructured": "Sokolovskis K, Bianco G, Willemoes M, Solovyeva D, Bensch S, Åkesson S. Ten grams and 13,000 km on the wing–route choice in willow warblers Phylloscopus trochilus yakutensis migrating from Far East Russia to East Africa. Mov Ecol. 2018;6:1–10.",
+      "journal-title": "Mov Ecol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR72",
+      "doi-asserted-by": "publisher",
+      "first-page": "165",
+      "DOI": "10.1038/s41467-023-35788-7",
+      "volume": "14",
+      "author": "K Sokolovskis",
+      "year": "2023",
+      "unstructured": "Sokolovskis K, Lundberg M, Åkesson S, Willemoes M, Zhao T, Caballero-Lopez V, Bensch S. Migration direction in a songbird explained by two loci. Nat Commun. 2023;14(1):165. https://doi.org/10.1038/s41467-023-35788-7.",
+      "journal-title": "Nat Commun"
+    },
+    {
+      "issue": "8",
+      "key": "495_CR73",
+      "doi-asserted-by": "publisher",
+      "first-page": "885",
+      "DOI": "10.1134/S1022795417080105",
+      "volume": "53",
+      "author": "LN Spiridonova",
+      "year": "2017",
+      "unstructured": "Spiridonova LN, Valchuk OP, Red’kin YA, Saitoh T, Kryukov AP. Phylogeography and demographic history of Siberian rubythroat Luscinia calliope. Russ J Genet. 2017;53(8):885–902. https://doi.org/10.1134/S1022795417080105.",
+      "journal-title": "Russ J Genet"
+    },
+    {
+      "issue": "3",
+      "key": "495_CR74",
+      "doi-asserted-by": "publisher",
+      "first-page": "375",
+      "DOI": "10.1007/BF01905592",
+      "volume": "85",
+      "author": "E Stresemann",
+      "year": "1937",
+      "unstructured": "Stresemann E. Aves Beickianae: Beiträge zur Ornithologie von Nordwest-Kansu nach den Forschungen von Walter Beick (†) in den Jahren 1926–1933. J Ornithol. 1937;85(3):375–576.",
+      "journal-title": "J Ornithol"
+    },
+    {
+      "issue": "5916",
+      "key": "495_CR75",
+      "doi-asserted-by": "publisher",
+      "first-page": "896",
+      "DOI": "10.1126/science.1166664",
+      "volume": "323",
+      "author": "BJM Stutchbury",
+      "year": "2009",
+      "unstructured": "Stutchbury BJM, Tarof SA, Done T, Gow E, Kramer PM, Tautin J, Fox JW, Afanasyev V. Tracking long-distance songbird migration by using geolocators. Science. 2009;323(5916):896–896. https://doi.org/10.1126/science.1166664.",
+      "journal-title": "Science"
+    },
+    {
+      "issue": "4",
+      "key": "495_CR76",
+      "doi-asserted-by": "publisher",
+      "first-page": "722",
+      "DOI": "10.1111/evo.14448",
+      "volume": "76",
+      "author": "SP Turbek",
+      "year": "2022",
+      "unstructured": "Turbek SP, Schield DR, Scordato ESC, Contina A, Da XW, Liu Y, Liu Y, Pagani-Núñez E, Ren QM, Smith CCR, Stricker CA, Wunder M, Zonana DM, Safran RJ. A migratory divide spanning two continents is associated with genomic and ecological divergence. Evolution. 2022;76(4):722–36. https://doi.org/10.1111/evo.14448.",
+      "journal-title": "Evolution"
+    },
+    {
+      "issue": "1610",
+      "key": "495_CR77",
+      "doi-asserted-by": "publisher",
+      "first-page": "707",
+      "DOI": "10.1098/rspb.2006.0058",
+      "volume": "274",
+      "author": "T Veen",
+      "year": "2007",
+      "unstructured": "Veen T, Svedin N, Forsman JT, Hjernquist MB, Qvarnström A, Hjernquist KAT, Träff J, Klaassen M. Does migration of hybrids contribute to post-zygotic isolation in flycatchers? Proc R Soc B Biol Sci. 2007;274(1610):707–12. https://doi.org/10.1098/rspb.2006.0058.",
+      "journal-title": "Proc R Soc B Biol Sci"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR78",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0083515",
+      "volume": "9",
+      "author": "M Willemoes",
+      "year": "2014",
+      "unstructured": "Willemoes M, Strandberg R, Klaassen RHG, Tøttrup AP, Vardanis Y, Howey PW, Thorup K, Wikelski M, Alerstam T. Narrow-front loop migration in a population of the common cuckoo Cuculus canorus, as revealed by satellite telemetry. PLoS ONE. 2014;9(1): e83515.",
+      "journal-title": "PLoS ONE"
+    },
+    {
+      "key": "495_CR79",
+      "unstructured": "Willimont LA, Senner SE, Goodrich LJ. Fall migration of Ruby-throated Hummingbirds in the northeastern United States. Wilson Bull. 1988; 482–488."
+    },
+    {
+      "key": "495_CR80",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00265-020-02957-3",
+      "author": "J Wobker",
+      "year": "2021",
+      "unstructured": "Wobker J, Heim W, Schmaljohann H. Sex, age, molt strategy, and migration distance explain the phenology of songbirds at a stopover along the East Asian flyway. Behav Ecol Sociobiol. 2021. https://doi.org/10.1007/s00265-020-02957-3.",
+      "journal-title": "Behav Ecol Sociobiol"
+    },
+    {
+      "issue": "1",
+      "key": "495_CR81",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1017/S0959270914000276",
+      "volume": "25",
+      "author": "DL Yong",
+      "year": "2015",
+      "unstructured": "Yong DL, Liu Y, Low BW, Espanola CP, Choi CY, Kawakami K. Migratory songbirds in the East Asian-Australasian Flyway: a review from a conservation perspective. Bird Conserv Int. 2015;25(1):1–37. https://doi.org/10.1017/S0959270914000276.",
+      "journal-title": "Bird Conserv Int"
+    },
+    {
+      "key": "495_CR82",
+      "doi-asserted-by": "publisher",
+      "first-page": "1",
+      "DOI": "10.1186/s40462-020-00209-7",
+      "volume": "8",
+      "author": "T Zhao",
+      "year": "2020",
+      "unstructured": "Zhao T, Ilieva M, Larson K, Lundberg M, Neto JM, Sokolovskis K, Åkesson S, Bensch S. Autumn migration direction of juvenile willow warblers (Phylloscopus t. trochilus and P. t. acredula) and their hybrids assessed by qPCR SNP genotyping. Mov Ecol. 2020;8:1–10. https://doi.org/10.1186/s40462-020-00209-7.",
+      "journal-title": "Mov Ecol"
+    }
+  ],
+  "container-title": [
+    "Movement Ecology"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://link.springer.com/content/pdf/10.1186/s40462-024-00495-5.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://link.springer.com/article/10.1186/s40462-024-00495-5/fulltext.html",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://link.springer.com/content/pdf/10.1186/s40462-024-00495-5.pdf",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2024,
+        8,
+        1
+      ]
+    ],
+    "date-time": "2024-08-01T12:24:43Z",
+    "timestamp": 1722515083000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://movementecologyjournal.biomedcentral.com/articles/10.1186/s40462-024-00495-5"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2024,
+        8,
+        1
+      ]
+    ]
+  },
+  "references-count": 82,
+  "journal-issue": {
+    "issue": "1",
+    "published-online": {
+      "date-parts": [
+        [
+          2024,
+          12
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "495"
+  ],
+  "URL": "https://doi.org/10.1186/s40462-024-00495-5",
+  "relation": {
+    "has-preprint": [
+      {
+        "id-type": "doi",
+        "id": "10.21203/rs.3.rs-3848680/v1",
+        "asserted-by": "object"
+      }
+    ]
+  },
+  "ISSN": [
+    "2051-3933"
+  ],
+  "issn-type": [
+    {
+      "value": "2051-3933",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2024,
+        8,
+        1
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "9 January 2024",
+      "order": 1,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "15 July 2024",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "value": "1 August 2024",
+      "order": 3,
+      "name": "first_online",
+      "label": "First Online",
+      "group": {
+        "name": "ArticleHistory",
+        "label": "Article History"
+      }
+    },
+    {
+      "order": 1,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Declarations"
+      }
+    },
+    {
+      "value": "The capture of wild birds and logger deployments were permitted by the Qinghai Forestry Ministry of China (Approval to Zoological project from Qinghai Forestry [2021-12], [2022]-18) to T.Z.",
+      "order": 2,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Ethical approval"
+      }
+    },
+    {
+      "value": "The authors declare no competing interests.",
+      "order": 3,
+      "name": "Ethics",
+      "group": {
+        "name": "EthicsHeading",
+        "label": "Competing interests"
+      }
+    }
+  ],
+  "article-number": "54"
+}

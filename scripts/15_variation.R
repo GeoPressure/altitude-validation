@@ -3,7 +3,7 @@
 # Every summary here is a distribution over stations of the two quantities defined in
 # 12_analysis.R: the bias (accuracy) and the SD of the error (precision), computed per station and
 # per class (month, hour, year, height bin). Distributions are given by cell-weighted quantiles
-# (HadISD) or unweighted ones (GNSS, MeteoSwiss, era stations).
+# (GHCNh) or unweighted ones (GNSS, MeteoSwiss, era stations).
 
 source("R/utils.R")
 suppressPackageStartupMessages(library(mgcv))
@@ -19,7 +19,7 @@ ref <- stA[reference == TRUE]
 # ---- Main table: reference stations of the three ground references, both products -------------
 ind <- fread(file.path(dir_tables, "indep_station_stats.csv"))
 sets <- list(
-  HadISD = ref[, .(bias_sl, sd_sl, bias_land, sd_land, w = cw)],
+  GHCNh = ref[, .(bias_sl, sd_sl, bias_land, sd_land, w = cw)],
   GNSS = ind[source == "GNSS" & height_ok == TRUE, .(bias_sl, sd_sl, bias_land, sd_land, w = 1)],
   MeteoSwiss = ind[source == "MeteoSwiss", .(bias_sl, sd_sl, bias_land, sd_land, w = 1)]
 )
@@ -65,9 +65,10 @@ clim <- rbind(
 fwrite(clim, file.path(dir_tables, "ground_var_climate.csv"))
 
 # ---- Season and hour of day: bias and SD per station and class ---------------------------------
-A <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet"),
+A <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
   col_select = c("id", "year", "lsh", "sdoy", "err_sl", "gross")))
-A <- A[year %in% years_main & !gross %in% TRUE & is.finite(err_sl) & id %in% ref$id]
+A <- A[ref[, .(id, year = selected_year)], on = .(id, year)]
+A <- A[!gross %in% TRUE & is.finite(err_sl) & id %in% ref$id]
 A[, month := pmin(12, floor((sdoy - 1) / 30.5) + 1)]
 # Most stations report 3-hourly, so hourly classes alternate between station subsets: 3 h classes.
 A[, hour := 3 * floor(lsh / 3) + 1.5]
@@ -89,10 +90,11 @@ era_ids <- if (file.exists(file.path(dir_interim, "era_ids.csv"))) {
   fread(file.path(dir_interim, "era_ids.csv"))$id
 } else character()
 if (length(era_ids)) {
-  Ae <- as.data.table(read_parquet(file.path(dir_interim, "errors_hadisd.parquet"),
+  Ae <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
     col_select = c("id", "year", "err_sl", "gross")))[id %in% era_ids & !gross %in% TRUE]
+  Ae <- Ae[year %in% c(years_era, max(years_main))]
   Ae <- Ae[, .(bias = mean(err_sl), sd = sd(err_sl), n = .N), by = .(id, year)][n >= 500]
-  Ae <- Ae[id %in% Ae[, .N, by = id][N == max(N), id]]
+  Ae <- Ae[id %in% Ae[, .N, by = id][N == length(years_era) + 1L, id]]
   fwrite(Ae[, .(n_stations = .N, abs_bias_median = median(abs(bias)), sd_median = median(sd),
     sd_p90 = quantile(sd, 0.9)), by = year][order(year)], file.path(dir_tables, "ground_era.csv"))
   fwrite(rbind(cbind(metric = "bias", Ae[, c(.(n = .N), wq(bias)), by = year]),

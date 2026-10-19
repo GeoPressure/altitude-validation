@@ -1,0 +1,25 @@
+{
+  "generated_utc": "2026-10-18 12:01:22 UTC",
+  "doi": "10.5281/zenodo.18187093",
+  "version": "2026.0",
+  "raw_input": "/Users/rafnuss/Documents/GitHub/GeoLocatorMaster/data/master/pressurepaths.csv",
+  "input_md5": "5ebef117b9aa4533addffb53fe284799",
+  "published_checksum": "md5:5ebef117b9aa4533addffb53fe284799",
+  "metadata_md5": "c136b64b800e3745cf144e0f1760806d",
+  "source_md5": {
+    "scripts/00_bird_heights.R": "202002f21da47bd2c1bd16a9cc0c14d4",
+    "R/utils.R": "6ab40781b4bedc2da3f87b0000fc2468"
+  },
+  "sample": {
+    "n_tags": 203,
+    "n_species": 25,
+    "n_flights": 5293,
+    "n_points": 128003,
+    "hours": 34580.4167,
+    "n_tags_pressure": 204,
+    "n_tags_no_flight": 1
+  },
+  "height_formula": "288.15 K and -6.5 K/km relative to ERA5 surface pressure, interpolated adjacent-stationary pressure offsets; negative flight heights clamped to zero",
+  "flight_filter": "All classified flight; tags without usable flight pressurepaths excluded",
+  "time_weighting": "Interval to next retained tag record capped at 60 min; final record uses median positive interval"
+}

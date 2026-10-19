@@ -1,0 +1,647 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        1
+      ]
+    ],
+    "date-time": "2026-10-01T02:55:03Z",
+    "timestamp": 1790823303031,
+    "version": "4.1.0"
+  },
+  "reference-count": 53,
+  "publisher": "The Royal Society",
+  "issue": "1881",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2018,
+            6,
+            27
+          ]
+        ],
+        "date-time": "2018-06-27T00:00:00Z",
+        "timestamp": 1530057600000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://royalsociety.org/journals/ethics-policies/data-sharing-mining/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100003246",
+      "name": "Nederlandse Organisatie voor Wetenschappelijk Onderzoek",
+      "doi-asserted-by": "crossref",
+      "award": [
+        "854.11.004"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "854.11.004"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100003246",
+          "id-type": "DOI",
+          "asserted-by": "crossref"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100003246",
+      "name": "Nederlandse Organisatie voor Wetenschappelijk Onderzoek",
+      "doi-asserted-by": "crossref",
+      "award": [
+        "Spinoza Premium Award 2014"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "Spinoza Premium Award 2014"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100003246",
+          "id-type": "DOI",
+          "asserted-by": "crossref"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "royalsocietypublishing.org"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Proc. R. Soc. B."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2018,
+        6,
+        27
+      ]
+    ]
+  },
+  "abstract": "<jats:p>Nearly 20% of all bird species migrate between breeding and nonbreeding sites annually. Their migrations include storied feats of endurance and physiology, from non-stop trans-Pacific crossings to flights at the cruising altitudes of jetliners. Despite intense interest in these performances, there remains great uncertainty about which factors most directly influence bird behaviour during migratory flights. We used GPS trackers that measure an individual's altitude and wingbeat frequency to track the migration of black-tailed godwits (<jats:italic>Limosa limosa</jats:italic>) and identify the abiotic factors influencing their in-flight migratory behaviour. We found that godwits flew at altitudes above 5000 m during 21% of all migratory flights, and reached maximum flight altitudes of nearly 6000 m. The partial pressure of oxygen at these altitudes is less than 50% of that at sea level, yet these extremely high flights occurred in the absence of topographical barriers. Instead, they were associated with high air temperatures at lower altitudes and increasing wind support at higher altitudes. Our results therefore suggest that wind, temperature and topography all play a role in determining migratory behaviour, but that their relative importance is context dependent. Extremely high-altitude flights may thus not be especially rare, but they may only occur in very specific environmental contexts.</jats:p>",
+  "DOI": "10.1098/rspb.2018.0569",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2018,
+        6,
+        27
+      ]
+    ],
+    "date-time": "2018-06-27T07:35:38Z",
+    "timestamp": 1530084938000
+  },
+  "page": "20180569",
+  "update-policy": "https://doi.org/10.1098/crossmark-policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 68,
+  "title": [
+    "High-altitude shorebird migration in the absence of topographical barriers: avoiding high air temperatures and searching for profitable winds"
+  ],
+  "prefix": "10.1098",
+  "volume": "285",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0003-2236-2697",
+      "authenticated-orcid": true,
+      "given": "Nathan R.",
+      "family": "Senner",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Conservation Ecology Group, Groningen Institute for Evolutionary Life Sciences, University of Groningen, PO Box 11103, 9700, CC, Groningen, The Netherlands"
+        },
+        {
+          "name": "Division of Biological Sciences, University of Montana, 32 Campus Drive, Missoula, MT 59812, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Maria",
+      "family": "Stager",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Division of Biological Sciences, University of Montana, 32 Campus Drive, Missoula, MT 59812, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-2541-9786",
+      "authenticated-orcid": true,
+      "given": "Mo A.",
+      "family": "Verhoeven",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Conservation Ecology Group, Groningen Institute for Evolutionary Life Sciences, University of Groningen, PO Box 11103, 9700, CC, Groningen, The Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Zachary A.",
+      "family": "Cheviron",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Division of Biological Sciences, University of Montana, 32 Campus Drive, Missoula, MT 59812, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Theunis",
+      "family": "Piersma",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Conservation Ecology Group, Groningen Institute for Evolutionary Life Sciences, University of Groningen, PO Box 11103, 9700, CC, Groningen, The Netherlands"
+        },
+        {
+          "name": "NIOZ Royal Netherlands Institute for Sea Research, Department of Coastal Systems, Utrecht University, PO Box 59, 1790, AB Den Burg, Texel, The Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Willem",
+      "family": "Bouten",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Computational Geo-Ecology, Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam, Sciencepark 904, 1098, XH Amsterdam, The Netherlands"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "175",
+  "published-online": {
+    "date-parts": [
+      [
+        2018,
+        6,
+        27
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_3_7_2_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1474-919X.1976.tb02023.x"
+    },
+    {
+      "key": "e_1_3_7_3_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1139/z79-009"
+    },
+    {
+      "key": "e_1_3_7_4_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14430/arctic941"
+    },
+    {
+      "key": "e_1_3_7_5_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s001140050673"
+    },
+    {
+      "key": "e_1_3_7_6_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s10336-011-0694-1"
+    },
+    {
+      "key": "e_1_3_7_7_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/geb.12473"
+    },
+    {
+      "key": "e_1_3_7_8_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2012.2114"
+    },
+    {
+      "key": "e_1_3_7_9_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1258732"
+    },
+    {
+      "key": "e_1_3_7_10_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1642/AUK-15-33.1"
+    },
+    {
+      "key": "e_1_3_7_11_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.046748"
+    },
+    {
+      "key": "e_1_3_7_12_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1642/0004-8038(2000)117[0205:PMFABP]2.0.CO;2"
+    },
+    {
+      "key": "e_1_3_7_13_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/ele.12528"
+    },
+    {
+      "key": "e_1_3_7_14_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.anbehav.2014.01.020"
+    },
+    {
+      "key": "e_1_3_7_15_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0386"
+    },
+    {
+      "key": "e_1_3_7_16_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/4088195"
+    },
+    {
+      "key": "e_1_3_7_17_2",
+      "first-page": "1450",
+      "volume-title": "Proc. of the 22nd Int. Ornithological Congress",
+      "author": "Klaassen M",
+      "year": "1999"
+    },
+    {
+      "key": "e_1_3_7_18_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2006.0011"
+    },
+    {
+      "key": "e_1_3_7_19_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.052548"
+    },
+    {
+      "key": "e_1_3_7_20_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1152/physiol.00050.2014"
+    },
+    {
+      "key": "e_1_3_7_21_2",
+      "doi-asserted-by": "crossref",
+      "first-page": "19",
+      "DOI": "10.1242/jeb.164.1.19",
+      "article-title": "Climbing performance of migrating birds as a basis for estimating limits for fuel-carrying capacity and muscle work",
+      "volume": "164",
+      "author": "Hedenström A",
+      "year": "1992",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "e_1_3_7_22_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0022-5193(79)90351-5"
+    },
+    {
+      "key": "e_1_3_7_23_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1650/0010-5422(2000)102[0645:WBDRAS]2.0.CO;2"
+    },
+    {
+      "key": "e_1_3_7_24_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5253/078.101.0209"
+    },
+    {
+      "key": "e_1_3_7_25_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s10336-012-0908-1"
+    },
+    {
+      "key": "e_1_3_7_26_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2656.12381"
+    },
+    {
+      "key": "e_1_3_7_27_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0395"
+    },
+    {
+      "key": "e_1_3_7_28_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/qj.828"
+    },
+    {
+      "key": "e_1_3_7_29_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.00828"
+    },
+    {
+      "key": "e_1_3_7_30_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/sim.3107"
+    },
+    {
+      "key": "e_1_3_7_31_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1420-9101.2010.02210.x"
+    },
+    {
+      "key": "e_1_3_7_32_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18637/jss.v067.i01"
+    },
+    {
+      "key": "e_1_3_7_33_2",
+      "unstructured": "Barton K. 2015 MuMIn: multi-model inference. See https://cran.r-project.org/package=MuMIn."
+    },
+    {
+      "key": "e_1_3_7_34_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1093/icb/icq011"
+    },
+    {
+      "key": "e_1_3_7_35_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s003600050226"
+    },
+    {
+      "key": "e_1_3_7_36_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01443"
+    },
+    {
+      "key": "e_1_3_7_37_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsbl.2016.0432"
+    },
+    {
+      "key": "e_1_3_7_38_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.031435"
+    },
+    {
+      "key": "e_1_3_7_39_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1034/j.1600-0706.2003.12124.x"
+    },
+    {
+      "key": "e_1_3_7_40_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pbio.1000362"
+    },
+    {
+      "key": "e_1_3_7_41_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00265-008-0572-x"
+    },
+    {
+      "key": "e_1_3_7_42_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/hdy.2011.85"
+    },
+    {
+      "key": "e_1_3_7_43_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.048181"
+    },
+    {
+      "key": "e_1_3_7_44_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1558-5646.2009.00644.x"
+    },
+    {
+      "key": "e_1_3_7_45_2",
+      "doi-asserted-by": "crossref",
+      "first-page": "55",
+      "DOI": "10.1242/jeb.48.1.55",
+      "article-title": "Respiratory physiology of house sparrows in relation to high-altitude flight",
+      "volume": "48",
+      "author": "Tucker VA",
+      "year": "1968",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "e_1_3_7_46_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.162693"
+    },
+    {
+      "key": "e_1_3_7_47_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2008.1142"
+    },
+    {
+      "key": "e_1_3_7_48_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0086588"
+    },
+    {
+      "key": "e_1_3_7_49_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0042206"
+    },
+    {
+      "key": "e_1_3_7_50_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/S0300-9629(76)80073-4"
+    },
+    {
+      "key": "e_1_3_7_51_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1034/j.1600-048X.2002.03051.x"
+    },
+    {
+      "key": "e_1_3_7_52_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1474-919X.1995.tb03218.x"
+    },
+    {
+      "key": "e_1_3_7_53_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/ibi.12064"
+    },
+    {
+      "key": "e_1_3_7_54_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0052300"
+    }
+  ],
+  "container-title": [
+    "Proceedings of the Royal Society B: Biological Sciences"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2018.0569",
+      "content-type": "application/pdf",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://royalsocietypublishing.org/doi/full-xml/10.1098/rspb.2018.0569",
+      "content-type": "application/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2018.0569",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2022,
+        8,
+        26
+      ]
+    ],
+    "date-time": "2022-08-26T13:44:57Z",
+    "timestamp": 1661521497000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://royalsocietypublishing.org/doi/10.1098/rspb.2018.0569"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2018,
+        6,
+        27
+      ]
+    ]
+  },
+  "references-count": 53,
+  "journal-issue": {
+    "issue": "1881",
+    "published-print": {
+      "date-parts": [
+        [
+          2018,
+          6,
+          27
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1098/rspb.2018.0569"
+  ],
+  "URL": "https://doi.org/10.1098/rspb.2018.0569",
+  "relation": {},
+  "ISSN": [
+    "0962-8452",
+    "1471-2954"
+  ],
+  "issn-type": [
+    {
+      "value": "0962-8452",
+      "type": "print"
+    },
+    {
+      "value": "1471-2954",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2018,
+        6,
+        27
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2018-03-13",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2018-06-05",
+      "order": 1,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2018-06-27",
+      "order": 2,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-18",
+  "package_version": "Version: 3.6.5.9000",
+  "git_commit": "ba0a7ef5e0ebe481b9b58e62f57d6a552cfedd1f",
+  "note": "Working-tree functions were read; source hashes capture any uncommitted changes.",
+  "files": {
+    "R/pressure_to_altitude.R": "481dce7b900111ae99b3b23920868fc1ec940b62ba9735aed87af4d556ce7b5f",
+    "R/gpt3_lapse_rate.R": "3c7af36a50e55e80bff81875dd161157b996b049ae0a59f144dee543044c7c41",
+    "R/era5_surface_elevation.R": "2976113acd48ac3c0c7b0a9bd7f61a0076f69a677b1a0664a029c09dc0ed6c42",
+    "R/path2elevation.R": "03769c5dfd40502a1fc45a5d6a626e7b00798f08c5bafed3a28301d9b8cc8ea4"
+  },
+  "reference_url": "https://vmf.geo.tuwien.ac.at/codes/gpt3_1_fast.m",
+  "reference_sha256": "59061a57b6a8447c73bd5da7186808a5b00d6b616d3d817ed3bd8033e7110450"
+}

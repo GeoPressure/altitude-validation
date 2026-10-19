@@ -1,0 +1,598 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        16
+      ]
+    ],
+    "date-time": "2026-10-16T07:04:58Z",
+    "timestamp": 1792134298416,
+    "version": "4.4.0"
+  },
+  "reference-count": 54,
+  "publisher": "National Academy of Sciences",
+  "issue": "30",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2020,
+            7,
+            13
+          ]
+        ],
+        "date-time": "2020-07-13T00:00:00Z",
+        "timestamp": 1594598400000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "www.pnas.org"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Proc. Natl. Acad. Sci. U.S.A."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        28
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Significance</jats:title>\n                  <jats:p>Flapping flight is extremely costly for large birds, yet little is known about the conditions that force them to flap. We attached custom-made “flight recorders” to Andean condors, the world’s heaviest soaring birds, documenting every single wingbeat and when and how individuals gained altitude. Remarkably, condors flapped for only 1% of their flight time, specifically during takeoff and when close to the ground. This is particularly striking as the birds were immature. Thus, our results demonstrate that even inexperienced birds can cover vast distances over land without flapping. Overall, this can help explain how extinct birds with twice the wingspan of condors could have flown.</jats:p>",
+  "DOI": "10.1073/pnas.1907360117",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        13
+      ]
+    ],
+    "date-time": "2020-07-13T20:25:45Z",
+    "timestamp": 1594671945000
+  },
+  "page": "17884-17890",
+  "update-policy": "https://doi.org/10.1073/pnas.cm10313",
+  "source": "Crossref",
+  "is-referenced-by-count": 118,
+  "title": [
+    "Physical limits of flight performance in the heaviest soaring bird"
+  ],
+  "prefix": "10.1073",
+  "volume": "117",
+  "author": [
+    {
+      "given": "H. J.",
+      "family": "Williams",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Department of Biosciences, Swansea University, SA2 8PP Swansea, United Kingdom;"
+        },
+        {
+          "name": "Department of Migration, Max Planck Institute of Animal Behaviour, 78315 Radolfzell, Germany;"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0001-7325-6398",
+      "authenticated-orcid": false,
+      "given": "E. L. C.",
+      "family": "Shepard",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biosciences, Swansea University, SA2 8PP Swansea, United Kingdom;"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Mark D.",
+      "family": "Holton",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Computing Science, Bay Campus, Swansea University, SA1 8EN Swansea, United Kingdom;"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "P. A. E.",
+      "family": "Alarcón",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Grupo de Investigaciones en Biología de la Conservación, Universidad Nacional del Comahue-CONICET, Quintral 1250, R8400FRF Bariloche, Argentina"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-3177-0107",
+      "authenticated-orcid": false,
+      "given": "R. P.",
+      "family": "Wilson",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Biosciences, Swansea University, SA2 8PP Swansea, United Kingdom;"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-2624-2185",
+      "authenticated-orcid": false,
+      "given": "S. A.",
+      "family": "Lambertucci",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Grupo de Investigaciones en Biología de la Conservación, Universidad Nacional del Comahue-CONICET, Quintral 1250, R8400FRF Bariloche, Argentina"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "341",
+  "published-online": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        13
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_3_4_1_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1086/282398"
+    },
+    {
+      "key": "e_1_3_4_2_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/nclimate1958"
+    },
+    {
+      "key": "e_1_3_4_3_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2006.3545"
+    },
+    {
+      "key": "e_1_3_4_4_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.2307/2265587"
+    },
+    {
+      "key": "e_1_3_4_5_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1086/671257"
+    },
+    {
+      "key": "e_1_3_4_6_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1258732"
+    },
+    {
+      "key": "e_1_3_4_7_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/srep21249"
+    },
+    {
+      "key": "e_1_3_4_8_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/ele.12528"
+    },
+    {
+      "key": "e_1_3_4_9_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/jav.01298"
+    },
+    {
+      "key": "e_1_3_4_10_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/j.1461-0248.2011.01713.x"
+    },
+    {
+      "key": "e_1_3_4_11_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2000.1223"
+    },
+    {
+      "key": "e_1_3_4_12_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1126/science.1210270"
+    },
+    {
+      "key": "e_1_3_4_13_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.jtbi.2004.02.005"
+    },
+    {
+      "key": "e_1_3_4_14_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00359-017-1181-9"
+    },
+    {
+      "key": "e_1_3_4_15_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0391"
+    },
+    {
+      "key": "e_1_3_4_16_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.cub.2016.09.014"
+    },
+    {
+      "key": "e_1_3_4_17_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.1993.0164"
+    },
+    {
+      "key": "e_1_3_4_18_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/248083b0"
+    },
+    {
+      "key": "e_1_3_4_19_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0084887"
+    },
+    {
+      "key": "e_1_3_4_20_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.1995.0146"
+    },
+    {
+      "key": "e_1_3_4_21_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1086/383511"
+    },
+    {
+      "key": "e_1_3_4_22_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/S1875-306X(08)00020-8"
+    },
+    {
+      "key": "e_1_3_4_23_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1152/ajplegacy.1973.224.4.848"
+    },
+    {
+      "key": "e_1_3_4_24_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1073/pnas.0702040104"
+    },
+    {
+      "key": "e_1_3_4_25_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41598-017-11855-0"
+    },
+    {
+      "key": "e_1_3_4_26_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0395"
+    },
+    {
+      "key": "e_1_3_4_27_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1242/jeb.058602"
+    },
+    {
+      "key": "e_1_3_4_28_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0397"
+    },
+    {
+      "key": "e_1_3_4_29_2",
+      "first-page": "3380",
+      "article-title": "Migration by soaring or flapping: Numerical atmospheric simulations reveal that turbulence kinetic energy dictates bee-eater flight mode",
+      "volume": "278",
+      "author": "Sapir N.",
+      "year": "2011",
+      "unstructured": "N. Sapir ., Migration by soaring or flapping: Numerical atmospheric simulations reveal that turbulence kinetic energy dictates bee-eater flight mode. Proc. Biol. Sci. 278, 3380–3386 (2011).",
+      "journal-title": "Proc. Biol. Sci."
+    },
+    {
+      "key": "e_1_3_4_30_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1093/oso/9780195132717.001.0001"
+    },
+    {
+      "key": "e_1_3_4_31_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/esr00064"
+    },
+    {
+      "key": "e_1_3_4_32_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.biocon.2013.12.041"
+    },
+    {
+      "key": "e_1_3_4_33_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40317-015-0077-0"
+    },
+    {
+      "key": "e_1_3_4_34_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/2041-210X.13069"
+    },
+    {
+      "key": "e_1_3_4_35_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s40317-020-00194-z"
+    },
+    {
+      "key": "e_1_3_4_36_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2656.13040"
+    },
+    {
+      "key": "e_1_3_4_37_2",
+      "first-page": "3175",
+      "article-title": "Heart rate and estimated energy expenditure of flapping and gliding in black-browed albatrosses",
+      "volume": "216",
+      "author": "Sakamoto K. Q.",
+      "year": "2013",
+      "unstructured": "K. Q. Sakamoto ., Heart rate and estimated energy expenditure of flapping and gliding in black-browed albatrosses. J. Exp. Biol. 216, 3175–3182 (2013).",
+      "journal-title": "J. Exp. Biol."
+    },
+    {
+      "key": "e_1_3_4_38_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rspb.2018.0550"
+    },
+    {
+      "key": "e_1_3_4_39_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0005400"
+    },
+    {
+      "key": "e_1_3_4_40_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1111/1365-2656.12525"
+    },
+    {
+      "key": "e_1_3_4_41_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsbl.2018.0687"
+    },
+    {
+      "key": "e_1_3_4_42_2",
+      "first-page": "511",
+      "article-title": "The gaseous metabolism of large wild birds under aviary life",
+      "volume": "66",
+      "author": "Benedict F. G.",
+      "year": "1927",
+      "unstructured": "F. G. Benedict, E. L. Fox, The gaseous metabolism of large wild birds under aviary life. Proc. Am. Philos. Soc. 66, 511–534 (1927).",
+      "journal-title": "Proc. Am. Philos. Soc."
+    },
+    {
+      "key": "e_1_3_4_43_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.biocon.2008.04.017"
+    },
+    {
+      "key": "e_1_3_4_44_2",
+      "first-page": "78",
+      "article-title": "Threats of domestic dogs over the conservation of the Andean Condor, fox and puma in the Bolivian high Andes",
+      "volume": "2",
+      "author": "Aliaga-Rossel E.",
+      "year": "2012",
+      "unstructured": "E. Aliaga-Rossel, B. Ríos-Uzeda, H. Ticona, Threats of domestic dogs over the conservation of the Andean Condor, fox and puma in the Bolivian high Andes. Lat. Am. J. Conserv. 2, 78–81 (2012).",
+      "journal-title": "Lat. Am. J. Conserv."
+    },
+    {
+      "key": "e_1_3_4_45_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/421333a"
+    },
+    {
+      "key": "e_1_3_4_46_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsif.2014.0645"
+    },
+    {
+      "key": "e_1_3_4_47_2",
+      "volume-title": "Meteorology and Flight: A Pilot’s Guide to Weather",
+      "author": "Bradbury T.",
+      "year": "2004",
+      "unstructured": "T. Bradbury, Meteorology and Flight: A Pilot’s Guide to Weather, (A&C Black Publishers, 2004)."
+    },
+    {
+      "key": "e_1_3_4_48_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rstb.2015.0382"
+    },
+    {
+      "key": "e_1_3_4_49_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41586-018-0533-0"
+    },
+    {
+      "key": "e_1_3_4_50_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1098/rsif.2018.0578"
+    },
+    {
+      "key": "e_1_3_4_51_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.quaint.2007.08.021"
+    },
+    {
+      "key": "e_1_3_4_52_2",
+      "first-page": "211",
+      "article-title": "Aspectos sistémicos de la producción ovina en la provincia de Río Negro",
+      "volume": "30",
+      "author": "Villagra S.",
+      "year": "2010",
+      "unstructured": "S. Villagra, C. Giraudo, Aspectos sistémicos de la producción ovina en la provincia de Río Negro. Rev. Argent. Prod. Anim. 30, 211–224 (2010).",
+      "journal-title": "Rev. Argent. Prod. Anim."
+    },
+    {
+      "key": "e_1_3_4_53_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s002650050539"
+    },
+    {
+      "key": "e_1_3_4_54_2",
+      "first-page": "357",
+      "article-title": "Integrating thermal physiology and ecology of ectotherms: A discussion of approaches",
+      "volume": "19",
+      "author": "Huey R. B.",
+      "year": "2015",
+      "unstructured": "R. B. Huey, R. D. Stevenson, Integrating thermal physiology and ecology of ectotherms: A discussion of approaches. Integr. Comp. Biol. 19, 357–366 (2015).",
+      "journal-title": "Integr. Comp. Biol."
+    }
+  ],
+  "container-title": [
+    "Proceedings of the National Academy of Sciences"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://www.pnas.org/syndication/doi/10.1073/pnas.1907360117",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "syndication"
+    },
+    {
+      "URL": "https://pnas.org/doi/pdf/10.1073/pnas.1907360117",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2022,
+        4,
+        13
+      ]
+    ],
+    "date-time": "2022-04-13T04:38:50Z",
+    "timestamp": 1649824730000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://pnas.org/doi/full/10.1073/pnas.1907360117"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        13
+      ]
+    ]
+  },
+  "references-count": 54,
+  "journal-issue": {
+    "issue": "30",
+    "published-print": {
+      "date-parts": [
+        [
+          2020,
+          7,
+          28
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1073/pnas.1907360117"
+  ],
+  "URL": "https://doi.org/10.1073/pnas.1907360117",
+  "relation": {},
+  "ISSN": [
+    "0027-8424",
+    "1091-6490"
+  ],
+  "issn-type": [
+    {
+      "value": "0027-8424",
+      "type": "print"
+    },
+    {
+      "value": "1091-6490",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2020,
+        7,
+        13
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2020-07-13",
+      "order": 2,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

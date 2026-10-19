@@ -1,0 +1,110 @@
+[
+  {
+    "file": "paper/paper.qmd",
+    "unchanged": true
+  },
+  {
+    "file": "paper/supplement.qmd",
+    "unchanged": true
+  },
+  {
+    "file": "paper/paper.pdf",
+    "unchanged": true
+  },
+  {
+    "file": "paper/supplement.pdf",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground_coverage.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_analysis_provenance.json",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_bird.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_support.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_gnss_hour_sensitivity.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_climate.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground_screen_sensitivity.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_swiss_height.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground_station.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_swiss_height_summary.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_height.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_figures_provenance.json",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_weighting_sensitivity.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_sensitivity_provenance.json",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_fig1_soundings.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_tails.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground_station_year.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_station.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_weighting_height.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_flight_daynight.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_ground_tails.csv",
+    "unchanged": true
+  },
+  {
+    "file": "output/tables/paper_reference_terrain.csv",
+    "unchanged": true
+  }
+]

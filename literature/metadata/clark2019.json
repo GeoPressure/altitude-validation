@@ -1,0 +1,562 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        9,
+        29
+      ]
+    ],
+    "date-time": "2026-09-29T21:08:10Z",
+    "timestamp": 1790716090840,
+    "version": "4.1.0"
+  },
+  "reference-count": 66,
+  "publisher": "The Seabird Group",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Seabird"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2020
+      ]
+    ]
+  },
+  "abstract": "<jats:p>Identifying at-sea foraging areas is a longstanding goal for seabird ecology and conservation. GPS tracks can reveal behaviour because slow, tortuous flight often indicates searching linked to feeding attempts, but two-dimensional (2D) paths may oversimplify three-dimensional (3D) flight. Here, we present the first 3D tracks for Ascension Frigatebirds Fregata aquila and assess whether incorporating flight altitude improves our ability to describe putative behavioural states. We compare results using altitude derived from GPS loggers and barometric altimeters deployed simultaneously. Tracked birds (three females) travelled at a mean altitude of 178 m and attained maximum heights of 1,658–1,871 m (measured by barometric altimeters). Hidden Markov models based on 2D tracks defined three states (interpreted as ‘search’, ‘slow travel’ and ‘fast travel’). However, with 59.5% of locations defined as ‘search’, identifying the most important foraging hotspots would be challenging. Including altitude was informative, allowing models to define two further states by introducing high-altitude ‘soaring/thermalling’ behaviour (3.4% of locations) and dividing ‘search’ into mid-altitude (44.7%) and low-altitude (12.2%), the latter being more likely to represent prey capture. Barometric altitude was less prone to large errors than GPS, but GPS altitude was highly correlated (r = 0.94) and state assignments overlapped by 88% overall. Using GPS altitude would reduce potential tag effects and allow us to model tracks in 3D for males and lighter females, which are too small to carry both loggers. Overall, incorporating flight height from either barometric altimeters or GPS loggers into behavioural models improved our ability to distinguish putative foraging events from high-altitude flight.</jats:p>",
+  "DOI": "10.61350/sbj.32.1",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2023,
+        9,
+        17
+      ]
+    ],
+    "date-time": "2023-09-17T19:42:05Z",
+    "timestamp": 1694979725000
+  },
+  "page": "1-17",
+  "source": "Crossref",
+  "is-referenced-by-count": 4,
+  "title": [
+    "First three-dimensional tracks for the Ascension Frigatebird Fregata aquila highlight the importance of altitude for behavioural studies"
+  ],
+  "prefix": "10.61350",
+  "volume": "32",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0001-5803-7744",
+      "authenticated-orcid": false,
+      "given": "Bethany",
+      "family": "Clark",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Tess",
+      "family": "Handby",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Eliza",
+      "family": "Leat",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-1447-4082",
+      "authenticated-orcid": false,
+      "given": "Sam",
+      "family": "Weber",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "40171",
+  "published-online": {
+    "date-parts": [
+      [
+        2020
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "ref0",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Amélineau, F., Péron, C., Lescroël, A., Authier, M., Provost, P. & Grémillet, D. 2014. Windscape and tortuosity shape the flight costs of northern gannets. Journal of Experimental Biology 217: 876-85.",
+      "DOI": "10.1242/jeb.097915"
+    },
+    {
+      "key": "ref1",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Andersson, M. 1981. On optimal predator search. Theoretical Population Biology 19: 58-86.",
+      "DOI": "10.1016/0040-5809(81)90035-6"
+    },
+    {
+      "key": "ref2",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Ashmole, N. P. 1963. The regulation of numbers of tropical oceanic birds. Ibis 103b: 458-473.",
+      "DOI": "10.1111/j.1474-919X.1963.tb06766.x"
+    },
+    {
+      "key": "ref3",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Au, D. W. K. & Pitman, R. L. 1986. Seabird interactions with dolphins and tuna in the eastern tropical Pacific. The Condor 88: 304-317.",
+      "DOI": "10.2307/1368877"
+    },
+    {
+      "key": "ref4",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Austin, R. E., De Pascalis, F., Arnould, J. P. Y., Haakonsson, J., Votier, S. C., Ebanks-Petrie, G., Austin, T., Morgan, G., Bennett, G. & Green, J. A. 2019. A sex-influenced flexible foraging strategy in a tropical seabird, the magnificent frigatebird. Marine Ecology Progress Series 611: 203-214.",
+      "DOI": "10.3354/meps12859"
+    },
+    {
+      "key": "ref5",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Bailleul, F., Lesage, V. & Hammill, M. O. 2010. Spherical first passage time: A tool to investigate area-restricted search in three-dimensional movements. Ecological Modelling 221: 1665-1673.",
+      "DOI": "10.1016/j.ecolmodel.2010.04.001"
+    },
+    {
+      "key": "ref6",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Belant, J. L., Millspaugh, J. J., Martin, J. A. & Gitzen, R. A. 2012. Multi-dimensional space use: The final frontier. Frontiers in Ecology and the Environment 10: 11-12.",
+      "DOI": "10.1890/12.WB.003"
+    },
+    {
+      "key": "ref7",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Bennison, A., Bearhop, S., Bodey, T. W., Votier, S. C., Grecian, W. J., Wakefield, E. D., Hamer, K. C. & Jessopp, M. 2017. Search and foraging behaviors from movement data: A comparison of methods. Ecology and Evolution 8: 13-24.",
+      "DOI": "10.1002/ece3.3593"
+    },
+    {
+      "key": "ref8",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Berberan-Santos, M. N., Bodunov, E. N. & Pogliani, L. 1997. On the barometric formula. American Journal of Physics 65: 404-412.",
+      "DOI": "10.1119/1.18555"
+    },
+    {
+      "key": "ref9",
+      "unstructured": "BirdLife International. 2010. Marine Important Bird Areas toolkit: Standardised techniques for identifying priority sites for the conservation of seabirds at sea. Version 1. BirdLife International, Cambridge UK"
+    },
+    {
+      "key": "ref10",
+      "unstructured": "BirdLife International, 2018a. Fregata aquila, Ascension Frigatebird. The IUCN Red List of Threatened Species 2018: e.T22697728A132597828."
+    },
+    {
+      "key": "ref11",
+      "unstructured": "BirdLife International, 2018b. Fregata andrewsi, Christmas Frigatebird. The IUCN Red List of Threatened Species 2018: e.T22697742A132599384."
+    },
+    {
+      "key": "ref12",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Bodey, T. W., Cleasby, I. R., Bell, F., Parr, N., Schultz, A., Votier, S. C. & Bearhop, S. 2018. A phylogenetically controlled meta-analysis of biologging device effects on birds: Deleterious effects and a call for more standardized reporting of study data. Methods in Ecology and Evolution 9: 946-955.",
+      "DOI": "10.1111/2041-210X.12934"
+    },
+    {
+      "key": "ref13",
+      "unstructured": "Boekelheide, R. J. & Ainley, D. G. 1983. An ecological comparison of oceanic seabird communities of the South Pacific Ocean. Studies in Avian Biology 8, 2-23."
+    },
+    {
+      "key": "ref14",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Brewer, M. L. & Hertel, F. 2007. Wing morphology and flight behavior of pelecaniform seabirds. Journal of Morphology 268: 866-877.",
+      "DOI": "10.1002/jmor.10555"
+    },
+    {
+      "key": "ref15",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Cleasby, I. R., Wakefield, E. D., Bearhop, S., Bodey, T. W., Votier, S. C. & Hamer, K. C. 2015. Three-dimensional tracking of a wide-ranging marine predator: flight heights and vulnerability to offshore wind farms. Journal of Applied Ecology 52: 1474-1482.",
+      "DOI": "10.1111/1365-2664.12529"
+    },
+    {
+      "key": "ref16",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Corman, A. M., Mendel, B., Voigt, C. C. & Garthe, S. 2016. Varying foraging patterns inresponse to competition? A multicolony approach in a generalist seabird. Ecology and Evolution 6: 974-986.",
+      "DOI": "10.1002/ece3.1884"
+    },
+    {
+      "key": "ref17",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Cox, S. L., Miller, P. I., Embling, C. B., Scales, K. L., Bicknell, A. W. J., Hosegood, P. J., Morgan, G., Ingram, S. N. & Votier, S. C. 2016. Seabird diving behaviour reveals the functional significance of shelf-sea fronts as foraging hotspots. Royal Society Open Science 3: 160317.",
+      "DOI": "10.1098/rsos.160317"
+    },
+    {
+      "key": "ref18",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Croxall, J. P., Butchart, S. H. M., Lascelles, B., Stattersfield, A. J., Sullivan, B., Symes, A. & Taylor, P. 2012. Seabird conservation status, threats and priority actions: A global assessment. Bird Conservation International 22: 1-34.",
+      "DOI": "10.1017/S0959270912000020"
+    },
+    {
+      "key": "ref19",
+      "doi-asserted-by": "publisher",
+      "unstructured": "De Monte, S., Cotté, C., D'Ovidio, F., Lévy, M., Le Corre, M. & Weimerskirch, H. 2012. Frigatebird behaviour at the ocean-atmosphere interface: integrating animal behaviour with multi-satellite data. Journal of the Royal Society Interface 9: 3351-3358.",
+      "DOI": "10.1098/rsif.2012.0509"
+    },
+    {
+      "key": "ref20",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Dean, B., Freeman, R., Kirk, H., Leonard, K., Phillips, R. A., Perrins, C. M. & Guilford, T. 2013. Behavioural mapping of a pelagic seabird: combining multiple sensors and a hidden Markov model reveals the distribution of at-sea behaviour. Journal of the Royal Society Interface 10: 20120570.",
+      "DOI": "10.1098/rsif.2012.0570"
+    },
+    {
+      "key": "ref21",
+      "unstructured": "Dussault, C., Courtois, R., Ouellet, J. & Huot, J. 2001. lnfluence of satellite geometry and differential correction on GPS location accuracy. Wildlife Society Bulletin 29: 171-179."
+    },
+    {
+      "key": "ref22",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Fairbairn, J. & Shine, R. 1993. Patterns of sexual size dimorphism in seabirds of the Southern Hemisphere. Oikos 68: 139-145.",
+      "DOI": "10.2307/3545319"
+    },
+    {
+      "key": "ref23",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Fauchald, P. & Tveraa, T. 2003. Using first-passage time in the analysis of area restricted search and habitat selection. Ecology 84: 282-288.",
+      "DOI": "10.1890/0012-9658(2003)084[0282:UFPTIT]2.0.CO;2"
+    },
+    {
+      "issue": "305",
+      "key": "ref24",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/meps338295",
+      "article-title": ". Annual variation in diets, feeding locations and foraging behaviour of gannets in the North Sea: flexibility",
+      "author": "Hamer",
+      "year": "2007",
+      "unstructured": "Hamer, K. C., Humphreys, E. M., Garthe, S., Hennicke, J., Peters, G., Grémillet, D., Phillips, R. A., Harris, M. P. & Wanless, S. 2007. Annual variation in diets, feeding locations and foraging behaviour of gannets in the North Sea: flexibility, consistency and constraint. Marine Ecology Progress Series 338: 295-305.",
+      "journal-title": "consistency and constraint Marine Ecology Progress Series 338"
+    },
+    {
+      "key": "ref25",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Hennicke, J. C., James, D. J. & Weimerskirch, H. 2015. Sex-specific habitat utilization and differential breeding investments in Christmas Island frigatebirds throughout the breeding cycle. PLoS One 10: e0129437.",
+      "DOI": "10.1371/journal.pone.0129437"
+    },
+    {
+      "key": "ref26",
+      "unstructured": "Hijmans, R. J. 2018. raster: Geographic Data Analysis and Modeling. R package version 2.8-4."
+    },
+    {
+      "key": "ref27",
+      "unstructured": "Hijmans, R. J. 2017. geosphere: Spherical Trigonometry. R package version 1.5-7."
+    },
+    {
+      "key": "ref28",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Kay, W. P., Naumann, D. S., Bowen, H. J., Withers, S. J., Evans, B. J., Wilson, R. P., Stringell, T. B., Bull, J .C., Hopkins, P. W. & Börger, L. 2019. Minimizing the impact of biologging devices: Using computational fluid dynamics for optimizing tag design and positioning. Methods in Ecology and Evolution 10, 1222-1233.",
+      "DOI": "10.1111/2041-210X.13216"
+    },
+    {
+      "key": "ref29",
+      "unstructured": "Kuhn, M., Wing, J., Weston, S., Williams, A., Keefer, C., Engelhardt, A., Cooper, T., Mayer, Z., Kenkel, B., Team, T. R. C., Benesty, M., Lescarbeau, R., Ziem, A., Scrucca, L., Tang, Y., Candan, C. & Hunt, T. 2019. caret: Classification and Regression Training. R package version 6.0-84."
+    },
+    {
+      "key": "ref30",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Lagarde, F., Le Corre, M. & Lormée, H. 2001. Species and sex-biased predation on hatchling green turtles by frigatebirds on Europa Island, Western Indian Ocean. The Condor 103: 405-408.",
+      "DOI": "10.1093/condor/103.2.405"
+    },
+    {
+      "key": "ref31",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Lewis, S., Sherratt, T. N., Hamer, K. C. & Wanless, S. 2001. Evidence of intra-specific competition for food in a pelagic seabird. Nature 412: 816-819.",
+      "DOI": "10.1038/35090566"
+    },
+    {
+      "key": "ref32",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Lewison, R., Oro, D., Godley, B. J., Underhill, L., Bearhop, S., Wilson, R. P., Ainley, D., Arcos, J. M., Boersma, P. D., Borboroglu, P. G., Boulinier, T., Frederiksen, M., Genovart, M., González-Solís, J., Green, J. A., Grémillet, D., Hamer, K. C., Hilton, G. M., Hyrenbach, K. D., Martínez-Abraín, A., Montevecchi, W. A., Phillips, R. A., Ryan, P. G., Sagar, P., Sydeman, W. J., Wanless, S., Watanuki, Y., Weimerskirch, H. & Yorio, P. 2012. Research priorities for seabirds: Improving conservation and management in the 21st century. Endangered Species Research 17: 93-121.",
+      "DOI": "10.3354/esr00419"
+    },
+    {
+      "key": "ref33",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Mahoney, S. A. 1984. Plumage wettability of aquatic birds. The Auk 101: 181-185.",
+      "DOI": "10.1093/auk/101.1.181"
+    },
+    {
+      "key": "ref34",
+      "doi-asserted-by": "publisher",
+      "unstructured": "McClintock, B. T. & Michelot, T. 2018. momentuHMM: R package for generalized hidden Markov models of animal movement. Methods in Ecology and Evolution 9: 1518-1530.",
+      "DOI": "10.1111/2041-210X.12995"
+    },
+    {
+      "key": "ref35",
+      "doi-asserted-by": "publisher",
+      "unstructured": "McClintock, B. T., London, J. M., Cameron, M. F. & Boveng, P. L. 2017. Bridging the gaps in animal movement: hidden behaviors and ecological relationships revealed by integrated data streams. Ecosphere 8: e01751.",
+      "DOI": "10.1002/ecs2.1751"
+    },
+    {
+      "key": "ref36",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Michelot, T., Langrock, R. & Patterson, T. A. 2016. moveHMM: an R package for the statistical modelling of animal movement data using hidden Markov models. Methods in Ecology and Evolution 7: 1308-1315.",
+      "DOI": "10.1111/2041-210X.12578"
+    },
+    {
+      "key": "ref37",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Miller, M. G., Carlile, N., Phillips, J. S., Mcduie, F. & Congdon, B. C. 2018. Importance of tropical tuna for seabird foraging over a marine productivity gradient. Marine Ecology Progress Series 586: 233-249.",
+      "DOI": "10.3354/meps12376"
+    },
+    {
+      "key": "ref38",
+      "unstructured": "Morgan-Wall, T. 2019. rayshader: Create and visualize hillshaded maps from elevation matrices. R package version 0.11.5. https://CRAN.R-project.org/package=rayshader."
+    },
+    {
+      "key": "ref39",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Oppel, S., Beard, A., Fox, D., Mackley, E., Leat, E., Henry, L., Clingham, E., Fowler, N., Sim, J., Sommerfeld, J., Weber, N., Weber, S. & Bolton, M. 2015. Foraging distribution of a tropical seabird supports Ashmole's hypothesis of population regulation. Behavioral Ecology and Sociobiology 69: 915-926.",
+      "DOI": "10.1007/s00265-015-1903-3"
+    },
+    {
+      "key": "ref40",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Oppel, S., Bolton, M., Carneiro, A. P. B., Dias, M. P., Green, J. A., Masello, J. F., Phillips, R. A., Owen, E., Quillfeldt, P., Beard, A., Bertrand, S., Blackburn, J., Boersma, P. D., Borges, A., Broderick, A. C., Catry, P., Cleasby, I., Clingham, E., Creuwels, J., Crofts, S., Cuthbert, R. J., Dallmeijer, H., Davies, D., Davies, R., Dilley, B. J., Dinis, H. A., Dossa, J., Dunn, M. J., Efe, M. A., Fayet, A. L., Figueiredo, L., Frederico, A. P., Gjerdrum, C., Godley, B. J., Granadeiro, J. P., Guilford, T., Hamer, K. C., Hazin, C., Hedd, A., Henry, L., Hernández-Montero, M., Hinke, J., Kokubun, N., Leat, E., McFarlane Tranquilla, L., Metzger, B. Militão, T., Montrond, G., Mullié, W., Padget, O., Pearmain, E. J., Pollet, I. L., Pütz, K., Quintana, F., Ratcliffe, N., Ronconi, R. A., Ryan, P. G., Saldanha, S., Shoji, A., Sim, J., Small, C., Soanes, L., Takahashi, A., Trathan, P., Trivelpiece, W., Veen, J., Wakefield, E., Weber, N., Weber, S., Zango, L., Daunt, F., Ito, M., Harris, M. P., Newell, M. A., Wanless, S., González-Solís, J. & Croxall, J. 2018. Spatial scales of marine conservation management for breeding seabirds. Marine Policy 98: 37-46.",
+      "DOI": "10.1016/j.marpol.2018.08.024"
+    },
+    {
+      "issue": "212",
+      "key": "ref41",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3354/meps12377",
+      "article-title": ". Seasonal shifts in foraging distribution due to individual flexibility in a tropical pelagic forager",
+      "author": "Oppel",
+      "year": "2017",
+      "unstructured": "Oppel, S., Weber, S., Weber, N., Fox, D., Leat, E., Sim, J., Sommerfeld, J., Bolton, M., Broderick, A. C. & Godley, B. J. 2017. Seasonal shifts in foraging distribution due to individual flexibility in a tropical pelagic forager, the Ascension frigatebird. Marine Ecology Progress Series 585: 199-212.",
+      "journal-title": "the Ascension frigatebird Marine Ecology Progress Series 585"
+    },
+    {
+      "key": "ref42",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Osorno, J., Torres, R. & Macias Garcia, C. 1992. Kleptoparasitic behaviour of the Magnificent Frigatebird: Sex bias and success. The Condor 94: 692-698.",
+      "DOI": "10.2307/1369253"
+    },
+    {
+      "key": "ref43",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Paiva, V. H., Geraldes, P., Ramirez, I., Werner, A. C., Garthe, S. & Ramos, J. A. 2013. Overcoming difficult times: the behavioural resilience of a marine predator when facing environmental stochasticity. Marine Ecology Progress Series 486: 277-288.",
+      "DOI": "10.3354/meps10332"
+    },
+    {
+      "key": "ref44",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Paredes, R., Orben, R. A., Suryan, R. M., Irons, D. B., Roby, D. D., Harding, A. M. A., Young, R. C., Benoit-Bird, K., Ladd, C., Renner, H., Heppell, S., Phillips, R. A. & Kitaysky, A. 2014. Foraging responses of black-legged kittiwakes to prolonged food-shortages around colonies on the Bering Sea shelf. PLoS One 9: e92520.",
+      "DOI": "10.1371/journal.pone.0092520"
+    },
+    {
+      "key": "ref45",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Parr, N., Bearhop, S., Douglas, D. C., Takekawa, J. Y., Prosser, D. J., Newman, S. H., Perry, W. M., Balachandran, S., Witt, M. J., Hou, Y., Luo, Z. & Hawkes, L. A. 2017. High altitude flights by ruddy shelduck Tadorna ferruginea during trans-Himalayan migrations. Journal of Avian Biology 48: 1-6.",
+      "DOI": "10.1111/jav.01443"
+    },
+    {
+      "key": "ref46",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Pavlis, N. K., Holmes, S. A., Kenyon, S. C. & Factor, J. K. 2012. The development and evaluation of the Earth Gravitational Model 2008 (EGM2008). Journal of Geophysical Research 117: B04406.",
+      "DOI": "10.1029/2011JB008916"
+    },
+    {
+      "key": "ref47",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Ratcliffe, N., Bell, M., Pelembe, T., Boyle, D., Benjamin, R., White, R., Godley, B. J., Stevenson, J. & Sanders, S. 2010. The eradication of feral cats from Ascension Island and its subsequent recolonization by seabirds. Oryx 44: 20-29.",
+      "DOI": "10.1017/S003060530999069X"
+    },
+    {
+      "key": "ref48",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Ratcliffe, N., Pelembe, T. & White, R. 2008. Resolving the population status of Ascension Frigatebird Fregata aquila using a 'virtual ecologist' model. Ibis 150: 300-306.",
+      "DOI": "10.1111/j.1474-919X.2007.00778.x"
+    },
+    {
+      "key": "ref49",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Rattenborg, N. C., Voirin, B., Cruz, S. M., Tisdale, R., Dell'Omo, G., Lipp, H.-P., Wikelski, M. & Vyssotski, A. L. 2016. Evidence that birds sleep in mid-flight. Nature Communications 7: 12468.",
+      "DOI": "10.1038/ncomms12468"
+    },
+    {
+      "key": "ref50",
+      "unstructured": "R Core Team. 2019. R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. www.R-project.org."
+    },
+    {
+      "issue": "41449",
+      "key": "ref51",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1371/journal.pone.0041449",
+      "article-title": ". Flying at no mechanical energy cost: disclosing the secret of wandering albatrosses. PLoS One 7",
+      "author": "Sachs",
+      "year": "2012",
+      "unstructured": "Sachs, G., Traugott, J., Nesterova, A. P., Dell'Omo, G., Kümmeth, F., Heidrich, W., Vyssotski, A. L. & Bonadonna, F. 2012. Flying at no mechanical energy cost: disclosing the secret of wandering albatrosses. PLoS One 7, e41449.",
+      "journal-title": "e"
+    },
+    {
+      "key": "ref52",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Schreiber, E. 1999. Problems encountered when banding frigatebirds and boobies. Waterbirds 22: 310-313.",
+      "DOI": "10.2307/1522222"
+    },
+    {
+      "key": "ref53",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Stonehouse, B. & Stonehouse, S. 1963. The Frigate Bird Fregata aquila of Ascension Island. Ibis 103b: 409-422.",
+      "DOI": "10.1111/j.1474-919X.1963.tb06763.x"
+    },
+    {
+      "key": "ref54",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Thaxter, C. B., Lascelles, B., Sugar, K., Cook, A. S. C. P., Roos, S., Bolton, M., Langston, R. H. W. & Burton, N. H. K. 2012. Seabird foraging ranges as a preliminary tool for identifying candidate Marine Protected Areas. Biological Conservation 156: 53-61.",
+      "DOI": "10.1016/j.biocon.2011.12.009"
+    },
+    {
+      "key": "ref55",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Thorne, L. H., Hazen, E. L., Bograd, S. J., Foley, D. G., Conners, M. G., Kappes, M. A., Kim, H. M., Costa, D. P., Tremblay, Y. & Shaffer, S. A. 2015. Foraging behavior links climate variability and reproduction in North Pacific albatrosses. Movement Ecology 3: 27.",
+      "DOI": "10.1186/s40462-015-0050-9"
+    },
+    {
+      "key": "ref56",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Trefry, S. A., Diamond, A. W. & Jesson, L. K. 2013. Wing marker woes: A case study and meta-analysis of the impacts of wing and patagial tags. Journal of Ornithology 154: 1-11.",
+      "DOI": "10.1007/s10336-012-0862-y"
+    },
+    {
+      "key": "ref57",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Vandenabeele, S., Wilson, R. & Grogan, A. 2011. Tags on seabirds; how seriously are we considering instrument-induced behaviors? Animal Welfare 20: 559-571.",
+      "DOI": "10.1017/S0962728600003195"
+    },
+    {
+      "key": "ref58",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Wakefield, E. D., Bodey, T. W., Bearhop, S., Blackburn, J., Colhoun, K., Davies, R., Dwyer, R. G., Green, J. A., Grémillet, D., Jackson, A. L., Jessopp, M. J., Kane, A., Langston, R. H. W., Lescroël, A., Murray, S., Le Nuz, M., Patrick, S. C., Péron, C., Soanes, L. M., Wanless, S., Votier, S. C. & Hamer, K. C. 2013. Space partitioning without territoriality in gannets. Science 341: 68-70.",
+      "DOI": "10.1126/science.1236077"
+    },
+    {
+      "key": "ref59",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H. 2007. Are seabirds foraging for unpredictable resources? Deep Sea Research Part II: Topical Studies in Oceanography 54: 211-223.",
+      "DOI": "10.1016/j.dsr2.2006.11.013"
+    },
+    {
+      "key": "ref60",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H., Guionnet, T., Martin, J., Shaffer, S. A. & Costa, D. P. 2000. Fast and fuel efficient? Optimal use of wind by flying albatrosses. Proceedings of the Royal Society B: Biological Sciences 267: 1869-1874.",
+      "DOI": "10.1098/rspb.2000.1223"
+    },
+    {
+      "key": "ref61",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H., Chastel, O., Barbraud, C. & Tostain, O. 2003. Frigatebirds ride high on thermals. Nature 421: 333-334.",
+      "DOI": "10.1038/421333a"
+    },
+    {
+      "key": "ref62",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H., Le Corre, M., Jaquemet, S., Potier, M. & Marsac, F. 2004. Foraging strategy of a top predator in tropical waters: great frigatebirds in the Mozambique Channel. Marine Ecology Progress Series 275: 297-308.",
+      "DOI": "10.3354/meps275297"
+    },
+    {
+      "key": "ref63",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H., Le Corre, M., Tew Kai, E. & Marsac, F. 2010. Foraging movements of great frigatebirds from Aldabra Island: Relationship with environmental variables and interactions with fisheries. Progress in Oceanography 86: 204-213.",
+      "DOI": "10.1016/j.pocean.2010.04.003"
+    },
+    {
+      "key": "ref64",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Weimerskirch, H., Bishop, C., Jeanniard-du-Dot, T., Prudor, A. & Sachs, G. 2016. Frigate birds track atmospheric conditions over months-long transoceanic flights. Science 353: 74-78.",
+      "DOI": "10.1126/science.aaf4374"
+    },
+    {
+      "key": "ref65",
+      "doi-asserted-by": "publisher",
+      "unstructured": "Yonehara, Y., Goto, Y., Yoda, K., Watanuki, Y., Young, L. C., Weimerskirch, H., Bost, C. & Sato, K. 2016. Flight paths of seabirds soaring over the ocean surface enable measurement of fine-scale wind speed and direction. PNAS 113: 9039-9044.",
+      "DOI": "10.1073/pnas.1523853113"
+    }
+  ],
+  "container-title": [
+    "Seabird Journal"
+  ],
+  "original-title": [],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        10,
+        19
+      ]
+    ],
+    "date-time": "2023-10-19T13:19:14Z",
+    "timestamp": 1697721554000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "http://seabirdgroup.org.uk/seabird-32-1"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2020
+      ]
+    ]
+  },
+  "references-count": 66,
+  "URL": "https://doi.org/10.61350/sbj.32.1",
+  "archive": [
+    "Internet Archive",
+    "Internet Archive",
+    "Internet Archive"
+  ],
+  "relation": {},
+  "ISSN": [
+    "1757-5842"
+  ],
+  "issn-type": [
+    {
+      "value": "1757-5842",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2020
+      ]
+    ]
+  }
+}

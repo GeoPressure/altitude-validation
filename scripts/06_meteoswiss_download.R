@@ -3,9 +3,9 @@
 # MeteoSwiss publishes, for each automatic station, the height of the barometer
 # (`station_height_barometer_masl`) separately from the station height, and 10-min pressure at
 # barometer height (QFE, `prestas0`, instantaneous). The value at the full hour is kept for
-# 2022-2024. Most stations are exchanged on the GTS (and so assimilated by ERA5); a station is
-# flagged `in_isd` when its WMO index appears in NOAA's ISD station history, which receives non-US
-# data mainly from the GTS. Open data, "Source: MeteoSwiss".
+# 2022-2024. A station is flagged `in_isd` when its WMO index appears in NOAA's
+# ISD station history; this does not establish record-specific ERA5 assimilation status.
+# Open data, "Source: MeteoSwiss".
 
 source("R/utils.R")
 

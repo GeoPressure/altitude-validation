@@ -1,0 +1,36 @@
+{
+  "collection": "altitude-validation",
+  "collection_key": "GIN22L68",
+  "count": 77,
+  "added": [
+    {
+      "item_key": "A4JKX8VU",
+      "doi": "10.1098/rsif.2023.0591",
+      "collection": [
+        "GIN22L68"
+      ],
+      "attachments": [
+        {
+          "key": "XH2ESQ4E",
+          "linkMode": "linked_url",
+          "url": "https://eprints.whiterose.ac.uk/id/eprint/210939/1/lempidakis-et-al-2024-turbulence-causes-kinematic-and-behavioural-adjustments-in-a-flapping-flier%20%281%29.pdf"
+        }
+      ]
+    },
+    {
+      "item_key": "T66P2I96",
+      "doi": "10.1111/1365-2664.12760",
+      "collection": [
+        "GIN22L68"
+      ],
+      "attachments": [
+        {
+          "key": "RMTVRV9C",
+          "linkMode": "linked_url",
+          "url": "https://pureadmin.uhi.ac.uk/ws/portalfiles/portal/1959105/JPERoss_Smith_et_al.manuscript_postprint.pdf"
+        }
+      ]
+    }
+  ],
+  "note": "PDFs archived locally; newly imported Zotero attachments are PDF URL links, not stored copies."
+}
