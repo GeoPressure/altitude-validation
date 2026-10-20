@@ -62,7 +62,6 @@ lapse_gpt3 <- function(lon, lat, date) {
 B <- load_radiosondes(st)
 B <- B[is.finite(err_sl_rel) & is.finite(sp_sl) & is.finite(t2m_sl) & is.finite(d2m)]
 B[st[network == "igra"], on = "id", `:=`(lon = i.lon, lat = i.lat)]
-B[, date := as.POSIXct(substr(sounding, 1, 8), format = "%Y%m%d", tz = "UTC")]
 classes <- data.table(
   cls = c("summer", "winter"), climate = c("C temperate", "D continental"),
   daynight = c("day", "night"), title = c("Temperate summer day", "Continental winter night")
@@ -70,19 +69,10 @@ classes <- data.table(
 B[, cls := fifelse(sdoy >= 152 & sdoy <= 243, "summer", fifelse(sdoy >= 335 | sdoy <= 59,
   "winter", NA_character_))]
 B <- B[classes, on = .(cls, climate, daynight), nomatch = NULL]
-sfc <- B[surface == TRUE, .(press_s = press[1], gph_s = gph[1], sp_s = sp_sl[1],
-  tv2m_s = virtual_temperature(t2m_sl[1], d2m[1], sp_sl[1])), by = .(id, sounding)]
-K <- B[surface == FALSE & agl >= 1700 & agl <= 2300][order(abs(agl - 2000))][,
-  .SD[1], by = .(id, sounding)]
+K <- B[agl >= 1700 & agl <= 2300][order(abs(agl - 2000))][, .SD[1], by = .(id, sounding)]
 rm(B)
-K <- merge(K, sfc, by = c("id", "sounding"))
-K[, L := lapse_gpt3(lon, lat, date)]
-K[, `:=`(
-  e_isa = (alt_isa(press) - alt_isa(press_s)) - (gph - gph_s),
-  e_standard = err_sl_rel,
-  e_virtual = (altitude_lapse(press, sp_sl, virtual_temperature(t2m_sl, d2m, sp_sl), z_sl, L) -
-    gph) - (altitude_lapse(press_s, sp_s, tv2m_s, z_sl, L) - gph_s)
-)]
+K[, L := lapse_gpt3(lon, lat, level_time)]
+K[, `:=`(e_isa = err_isa, e_standard = err_standard, e_virtual = err_virtual)]
 ecols <- c("e_isa", "e_standard", "e_virtual")
 K[, paste0("m_", ecols) := lapply(.SD, median), by = cls, .SDcols = ecols]
 K[, dist := sqrt((e_isa - m_e_isa)^2 + (e_standard - m_e_standard)^2 +
@@ -98,15 +88,8 @@ fwrite(pick[, .(class = title, id, name, sounding, local_solar_hour = lsh, agl, 
 
 example <- function(k) {
   s <- st[network == "igra" & id == k$id]
-  hh <- as.integer(substr(k$sounding, 9, 10))
-  dd <- as.integer(substr(k$sounding, 1, 8))
-  o <- as.data.table(read_parquet(file.path(dir_interim, "igra", paste0(k$id, ".parquet"))))
-  o <- o[year * 10000 + month * 100 + day == dd & hour == hh]
-  o <- o[press > 0 & temp > -8000][order(-press)]
-  o[lvl2 == 1 & gph < -8000, gph := as.integer(round(s$elev))]
-  o <- o[gph > -8000 & press <= o[lvl2 == 1, press][1]]
-  o[, agl := gph - k$gph_s]
-  o <- o[agl <= 3000]
+  o <- as.data.table(read_parquet(file.path(selection_dir("igra"), "accepted", paste0(k$id, ".parquet"))))
+  o <- o[sounding == k$sounding & temp > -8000 & agl <= 3000][order(-press)]
   tv0 <- virtual_temperature(k$t2m_sl, k$d2m, k$sp_sl)
   z <- seq(0, 3000, 50) + k$gph_s
   prof <- rbind(
@@ -117,7 +100,7 @@ example <- function(k) {
     data.table(agl = z - k$gph_s, t = tv0 - 273.15 + k$L * (z - k$z_sl),
       what = formulas[["virtual"]])
   )
-  lt <- format(as.POSIXct(as.character(k$sounding), format = "%Y%m%d%H", tz = "UTC"),
+  lt <- format(k$launch,
     "%d %b %Y, %H UTC")
   name <- tools::toTitleCase(tolower(sub("[;,(].*$", "", s$name)))
   if (grepl("^USM", k$id)) name <- sprintf("%s, %s, USA", name, trimws(sub("\\.$", "",
@@ -154,7 +137,7 @@ p_profile <- ggplot(prof, aes(t, agl / 1000, colour = what)) +
       override.aes = list(linewidth = c(1.1, 0.7, 0.7, 0.7)))) +
   scale_linetype_manual(values = lt_f, guide = "none") +
   scale_y_continuous(breaks = 0:3, limits = c(0, 3.1), expand = expansion(mult = c(0.01, 0.01))) +
-  scale_x_continuous(breaks = seq(-20, 40, 10), limits = c(-25, 40), expand = expansion(mult = 0.01)) +
+  scale_x_continuous(breaks = scales::breaks_pretty(n = 6), expand = expansion(mult = 0.02)) +
   labs(y = "Height above sounding surface (km)", x = "Temperature (°C)") +
   theme(panel.spacing.x = unit(1.5, "lines"), panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
     legend.position = "bottom", legend.box = "horizontal", legend.text = element_text(size = 8))
@@ -178,38 +161,12 @@ size_ref <- c(GHCNh = 0.45, GNSS = 1.4, MeteoSwiss = 1.3, IGRA2 = 0.75)
 p2 <- ggplot() + geom_sf(data = world, fill = "#EEF0F3", colour = "white", linewidth = 0.15) + geom_sf(aes(colour = what, shape = what, size = what), data = sf_pts, alpha = 0.85) + scale_colour_manual(values = pal_reference, labels = lab_ref, name = NULL) + scale_shape_manual(values = shp_ref, labels = lab_ref, name = NULL) + scale_size_manual(values = size_ref, labels = lab_ref, name = NULL) + coord_sf(crs = crs_map, expand = FALSE) + theme(axis.text = element_blank(), panel.grid.major = element_line(colour = "#F3F4F6", linewidth = 0.2), legend.text = element_text(size = 9.5)) + guides(colour = guide_legend(override.aes = list(size = 2.6)))
 save_fig(p2, "fig2_stations", 7.2, 3.2)
 
-# Regional metadata corroboration belongs in the supplement.
-swiss_pts <- rbind(ref[, .(lon, lat, what = reference)], st[network == "igra" & id %in% igra_used, .(lon, lat, what = "IGRA2")])[lon >= 5.5 & lon <= 11 & lat >= 45.6 & lat <= 48]
-swiss_pts <- st_as_sf(swiss_pts, coords = c("lon", "lat"), crs = 4326)
-ps <- ggplot() + geom_sf(data = world, fill = "#EEF0F3", colour = "white", linewidth = 0.2) + geom_sf(aes(colour = what, shape = what), data = swiss_pts, size = 1.8, alpha = 0.8) + scale_colour_manual(values = pal_reference, name = NULL) + scale_shape_manual(values = shp_ref, name = NULL) + coord_sf(xlim = c(5.5, 11), ylim = c(45.6, 48), expand = FALSE) + labs(x = NULL, y = NULL)
-save_fig(ps, "supp_swiss_stations", 6, 3.5)
-ms <- tab("paper_swiss_height.csv")
-ms <- melt(ms, id.vars = "id", measure.vars = c("bias_ghcnh", "bias_height_only", "bias_meteoswiss"), variable.name = "reference", value.name = "bias")
-ms[, reference := factor(reference, c("bias_ghcnh", "bias_height_only", "bias_meteoswiss"), c("GHCNh\nlisted height", "Same GHCNh pressure\nbarometer height", "MeteoSwiss pressure\nbarometer height"))]
-ps <- ggplot(ms, aes(reference, abs(bias))) + geom_line(aes(group = id), colour = "#CBD5E1", linewidth = 0.35) + geom_point(colour = pal_reference[["GHCNh"]], size = 1.5, alpha = 0.6) + stat_summary(fun = median, geom = "point", shape = 18, size = 3.8, colour = pal_reference[["MeteoSwiss"]]) + labs(x = NULL, y = "Absolute station mean error (m)")
-save_fig(ps, "supp_swiss_height", 6.5, 3.8)
-
 # ---- Figure 3: observation-level errors and station-level distributions -------------------------
 gs <- tab("paper_ground_station.csv")[reference == "GHCNh"]
 qs <- function(x, w) as.list(setNames(vapply(c(0.1, 0.25, 0.5, 0.75, 0.9), function(p) {
   wquant(x, w, p)
 }, 1), c("q10", "q25", "q50", "q75", "q90")))
-stA <- tab("ground_station_stats.csv")
-G <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
-  col_select = c("id", "date", "year", "pressure", "err_sl", "gross", "t2m_sl", "sp_sl", "d2m")))
-G <- G[stA[, .(id, year = selected_year)], on = .(id, year)]
-G <- G[!gross %in% TRUE & is.finite(err_sl) & is.finite(d2m)]
-st <- load_stations()
-G <- merge(G, stA[, .(id, selected = reference)], by = "id")[selected == TRUE]
-G <- merge(G, st[network == "ghcnh", .(id, lat, lon, elev, z_sl)], by = "id")
-G[gs[formula == "standard", .(id, cw)], on = "id", cw := i.cw]
-G[, `:=`(err_isa = alt_isa(pressure * 100) - elev,
-  err_standard = err_sl,
-  err_virtual = err_sl + altitude_lapse(pressure * 100, sp_sl,
-    virtual_temperature(t2m_sl, d2m, sp_sl), z_sl,
-    lapse_gpt3(lon, lat, date)) -
-      altitude_lapse(pressure * 100, sp_sl, t2m_sl, z_sl))]
-G[, w := cw / .N, by = id]
+G <- as.data.table(read_parquet(file.path(analysis_dir, "ground_comparison.parquet")))[reference == "GHCNh"]
 obs <- rbindlist(lapply(c("isa", "standard", "virtual"), function(f) {
   x <- abs(G[[paste0("err_", f)]])
   as.data.table(c(list(metric = "observation", formula = f),
@@ -252,7 +209,7 @@ p3 <- ggplot(ql, aes(q50, row, colour = formula)) +
 save_fig(p3, "fig3_ground", 7.2, 3.7)
 
 # ---- Figure 4: error of the height above the ground in flight --------------------------------
-# Cell-weighted station medians and IQRs in 250 m bands of observed levels.
+# Equally weighted station medians and IQRs in 250 m bands of observed levels.
 fs <- tab("paper_flight_profile_station.csv")[agl_mid <= 4000]
 fsq <- rbind(cbind(metric = "bias", fs[, qs(bias, cw), by = .(formula, agl_mid)]),
   cbind(metric = "sd", fs[is.finite(sd), qs(sd, cw), by = .(formula, agl_mid)]))
@@ -287,9 +244,9 @@ bird_panel <- ggplot(bh[lo < 4000], aes(100 * prop, (lo + 50) / 1000)) +
     hjust = 1.05, vjust = -0.4, size = 2.9, colour = "#4B5563", family = font) +
   scale_y_continuous(breaks = 0:4, limits = c(0, 4), expand = expansion(mult = 0.01)) +
   labs(y = NULL, x = sprintf("Flight time\n(%%, %d birds)", n_tags), tag = "c")
-p4 <- flight_panel("bias", "Station bias (m)", "a", c(-160, 120),
-    seq(-150, 100, 50)) +
-  (flight_panel("sd", "Within-station SD (m)", "b", c(0, 90), seq(0, 75, 25)) +
+p4 <- flight_panel("bias", "Station bias (m)", "a", c(-200, 150),
+    seq(-200, 150, 50)) +
+  (flight_panel("sd", "Within-station SD (m)", "b", c(0, 125), seq(0, 125, 25)) +
     labs(y = NULL)) +
   bird_panel + plot_layout(guides = "collect", widths = c(1.15, 1, 0.55)) &
   theme(legend.position = "bottom", legend.text = element_text(size = 9.5))

@@ -91,7 +91,7 @@ for (i in seq_len(nrow(variants))) {
   a[, bin := cut(h, c(0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, Inf), right = FALSE)]
   w <- a[, .(weight = sum(wt)), by = bin][order(bin)]
   w[, prop := weight / sum(weight)]
-  w[, hbin := levels(cut(0, hbin_breaks, right = TRUE))[-1][as.integer(bin)]]
+  w[, hbin := levels(cut(0, hbin_breaks, right = TRUE))[as.integer(bin)]]
   w[, variant := v]
   weights[[v]] <- w
   o <- order(a$h)

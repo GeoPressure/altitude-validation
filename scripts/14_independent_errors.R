@@ -135,21 +135,20 @@ G <- merge(G, hc[, .(station, height_ok, sensor_class)], by = "station")
 G[, h_use := fifelse(is.finite(h_log), h_log, hdr_H)]
 G[, `:=`(elev = h_use - N96, elev_08 = h_use - N08)]
 G <- G[is.finite(elev) & is.finite(pressure)]
-# GNSS in_isd below is a legacy placeholder, not a verified membership/assimilation flag.
 G <- G[, .(source = "GNSS", id = station, lat, lon, date, pressure, elev, elev_08,
-  elev_hdr = hdr_H - N96, height_ok, sensor_class, in_isd = FALSE)]
+  elev_hdr = hdr_H - N96, height_ok, sensor_class)]
 
 # ---- MeteoSwiss --------------------------------------------------------------------------------
 ms_st <- fread(file.path(dir_interim, "meteoswiss", "stations.csv"))
 M <- rbindlist(lapply(list.files(file.path(dir_interim, "meteoswiss"), "\\.parquet$",
   full.names = TRUE), function(f) as.data.table(read_parquet(f))))
-M <- merge(M, ms_st[, .(id, lat, lon, elev, in_isd)], by = "id")
+M <- merge(M, ms_st[, .(id, lat, lon, elev)], by = "id")
 M <- M[, .(source = "MeteoSwiss", id, lat, lon, date, pressure, elev, elev_08 = elev,
-  elev_hdr = elev, height_ok = TRUE, sensor_class = "barometer (other)", in_isd)]
+  elev_hdr = elev, height_ok = TRUE, sensor_class = "barometer (other)")]
 
 X <- rbind(G, M)
 X <- X[as.integer(format(date, "%Y")) %in% years_main]
-st <- unique(X[, .(source, id, lat, lon, elev, height_ok, sensor_class, in_isd)], by = c("source",
+st <- unique(X[, .(source, id, lat, lon, elev, height_ok, sensor_class)], by = c("source",
   "id"))
 cat(nrow(st), "stations:", paste(names(table(st$source)), table(st$source), collapse = ", "), "\n")
 
@@ -213,7 +212,9 @@ E[, gross := {
 gross_frac <- E[, .(gross_frac = mean(gross %in% TRUE)), by = source]
 E <- E[!gross %in% TRUE & is.finite(err_sl)]
 
-ss <- E[, .(n = .N, bias_sl = mean(err_sl), sd_sl = sd(err_sl), bias_land = mean(err_land,
+ss <- E[, .(n = .N, n_land = sum(is.finite(err_land)),
+  bias_sl_paired = mean(err_sl[is.finite(err_land)]), sd_sl_paired = sd(err_sl[is.finite(err_land)]),
+  bias_sl = mean(err_sl), sd_sl = sd(err_sl), bias_land = mean(err_land,
   na.rm = TRUE), sd_land = sd(err_land, na.rm = TRUE),
   # Header-height and EGM2008 variants only shift the constant height of the station
   bias_hdr = mean(err_sl) + elev[1] - elev_hdr[1], bias_08 = mean(err_sl) + elev[1] - elev_08[1]),
@@ -237,63 +238,19 @@ fwrite(counts, file.path(dir_tables, "indep_counts.csv"))
 print(counts)
 
 
-# ---- Comparison with GHCNh ------------------------------------------------------------------
-# Same statistics by terrain for the GHCNh reference set and the complementary references, so that
-# complementary reference archives are compared in similar terrain.
-hz <- fread(file.path(dir_tables, "ground_station_stats.csv"))[reference == TRUE]
-cmp <- rbind(
-  hz[, .(set = "GHCNh reference set", terrain = terrain_class(sdor), bias_sl, sd_sl)],
-  ss[source == "GNSS" & height_ok, .(set = "GNSS, height-checked", terrain = terrain_class(sdor), bias_sl,
-    sd_sl)],
-  ss[source == "MeteoSwiss", .(set = fifelse(in_isd, "MeteoSwiss, in ISD", "MeteoSwiss, not in ISD"),
-    terrain = terrain_class(sdor), bias_sl, sd_sl)]
-)
-cmp <- cmp[, .(n_stations = .N, abs_bias_median = median(abs(bias_sl)), sd_median = median(sd_sl)),
-  keyby = .(set, terrain)]
-fwrite(cmp, file.path(dir_tables, "indep_by_terrain.csv"))
-print(cmp)
-
-# Station density: if ERA5 fitted each assimilated station tightly, isolated stations (largest
-# observation influence) would show the smallest scatter.
-all_st <- fread(file.path(dir_interim, "ghcnh_stations_all.csv"))
-hav <- function(la1, lo1, la2, lo2) {
-  r <- pi / 180
-  6371 * 2 * asin(sqrt(sin((la2 - la1) * r / 2)^2 + cos(la1 * r) * cos(la2 * r) *
-    sin((lo2 - lo1) * r / 2)^2))
-}
-hz[, nb300 := mapply(function(a, b) sum(hav(a, b, all_st$lat, all_st$lon) < 300) - 1, lat, lon)]
-dens <- hz[sdor < 20, .(n_stations = .N, sd_median = median(sd_sl),
-  abs_bias_median = median(abs(bias_sl))),
-  keyby = .(neighbours_300km = cut(nb300, c(-1, 2, 10, 30, Inf), labels = c("0-2", "3-10", "11-30",
-    ">30")))]
-fwrite(dens, file.path(dir_tables, "assim_density.csv"))
-print(dens)
-
-# MeteoSwiss barometer heights vs the elevation GHCNh lists for the same stations
-crosswalk <- fread(file.path(dir_interim, "ghcnh", "legacy_station_matches.csv"))
-crosswalk[, wmo := substr(legacy_id, 1, 5)]
-crosswalk <- crosswalk[grepl("^[0-9]{5}$", wmo) & distance_km <= 1,
-  .(match_distance_km = min(distance_km)), by = .(wmo, ghcnh_id)]
-ghc <- fread(file.path(dir_interim, "ghcnh_stations_all.csv"))
-crosswalk <- merge(crosswalk, ghc[, .(id, ghcnh_elev = elev)],
-  by.x = "ghcnh_id", by.y = "id")
-ms <- merge(ms_st[!is.na(wmo), .(wmo = sprintf("%05d", as.integer(wmo)), id, name, elev_station,
-  elev)], crosswalk[, .(wmo, ghcnh_id, ghcnh_elev, match_distance_km)], by = "wmo")
+# Paired GHCNh–MeteoSwiss sites: WMO identity and separation within 1 km ------
+hz <- fread(file.path(dir_tables, "ground_station_stats.csv"))
+meta <- readLines(file.path(dir_raw, "ghcnh-station-list.txt"), warn = FALSE)
+identities <- data.table(id = trimws(substr(meta, 1, 11)), wmo = trimws(substr(meta, 81, 85)))
+hz <- merge(hz, identities[wmo != ""], by = "id")
+ms <- merge(hz[, .(ghcnh_id = id, ghcnh_elev = elev, bias_ghcnh = bias_sl,
+  ghcnh_lat = lat, ghcnh_lon = lon, wmo)],
+  ms_st[, .(wmo = sprintf("%05d", as.integer(wmo)), id, name, lat, lon, elev_station, elev)], by = "wmo")
+ms[, match_distance_km := as.numeric(sf::st_distance(
+  sf::st_as_sf(ms, coords = c("ghcnh_lon", "ghcnh_lat"), crs = 4326),
+  sf::st_as_sf(ms, coords = c("lon", "lat"), crs = 4326), by_element = TRUE)) / 1000]
+ms <- ms[match_distance_km <= 1]
 ms[, `:=`(d_station = ghcnh_elev - elev_station, d_barometer = ghcnh_elev - elev)]
-# ERA5 bias at the same Swiss stations with GHCNh's elevation and with the published barometer
-# height: if GHCNh's biases there come from its elevations, they follow -(GHCNh - barometer).
-hz_all <- fread(file.path(dir_tables, "ground_station_stats.csv"))
-ms <- merge(ms, hz_all[, .(ghcnh_id = id, bias_ghcnh = bias_sl, reference, ghcnh_year = selected_year)], by = "ghcnh_id",
-  all.x = TRUE)
 ms <- merge(ms, ss[source == "MeteoSwiss", .(id, bias_meteoswiss = bias_sl)], by = "id", all.x = TRUE)
 fwrite(ms, file.path(dir_tables, "meteoswiss_vs_ghcnh.csv"))
-both <- ms[is.finite(bias_ghcnh) & is.finite(bias_meteoswiss)]
-fwrite(both[, .(n = .N, n_diff5 = sum(abs(d_barometer) > 5),
-  r_bias_vs_height = cor(bias_ghcnh, -d_barometer),
-  abs_bias_median_ghcnh = median(abs(bias_ghcnh)),
-  abs_bias_median_meteoswiss = median(abs(bias_meteoswiss)),
-  mean_abs_bias_ghcnh = mean(abs(bias_ghcnh)), mean_abs_bias_meteoswiss = mean(abs(bias_meteoswiss)),
-  n_ref = sum(reference), n_ref_diff5 = sum(reference & abs(d_barometer) > 5))],
-  file.path(dir_tables, "meteoswiss_vs_ghcnh_summary.csv"))
-cat(nrow(ms), "MeteoSwiss stations in GHCNh; |GHCNh elevation - barometer height| > 5 m at",
-  ms[abs(d_barometer) > 5, .N], "\n")
+cli::cli_alert_success("Paired sensor-height comparison: {nrow(ms)} retained GHCNh stations")

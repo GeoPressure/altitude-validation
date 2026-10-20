@@ -1,6 +1,6 @@
 # Planned appendix: sensitivity to uncertain horizontal position (T10)
 
-The manuscript evaluates pressure-to-altitude conversion at known positions. The author has now requested a small appendix through 200 km. The active, deliberately simpler pilot is specified in [T10 design](../methods/T10/design.md), with a reproducible extraction script and predetermined station/sounding selection. The broader design below is retained as possible follow-up; terrain clearance and uncertainty-guidance lookup are outside the current pilot. No result is assumed in advance.
+The manuscript evaluates pressure-to-altitude conversion at known positions. The author has now requested a small appendix through 200 km. The active, deliberately simpler pilot is specified in [T10 design](../../../docs/methods/T10/design.md), with a reproducible extraction script and predetermined station/sounding selection. The broader design below is retained as possible follow-up; terrain clearance and uncertainty-guidance lookup are outside the current pilot. No result is assumed in advance.
 
 ## Separate three questions
 

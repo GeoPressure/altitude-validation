@@ -1,6 +1,6 @@
 # GPS, barometers and animal flight height
 
-Evidence relevant to the scope of the altitude-validation paper. Prepared 18 October 2026; retained as a literature-review record. Subsequent manuscript decisions are tracked in [the response plan](../manuscript/comment-response-plan.md).
+Evidence relevant to the scope of the altitude-validation paper. Prepared 18 October 2026; retained as a literature-review record. Subsequent manuscript decisions are tracked in [the response plan](../../archive/docs/manuscript/comment-response-plan.md).
 
 ## Purpose and reading guide
 

@@ -37,83 +37,99 @@ tab <- function(f) fread(file.path("output/tables", f))
 r0 <- function(x) formatC(x, format = "f", digits = 0, big.mark = ",")
 r1 <- function(x) formatC(x, format = "f", digits = 1)
 latex <- knitr::is_latex_output()
-rfig <- function(f) knitr::include_graphics(file.path("../output/figures", paste0(f, ".png")), error = FALSE)
-kab <- function(d, ...) {
-  if (latex) knitr::kable(d, format = "latex", booktabs = TRUE, linesep = "", ...) else knitr::kable(d, ...)
+rfig <- function(f) {
+  knitr::include_graphics(
+    file.path("../output/figures", paste0(f, ".png")),
+    error = FALSE
+  )
 }
-short <- c(isa = "Standard atm.", standard = "ERA5 standard", virtual = "ERA5 virtual + GPT3")
-sens <- tab("paper_ground_screen_sensitivity.csv")
+kab <- function(d, ...) {
+  if (latex) {
+    knitr::kable(d, format = "latex", booktabs = TRUE, linesep = "", ...)
+  } else {
+    knitr::kable(d, ...)
+  }
+}
+short <- c(
+  isa = "Standard atm.",
+  standard = "ERA5 standard",
+  virtual = "ERA5 virtual + GPT3"
+)
 swh <- tab("paper_swiss_height_summary.csv")
 gfit <- tab("ground_gap_fit.csv")
 gapf <- function(col, x) approx(gfit$adz, gfit[[col]], x)$y
 main <- tab("ground_main.csv")
-mn <- function(ref, col, ds = "sl") main[reference == ref & dataset == ds][[col]]
-cmpT <- tab("paper_reference_terrain.csv")
-dens <- tab("assim_density.csv")
+mn <- function(ref, col, ds = "sl") {
+  main[reference == ref & dataset == ds][[col]]
+}
 te <- tab("flight_temperature_explanation.csv")
 ```
 
-This supplement provides reference-data rules and full-height error summaries (S1), environmental profiles (S2), the ERA5 product comparison (S3), reference-height and weighting checks (S4), and a horizontal-position pilot (S5). It uses the main manuscript's three conversions and error definitions: error is estimated minus reference height; station bias is mean signed error; SD is within-station variability; and p95 is the 95th percentile of individual absolute errors. **ERA5 standard** denotes the ERA5 surface reference with the standard lapse rate; **ERA5 virtual + GPT3** adds virtual temperature and a climatological lapse rate. Code, input provenance and extended diagnostics accompany the analysis [@validation].
-
-# S1 Reference data, selection and error distributions
-
-## Reference data and matching
-
-GHCNh supplies ground pressure and reported station elevation for each station's latest qualifying year in 2022--2026 [@ncei_ghcnh]. HadISD locations define the initial candidate footprint only. One randomly selected station per 2° cell is supplemented by stations above 1000 m; after screening, each retained cell receives equal weight, divided among its stations. GNSS barometers provide a complementary ground check in 2022--2024 [@bkgdata; @rinex304], and IGRA2 soundings provide the flight-height reference in 2023--2024 [@durre2006; @durre2018; @igradocumentation]. MeteoSwiss methods and results are in S4. Missing reference observations are not filled.
-
-All observations are matched to ERA5 single-level surface pressure, 2 m temperature, dewpoint and orography at the nearest 0.25° grid cell and hour [@era5single; @hersbach2020]. GHCNh reports use the nearest hour (half-hour ties go to the earlier hour), retaining the first report per hour. GNSS samples within ±1 min of an hour are averaged to unique station-hours. Radiosonde level times combine release and elapsed ascent times; missing values use nominal release time or a 5 m s$^{-1}$ ascent estimate. All levels use launch-station coordinates, ignoring balloon drift.
-
-IGRA2 reports geopotential heights; these do not establish independent geometric-height accuracy at every level. We retain levels 1--6000 m above each sounding's surface, substituting station elevation if surface height is missing. Source extraction requires pressure $\geq 400$ hPa, so vertical coverage also depends on launch elevation. @tbl-flight-tails gives support by height band; no additional station filter is applied within bands.
-
-## Selection and quality control
-
-@tbl-selection gives the retained rules. Listed station elevation may differ from barometer height [@vasiljevic2006; @haiden2018], and the ERA5-residual-based screen cannot distinguish reference errors from model errors. Screened ground results are therefore conditional on selection; S4 tests its effect. The step check uses monthly medians from the selected year and up to two preceding years, with a month-of-year effect and one breakpoint. It requires at least 18 monthly medians spanning all 12 calendar months: `r sum(tab("ground_station_stats.csv")$step_tested)` of `r nrow(tab("ground_station_stats.csv"))` post-match coverage-qualified stations were testable. Other stations are untested, rather than demonstrated stable.
-
-GNSS heights combine site-log marker/antenna heights and barometer offsets; EGM96 geoid undulation is subtracted from ellipsoidal heights. The median signed difference from the file-header height must be within ±1 m. This checks metadata consistency, without establishing metre-level absolute accuracy or independence from ERA5. Retained ground coverage is summarized in @tbl-coverage; partial 2026 records must pass the same reporting threshold as completed years (S4).
-
-| Reference/check | Selection or quality rule |
-|:--|:--|
-| GHCNh coverage | Use each station's most recent qualifying year from 2022--2026 with $\geq 183$ reporting days and $\geq 4$ distinct accepted station-hours per reporting day on average |
-| GHCNh pressure QC | Pressure in 300--1100 hPa; exclude suspect/error codes and lower-case QC flags; retain missing QC and accepted legacy flags |
-| Ground observation flag | Discrepancy from the station median exceeds both 100 m and 10 scaled MAD |
-| GHCNh station flags | Absolute mean offset >30 m + 10% of the absolute station--ERA5 elevation gap; fitted step magnitude $\geq 10$ m with absolute t $\geq 10$; or >1% gross observations |
-| GNSS coverage | $\geq 180$ listed file-days across the study window, $\geq 2160$ usable unique hours and the header/site-log height check |
-| IGRA coverage | Candidate record spans the study years with a one-year margin; $\geq 100$ soundings before thinning and $\geq 100$ available soundings in post-processing, across the two years |
-| IGRA observation flag | Surface-referenced discrepancy from the height-band median exceeds both 150 m and 10 scaled MAD; finite atmospheric inputs and a retained sounding surface are required |
-
-: Selection and quality rules. MAD is R's scaled median absolute deviation. Offset and observation flags use ERA5-standard discrepancies; they are not independent diagnoses of sensor faults. {#tbl-selection tbl-colwidths="[25,75]"}
-
 ```{r}
-#| label: tbl-coverage
-#| tbl-cap: "Retained ground inputs: GHCNh selected years in 2022--2026 and complementary GNSS records in 2022--2024. Hour availability is the median percentage of all calendar hours across station-years, including empty station-years; it reflects reporting schedules as well as gaps. Every retained row is a unique station-hour."
-d <- tab("paper_ground_coverage.csv")[reference != "MeteoSwiss"]
-kab(d[, .(Reference = reference, Stations = stations, `Unique hours` = r0(unique_hours), `Median availability (%)` = r1(median_hour_pct))], align = "lrrr")
+#| results: asis
+selection_analysis_ready <- file.exists(
+  "output/tables/selection_analysis_complete.json"
+)
+if (!selection_analysis_ready) {
+  cat(
+    "**Working draft:** the selection reruns and numerical refresh are in progress. Numerical results and result figures have not yet been updated to the methods below.\n\n"
+  )
+}
 ```
 
-## Individual errors across the three conversions
+This supplement describes the primary reference-data processes (S1), environmental variation (S2), the ERA5 product comparison (S3), reference-height checks (S4), station-selection sensitivity (S5), the bird-weighted summary (S6), and horizontal-position sensitivity (S7). It uses the main manuscript's conversions and error definitions. Code and underlying numerical summaries accompany the analysis [@validation].
 
-@tbl-ground-tails and @tbl-flight-tails extend the main Results with individual-error distributions. Ground observation weights divide each station's spatial weight among its retained hours. Flight weights divide each station's weight among all retained levels, then normalize within each height band. All conversions use identical observations and weights. Flight errors subtract the same sounding's surface error and exclude absolute ground-reference offsets.
+# S1 Reference-station selection and processing
+
+## S1.1 GHCNh station selection
+
+We use station pressures and reported elevations from NOAA's Global Historical Climatology Network hourly archive (GHCNh) [@ncei_ghcnh]. We select one station per represented grid cell through the process shown in Figure S1a. Here, an altitude discrepancy is the ERA5-standard estimate minus the reported station elevation.
+
+1. **Group candidate stations.** We consider observations from 1 January 2022 through 12 October 2026 (UTC) and group stations into 200 × 200 km equal-area cells using the Equal Earth projection (EPSG:8857). Candidates must have coordinates, a reported elevation and data within this period. We assess them in random order within each cell.
+2. **Assess candidates within each cell.** We select the first station that passes the following checks. If a candidate fails, we assess the next; if none passes, the cell remains unrepresented.
+   - **2a. Prepare hourly observations.** We retain pressures between 300 and 1100 hPa that pass the source-quality exclusions.[^pressure-quality] We assign each report to the nearest ERA5 hour and, where several reports share an hour, retain the one closest to it. We match these observations to surface pressure, 2 m temperature, dewpoint and orography at the nearest ERA5 grid cell, retaining observations with complete inputs.
+   - **2b. Find a qualifying year.** We search backwards from the end of the study period in daily steps for the latest qualifying 12-month window. Within each window, we remove discrepancies more than both 100 m and ten scaled median absolute deviations (MAD) from its median. We then require at least 15 days with four accepted hours in each of the 12 month-long intervals measured backwards from the window endpoint. All remaining observations in the qualifying window are retained.
+   - **2c. Check station consistency.** We reject a station if any of these conditions holds:
+     - Extreme outliers account for more than 1% of the matched observations before their removal.
+     - Its absolute mean discrepancy exceeds 30 m plus 10% of the absolute station–ERA5 elevation difference.
+     - Its discrepancy shows a season-adjusted step of at least 10 m with an absolute step score of at least 10, or its history is insufficient for this check.[^step-check]
+3. **Summarize errors.** We evaluate all three conversions using the same accepted observations.
+   - **Station summaries.** We calculate each station's mean signed error (bias) and SD, then summarize these metrics across stations with equal station weights.
+   - **Observation summaries.** We calculate the median and 95th percentile of individual absolute errors from the pooled observations. Each station receives equal total weight, shared equally among its accepted hours.
+
+[^pressure-quality]: We exclude pressures identified as suspect, erroneous, removed or failing archive checks according to NOAA's [source-specific quality-code definitions](https://www.ncei.noaa.gov/oa/global-historical-climatology-network/hourly/doc/ghcnh_DOCUMENTATION.pdf). Other and missing quality codes are retained.
+
+[^step-check]: A step is a persistent shift in discrepancy after accounting for seasonality. We use up to three years ending at the selected window endpoint and apply the outlier rule to this history. We calculate calendar-month medians from months with at least 60 accepted hours and require at least 18 medians spanning all 12 calendar months. We fit month-of-year effects and a single shift, choosing the breakpoint within the selected window that minimizes residual variation, with at least three monthly medians on each side. The step score is the fitted shift divided by its standard error; it serves as a screening score rather than a calibrated significance test.
 
 ```{r}
-#| label: tbl-ground-tails
-#| tbl-cap: "Screened GHCNh individual ground errors: median and 95th percentile of absolute error (m). Complementary GNSS and MeteoSwiss results are in S4."
-d <- tab("paper_ground_tails.csv")[reference == "GHCNh"]
-d[, Conversion := short[formula]]
-kab(d[, .(Conversion, `Median |error| (m)` = r1(medae),
-  `p95 (m)` = r1(p95_abs))], align = "lrr")
+#| out-width: 100%
+knitr::include_graphics("figures/supp_ghcnh_selection.png", error = FALSE)
 ```
 
-```{r}
-#| label: tbl-flight-tails
-#| tbl-cap: "Surface-referenced flight-height errors across the full evaluated range. Conversion columns give median absolute error (p95), in metres. Station and sounding counts are shared by all conversions; a sounding may contribute to multiple bands. The source pressure cutoff can reduce upper-height coverage at elevated launch sites."
-d <- merge(tab("paper_flight_height.csv")[, .(hbin, formula, agl_mid, medae)], tab("paper_flight_tails.csv")[, .(hbin, formula, p95_abs)], by = c("hbin", "formula"))
-d[, value := sprintf("%.1f (%.0f)", medae, p95_abs)]
-d <- dcast(d, hbin + agl_mid ~ formula, value.var = "value")[order(agl_mid)]
-support <- tab("paper_flight_support.csv")[match(d$hbin, hbin)]
-kab(data.table(`Height band` = c("1--100 m", "100--250 m", "250--500 m", "0.5--1 km", "1--1.5 km", "1.5--2 km", "2--3 km", "3--4 km", "4--5 km", "5--6 km"), Stations = support$stations, Soundings = r0(support$soundings),
-  `Standard atm.` = d$isa, `ERA5 standard` = d$standard,
-  `Virtual + GPT3` = d$virtual), align = "lrrrrr")
+**Figure S1a.** GHCNh selection. The numbered boxes correspond to the steps above. An unsuccessful observation window moves the search back one day; a rejected candidate advances the search to the next station in its cell.
+
+```{=latex}
+\clearpage
 ```
+
+## S1.2 IGRA sounding selection
+
+We use pressure and reported geopotential-height profiles from NOAA's Integrated Global Radiosonde Archive (IGRA2) [@durre2006; @durre2018; @igradocumentation]. Each sounding includes a ground-level record at launch, which provides the surface reference for the ascent. Flight-height errors compare the estimated and reported height gain above this reference.
+
+1. **Group candidate stations.** We use the study period and spatial grouping procedure in S1.1, assessing stations in random order within each cell (Figure S1b).
+2. **Assess candidates within each cell.** We select the first station with a qualifying year of usable soundings. If a candidate fails, we assess the next; if none passes, the cell remains unrepresented.
+   - **2a. Prepare sounding profiles.** We require a valid surface pressure and airborne pressure–height pairs up to 6 km above the launch surface. If the surface height is missing, we use the station elevation; we exclude soundings whose surface pressure or height was rejected by archive quality control. We match each airborne observation and its surface record separately to ERA5 using their observation times and the launch location. Reported launch and ascent times determine these times; missing launch times use the nominal time, and missing ascent times are estimated using a 5 m s$^{-1}$ ascent rate. We retain pairs with complete inputs for all three conversions.
+   - **2b. Find a qualifying year.** We use the daily backwards search described in S1.1, assigning soundings to windows by launch time. Within each station and height band, we remove ERA5-standard errors more than both 150 m and ten scaled MAD from the window median. We then require at least 15 launch dates with an accepted airborne observation in each of the 12 month-long intervals. We retain all accepted airborne observations and their surface records from the latest qualifying window.
+3. **Summarize errors.** We evaluate all three conversions using the same accepted observation pairs.
+   - **Station summaries.** We calculate bias and SD within each station and height band, then summarize these metrics with equal weights among contributing stations.
+   - **Observation summaries.** Within each height band, we calculate the median and 95th percentile of individual absolute errors. Each contributing station receives equal total weight, shared equally among its accepted airborne observations.
+
+```{r}
+#| out-width: 100%
+knitr::include_graphics("figures/supp_igra_selection.png", error = FALSE)
+```
+
+**Figure S1b.** IGRA selection. The numbered boxes correspond to the steps above. An unsuccessful observation window moves the search back one day; a rejected candidate advances the search to the next station in its cell.
 
 # S2 How the error varies
 
@@ -123,27 +139,27 @@ The station--ERA5 elevation gap is associated with within-station scatter (@fig-
 
 ```{r}
 #| label: fig-gap
-#| fig-cap: "Bias (a) and SD (b) per station against the elevation gap between station and ERA5 orography (GHCNh reference set, ERA5 standard conversion). Dashed: ± fitted |bias|; solid: fitted SD. Cell-weighted GAMs use log(|bias| + 0.5 m) or log(SD) as the response and a smooth of log(1 + absolute elevation gap); curves are back-transformed fits. Gap and error values inside logarithms are expressed numerically in metres."
+#| fig-cap: "Bias (a) and SD (b) per station against the elevation gap between station and ERA5 orography (GHCNh reference set, ERA5 standard conversion). Dashed: ± fitted |bias|; solid: fitted SD. Equally weighted GAMs use log(|bias| + 0.5 m) or log(SD) as the response and a smooth of log(1 + absolute elevation gap); curves are back-transformed fits. Gap and error values inside logarithms are expressed numerically in metres."
 rfig("ground_gap")
 ```
 
 ```{r}
 #| label: fig-season-hour
-#| fig-cap: "Station bias (a, b) and SD (c, d) by seasonal month (southern hemisphere shifted by six months) and 3 h local-solar-time band, screened GHCNh, ERA5 standard conversion. Station--time classes require at least 30 observations. Lines: cell-weighted station medians; bands: station 25–75% and 10–90% ranges, rather than confidence intervals."
+#| fig-cap: "Station bias (a, b) and SD (c, d) by seasonal month (southern hemisphere shifted by six months) and 3 h local-solar-time band, screened GHCNh, ERA5 standard conversion. Station--time classes require at least 30 observations. Lines: equally weighted station medians; bands: station 25–75% and 10–90% ranges, rather than confidence intervals."
 rfig("ground_season_hour")
 ```
 
 ```{r}
 #| label: fig-climate-ground
-#| fig-cap: "Ground errors by Köppen-Geiger climate zone, screened GHCNh, ERA5 standard conversion. (a) Station locations; (b) signed station bias; (c) within-station SD. Points: cell-weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges."
+#| fig-cap: "Ground errors by Köppen-Geiger climate zone, screened GHCNh, ERA5 standard conversion. (a) Station locations; (b) signed station bias; (c) within-station SD. Points: equally weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges."
 rfig("ground_climate")
 ```
 
-Only `r tab("ground_era.csv")$n_stations[1]` stations contribute to the paired historical comparison (@fig-era). Their discrepancies decline across the sampled years, but this small common-station subset cannot establish a global accuracy trend.
+For a fixed historical comparison, we use `r tab("ground_era.csv")$n_stations[1]` GHCNh stations with at least 500 usable observations in each of 1990, 2005, 2015 and 2024, calculating bias and SD separately by station and year (@fig-era). Their discrepancies decline across the sampled years, but this small common-station subset cannot establish a global accuracy trend.
 
 ```{r}
 #| label: fig-era
-#| fig-cap: "Station bias (a) and SD (b), ERA5 standard conversion, at the same five GHCNh stations in 1990, 2005, 2015 and 2024 (at least 500 usable observations per station-year). Points: station medians; thick and thin segments: 25–75% and 10–90% station ranges; lines connect medians. The sample is descriptive and geographically restricted."
+#| fig-cap: "Station bias (a) and SD (b), ERA5 standard conversion, at the same five GHCNh stations in a fixed historical subset in 1990, 2005, 2015 and 2024 (at least 500 usable observations per station-year). Points: station medians; thick and thin segments: 25–75% and 10–90% station ranges; lines connect medians. The sample is descriptive and geographically restricted."
 rfig("ground_era")
 ```
 
@@ -159,7 +175,7 @@ knitr::include_graphics("figures/fig5_climate.png", error = FALSE)
 
 ```{r}
 #| label: fig-temperature
-#| fig-cap: "Observed surface-referenced flight-height error against the error predicted from the assumed versus observed mean column temperature, ERA5 standard conversion, at radiosonde levels more than 200 m above the sounding surface. Tile colour: number of levels (log scale); dashed line: 1:1 agreement. The displayed window is −150 to 100 m on both axes; the reported correlation uses the full retained comparison. This is a mechanism check using the same atmospheric profiles, rather than an independent validation."
+#| fig-cap: "Observed surface-referenced flight-height error against the error predicted from the assumed versus observed mean column temperature, ERA5 standard conversion, at radiosonde levels more than 200 m above the sounding surface. Tile colour: number of levels (log scale); dashed line: 1:1 agreement. The displayed window is −150 to 100 m on both axes; the reported correlation uses the full retained comparison. Reported temperatures are integrated over log pressure, interpolating missing interior values and extending the lowest available temperature to the surface. This is a mechanism check using the same atmospheric profiles, rather than an independent validation."
 rfig("flight_temperature")
 ```
 
@@ -171,150 +187,158 @@ rfig("flight_daynight")
 
 # S3 ERA5 single-levels and ERA5-Land
 
-ERA5-Land's finer 0.1° grid [@munozsabater2021] does not reduce persistent ground offsets in these comparisons. Median station |bias| is `r r1(mn("GHCNh", "abs_bias_median", "land"))` m versus `r r1(mn("GHCNh", "abs_bias_median"))` m for ERA5 single-levels at GHCNh stations, with the same ordering at GNSS and MeteoSwiss stations (@fig-land). Surface-referenced flight errors are similar (@fig-land-flight). Together, these results point to a difference in the surface reference; they do not by themselves identify an inconsistency in ERA5-Land's pressure adjustment or published orography.
+ERA5-Land's finer 0.1° grid [@munozsabater2021] does not reduce persistent ground offsets in these comparisons. Median station |bias| is `r r1(mn("GHCNh", "abs_bias_median", "land"))` m versus `r r1(mn("GHCNh", "abs_bias_median"))` m for ERA5 single-levels at the `r main[reference == "GHCNh" & dataset == "land"]$n_stations` GHCNh stations with usable inputs for both products, with the same ordering at GNSS and MeteoSwiss stations (@fig-land). Surface-referenced flight errors are similar (@fig-land-flight). Together, these results point to a difference in the surface reference; they do not by themselves identify an inconsistency in ERA5-Land's pressure adjustment or published orography.
 
 ```{r}
 #| label: fig-land
-#| fig-cap: "Station |bias| (a, pseudo-log scale) and SD (b) with ERA5 single-levels and ERA5-Land, using the standard lapse rate at the same stations within each ground reference. Points: weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges. GHCNh uses cell weights; GNSS and MeteoSwiss use equal station weights."
+#| fig-cap: "Station |bias| (a, pseudo-log scale) and SD (b) with ERA5 single-levels and ERA5-Land, using the standard lapse rate at the same stations within each ground reference. Comparisons use the same hours with finite inputs for both products. Points: weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges. Each station contributes equally within its reference network."
 rfig("ground_sl_vs_land")
 ```
 
 ```{r}
 #| label: fig-land-flight
-#| fig-cap: "Pooled surface-referenced flight-height bias (a) and SD (b) by height band, ERA5 single-levels versus ERA5-Land with the standard lapse rate. Curves use the primary level weights and are shown to 4 km. Pooled SD includes between-station differences and differs from the median within-station SD in the main manuscript."
+#| fig-cap: "Pooled surface-referenced flight-height bias (a) and SD (b) by height band, ERA5 single-levels versus ERA5-Land with the standard lapse rate. The comparison uses levels with finite inputs for both products, with equal station weight within each band, and is shown to 4 km. Pooled SD includes between-station differences and differs from the median within-station SD in the main manuscript."
 rfig("flight_land")
-```
-
-# S4 Reference-height uncertainty and sensitivity
-
-## MeteoSwiss corroboration
-
-SwissMetNet supplies 10-min instantaneous pressure at published barometer height (QFE, `prestas0`) [@meteoswissdata]. We use finite full-UTC-hour values in 2022--2024 at `r tab("indep_counts.csv")[source == "MeteoSwiss", n_used]` stations with a published barometer height and at least 2160 usable hours. Published sea-level heights are used without a Swiss-to-EGM96 transformation. Source: MeteoSwiss.
-
-At `r swh$n` matched stations (@fig-swiss), replacing only the listed GHCNh reference elevation with the published barometer height reduces median station |bias| from `r r1(swh$median_abs_ghcnh)` to `r r1(swh$median_abs_height_only)` m, close to `r r1(swh$median_abs_meteoswiss)` m using MeteoSwiss pressure. Only the height-only contrast holds pressure and ERA5 series fixed: GHCNh uses its selected year, whereas MeteoSwiss covers 2022--2024. This supports a metadata contribution at these sites, without identifying the cause of discrepancies elsewhere. @tbl-swiss-errors summarizes the complementary ground references.
-
-```{r}
-#| label: fig-swiss
-#| fig-cap: "Absolute station biases with the ERA5 standard conversion at matched Swiss stations: listed GHCNh height, a height-only change using the same GHCNh pressure records, and MeteoSwiss pressure with published barometer height. Lines link stations; diamonds mark medians."
-knitr::include_graphics("figures/supp_swiss_height.png", error = FALSE)
-```
-
-```{r}
-#| label: tbl-swiss-errors
-#| tbl-cap: "Complementary ground-reference discrepancies (m), GNSS and MeteoSwiss. Station bias/SD describe persistent offset/scatter; median absolute error and p95 describe weighted individual errors."
-d <- merge(tab("paper_ground.csv")[terrain == "all" & reference != "GHCNh"], tab("paper_ground_tails.csv")[, .(formula, reference, medae, p95_abs)], by = c("formula", "reference"))
-d[, Conversion := factor(short[formula], short)]
-setorder(d, reference, Conversion)
-kab(d[, .(Reference = reference, Conversion, `Median |bias|` = r1(abs_bias_median), `Median SD` = r1(sd_median), `Median |error|` = r1(medae), p95 = r1(p95_abs))], align = "llrrrr")
-```
-
-## Reference-plausibility screen
-
-Removing the ERA5-residual-based station screen changes central errors less than their upper tails (@tbl-sens). The step/noise-only alternative removes the offset criterion but keeps the step-change and frequent-gross-observation checks from S1. None of these flags identifies the cause of a residual. Screened values should therefore be read alongside the all-eligible comparison, rather than as unconditional conversion accuracy.
-
-```{r}
-#| label: tbl-sens
-#| tbl-cap: "GHCNh selection sensitivity, with cell weights assigned after each selection. Isolated gross observations and incomplete atmospheric inputs are excluded throughout."
-d <- copy(sens)
-d[, `:=`(Selection = c(all_eligible = "All eligible", step_noise_only = "Step/noise only", screened = "Screened")[selection], Conversion = c(isa = "Standard atm.", standard = "ERA5 standard", virtual = "ERA5 virtual + GPT3")[formula])]
-kab(d[, .(Selection, Conversion, Stations = n_stations, `Median |error|` = r1(medae), p95 = r1(p95_abs), `Median |bias|` = r1(abs_bias_median))], align = "llrrrr")
-```
-
-## Flight weights and height-band coverage
-
-Primary flight weights give each station equal total weight across all its retained levels; its contribution within a particular band therefore depends on vertical sampling. All `r nrow(tab("flight_stations_used.csv"))` retained stations occupy distinct 2° cells, so equal cell and equal station weights are equivalent for this network. We compared equal station weights within bands, equal sounding weights within station--bands, and minimum coverage of 30 or 100 soundings per station--band. The corrected conversion retains the lowest flight-time-weighted median absolute error (@tbl-flight-weighting), although height-specific upper tails vary (@tbl-flight-weighting-tails). Coverage thresholds change the contributing population; they do not establish more accurate references.
-
-```{r}
-#| label: tbl-flight-weighting
-#| tbl-cap: "Flight-time-weighted median absolute error (m), using unchanged biological height weights."
-d <- tab("paper_flight_weighting_sensitivity.csv")
-d[, Weighting := c(current = "Primary", equal_station_bin = "Equal station/band", equal_sounding_bin = "Equal sounding/band", minimum30 = "Station/band, minimum 30", minimum100 = "Station/band, minimum 100")[variant]]
-d[, Conversion := short[formula]]
-d[, Weighting := factor(Weighting, c("Primary", "Equal station/band", "Equal sounding/band", "Station/band, minimum 30", "Station/band, minimum 100"))]
-d[, Conversion := factor(Conversion, c("Standard atm.", "ERA5 standard", "ERA5 virtual + GPT3"))]
-d[, value := sprintf("%.1f", medae)]
-kab(dcast(d, Weighting ~ Conversion, value.var = "value"), align = "lrrr")
-```
-
-```{r}
-#| label: tbl-flight-weighting-tails
-#| tbl-cap: "Sensitivity of the 4--5 km absolute-error p95 (m) to within-band weighting and coverage. This band illustrates the upper-tail sensitivity concealed by an overall bird-weighted summary; biological height weights are not applied here. Minimum-coverage variants use equal station weights within bands."
-d <- tab("paper_flight_weighting_height.csv")[hbin == "(4e+03,5e+03]"]
-d[, Weighting := factor(variant, c("current", "equal_station_bin", "equal_sounding_bin", "minimum30", "minimum100"), c("Primary", "Equal station/band", "Equal sounding/band", "Station/band, minimum 30", "Station/band, minimum 100"))]
-d[, Conversion := factor(short[formula], short)]
-d[, value := r0(p95_abs)]
-kab(dcast(d, Weighting ~ Conversion, value.var = "value"), align = "lrrr")
 ```
 
 ```{=latex}
 \clearpage
 ```
 
-## Biological flight target and height weights
+# S4 Reference-height checks
 
-The biological target is the flight-time height distribution of `r tab("bird_height_sample.csv")$n_tags` tags from `r tab("bird_height_sample.csv")$n_species` species (`r r0(tab("bird_height_sample.csv")$hours)` represented flight hours) in the Master GeoLocator Data Package, version 2026.0 [@geolocatormaster2026]. Inputs match the published checksums. We retain most-likely pressurepath records with finite tag and surface pressure and no discard label; non-integer stationary-period identifiers mark flight. Upstream classifications and pressurepaths are used as supplied, without uniformly reprocessing the tracks.
+Listed station elevation can differ from the height of the pressure sensor [@vasiljevic2006; @haiden2018]. We examine this directly at matched Swiss stations and compare ground errors with two references that provide more explicit sensor-height information.
 
-@tbl-bird-weights gives the height and duration assumptions needed to reproduce the weights. Main-manuscript Figure 4c shows the resulting height distribution. Alternative flight-duration, low-height and equal-tag targets preserve the conversion ranking (@tbl-bird-target). Equal-tag weighting gives each contributing tag the same total weight, whereas the primary target pools represented flight time; neither is a global sample of birds. The two-hour threshold is based on represented sampling intervals, rather than directly observed take-off and landing.
+## Paired Swiss height comparison
 
-| Component | Primary rule |
-|:--|:--|
-| Represented duration | Interval to the next retained record of the tag, capped at 60 min; the last record uses the tag's median positive interval |
-| Height conversion | Tag pressure relative to ERA5 surface pressure, with 288.15 K and the standard lapse rate |
-| Stationary pressure offset | Interpolate between the median tag-minus-ERA5 pressure discrepancies in the preceding last six stationary hours and following first six stationary hours; use one endpoint alone, or zero if neither exists |
-| Height limits | Residual negative estimates (`r sprintf("%.1f", 100 * tab("bird_height_below0.csv")$below0)`% of flight time) enter the lowest band; estimates above 6 km enter the highest evaluated band |
-| Combining flight errors | Normalize radiosonde level weights within each height band, multiply by its share of bird flight time, and calculate the median of the combined absolute-error distribution |
-
-: Construction of biological height weights. The pressure-offset adjustment and negative-height treatment do not establish true clearance above local terrain. All conversions are evaluated with the same biological weights. {#tbl-bird-weights tbl-colwidths="[25,75]"}
+At `r swh$n` stations matched by WMO identifier and coordinates within 1 km, we replace the listed GHCNh elevation with the published MeteoSwiss barometer height while holding the GHCNh pressures, ERA5 inputs and observation window fixed. Median station |bias| changes from `r r1(swh$median_abs_ghcnh)` to `r r1(swh$median_abs_height_only)` m (@tbl-swiss). This small paired comparison illustrates sensitivity to the height reference at these sites.
 
 ```{r}
-#| label: tbl-bird-target
-#| tbl-cap: "Biological target sensitivity. Hours are represented flight time; median absolute errors are in metres. Equal-tag weighting retains the same records but normalises each tag's total weight to one. Standard atm.: fixed standard atmosphere; virtual: ERA5 with virtual temperature and GPT3."
-d <- tab("paper_bird_target_sensitivity.csv")
-choices <- c("all_flight", "duration_ge2h", "height_ge50m", "duration_ge2h_height_ge50m", "equal_bird")
-d <- d[variant %in% choices]
-d[, Target := factor(variant, choices, c("All flight", "Flights ≥2 h", "Points ≥50 m", "Both restrictions", "Equal tag"))]
-support <- unique(d[, .(Target, Tags = birds, Hours = hours)])
-errors <- dcast(d, Target ~ formula, value.var = "medae")
-d <- merge(support, errors, by = "Target")[order(Target)]
-if (latex) d[, Target := gsub("≥", "$\\geq$", Target, fixed = TRUE)]
-kab(d[, .(Target, Tags, Hours = r0(Hours), `Standard atm.` = r1(isa), `ERA5 standard` = r1(standard), Virtual = r1(virtual))], align = "lrrrrr", escape = !latex)
+#| label: tbl-swiss
+#| tbl-cap: "Paired height-reference comparison at retained GHCNh stations matched to MeteoSwiss. Both errors use the same GHCNh pressure reports, ERA5 inputs and observation window. Heights and absolute station biases are in metres."
+d <- tab("paper_swiss_height.csv")[order(wmo)]
+kab(d[, .(
+  `Station (WMO)` = sprintf("%05d", as.integer(wmo)),
+  `Listed height` = r1(ghcnh_elev),
+  `Sensor height` = r1(elev),
+  `|bias|, listed` = r1(abs(bias_ghcnh)),
+  `|bias|, sensor` = r1(abs(bias_height_only))
+)], align = "lrrrr")
 ```
 
-Removing the stationary pressure-offset adjustment, shifting all estimated heights by ±100 m, or changing the height formula on the subset with complete weather annotations also preserves the ranking. These stress tests do not supply uncertainty intervals or make the weights independent of the conversion assumptions. Full results, annotation coverage, species contributions and sampling cadence accompany the code [@validation].
+## Barometers at GNSS and MeteoSwiss stations
 
-## Reference dependence
+For GNSS stations, we use RINEX meteorological records from the IGS/EUREF archives in 2022--2024 [@bkgdata; @rinex304]. Samples within one minute of each hour are averaged into unique station-hours. Sensor heights combine site-log marker and antenna heights with barometer offsets, converted from ellipsoidal height using EGM96; file-header heights fill gaps in the site-log record. We require at least 180 listed file-days, 2160 accepted hours and a median signed difference within 1 m between the file-header and site-log heights. The height check establishes metadata consistency.
 
-ERA5 assimilates conventional surface and upper-air observations [@hersbach2020]; we did not establish whether each evaluated station, variable and date was assimilated. GNSS archive membership does not establish independence. The terrain-matched archive comparison (@tbl-assim) and nearby-station counts (@tbl-density) are descriptive checks only: similar errors across archives, or at isolated stations, cannot quantify assimilation influence. Reference-height uncertainty and the residual-based screen remain additional limitations.
+For MeteoSwiss SwissMetNet, we use full-hour pressure observations in 2022--2024 at published barometer heights, retaining stations with at least 2160 accepted hours [@meteoswissdata]. Published sea-level heights are used without a Swiss-to-EGM96 transformation. For both references, we exclude ERA5-standard errors more than both 100 m and ten scaled MAD from the station median before applying the accepted-hour requirement. We use equal station weights for the individual-error summaries (@tbl-sensor-heights).
+
+The networks differ in geography, observation periods and sensor metadata. Their pooled errors provide corroboration; the paired Swiss height comparison isolates the effect of changing the height reference. Neither comparison establishes independence from ERA5 assimilation.
 
 ```{r}
-#| label: tbl-assim
-#| tbl-cap: "Median |bias| and median SD (m) by terrain roughness (sub-grid SD of the ERA5 orography), ERA5 standard conversion."
-kab(cmpT[, .(Set = set, Terrain = terrain, Stations = n_stations, `median |bias|` = r1(abs_bias_median), `median SD` = r1(sd_median))])
+#| label: tbl-sensor-heights
+#| tbl-cap: "Ground errors at references with more explicit pressure-sensor heights, ERA5 standard conversion (m). Bias and SD are station metrics; median absolute error and p95 describe weighted individual observations."
+d <- merge(
+  tab("paper_ground.csv")[
+    terrain == "all" &
+      formula == "standard" &
+      reference %in% c("GNSS", "MeteoSwiss")
+  ],
+  tab("paper_ground_tails.csv")[
+    formula == "standard",
+    .(reference, medae, p95_abs)
+  ],
+  by = "reference"
+)
+kab(
+  d[, .(
+    Reference = reference,
+    Stations = n_stations,
+    `Median |bias|` = r1(abs_bias_median),
+    `Median SD` = r1(sd_median),
+    `Median |error|` = r1(medae),
+    p95 = r1(p95_abs)
+  )],
+  align = "lrrrrr"
+)
 ```
+
+# S5 Effect of station selection
+
+The GHCNh station checks use ERA5-standard discrepancies and can exclude model discrepancies as well as suspect reference records. We compare the primary selection with selection based on accepted coverage alone to assess how these checks affect the reported errors.
+
+Within each cell represented by the primary sample, both selections follow the same random candidate order. The primary selection retains the first station passing all checks; the coverage-only selection retains the first station with a qualifying observation window. Observation-level quality exclusions and the represented cells are held fixed, while the selected stations may differ. Each station receives equal weight, divided among its accepted observations. @tbl-selection-effect reports the resulting individual-error summaries for all three conversions.
 
 ```{r}
-#| label: tbl-density
-#| tbl-cap: "GHCNh stations in flat terrain (sub-grid orography SD below 20 m), grouped by the number of other GHCNh stations within 300 km. Errors are in metres, ERA5 standard conversion; nearby-station counts do not identify assimilated observations."
-kab(dens[, .(`Neighbours within 300 km` = neighbours_300km, Stations = n_stations, `median |bias|` = r1(abs_bias_median), `median SD` = r1(sd_median))])
+#| label: tbl-selection-effect
+#| tbl-cap: "Effect of GHCNh station checks within the cells represented by the primary sample. Both selections retain one station per cell and apply the same observation-level exclusions. Errors are in metres."
+if (file.exists("output/tables/paper_selection_sensitivity.csv")) {
+  d <- tab("paper_selection_sensitivity.csv")
+  d[,
+    Selection := c(primary = "Primary", coverage_only = "Coverage only")[
+      selection
+    ]
+  ]
+  d[, Conversion := short[formula]]
+  kab(
+    d[, .(
+      Selection,
+      Conversion,
+      Stations = stations,
+      `Median |error|` = r1(medae),
+      p95 = r1(p95_abs)
+    )],
+    align = "llrrr"
+  )
+} else {
+  kab(
+    data.table(
+      Selection = c("Primary", "Coverage only"),
+      `Median |error|` = "Pending",
+      p95 = "Pending"
+    ),
+    align = "lll"
+  )
+}
 ```
 
-## Choice of ground observation year
+For ERA5 standard, median absolute error is `r r1(tab("paper_selection_sensitivity.csv")[selection == "primary" & formula == "standard"]$medae)` m with the primary checks and `r r1(tab("paper_selection_sensitivity.csv")[selection == "coverage_only" & formula == "standard"]$medae)` m with coverage alone; the corresponding 95th percentiles are `r r1(tab("paper_selection_sensitivity.csv")[selection == "primary" & formula == "standard"]$p95_abs)` and `r r1(tab("paper_selection_sensitivity.csv")[selection == "coverage_only" & formula == "standard"]$p95_abs)` m. The checks mainly affect the error tail in this comparison.
 
-The latest coverage-qualified year is selected by recency, without ranking years by ERA5 error. Selected-year station counts are `r paste(sprintf("%s: %s", tab("paper_ground_selected_years.csv")$selected_year, tab("paper_ground_selected_years.csv")$N), collapse = "; ")`. Partial 2026 records have incomplete seasonal coverage. @tbl-date-range compares the selected year with the latest qualifying completed year on the same screened stations. Each paired year must retain at least 183 reporting days and four distinct accepted hours per reporting day after ERA5 matching; the station screen is held fixed from the selected year.
+```{=latex}
+\clearpage
+```
+
+# S6 Bird-weighted flight-height summary
+
+We estimate the flight-time height distribution from `r tab("bird_height_sample.csv")$n_tags` tagged birds of `r tab("bird_height_sample.csv")$n_species` species in the Master GeoLocator Data Package [@geolocatormaster2026], using its supplied flight classifications. Each record represents the interval to the next record, capped at one hour. Heights are calculated from tag pressure relative to ERA5 surface pressure using 288.15 K and the standard lapse rate. Pressure offsets are interpolated between adjacent stationary periods. Negative estimates enter the lowest height band and estimates above 6 km enter the highest evaluated band. These pressure-derived heights determine the weights; they do not establish true terrain clearance.
+
+Within each height band, stations contribute equally to the radiosonde error distribution. We then weight each band's distribution by its share of bird flight time and calculate the median of the combined absolute-error distribution. Main Figure 4c shows the biological height distribution. As a focused robustness check, we repeat the calculation giving every contributing tag equal total weight (@tbl-bird-weighting), assessing whether extensively sampled birds dominate the summary.
 
 ```{r}
-#| label: tbl-date-range
-#| tbl-pos: "H"
-#| tbl-cap: "Date-range sensitivity for ERA5-standard ground discrepancies, on the same paired stations. Completed years satisfy the reporting threshold but need not contain observations in every month. The station screen is held fixed from the selected year."
-d <- tab("paper_ground_date_sensitivity.csv")
-kab(d[, .(Choice = c(latest_qualifying = "Latest", latest_completed = "Completed")[choice],
-  Stations = stations, Days = median_days, Months = median_months, `Median |error|` = medae,
-  `Median |bias|` = median_abs_bias, `Median SD` = median_sd)], digits = 2)
+#| label: tbl-bird-weighting
+#| tbl-cap: "Bird-weighted median absolute flight-height error (m), comparing pooled flight-time weights with equal total weight per tag. Both calculations use the same flight records and radiosonde inputs."
+if (selection_analysis_ready) {
+  d <- tab("paper_bird_target_sensitivity.csv")[
+    variant %in% c("all_flight", "equal_bird")
+  ]
+  d[,
+    Target := c(all_flight = "Flight time", equal_bird = "Equal tag")[variant]
+  ]
+  d[, Target := factor(Target, c("Flight time", "Equal tag"))]
+  d[, Conversion := factor(short[formula], short)]
+  d[, value := r1(medae)]
+  kab(dcast(d, Target ~ Conversion, value.var = "value"), align = "lrrr")
+} else {
+  kab(
+    data.table(
+      Weighting = c("Flight time", "Equal tag"),
+      `Median |error|` = "Pending"
+    ),
+    align = "ll"
+  )
+}
 ```
 
-Processing provenance, including the paired GHCNh--HadISD transition audit, source-specific QC composition and repeated-GNSS-hour check, is retained with the code [@validation]. The primary results use unique GNSS station-hours and source-aware pressure QC as specified in S1.
-
-# S5 Sensitivity to horizontal position
+# S7 Sensitivity to horizontal position
 
 ```{r}
 loc <- fread("docs/methods/T10/results.csv")
@@ -327,8 +351,24 @@ loc <- fread("docs/methods/T10/results.csv")
 ```{r}
 #| label: tbl-location-change
 #| tbl-cap: "Atmospheric-query displacement with ERA5 virtual + GPT3 near 2 km (all errors in metres). Median error change is displaced minus exact-location median absolute error. Paired median and p95 summarize absolute changes between matched displaced and exact-location errors. Stations, launches and bearings receive equal weights."
-d <- loc[formula == "virtual" & metric %in% c("Absolute altitude: level", "Surface-referenced height") & distance %in% c(50, 200)]
-kab(d[, .(Outcome = c(`Absolute altitude: level` = "Absolute altitude", `Surface-referenced height` = "Flight height")[metric], `Distance (km)` = distance, `Median error change` = r1(medae_increment), `Paired median` = r1(change_median), `Paired p95` = r1(change_p95))], align = "lrrrr")
+d <- loc[
+  formula == "virtual" &
+    metric %in% c("Absolute altitude: level", "Surface-referenced height") &
+    distance %in% c(50, 200)
+]
+kab(
+  d[, .(
+    Outcome = c(
+      `Absolute altitude: level` = "Absolute altitude",
+      `Surface-referenced height` = "Flight height"
+    )[metric],
+    `Distance (km)` = distance,
+    `Median error change` = r1(medae_increment),
+    `Paired median` = r1(change_median),
+    `Paired p95` = r1(change_p95)
+  )],
+  align = "lrrrr"
+)
 ```
 
 ```{r}

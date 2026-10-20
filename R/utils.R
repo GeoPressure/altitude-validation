@@ -22,13 +22,15 @@ for (d in c(dir_raw, dir_interim, dir_tables, dir_figures)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-# GHCNh (surface): screen each station-year and select the most recent year meeting QC and coverage.
+# Frozen selection domain; complementary barometers retain 2022–2024.
 years_ghcnh <- 2022:2026
-# Other ground references retain the shared 2022-2024 comparison window.
+years_sonde <- 2022:2026
 years_main <- 2022:2024
 years_era <- c(1990, 2005, 2015)
-# IGRA2 (upper air)
-years_sonde <- 2023:2024
+selection_dir <- function(network) {
+  if (network == "ghcnh") "data/interim/ghcnh/selection-2026-10-13" else "data/interim/igra-selection-2026-10-13"
+}
+analysis_dir <- "data/interim/analysis-2026-10-13"
 max_agl_sonde <- 6000
 
 n_cores <- as.integer(Sys.getenv("N_CORES", "8"))
@@ -229,14 +231,6 @@ wquant <- function(x, w, p) {
   x[o][which(cw >= p)[1]]
 }
 
-#' Thin stations for spatial balance: one random station per `res`-degree cell, plus every station
-#' above `high` m (mountain stations are scarce and are where errors are largest).
-thin_stations <- function(s, res = 2, high = 1000) {
-  cell <- paste(floor(s$lat / res), floor(s$lon / res))
-  pick <- unlist(lapply(split(seq_len(nrow(s)), cell), function(i) i[sample.int(length(i), 1)]))
-  s[sort(unique(c(pick, which(s$elev > high))))]
-}
-
 #' Terrain roughness class from the SD of the sub-grid orography (ERA5 `sdor`, m).
 terrain_class <- function(sdor) {
   cut(sdor, c(-Inf, 20, 50, 150, 300, Inf), labels = c("flat (<20 m)", "gentle (20-50 m)",
@@ -256,36 +250,21 @@ load_stations <- function() {
   climate_names <- c(A = "A tropical", B = "B arid", C = "C temperate", D = "D continental",
     E = "E polar")
   st[, climate := climate_names[koppen_main]]
-  # Cell weight: stations sharing a 2 x 2 degree cell share one weight, so that the stations kept
-  # above 1000 m (see thin_stations()) add precision without tilting global summaries to mountains.
-  st[, cw := 1 / .N, by = .(network, floor(lat / 2), floor(lon / 2))]
+  st[, cw := 1]
   st[]
 }
 
-hbin_breaks <- c(-10, 1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
-hbin_mid <- c(0, 50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
+hbin_breaks <- c(0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
+hbin_mid <- c(50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
 
-#' Radiosonde levels used in the analysis: stations with at least 100 soundings (each station has a
-#' fixed weight, so it must be representative), gross errors removed (levels more than 150 m and 10
-#' robust SD from the median of their height bin), and weights `w` (the station's cell weight `cw`
-#' spread over its levels).
+#' Accepted airborne observations, with equal station weight within each band.
 load_radiosondes <- function(st) {
   B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet")))
-  B <- merge(B, st[network == "igra", .(id, climate, abs_lat, z_sl, cw)],
-    by = "id")
-  B <- B[id %in% B[, uniqueN(sounding), by = id][V1 >= 100, id]]
-  B[, hbin := cut(agl, hbin_breaks, right = TRUE)]
-  B[, gross := {
-    m <- median(err_sl_rel, na.rm = TRUE)
-    r <- mad(err_sl_rel, na.rm = TRUE)
-    abs(err_sl_rel - m) > max(150, 10 * r)
-  }, by = hbin]
-  gross_frac <- mean(B$gross, na.rm = TRUE)
-  B <- B[!gross %in% TRUE]
-  B[, w := cw / .N, by = id]
+  B <- merge(B, st[network == "igra", .(id, climate, abs_lat, cw)], by = "id")
+  B[, hbin := factor(band, levels = levels(cut(0, hbin_breaks)))]
+  B[, w := 1 / .N, by = .(id, hbin)]
   B[, daynight := fifelse(lsh >= 7 & lsh < 19, "day", "night")]
   B[, season := fifelse(sdoy >= 80 & sdoy < 266, "summer half", "winter half")]
-  setattr(B, "gross_frac", gross_frac)
   B[]
 }
 
@@ -293,15 +272,10 @@ load_radiosondes <- function(st) {
 #' lowest bin, points above 6 km to the highest).
 bird_height_weights <- function() {
   bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
-  bb <- data.table(
-    hbin = levels(cut(0, hbin_breaks, right = TRUE))[-1],
-    lo = c(1, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000),
-    hi = c(100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
-  )
+  bb <- data.table(hbin = levels(cut(0, hbin_breaks)), lo = head(hbin_breaks, -1), hi = tail(hbin_breaks, -1))
   bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
   bb <- merge(bb, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
-  bb[lo == 1, prop := bird[lo == 0, prop]]
-  bb[lo == 1, prop := prop + sum(bird[lo == -Inf, prop])]
+  bb[lo == 0, prop := prop + sum(bird[lo == -Inf, prop])]
   bb[lo == 5000, prop := prop + sum(bird[lo == 6000, prop])]
   bb[, prop := prop / sum(prop)]
   bb[]

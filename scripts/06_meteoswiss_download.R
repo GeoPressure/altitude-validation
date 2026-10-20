@@ -3,8 +3,7 @@
 # MeteoSwiss publishes, for each automatic station, the height of the barometer
 # (`station_height_barometer_masl`) separately from the station height, and 10-min pressure at
 # barometer height (QFE, `prestas0`, instantaneous). The value at the full hour is kept for
-# 2022-2024. A station is flagged `in_isd` when its WMO index appears in NOAA's
-# ISD station history; this does not establish record-specific ERA5 assimilation status.
+# 2022-2024.
 # Open data, "Source: MeteoSwiss".
 
 source("R/utils.R")
@@ -22,17 +21,9 @@ meta <- meta[is.finite(station_height_barometer_masl), .(
   elev_station = station_height_masl, elev = station_height_barometer_masl
 )]
 
-isd_file <- file.path(dir_raw, "isd-history.csv")
-if (!file.exists(isd_file)) {
-  curl_download("https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv", isd_file)
-}
-isd <- fread(isd_file, colClasses = list(character = c("USAF", "WBAN")))
-isd <- isd[as.integer(substr(END, 1, 4)) >= max(years_main) &
-  as.integer(substr(BEGIN, 1, 4)) <= min(years_main)]
 meta[, wmo := fifelse(grepl("^0-20000-0-", wigos), sub("^0-20000-0-", "", wigos), NA_character_)]
-meta[, in_isd := !is.na(wmo) & paste0(wmo, "0") %in% isd$USAF]
 fwrite(meta, file.path(out_dir, "stations.csv"))
-cat(nrow(meta), "stations with a barometer height;", sum(!meta$in_isd), "not in ISD\n")
+cat(nrow(meta), "stations with a barometer height\n")
 
 extract <- function(s) {
   out <- file.path(out_dir, paste0(s, ".parquet"))

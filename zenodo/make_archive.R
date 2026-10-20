@@ -6,9 +6,8 @@
 #                                 get again (ERA5 at every station, radiosondes, GNSS, MeteoSwiss,
 #                                 DEM values, and the station lists and API listings as they were)
 #
-# GHCNh annual station files are left out because they are public bulk downloads and are fetched
-# by steps 01-03. The errors (09_errors.R) are left out too: they are recomputed from the archived
-# ERA5 and station-pressure inputs.
+# Frozen selection directories include accepted inputs and candidate caches;
+# raw annual archives and reproducible error series are not required.
 #
 # Run from the project root after committing: Rscript zenodo/make_archive.R
 
@@ -36,12 +35,14 @@ unlink(tmp, recursive = TRUE)
 data <- file.path(out, "altitude-validation-data.zip")
 unlink(data)
 keep <- c(
-  "data/interim/era5", "data/interim/era_ids.csv",
-  "data/interim/igra", "data/interim/igra_candidates.csv", "data/interim/igra_stations.csv",
-  "data/interim/gnss", "data/interim/meteoswiss", "data/interim/indep",
-  "data/interim/neighbours", "data/interim/station_dem.csv", "data/interim/station_dem_box.csv",
-  "data/raw/era5_invariant.nc", "data/raw/gnss_logs", "data/raw/igra2-station-list.txt",
-  "data/raw/isd-history.csv", "data/raw/ogd-smn_meta_stations.csv"
+  "data/interim/ghcnh/selection-2026-10-13",
+  "data/interim/igra-selection-2026-10-13",
+  "data/interim/analysis-2026-10-13/era5",
+  "data/interim/analysis-2026-10-13/historical_ground.parquet",
+  "data/interim/igra", "data/interim/gnss", "data/interim/meteoswiss", "data/interim/indep",
+  "data/raw/era5_invariant.nc", "data/raw/gnss_logs", "data/raw/ghcnh-station-list.txt",
+  "data/raw/ogd-smn_meta_stations.csv", "data/raw/gpt3",
+  "data/raw/us_nga_egm96_15.tif", "data/raw/us_nga_egm08_25.tif"
 )
 stopifnot(all(file.exists(keep)))
 file.copy("zenodo/data_README.md", "data/README.md", overwrite = TRUE)

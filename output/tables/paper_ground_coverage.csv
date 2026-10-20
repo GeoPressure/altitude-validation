@@ -1,4 +1,4 @@
-reference,stations,rows,unique_hours,median_hour_pct
-GHCNh,1983,8309533,8309533,52.6712328767123
-GNSS,49,1124815,1124815,99.408014571949
-MeteoSwiss,138,3604509,3604509,100
+reference,stations,observations
+GHCNh,2130,11516671
+GNSS,49,1124815
+MeteoSwiss,138,3604509

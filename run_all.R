@@ -1,27 +1,23 @@
-# Run the pipeline: every script in scripts/ in order, then the manuscript and supplement.
-#
-#   Rscript run_all.R          # steps 01-20 and the manuscript
-#   Rscript run_all.R 12       # from step 12 (analysis) onwards
-#   Rscript run_all.R 12 15    # steps 12 to 15 only
-#
-# Each step runs in its own R session and skips work already on disk (downloads, ERA5 reads), so the
-# pipeline can be interrupted and resumed. Step 00 (bird flight heights) needs the GeoLocator master
-# data package locally and its output is committed: run it explicitly with `Rscript run_all.R 0 0`.
-# Set N_CORES (default 8) for the number of parallel workers.
-
+# Recompute the manuscript from the frozen completed selections.
+# Rscript run_all.R          # input enrichment, analysis, figures and documents
+# Rscript run_all.R 12       # reuse the prepared error series
+# Rscript run_all.R 18       # primary summaries, focused checks and figures
+# Rscript run_all.R 19 19    # manuscript figures only
 args <- as.integer(commandArgs(trailingOnly = TRUE))
-steps <- sort(list.files("scripts", "^[0-9]{2}_.*\\.R$"))
+from <- if (length(args)) args[1] else 7L
+to <- if (length(args) >= 2) args[2] else 22L
+steps <- c("07_static.R", "08_era5_extract.R", "09_errors.R", "12_analysis.R",
+  "14_independent_errors.R", "15_variation.R", "18_three_formulas.R",
+  "20_paper_sensitivity.R", "21_selection_sensitivity.R", "17_figures.R",
+  "19_paper_figures.R", "22_validate_analysis.R")
 num <- as.integer(substr(steps, 1, 2))
-from <- if (length(args) >= 1) args[1] else 1
-to <- if (length(args) >= 2) args[2] else max(num)
-
+if (from <= 18) unlink("output/tables/selection_analysis_complete.json")
 for (s in steps[num >= from & num <= to]) {
-  message("==== ", s)
+  cli::cli_alert_info("Running {s}")
   t0 <- Sys.time()
   if (system2("Rscript", file.path("scripts", s)) != 0) stop(s, " failed", call. = FALSE)
-  message("     done in ", format(round(Sys.time() - t0, 1)))
+  cli::cli_alert_success("{s}: {round(as.numeric(difftime(Sys.time(), t0, units = 'secs')))} seconds")
 }
-if (to >= max(num)) {
-  message("==== manuscript and supplement")
-  if (system2("bash", "paper/render.sh") != 0) stop("manuscript render failed", call. = FALSE)
+if (to >= 22) {
+  if (system2("bash", "paper/render.sh") != 0) stop("Document render failed", call. = FALSE)
 }

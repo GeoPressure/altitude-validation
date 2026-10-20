@@ -1,0 +1,52 @@
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:base’:
+
+    %notin%
+
+
+Attaching package: ‘arrow’
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+Linking to GEOS 3.13.0, GDAL 3.8.5, PROJ 9.5.1; sf_use_s2() is TRUE
+                        metric        value
+                        <char>        <num>
+ 1:         candidate_stations 7.720000e+02
+ 2:            cached_stations 7.470000e+02
+ 3:      old_selected_stations 7.020000e+02
+ 4: candidate_equal_area_cells 7.290000e+02
+ 5:                 raw_levels 2.710713e+07
+ 6:             surface_levels 8.486170e+05
+ 7:            surface_missing 5.847340e+05
+ 8:         surface_qa_removed 5.039000e+03
+ 9:            elapsed_missing 1.691705e+07
+10:         elapsed_qa_removed 4.000000e+00
+11:      non_surface_below_400 0.000000e+00
+12:               wall_seconds 3.273280e+01
+   min_days_each_month stations_either_year cells_either_year
+                 <int>                <int>             <int>
+1:                   5                  603               589
+2:                  10                  585               572
+3:                  15                  546               533
+   old_selected_stations
+                   <int>
+1:                   585
+2:                   568
+3:                   530
+               band  levels pooled_removed local_removed both_removed stations
+             <fctr>   <int>          <int>         <int>        <int>    <int>
+ 1:         (-10,1]  738125              1             1            1      655
+ 2:       (100,250]  415441            370           349          349      591
+ 3:     (500,1e+03] 1245961           1966            45           43      635
+ 4: (1.5e+03,2e+03]  813329           1190            22           13      585
+ 5:   (3e+03,4e+03] 1558719             34            21           19      603
+ 6:   (5e+03,6e+03] 1766081              3             2            1      649
+ 7:         (1,100]  416105             19            16           16      605
+ 8: (1e+03,1.5e+03] 1102806            550            18           18      631
+ 9:   (2e+03,3e+03] 1710623              7             5            1      567
+10:       (250,500]  416598            224           158          157      533
+11:   (4e+03,5e+03] 1340160             34             2            2      509

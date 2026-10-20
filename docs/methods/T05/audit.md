@@ -2,7 +2,7 @@
 
 **Later implementation:** T06 now removes repeated GNSS hours from primary summaries and regenerates current coverage; see its [implementation record](../T06/implementation.md). The counts and “current” statements below describe the earlier audit snapshot of the original inputs.
 
-Completed 18 October 2026 for C16–C21 in the [comment response plan](../../manuscript/comment-response-plan.md). This audit reads the saved inputs and existing scripts; it does not redownload observations, change the study selections or recompute the reported error summaries. The new coverage outputs describe the inputs to the three-conversion comparison in `scripts/18_three_formulas.R`.
+Completed 18 October 2026 for C16–C21 in the [comment response plan](../../../archive/docs/manuscript/comment-response-plan.md). This audit reads the saved inputs and existing scripts; it does not redownload observations, change the study selections or recompute the reported error summaries. The new coverage outputs describe the inputs to the three-conversion comparison in `scripts/18_three_formulas.R`.
 
 ## Findings and implemented changes
 

@@ -1,8 +1,8 @@
 # Proposed shorter S1: reference data, sampling and quality control
 
-**Implemented follow-up:** The manuscript now contains a refined version of this draft, with unique GNSS hours and post-selection ground cell weights. See the [implementation record](../methods/T06/implementation.md). The original proposal below is retained for traceability.
+**Implemented follow-up:** The manuscript now contains a refined version of this draft, with unique GNSS hours and post-selection ground cell weights. See the [implementation record](../../../docs/methods/T06/implementation.md). The original proposal below is retained for traceability.
 
-This was replacement wording for review, not an edit at the time it was drafted. It describes the current numerical analysis. The [T06 assessment](../methods/T06/recommendations.md) separately evaluates possible changes to weighting, coverage and duplicate handling. Those changes must be implemented and the affected numbers updated before describing them as the primary analysis.
+This was replacement wording for review, not an edit at the time it was drafted. It describes the current numerical analysis. The [T06 assessment](../../../docs/methods/T06/recommendations.md) separately evaluates possible changes to weighting, coverage and duplicate handling. Those changes must be implemented and the affected numbers updated before describing them as the primary analysis.
 
 ## Proposed replacement prose
 

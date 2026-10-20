@@ -1,0 +1,8 @@
+check,result,stations_compared
+Cached-data window and step agreement,pass,62
+"Pressure QC, closest report, earlier-distance tie and half-hour assignment",pass,
+Technical failure preserves candidate,pass,
+Interrupted temporary file ignored,pass,
+Restart equals uninterrupted selection,pass,
+Completed cell is stable,pass,
+Post-outlier coverage and strict 100 m boundary,pass,

@@ -2,7 +2,7 @@
 
 **Implementation follow-up:** The author approved these recommendations; see the [implementation and verification record](implementation.md). The assessment and diagnostic numbers below describe the pre-implementation protocol and are retained for traceability.
 
-Assessment dated 18 October 2026. This extends T06 to the author's request to review S1, station filtering, altitude-related sampling and an appendix role for MeteoSwiss. All comparisons use existing observations. The manuscript, figures and primary numerical tables have not been changed. The [shorter S1 draft](../../manuscript/s1-simplification-proposal.md) is ready for review alongside the decisions below.
+Assessment dated 18 October 2026. This extends T06 to the author's request to review S1, station filtering, altitude-related sampling and an appendix role for MeteoSwiss. All comparisons use existing observations. The manuscript, figures and primary numerical tables have not been changed. The [shorter S1 draft](../../../archive/docs/manuscript/s1-simplification-proposal.md) is ready for review alongside the decisions below.
 
 ## Recommendation
 
@@ -138,7 +138,7 @@ For a ground summary with station weights u, each of station s's N retained obse
 
 The current reference-data/QC prose before the individual-error subsection is approximately 1185 words (inline R values replaced by a single token and code blocks excluded). It combines dataset identity, physical limitations, parsing instructions, legacy implementation quirks and a defence of the reference screen. These need not all occupy the same section.
 
-The [replacement draft](../../manuscript/s1-simplification-proposal.md) keeps 439 words of proposed replacement prose in five short paragraphs plus one compact rules table (about 63% less prose). It preserves product identity, years, spatial/coverage selection, actual filtering criteria, reference-height uncertainty, reported radiosonde heights, time matching and fallback assumptions. It moves the argument for the filters and their sensitivity to S4; MeteoSwiss belongs with that argument. Parsing minutiae, detailed station-year counts and technical provenance remain in the code/audit documentation.
+The [replacement draft](../../../archive/docs/manuscript/s1-simplification-proposal.md) keeps 439 words of proposed replacement prose in five short paragraphs plus one compact rules table (about 63% less prose). It preserves product identity, years, spatial/coverage selection, actual filtering criteria, reference-height uncertainty, reported radiosonde heights, time matching and fallback assumptions. It moves the argument for the filters and their sensitivity to S4; MeteoSwiss belongs with that argument. Parsing minutiae, detailed station-year counts and technical provenance remain in the code/audit documentation.
 
 In particular, retain the reason for handling station heights. Remove the implication that the existing offset rule independently identifies bad metadata, and replace “the screen affects only the tail, not the typical error” with a precise statement: the median bias is stable, but MAE and p95 depend materially on screening. Those changes simplify the explanation while making it more accurate.
 

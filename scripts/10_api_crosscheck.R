@@ -15,9 +15,9 @@ ids <- sample(unique(A$id), 25)
 
 out <- rbindlist(lapply(ids, function(i) {
   s <- st[id == i]
-  week <- as.POSIXct(sprintf("%d-07-10", s$selected_year), tz = "UTC")
+  week <- as.POSIXct(as.character(s$window_start + 90), tz = "UTC")
   week <- c(week, week + 7 * 24 * 60 * 60)
-  d <- A[id == i & date >= week[1] & date < week[2] & !gross]
+  d <- A[id == i & date >= week[1] & date < week[2]]
   if (nrow(d) == 0) return(NULL)
   body <- list(
     lon = rep(s$lon, nrow(d)),

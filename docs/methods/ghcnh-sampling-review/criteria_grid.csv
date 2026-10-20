@@ -1,0 +1,6 @@
+width_km,occupied_cells,singleton_cells,median_candidates,cells_with_high_station
+100,4628,3103,1,593
+150,3407,1938,1,488
+200,2563,1195,2,404
+250,2018,806,2,346
+300,1601,530,2,303

@@ -2,8 +2,7 @@
 #
 # Every summary here is a distribution over stations of the two quantities defined in
 # 12_analysis.R: the bias (accuracy) and the SD of the error (precision), computed per station and
-# per class (month, hour, year, height bin). Distributions are given by cell-weighted quantiles
-# (GHCNh) or unweighted ones (GNSS, MeteoSwiss, era stations).
+# per class (month, hour, year, height bin). Distributions give each contributing station equal weight.
 
 source("R/utils.R")
 suppressPackageStartupMessages(library(mgcv))
@@ -19,9 +18,9 @@ ref <- stA[reference == TRUE]
 # ---- Main table: reference stations of the three ground references, both products -------------
 ind <- fread(file.path(dir_tables, "indep_station_stats.csv"))
 sets <- list(
-  GHCNh = ref[, .(bias_sl, sd_sl, bias_land, sd_land, w = cw)],
-  GNSS = ind[source == "GNSS" & height_ok == TRUE, .(bias_sl, sd_sl, bias_land, sd_land, w = 1)],
-  MeteoSwiss = ind[source == "MeteoSwiss", .(bias_sl, sd_sl, bias_land, sd_land, w = 1)]
+  GHCNh = ref[, .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = cw)],
+  GNSS = ind[source == "GNSS" & height_ok == TRUE, .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = 1)],
+  MeteoSwiss = ind[source == "MeteoSwiss", .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = 1)]
 )
 main <- rbindlist(lapply(names(sets), function(k) {
   s <- sets[[k]]
@@ -66,9 +65,8 @@ fwrite(clim, file.path(dir_tables, "ground_var_climate.csv"))
 
 # ---- Season and hour of day: bias and SD per station and class ---------------------------------
 A <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
-  col_select = c("id", "year", "lsh", "sdoy", "err_sl", "gross")))
-A <- A[ref[, .(id, year = selected_year)], on = .(id, year)]
-A <- A[!gross %in% TRUE & is.finite(err_sl) & id %in% ref$id]
+  col_select = c("id", "year", "lsh", "sdoy", "err_sl")))
+A <- A[is.finite(err_sl) & id %in% ref$id]
 A[, month := pmin(12, floor((sdoy - 1) / 30.5) + 1)]
 # Most stations report 3-hourly, so hourly classes alternate between station subsets: 3 h classes.
 A[, hour := 3 * floor(lsh / 3) + 1.5]
@@ -85,29 +83,13 @@ fwrite(by_class("hour"), file.path(dir_tables, "ground_var_hour.csv"))
 rm(A)
 gc()
 
-# ---- Change over time: the stations reporting in every era year -------------------------------
-era_ids <- if (file.exists(file.path(dir_interim, "era_ids.csv"))) {
-  fread(file.path(dir_interim, "era_ids.csv"))$id
-} else character()
-if (length(era_ids)) {
-  Ae <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
-    col_select = c("id", "year", "err_sl", "gross")))[id %in% era_ids & !gross %in% TRUE]
-  Ae <- Ae[year %in% c(years_era, max(years_main))]
-  Ae <- Ae[, .(bias = mean(err_sl), sd = sd(err_sl), n = .N), by = .(id, year)][n >= 500]
-  Ae <- Ae[id %in% Ae[, .N, by = id][N == length(years_era) + 1L, id]]
-  fwrite(Ae[, .(n_stations = .N, abs_bias_median = median(abs(bias)), sd_median = median(sd),
-    sd_p90 = quantile(sd, 0.9)), by = year][order(year)], file.path(dir_tables, "ground_era.csv"))
-  fwrite(rbind(cbind(metric = "bias", Ae[, c(.(n = .N), wq(bias)), by = year]),
-    cbind(metric = "sd", Ae[, c(.(n = .N), wq(sd)), by = year])),
-    file.path(dir_tables, "ground_var_year.csv"))
-}
+# Fixed historical sample: the same five stations in each of four years.
+Ae <- as.data.table(read_parquet(file.path(analysis_dir, "historical_ground.parquet")))
+Ae <- Ae[, .(bias = mean(err_sl), sd = sd(err_sl), n = .N), by = .(id, year)][n >= 500]
+Ae <- Ae[id %in% Ae[, .N, by = id][N == 4L, id]]
+fwrite(Ae[, .(n_stations = .N, abs_bias_median = median(abs(bias)), sd_median = median(sd),
+  sd_p90 = quantile(sd, .9)), by = year][order(year)], file.path(dir_tables, "ground_era.csv"))
+fwrite(rbind(cbind(metric = "bias", Ae[, c(.(n = .N), wq(bias)), by = year]),
+  cbind(metric = "sd", Ae[, c(.(n = .N), wq(sd)), by = year])), file.path(dir_tables, "ground_var_year.csv"))
 
-# ---- In flight: bias and SD per radiosonde station and height bin ----------------------------
-st <- load_stations()
-B <- load_radiosondes(st)
-sb <- B[is.finite(err_sl_rel) & !is.na(hbin) & as.integer(hbin) > 1, .(bias = mean(err_sl_rel),
-  sd = sd(err_sl_rel), n = .N), by = .(id, hbin)][n >= 30]
-sb[, agl_mid := hbin_mid[as.integer(hbin)]]
-fwrite(sb, file.path(dir_tables, "flight_station_height.csv"))
-cat("Variation tables written.\n")
-print(main)
+cli::cli_alert_success("Environmental variation tables written")
