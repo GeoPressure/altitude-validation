@@ -1,7 +1,8 @@
 {
-  "generated_utc": "2026-10-20 13:03:16 UTC",
+  "generated_utc": "2026-10-22 12:55:16 UTC",
   "source_md5": {
     "R/palette.R": "6a37aa20eeb56fc6333028b173b191ba",
-    "scripts/19_paper_figures.R": "57b3cc92e4711b84d33d0d74b252ee69"
+    "scripts/19_paper_figures.R": "e64857a02598400b3f96b87640fbd20a",
+    "scripts/23_figure1.R": "9fd21e88f7e6c84d002d969caf3e09bb"
   }
 }

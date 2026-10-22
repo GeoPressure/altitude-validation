@@ -154,7 +154,7 @@ save_fig(p, "ground_season_hour", 9, 6)
 if (file.exists(file.path(dir_tables, "ground_var_year.csv"))) {
   vy <- tab("ground_var_year.csv")
   year_x <- scale_x_continuous(breaks = seq(1990, 2025, 5), limits = c(1988, 2026))
-  line_q50 <- function(col) c(qbars(col), geom_line(aes(y = q50), colour = pal[["ink"]],
+  line_q50 <- function(col) c(qbars(col)[1:2], geom_line(aes(y = q50), colour = pal[["ink"]],
     linewidth = 0.4))
   save_fig(qpanel(vy, "year", "bias", line_q50, NULL, "a", year_x) +
     qpanel(vy, "year", "sd", line_q50, NULL, "b", year_x), "ground_era", 9, 3.6)
@@ -198,7 +198,7 @@ tb[, agl_mid := hbin_mid[match(hbin, levels(cut(0, hbin_breaks, right = TRUE)))]
 tb[, product := fifelse(method == "ERA5-Land", "ERA5-Land", "ERA5 single-levels")]
 land_flight <- function(v, ylab, tag) {
   ggplot(tb[agl_mid <= 4000], aes(agl_mid, .data[[v]], colour = product)) +
-    zero_line + geom_line() + geom_point(size = 1.3) +
+    zero_line + geom_line() +
     scale_colour_manual(values = pal_product, name = NULL) +
     height_axis(4000) + flip_height + labs(y = ylab, tag = tag)
 }

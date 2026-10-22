@@ -82,17 +82,13 @@ nb <- tab("flight_stations_used.csv")
 n_sonde <- nrow(nb)
 n_ghcnh <- g("standard", "GHCNh", "n_stations")
 n_gnss <- g("standard", "GNSS", "n_stations")
-f1 <- tab("paper_fig1_soundings.csv")
-f1e <- function(i, f) sub("-", "\u2212", sprintf("%+.0f", f1[[f]][i]))
 fdn <- tab("paper_flight_daynight.csv")
 dn <- function(f, b, dnt, ssn) {
   fdn[formula == f & hbin == b & daynight == dnt & season == ssn]$bias
 }
-cap_column <- sprintf(
-  "Radiosonde temperatures and the temperature profiles assumed by the three pressure-to-altitude conversions for a temperate summer day (left) and a continental winter night (right). Colours identify each profile; the legend also gives its signed height error near 2 km above the sounding surface (summer / winter), after subtracting the surface error. The radiosonde is the reference profile. The examples were selected because their errors were close to the class medians."
-)
+cap_column <- "Atmospheric conditions and their effects on pressure-derived altitude. Left: observed pressure at Cape Naturaliste, Australia (reported elevation 109 m), from 28 September to 11 October 2026, and altitude errors from the three conversions for this stationary sensor. Right: radiosonde temperatures and assumed temperature profiles for a temperate summer day at Tampa Bay, USA (31 July 2026), and a continental winter night at Lincoln, USA (19 December 2025), with corresponding flight-height errors below. The teal profile represents virtual temperature. For each sounding, reference conditions near 2 km are held fixed throughout the illustration, and flight-height errors subtract each conversion's estimate at the launch surface. Dashed lines mark zero error. The weather station and two-week period were selected near median temporal variability among flat temperate stations and within that station, respectively; the sounding examples were selected near their class-median errors at 2 km."
 cap_flight <- sprintf(
-  "Surface-referenced flight-height errors against height above the sounding surface: (a) station bias (mean error; negative: height underestimated) and (b) station error SD within each height band. Lines and points: equally weighted medians across stations in 250 m height bands; shaded bands: weighted 25th--75th percentiles for all three conversions. Curves join observed-band summaries without smoothing; the highest band is centred at 3.875 km. These station quantiles differ from the pooled individual-error summaries. The display covers 0--4 km; error calculations extend to 6 km. (c) Flight-time height distribution of %d birds, with its median (%s m) and 90th percentile (%s m) marked across the panels.",
+  "Surface-referenced flight-height errors against height above the sounding surface: (a) station bias (mean error; negative: height underestimated) and (b) station error SD within each height band. Lines: equally weighted medians across stations in 250 m height bands; shaded bands: weighted 25th--75th percentiles for all three conversions. Curves join observed-band summaries without smoothing; the highest band is centred at 3.875 km. These station quantiles differ from the pooled individual-error summaries. The display covers 0--4 km; error calculations extend to 6 km. (c) Flight-time height distribution of %d birds, with its median (%s m) and 90th percentile (%s m) marked across the panels.",
   n_tags,
   r0(round(bq$p50, -1)),
   r0(round(bq$p90, -1))
@@ -192,7 +188,7 @@ To simplify the computation, temperature is assumed to change at a constant rate
 $$
 z = z_0 + \frac{T_0}{L}\left[\left(\frac{p}{p_0}\right)^{-R L / (g M)} - 1\right].
 $$ {#eq-barometric}
-The three conversions differ in their reference level and in the column temperature they assume (@fig-column):
+The three conversions differ in their reference level and in the column temperature they assume. @fig-column illustrates the effects of weather-driven pressure changes and temperature-profile assumptions on altitude estimates:
 
 1. **Standard atmosphere.** The reference is sea level ($z_0$ = 0, $p_0$ = 1013.25 hPa) with $T_0$ = 288.15 K (15 °C) and $L$ = $-6.5$ K km$^{-1}$ [@icao1993]. Its main advantage is that it needs no external data, but these fixed conditions do not account for changes in pressure, temperature or humidity.
 2. **ERA5, standard lapse rate.** The ERA5 reanalysis provides surface pressure $p_0$, 2 m air temperature $T_0$ and surface geopotential $\Phi$ at the location and hour of each measurement, with reference altitude $z_0=\Phi/g$. This accounts for local pressure and temperature variations, while retaining a constant lapse rate of $-6.5$ K km$^{-1}$ and no humidity correction.

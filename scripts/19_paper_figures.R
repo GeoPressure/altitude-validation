@@ -86,62 +86,7 @@ fwrite(pick[, .(class = title, id, name, sounding, local_solar_hour = lsh, agl, 
   e_virtual, median_isa = m_e_isa, median_standard = m_e_standard, median_virtual = m_e_virtual,
   n_soundings_class = n_class)], file.path(dir_tables, "paper_fig1_soundings.csv"))
 
-example <- function(k) {
-  s <- st[network == "igra" & id == k$id]
-  o <- as.data.table(read_parquet(file.path(selection_dir("igra"), "accepted", paste0(k$id, ".parquet"))))
-  o <- o[sounding == k$sounding & temp > -8000 & agl <= 3000][order(-press)]
-  tv0 <- virtual_temperature(k$t2m_sl, k$d2m, k$sp_sl)
-  z <- seq(0, 3000, 50) + k$gph_s
-  prof <- rbind(
-    o[, .(agl, t = temp / 10, what = "Radiosonde")],
-    data.table(agl = z - k$gph_s, t = 15 - 0.0065 * z, what = formulas[["isa"]]),
-    data.table(agl = z - k$gph_s, t = k$t2m_sl - 273.15 - 0.0065 * (z - k$z_sl),
-      what = formulas[["standard"]]),
-    data.table(agl = z - k$gph_s, t = tv0 - 273.15 + k$L * (z - k$z_sl),
-      what = formulas[["virtual"]])
-  )
-  lt <- format(k$launch,
-    "%d %b %Y, %H UTC")
-  name <- tools::toTitleCase(tolower(sub("[;,(].*$", "", s$name)))
-  if (grepl("^USM", k$id)) name <- sprintf("%s, %s, USA", name, trimws(sub("\\.$", "",
-    sub("^[^;]*;", "", s$name))))
-  panel <- sprintf("%s\n%s, %s (%s)", k$title, name, lt, sprintf("%.0f h local", k$lsh))
-  list(prof = cbind(prof, panel = panel),
-    err = data.table(panel = panel, formula = names(formulas), agl = k$agl,
-      err = c(k$e_isa, k$e_standard, k$e_virtual),
-      med = c(k$m_e_isa, k$m_e_standard, k$m_e_virtual)))
-}
-ex <- lapply(seq_len(nrow(pick)), function(i) example(pick[i]))
-prof <- rbindlist(lapply(ex, `[[`, "prof"))
-errs <- rbindlist(lapply(ex, `[[`, "err"))
-# Short class labels stay in the artwork; site/date and selection details are in the caption.
-prof[, panel := factor(panel, unique(prof$panel), classes$title)]
-errs[, panel := factor(panel, unique(errs$panel), classes$title)]
-prof[, what := factor(what, c("Radiosonde", formulas))]
-lt_f <- setNames(lt_conversion, formulas)
-lev <- unique(errs[, .(panel, agl)])
-err_labels <- vapply(names(formulas), function(f) {
-  e <- errs[formula == f][order(panel), err]
-  sprintf("%s (%s / %s m)", formulas[[f]], sub("-", "−", sprintf("%+.0f", e[1])),
-    sub("-", "−", sprintf("%+.0f", e[2])))
-}, character(1))
-legend_labels <- c(Radiosonde = "Radiosonde (reference)", setNames(err_labels, formulas))
-p_profile <- ggplot(prof, aes(t, agl / 1000, colour = what)) +
-  geom_hline(aes(yintercept = agl / 1000), data = lev, colour = pal[["grid"]], linetype = "dotted", linewidth = 0.35) +
-  geom_path(data = prof[what == "Radiosonde"], linewidth = 1.1, alpha = 0.95) +
-  geom_point(data = prof[what == "Radiosonde"], shape = 1, size = 1.4, stroke = 0.5, alpha = 0.65) +
-  geom_path(aes(linetype = what), data = prof[what != "Radiosonde"], linewidth = 0.7) +
-  facet_wrap(~panel) +
-  scale_colour_manual(values = c(Radiosonde = "#3B6FB6", pal_f), breaks = c("Radiosonde", formulas),
-    labels = legend_labels, name = NULL, guide = guide_legend(nrow = 2, byrow = TRUE,
-      override.aes = list(linewidth = c(1.1, 0.7, 0.7, 0.7)))) +
-  scale_linetype_manual(values = lt_f, guide = "none") +
-  scale_y_continuous(breaks = 0:3, limits = c(0, 3.1), expand = expansion(mult = c(0.01, 0.01))) +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 6), expand = expansion(mult = 0.02)) +
-  labs(y = "Height above sounding surface (km)", x = "Temperature (°C)") +
-  theme(panel.spacing.x = unit(1.5, "lines"), panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
-    legend.position = "bottom", legend.box = "horizontal", legend.text = element_text(size = 8))
-save_fig(p_profile, "fig1_column", 7.2, 5.0)
+source("scripts/23_figure1.R", local = new.env())
 # Rebuild Figure 1 alone during design review; a normal run still creates all figures.
 if (Sys.getenv("FIGURE_ONLY") == "1") quit(save = "no")
 
@@ -225,8 +170,6 @@ flight_panel <- function(m, xlab, tag, xlim, xbreaks) {
     geom_vline(xintercept = 0, colour = pal[["ink"]], linewidth = 0.4) +
     geom_ribbon(aes(xmin = q25, xmax = q75), alpha = 0.12, colour = NA, orientation = "y") +
     geom_path(linewidth = 0.75) +
-    geom_point(aes(shape = formula), size = 1.4, stroke = 0.6) +
-    scale_shape_manual(values = setNames(pch_conversion, formulas), name = NULL) +
     scale_colour_manual(values = pal_f, name = NULL) +
     scale_fill_manual(values = pal_f, guide = "none") +
     scale_y_continuous(breaks = 0:4, limits = c(0, 4), expand = expansion(mult = 0.01)) +
@@ -259,7 +202,7 @@ setorder(fc, climate, season, formula, agl_mid)
 fc[, season := factor(season, c("summer half", "winter half"), c("Summer half", "Winter half"))]
 p5 <- ggplot(fc, aes(bias, agl_mid / 1000, colour = formula)) +
   geom_vline(xintercept = 0, colour = pal[["ink"]], linewidth = 0.4) +
-  geom_path() + geom_point(size = 0.9) +
+  geom_path() +
   facet_grid(season ~ climate) +
   scale_colour_manual(values = pal_f, name = NULL) +
   scale_x_continuous(breaks = c(-100, 0, 100), limits = c(-185, 195)) +
@@ -270,4 +213,4 @@ p5 <- ggplot(fc, aes(bias, agl_mid / 1000, colour = formula)) +
     colour = pal[["grid"]], linewidth = 0.4))
 save_fig(p5, "fig5_climate", 7.2, 4.4)
 
-jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), source_md5 = as.list(tools::md5sum(c("R/palette.R", "scripts/19_paper_figures.R")))), file.path(dir_tables, "paper_figures_provenance.json"), pretty = TRUE, auto_unbox = TRUE)
+jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), source_md5 = as.list(tools::md5sum(c("R/palette.R", "scripts/19_paper_figures.R", "scripts/23_figure1.R")))), file.path(dir_tables, "paper_figures_provenance.json"), pretty = TRUE, auto_unbox = TRUE)
