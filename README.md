@@ -1,10 +1,10 @@
 # How accurate is altitude from pressure geolocators?
 
-A global assessment of the altitude that [GeoPressureR](https://github.com/GeoPressure/GeoPressureR) and [GeoPressureAPI](https://github.com/GeoPressure/GeoPressureAPI) compute from a pressure measurement with ERA5, using GHCNh as the primary ground reference and IGRA2 radiosondes up to 6 km above the sounding surface. GNSS barometers with checked height metadata and MeteoSwiss supply complementary appendix checks.
+A global assessment of the altitude that [GeoPressureR](https://github.com/GeoPressure/GeoPressureR) and [GeoPressureAPI](https://github.com/GeoPressure/GeoPressureAPI) compute from a pressure measurement with ERA5, using GHCNh as the primary ground reference and IGRA2 radiosondes up to 6 km above the sounding surface.
 
 **Read the current [manuscript](paper/paper.pdf) and [supplement](paper/supplement.pdf).** Editable sources and HTML versions are in [`paper/`](paper). The earlier exploratory report is preserved in [`archive/report/`](archive/report).
 
-The primary reference networks use each station's latest qualifying 12 months within 2022–2026, with one passing station per represented 200 km equal-area cell. The supplement separates processing methods, environmental patterns, reference-height checks, selection sensitivity, bird weighting and position uncertainty.
+The primary reference networks use each station's latest qualifying 12 months within 2022–2026, with one passing station per represented 200 km equal-area cell. The supplement separates processing methods, environmental patterns, selection sensitivity, bird weighting and position uncertainty.
 
 The numerical analysis uses the accepted observation windows directly, with equal ground-station weights and equal station weights within each flight-height band. Manuscript figures, supplementary comparisons and the bird-weighted summary are regenerated from these common inputs.
 
@@ -52,14 +52,14 @@ bash paper/render.sh      # documents only, using existing tables and figures
 | Stage | Purpose |
 |---|---|
 | 07–09 | Attach station covariates, read ERA5-Land at accepted hours and compute error series. Primary ERA5 inputs are reused from selection. |
-| 12, 14, 15 | Summarize accepted errors, complementary GNSS/MeteoSwiss barometers and environmental variation. |
+| 12, 15 | Summarize accepted errors and environmental variation. |
 | 18, 20, 21 | Compare the three conversions, calculate bird-weighted errors, test equal-tag weights and compare station-selection rules. |
 | 17, 19 | Rebuild supplementary and manuscript figures from the resulting tables. |
 | 22 | Check accepted samples, windows, weights, direct GeoPressureR calculations and agreement between primary and sensitivity summaries; then render both documents. |
 
-GNSS and MeteoSwiss retain their documented 2022–2024 inputs. Their optional intake commands are `Rscript scripts/05_gnss_download.R` and `Rscript scripts/06_meteoswiss_download.R`. Step 00 builds the biological weights from the published [Master GeoLocator Data Package, version 2026.0](https://doi.org/10.5281/zenodo.18187093); committed aggregate weights suffice for ordinary builds. After changing biological weights, also regenerate the equal-tag aggregates described in [T07](docs/methods/T07/implementation.md).
+Step 00 builds the biological weights from the published [Master GeoLocator Data Package, version 2026.0](https://doi.org/10.5281/zenodo.18187093); committed aggregate weights suffice for ordinary builds. After changing biological weights, also regenerate the equal-tag aggregates described in [T07](docs/methods/T07/implementation.md).
 
-The fixed historical comparison and the [S7 position-displacement experiment](docs/methods/T10/design.md) retain their documented samples. Rebuild the latter with `Rscript docs/methods/T10/run_experiment.R` and its figure with `Rscript docs/methods/T10/plot_experiment.R`. Earlier calendar-year stages are archived under `archive/scripts/calendar-year-pipeline/`, and preceding numerical outputs under `archive/analysis-before-selection-2026-10-20/`.
+The fixed historical comparison and the [S6 position-displacement experiment](docs/methods/T10/design.md) retain their documented samples. Rebuild the latter with `Rscript docs/methods/T10/run_experiment.R` and its figure with `Rscript docs/methods/T10/plot_experiment.R`. Earlier calendar-year stages are archived under `archive/scripts/calendar-year-pipeline/`, and preceding numerical outputs under `archive/analysis-before-selection-2026-10-20/`.
 
 Tables are in `output/tables/`, supplementary artwork in `output/figures/`, and manuscript artwork in `paper/figures/`. A successful validated analysis writes `output/tables/selection_analysis_complete.json`; draft notices remain visible until that check passes. Archives predating the current selection must not be mixed with the accepted rolling-window sample.
 

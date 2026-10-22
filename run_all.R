@@ -7,7 +7,7 @@ args <- as.integer(commandArgs(trailingOnly = TRUE))
 from <- if (length(args)) args[1] else 7L
 to <- if (length(args) >= 2) args[2] else 22L
 steps <- c("07_static.R", "08_era5_extract.R", "09_errors.R", "12_analysis.R",
-  "14_independent_errors.R", "15_variation.R", "18_three_formulas.R",
+  "15_variation.R", "18_three_formulas.R",
   "20_paper_sensitivity.R", "21_selection_sensitivity.R", "17_figures.R",
   "19_paper_figures.R", "22_validate_analysis.R")
 num <- as.integer(substr(steps, 1, 2))

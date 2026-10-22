@@ -5,8 +5,8 @@
 #   - log:    marker ellipsoidal height (site log XYZ) + Marker->ARP Up + "Height Diff to Ant" of the
 #             pressure sensor, each taken from the site-log entry valid on that day;
 #   - header: SENSOR POS H of the daily RINEX met file (and the height of SENSOR POS XYZ when given).
-# A station is height-checked when the log and header heights agree within 1 m (median over its
-# days). The log height is used where the log covers the day, else the header height. Ellipsoidal heights are converted to heights above the geoid with EGM96, the geoid of
+# One height source is selected for the whole GNSS dataset by its median absolute ERA5-standard
+# station bias on common accepted records. Ellipsoidal heights are converted with EGM96, the geoid of
 # ERA5's orography (SRTM30) south of 60N; EGM2008 is used as a sensitivity.
 #
 # The altitude is computed exactly as for the GHCNh stations (ERA5 single-levels and ERA5-Land,
@@ -83,8 +83,10 @@ G <- rbindlist(lapply(list.files(gnss_dir, "\\.parquet$", full.names = TRUE), fu
   s <- d$station[1]
   lf <- log_files[startsWith(basename(log_files), tolower(s))]
   if (length(lf) == 0) {
-    message("no site log: ", s)
-    return(NULL)
+    position <- ecef_to_geodetic(d$hdr_X, d$hdr_Y, d$hdr_Z)
+    d[, `:=`(lat = position$lat, lon = position$lon, h_log = NA_real_,
+      log_model = NA_character_, log_acc = NA_real_, h_hdr_xyz = position$h)]
+    return(d)
   }
   lg <- parse_log(lf[1])
   if (!is.finite(lg$h_marker)) return(NULL)
@@ -118,25 +120,22 @@ gst[, N96 := terra::extract(egm96, cbind(lon, lat), method = "bilinear")[[1]]]
 gst[, N08 := terra::extract(egm08, cbind(lon, lat), method = "bilinear")[[1]]]
 G <- merge(G, gst[, .(station, N96, N08)], by = "station")
 
-# Station-level height check and sensor class
+# Sensor class
 hc <- G[, .(
-  d_hdr_log = median(hdr_H - h_log, na.rm = TRUE),
-  d_xyz_log = median(h_hdr_xyz - h_log, na.rm = TRUE),
   sensor = names(sort(table(paste(sensor, log_model)), decreasing = TRUE))[1]
 ), by = station]
-hc[, height_ok := is.finite(d_hdr_log) & abs(d_hdr_log) <= 1]
 hc[, sensor_class := fcase(
   grepl("paro|met3|met4|met 3|met 4", sensor, ignore.case = TRUE), "barometer (Paroscientific)",
   grepl("ptb|ptu|setra|druck|aps", sensor, ignore.case = TRUE), "barometer (other)",
   grepl("wxt|wtx|weather transmitter", sensor, ignore.case = TRUE), "weather transmitter (WXT)",
   default = "other/unknown")]
-G <- merge(G, hc[, .(station, height_ok, sensor_class)], by = "station")
+G <- merge(G, hc[, .(station, sensor_class)], by = "station")
 # The site-log height is used where available (documented separately from the met file), else the header's.
 G[, h_use := fifelse(is.finite(h_log), h_log, hdr_H)]
-G[, `:=`(elev = h_use - N96, elev_08 = h_use - N08)]
+G[, `:=`(elev = h_use - N96, elev_log = h_log - N96, elev_08 = h_use - N08)]
 G <- G[is.finite(elev) & is.finite(pressure)]
 G <- G[, .(source = "GNSS", id = station, lat, lon, date, pressure, elev, elev_08,
-  elev_hdr = hdr_H - N96, height_ok, sensor_class)]
+  elev_hdr = hdr_H - N96, elev_log, sensor_class)]
 
 # ---- MeteoSwiss --------------------------------------------------------------------------------
 ms_st <- fread(file.path(dir_interim, "meteoswiss", "stations.csv"))
@@ -144,11 +143,12 @@ M <- rbindlist(lapply(list.files(file.path(dir_interim, "meteoswiss"), "\\.parqu
   full.names = TRUE), function(f) as.data.table(read_parquet(f))))
 M <- merge(M, ms_st[, .(id, lat, lon, elev)], by = "id")
 M <- M[, .(source = "MeteoSwiss", id, lat, lon, date, pressure, elev, elev_08 = elev,
-  elev_hdr = elev, height_ok = TRUE, sensor_class = "barometer (other)")]
+  elev_hdr = elev, elev_log = NA_real_, sensor_class = "barometer (other)")]
 
 X <- rbind(G, M)
 X <- X[as.integer(format(date, "%Y")) %in% years_main]
-st <- unique(X[, .(source, id, lat, lon, elev, height_ok, sensor_class)], by = c("source",
+X <- average_reference_hours(X)
+st <- unique(X[, .(source, id, lat, lon, elev, sensor_class)], by = c("source",
   "id"))
 cat(nrow(st), "stations:", paste(names(table(st$source)), table(st$source), collapse = ", "), "\n")
 
@@ -169,38 +169,36 @@ var_sl <- c("surface_pressure", "temperature_2m", "dewpoint_temperature_2m")
 one <- function(k) {
   s <- st[k]
   out <- file.path(err_dir, paste0(s$source, "_", s$id, ".parquet"))
-  if (file.exists(out)) {
-    d <- as.data.table(read_parquet(out))
-    if ("d2m" %in% names(d)) return(TRUE)
-    # Written before the ERA5 inputs were kept: read them again, for 16_formula.R.
-    a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date, var_sl, "single-levels")
-    d[, `:=`(sp_sl = a$surface_pressure, t2m_sl = a$temperature_2m,
-      d2m = a$dewpoint_temperature_2m)]
-    write_parquet(d, out)
-    return(TRUE)
-  }
   d <- X[source == s$source & id == s$id]
-  a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date, var_sl, "single-levels")
-  l <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date,
-    c("surface_pressure", "temperature_2m"), "land")
-  d[, err_sl := era5_altitude(pressure * 100, a$surface_pressure, a$temperature_2m, s$z_sl) - elev]
-  d[, err_land := era5_altitude(pressure * 100, l$surface_pressure, l$temperature_2m, s$z_land) -
-    elev]
-  # ERA5 inputs, kept so that 16_formula.R can evaluate formula variants
-  d[, `:=`(sp_sl = a$surface_pressure, t2m_sl = a$temperature_2m,
-    d2m = a$dewpoint_temperature_2m)]
+  if (file.exists(out)) {
+    previous <- as.data.table(read_parquet(out))
+    if (!"altitude_land" %in% names(previous)) previous[, altitude_land := err_land + elev]
+    previous <- previous[, .(sp_sl = mean(sp_sl), t2m_sl = mean(t2m_sl), d2m = mean(d2m),
+      altitude_land = mean(altitude_land)), by = date]
+    d <- merge(d, previous, by = "date", all.x = TRUE)
+  } else {
+    a <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date, var_sl, "single-levels")
+    l <- era5_read(rep(s$lon, nrow(d)), rep(s$lat, nrow(d)), d$date,
+      c("surface_pressure", "temperature_2m"), "land")
+    d[, `:=`(sp_sl = a$surface_pressure, t2m_sl = a$temperature_2m,
+      d2m = a$dewpoint_temperature_2m,
+      altitude_land = era5_altitude(pressure * 100, l$surface_pressure, l$temperature_2m, s$z_land))]
+  }
+  d[, `:=`(err_sl = era5_altitude(pressure * 100, sp_sl, t2m_sl, s$z_sl) - elev,
+    err_land = altitude_land - elev)]
   write_parquet(d, out)
   TRUE
 }
 res <- par_map(seq_len(nrow(st)), one, cores = n_cores, geopressurer = TRUE,
   export = c("st", "X", "err_dir", "var_sl"))
-cat(sum(vapply(res, isTRUE, logical(1))), "of", nrow(st), "stations done\n")
+check_failures(res, paste(st$source, st$id), "complementary station inputs", fatal = TRUE)
 
 E <- rbindlist(lapply(list.files(err_dir, "\\.parquet$", full.names = TRUE), function(f) {
   as.data.table(read_parquet(f))
-}))
+}), use.names = TRUE)
 # Daily met files can overlap at midnight. Average repeated hours before QC and coverage.
 E <- average_reference_hours(E)
+stopifnot(inherits(E$date, "POSIXct"), !inherits(E$lon, "POSIXct"))
 E[st, on = .(source, id), z_sl := i.z_sl]
 E[, err_sl := era5_altitude(pressure * 100, sp_sl, t2m_sl, z_sl) - elev]
 # Cached ERA5-Land errors are averaged at repeated hours; primary comparisons use single-levels.
@@ -210,14 +208,37 @@ E[, gross := {
   abs(err_sl - m) > max(100, 10 * mad(err_sl, na.rm = TRUE))
 }, by = .(source, id)]
 gross_frac <- E[, .(gross_frac = mean(gross %in% TRUE)), by = source]
-E <- E[!gross %in% TRUE & is.finite(err_sl)]
+# Compare the two sources on the same accepted hours and stations.
+accepted <- !E$gross & is.finite(E$err_sl)
+common <- E[source == "GNSS" & accepted & is.finite(elev_log) & is.finite(elev_hdr)]
+choice <- common[, .(n = .N, site_log = mean(err_sl + elev - elev_log),
+  header = mean(err_sl + elev - elev_hdr)), by = id][n >= 2160]
+choice <- melt(choice, id.vars = c("id", "n"), variable.name = "height_source", value.name = "bias")
+choice <- choice[, .(stations = .N, median_abs_bias = median(abs(bias))), by = height_source]
+selected <- as.character(choice[which.min(median_abs_bias), height_source])
+choice[, selected := as.character(height_source) == selected]
+fwrite(choice, file.path(dir_tables, "gnss_height_reference_choice.csv"))
+print(choice)
+# Apply this single reference source to every GNSS station, including single-source sites.
+E[, `:=`(altitude_sl = err_sl + elev, geoid_shift = elev_08 - elev,
+  height_source = "published")]
+E[source == "GNSS", `:=`(elev = get(if (selected == "header") "elev_hdr" else "elev_log"),
+  height_source = selected)]
+E[, `:=`(elev_08 = elev + geoid_shift, err_sl = altitude_sl - elev, err_land = altitude_land - elev)]
+for (i in seq_len(nrow(st))) {
+  d <- E[source == st$source[i] & id == st$id[i]]
+  write_parquet(d, file.path(err_dir, paste0(st$source[i], "_", st$id[i], ".parquet")))
+}
+E <- E[accepted & is.finite(elev)]
+st[E[, .(elev = median(elev), height_source = height_source[1]), by = .(source, id)],
+  on = .(source, id), `:=`(elev = i.elev, height_source = i.height_source)]
 
 ss <- E[, .(n = .N, n_land = sum(is.finite(err_land)),
   bias_sl_paired = mean(err_sl[is.finite(err_land)]), sd_sl_paired = sd(err_sl[is.finite(err_land)]),
   bias_sl = mean(err_sl), sd_sl = sd(err_sl), bias_land = mean(err_land,
   na.rm = TRUE), sd_land = sd(err_land, na.rm = TRUE),
   # Header-height and EGM2008 variants only shift the constant height of the station
-  bias_hdr = mean(err_sl) + elev[1] - elev_hdr[1], bias_08 = mean(err_sl) + elev[1] - elev_08[1]),
+  bias_hdr = mean(altitude_sl - elev_hdr), bias_08 = mean(altitude_sl - elev_08)),
   by = .(source, id)]
 ss <- merge(st, ss, by = c("source", "id"))
 ss[, dz_sl := elev - z_sl]
@@ -231,26 +252,8 @@ counts <- data.table(
   source = c("GNSS", "MeteoSwiss"),
   n_raw = c(uniqueN(toupper(substr(lst$file, 1, 4))), nrow(ms_meta)),
   n_enough = c(ss[source == "GNSS", .N], ss[source == "MeteoSwiss", .N]),
-  n_used = c(ss[source == "GNSS" & height_ok, .N], ss[source == "MeteoSwiss", .N])
+  n_used = c(ss[source == "GNSS", .N], ss[source == "MeteoSwiss", .N])
 )
 counts <- merge(counts, gross_frac, by = "source")
 fwrite(counts, file.path(dir_tables, "indep_counts.csv"))
 print(counts)
-
-
-# Paired GHCNh–MeteoSwiss sites: WMO identity and separation within 1 km ------
-hz <- fread(file.path(dir_tables, "ground_station_stats.csv"))
-meta <- readLines(file.path(dir_raw, "ghcnh-station-list.txt"), warn = FALSE)
-identities <- data.table(id = trimws(substr(meta, 1, 11)), wmo = trimws(substr(meta, 81, 85)))
-hz <- merge(hz, identities[wmo != ""], by = "id")
-ms <- merge(hz[, .(ghcnh_id = id, ghcnh_elev = elev, bias_ghcnh = bias_sl,
-  ghcnh_lat = lat, ghcnh_lon = lon, wmo)],
-  ms_st[, .(wmo = sprintf("%05d", as.integer(wmo)), id, name, lat, lon, elev_station, elev)], by = "wmo")
-ms[, match_distance_km := as.numeric(sf::st_distance(
-  sf::st_as_sf(ms, coords = c("ghcnh_lon", "ghcnh_lat"), crs = 4326),
-  sf::st_as_sf(ms, coords = c("lon", "lat"), crs = 4326), by_element = TRUE)) / 1000]
-ms <- ms[match_distance_km <= 1]
-ms[, `:=`(d_station = ghcnh_elev - elev_station, d_barometer = ghcnh_elev - elev)]
-ms <- merge(ms, ss[source == "MeteoSwiss", .(id, bias_meteoswiss = bias_sl)], by = "id", all.x = TRUE)
-fwrite(ms, file.path(dir_tables, "meteoswiss_vs_ghcnh.csv"))
-cli::cli_alert_success("Paired sensor-height comparison: {nrow(ms)} retained GHCNh stations")

@@ -10,21 +10,6 @@ G <- as.data.table(read_parquet(file.path(dir_interim, "errors_ghcnh.parquet"),
   col_select = c("id", "date", "err_isa", "err_standard", "err_virtual")))
 G <- merge(G, st[network == "ghcnh", .(id, terrain, elev, lat, lon)], by = "id")
 G[, reference := "GHCNh"]
-stI <- fread(file.path(dir_tables, "indep_station_stats.csv"))[source == "MeteoSwiss" | height_ok]
-I <- rbindlist(lapply(file.path(dir_interim, "indep", paste0(stI$source, "_", stI$id, ".parquet")), function(f) as.data.table(read_parquet(f))))
-I <- average_reference_hours(I)
-I <- merge(I, stI[, .(source, id, z_sl, terrain = terrain_class(sdor))], by = c("source", "id"))
-I[, err_standard := altitude_lapse(pressure * 100, sp_sl, t2m_sl, z_sl) - elev]
-I[, outlier := abs(err_standard - median(err_standard, na.rm = TRUE)) > max(100, 10 * mad(err_standard, na.rm = TRUE)), by = .(source, id)]
-I <- I[outlier == FALSE & is.finite(err_standard) & is.finite(d2m)]
-I <- I[id %in% I[, .N, by = .(source, id)][N >= 2160, id]]
-L <- gpt3_lapse(gpt3, I$lon, I$lat, as.POSIXlt(I$date, tz = "UTC")$yday + 1)
-L <- fifelse(abs(L) < 1e-5, -1e-5, L)
-I[, `:=`(err_isa = altitude_lapse(pressure * 100, 101325, 288.15, 0) - elev,
-  err_virtual = altitude_lapse(pressure * 100, sp_sl, virtual_temperature(t2m_sl, d2m, sp_sl), z_sl, L) - elev,
-  reference = source, id = paste(source, id))]
-G <- rbind(G, I[, names(G), with = FALSE])
-rm(I)
 G[, w := 1 / .N, by = .(reference, id)]
 write_parquet(G, file.path(analysis_dir, "ground_comparison.parquet"))
 gs <- rbindlist(lapply(names(formulas), function(f) {
@@ -48,13 +33,6 @@ fwrite(tails, file.path(dir_tables, "paper_ground_tails.csv"))
 fwrite(G[, .(stations = uniqueN(id), observations = .N), by = reference], file.path(dir_tables, "paper_ground_coverage.csv"))
 rm(G, gs)
 gc()
-
-# The paired Swiss comparison changes height only, at the same retained sites.
-ms <- fread(file.path(dir_tables, "meteoswiss_vs_ghcnh.csv"))[is.finite(bias_ghcnh)]
-ms[, bias_height_only := bias_ghcnh + d_barometer]
-fwrite(ms, file.path(dir_tables, "paper_swiss_height.csv"))
-fwrite(ms[, .(n = .N, median_abs_ghcnh = median(abs(bias_ghcnh)),
-  median_abs_height_only = median(abs(bias_height_only)))], file.path(dir_tables, "paper_swiss_height_summary.csv"))
 
 # Flight comparisons ------------------------------------------------------
 B <- load_radiosondes(st)

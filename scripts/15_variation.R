@@ -15,13 +15,8 @@ wq <- function(x, w = rep(1, length(x))) {
 stA <- fread(file.path(dir_tables, "ground_station_stats.csv"))
 ref <- stA[reference == TRUE]
 
-# ---- Main table: reference stations of the three ground references, both products -------------
-ind <- fread(file.path(dir_tables, "indep_station_stats.csv"))
-sets <- list(
-  GHCNh = ref[, .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = cw)],
-  GNSS = ind[source == "GNSS" & height_ok == TRUE, .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = 1)],
-  MeteoSwiss = ind[source == "MeteoSwiss", .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = 1)]
-)
+# ---- Main table: paired GHCNh stations, both products ---------------------------------------
+sets <- list(GHCNh = ref[, .(bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = cw)])
 main <- rbindlist(lapply(names(sets), function(k) {
   s <- sets[[k]]
   rbindlist(lapply(c("sl", "land"), function(ds) {

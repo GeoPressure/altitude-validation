@@ -1,5 +1,8 @@
 # Discussion: consolidated argument and evidence
 
+> Historical review: GNSS and MeteoSwiss evaluations were retired on 22 October 2026. The current study uses GHCNh and IGRA2; the manuscript sources and `run_all.R` define the active analysis.
+
+
 Author-facing review notes, 20 October 2026. The manuscript draft is in `paper/paper.qmd`; this file keeps the agreed argument, evidence boundaries and revision decisions outside publication text.
 
 ## Storyline

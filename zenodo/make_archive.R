@@ -3,7 +3,7 @@
 #   altitude-validation-code.zip  the repository at HEAD (code, tables, figures, manuscript) plus
 #                                 rendered documents
 #   altitude-validation-data.zip  the downloaded and extracted data that are slow or impossible to
-#                                 get again (ERA5 at every station, radiosondes, GNSS, MeteoSwiss,
+#                                 get again (ERA5 at every station, radiosondes,
 #                                 DEM values, and the station lists and API listings as they were)
 #
 # Frozen selection directories include accepted inputs and candidate caches;
@@ -39,9 +39,9 @@ keep <- c(
   "data/interim/igra-selection-2026-10-13",
   "data/interim/analysis-2026-10-13/era5",
   "data/interim/analysis-2026-10-13/historical_ground.parquet",
-  "data/interim/igra", "data/interim/gnss", "data/interim/meteoswiss", "data/interim/indep",
-  "data/raw/era5_invariant.nc", "data/raw/gnss_logs", "data/raw/ghcnh-station-list.txt",
-  "data/raw/ogd-smn_meta_stations.csv", "data/raw/gpt3",
+  "data/interim/igra",
+  "data/raw/era5_invariant.nc", "data/raw/ghcnh-station-list.txt",
+  "data/raw/gpt3",
   "data/raw/us_nga_egm96_15.tif", "data/raw/us_nga_egm08_25.tif"
 )
 stopifnot(all(file.exists(keep)))

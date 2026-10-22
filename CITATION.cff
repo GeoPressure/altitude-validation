@@ -5,8 +5,8 @@ doi: 10.5281/zenodo.23085093
 title: "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes"
 abstract: >-
   Validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure
-  measurement using ERA5 reanalysis, against HadISD surface station barometers, GNSS and
-  MeteoSwiss stations with documented barometer heights (ground level), and IGRA2 radiosondes
+  measurement using ERA5 reanalysis, against GHCNh surface station barometers
+  (ground level) and IGRA2 radiosondes
   (0-6 km above ground). Separates accuracy (per-site bias) from precision (temporal scatter),
   shows what they depend on, compares ERA5 single-levels with ERA5-Land, and tests improvements
   of the pressure-to-altitude formula.

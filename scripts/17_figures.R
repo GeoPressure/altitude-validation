@@ -68,7 +68,6 @@ bar <- function(w = 12) guide_colourbar(barwidth = w, barheight = 0.5)
 
 # ---- Data -------------------------------------------------------------------------------------
 ref <- tab("ground_station_stats.csv")
-ind <- tab("indep_station_stats.csv")
 
 qbars <- function(col) {
   list(
@@ -160,12 +159,8 @@ if (file.exists(file.path(dir_tables, "ground_var_year.csv"))) {
     qpanel(vy, "year", "sd", line_q50, NULL, "b", year_x), "ground_era", 9, 3.6)
 }
 
-# ERA5 single-levels vs ERA5-Land at the three ground references
-ind_ref <- ind[source == "MeteoSwiss" | height_ok == TRUE]
-sl <- rbind(
-  ref[, .(reference = "GHCNh", bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = cw)],
-  ind_ref[, .(reference = source, bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = 1)]
-)
+# ERA5 single-levels vs ERA5-Land at paired GHCNh stations
+sl <- ref[, .(reference = "GHCNh", bias_sl = bias_sl_paired, sd_sl = sd_sl_paired, bias_land, sd_land, w = cw)]
 sl <- rbind(sl[, .(reference, dataset = "ERA5 single-levels", ab = abs(bias_sl), sd = sd_sl, w)],
   sl[, .(reference, dataset = "ERA5-Land", ab = abs(bias_land), sd = sd_land, w)])
 sl <- sl[is.finite(ab) & is.finite(sd)]
@@ -174,7 +169,6 @@ qs <- function(x, w) as.list(setNames(vapply(c(0.1, 0.25, 0.5, 0.75, 0.9), funct
 }, 1), c("q10", "q25", "q50", "q75", "q90")))
 ql <- rbind(cbind(metric = "abs_bias", sl[, qs(ab, w), by = .(reference, dataset)]),
   cbind(metric = "sd", sl[, qs(sd, w), by = .(reference, dataset)]))
-ql[, reference := factor(reference, c("GHCNh", "GNSS", "MeteoSwiss"))]
 land_panel <- function(m, ylab, tag, ...) {
   ggplot(ql[metric == m], aes(reference, colour = dataset, group = dataset)) +
     zero_line +
@@ -190,7 +184,7 @@ p1 <- land_panel("abs_bias", "Accuracy: |bias| (m, log scale)", "a",
   scale_y_continuous(trans = scales::pseudo_log_trans(sigma = 1),
     breaks = c(0, 1, 3, 10, 30, 100), limits = c(0, NA)))
 p2 <- land_panel("sd", lab_pre, "b", expand_limits(y = 0))
-save_fig(p1 + p2 + plot_layout(guides = "collect"), "ground_sl_vs_land", 8, 4)
+save_fig(p1 + p2 + plot_layout(guides = "collect"), "ground_sl_vs_land", 6, 4)
 
 # Appendix: ERA5-Land and ERA5 single-levels in flight, by height
 tb <- tab("flight_height.csv")[!is.na(hbin) & hbin != ""]

@@ -55,7 +55,6 @@ short <- c(
   standard = "ERA5 standard",
   virtual = "ERA5 virtual + GPT3"
 )
-swh <- tab("paper_swiss_height_summary.csv")
 gfit <- tab("ground_gap_fit.csv")
 gapf <- function(col, x) approx(gfit$adz, gfit[[col]], x)$y
 main <- tab("ground_main.csv")
@@ -77,7 +76,7 @@ if (!selection_analysis_ready) {
 }
 ```
 
-This supplement describes the primary reference-data processes (S1), environmental variation (S2), the ERA5 product comparison (S3), reference-height checks (S4), station-selection sensitivity (S5), the bird-weighted summary (S6), and horizontal-position sensitivity (S7). It uses the main manuscript's conversions and error definitions. Code and underlying numerical summaries accompany the analysis [@validation].
+This supplement describes the primary reference-data processes (S1), environmental variation (S2), the ERA5 product comparison (S3), station-selection sensitivity (S4), the bird-weighted summary (S5), and horizontal-position sensitivity (S6). It uses the main manuscript's conversions and error definitions. Code and underlying numerical summaries accompany the analysis [@validation].
 
 # S1 Reference-station selection and processing
 
@@ -187,11 +186,11 @@ rfig("flight_daynight")
 
 # S3 ERA5 single-levels and ERA5-Land
 
-ERA5-Land's finer 0.1° grid [@munozsabater2021] does not reduce persistent ground offsets in these comparisons. Median station |bias| is `r r1(mn("GHCNh", "abs_bias_median", "land"))` m versus `r r1(mn("GHCNh", "abs_bias_median"))` m for ERA5 single-levels at the `r main[reference == "GHCNh" & dataset == "land"]$n_stations` GHCNh stations with usable inputs for both products, with the same ordering at GNSS and MeteoSwiss stations (@fig-land). Surface-referenced flight errors are similar (@fig-land-flight). Together, these results point to a difference in the surface reference; they do not by themselves identify an inconsistency in ERA5-Land's pressure adjustment or published orography.
+ERA5-Land's finer 0.1° grid [@munozsabater2021] does not reduce persistent ground offsets in these comparisons. Median station |bias| is `r r1(mn("GHCNh", "abs_bias_median", "land"))` m versus `r r1(mn("GHCNh", "abs_bias_median"))` m for ERA5 single-levels at the `r main[reference == "GHCNh" & dataset == "land"]$n_stations` GHCNh stations with usable inputs for both products (@fig-land). Surface-referenced flight errors are similar (@fig-land-flight). Together, these results point to a difference in the surface reference; they do not by themselves identify an inconsistency in ERA5-Land's pressure adjustment or published orography.
 
 ```{r}
 #| label: fig-land
-#| fig-cap: "Station |bias| (a, pseudo-log scale) and SD (b) with ERA5 single-levels and ERA5-Land, using the standard lapse rate at the same stations within each ground reference. Comparisons use the same hours with finite inputs for both products. Points: weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges. Each station contributes equally within its reference network."
+#| fig-cap: "Station |bias| (a, pseudo-log scale) and SD (b) with ERA5 single-levels and ERA5-Land, using the standard lapse rate at the same GHCNh stations. Comparisons use the same hours with finite inputs for both products. Points: weighted station medians; thick and thin segments: 25–75% and 10–90% station ranges. Each station contributes equally."
 rfig("ground_sl_vs_land")
 ```
 
@@ -205,64 +204,7 @@ rfig("flight_land")
 \clearpage
 ```
 
-# S4 Reference-height checks
-
-Listed station elevation can differ from the height of the pressure sensor [@vasiljevic2006; @haiden2018]. We examine this directly at matched Swiss stations and compare ground errors with two references that provide more explicit sensor-height information.
-
-## Paired Swiss height comparison
-
-At `r swh$n` stations matched by WMO identifier and coordinates within 1 km, we replace the listed GHCNh elevation with the published MeteoSwiss barometer height while holding the GHCNh pressures, ERA5 inputs and observation window fixed. Median station |bias| changes from `r r1(swh$median_abs_ghcnh)` to `r r1(swh$median_abs_height_only)` m (@tbl-swiss). This small paired comparison illustrates sensitivity to the height reference at these sites.
-
-```{r}
-#| label: tbl-swiss
-#| tbl-cap: "Paired height-reference comparison at retained GHCNh stations matched to MeteoSwiss. Both errors use the same GHCNh pressure reports, ERA5 inputs and observation window. Heights and absolute station biases are in metres."
-d <- tab("paper_swiss_height.csv")[order(wmo)]
-kab(d[, .(
-  `Station (WMO)` = sprintf("%05d", as.integer(wmo)),
-  `Listed height` = r1(ghcnh_elev),
-  `Sensor height` = r1(elev),
-  `|bias|, listed` = r1(abs(bias_ghcnh)),
-  `|bias|, sensor` = r1(abs(bias_height_only))
-)], align = "lrrrr")
-```
-
-## Barometers at GNSS and MeteoSwiss stations
-
-For GNSS stations, we use RINEX meteorological records from the IGS/EUREF archives in 2022--2024 [@bkgdata; @rinex304]. Samples within one minute of each hour are averaged into unique station-hours. Sensor heights combine site-log marker and antenna heights with barometer offsets, converted from ellipsoidal height using EGM96; file-header heights fill gaps in the site-log record. We require at least 180 listed file-days, 2160 accepted hours and a median signed difference within 1 m between the file-header and site-log heights. The height check establishes metadata consistency.
-
-For MeteoSwiss SwissMetNet, we use full-hour pressure observations in 2022--2024 at published barometer heights, retaining stations with at least 2160 accepted hours [@meteoswissdata]. Published sea-level heights are used without a Swiss-to-EGM96 transformation. For both references, we exclude ERA5-standard errors more than both 100 m and ten scaled MAD from the station median before applying the accepted-hour requirement. We use equal station weights for the individual-error summaries (@tbl-sensor-heights).
-
-The networks differ in geography, observation periods and sensor metadata. Their pooled errors provide corroboration; the paired Swiss height comparison isolates the effect of changing the height reference. Neither comparison establishes independence from ERA5 assimilation.
-
-```{r}
-#| label: tbl-sensor-heights
-#| tbl-cap: "Ground errors at references with more explicit pressure-sensor heights, ERA5 standard conversion (m). Bias and SD are station metrics; median absolute error and p95 describe weighted individual observations."
-d <- merge(
-  tab("paper_ground.csv")[
-    terrain == "all" &
-      formula == "standard" &
-      reference %in% c("GNSS", "MeteoSwiss")
-  ],
-  tab("paper_ground_tails.csv")[
-    formula == "standard",
-    .(reference, medae, p95_abs)
-  ],
-  by = "reference"
-)
-kab(
-  d[, .(
-    Reference = reference,
-    Stations = n_stations,
-    `Median |bias|` = r1(abs_bias_median),
-    `Median SD` = r1(sd_median),
-    `Median |error|` = r1(medae),
-    p95 = r1(p95_abs)
-  )],
-  align = "lrrrrr"
-)
-```
-
-# S5 Effect of station selection
+# S4 Effect of station selection
 
 The GHCNh station checks use ERA5-standard discrepancies and can exclude model discrepancies as well as suspect reference records. We compare the primary selection with selection based on accepted coverage alone to assess how these checks affect the reported errors.
 
@@ -307,7 +249,7 @@ For ERA5 standard, median absolute error is `r r1(tab("paper_selection_sensitivi
 \clearpage
 ```
 
-# S6 Bird-weighted flight-height summary
+# S5 Bird-weighted flight-height summary
 
 We estimate the flight-time height distribution from `r tab("bird_height_sample.csv")$n_tags` tagged birds of `r tab("bird_height_sample.csv")$n_species` species in the Master GeoLocator Data Package [@geolocatormaster2026], using its supplied flight classifications. Each record represents the interval to the next record, capped at one hour. Heights are calculated from tag pressure relative to ERA5 surface pressure using 288.15 K and the standard lapse rate. Pressure offsets are interpolated between adjacent stationary periods. Negative estimates enter the lowest height band and estimates above 6 km enter the highest evaluated band. These pressure-derived heights determine the weights; they do not establish true terrain clearance.
 
@@ -338,7 +280,7 @@ if (selection_analysis_ready) {
 }
 ```
 
-# S7 Sensitivity to horizontal position
+# S6 Sensitivity to horizontal position
 
 ```{r}
 loc <- fread("docs/methods/T10/results.csv")

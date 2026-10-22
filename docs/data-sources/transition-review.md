@@ -1,5 +1,8 @@
 # GHCNh transition and reference choices
 
+> Historical review: GNSS and MeteoSwiss evaluations were retired on 22 October 2026. The current study uses GHCNh and IGRA2; the manuscript sources and `run_all.R` define the active analysis.
+
+
 ## Main references
 
 Use GHCNh for the global ground comparison and IGRA2 for the radiosonde comparison. Keep GNSS and MeteoSwiss as complementary checks in the supplement. Do not pool them into the primary ground score: their height metadata, geographic coverage and observation windows differ. Use one sentence in the main text to point to the height-reference corroboration and explicitly retain the assimilation limitation.

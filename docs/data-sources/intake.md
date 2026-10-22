@@ -1,5 +1,8 @@
 # Surface reference data
 
+> Historical review: GNSS and MeteoSwiss evaluations were retired on 22 October 2026. The current study uses GHCNh and IGRA2; the manuscript sources and `run_all.R` define the active analysis.
+
+
 GHCNh now supplies the primary global surface pressure observations and station elevations. The candidate geography follows the prior HadISD station footprint: step 01 reads its final station inventory only to establish candidate locations, step 02 matches those locations to GHCNh stations within 25 km and downloads annual files, and step 03 selects each station's most recent GHCNh year that passes pressure/QC and reporting coverage before thinning the sample. The default match radius can be changed with `GHCNH_MATCH_RADIUS_KM`.
 
 Run the primary intake and screening with:

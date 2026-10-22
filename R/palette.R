@@ -1,14 +1,13 @@
 # Colours shared by every figure (17_figures.R) and the interactive maps of the report. Each
 # colour has one meaning throughout:
 #   metric     accuracy (bias) and precision (SD), when a figure shows one series per panel
-#   reference  the four reference datasets
+#   reference  the two reference datasets
 #   product    the two ERA5 products; ERA5 single-levels is the GeoPressureR default, drawn in ink
 #   formula    GeoPressureR's formula (ink, as above) and the changes tested
 #   climate    main Koppen-Geiger zones
 pal <- c(ink = "#1F2937", grid = "#E5E7EB", slate = "#94A3B8", light = "#E8ECF2")
 pal_metric <- c(accuracy = "#3B6FB6", precision = "#2A9D8F")
-pal_reference <- c(GHCNh = "#3B6FB6", GNSS = "#7E57C2", MeteoSwiss = "#D1495B",
-  IGRA2 = "#E9A23B")
+pal_reference <- c(GHCNh = "#3B6FB6", IGRA2 = "#E9A23B")
 pal_product <- c(`ERA5 single-levels` = "#1F2937", `ERA5-Land` = "#E4572E")
 pal_formula <- c(current = "#1F2937", tv = "#E9A23B", tv_lapse = "#7E57C2",
   tv_lapse_var = "#D1495B")
