@@ -41,8 +41,7 @@ keep <- c(
   "data/interim/analysis-2026-10-13/historical_ground.parquet",
   "data/interim/igra",
   "data/raw/era5_invariant.nc", "data/raw/ghcnh-station-list.txt",
-  "data/raw/gpt3",
-  "data/raw/us_nga_egm96_15.tif", "data/raw/us_nga_egm08_25.tif"
+  "data/raw/gpt3"
 )
 stopifnot(all(file.exists(keep)))
 file.copy("zenodo/data_README.md", "data/README.md", overwrite = TRUE)

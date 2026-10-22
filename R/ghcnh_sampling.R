@@ -1,4 +1,4 @@
-# GHCNh sampling units used by scripts/sample_ghcnh.R ------------------------
+# GHCNh sampling units used by scripts/sampling/sample_ghcnh.R ------------------------
 suppressPackageStartupMessages({
   library(lubridate)
   library(sf)

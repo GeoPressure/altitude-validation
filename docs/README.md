@@ -10,6 +10,8 @@ The numerical refresh is complete. The analysis uses 11,516,671 accepted GHCNh h
 
 Checks confirmed the accepted IDs, cell balance, observation counts and rolling windows; direct GeoPressureR conversion agreement; equal station weights within flight-height bands; and agreement between primary and sensitivity summaries. The completed generation is recorded in `output/tables/selection_analysis_complete.json`. GNSS and MeteoSwiss evaluations are retired; their scripts and dataset-specific tables are preserved in [the complementary-evaluation archive](../archive/complementary-ground-evaluations-2026-10-22/README.md). Original downloaded records remain cached locally. The active build is defined in [run_all.R](../run_all.R); preceding numerical outputs and retired stages are archived separately.
 
+See [data layout](data-layout.md) for current inputs, derived caches and retired local data.
+
 ## Current methods and checks
 
 - [GHCNh sampling](methods/ghcnh-sampling-review/README.md)

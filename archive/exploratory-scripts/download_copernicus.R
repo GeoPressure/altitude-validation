@@ -5,6 +5,7 @@
 # interface before running it. Output is kept separate from the analysis inputs.
 
 source("R/utils.R")
+years_main <- 2022:2024
 
 out_dir <- file.path(dir_interim, "copernicus")
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)

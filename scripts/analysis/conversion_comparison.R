@@ -2,7 +2,6 @@
 source("R/utils.R")
 setDTthreads(1)
 formulas <- c(isa = "Standard atmosphere", standard = "ERA5, standard lapse rate", virtual = "ERA5, virtual temperature + GPT3")
-gpt3 <- gpt3_read(1)
 st <- load_stations()
 
 # Ground comparisons ------------------------------------------------------
@@ -31,11 +30,18 @@ tails <- rbindlist(lapply(names(formulas), function(f) {
 }))
 fwrite(tails, file.path(dir_tables, "paper_ground_tails.csv"))
 fwrite(G[, .(stations = uniqueN(id), observations = .N), by = reference], file.path(dir_tables, "paper_ground_coverage.csv"))
+obs <- rbindlist(lapply(c("isa", "standard", "virtual"), function(f) {
+  x <- abs(G[[paste0("err_", f)]])
+  as.data.table(c(list(metric = "observation", formula = f),
+    as.list(setNames(vapply(c(0.1, 0.25, 0.5, 0.75, 0.9), function(p) wquant(x, G$w, p), 1),
+      c("q10", "q25", "q50", "q75", "q90")))))
+}))
+fwrite(obs, file.path(dir_tables, "paper_ground_observation_quantiles.csv"))
 rm(G, gs)
 gc()
 
 # Flight comparisons ------------------------------------------------------
-B <- load_radiosondes(st)
+B <- load_radiosondes(st, c("id", "band", "lsh", "sdoy", "agl", "err_isa", "err_standard", "err_virtual", "sounding"))
 for (f in names(formulas)) setnames(B, paste0("err_", f), paste0("e_", f))
 long <- function(by) {
   rbindlist(lapply(names(formulas), function(f) {

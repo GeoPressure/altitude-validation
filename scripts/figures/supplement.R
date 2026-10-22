@@ -92,7 +92,7 @@ qpanel <- function(d, x, m, geom, xlab, tag, ...) {
   p
 }
 
-# Elevation gap: bias and SD per station, with the GAM fit (15_variation.R)
+# Elevation gap: bias and SD per station, with the GAM fit (environmental_variation.R)
 gr <- tab("ground_gap_residual.csv")
 gf <- tab("ground_gap_fit.csv")
 gap_x <- scale_x_continuous(trans = "log1p", breaks = c(0, 10, 30, 100, 300, 1000))

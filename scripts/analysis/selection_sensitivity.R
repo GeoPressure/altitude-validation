@@ -1,6 +1,6 @@
 # Station-selection comparison using the frozen GHCNh candidate order --------
-# Rscript scripts/21_selection_sensitivity.R       # completed full selection
-# Rscript scripts/21_selection_sensitivity.R 64    # cached pilot verification
+# Rscript scripts/analysis/selection_sensitivity.R       # completed full selection
+# Rscript scripts/analysis/selection_sensitivity.R 64    # cached pilot verification
 source("R/utils.R")
 source("R/ghcnh_sampling.R")
 load_geopressurer()

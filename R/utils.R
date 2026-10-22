@@ -3,7 +3,7 @@
 # The altitude retrieval itself is never re-implemented here: `era5_altitude()` calls the exact
 # GeoPressureR internals that `pressurepath_create(source = "arco")` uses (grid snapping, nearest
 # hour, ARCO reads, ERA5 orography and `pressure_to_altitude()`), so what is validated is what users
-# get. `scripts/10_api_crosscheck.R` checks that the ARCO path agrees with GeoPressureAPI.
+# get. `scripts/checks/api_crosscheck.R` checks that the ARCO path agrees with GeoPressureAPI.
 
 suppressPackageStartupMessages({
   library(data.table)
@@ -22,11 +22,6 @@ for (d in c(dir_raw, dir_interim, dir_tables, dir_figures)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-# Frozen selection domain; complementary barometers retain 2022–2024.
-years_ghcnh <- 2022:2026
-years_sonde <- 2022:2026
-years_main <- 2022:2024
-years_era <- c(1990, 2005, 2015)
 selection_dir <- function(network) {
   if (network == "ghcnh") "data/interim/ghcnh/selection-2026-10-13" else "data/interim/igra-selection-2026-10-13"
 }
@@ -97,7 +92,7 @@ era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orograp
 
 #' GeoPressureR's barometric formula with the lapse rate (K/m) exposed, for the formula variants in
 #' `16_formula.R`. With `lapse = -0.0065` it is `pressure_to_altitude()` (checked in
-#' `09_errors.R`).
+#' `errors.R`).
 altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
   z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
 }
@@ -152,6 +147,7 @@ gpt3_lapse <- function(g, lon, lat, doy) {
 #' objects to copy from the calling environment.
 par_map <- function(x, fun, cores = n_cores, retries = 3, geopressurer = FALSE, export = character(),
                     envir = parent.frame()) {
+  if (!length(x)) return(list())
   cl <- parallel::makePSOCKcluster(cores)
   on.exit(parallel::stopCluster(cl))
   wd <- getwd()
@@ -258,8 +254,8 @@ hbin_breaks <- c(0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
 hbin_mid <- c(50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
 
 #' Accepted airborne observations, with equal station weight within each band.
-load_radiosondes <- function(st) {
-  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet")))
+load_radiosondes <- function(st, columns = NULL) {
+  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet"), col_select = if (is.null(columns)) tidyselect::everything() else tidyselect::all_of(columns)))
   B <- merge(B, st[network == "igra", .(id, climate, abs_lat, cw)], by = "id")
   B[, hbin := factor(band, levels = levels(cut(0, hbin_breaks)))]
   B[, w := 1 / .N, by = .(id, hbin)]
@@ -279,15 +275,4 @@ bird_height_weights <- function() {
   bb[lo == 5000, prop := prop + sum(bird[lo == 6000, prop])]
   bb[, prop := prop / sum(prop)]
   bb[]
-}
-
-# Average repeated hourly reference records before coverage checks and summaries.
-# Numeric observations/height inputs are averaged; station metadata use the first record.
-average_reference_hours <- function(d) {
-  duplicate <- duplicated(d, by = c("source", "id", "date")) |
-    duplicated(d, by = c("source", "id", "date"), fromLast = TRUE)
-  if (!any(duplicate)) return(d)
-  # Most hours occur once; only overlapping daily-file hours need averaging.
-  rbindlist(list(d[!duplicate], d[duplicate,
-    lapply(.SD, function(x) if (is.numeric(x)) mean(x) else x[1]), by = .(source, id, date)]), use.names = TRUE)
 }

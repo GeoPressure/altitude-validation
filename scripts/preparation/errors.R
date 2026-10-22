@@ -1,8 +1,8 @@
 # Accepted observations and error series -----------------------------------
 source("R/utils.R")
 source("R/ghcnh_sampling.R")
-load_geopressurer()
 setDTthreads(1)
+refresh <- "--refresh" %in% commandArgs(trailingOnly = TRUE)
 st <- fread(file.path(dir_tables, "stations.csv"))
 gpt3 <- gpt3_read(1)
 dir.create(file.path(analysis_dir, "errors"), recursive = TRUE, showWarnings = FALSE)
@@ -10,7 +10,7 @@ dir.create(file.path(analysis_dir, "errors"), recursive = TRUE, showWarnings = F
 station_errors <- function(i) {
   s <- st[i]
   out <- file.path(analysis_dir, "errors", paste0(s$network, "_", s$id, ".parquet"))
-  if (file.exists(out)) return(TRUE)
+  if (!refresh && file.exists(out)) return(TRUE)
   d <- as.data.table(read_parquet(file.path(selection_dir(s$network), "accepted", paste0(s$id, ".parquet"))))
   e <- as.data.table(read_parquet(file.path(analysis_dir, "era5", paste0(s$network, "_", s$id, ".parquet"))))
   if (s$network == "ghcnh") {
@@ -48,12 +48,15 @@ station_errors <- function(i) {
   ghcnh_write(d, out)
   TRUE
 }
-res <- par_map(seq_len(nrow(st)), station_errors, cores = n_cores, geopressurer = TRUE, export = c("st", "gpt3", "ghcnh_write"))
-check_failures(res, st$id, "station error series", fatal = TRUE)
+todo <- if (refresh) seq_len(nrow(st)) else which(!file.exists(file.path(analysis_dir, "errors", paste0(st$network, "_", st$id, ".parquet"))))
+res <- par_map(todo, station_errors, cores = n_cores, geopressurer = TRUE, export = c("st", "gpt3", "ghcnh_write", "refresh"))
+check_failures(res, st$id[todo], "station error series", fatal = TRUE)
 for (net in c("ghcnh", "igra")) {
   files <- file.path(analysis_dir, "errors", paste0(net, "_", st[network == net, id], ".parquet"))
+  combined <- file.path(dir_interim, paste0("errors_", net, ".parquet"))
+  if (!refresh && file.exists(combined) && all(file.mtime(files) <= file.mtime(combined))) next
   d <- rbindlist(lapply(files, function(f) as.data.table(read_parquet(f))))
   stopifnot(uniqueN(d$id) == st[network == net, .N])
-  write_parquet(d, file.path(dir_interim, paste0("errors_", net, ".parquet")))
+  write_parquet(d, combined)
   cli::cli_alert_success("{net}: {uniqueN(d$id)} stations, {nrow(d)} observations")
 }

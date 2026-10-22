@@ -1,4 +1,4 @@
-# IGRA sampling units used by scripts/sample_igra.R -------------------------
+# IGRA sampling units used by scripts/sampling/sample_igra.R -------------------------
 # Cache commits use ghcnh_save()/ghcnh_write(); no GHCNh run files are changed.
 
 # Download and validate one complete archive before reducing its profiles.

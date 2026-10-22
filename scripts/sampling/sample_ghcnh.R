@@ -1,6 +1,6 @@
 # Direct GHCNh sampling pilot and resumable full selection -------------------
-# Rscript scripts/sample_ghcnh.R 32 4    # fixed random 32-cell pilot, four workers
-# Rscript scripts/sample_ghcnh.R all 4   # resume the same frozen run across all cells
+# Rscript scripts/sampling/sample_ghcnh.R 32 4    # fixed random 32-cell pilot, four workers
+# Rscript scripts/sampling/sample_ghcnh.R all 4   # resume the same frozen run across all cells
 # Pilot outputs stay separate from the published analysis until integration.
 source("R/utils.R")
 source("R/ghcnh_sampling.R")

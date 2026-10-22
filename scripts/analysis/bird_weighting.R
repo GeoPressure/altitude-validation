@@ -1,6 +1,6 @@
 # Equal-tag robustness check using the primary airborne errors -------------
 source("R/utils.R")
-B <- load_radiosondes(load_stations())
+B <- load_radiosondes(load_stations(), c("id", "band", "lsh", "sdoy", "err_isa", "err_standard", "err_virtual", "sounding"))
 weights <- fread(file.path(dir_tables, "bird_target_height_weights.csv"))[variant %in% c("all_flight", "equal_bird")]
 B[, w_band := w / sum(w), by = hbin]
 result <- rbindlist(lapply(unique(weights$variant), function(target) {

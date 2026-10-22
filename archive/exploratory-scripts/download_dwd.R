@@ -4,6 +4,7 @@
 # levels and flags; station heights and coordinates come from the archive's accompanying metadata.
 
 source("R/utils.R")
+years_main <- 2022:2024
 
 years <- years_main
 base <- "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/pressure"

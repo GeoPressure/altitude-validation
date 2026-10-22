@@ -1,4 +1,4 @@
-# Colours shared by every figure (17_figures.R) and the interactive maps of the report. Each
+# Colours shared by every figure (supplement.R) and the interactive maps of the report. Each
 # colour has one meaning throughout:
 #   metric     accuracy (bias) and precision (SD), when a figure shows one series per panel
 #   reference  the two reference datasets

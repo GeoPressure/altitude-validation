@@ -1,7 +1,7 @@
-# How accuracy and precision vary with terrain, place, climate and time (figures: 17_figures.R).
+# How accuracy and precision vary with terrain, place, climate and time (figures: supplement.R).
 #
 # Every summary here is a distribution over stations of the two quantities defined in
-# 12_analysis.R: the bias (accuracy) and the SD of the error (precision), computed per station and
+# reference_summaries.R: the bias (accuracy) and the SD of the error (precision), computed per station and
 # per class (month, hour, year, height bin). Distributions give each contributing station equal weight.
 
 source("R/utils.R")

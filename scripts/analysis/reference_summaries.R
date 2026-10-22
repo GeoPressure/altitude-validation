@@ -23,10 +23,10 @@ rm(Am)
 gc()
 
 # ==== IGRA2 ==================================================================================
-B <- load_radiosondes(st)
+B <- load_radiosondes(st, c("id", "band", "lsh", "sdoy", "agl", "err_sl_rel", "err_land_rel", "tmean_assumed", "tmean_obs", "sounding"))
 
 
-# Three-conversion comparisons are evaluated in 18_three_formulas.R.
+# Three-conversion comparisons are evaluated in conversion_comparison.R.
 err_vars <- c(
   "GeoPressureR (ERA5 single-levels)" = "err_sl_rel",
   "ERA5-Land" = "err_land_rel"
@@ -70,7 +70,7 @@ key <- data.table(
 fwrite(key, file.path(dir_tables, "key_numbers.csv"))
 writeLines(geopressurer_version(), file.path(dir_tables, "geopressurer_version.txt"))
 
-# ==== Tables behind the figures (drawn by 17_figures.R) ========================================
+# ==== Tables behind the figures (drawn by supplement.R) ========================================
 bc <- B[!is.na(climate) & is.finite(err_sl_rel) & !is.na(hbin), .(bias = wmean(err_sl_rel, w),
   sd = sqrt(wmean((err_sl_rel - wmean(err_sl_rel, w))^2, w)), n_st = uniqueN(id)),
   by = .(hbin, climate, season)]

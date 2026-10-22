@@ -9,7 +9,10 @@ for (net in c("ghcnh", "igra")) {
   stopifnot(fread(file.path(selection_dir(net), "full-metrics.csv"))$pending == 0,
     !anyDuplicated(accepted$id), !anyDuplicated(accepted$cell),
     setequal(accepted$id, st[network == net, id]))
-  d <- as.data.table(read_parquet(file.path(dir_interim, paste0("errors_", net, ".parquet"))))
+  columns <- c("id", "err_isa", "err_standard", "err_virtual",
+    if (net == "ghcnh") c("date", "pressure", "sp_sl", "t2m_sl", "z_sl", "d2m") else
+      c("launch", "press", "sp_sl", "t2m_sl", "z_sl", "d2m", "level_time", "press_s", "sp_s", "t2m_s", "z_s", "d2m_s", "agl"))
+  d <- as.data.table(read_parquet(file.path(dir_interim, paste0("errors_", net, ".parquet")), col_select = tidyselect::all_of(columns)))
   expected <- accepted[[if (net == "ghcnh") "accepted_hours" else "accepted_levels"]]
   counts <- d[, .N, by = id]
   stopifnot(all(counts$N[match(accepted$id, counts$id)] == expected),
@@ -36,7 +39,7 @@ for (net in c("ghcnh", "igra")) {
   rm(d, x)
   gc()
 }
-B <- load_radiosondes(st)
+B <- load_radiosondes(st, c("id", "band", "lsh", "sdoy"))
 stopifnot(!anyNA(B$hbin), all(abs(B[, sum(w), by = .(id, hbin)]$V1 - 1) < 1e-10))
 rm(B)
 primary <- fread(file.path(dir_tables, "paper_ground_tails.csv"))[reference == "GHCNh"]
@@ -53,7 +56,7 @@ jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz =
     run = selection_dir(net), settings = readRDS(file.path(selection_dir(net), "settings.rds")),
     stations = st[network == net, .N])),
   package = geopressurer_version(),
-  source_md5 = as.list(tools::md5sum(c("R/utils.R", list.files("scripts", "^[0-9].*R$", full.names = TRUE)))),
+  source_md5 = as.list(tools::md5sum(c("R/utils.R", list.files("scripts", "[.]R$", full.names = TRUE, recursive = TRUE)))),
   checks = c("accepted rows and windows", "one station per cell", "equal station-band weights",
     "direct GeoPressureR formulas", "selection-comparison primary equality", "bird-target equality")),
   file.path(dir_tables, "selection_analysis_complete.json"), pretty = TRUE, auto_unbox = TRUE)

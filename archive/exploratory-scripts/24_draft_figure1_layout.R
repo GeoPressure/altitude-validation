@@ -1,15 +1,11 @@
-# Figure 1: atmospheric conditions and their effects on pressure-derived altitude.
-# Run from the repository root; also called by scripts/19_paper_figures.R.
+# Layout review of Figure 1, using the examples prepared by script 23.
 source("R/utils.R")
 source("R/palette.R")
 suppressPackageStartupMessages({ library(ggplot2); library(grid); library(gtable) })
-out <- "paper/figures"
-st <- load_stations()
-gpt3 <- gpt3_read(1)
+out <- "output/drafts/atmospheric-figures"
 font <- if ("Helvetica Neue" %in% systemfonts::system_fonts()$family) "Helvetica Neue" else "sans"
 # Measure text with the same font engine used for the raster export.
 ragg::agg_png(tempfile(fileext = ".png"), width = 2160, height = 1602, res = 300)
-previous_theme <- theme_get()
 theme_set(theme_minimal(base_size = 9, base_family = font) +
   theme(panel.grid.minor = element_blank(), panel.grid.major = element_line(colour = pal[["grid"]], linewidth = .25),
     axis.title = element_text(size = 9.5, colour = "#374151"),
@@ -20,58 +16,14 @@ formulas <- c(isa = "Standard atmosphere", standard = "ERA5 · standard lapse",
   virtual = "ERA5 · virtual + GPT3", observed = "Observed")
 colours <- c(pal_conversion, observed = "#3B6FB6")
 conversion_scale <- scale_colour_manual(values = colours, breaks = names(formulas), labels = formulas)
-gs <- fread(file.path(dir_tables, "paper_ground_station.csv"))[reference == "GHCNh"]
-candidates <- dcast(gs[formula %in% c("isa", "standard")], id ~ formula, value.var = "sd")
-candidates <- merge(candidates, st[network == "ghcnh" & koppen_main == "C" & sdor < 20,
-  .(id, name, elev)], by = "id")
-candidates[, distance := ((isa - median(isa)) / IQR(isa))^2 +
-  ((standard - median(standard)) / IQR(standard))^2]
-site <- candidates[order(distance, id)][1]
+site <- fread(file.path(out, "weather_example.csv"))
 W <- as.data.table(read_parquet(file.path(analysis_dir, "errors", paste0("ghcnh_", site$id, ".parquet"))))
-setorder(W, date)
-W[, block := as.integer(difftime(date, min(date), units = "days")) %/% 14]
-blocks <- W[, .(n = .N, span = as.numeric(difftime(max(date), min(date), units = "days")),
-  pressure_range = diff(range(pressure))), by = block][span > 13 & n >= .9 * max(n)]
-chosen <- blocks[order(abs(pressure_range - median(pressure_range)), block)][1]
-W <- W[block == chosen$block]
-fwrite(data.table(id = site$id, name = site$name, elevation = site$elev,
-  start = min(W$date), end = max(W$date), n = nrow(W)),
-  file.path(dir_tables, "paper_fig1_weather.csv"))
+W <- W[date >= as.POSIXct(site$start, tz = "UTC") & date <= as.POSIXct(site$end, tz = "UTC")]
 Ew <- melt(W, id.vars = "date", measure.vars = paste0("err_", names(pal_conversion)),
   variable.name = "formula", value.name = "error")
 Ew[, formula := sub("err_", "", formula)]
-picks <- fread(file.path(dir_tables, "paper_fig1_soundings.csv"))
-profiles <- list()
-profile_errors <- list()
-for (i in seq_len(nrow(picks))) {
-  k <- picks[i]
-  d <- as.data.table(read_parquet(file.path(analysis_dir, "errors", paste0("igra_", k$id, ".parquet"))))
-  d <- d[sounding == k$sounding][order(agl)]
-  k0 <- d[which.min(abs(agl - k$agl))]
-  s <- st[network == "igra" & id == k$id]
-  L <- gpt3_lapse(gpt3, s$lon, s$lat, as.POSIXlt(k0$level_time, tz = "UTC")$yday + 1)
-  heights <- seq(0, 3000, 25)
-  z <- heights + k0$gph_s
-  profiles[[i]] <- rbind(
-    d[temp > -8000 & agl <= 3000, .(height = agl, temperature = temp / 10, formula = "Observed temperature")],
-    data.table(height = heights, temperature = 15 - .0065 * z, formula = "isa"),
-    data.table(height = heights, temperature = k0$t2m_sl - 273.15 - .0065 * (z - k0$z_sl), formula = "standard"),
-    data.table(height = heights, temperature = virtual_temperature(k0$t2m_sl, k0$d2m, k0$sp_sl) -
-      273.15 + L * (z - k0$z_sl), formula = "virtual"))[, example := k$class]
-  d[, `:=`(illustration_isa = altitude_lapse(press, 101325, 288.15, 0) -
-      altitude_lapse(press_s, 101325, 288.15, 0) - agl,
-    illustration_standard = altitude_lapse(press, k0$sp_sl, k0$t2m_sl, k0$z_sl) -
-      altitude_lapse(press_s, k0$sp_sl, k0$t2m_sl, k0$z_sl) - agl,
-    illustration_virtual = altitude_lapse(press, k0$sp_sl,
-      virtual_temperature(k0$t2m_sl, k0$d2m, k0$sp_sl), k0$z_sl, L) -
-      altitude_lapse(press_s, k0$sp_sl,
-        virtual_temperature(k0$t2m_sl, k0$d2m, k0$sp_sl), k0$z_sl, L) - agl)]
-  profile_errors[[i]] <- melt(d[agl <= 3000, .(height = agl, isa = illustration_isa,
-    standard = illustration_standard, virtual = illustration_virtual)], id.vars = "height",
-    variable.name = "formula", value.name = "error")[, example := k$class]
-}
-P <- rbindlist(profiles)
-E <- rbindlist(profile_errors)
+P <- fread(file.path(out, "example_temperature_profiles.csv"))
+E <- fread(file.path(out, "example_flight_height_errors.csv"))
 P[formula == "Observed temperature", formula := "observed"]
 for (d in list(P, E)) d[, example := factor(example,
   c("Temperate summer day", "Continental winter night"), c("Summer day", "Winter night"))]
@@ -166,8 +118,7 @@ figure <- gtable_add_grob(figure, connector, t = 4, l = 5)
 figure <- gtable_add_grob(figure, left[[2]], t = 5, l = 3)
 figure <- gtable_add_grob(figure, right[[2]], t = 5, l = 5)
 figure <- gtable_add_grob(figure, legend, t = 6, l = 3, r = 5)
-ggsave(file.path(out, "fig1_column.png"), figure, width = 7.2, height = 4.99, dpi = 300, bg = "white")
-ggsave(file.path(out, "fig1_column.pdf"), figure, width = 7.2, height = 4.99, device = cairo_pdf)
+ggsave(file.path(out, "figure1_draft.png"), figure, width = 7.2, height = 4.99, dpi = 300, bg = "white")
+ggsave(file.path(out, "figure1_draft.pdf"), figure, width = 7.2, height = 4.99, device = cairo_pdf)
 invisible(dev.off())
-theme_set(previous_theme)
-cli::cli_alert_success("Figure 1 saved")
+cli::cli_alert_success("Cleaned Figure 1 draft saved")

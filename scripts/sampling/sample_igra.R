@@ -1,6 +1,6 @@
 # Direct IGRA sampling pilot and resumable full selection -------------------
-# Rscript scripts/sample_igra.R 16 3   # fixed random 16-cell pilot
-# Rscript scripts/sample_igra.R all 3  # resume all cells after pilot review
+# Rscript scripts/sampling/sample_igra.R 16 3   # fixed random 16-cell pilot
+# Rscript scripts/sampling/sample_igra.R all 3  # resume all cells after pilot review
 source("R/utils.R")
 source("R/ghcnh_sampling.R")
 source("R/igra_sampling.R")
