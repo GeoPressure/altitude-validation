@@ -1,0 +1,9 @@
+# Figure 3 design review
+
+The review used `figure-style.md`, Figure 1's shared headers and compact bottom legend, and Figure 4's horizontal guides with values placed beside them. The conversion identities remain orange, blue and teal, with Helvetica Neue, restrained grids and a white background.
+
+Figure 3 uses three metric rows (hourly absolute error, absolute station bias, within-station SD) and three conversion columns. A shared bottom legend replaces the left conversion labels. Metric names and units appear once to the left of each row, percentage labels distinguish observations from stations, and compact plot margins reduce the space between rows. Histogram magnitudes are vertical, with horizontal median guides in every panel and additional P95 guides for hourly errors, matching the statistics reported in the manuscript.
+
+Absolute station bias is the preferred main-figure quantity because the ground results report median absolute station bias. It displays persistent offset magnitude directly, alongside individual absolute errors and within-station SD. Bias is computed as a station's mean signed error before taking its absolute value; this is distinct from mean absolute hourly error. A signed distribution centred near zero cannot establish an absence of station bias, because positive and negative offsets can cancel. No claim of an absence of directional bias is added without a corresponding analysis.
+
+Both axes are linear. Magnitude ranges are identical across conversion columns within each metric row, and horizontal percentages share a common 0–75% range across all panels, so the reduction from the standard atmosphere to ERA5 remains directly visible. Labelled upper bins retain the pooled tails. Histogram percentages sum to 100% for every panel, and rendered bar boundaries match their original bins in metres. Numerical guides use unbinned analysis values and the original station weights.

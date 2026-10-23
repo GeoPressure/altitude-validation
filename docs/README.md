@@ -1,27 +1,35 @@
 # Research documentation
 
-The authoritative manuscript sources are [paper.qmd](../paper/paper.qmd) and [supplement.qmd](../paper/supplement.qmd). The agreed supplementary structure and methods are integrated there; there are no active manuscript proposal files.
+Author-facing notes behind the study. The manuscript sources are [paper.qmd](../paper/paper.qmd) and [supplement.qmd](../paper/supplement.qmd); the analysis is defined by [run_all.R](../run_all.R) and described in the [repository README](../README.md). Notes are dated snapshots: they may describe thresholds, samples or datasets that were later changed or retired.
 
-## Current analysis status
+## Methods
 
-Both selections completed successfully: GHCNh retained 2,130 stations from 2,962 evaluated cells (5,318 candidate stations assessed), and IGRA retained 643 stations from 801 cells (828 candidates assessed). Neither has pending cells, and the selection monitor is disabled.
+- Station selection: [GHCNh sampling](methods/ghcnh-sampling-review/README.md) and [IGRA2 sampling](methods/igra-sampling-review/README.md).
+- [Bird flight-height data](methods/T07/implementation.md): published dataset, input checksums and flight-time weighting.
+- [Horizontal-position pilot](methods/T10/design.md) (Additional file 1: S5).
+- Earlier implementation audits: `methods/T04`–`T07`.
 
-The numerical refresh is complete. The analysis uses 11,516,671 accepted GHCNh hours and 6,050,933 accepted IGRA airborne observations. Additional ERA5-Land inputs are cached for all 2,773 retained stations; paired product summaries use only hours with finite inputs for both products. Error summaries, environmental profiles, selection sensitivity, bird-weighted errors and figures have been regenerated.
+## Ground-station curation reviews (October 2026)
 
-Checks confirmed the accepted IDs, cell balance, observation counts and rolling windows; direct GeoPressureR conversion agreement; equal station weights within flight-height bands; and agreement between primary and sensitivity summaries. The completed generation is recorded in `output/tables/selection_analysis_complete.json`. GNSS and MeteoSwiss evaluations are retired; their scripts and dataset-specific tables are preserved in [the complementary-evaluation archive](../archive/complementary-ground-evaluations-2026-10-22/README.md). Original downloaded records remain cached locally. The active build is defined in [run_all.R](../run_all.R); preceding numerical outputs and retired stages are archived separately.
+Reviews in [`methods/reviews/`](methods/reviews/) that led to the pressure checks and exclusion lists in [`inputs/`](../inputs/README.md). The scripts they cite under `scripts/drafts/` are now in [`archive/exploratory-scripts/curation-2026-10/`](../archive/exploratory-scripts/curation-2026-10/README.md).
 
-See [data layout](data-layout.md) for current inputs, derived caches and retired local data.
+- [Simple pressure-only station filtering plan](methods/reviews/station-filtering-plan-2026-10-23.md) and [ground-reference filtering using pressure and timestamps](methods/reviews/pressure-only-filtering-2026-10-23.md)
+- [Review of ground-station filtering and station-consistency checks](methods/reviews/station-consistency-filtering-review-2026-10-23.md)
+- [Ground-series curation and isolated-spike screening](methods/reviews/ground-curation-and-spikes-2026-10-22.md)
+- [Experimental pressure-only pattern checks](methods/reviews/pressure-pattern-tests-2026-10-23.md) and [their application](methods/reviews/pressure-pattern-application-2026-10-23.md)
+- [Reference curation and pressure-pattern review](methods/reviews/reference-curation-review-2026-10-23.md)
+- [Quality codes and the manually reviewed pressure errors](methods/reviews/ground-quality-code-review-2026-10-23.md)
+- Manual reviews: batches [3](methods/reviews/ground-manual-review-batch3-2026-10-22.md), [4](methods/reviews/ground-manual-review-batch4-2026-10-22.md), [5](methods/reviews/ground-manual-review-batch5-2026-10-23.md), [6](methods/reviews/ground-manual-review-batch6-2026-10-23.md) and [7](methods/reviews/ground-manual-review-batch7-2026-10-23.md)
+- Tail reviews: [ERA5 residuals](methods/reviews/era5-tail-review-2026-10-22.md), [pressure anomalies](methods/reviews/pressure-anomaly-tail-review-2026-10-22.md), [standard-atmosphere biases above 150 m](methods/reviews/isa-bias-tail-review-2026-10-23.md) and [the ten largest ERA5 biases](methods/reviews/high-bias-online-review-2026-10-22.md)
 
-## Current methods and checks
+## Manuscript
 
-- [GHCNh sampling](methods/ghcnh-sampling-review/README.md)
-- [IGRA sampling](methods/igra-sampling-review/README.md)
 - [Figure style](manuscript/T08/figure-style.md)
-- [Published biological dataset](methods/T07/implementation.md), including input checksums and flight-time weighting
-- [Horizontal-position experiment](methods/T10/design.md)
+- [Discussion plan](manuscript/discussion-plan-2026-10-20.md)
+- [Submission checklist](manuscript/submission-checklist.md)
 
-## Literature and historical evidence
+## Literature and data sources
 
-The [literature index](literature/README.md) and [GPS/barometer synthesis](literature/gps-barometer-ecology.md) contain the scientific reviews. Data-source reviews and earlier implementation audits are historical snapshots and may describe retired datasets or methods. Earlier implementation audits remain under `methods/T04`–`T11` and retain their dated numerical definitions.
+The [literature index](literature/README.md) and [GPS/barometer synthesis](literature/gps-barometer-ecology.md) contain the scientific reviews; [data-source notes](data-sources/intake.md) record the dataset choices. See [data layout](data-layout.md) for local inputs and caches.
 
-Superseded manuscript proposals and sampling-development notes are preserved in [archive/docs](../archive/docs/README.md). They are historical records, not competing specifications for the current manuscript.
+Superseded proposals, retired datasets and exploratory scripts are preserved in [`archive/`](../archive/).

@@ -5,7 +5,7 @@ One record, two files, built by `Rscript zenodo/make_archive.R` into `data/zenod
 1. `altitude-validation-code.zip`: code, derived tables and figures, manuscript, supplement and archived report.
 2. `altitude-validation-data.zip`: the data needed to rerun the study without the slow downloads (see `zenodo/data_README.md`, included in the archive as `data/README.md`).
 
-DOI (reserved): [10.5281/zenodo.23085093](https://doi.org/10.5281/zenodo.23085093), already in `README.md`, `CITATION.cff` and `paper/paper.qmd`. Steps: run `Rscript zenodo/make_archive.R`, upload the two files with the metadata below, publish. For a new version, use "New version" on the record.
+DOI (reserved): [10.5281/zenodo.23085093](https://doi.org/10.5281/zenodo.23085093), already in `README.md`, `CITATION.cff` and `paper/paper.qmd`. Public availability checked on 23 October 2026: the record API and DOI both returned HTTP 404. Steps: run `Rscript zenodo/make_archive.R`, upload the two files with the metadata below, publish, and update the manuscript availability statement to describe the published archive. The archive builder includes the current working tree, including uncommitted and untracked project files. For a new version, use "New version" on the record.
 
 ## Metadata
 
@@ -25,7 +25,7 @@ DOI (reserved): [10.5281/zenodo.23085093](https://doi.org/10.5281/zenodo.2308509
 
 **Description:**
 
-Code and data of a global validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure measurement using the ERA5 reanalysis. The primary references are NOAA GHCNh surface stations worldwide and IGRA2 radiosondes up to 6 km above the sounding surface, each using the latest qualifying 12 months within 2022–2026 and one accepted station per represented 200 km equal-area cell. The study separates accuracy (per-site bias) from precision (temporal scatter), shows what they depend on, compares ERA5 single-levels with ERA5-Land, and tests improvements of the pressure-to-altitude formula. Manuscript and supplement: https://github.com/GeoPressure/altitude-validation/tree/main/paper.
+Code and data of a global validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure measurement using the ERA5 reanalysis. The primary references are NOAA GHCNh surface stations worldwide and IGRA2 radiosondes evaluated up to 5 km above the sounding surface, each using the latest qualifying 12 months within 2022–2026 and one accepted station per represented 200 km equal-area cell. The study separates accuracy (per-site bias) from precision (temporal scatter), shows what they depend on, compares ERA5 single-levels with ERA5-Land, and tests improvements of the pressure-to-altitude formula. Manuscript and supplement: https://github.com/GeoPressure/altitude-validation/tree/main/paper.
 
 `altitude-validation-code.zip` holds the R scripts, the derived tables and figures, the manuscript and supplement, and the archived report. `altitude-validation-data.zip` holds the hourly ERA5 and ERA5-Land series at every station, the radiosonde soundings and the station lists as downloaded: unzip it at the root of the code and run `Rscript run_all.R all render` to recompute every result. The archive includes frozen candidate decisions and accepted rolling-window inputs; raw annual NOAA downloads are not required for the analysis rebuild.
 

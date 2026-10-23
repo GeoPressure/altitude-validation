@@ -1,0 +1,21 @@
+{
+  "source": "https://apitempo.inmet.gov.br/estacoes/T",
+  "accessed": "2026-10-22",
+  "station": {
+    "CD_OSCAR": "0-2000-0-86872",
+    "DC_NOME": "CAMPOS DO JORDAO",
+    "FL_CAPITAL": "N",
+    "DT_FIM_OPERACAO": null,
+    "CD_SITUACAO": "Operante",
+    "TP_ESTACAO": "Automatica",
+    "VL_LATITUDE": "-22.75027777",
+    "CD_WSI": "0-76-0-3509700000000019",
+    "CD_DISTRITO": " 07",
+    "VL_ALTITUDE": "1662.95",
+    "SG_ESTADO": "SP",
+    "SG_ENTIDADE": "INMET",
+    "CD_ESTACAO": "A706",
+    "VL_LONGITUDE": "-45.60388888",
+    "DT_INICIO_OPERACAO": "2002-03-12T21:00:00.000-03:00"
+  }
+}
