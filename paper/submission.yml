@@ -7,9 +7,13 @@ link-citations: true
 format:
   pdf:
     documentclass: sn-jnl
-    classoption: [pdflatex]
-    pdf-engine: xelatex
+    classoption: [pdflatex, referee]
+    pdf-engine: pdflatex
     include-before-body: title-block.tex
+    include-in-header:
+      text: |
+        \usepackage{lineno}
+        \AtBeginDocument{\linenumbers}
     keep-tex: true
     number-sections: true
     fig-pos: "!t"
