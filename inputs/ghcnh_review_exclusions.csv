@@ -1,0 +1,20 @@
+id,name,basis,reason
+UZM00038403,Buzaubaj,Visual review of ERA5 departures,Slow pressure drift of up to about 15 hPa over several weeks
+BLU085109-1,San Ramon,Visual review of ERA5 departures,Gradual pressure drift of about 5 hPa over the year
+FSU98404001,Kerguelen,Visual review of ERA5 departures,Large irregular departures consistent with inconsistent report timing
+FSU98404004,Crozet,Visual review of ERA5 departures,Large irregular departures consistent with inconsistent report timing
+FSU98404002,Nouvelle Amsterdam,Visual review of ERA5 departures,Large irregular departures consistent with inconsistent report timing
+USW00063819,Boone Watauga Co Hsp,Visual review of ERA5 departures,Persistent pressure step of about 5 hPa
+INMU0020523,Honavar,Visual review of ERA5 departures,Recurring reports offset by about 4 hPa from the main pressure level
+BRM00081835,Apodi,Visual review of ERA5 departures,Reports alternating between two pressure levels about 8 hPa apart
+SFM00068481,Pongola,Visual review of ERA5 departures,Persistent pressure step of about 3 hPa
+IDU097570-1,Serui,Visual review of ERA5 departures,Persistent pressure step of about 1.5 hPa
+TXM00038388,Ekezhe,Visual review of ERA5 departures,Pressure alternating between two levels about 4 hPa apart over multi-day blocks
+KZM00036806,Druzba,Visual review of ERA5 departures,Irregular multi-day pressure departures of up to 6 hPa
+THM00048302,Doi Ang Khang,Visual review of ERA5 departures,Recurring multi-day pressure excursions of about 5 hPa
+TXM00038507,Turkmenbashi,Visual review of ERA5 departures,Successive pressure steps of 1 to 2 hPa
+RPM00098630,Cuyo,Visual review of ERA5 departures,Persistent pressure step of about 3.5 hPa
+BRM00086995,Rio Grande,Visual review of ERA5 departures,Persistent pressure step of about 2.5 hPa across a reporting gap
+AVM00078846,Anguilla,Visual review of ERA5 departures,Repeated pressure steps of 1 to 1.5 hPa
+IRM00040832,Abamusa Island,Visual review of ERA5 departures,Irregular multi-day pressure departures of up to 8 hPa
+BRM00081909,Campos Sales,Visual review of ERA5 departures,Months of large irregular scatter followed by a drift of about 5 hPa

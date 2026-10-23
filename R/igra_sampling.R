@@ -115,88 +115,47 @@ igra_match <- function(o, e, s, gpt3) {
   d[is.finite(err_isa) & is.finite(err_standard) & is.finite(err_virtual)]
 }
 
-# Coverage counts launch dates after the candidate-local outlier exclusion.
-igra_window <- function(d, settings, clean = TRUE) {
-  if (!nrow(d)) return(NULL)
-  days <- as.Date(d$launch, tz = "UTC")
+# Sounding self-consistency: reported height gains against the sonde's own temperature profile.
+sounding_rules <- list(height_m = 30, height_fraction = .03, inconsistent_fraction = .1)
+
+igra_consistency <- function(d, rules = sounding_rules) {
+  d <- copy(d)
+  setorder(d, sounding, -press)
+  d[, tmean := sonde_mean_temperature(press, press_s, temp), by = sounding]
+  d[, mismatch := agl - 287.05 / 9.80665 * tmean * log(press_s / press)]
+  d[, .(checked = all(is.finite(mismatch)),
+    consistent = all(is.finite(mismatch)) && all(abs(mismatch) <= rules$height_m + rules$height_fraction * agl)), by = sounding]
+}
+
+# Latest year with 15 launch dates of consistent soundings in each month-long interval and few
+# inconsistent checked soundings; ERA5 is not used.
+igra_window <- function(d, flags, settings, rules = sounding_rules) {
+  if (!nrow(d)) return(list(reason = "coverage"))
+  launches <- merge(unique(d[, .(sounding, day = as.Date(launch, tz = "UTC"))]), flags, by = "sounding")
   start <- as.Date(settings$start)
   end <- as.Date(settings$end)
   ends <- seq(end, start %m+% years(1), by = "-1 day")
   bounds <- sapply(0:12, function(m) as.integer(ends %m-% months(m)))
-  counts <- tabulate(as.integer(unique(days) - start) + 1L, nbins = as.integer(end - start))
-  cs <- c(0, cumsum(counts > 0))
-  block <- sapply(1:12, function(m) cs[bounds[, m] - as.integer(start) + 1L] - cs[bounds[, m + 1] - as.integer(start) + 1L])
-  eligible <- which(apply(block, 1, min) >= settings$days_per_month)
-  if (!length(eligible)) return(NULL)
-  if (!clean) return(ends[eligible[1]])
-  for (i in eligible) {
-    w <- copy(d[days >= as.Date(bounds[i, 13], origin = "1970-01-01") & days < ends[i]])
-    w[, outlier := abs(err_standard - median(err_standard)) > max(settings$outlier_m, settings$outlier_mad * mad(err_standard)), by = band]
-    fraction <- mean(w$outlier)
-    matched <- nrow(w)
-    w <- w[outlier == FALSE]
-    counts <- tabulate(as.integer(unique(as.Date(w$launch, tz = "UTC")) - start) + 1L, nbins = as.integer(end - start))
-    cs <- c(0, cumsum(counts > 0))
-    support <- cs[bounds[i, 1:12] - as.integer(start) + 1L] - cs[bounds[i, 2:13] - as.integer(start) + 1L]
-    if (min(support) < settings$days_per_month) next
-    w[, outlier := NULL]
-    w[, weight := 1 / .N, by = band]
-    return(list(start = as.Date(bounds[i, 13], origin = "1970-01-01"), end = ends[i], levels = w,
-      matched_levels = matched, outlier_fraction = fraction, min_month_days = min(support)))
+  n_days <- as.integer(end - start)
+  index <- function(x) as.integer(x - start) + 1L
+  monthly <- function(days) {
+    cs <- c(0, cumsum(tabulate(index(unique(days)), nbins = n_days) > 0))
+    sapply(1:12, function(m) cs[bounds[, m] - as.integer(start) + 1L] - cs[bounds[, m + 1] - as.integer(start) + 1L])
   }
-  NULL
-}
-
-# A scientific rejection advances; a technical failure preserves the candidate.
-igra_cell <- function(cell_id, candidates, settings, run_dir, old_stations, gpt3) {
-  path <- file.path(run_dir, "cells", paste0(cell_id, ".rds"))
-  state <- if (file.exists(path)) readRDS(path) else list(cell = cell_id, next_candidate = 1L,
-    completed = FALSE, attempts = data.table(), accepted = NULL, pending = NULL)
-  if (state$completed) return(state)
-  group <- candidates[cell == cell_id][order(candidate_order)]
-  for (i in seq.int(state$next_candidate, nrow(group))) {
-    s <- group[i]
-    before <- state
-    t0 <- proc.time()[["elapsed"]]
-    result <- tryCatch({
-      profiles <- igra_profiles(s, settings, run_dir)
-      o <- profiles$levels
-      w <- NULL
-      if (!is.null(igra_window(o, settings, clean = FALSE))) {
-        e <- igra_core(s, c(o$date, o$date_s), run_dir, old_stations)
-        d <- igra_match(o, e, s, gpt3)
-        w <- igra_window(d, settings)
-      }
-      row <- data.table(id = s$id, candidate_order = i, reason = if (is.null(w)) "coverage" else "accepted",
-        seconds = proc.time()[["elapsed"]] - t0, download_bytes = profiles$download_bytes,
-        raw_levels = profiles$raw_levels, prepared_levels = nrow(o),
-        window_start = if (is.null(w)) as.Date(NA) else w$start,
-        window_end = if (is.null(w)) as.Date(NA) else w$end,
-        accepted_levels = if (is.null(w)) 0L else nrow(w$levels),
-        accepted_soundings = if (is.null(w)) 0L else uniqueN(w$levels$sounding),
-        min_month_days = if (is.null(w)) NA_integer_ else w$min_month_days,
-        outlier_fraction = if (is.null(w)) NA_real_ else w$outlier_fraction)
-      if (!is.null(w)) {
-        ghcnh_write(w$levels, file.path(run_dir, "accepted", paste0(s$id, ".parquet")))
-        state$accepted <- cbind(s, row[, !c("id", "candidate_order")])
-        state$completed <- TRUE
-      }
-      state$attempts <- rbind(state$attempts, row)
-      state$next_candidate <- i + 1L
-      state$pending <- NULL
-      if (i == nrow(group)) state$completed <- TRUE
-      ghcnh_save(state, path)
-      TRUE
-    }, error = identity)
-    if (inherits(result, "error")) {
-      state <- before
-      state$pending <- list(id = s$id, message = conditionMessage(result))
-      ghcnh_save(state, path)
-      cli::cli_alert_warning("Cell {cell_id}: pending at {s$id}: {conditionMessage(result)}")
-      break
-    }
-    if (state$completed) break
-  }
-  cli::cli_alert_info("Cell {cell_id}: {nrow(state$attempts)} assessed; {if (!is.null(state$accepted)) 'accepted' else if (state$completed) 'empty' else 'pending'}")
-  state
+  # Coverage by all soundings separates sparse records from records failing consistency.
+  if (!any(apply(monthly(launches$day), 1, min) >= settings$days_per_month)) return(list(reason = "coverage"))
+  block <- monthly(launches[consistent == TRUE, day])
+  covered <- apply(block, 1, min) >= settings$days_per_month
+  checked <- c(0, cumsum(tabulate(index(launches[checked == TRUE, day]), nbins = n_days)))
+  bad <- c(0, cumsum(tabulate(index(launches[checked == TRUE & consistent == FALSE, day]), nbins = n_days)))
+  lower <- bounds[, 13] - as.integer(start) + 1L
+  upper <- bounds[, 1] - as.integer(start) + 1L
+  fraction <- (bad[upper] - bad[lower]) / pmax(checked[upper] - checked[lower], 1)
+  eligible <- which(covered & fraction <= rules$inconsistent_fraction)
+  if (!length(eligible)) return(list(reason = "consistency"))
+  i <- eligible[1]
+  window_start <- as.Date(bounds[i, 13], origin = "1970-01-01")
+  keep <- launches[consistent == TRUE & day >= window_start & day < ends[i], sounding]
+  list(reason = "accepted", start = window_start, end = ends[i], levels = d[sounding %in% keep],
+    inconsistent_fraction = fraction[i], min_month_days = min(block[i, ]))
 }

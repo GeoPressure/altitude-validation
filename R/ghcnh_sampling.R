@@ -1,4 +1,4 @@
-# GHCNh sampling units used by scripts/sampling/sample_ghcnh.R ------------------------
+# GHCNh pressure intake and station-year selection -------------------------
 suppressPackageStartupMessages({
   library(lubridate)
   library(sf)
@@ -120,6 +120,73 @@ ghcnh_window <- function(d, settings, clean = TRUE) {
       matched_hours = nrow(w)))
   }
   NULL
+}
+
+# Reuse calendar boundaries across all stations in a selection run.
+ghcnh_pressure_calendar <- function(settings) {
+  start <- as.Date(settings$start)
+  ends <- seq(as.Date(settings$end), start %m+% years(1), by = "-1 day")
+  bounds <- do.call(cbind, lapply(0:12, function(m) as.integer(ends %m-% months(m))))
+  list(start = start, ends = ends, bounds = bounds,
+    upper = bounds[, 1:12] - as.integer(start) + 1L,
+    lower = bounds[, 2:13] - as.integer(start) + 1L,
+    n_days = as.integer(as.Date(settings$end) - start))
+}
+
+# Remove isolated pressure spikes bracketed by nearby agreeing observations.
+ghcnh_pressure_spikes <- function(d) {
+  d <- d[order(date)]
+  previous <- shift(d$pressure)
+  following <- shift(d$pressure, type = "lead")
+  before <- as.numeric(difftime(d$date, shift(d$date), units = "hours"))
+  after <- as.numeric(difftime(shift(d$date, type = "lead"), d$date, units = "hours"))
+  departure <- pmin(abs(d$pressure - previous), abs(d$pressure - following))
+  spike <- ((before <= 3 & after <= 3 & abs(previous - following) <= 2 & departure > 5) |
+    (before <= 12 & after <= 12 & abs(previous - following) <= 3 & departure > 10 &
+      abs(d$pressure - previous) > 2 * before & abs(d$pressure - following) > 2 * after)) &
+    (d$pressure - previous) * (d$pressure - following) > 0
+  d[is.na(spike) | !spike]
+}
+
+# Large pressure jumps across the full candidate history.
+ghcnh_pressure_jumps <- function(d, jump_hpa = 20, jump_hours = 3, gap_jump_hpa = 50, gap_days = 7) {
+  d <- d[order(date)]
+  elapsed <- as.numeric(difftime(d$date, shift(d$date), units = "hours"))
+  change <- d$pressure - shift(d$pressure)
+  jumps <- which((abs(change) > jump_hpa & elapsed <= jump_hours) |
+    (abs(change) > gap_jump_hpa & elapsed <= gap_days * 24))
+  data.table(start = d$date[jumps - 1L], end = d$date[jumps])
+}
+
+# Latest year passing coverage, containing no large jump and passing an optional check.
+# An optional check(rows, bounds) returns list(pass, ...); after a failure it is retried four weeks earlier.
+ghcnh_pressure_window <- function(d, settings, calendar = ghcnh_pressure_calendar(settings),
+  jumps = ghcnh_pressure_jumps(d), check = NULL) {
+  d <- d[order(date)]
+  days <- as.Date(d$date, tz = "UTC")
+  counts <- tabulate(as.integer(days - calendar$start) + 1L, nbins = calendar$n_days)
+  cs <- c(0, cumsum(counts >= settings$hours_per_day))
+  coverage <- matrix(cs[calendar$upper] - cs[calendar$lower], ncol = 12)
+  eligible <- rowSums(coverage < settings$days_per_month) == 0
+  if (!any(eligible)) return(list(hours = NULL, consistency = list(reason = "coverage")))
+  # A jump fails a year when both of its reports fall inside.
+  for (j in seq_len(nrow(jumps))) {
+    eligible[as.numeric(calendar$ends) * 86400 > as.numeric(jumps$end[j]) &
+      calendar$bounds[, 13] * 86400 <= as.numeric(jumps$start[j])] <- FALSE
+  }
+  if (!any(eligible)) return(list(hours = NULL, consistency = list(reason = "jump")))
+  first <- NULL
+  retry <- Inf
+  for (i in which(eligible)) {
+    if (as.numeric(calendar$ends[i]) > retry) next
+    rows <- days >= as.Date(calendar$bounds[i, 13], origin = "1970-01-01") & days < calendar$ends[i]
+    result <- if (is.null(check)) list(pass = TRUE) else check(rows, calendar$bounds[i, ])
+    if (is.null(first)) first <- result
+    if (result$pass) return(list(start = as.Date(calendar$bounds[i, 13], origin = "1970-01-01"), end = calendar$ends[i],
+      hours = d[rows], consistency = result))
+    retry <- as.numeric(calendar$ends[i]) - 28
+  }
+  list(hours = NULL, consistency = first)
 }
 
 # Cache a full primary ERA5 series; request only missing hours.
