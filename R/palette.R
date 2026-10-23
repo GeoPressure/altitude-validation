@@ -1,5 +1,4 @@
-# Colours shared by every figure (supplement.R) and the interactive maps of the report. Each
-# colour has one meaning throughout:
+# Colours shared by every figure. Each colour has one meaning throughout:
 #   metric     accuracy (bias) and precision (SD), when a figure shows one series per panel
 #   reference  the two reference datasets
 #   product    the two ERA5 products; ERA5 single-levels is the GeoPressureR default, drawn in ink

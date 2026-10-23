@@ -1,10 +1,9 @@
 # Figure 1: atmospheric conditions and their effects on pressure-derived altitude.
 # Run from the repository root; called by Rscript run_all.R figures.
+invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 source("R/utils.R")
-source("R/palette.R")
+source("R/figures.R")
 suppressPackageStartupMessages({ library(ggplot2); library(grid); library(gtable) })
-out <- "paper/figures"
-font <- if ("Helvetica Neue" %in% systemfonts::system_fonts()$family) "Helvetica Neue" else "sans"
 # Measure text with the same font engine used for the raster export.
 ragg::agg_png(tempfile(fileext = ".png"), width = 2160, height = 1602, res = 300)
 previous_theme <- theme_get()
@@ -14,8 +13,8 @@ theme_set(theme_minimal(base_size = 9, base_family = font) +
     axis.text = element_text(colour = "#4B5563"), strip.text = element_text(face = "bold", hjust = 0, size = 9),
     legend.position = "none", legend.title = element_blank(), plot.tag = element_text(face = "bold", size = 11),
     plot.margin = margin(5, 5, 5, 5)))
-formulas <- c(isa = "Standard atmosphere", standard = "ERA5 · standard lapse",
-  virtual = "ERA5 · virtual + GPT3", observed = "Observed")
+formulas <- c(isa = "Standard atmosphere", standard = "ERA5, standard lapse rate",
+  virtual = "ERA5, virtual temperature + GPT3", observed = "Observed")
 colours <- c(pal_conversion, observed = "#3B6FB6")
 conversion_scale <- scale_colour_manual(values = colours, breaks = names(formulas), labels = formulas)
 examples <- readRDS(file.path(analysis_dir, "figure1.rds"))
@@ -23,7 +22,9 @@ W <- examples$W
 Ew <- examples$Ew
 P <- examples$P
 E <- examples$E
-date_axis <- scale_x_datetime(date_breaks = "5 days", date_labels = "%d %b")
+date_axis <- scale_x_datetime(breaks = seq(as.POSIXct("2024-10-08", tz = "UTC"),
+  as.POSIXct("2024-10-23", tz = "UTC"), by = "5 days"), date_labels = "%d %b",
+  limits = as.POSIXct(c("2024-10-08", "2024-10-23"), tz = "UTC"), expand = expansion(mult = .02))
 a <- ggplot(W, aes(date, pressure)) +
   geom_line(colour = colours[["observed"]], linewidth = .85) +
   date_axis + labs(x = NULL, y = "Pressure (hPa)")
@@ -34,13 +35,17 @@ b <- ggplot(Ew, aes(date, error, colour = formula)) +
 c <- ggplot(P, aes(temperature, height / 1000, colour = formula)) +
   geom_path(data = P[formula != "observed"], linewidth = .7) +
   geom_path(data = P[formula == "observed"], linewidth = .85) +
+  geom_point(data = P[formula == "observed"], size = .7) +
   facet_wrap(~example) + conversion_scale +
-  scale_y_continuous(breaks = 0:3) + scale_x_continuous(breaks = c(-20, 0, 20)) +
+  scale_y_continuous(breaks = 0:5) + scale_x_continuous(breaks = c(-40, -20, 0, 20)) +
+  coord_cartesian(ylim = c(0, 5)) +
   labs(x = "Temperature (°C)", y = "Height above surface (km)") + theme(strip.text = element_blank())
 d <- ggplot(E, aes(error, height / 1000, colour = formula)) +
   geom_vline(xintercept = 0, colour = pal[["slate"]], linetype = 2, linewidth = .35) +
   geom_path(linewidth = .7) + facet_wrap(~example) + conversion_scale +
-  scale_y_continuous(breaks = 0:3) + scale_x_continuous(breaks = c(-100, 0, 100)) +
+  geom_point(data = E[, .SD[which.max(height)], by = .(example, formula)], size = .9) +
+  scale_y_continuous(breaks = 0:5) +
+  scale_x_continuous(breaks = seq(-300, 200, 100)) + coord_cartesian(xlim = c(-320, 200), ylim = c(0, 5)) +
   labs(x = "Flight-height error (m)", y = "Height above surface (km)") + theme(strip.text = element_blank())
 
 # Align plotting areas within each column ----------------------------------
@@ -97,7 +102,7 @@ figure <- gtable_add_grob(figure, header_station, t = 1, l = 3)
 figure <- gtable_add_grob(figure, header_balloon, t = 1, l = 5)
 # Shared sounding labels replace duplicate facet headings inside both rows.
 figure <- gtable_add_grob(figure, grobTree(
-  textGrob("Summer day", x = .33, gp = gpar(fontfamily = font, fontsize = 8.5, col = "#566476")),
+  textGrob("Summer night", x = .33, gp = gpar(fontfamily = font, fontsize = 8.5, col = "#566476")),
   textGrob("Winter night", x = .79, gp = gpar(fontfamily = font, fontsize = 8.5, col = "#566476"))), t = 2, l = 5)
 figure <- gtable_add_grob(figure, segmentsGrob(0, .01, 1, .01, gp = gpar(col = pal[["grid"]], lwd = .8)),
   t = 2, l = 1, r = 5)
@@ -114,8 +119,7 @@ figure <- gtable_add_grob(figure, connector, t = 4, l = 5)
 figure <- gtable_add_grob(figure, left[[2]], t = 5, l = 3)
 figure <- gtable_add_grob(figure, right[[2]], t = 5, l = 5)
 figure <- gtable_add_grob(figure, legend, t = 6, l = 3, r = 5)
-ggsave(file.path(out, "fig1_column.png"), figure, width = 7.2, height = 4.99, dpi = 300, bg = "white")
-ggsave(file.path(out, "fig1_column.pdf"), figure, width = 7.2, height = 4.99, device = cairo_pdf)
+save_figure(figure, "fig1_column", 7.2, 4.99)
 invisible(dev.off())
 theme_set(previous_theme)
 cli::cli_alert_success("Figure 1 saved")
