@@ -22,4 +22,4 @@ Ten stations and eight launches each supply an economical sensitivity illustrati
 
 ## Reproduce
 
-From the repository root, run `Rscript docs/methods/T10/run_experiment.R`, then `Rscript docs/methods/T10/plot_experiment.R`. The experiment needs the existing reference data, local GeoPressureR checkout and network access on the first run. The figure script needs only the saved aggregate CSVs and shared plotting palette. `provenance.json` records the actual runtime and exact-location/control checks after completion.
+From the repository root, run `Rscript run_all.R position figures` (scripts `scripts/analysis/position_sensitivity.R` and `scripts/figures/supp_position.R`; results in `output/position-sensitivity/`). The experiment needs the existing reference data, local GeoPressureR checkout and network access on the first run. The figure script needs only the saved aggregate CSVs and shared plotting palette. `provenance.json` records the actual runtime and exact-location/control checks after completion.

@@ -1,14 +1,16 @@
+# Sensitivity to horizontal position (Additional file 1: S5): shift the ERA5/GPT3 query location
+# around radiosonde launches and compare errors with those at the exact location.
 # Load packages and define the paired pilot -------------------------------
 source("R/utils.R")
 load_geopressurer()
 library(lubridate)
 library(cli)
 
-out <- "docs/methods/T10"
+out <- "output/position-sensitivity"
 cache <- "data/interim/location_sensitivity"
 dir.create(cache, recursive = TRUE, showWarnings = FALSE)
 st <- load_stations()[network == "igra" & !is.na(climate)]
-B <- load_radiosondes(st)
+B <- load_radiosondes(st, levels = TRUE)
 B <- B[year == 2024 & is.finite(sp_sl) & is.finite(t2m_sl) & is.finite(d2m)]
 sfc <- B[surface == TRUE, .(surface_date = date[1], surface_press = press[1], surface_gph = gph[1]), by = .(id, sounding)]
 levels <- merge(B[surface == FALSE & agl >= 1700 & agl <= 2300][order(abs(agl - 2000))][, .SD[1], by = .(id, sounding)], sfc, by = c("id", "sounding"))
@@ -110,5 +112,5 @@ stopifnot(all(errors[distance == 0, change] == 0), max(abs(errors[formula == "is
 q0 <- queries[distance == 0 & kind == "level"]
 central <- merge(q0, levels[, .(pair, original_error = err_sl)], by = "pair")
 stopifnot(max(abs(central$standard - central$truth - central$original_error)) < 1e-7)
-jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), geopressurer = geopressurer_version(), stations = nrow(selected), soundings = nrow(levels), locations = nrow(locations), grid_hours = nrow(weather), stations_reused_from_cache = cached_stations, elapsed_seconds = as.numeric(difftime(Sys.time(), started, units = "secs")), min_height = min(levels$agl), max_height = max(levels$agl), max_central_error_difference = max(abs(central$standard - central$truth - central$original_error)), source_md5 = as.list(tools::md5sum(c("R/utils.R", "docs/methods/T10/run_experiment.R", "data/interim/errors_igra.parquet", "output/tables/stations.csv", "data/raw/gpt3/gpt3_1.grd", file.path(cache, paste0(selected$id, ".parquet")))))), file.path(out, "provenance.json"), pretty = TRUE, auto_unbox = TRUE)
+jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), geopressurer = geopressurer_version(), stations = nrow(selected), soundings = nrow(levels), locations = nrow(locations), grid_hours = nrow(weather), stations_reused_from_cache = cached_stations, elapsed_seconds = as.numeric(difftime(Sys.time(), started, units = "secs")), min_height = min(levels$agl), max_height = max(levels$agl), max_central_error_difference = max(abs(central$standard - central$truth - central$original_error)), source_md5 = as.list(tools::md5sum(c("R/utils.R", "scripts/analysis/position_sensitivity.R", "data/interim/errors_igra.parquet", "output/tables/stations.csv", "data/raw/gpt3/gpt3_1.grd", file.path(cache, paste0(selected$id, ".parquet")))))), file.path(out, "provenance.json"), pretty = TRUE, auto_unbox = TRUE)
 cli_alert_success("Paired pilot complete; summaries written to {out}")
