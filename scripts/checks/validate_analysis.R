@@ -4,6 +4,8 @@ load_geopressurer()
 setDTthreads(1)
 set.seed(22)
 st <- load_stations()
+stopifnot(all(is.na(st$koppen) | grepl("^[ABCDE][A-Za-z]{1,2}$", st$koppen)),
+  identical(is.na(st$koppen), is.na(st$climate)))
 for (net in c("ghcnh", "igra")) {
   accepted <- fread(file.path(selection_dir(net), "full-accepted.csv"))
   stopifnot(fread(file.path(selection_dir(net), "full-metrics.csv"))$pending == 0,
@@ -19,6 +21,14 @@ for (net in c("ghcnh", "igra")) {
     all(is.finite(d$err_isa)), all(is.finite(d$err_standard)), all(is.finite(d$err_virtual)))
   dates <- if (net == "ghcnh") d$date else d$launch
   index <- match(d$id, accepted$id)
+  if (net == "igra") {
+    # Every retained sounding passes the hypsometric consistency check.
+    source("R/igra_sampling.R")
+    for (id_value in accepted$id) {
+      flags <- igra_consistency(as.data.table(read_parquet(file.path(selection_dir(net), "accepted", paste0(id_value, ".parquet")))))
+      stopifnot(all(flags$consistent))
+    }
+  }
   stopifnot(all(dates >= as.POSIXct(accepted$window_start[index], tz = "UTC")),
     all(dates < as.POSIXct(accepted$window_end[index], tz = "UTC")))
   # Independent direct-formula checks of both absolute and paired conversions.
@@ -42,11 +52,19 @@ for (net in c("ghcnh", "igra")) {
 B <- load_radiosondes(st, c("id", "band", "lsh", "sdoy"))
 stopifnot(!anyNA(B$hbin), all(abs(B[, sum(w), by = .(id, hbin)]$V1 - 1) < 1e-10))
 rm(B)
+exclusions <- fread("inputs/ghcnh_reference_exclusions.csv")
+stopifnot(!any(st[network == "ghcnh", id] %in% exclusions$id))
 primary <- fread(file.path(dir_tables, "paper_ground_tails.csv"))[reference == "GHCNh"]
-sensitivity <- fread(file.path(dir_tables, "paper_selection_sensitivity.csv"))[selection == "primary"]
-check <- merge(primary, sensitivity, by = "formula")
-stopifnot(max(abs(check$medae.x - check$medae.y)) < 1e-7,
-  max(abs(check$p95_abs.x - check$p95_abs.y)) < 1e-7)
+histogram <- fread(file.path(dir_tables, "paper_ground_observation_quantiles.csv"))
+check <- merge(primary, histogram, by = "formula")
+stopifnot(max(abs(check$medae - check$q50)) < 1e-7)
+histogram <- fread(file.path(dir_tables, "paper_ground_observation_hist.csv"))
+stopifnot(all(abs(histogram[, sum(percent), by = formula]$V1 - 100) < 1e-8),
+  all(abs(histogram[, sum(weight), by = formula]$V1 - st[network == "ghcnh", .N]) < 1e-6))
+weights <- fread(file.path(dir_tables, "bird_target_height_weights.csv"))
+stopifnot(!anyNA(weights$hbin), all(abs(weights[, sum(prop), by = variant]$V1 - 1) < 1e-10))
+primary_weights <- merge(bird_height_weights()[, .(hbin, prop)], weights[variant == "all_flight"], by = "hbin")
+stopifnot(nrow(primary_weights) == length(hbin_mid), max(abs(primary_weights$prop.x - primary_weights$prop.y)) < 1e-10)
 bird <- merge(fread(file.path(dir_tables, "paper_flight_bird.csv")),
   fread(file.path(dir_tables, "paper_bird_target_sensitivity.csv"))[variant == "all_flight"], by = "formula")
 stopifnot(max(abs(bird$medae.x - bird$medae.y)) < 1e-7)
@@ -58,6 +76,6 @@ jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz =
   package = geopressurer_version(),
   source_md5 = as.list(tools::md5sum(c("R/utils.R", list.files("scripts", "[.]R$", full.names = TRUE, recursive = TRUE)))),
   checks = c("accepted rows and windows", "one station per cell", "equal station-band weights",
-    "direct GeoPressureR formulas", "selection-comparison primary equality", "bird-target equality")),
+    "direct GeoPressureR formulas", "independent reference exclusions and histogram equality", "bird-target equality")),
   file.path(dir_tables, "selection_analysis_complete.json"), pretty = TRUE, auto_unbox = TRUE)
 cli::cli_alert_success("Numerical integration checks passed")

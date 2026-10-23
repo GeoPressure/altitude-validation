@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-18 12:01:22 UTC",
+  "generated_utc": "2026-10-23 19:44:12 UTC",
   "doi": "10.5281/zenodo.18187093",
   "version": "2026.0",
   "raw_input": "/Users/rafnuss/Documents/GitHub/GeoLocatorMaster/data/master/pressurepaths.csv",
@@ -7,8 +7,8 @@
   "published_checksum": "md5:5ebef117b9aa4533addffb53fe284799",
   "metadata_md5": "c136b64b800e3745cf144e0f1760806d",
   "source_md5": {
-    "scripts/00_bird_heights.R": "202002f21da47bd2c1bd16a9cc0c14d4",
-    "R/utils.R": "6ab40781b4bedc2da3f87b0000fc2468"
+    "scripts/preparation/bird_heights.R": "36453876fc374f98a1ddf07014f41e2e",
+    "R/utils.R": "63f5c1cde5b9508969cbe3738271a49f"
   },
   "sample": {
     "n_tags": 203,
@@ -19,7 +19,12 @@
     "n_tags_pressure": 204,
     "n_tags_no_flight": 1
   },
-  "height_formula": "288.15 K and -6.5 K/km relative to ERA5 surface pressure, interpolated adjacent-stationary pressure offsets; negative flight heights clamped to zero",
+  "geopressurer": "3.6.6.9000 (f1431bc3)",
+  "path_inputs_md5": {
+    "/Users/rafnuss/Documents/GitHub/GeoLocatorMaster/data/master/paths.csv": "d715057e05b9c2df5017532677f8594b",
+    "/Users/rafnuss/Documents/GitHub/GeoLocatorMaster/data/master/staps.csv": "23b4f1145ee2ddf4fc06f5eb87566e38"
+  },
+  "height_formula": "Supplied pressurepath sea-level altitude; missing values use tag pressure, ERA5 surface pressure/temperature/elevation and -6.5 K/km; subtract path2elevation Copernicus GLO-90 cell median (scale=4, sampling_scale=4), interpolated by fractional stap_id; negative flight heights binned at zero",
   "flight_filter": "All classified flight; tags without usable flight pressurepaths excluded",
   "time_weighting": "Interval to next retained tag record capped at 60 min; final record uses median positive interval"
 }

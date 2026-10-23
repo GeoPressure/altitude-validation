@@ -37,6 +37,11 @@ obs <- rbindlist(lapply(c("isa", "standard", "virtual"), function(f) {
       c("q10", "q25", "q50", "q75", "q90")))))
 }))
 fwrite(obs, file.path(dir_tables, "paper_ground_observation_quantiles.csv"))
+histogram <- rbindlist(lapply(names(formulas), function(f) {
+  G[, .(weight = sum(w)), by = .(bin = pmin(floor(abs(get(paste0("err_", f))) / 5) * 5, 450))][,
+    `:=`(formula = f, percent = 100 * weight / sum(weight))]
+}))
+fwrite(histogram, file.path(dir_tables, "paper_ground_observation_hist.csv"))
 rm(G, gs)
 gc()
 
@@ -64,12 +69,16 @@ fs <- rbindlist(lapply(names(formulas), function(f) {
 fs <- merge(fs, st[network == "igra", .(id, lat, lon)], by = "id")
 fs[, `:=`(cw = 1, agl_mid = hbin_mid[as.integer(hbin)])]
 fwrite(fs, file.path(dir_tables, "paper_flight_station.csv"))
-B[, profile_mid := (ceiling(agl / 250) - .5) * 250]
 profile <- rbindlist(lapply(names(formulas), function(f) {
   B[, .(formula = f, bias = mean(get(paste0("e_", f))), sd = sd(get(paste0("e_", f))),
-    n = .N, n_soundings = uniqueN(sounding), cw = 1), by = .(id, agl_mid = profile_mid)]
+    n = .N, n_soundings = uniqueN(sounding), cw = 1), by = .(id, agl_mid = agl)]
 }))
 fwrite(profile, file.path(dir_tables, "paper_flight_profile_station.csv"))
+B[, w_agl := 1 / .N, by = .(id, agl)]
+fwrite(rbindlist(lapply(names(formulas), function(f) {
+  B[, .(formula = f, medae = wquant(abs(get(paste0("e_", f))), w_agl, .5),
+    p95_abs = wquant(abs(get(paste0("e_", f))), w_agl, .95)), by = agl]
+})), file.path(dir_tables, "paper_flight_profile_tails.csv"))
 fwrite(rbindlist(lapply(c("bias", "sd"), function(m) {
   fs[is.finite(get(m)), .(metric = m, median = wquant(get(m), cw, .5),
     q25 = wquant(get(m), cw, .25), q75 = wquant(get(m), cw, .75)), by = .(formula, hbin, agl_mid)]
@@ -90,5 +99,9 @@ fwrite(fc, file.path(dir_tables, "paper_flight_climate.csv"))
 fd <- long(c("hbin", "daynight", "season"))
 fd[, agl_mid := hbin_mid[as.integer(hbin)]]
 fwrite(fd, file.path(dir_tables, "paper_flight_daynight.csv"))
+# Height profiles of the same summaries at the interpolated heights, for the figures
+fwrite(long(c("agl", "climate", "season"))[!is.na(climate) & n_stations >= 3],
+  file.path(dir_tables, "paper_flight_climate_profile.csv"))
+fwrite(long(c("agl", "daynight", "season")), file.path(dir_tables, "paper_flight_daynight_profile.csv"))
 print(tails)
 print(bird)

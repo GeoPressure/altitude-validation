@@ -19,6 +19,25 @@ stA <- Am[, c(
 stA <- merge(st[network == "ghcnh"], stA, by = "id")
 stA[, reference := TRUE]
 fwrite(stA, file.path(dir_tables, "ground_station_stats.csv"))
+
+# Paired hourly absolute errors, ERA5 single-levels vs ERA5-Land, each station with equal total
+# weight (as in Figure 3): joint histogram on the pseudo-log scale of the figure, and quantiles.
+P <- Am[is.finite(err_land), .(id, sl = abs(err_sl), land = abs(err_land))]
+P[, w := 1 / .N, by = id]
+plog <- function(x) asinh(x / 2) / log(10)
+edges <- seq(0, plog(400), length.out = 61)
+P[, `:=`(bx = findInterval(plog(sl), edges, all.inside = TRUE),
+  by = findInterval(plog(land), edges, all.inside = TRUE))]
+hist2 <- P[, .(w = sum(w)), by = .(bx, by)]
+hist2[, `:=`(x0 = edges[bx], x1 = edges[bx + 1], y0 = edges[by], y1 = edges[by + 1])]
+fwrite(hist2[, .(x0, x1, y0, y1, w = w / sum(w))], file.path(dir_tables, "ground_land_hourly_hist.csv"))
+fwrite(rbind(
+  P[, c(product = "sl", lapply(setNames(c(.1, .25, .5, .75, .9), c("q10", "q25", "q50", "q75", "q90")),
+    function(p) wquant(sl, w, p)))],
+  P[, c(product = "land", lapply(setNames(c(.1, .25, .5, .75, .9), c("q10", "q25", "q50", "q75", "q90")),
+    function(p) wquant(land, w, p)))]
+)[, land_larger := P[, sum(w * (land > sl)) / sum(w)]], file.path(dir_tables, "ground_land_hourly_quantiles.csv"))
+rm(P, hist2)
 rm(Am)
 gc()
 
@@ -70,7 +89,7 @@ key <- data.table(
 fwrite(key, file.path(dir_tables, "key_numbers.csv"))
 writeLines(geopressurer_version(), file.path(dir_tables, "geopressurer_version.txt"))
 
-# ==== Tables behind the figures (drawn by supplement.R) ========================================
+# ==== Tables behind the figures (drawn by supp_variation.R) ========================================
 bc <- B[!is.na(climate) & is.finite(err_sl_rel) & !is.na(hbin), .(bias = wmean(err_sl_rel, w),
   sd = sqrt(wmean((err_sl_rel - wmean(err_sl_rel, w))^2, w)), n_st = uniqueN(id)),
   by = .(hbin, climate, season)]

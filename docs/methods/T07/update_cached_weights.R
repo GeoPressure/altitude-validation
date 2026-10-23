@@ -1,3 +1,5 @@
+# Historical mean-error aggregation; do not use for current median-error results.
+# Current summaries are rebuilt with Rscript run_all.R birds analysis figures check.
 # Reweight unchanged reference-error curves after rebuilding the published bird-height distribution.
 # Run from the project root after step 00. Full steps 13, 18 and 20 produce the same summaries.
 source("R/utils.R")

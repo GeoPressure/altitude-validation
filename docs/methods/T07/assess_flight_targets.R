@@ -1,3 +1,5 @@
+# Historical exploration using the former six-hour pressure-offset method.
+# Current bird heights and weights are rebuilt with Rscript run_all.R birds.
 # T07: biological target and bird-height weighting; aggregate outputs only.
 # Run from the project root. Primary manuscript outputs are read, never overwritten.
 # Reproduce the step-00 pressure-offset and time-step calculations exactly before contrasting targets.
@@ -7,7 +9,7 @@ master <- Sys.getenv(
   "GEOLOCATOR_MASTER",
   "~/Documents/GitHub/GeoLocatorMaster/data/master/pressurepaths.csv"
 )
-release <- jsonlite::read_json("docs/methods/T07/published-release.json", simplifyVector = TRUE)
+release <- jsonlite::read_json("inputs/geolocator_master_release.json", simplifyVector = TRUE)
 stopifnot(paste0("md5:", unname(tools::md5sum(path.expand(master)))) == release$files$checksum[release$files$key == "pressurepaths.csv"])
 d <- fread(master, select = c(
   "tag_id", "datetime", "stap_id", "type", "pressure_tag", "surface_pressure", "label",

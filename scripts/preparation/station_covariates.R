@@ -27,6 +27,7 @@ data("climatezones", package = "kgc", envir = globalenv())
 kz <- data.frame(Site = st$id, Longitude = st$lon, Latitude = st$lat,
   rndCoord.lon = kgc::RoundCoordinates(st$lon), rndCoord.lat = kgc::RoundCoordinates(st$lat))
 st[, koppen := as.character(kgc::LookupCZ(kz))]
+st[!grepl("^[ABCDE][A-Za-z]{1,2}$", koppen), koppen := NA_character_]
 st[, koppen_main := substr(koppen, 1, 1)]
 st[, `:=`(dz_sl = elev - z_sl, dz_land = elev - z_land)]
 fwrite(st, file.path(dir_tables, "stations.csv"))

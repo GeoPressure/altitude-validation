@@ -1,4 +1,4 @@
-# How accuracy and precision vary with terrain, place, climate and time (figures: supplement.R).
+# How accuracy and precision vary with terrain, place, climate and time (figures: supp_variation.R).
 #
 # Every summary here is a distribution over stations of the two quantities defined in
 # reference_summaries.R: the bias (accuracy) and the SD of the error (precision), computed per station and
@@ -77,14 +77,5 @@ fwrite(by_class("month"), file.path(dir_tables, "ground_var_month.csv"))
 fwrite(by_class("hour"), file.path(dir_tables, "ground_var_hour.csv"))
 rm(A)
 gc()
-
-# Fixed historical sample: the same five stations in each of four years.
-Ae <- as.data.table(read_parquet(file.path(analysis_dir, "historical_ground.parquet")))
-Ae <- Ae[, .(bias = mean(err_sl), sd = sd(err_sl), n = .N), by = .(id, year)][n >= 500]
-Ae <- Ae[id %in% Ae[, .N, by = id][N == 4L, id]]
-fwrite(Ae[, .(n_stations = .N, abs_bias_median = median(abs(bias)), sd_median = median(sd),
-  sd_p90 = quantile(sd, .9)), by = year][order(year)], file.path(dir_tables, "ground_era.csv"))
-fwrite(rbind(cbind(metric = "bias", Ae[, c(.(n = .N), wq(bias)), by = year]),
-  cbind(metric = "sd", Ae[, c(.(n = .N), wq(sd)), by = year])), file.path(dir_tables, "ground_var_year.csv"))
 
 cli::cli_alert_success("Environmental variation tables written")

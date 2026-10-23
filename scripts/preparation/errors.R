@@ -10,8 +10,9 @@ dir.create(file.path(analysis_dir, "errors"), recursive = TRUE, showWarnings = F
 station_errors <- function(i) {
   s <- st[i]
   out <- file.path(analysis_dir, "errors", paste0(s$network, "_", s$id, ".parquet"))
-  if (!refresh && file.exists(out)) return(TRUE)
-  d <- as.data.table(read_parquet(file.path(selection_dir(s$network), "accepted", paste0(s$id, ".parquet"))))
+  accepted <- file.path(selection_dir(s$network), "accepted", paste0(s$id, ".parquet"))
+  if (!refresh && file.exists(out) && file.mtime(out) >= file.mtime(accepted)) return(TRUE)
+  d <- as.data.table(read_parquet(accepted))
   e <- as.data.table(read_parquet(file.path(analysis_dir, "era5", paste0(s$network, "_", s$id, ".parquet"))))
   if (s$network == "ghcnh") {
     d <- merge(d, e[, .(date, sp_land, t2m_land)], by = "date", all.x = TRUE)
@@ -27,20 +28,8 @@ station_errors <- function(i) {
       err_land_rel = (era5_altitude(press, sp_land, t2m_land, s$z_land) -
         era5_altitude(press_s, sp_land_s, t2m_land_s, s$z_land)) - agl,
       surface = FALSE)]
-    # Integrate reported temperatures over log pressure. The lowest available
-    # temperature extends to the launch surface; missing interior temperatures
-    # are interpolated only for this mechanism comparison.
     setorder(d, sounding, -press)
-    d[, tmean_obs := {
-      lp <- log(press)
-      tk <- fifelse(temp > -8000, temp / 10 + 273.15, NA_real_)
-      if (sum(is.finite(tk)) < 2) rep(NA_real_, .N) else {
-        tk <- approx(lp[is.finite(tk)], tk[is.finite(tk)], xout = lp, rule = 2)$y
-        delta <- c(log(press_s[1]) - lp[1], -diff(lp))
-        segment <- c(tk[1], (head(tk, -1) + tail(tk, -1)) / 2)
-        cumsum(delta * segment) / cumsum(delta)
-      }
-    }, by = sounding]
+    d[, tmean_obs := sonde_mean_temperature(press, press_s, temp), by = sounding]
     d[, tmean_assumed := t2m_sl - 0.0065 * (gph_s - z_sl + agl / 2)]
   }
   d[, `:=`(id = s$id, year = as.integer(format(date, "%Y")),
@@ -48,7 +37,9 @@ station_errors <- function(i) {
   ghcnh_write(d, out)
   TRUE
 }
-todo <- if (refresh) seq_len(nrow(st)) else which(!file.exists(file.path(analysis_dir, "errors", paste0(st$network, "_", st$id, ".parquet"))))
+cached <- file.path(analysis_dir, "errors", paste0(st$network, "_", st$id, ".parquet"))
+accepted <- vapply(seq_len(nrow(st)), function(i) file.path(selection_dir(st$network[i]), "accepted", paste0(st$id[i], ".parquet")), character(1))
+todo <- if (refresh) seq_len(nrow(st)) else which(!file.exists(cached) | file.mtime(cached) < file.mtime(accepted))
 res <- par_map(todo, station_errors, cores = n_cores, geopressurer = TRUE, export = c("st", "gpt3", "ghcnh_write", "refresh"))
 check_failures(res, st$id[todo], "station error series", fatal = TRUE)
 for (net in c("ghcnh", "igra")) {

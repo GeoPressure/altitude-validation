@@ -10,12 +10,12 @@ dir.create(file.path(analysis_dir, "era5"), recursive = TRUE, showWarnings = FAL
 extract_station <- function(i) {
   s <- st[i]
   out <- file.path(analysis_dir, "era5", paste0(s$network, "_", s$id, ".parquet"))
-  if (file.exists(out)) return(TRUE)
   d <- as.data.table(read_parquet(file.path(selection_dir(s$network), "accepted", paste0(s$id, ".parquet"))))
   dates <- if (s$network == "ghcnh") sort(unique(d$date)) else sort(unique(c(d$date, d$date_s)))
   e <- data.table(date = dates)
   fields <- c("sp_land", "t2m_land")
-  for (v in fields) e[, (v) := NA_real_]
+  if (file.exists(out)) e <- merge(e, as.data.table(read_parquet(out)), by = "date", all.x = TRUE) else for (v in fields) e[, (v) := NA_real_]
+  if (all(is.finite(e$sp_land) & is.finite(e$t2m_land))) return(TRUE)
   for (v in fields) {
     missing <- which(!is.finite(e[[v]]))
     if (!length(missing)) next
@@ -28,7 +28,7 @@ extract_station <- function(i) {
   cli::cli_alert_info("Atmosphere {i}/{nrow(st)}: {s$network} {s$id}")
   TRUE
 }
-todo <- which(!file.exists(file.path(analysis_dir, "era5", paste0(st$network, "_", st$id, ".parquet"))))
+todo <- seq_len(nrow(st))
 cli::cli_alert_info("Additional atmosphere inputs: {length(todo)} stations to read")
 res <- par_map(todo, extract_station, cores = n_cores, geopressurer = TRUE,
   export = c("st", "ghcnh_write"))

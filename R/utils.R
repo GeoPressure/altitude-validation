@@ -17,13 +17,12 @@ GEOPRESSURER_PATH <- Sys.getenv("GEOPRESSURER_PATH", "~/Documents/GitHub/GeoPres
 dir_raw <- "data/raw"
 dir_interim <- "data/interim"
 dir_tables <- "output/tables"
-dir_figures <- "output/figures"
-for (d in c(dir_raw, dir_interim, dir_tables, dir_figures)) {
+for (d in c(dir_raw, dir_interim, dir_tables)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
 selection_dir <- function(network) {
-  if (network == "ghcnh") "data/interim/ghcnh/selection-2026-10-13" else "data/interim/igra-selection-2026-10-13"
+  if (network == "ghcnh") "data/interim/ghcnh/selection-curated-2026-10-22" else "data/interim/igra-selection-curated-2026-10-23"
 }
 analysis_dir <- "data/interim/analysis-2026-10-13"
 max_agl_sonde <- 6000
@@ -95,6 +94,20 @@ era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orograp
 #' `errors.R`).
 altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
   z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
+}
+
+#' Mean temperature (K) of the column between the launch surface and each sounding level, integrated
+#' over log pressure. `d` holds one sounding's levels in decreasing pressure with `press`, `press_s`
+#' and `temp` (tenths of a degree C). The lowest available temperature extends to the surface and
+#' missing interior temperatures are interpolated; fewer than two temperatures give NA.
+sonde_mean_temperature <- function(press, press_s, temp) {
+  lp <- log(press)
+  tk <- fifelse(temp > -8000, temp / 10 + 273.15, NA_real_)
+  if (sum(is.finite(tk)) < 2) return(rep(NA_real_, length(press)))
+  tk <- approx(lp[is.finite(tk)], tk[is.finite(tk)], xout = lp, rule = 2)$y
+  delta <- c(log(press_s[1]) - lp[1], -diff(lp))
+  segment <- c(tk[1], (head(tk, -1) + tail(tk, -1)) / 2)
+  cumsum(delta * segment) / cumsum(delta)
 }
 
 #' 2 m virtual temperature (K) from 2 m temperature and dewpoint (K) and surface pressure (Pa):
@@ -235,7 +248,7 @@ terrain_class <- function(sdor) {
 
 #' Station table with the classes used to break down the results.
 load_stations <- function() {
-  st <- fread(file.path(dir_tables, "stations.csv"))
+  st <- fread(file.path(dir_tables, "stations.csv"), na.strings = c("", "NA"))
   st[, abs_lat := abs(lat)]
   st[, terrain := terrain_class(sdor)]
   st[, elev_class := cut(elev, c(-Inf, 200, 500, 1000, 2000, Inf),
@@ -250,12 +263,42 @@ load_stations <- function() {
   st[]
 }
 
-hbin_breaks <- c(0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000)
-hbin_mid <- c(50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500, 5500)
+hbin_breaks <- c(0, 100, 250, 500, 1000, 1500, 2000, 3000, 4000, 5000)
+hbin_mid <- c(50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500)
 
-#' Accepted airborne observations, with equal station weight within each band.
-load_radiosondes <- function(st, columns = NULL) {
+#' Values of each sounding interpolated linearly in height to a regular grid (multiples of `step` m)
+#' between the launch surface and the highest level. Reported levels are mostly the
+#' standard pressure levels, whose heights depend on the column temperature; a common grid gives
+#' every sounding the same heights in every height band. Surface-referenced errors (`err_*`) are
+#' zero at the surface; other values are interpolated between reported levels only.
+interpolate_soundings <- function(B, step = 100) {
+  num <- setdiff(names(B)[vapply(B, is.numeric, TRUE)], c("agl", "lsh", "sdoy"))
+  launch <- B[, .(lsh = lsh[1], sdoy = sdoy[1], top = max(agl)), by = .(id, sounding)]
+  L <- rbind(launch[, c(.(id = id, sounding = sounding, agl = 0),
+      setNames(lapply(num, function(v) if (startsWith(v, "err_")) 0 else NA_real_), num))],
+    B[, c("id", "sounding", "agl", num), with = FALSE])
+  L <- unique(L[is.finite(agl) & agl >= 0], by = c("id", "sounding", "agl"))
+  launch[, n := floor(top / step)]
+  G <- launch[rep(seq_len(.N), n), .(id, sounding, lsh, sdoy)]
+  G[, agl := step * rowid(id, sounding)]
+  lo <- L[G, on = .(id, sounding, agl), roll = Inf, mult = "last"]
+  hi <- L[G, on = .(id, sounding, agl), roll = -Inf, mult = "first"]
+  a0 <- L[G, on = .(id, sounding, agl), roll = Inf, mult = "last", x.agl]
+  a1 <- L[G, on = .(id, sounding, agl), roll = -Inf, mult = "first", x.agl]
+  f <- fifelse(a1 > a0, (G$agl - a0) / (a1 - a0), 0)
+  for (v in num) set(G, j = v, value = lo[[v]] + f * (hi[[v]] - lo[[v]]))
+  G[, band := as.character(cut(agl, hbin_breaks))]
+  G[]
+}
+
+#' Accepted airborne observations up to 5 km above the surface, with equal station weight within each
+#' band. Unless `levels` is TRUE, each sounding is interpolated to a regular height grid
+#' (interpolate_soundings()).
+load_radiosondes <- function(st, columns = NULL, levels = FALSE) {
+  if (!levels && !is.null(columns)) columns <- union(columns, c("id", "sounding", "agl", "lsh", "sdoy"))
   B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet"), col_select = if (is.null(columns)) tidyselect::everything() else tidyselect::all_of(columns)))
+  if (!levels) B <- interpolate_soundings(B)
+  B <- B[agl <= max(hbin_breaks)]
   B <- merge(B, st[network == "igra", .(id, climate, abs_lat, cw)], by = "id")
   B[, hbin := factor(band, levels = levels(cut(0, hbin_breaks)))]
   B[, w := 1 / .N, by = .(id, hbin)]
@@ -265,14 +308,14 @@ load_radiosondes <- function(st, columns = NULL) {
 }
 
 #' Share of geolocator flight points in each radiosonde height bin (below-ground points go to the
-#' lowest bin, points above 6 km to the highest).
+#' lowest bin, points above 5 km to the highest).
 bird_height_weights <- function() {
   bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
   bb <- data.table(hbin = levels(cut(0, hbin_breaks)), lo = head(hbin_breaks, -1), hi = tail(hbin_breaks, -1))
   bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
   bb <- merge(bb, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
   bb[lo == 0, prop := prop + sum(bird[lo == -Inf, prop])]
-  bb[lo == 5000, prop := prop + sum(bird[lo == 6000, prop])]
+  bb[lo == 4000, prop := prop + sum(bird[lo >= 5000, prop])]
   bb[, prop := prop / sum(prop)]
   bb[]
 }
