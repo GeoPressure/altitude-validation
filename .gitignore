@@ -15,3 +15,22 @@ _site/
 paper/*.tex
 !paper/title-block.tex
 tmp/
+
+# Generated journal submission packages.
+output/submission/
+paper/*.log
+paper/*.aux
+paper/*.out
+paper/*.toc
+
+# Copyrighted reference material stays local: PDFs and extracted full texts.
+paper/pdfs/
+literature/references/*
+!literature/references/.gitignore
+
+# Rendered documents other than the manuscript and supplement PDFs.
+paper/*.html
+paper/cover-letter.pdf
+
+# Exploratory outputs.
+output/drafts/
