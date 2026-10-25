@@ -44,13 +44,23 @@ h90 <- round(bq$p90, -2)
 ptl <- tab("paper_flight_profile_tails.csv")
 pt <- function(f, z, col) ptl[formula == f & agl == z][[col]]
 pst <- tab("paper_flight_profile_station.csv")
-pmed <- function(f, z, m) median(pst[formula == f & agl_mid == z][[m]], na.rm = TRUE)
+pmed <- function(f, z, m) {
+  median(pst[formula == f & agl_mid == z][[m]], na.rm = TRUE)
+}
 # Error as a share of height, averaged over the two reference heights
-pshare <- function(f, col) r0(mean(100 * c(pt(f, h50, col) / h50, pt(f, h90, col) / h90)))
+pshare <- function(f, col) {
+  r0(mean(100 * c(pt(f, h50, col) / h50, pt(f, h90, col) / h90)))
+}
 # Lowest height at which the corrected conversion's 95th percentile exceeds 100 m
 h_p95_100 <- ptl[formula == "virtual" & p95_abs > 100, min(agl)]
-loc <- fread("output/position-sensitivity/results.csv")[formula == "virtual" & distance == 50]
-loc50 <- max(abs(loc[metric %in% c("Absolute altitude: level", "Surface-referenced height")]$medae_increment))
+loc <- fread("output/position-sensitivity/results.csv")[
+  formula == "virtual" & distance == 50
+]
+loc50 <- max(abs(
+  loc[
+    metric %in% c("Absolute altitude: level", "Surface-referenced height")
+  ]$medae_increment
+))
 bird_sample <- tab("bird_height_sample.csv")
 n_tags <- bird_sample$n_tags
 bw <- tab("paper_bird_target_sensitivity.csv")
@@ -164,7 +174,7 @@ z = z_0 + \frac{R\,\bar T_v}{g\,M}\,\ln\frac{p_0}{p},
 $$ {#eq-hypsometric}
 with $z$ the altitude (m) at pressure $p$, $z_0$ and $p_0$ the altitude and pressure of a reference level, $g$ = 9.80665 m s$^{-2}$, $R$ = 8.31432 J mol$^{-1}$ K$^{-1}$, $M$ = 0.0289644 kg mol$^{-1}$, and $\bar T_v$ the mean virtual temperature.
 
-The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air because water vapor has a lower molar mass than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
+The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air because water vapour has a lower molar mass than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
 $$
 \bar T_v = \frac{1}{\ln(p_0/p)}\int_p^{p_0} T_v(p')\,d\ln p'.
 $$
@@ -216,7 +226,7 @@ We convert measured pressure to altitude using each of the three conversions. On
 
 On the ground, we examine how errors vary with terrain roughness, represented by ERA5’s standard deviation of sub-grid orography. We also test whether a finer surface reference improves the conversion by replacing ERA5 single-level conditions with ERA5-Land [@munozsabater2021], a 0.1° land reanalysis, in the standard-lapse-rate conversion, comparing both products over the same station hours. Supplementary analyses assess the station–ERA5 elevation gap, season, local time and climate (Additional file 1: S2).
 
-In flight, we assess errors in height above the sounding’s launch surface, summarizing individual absolute errors and station bias and SD at each height. To relate these errors to bird flight, we use the flight-time height distribution of `r n_tags` tagged birds of `r bird_sample$n_species` species from the Master GeoLocator Data Package [@geolocatormaster2026] (@fig-flight c; Additional file 1: S4). We report errors at the heights nearest its median and 90th percentile, and an average over the whole distribution in which the errors in each height band are weighted by the band's share of flight time, with flight time above 5 km assigned to the highest band. To examine how flight-height errors depend on atmospheric conditions, we summarize mean signed error by main Köppen–Geiger climate zone [@bryant2017], half-year (Summer: 21 March–22 September in the Northern Hemisphere, and the complementary period in the Southern Hemisphere) and time of day (day: 07:00--19:00 local solar time at launch).
+In flight, we assess errors in height above the sounding’s launch surface, summarizing individual absolute errors and station bias and SD at each height. To relate these errors to bird flight, we use the flight-time height distribution of `r n_tags` tagged birds of `r bird_sample$n_species` species from the Master GeoLocator Data Package [@geolocatormaster2026] (@fig-flight c; Additional file 1: S4). We report errors at the heights nearest its median and 90th percentile, and an average over the whole distribution in which the errors in each height band are weighted by the band's share of flight time, with flight time above 5 km assigned to the highest band. To examine how flight-height errors depend on atmospheric conditions, we summarize mean signed error by main Köppen–Geiger climate zone [@bryant2017], half-year (Summer: seasonal days 80–265, with Southern Hemisphere dates shifted by approximately six months) and time of day (day: 07:00--19:00 local solar time at launch).
 
 We assess position sensitivity by displacing the atmospheric query location while holding pressure measurements and reference heights fixed (Additional file 1: S5).
 
