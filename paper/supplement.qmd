@@ -123,7 +123,7 @@ We use pressure, temperature and reported geopotential-height profiles from NOAA
 1. **Prepare sounding profiles.**
    - Each sounding needs a valid surface record. We prepare pressure–height pairs up to 6 km above the launch surface, so that the profile extends beyond the 5 km evaluated in the analysis. Missing surface heights take the station elevation.
    - The time of each level is the launch time plus its reported ascent time. Missing launch times take the nominal launch time, and missing ascent times assume 5 m s^-1^, a typical radiosonde ascent rate.
-2. **Check each sounding.** The archive's heights are not measured directly: they are calculated from the sonde's pressure and temperature with the hypsometric equation. Recalculating each level's height above the surface from the reported temperatures should therefore reproduce the reported height; a mismatch reveals an erroneous surface record, height reference or reported height.
+2. **Check each sounding.** The archive's heights are not measured directly: they are calculated from the sonde's pressure and temperature with the hypsometric equation. Recalculating each level's height above the surface from the reported temperatures should therefore reproduce the reported geopotential-height difference from the launch surface; a mismatch reveals an erroneous surface record, height reference or reported height.
    - We average temperature over log pressure from the surface to each level, extending the lowest temperature to the surface and interpolating missing values.
    - A sounding is consistent if every level agrees within 30 m plus 3% of its height above the surface. This margin covers the omitted humidity effect and coarse temperature profiles.
    - Inconsistent soundings are discarded, as are soundings with fewer than two temperatures.
@@ -211,7 +211,7 @@ Displacement changes the error of individual estimates more than the overall err
 ```{r}
 #| label: fig-location
 #| out-width: 100%
-#| fig-cap: "Errors of the three conversions against the displacement of the atmospheric query from the launch station, for absolute altitude near 2 km (a, c) and surface-referenced flight height (b, d): median absolute error (a, b) and pooled SD (c, d). Faint lines: individual stations; bold lines: all stations pooled. The standard atmosphere does not depend on location. Vertical axes are pseudo-logarithmic."
+#| fig-cap: "Errors of the three conversions against the displacement of the atmospheric query from the launch station, for absolute-altitude errors (a, c) and surface-referenced flight-height errors (b, d), evaluated at levels near 2 km above the launch surface: median absolute error (a, b) and pooled SD (c, d). Faint lines: individual stations; bold lines: all stations pooled. The standard atmosphere does not depend on location. Vertical axes are pseudo-logarithmic."
 #| fig-width: 7.2
 fig("supp_position")
 ```

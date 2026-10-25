@@ -44,13 +44,23 @@ h90 <- round(bq$p90, -2)
 ptl <- tab("paper_flight_profile_tails.csv")
 pt <- function(f, z, col) ptl[formula == f & agl == z][[col]]
 pst <- tab("paper_flight_profile_station.csv")
-pmed <- function(f, z, m) median(pst[formula == f & agl_mid == z][[m]], na.rm = TRUE)
+pmed <- function(f, z, m) {
+  median(pst[formula == f & agl_mid == z][[m]], na.rm = TRUE)
+}
 # Error as a share of height, averaged over the two reference heights
-pshare <- function(f, col) r0(mean(100 * c(pt(f, h50, col) / h50, pt(f, h90, col) / h90)))
+pshare <- function(f, col) {
+  r0(mean(100 * c(pt(f, h50, col) / h50, pt(f, h90, col) / h90)))
+}
 # Lowest height at which the corrected conversion's 95th percentile exceeds 100 m
 h_p95_100 <- ptl[formula == "virtual" & p95_abs > 100, min(agl)]
-loc <- fread("output/position-sensitivity/results.csv")[formula == "virtual" & distance == 50]
-loc50 <- max(abs(loc[metric %in% c("Absolute altitude: level", "Surface-referenced height")]$medae_increment))
+loc <- fread("output/position-sensitivity/results.csv")[
+  formula == "virtual" & distance == 50
+]
+loc50 <- max(abs(
+  loc[
+    metric %in% c("Absolute altitude: level", "Surface-referenced height")
+  ]$medae_increment
+))
 bird_sample <- tab("bird_height_sample.csv")
 n_tags <- bird_sample$n_tags
 bw <- tab("paper_bird_target_sensitivity.csv")
@@ -158,13 +168,13 @@ Here, we compare three pressure-to-altitude conversions: a fixed standard atmosp
 
 ## Three conversions from pressure to altitude
 
-Pressure decreases with height because each layer of air supports the weight of the air above it. Combining this hydrostatic approximation with the ideal gas law gives the hypsometric relation [@wallace2006]:
+Pressure decreases with altitude because each layer of air supports the weight of the air above it. Combining this hydrostatic approximation with the ideal gas law gives the hypsometric relation [@wallace2006]:
 $$
 z = z_0 + \frac{R\,\bar T_v}{g\,M}\,\ln\frac{p_0}{p},
 $$ {#eq-hypsometric}
 with $z$ the altitude (m) at pressure $p$, $z_0$ and $p_0$ the altitude and pressure of a reference level, $g$ = 9.80665 m s$^{-2}$, $R$ = 8.31432 J mol$^{-1}$ K$^{-1}$, $M$ = 0.0289644 kg mol$^{-1}$, and $\bar T_v$ the mean virtual temperature.
 
-The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
+The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air because water vapour has a lower molar mass than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
 $$
 \bar T_v = \frac{1}{\ln(p_0/p)}\int_p^{p_0} T_v(p')\,d\ln p'.
 $$
@@ -177,11 +187,9 @@ The three conversions differ in their reference level and assumed temperature pr
 1. **Standard atmosphere.** The reference is sea level ($z_0$ = 0, $p_0$ = 1013.25 hPa) with $T_0$ = 288.15 K (15 °C) and $L$ = $-6.5$ K km$^{-1}$ [@icao1993]. It needs no external data but ignores changes in pressure, temperature and humidity.
 2. **ERA5, standard lapse rate.** The ERA5 reanalysis provides surface pressure $p_0$, 2 m air temperature $T_0$ and surface geopotential $\Phi$ at the location and hour of each measurement, with reference altitude $z_0=\Phi/g$. This accounts for local pressure and temperature variations, while retaining a constant lapse rate of $-6.5$ K km$^{-1}$ and no humidity correction.
 3. **ERA5, virtual temperature and GPT3 lapse rate.** This conversion adds two refinements to the ERA5 reference. First, humidity at the reference level is accounted for by replacing $T_0$ in @eq-barometric with the reference-level value of $T_v$. The specific humidity $q$ needed for this correction is calculated from ERA5 surface pressure $p_0$ and 2 m dewpoint $T_d$, via vapour pressure $e$ [@bolton1980]:
-
 $$
 q=\frac{0.622\,e}{p_0-0.378\,e}, \qquad e=611.2\exp\left(\frac{17.67\,T_d}{T_d+243.5}\right),
 $$
-
 where $T_d$ is in °C and $p_0$ and $e$ are in Pa. Second, the standard lapse rate is replaced with a location- and season-dependent value from GPT3, an empirical troposphere model that provides a lapse rate for any location and time of year [@landskron2018]. Values are interpolated bilinearly on the 1° grid. This formulation does not resolve humidity aloft.
 
 All three conversions are implemented in R. Both ERA5 conversions are available in the GeoPressureR function `pressure_to_altitude()` (`altitude_formula = "standard"` or `"virtual"`). ERA5 single-level variables [@era5single] are read from the European Centre for Medium-Range Weather Forecasts (ECMWF) analysis-ready, cloud-optimized (ARCO) archive at the nearest 0.25° grid cell and hour.
@@ -214,11 +222,11 @@ fig("fig2_stations")
 
 ## Error metrics
 
-We calculate height from the measured pressure using each of the three conversions, then subtract the reference height to obtain the error. We summarize individual absolute errors by their median and 95th percentile. Station-level bias (mean signed error) and standard deviation (SD) distinguish persistent offsets from variability. We report median absolute station bias on the ground and median signed station bias in flight, retaining the direction of flight-height errors.
+We convert measured pressure to altitude using each of the three conversions. On the ground, error is converted altitude minus reported station elevation. In flight, error is the converted altitude difference between an airborne level and launch, minus the reported geopotential-height difference. We summarize individual absolute errors by their median and 95th percentile. Station-level bias (mean signed error) and standard deviation (SD) distinguish persistent offsets from dispersion. We report median absolute station bias on the ground and median signed station bias in flight, retaining the direction of flight-height errors.
 
 On the ground, we examine how errors vary with terrain roughness, represented by ERA5’s standard deviation of sub-grid orography. We also test whether a finer surface reference improves the conversion by replacing ERA5 single-level conditions with ERA5-Land [@munozsabater2021], a 0.1° land reanalysis, in the standard-lapse-rate conversion, comparing both products over the same station hours. Supplementary analyses assess the station–ERA5 elevation gap, season, local time and climate (Additional file 1: S2).
 
-In flight, we assess errors in height above the sounding’s launch surface, summarizing individual absolute errors and station bias and SD at each height. To relate these errors to bird flight, we use the flight-time height distribution of `r n_tags` tagged birds of `r bird_sample$n_species` species from the Master GeoLocator Data Package [@geolocatormaster2026] (@fig-flight c; Additional file 1: S4). We report errors at the heights nearest its median and 90th percentile, and an average over the whole distribution in which the errors in each height band are weighted by the band's share of flight time, with flight time above 5 km assigned to the highest band. To examine how flight-height errors depend on atmospheric conditions, we summarize mean signed error by main Köppen–Geiger climate zone [@bryant2017], half-year (summer: 21 March--22 September in the northern hemisphere, shifted by six months in the southern hemisphere) and time of day (day: 07:00--19:00 local solar time at launch).
+In flight, we assess errors in height above the sounding’s launch surface, summarizing individual absolute errors and station bias and SD at each height. To relate these errors to bird flight, we use the flight-time height distribution of `r n_tags` tagged birds of `r bird_sample$n_species` species from the Master GeoLocator Data Package [@geolocatormaster2026] (@fig-flight c; Additional file 1: S4). We report errors at the heights nearest its median and 90th percentile, and an average over the whole distribution in which the errors in each height band are weighted by the band's share of flight time, with flight time above 5 km assigned to the highest band. To examine how flight-height errors depend on atmospheric conditions, we summarize mean signed error by main Köppen–Geiger climate zone [@bryant2017], half-year (Summer: seasonal days 80–265, with Southern Hemisphere dates shifted by approximately six months) and time of day (day: 07:00--19:00 local solar time at launch).
 
 We assess position sensitivity by displacing the atmospheric query location while holding pressure measurements and reference heights fixed (Additional file 1: S5).
 
@@ -277,7 +285,7 @@ Applying the correction requires no data beyond the pressure record, its timesta
 
 The choice of atmospheric inputs nevertheless matters. ERA5-Land's finer grid produced larger persistent offsets at most GHCNh stations (Additional file 1: S3). This points to differences in the surface reference and supports using ERA5 single-level conditions for the evaluated conversion. For the atmospheric column, the virtual-temperature/GPT3 correction reduces recurring bias without requiring a temperature profile for every measurement. Its limited effect on within-station scatter is consistent with a climatology that cannot reproduce each day's conditions, including inversions. Lapse rates derived from ERA5 pressure levels, as used by Schaub et al. [@schaub2023], or full atmospheric profiles, as evaluated for aviation [@simonetti2024], would capture such day-to-day departures and are expected to reduce errors aloft further. For year-round tracking records, however, retrieving pressure-level data for every measurement adds considerable data volume and processing time, which the small residual bias of the climatological correction may not justify.
 
-Our results place earlier, largely assumed uncertainty statements on an empirical, height-resolved basis. For the standard atmosphere, they confirm the scale of previous estimates: the ground 95th percentile of `r r0(gtval("isa", "p95_abs"))` m agrees with pressure-system effects rarely exceeding 200 m [@liechti2018], and a flight-height 95th percentile of about 9% of height agrees with the ±10% discussed by Sjöberg et al. [@sjoberg2023]. They also show that these errors are not random scatter but depend systematically on climate, season and time of day (@fig-conditions); the underestimation that Lindström et al. [@lindstrom2021] estimated for particular regional and seasonal conditions is one expression of this pattern. For weather-corrected altitudes, our results refine the ±100 m uncertainty commonly assumed [@sjoberg2018; @dufour2026]. It is a generous bound at the median flight height, where the 95th percentile of atmospheric error was `r r0(pt("virtual", h50, "p95_abs"))` m at `r r0(h50)` m, and still holds at the 90th percentile (`r r0(pt("virtual", h90, "p95_abs"))` m at `r r0(h90)` m), but is exceeded above about `r r1(h_p95_100 / 1000)` km.
+Our results place earlier, largely assumed uncertainty statements on an empirical, height-resolved basis. For the standard atmosphere, they confirm the scale of previous estimates: the ground 95th percentile of `r r0(gtval("isa", "p95_abs"))` m agrees with pressure-system effects rarely exceeding 200 m [@liechti2018], and a flight-height 95th percentile of about 9% of height agrees with the ±10% discussed by Sjöberg et al. [@sjoberg2023]. They also show that these errors are not random scatter but depend systematically on climate, season and time of day (@fig-conditions); the underestimation that Lindström et al. [@lindstrom2021] estimated for particular regional and seasonal conditions is one expression of this pattern. For weather-corrected flight heights, our results refine the ±100 m uncertainty commonly assumed [@sjoberg2018; @dufour2026]. It is a generous bound at the median flight height, where the 95th percentile of atmospheric error was `r r0(pt("virtual", h50, "p95_abs"))` m at `r r0(h50)` m, and still holds at the 90th percentile (`r r0(pt("virtual", h90, "p95_abs"))` m at `r r0(h90)` m), but is exceeded above about `r r1(h_p95_100 / 1000)` km.
 
 The remaining uncertainty depends on the quantity being interpreted. Persistent ground offsets can partly cancel in comparisons at one site, making relative elevation changes less sensitive to those offsets than absolute elevations, although temporal variability remains. In rougher terrain, larger ground biases may reflect both atmospheric discrepancies and reference-height uncertainty, whose contributions cannot be separated here. A constant reference-height offset cannot explain the greater within-station SD. Sensor offset and drift add uncertainty beyond the atmospheric conversion; known-height events, such as floating periods in seabirds, can help calibrate records [@cleasby2015; @johnston2023]. Such calibration complements weather correction but does not determine the temperature profile aloft. Local ground clearance additionally requires terrain or sea-surface elevation in a consistent vertical reference [@poessel2018; @peron2020]. For example, the corrected conversion's 95th percentile of absolute error, `r r0(ftval("virtual", km["b1"]))` m at 100--250 m, is relative to the sounding surface and excludes surface-reference and sensor errors; it represents only part of the uncertainty relevant to a bird's position relative to a rotor or terrain feature.
 
