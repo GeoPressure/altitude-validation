@@ -164,7 +164,7 @@ z = z_0 + \frac{R\,\bar T_v}{g\,M}\,\ln\frac{p_0}{p},
 $$ {#eq-hypsometric}
 with $z$ the altitude (m) at pressure $p$, $z_0$ and $p_0$ the altitude and pressure of a reference level, $g$ = 9.80665 m.s$^{-2}$, $R$ = 8.31432 J.mol$^{-1}$ K$^{-1}$, $M$ = 0.0289644 kg.mol$^{-1}$, and $\bar T_v$ the mean virtual temperature.
 
-The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
+The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air because water vapor has a lower molar mass than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
 $$
 \bar T_v = \frac{1}{\ln(p_0/p)}\int_p^{p_0} T_v(p')\,d\ln p'.
 $$
