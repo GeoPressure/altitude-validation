@@ -1,36 +1,20 @@
-# Raw and intermediate data are large and re-downloadable: see run_all.R.
-data/
+# Downloaded and derived data are large; see README (Data) and zenodo/make_archive.R.
+data/raw/
+data/derived/
+data/zenodo/
 *.tmp
 .Rhistory
 .RData
 .Rproj.user/
 .DS_Store
-logs/
-_site/
 
-# Reproducible document build files and visual-check previews.
+# Document build files and generated upload package.
 **/*_files/
-**/*_cache/
 **/.quarto/
-paper/*.tex
-!paper/title-block.tex
-tmp/
-
-# Generated journal submission packages.
-output/submission/
-paper/*.log
-paper/*.aux
-paper/*.out
-paper/*.toc
-
-# Copyrighted reference material stays local: PDFs and extracted full texts.
-paper/pdfs/
-literature/references/*
-!literature/references/.gitignore
-
-# Rendered documents other than the manuscript and supplement PDFs.
-paper/*.html
-paper/cover-letter.pdf
-
-# Exploratory outputs.
-output/drafts/
+manuscript/*.tex
+!manuscript/title-block.tex
+manuscript/*.log
+manuscript/*.html
+manuscript/cover-letter.pdf
+manuscript/submission/
+manuscript/pdfs/

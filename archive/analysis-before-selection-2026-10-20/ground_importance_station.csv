@@ -1,9 +1,0 @@
-response,term,dev_expl_full,dev_expl_drop,n
-log |bias|,station elevation - ERA5 orography,0.119486437226457,0.0166268710476039,1914
-log |bias|,sub-grid terrain roughness,0.119486437226457,0.0176991148698841,1914
-log |bias|,absolute latitude,0.119486437226457,0.0126600560625394,1914
-log |bias|,Koppen climate zone,0.119486437226457,0.00844553156237052,1914
-log SD,station elevation - ERA5 orography,0.420676975080007,0.0879349435170176,1914
-log SD,sub-grid terrain roughness,0.420676975080007,0.017913605517336,1914
-log SD,absolute latitude,0.420676975080007,0.0219160331261956,1914
-log SD,Koppen climate zone,0.420676975080007,0.0180689628809337,1914

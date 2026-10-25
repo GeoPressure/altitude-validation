@@ -1,7 +1,0 @@
-"check","value"
-"linear_profile_inverse_max_error_m",1.54614099301398e-11
-"independent_quadrature_max_error_m",1.63709046319127e-11
-"package_agreement_max_error_m",0
-"sample_half_day_lapse_change_K_per_m",7.94374375970436e-05
-"sample_polar_interpolation_difference_K_per_m",4.99958386351099e-05
-"one_hPa_offset_residual_at_2km_m",-1.80536213968116

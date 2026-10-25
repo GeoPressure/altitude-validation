@@ -1,2 +1,0 @@
-run,workers,cells_total,cells_requested,cells_completed,accepted,pending,attempted,selection_wall_s,total_wall_s,download_bytes,run_cache_bytes,recorded_utc
-pilot-4,1,801,4,4,4,0,4,83.4367079734802,85.9435930252075,156621714,7064381,2026-10-20 05:03:00 UTC

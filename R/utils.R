@@ -3,7 +3,7 @@
 # The altitude retrieval itself is never re-implemented here: `era5_altitude()` calls the exact
 # GeoPressureR internals that `pressurepath_create(source = "arco")` uses (grid snapping, nearest
 # hour, ARCO reads, ERA5 orography and `pressure_to_altitude()`), so what is validated is what users
-# get. `scripts/checks/api_crosscheck.R` checks that the ARCO path agrees with GeoPressureAPI.
+# get. `tests/check_api.R` checks that the ARCO path agrees with GeoPressureAPI.
 
 suppressPackageStartupMessages({
   library(data.table)
@@ -14,18 +14,19 @@ suppressPackageStartupMessages({
 
 GEOPRESSURER_PATH <- Sys.getenv("GEOPRESSURER_PATH", "~/Documents/GitHub/GeoPressureR")
 
-dir_raw <- "data/raw"
-dir_interim <- "data/interim"
-dir_tables <- "output/tables"
-for (d in c(dir_raw, dir_interim, dir_tables)) {
+dir_raw <- "data/raw"          # downloaded source data
+dir_derived <- "data/derived"  # station selections, ERA5 inputs and error series
+dir_curated <- "data/curated"  # hand-curated inputs (tracked)
+dir_tables <- "results/tables" # tables read by the figures and manuscript
+for (d in c(dir_raw, dir_derived, dir_tables)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-selection_dir <- function(network) {
-  if (network == "ghcnh") "data/interim/ghcnh/selection-curated-2026-10-22" else "data/interim/igra-selection-curated-2026-10-23"
+#' Candidate caches (`candidates`) and accepted station years (`selection`) of each network.
+network_dir <- function(network, part = c("selection", "candidates")) {
+  file.path(dir_derived, network, match.arg(part))
 }
-analysis_dir <- "data/interim/analysis-2026-10-13"
-max_agl_sonde <- 6000
+analysis_dir <- file.path(dir_derived, "analysis")
 
 n_cores <- as.integer(Sys.getenv("N_CORES", "8"))
 
@@ -89,9 +90,8 @@ era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orograp
   }
 }
 
-#' GeoPressureR's barometric formula with the lapse rate (K/m) exposed, for the formula variants in
-#' `16_formula.R`. With `lapse = -0.0065` it is `pressure_to_altitude()` (checked in
-#' `errors.R`).
+#' GeoPressureR's barometric formula with the lapse rate (K/m) exposed. With `lapse = -0.0065` it is
+#' `pressure_to_altitude()` with the standard formula.
 altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
   z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
 }
@@ -296,7 +296,7 @@ interpolate_soundings <- function(B, step = 100) {
 #' (interpolate_soundings()).
 load_radiosondes <- function(st, columns = NULL, levels = FALSE) {
   if (!levels && !is.null(columns)) columns <- union(columns, c("id", "sounding", "agl", "lsh", "sdoy"))
-  B <- as.data.table(read_parquet(file.path(dir_interim, "errors_igra.parquet"), col_select = if (is.null(columns)) tidyselect::everything() else tidyselect::all_of(columns)))
+  B <- as.data.table(read_parquet(file.path(dir_derived, "errors_igra.parquet"), col_select = if (is.null(columns)) tidyselect::everything() else tidyselect::all_of(columns)))
   if (!levels) B <- interpolate_soundings(B)
   B <- B[agl <= max(hbin_breaks)]
   B <- merge(B, st[network == "igra", .(id, climate, abs_lat, cw)], by = "id")
@@ -305,17 +305,4 @@ load_radiosondes <- function(st, columns = NULL, levels = FALSE) {
   B[, daynight := fifelse(lsh >= 7 & lsh < 19, "day", "night")]
   B[, season := fifelse(sdoy >= 80 & sdoy < 266, "summer half", "winter half")]
   B[]
-}
-
-#' Share of geolocator flight points in each radiosonde height bin (below-ground points go to the
-#' lowest bin, points above 5 km to the highest).
-bird_height_weights <- function() {
-  bird <- fread(file.path(dir_tables, "bird_height_distribution.csv"))[flight == TRUE]
-  bb <- data.table(hbin = levels(cut(0, hbin_breaks)), lo = head(hbin_breaks, -1), hi = tail(hbin_breaks, -1))
-  bird[, lo := as.numeric(sub("^\\[([^,]+),.*", "\\1", bin))]
-  bb <- merge(bb, bird[, .(lo, prop)], by = "lo", all.x = TRUE)
-  bb[lo == 0, prop := prop + sum(bird[lo == -Inf, prop])]
-  bb[lo == 4000, prop := prop + sum(bird[lo >= 5000, prop])]
-  bb[, prop := prop / sum(prop)]
-  bb[]
 }

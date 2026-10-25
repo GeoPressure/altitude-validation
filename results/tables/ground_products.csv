@@ -1,0 +1,3 @@
+dataset,n_stations,abs_bias_median,sd_median,land_worse_bias
+sl,1500,2.89881970727825,3.30725828139635,0.792
+land,1500,8.77951375082401,4.35496617073134,0.792

@@ -1,51 +1,58 @@
 # How accurate is altitude from pressure geolocators?
 
-A global assessment of three pressure-to-altitude conversions (a standard atmosphere, ERA5 surface conditions with the standard lapse rate, and ERA5 with virtual temperature and a GPT3 lapse rate), evaluated against GHCNh weather stations on the ground and IGRA2 radiosondes up to 5 km above the surface. The ERA5 conversions are implemented in [GeoPressureR](https://github.com/GeoPressure/GeoPressureR).
+Code and data for a global assessment of three pressure-to-altitude conversions: a standard atmosphere, ERA5 surface conditions with the standard lapse rate, and ERA5 with virtual temperature and a GPT3 lapse rate. The conversions are evaluated against GHCNh weather stations on the ground and IGRA2 radiosondes up to 5 km above the surface. The ERA5 conversions are implemented in [GeoPressureR](https://github.com/GeoPressure/GeoPressureR).
 
-**Read the [manuscript](paper/paper.pdf) and its [supplement](paper/supplement.pdf).**
+**Manuscript:** [paper.pdf](manuscript/paper.pdf) · **Supplement:** [supplement.pdf](manuscript/supplement.pdf)
 
-## Repository layout
+## Layout
 
-| Folder | Content |
-|---|---|
-| `R/` | Shared functions: configuration and data loading (`utils.R`), station-selection checks (`ghcnh_*.R`, `igra_sampling.R`), figure settings (`figures.R`) and colours (`palette.R`). |
-| `scripts/sampling/` | Selection of GHCNh stations and IGRA2 sounding sites. |
-| `scripts/preparation/` | Station covariates, ERA5-Land inputs, conversion errors, bird flight heights and Figure 1 examples. |
-| `scripts/analysis/` | Numerical summaries behind the manuscript, and the horizontal-position pilot. |
-| `scripts/figures/` | One script per figure (`fig*.R` for the manuscript, `supp_*.R` for Additional file 1). |
-| `scripts/checks/`, `tests/` | Consistency checks of the selected samples and analysis outputs, and tests of the pressure checks. |
-| `inputs/` | Curated exclusion lists and the bird-data release record. |
-| `output/tables/` | Derived tables read by the figures and manuscript. |
-| `output/position-sensitivity/` | Samples and results of the horizontal-position pilot. |
-| `paper/` | Manuscript and supplement sources (`*.qmd`), figures, bibliography and rendered PDFs. |
-| `docs/` | Author notes: method reviews, curation decisions and literature reviews ([index](docs/README.md)). |
-| `literature/` | Reference inventory and evidence tables; reference PDFs stay local. |
-| `archive/` | Superseded workflows, retired evaluations and exploratory scripts, kept for provenance. |
-| `zenodo/` | Packaging of the data archive. |
-
-Downloaded and intermediate data live in `data/` (not tracked); see [data layout](docs/data-layout.md).
-
-## Rebuilding
-
-Requirements: R with `data.table`, `arrow`, `terra`, `sf`, `kgc`, `mgcv`, `ggplot2`, `patchwork`, `rnaturalearth`, `lubridate`, `httr2`, `pkgload`, `scales`, `ragg`, `systemfonts`, `cli`, `knitr`, `jsonlite`, `dplyr`, `readr`, `digest`, `png`, `xml2`, `gtable` and `tidyselect`; a local GeoPressureR clone (`GEOPRESSURER_PATH`, default `~/Documents/GitHub/GeoPressureR`); and Quarto with a TeX installation. Run all commands from the repository root.
-
-```bash
-Rscript run_all.R ground_selection     # select GHCNh stations and accepted pressure records
-Rscript run_all.R sounding_selection   # select IGRA2 sounding sites and accepted profiles
-Rscript run_all.R prepare              # station covariates, ERA5-Land inputs and conversion errors
-Rscript run_all.R errors               # recompute conversion errors only
-Rscript run_all.R birds                # bird flight heights (needs GEOLOCATOR_MASTER)
-Rscript run_all.R analysis             # numerical summaries and Figure 1 examples
-Rscript run_all.R position             # horizontal-position pilot (queries ERA5)
-Rscript run_all.R figures              # all figures from the tables
-Rscript run_all.R check                # consistency checks
-Rscript run_all.R render               # PDF manuscript and supplement
+```
+R/                shared functions (utils.R, ghcnh.R, igra.R, figures.R)
+analysis/         numbered pipeline scripts, and figures/ with one script per figure
+data/curated/     hand-curated inputs: station exclusions, position-pilot sample, bird-data release record
+data/raw/         downloaded source data (not tracked)
+data/derived/     station selections, ERA5 inputs and error series (not tracked; Zenodo data archive)
+results/          derived tables read by the figures, and manuscript_values.csv read by the manuscript
+manuscript/       paper.qmd, supplement.qmd, bibliography, figures, cover letter and render.sh
+tests/            checks of the pressure screening, the selections and the result tables
+docs/             author notes: data sources, selection and curation history, analysis decisions, literature
+zenodo/           packaging of the Zenodo code and data archives
 ```
 
-Stages can be combined, e.g. `Rscript run_all.R analysis figures check`; `all` runs selection, preparation, analysis, figures and checks. A successful check writes `output/tables/selection_analysis_complete.json`; until then the documents show a draft notice. `N_CORES` sets the number of parallel workers (default 8).
+## Pipeline
 
-Bird flight heights come from the [Master GeoLocator Data Package, version 2026.0](https://doi.org/10.5281/zenodo.18187093); the aggregate weights in `output/tables/` suffice for ordinary builds. To rebuild them, point `GEOLOCATOR_MASTER` to the published `pressurepaths.csv` and run `birds analysis figures check`.
+| Script | Purpose |
+|---|---|
+| `01_candidates.R` | Station inventories, 200 km equal-area cells and random candidate order for both networks |
+| `02_select_ground.R` | GHCNh station selection with pressure-only checks; ERA5 inputs of selected stations |
+| `03_select_soundings.R` | IGRA2 sounding-site selection with profile-consistency checks; ERA5 inputs |
+| `04_station_covariates.R` | ERA5 orography, terrain roughness and climate zone of the selected stations |
+| `05_conversion_errors.R` | Errors of the three conversions (and ERA5-Land on the ground) |
+| `06_bird_heights.R` | Flight-time height distribution of tracked birds |
+| `07_ground_results.R` | Ground results and their variation with terrain, climate, season and time |
+| `08_flight_results.R` | Flight-height results, bird-weighted summaries and column-temperature explanation |
+| `09_position_sensitivity.R` | Sensitivity to the horizontal position of the atmospheric query |
+| `10_figure1_examples.R` | Example weather record and soundings shown in Figure 1 |
+| `11_manuscript_values.R` | All numbers quoted in the manuscript and supplement |
+
+Run from the repository root:
+
+```bash
+Rscript run_all.R                     # results, figures and checks from cached errors
+Rscript run_all.R errors results figures check render
+Rscript run_all.R all                 # everything, including selection (downloads data)
+```
+
+Stages are `selection`, `errors`, `birds`, `results`, `figures`, `check` and `render`. `render` runs `manuscript/render.sh`, which builds the PDFs and the journal upload files in `manuscript/submission/`. `N_CORES` sets the number of parallel workers (default 8).
+
+## Requirements
+
+R with `data.table`, `arrow`, `terra`, `sf`, `kgc`, `mgcv`, `ggplot2`, `patchwork`, `lubridate`, `httr2`, `xml2`, `pkgload`, `ragg`, `systemfonts`, `png`, `cli`, `knitr` and `jsonlite`; a local GeoPressureR clone (`GEOPRESSURER_PATH`, default `~/Documents/GitHub/GeoPressureR`); Quarto with pdfLaTeX for rendering.
+
+## Data
+
+Station selection downloads GHCNh and IGRA2 files from NOAA and reads ERA5 from the ARCO store through GeoPressureR. The derived data needed to rebuild the results without these downloads are in the Zenodo data archive ([zenodo/data_README.md](zenodo/data_README.md)). Bird flight heights come from the [Master GeoLocator Data Package, version 2026.0](https://doi.org/10.5281/zenodo.18187093); set `GEOLOCATOR_MASTER` to its `pressurepaths.csv` to rerun `birds`. The tables in `results/` suffice otherwise.
 
 ## Licence and citation
 
-Code: MIT. Tables, figures and manuscript: CC BY 4.0. GHCNh, IGRA2 and ERA5 data are available from their providers; see the manuscript's data availability statement. Citation details are in [CITATION.cff](CITATION.cff).
+Code: MIT. Tables, figures and manuscript: CC BY 4.0. GHCNh, IGRA2 and ERA5 data are available from their providers. Citation details are in [CITATION.cff](CITATION.cff).

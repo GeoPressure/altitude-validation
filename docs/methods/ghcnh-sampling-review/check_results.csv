@@ -1,7 +1,0 @@
-check,result
-Primary: first passing among three eligible candidates,Each selected in 40 of 120 permutations
-Leap-year windows use calendar months,"365, 366, 365"
-183-day coverage can omit a quarter,Confirmed: threshold alone does not ensure seasonal coverage
-Stations have equal total observation weight,Each station sums to one
-180 qualifying dates distributed over 12 months,Passes proposed 15-day monthly rule
-183 consecutive dates under monthly coverage,Fails proposed 15-day monthly rule

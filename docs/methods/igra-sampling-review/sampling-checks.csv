@@ -1,6 +1,0 @@
-check,passed
-"Source QA, missing surface substitution, empty/absent surface, <400 hPa, midnight release and half-hour tie",TRUE
-Daily backwards search and distinct launch-date monthly coverage,TRUE
-Strict outlier boundary and post-exclusion coverage,TRUE
-Month-end and leap-year blocks are anchored independently,TRUE
-"Rejection advances, technical failure preserves candidate, resume equals uninterrupted run",TRUE

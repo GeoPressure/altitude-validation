@@ -1,28 +1,15 @@
 # Build the two files of the Zenodo record (uploaded by hand) into data/zenodo/:
-#
-#   altitude-validation-code.zip  the current working tree (code, tables, figures, manuscript) plus
-#                                 rendered documents
-#   altitude-validation-data.zip  the downloaded and extracted data that are slow or impossible to
-#                                 get again (ERA5 at every station, radiosondes,
-#                                 DEM values, and the station lists and API listings as they were)
-#
-# Frozen selection directories include accepted inputs and candidate caches;
-# raw annual archives and reproducible error series are not required.
-#
-# Run from the project root: Rscript zenodo/make_archive.R
+#   altitude-validation-code.zip  tracked repository files and the rendered PDFs
+#   altitude-validation-data.zip  derived data needed to rebuild the results without downloads
+# Run from the project root: Rscript zenodo/make_archive.R [--code-only]
 
 out <- "data/zenodo"
 dir.create(out, showWarnings = FALSE)
 
-cat("Building code archive from the current working tree (no analysis or rendering).\n")
 code <- file.path(out, "altitude-validation-code.zip")
 unlink(code)
-# Include current tracked and untracked project files, including uncommitted analysis changes.
-files <- unique(system2("git", c("ls-files", "--cached", "--others", "--exclude-standard"), stdout = TRUE))
-files <- files[file.exists(files)]
-rendered <- c("paper/paper.pdf", "paper/paper.html", "paper/supplement.pdf",
-  "paper/supplement.html")
-files <- unique(c(files, rendered[file.exists(rendered)]))
+files <- system2("git", c("ls-files"), stdout = TRUE)
+files <- unique(c(files[file.exists(files)], "manuscript/paper.pdf", "manuscript/supplement.pdf"))
 tmp <- tempfile()
 for (f in files) {
   dir.create(file.path(tmp, "altitude-validation", dirname(f)), recursive = TRUE, showWarnings = FALSE)
@@ -38,18 +25,13 @@ if ("--code-only" %in% commandArgs(trailingOnly = TRUE)) {
   quit(save = "no")
 }
 
-cat("Building data archive from existing input caches.\n")
 data <- file.path(out, "altitude-validation-data.zip")
 unlink(data)
 keep <- c(
-  "data/interim/ghcnh/selection-2026-10-13",
-  "data/interim/ghcnh/selection-curated-2026-10-22",
-  "data/interim/igra-selection-2026-10-13",
-  "data/interim/igra-selection-curated-2026-10-23",
-  "data/interim/analysis-2026-10-13/era5",
-  "data/interim/ghcnh/terrain-srtm-aster",
-  "data/interim/location_sensitivity",
-  "data/raw/era5_invariant.nc", "data/raw/ghcnh-station-list.txt",
+  "data/derived/ghcnh/candidates", "data/derived/ghcnh/selection", "data/derived/ghcnh/terrain",
+  "data/derived/igra/candidates", "data/derived/igra/selection",
+  "data/derived/analysis/era5_land", "data/derived/position_sensitivity",
+  "data/raw/era5_invariant.nc", "data/raw/ghcnh-station-list.txt", "data/raw/igra2-station-list.txt",
   "data/raw/gpt3"
 )
 stopifnot(all(file.exists(keep)))

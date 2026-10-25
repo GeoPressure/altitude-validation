@@ -1,6 +1,0 @@
-path,files,bytes,reason
-data/zenodo/altitude-validation-data.zip,1,4526716191,Obsolete generated archive from 1 October; predates current GHCNh analysis
-data/zenodo/altitude-validation-code.zip,1,9035167,Obsolete generated code archive; current source is in Git
-data/interim/hadisd,16762,1782800075,Superseded HadISD station observations; no active pipeline consumer
-data/interim/errors_hadisd.parquet,1,2003358627,Superseded HadISD errors; historical review tables retained
-data/interim/era5/hadisd_*.parquet,2646,3954846204,Superseded HadISD-location ERA5 series
