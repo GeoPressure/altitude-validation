@@ -14,13 +14,14 @@
 out <- "data/zenodo"
 dir.create(out, showWarnings = FALSE)
 
+cat("Building code archive from the current working tree (no analysis or rendering).\n")
 code <- file.path(out, "altitude-validation-code.zip")
 unlink(code)
 # Include current tracked and untracked project files, including uncommitted analysis changes.
 files <- unique(system2("git", c("ls-files", "--cached", "--others", "--exclude-standard"), stdout = TRUE))
 files <- files[file.exists(files)]
 rendered <- c("paper/paper.pdf", "paper/paper.html", "paper/supplement.pdf",
-  "paper/supplement.html", "archive/report/index.html")
+  "paper/supplement.html")
 files <- unique(c(files, rendered[file.exists(rendered)]))
 tmp <- tempfile()
 for (f in files) {
@@ -32,7 +33,12 @@ old <- setwd(tmp)
 stopifnot(system2("zip", c("-q", "-r", shQuote(code_abs), "altitude-validation")) == 0)
 setwd(old)
 unlink(tmp, recursive = TRUE)
+if ("--code-only" %in% commandArgs(trailingOnly = TRUE)) {
+  cat(sprintf("%s: %.0f MB\n", code, file.size(code) / 2^20))
+  quit(save = "no")
+}
 
+cat("Building data archive from existing input caches.\n")
 data <- file.path(out, "altitude-validation-data.zip")
 unlink(data)
 keep <- c(
@@ -41,13 +47,13 @@ keep <- c(
   "data/interim/igra-selection-2026-10-13",
   "data/interim/igra-selection-curated-2026-10-23",
   "data/interim/analysis-2026-10-13/era5",
-  "data/interim/analysis-2026-10-13/historical_ground.parquet",
-  "data/interim/igra",
+  "data/interim/ghcnh/terrain-srtm-aster",
+  "data/interim/location_sensitivity",
   "data/raw/era5_invariant.nc", "data/raw/ghcnh-station-list.txt",
   "data/raw/gpt3"
 )
 stopifnot(all(file.exists(keep)))
-file.copy("zenodo/data_README.md", "data/README.md", overwrite = TRUE)
+stopifnot(file.copy("zenodo/data_README.md", "data/README.md", overwrite = TRUE))
 # Parquet and NetCDF are already compressed: store them as they are.
 stopifnot(system2("zip", c("-q", "-r", "-n", ".parquet:.nc", data, "data/README.md", keep)) == 0)
 unlink("data/README.md")

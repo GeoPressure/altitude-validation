@@ -9,35 +9,11 @@ library(cli)
 out <- "output/position-sensitivity"
 cache <- "data/interim/location_sensitivity"
 dir.create(cache, recursive = TRUE, showWarnings = FALSE)
-st <- load_stations()[network == "igra" & !is.na(climate)]
-B <- load_radiosondes(st, levels = TRUE)
-B <- B[year == 2024 & is.finite(sp_sl) & is.finite(t2m_sl) & is.finite(d2m)]
-sfc <- B[surface == TRUE, .(surface_date = date[1], surface_press = press[1], surface_gph = gph[1]), by = .(id, sounding)]
-levels <- merge(B[surface == FALSE & agl >= 1700 & agl <= 2300][order(abs(agl - 2000))][, .SD[1], by = .(id, sounding)], sfc, by = c("id", "sounding"))
-levels[, quarter := quarter(date)]
-coverage <- levels[, .N, by = .(id, quarter)][N >= 2, .(quarters = .N), by = id]
-st <- merge(st, coverage[quarters == 4], by = "id")
-st[, roughness := fifelse(sdor < 100, "Lower (<100 m)", "Higher (>=100 m)")]
-# Fixed random sample, selected before retrieving displaced weather.
-setorder(st, climate, roughness, id)
-set.seed(20261018)
-selected <- st[, {
-  # Prefer southern low-roughness and northern high-roughness stations where available.
-  hemisphere <- if (roughness[1] == "Lower (<100 m)") lat < 0 else lat >= 0
-  pool <- if (any(hemisphere)) .SD[hemisphere] else .SD
-  pool[sample.int(nrow(pool), 1)]
-}, by = .(climate, roughness)]
-stopifnot(nrow(selected) == 10)
-fwrite(selected[, .(id, name, lon, lat, climate, roughness, sdor, elev, z_sl)], file.path(out, "stations.csv"))
-levels <- levels[id %in% selected$id]
-# Mid-quarter target; retain the two closest distinct launches in each quarter.
-levels[, target := as.POSIXct(sprintf("2024-%02d-15 12:00:00", 3 * quarter - 1), tz = "UTC")]
-setorder(levels, id, quarter, daynight, sounding)
-levels[, gap := abs(as.numeric(date - target, units = "secs"))]
-levels <- levels[order(gap, sounding)][, head(.SD, 2), by = .(id, quarter)]
-levels <- merge(levels, selected[, .(id, lon, lat, roughness)], by = "id")
-levels[, pair := .I]
-fwrite(levels[, .(pair, id, sounding, quarter, daynight, date, press, gph, agl, surface_date, surface_press, surface_gph)], file.path(out, "soundings.csv"))
+# Reuse the fixed pilot sample distributed with the study.
+selected <- fread(file.path(out, "stations.csv"))
+levels <- fread(file.path(out, "soundings.csv"))
+levels <- merge(levels, selected[, .(id, lon, lat, climate, roughness)], by = "id")
+reference_errors <- as.data.table(read_parquet(file.path(cache, "paired_errors.parquet")))[distance == 0]
 
 # Displace coordinates on a sphere; retain the nominal distance ----------
 locations <- CJ(id = selected$id, distance = c(0, 10, 25, 50, 100, 200), bearing = seq(0, 315, 45))[distance > 0 | bearing == 0]
@@ -109,8 +85,8 @@ fwrite(errors[, .(bias = mean(error), mae = mean(abs(error)), medae = wquant(abs
 fwrite(errors[, .(bias = mean(error), sd = sqrt(mean((error - mean(error))^2)), mae = mean(abs(error)), medae = wquant(abs(error), rep(1, .N), .5), change_mae = mean(abs(change)), change_median = wquant(abs(change), rep(1, .N), .5), change_p95 = unname(quantile(abs(change), .95))), by = .(formula, metric, distance, roughness)], file.path(out, "terrain-results.csv"))
 # Exact-location and location-independent controls must reproduce their definitions.
 stopifnot(all(errors[distance == 0, change] == 0), max(abs(errors[formula == "isa", change])) == 0)
-q0 <- queries[distance == 0 & kind == "level"]
-central <- merge(q0, levels[, .(pair, original_error = err_sl)], by = "pair")
-stopifnot(max(abs(central$standard - central$truth - central$original_error)) < 1e-7)
-jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), geopressurer = geopressurer_version(), stations = nrow(selected), soundings = nrow(levels), locations = nrow(locations), grid_hours = nrow(weather), stations_reused_from_cache = cached_stations, elapsed_seconds = as.numeric(difftime(Sys.time(), started, units = "secs")), min_height = min(levels$agl), max_height = max(levels$agl), max_central_error_difference = max(abs(central$standard - central$truth - central$original_error)), source_md5 = as.list(tools::md5sum(c("R/utils.R", "scripts/analysis/position_sensitivity.R", "data/interim/errors_igra.parquet", "output/tables/stations.csv", "data/raw/gpt3/gpt3_1.grd", file.path(cache, paste0(selected$id, ".parquet")))))), file.path(out, "provenance.json"), pretty = TRUE, auto_unbox = TRUE)
+central <- merge(errors[distance == 0], reference_errors[, .(id, pair, formula, metric, original_error = error)],
+  by = c("id", "pair", "formula", "metric"))
+stopifnot(nrow(central) == nrow(reference_errors), max(abs(central$error - central$original_error)) < 1e-7)
+jsonlite::write_json(list(generated_utc = format(Sys.time(), tz = "UTC", usetz = TRUE), geopressurer = geopressurer_version(), stations = nrow(selected), soundings = nrow(levels), locations = nrow(locations), grid_hours = nrow(weather), stations_reused_from_cache = cached_stations, elapsed_seconds = as.numeric(difftime(Sys.time(), started, units = "secs")), min_height = min(levels$agl), max_height = max(levels$agl), max_central_error_difference = max(abs(central$error - central$original_error)), source_md5 = as.list(tools::md5sum(c("R/utils.R", "scripts/analysis/position_sensitivity.R", file.path(out, "stations.csv"), file.path(out, "soundings.csv"), "data/raw/gpt3/gpt3_1.grd", file.path(cache, paste0(selected$id, ".parquet")))))), file.path(out, "provenance.json"), pretty = TRUE, auto_unbox = TRUE)
 cli_alert_success("Paired pilot complete; summaries written to {out}")

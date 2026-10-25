@@ -2,14 +2,14 @@ cff-version: 1.2.0
 message: "If you use these results or this code, please cite it as below."
 type: software
 doi: 10.5281/zenodo.23085093
-title: "How accurate is altitude from pressure geolocators? A global validation of GeoPressureR altitude against station barometers and radiosondes"
+title: "How accurate is altitude from pressure geolocators? Code and data for a global assessment of three pressure-to-altitude conversions"
 abstract: >-
-  Validation of the altitude that GeoPressureR and GeoPressureAPI retrieve from a pressure
-  measurement using ERA5 reanalysis, against GHCNh surface station barometers
-  (ground level) and IGRA2 radiosondes
-  (0-6 km above ground). Separates accuracy (per-site bias) from precision (temporal scatter),
-  shows what they depend on, compares ERA5 single-levels with ERA5-Land, and tests improvements
-  of the pressure-to-altitude formula.
+  Global assessment of three pressure-to-altitude conversions: a fixed standard atmosphere,
+  ERA5 surface conditions with a standard lapse rate, and ERA5 with virtual temperature and
+  a GPT3 lapse rate. References are GHCNh weather stations and IGRA2 radiosondes evaluated
+  up to 5 km above the launch surface, using qualifying 12-month windows within 2022–2026.
+  The study quantifies absolute errors, station bias and within-station variability, compares
+  ERA5 with ERA5-Land, and assesses sensitivity to atmospheric query location.
 authors:
   - family-names: Nussbaumer
     given-names: Raphaël
@@ -20,7 +20,7 @@ authors:
     orcid: https://orcid.org/0000-0002-0871-1507
     affiliation: Institute for Interdisciplinary Mountain Research, Austrian Academy of Sciences, Innsbruck, Austria
 repository-code: https://github.com/GeoPressure/altitude-validation
-url: https://geopressure.github.io/altitude-validation/
+url: https://github.com/GeoPressure/altitude-validation
 license: MIT
 keywords:
   - geolocator
@@ -31,11 +31,11 @@ keywords:
   - validation
 references:
   - type: data
-    title: "HadISD: Hadley Centre Integrated Sub-daily Dataset, version 3.4.3.2025f"
+    title: "Global Historical Climatology Network-Hourly (GHCNh)"
     authors:
-      - family-names: Dunn
-        given-names: Robert J. H.
-    url: https://www.metoffice.gov.uk/hadobs/hadisd/
+      - family-names: Menne
+        given-names: Matthew J.
+    doi: 10.25921/jp3d-3v19
   - type: data
     title: "Integrated Global Radiosonde Archive (IGRA), Version 2"
     authors:

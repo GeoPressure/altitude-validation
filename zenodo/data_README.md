@@ -1,20 +1,46 @@
 # Data for “How accurate is altitude from pressure geolocators?”
 
-Unzip this archive at the repository root, then run `Rscript run_all.R prepare analysis figures check render`. The curated ground and frozen radiosonde selections supply accepted rolling-window observations directly; raw NOAA annual downloads are not needed to rebuild the numerical analysis. Times are UTC and heights are in metres.
+Extract `altitude-validation-code.zip`, then extract `altitude-validation-data.zip` inside the resulting `altitude-validation/` directory. The data archive supplies a `data/` directory alongside `R/`, `scripts/` and `run_all.R`. All times are UTC. Vertical coordinates are in metres; IGRA2 reports geopotential height. GHCNh station pressure is in hPa, while ERA5 and IGRA2 pressure are in Pa.
+
+## Rebuild the study
+
+Install the R packages and system tools listed in the repository README. The analysis uses GeoPressureR 3.6.6.9000, commit `f1431bc3c49f88e3738a60e4987be29145fa34a7`, available from https://github.com/GeoPressure/GeoPressureR. Check out that revision in a local clone and set `GEOPRESSURER_PATH` to its location. The figure and document stages additionally require the fonts, Quarto and TeX installation described in the code repository.
+
+From the extracted repository root, run:
+
+```bash
+Rscript run_all.R prepare analysis position figures check
+```
+
+This rebuilds conversion errors, numerical summaries, the fixed position-sensitivity pilot and figures from the archived observations and atmospheric caches. To rebuild only the figures from the supplied tables, run `Rscript run_all.R figures`. To render the manuscript and supplement, additionally run `Rscript run_all.R render`. The frozen accepted observations are sufficient for the numerical rebuild; rerunning station selection is optional (`Rscript run_all.R ground_selection sounding_selection`). The data archive includes the terrain cache needed for the ground-selection checks.
+
+The bird distribution and Figure S4 can be reproduced from the derived weights and figure-input tables in the code archive. Reconstructing these inputs from individual bird trajectories instead requires the separate Master GeoLocator Data Package, version 2026.0 (https://doi.org/10.5281/zenodo.18187093), as described in the repository README. Individual bird trajectories are not redistributed here.
+
+## Archive contents
+
+Paths below are relative to the extracted `data/` directory.
 
 | Path | Content | Source |
 |---|---|---|
-| `interim/ghcnh/selection-2026-10-13/` | Frozen candidate inventory and order, pressure and primary ERA5 caches used to reconstruct the curated selection | NOAA GHCNh and ECMWF ERA5 |
-| `interim/ghcnh/selection-curated-2026-10-22/` | Accepted curated ground station years and pressure records | NOAA GHCNh and ECMWF ERA5 |
-| `interim/igra-selection-2026-10-13/` | Candidate inventory, prepared profiles and primary ERA5 inputs | NOAA IGRA2 and ECMWF ERA5 |
+| `interim/ghcnh/selection-2026-10-13/` | Frozen candidate inventory and order, extracted annual observations, pressure/reference series and primary ERA5 caches | NOAA GHCNh and ECMWF ERA5 |
+| `interim/ghcnh/selection-curated-2026-10-22/` | Accepted curated station years, pressure records and selection decisions | NOAA GHCNh and ECMWF ERA5 |
+| `interim/ghcnh/terrain-srtm-aster/` | Cached station-elevation checks and terrain-query responses | SRTM v3 and ASTER GDEM v3 via Open Topo Data |
+| `interim/igra-selection-2026-10-13/` | Candidate inventory, prepared sounding profiles and primary ERA5 caches | NOAA IGRA2 and ECMWF ERA5 |
 | `interim/igra-selection-curated-2026-10-23/` | Selection settings, decisions and accepted surface–airborne pairs | NOAA IGRA2 and ECMWF ERA5 |
-| `interim/analysis-2026-10-13/era5/` | Additional ERA5-Land surface pressure and temperature at the retained observation hours | Copernicus Climate Change Service, CC BY 4.0 |
-| `interim/analysis-2026-10-13/historical_ground.parquet` | Fixed five-station historical comparison | NOAA GHCNh and ECMWF ERA5 |
-| `raw/era5_invariant.nc` | ERA5 sub-grid orography and land-sea mask | Copernicus Climate Change Service, CC BY 4.0 |
-| `raw/ghcnh-station-list.txt` | GHCNh station metadata and WMO identifiers | NOAA NCEI |
-| `raw/gpt3/` | GPT3 climatological lapse-rate grids | Vienna Mapping Functions service |
-| `interim/igra/` | Soundings retained for the separately documented fixed position-displacement experiment | NOAA IGRA2 |
+| `interim/analysis-2026-10-13/era5/` | Additional ERA5-Land surface pressure and temperature at retained observation hours | Copernicus Climate Change Service |
+| `interim/location_sensitivity/` | Atmospheric inputs and paired errors for the fixed 10-station, 80-sounding position-sensitivity pilot | ECMWF ERA5; fixed observation pairs are in `output/position-sensitivity/soundings.csv` in the code archive |
+| `raw/era5_invariant.nc` | ERA5 sub-grid orography and land–sea mask | Copernicus Climate Change Service |
+| `raw/ghcnh-station-list.txt` | Station metadata and WMO identifiers | NOAA NCEI |
+| `raw/gpt3/` | GPT3 climatological lapse-rate grids | Vienna Mapping Functions Data Server |
 
-The primary selections cover 2022–2026. Pressure is in hPa for GHCNh, and Pa for ERA5 and IGRA2. Selection ZIP downloads and raw annual archives are omitted after validated extraction. Derived error series are regenerated by `scripts/preparation/errors.R`. Bird tracks are available separately in the Master GeoLocator Data Package, version 2026.0 (doi:10.5281/zenodo.18187093); committed aggregate weights suffice for the analysis. Dataset citations and licences are given in the manuscript and its supplement.
+The primary selections use qualifying 12-month periods within 2022–2026; the fixed position-sensitivity pilot uses 2024 observations. Compressed NOAA download containers are omitted after extraction. Combined error series are regenerated by `scripts/preparation/errors.R`. The code archive contains the derived numerical tables, station exclusion lists and manuscript methods specifying the selection criteria.
 
-The primary curated ground records are in `data/interim/ghcnh/selection-curated-2026-10-22/`. The earlier selection directory supplies frozen candidates and reusable pressure/atmosphere caches. Independent reference exclusions are distributed with the code in `inputs/ghcnh_reference_exclusions.csv`. Station years pass pressure-only spike, discontinuity, excessive-irregularity, frozen-value and coverage checks before ERA5 matching.
+## Sources and rights
+
+Original study code is distributed under MIT. Original derived tables, figures and manuscript material are distributed under CC BY 4.0. Third-party inputs retain their source terms and attribution requirements; the record licence does not replace those terms.
+
+- GHCNh: NOAA NCEI, https://doi.org/10.25921/jp3d-3v19.
+- IGRA2: NOAA NCEI, https://doi.org/10.7289/V5X63K0Q.
+- ERA5: https://doi.org/10.24381/cds.adbb2d47; ERA5-Land: https://doi.org/10.24381/cds.e2161bac. Contains modified Copernicus Climate Change Service information 2026, supplied under the CC-BY licence. Neither the European Commission nor ECMWF is responsible for the use made of this information.
+- Terrain-query sources: https://www.opentopodata.org/datasets/srtm/ and https://www.opentopodata.org/datasets/aster/.
+- GPT3: https://vmf.geo.tuwien.ac.at/codes/; terms: https://vmf.geo.tuwien.ac.at/terms.html. Cite Landskron and Böhm (2018), https://doi.org/10.1007/s00190-017-1066-2, and the VMF Data Server, https://doi.org/10.17616/R3RD2H.

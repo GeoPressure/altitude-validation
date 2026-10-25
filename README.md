@@ -27,7 +27,7 @@ Downloaded and intermediate data live in `data/` (not tracked); see [data layout
 
 ## Rebuilding
 
-Requirements: R with `data.table`, `arrow`, `terra`, `sf`, `kgc`, `mgcv`, `ggplot2`, `patchwork`, `rnaturalearth`, `lubridate`, `httr2`, `pkgload`, `scales`, `ragg`, `systemfonts`, `cli`, `knitr` and `jsonlite`; a local GeoPressureR clone (`GEOPRESSURER_PATH`, default `~/Documents/GitHub/GeoPressureR`); and Quarto with a TeX installation. Run all commands from the repository root.
+Requirements: R with `data.table`, `arrow`, `terra`, `sf`, `kgc`, `mgcv`, `ggplot2`, `patchwork`, `rnaturalearth`, `lubridate`, `httr2`, `pkgload`, `scales`, `ragg`, `systemfonts`, `cli`, `knitr`, `jsonlite`, `dplyr`, `readr`, `digest`, `png`, `xml2`, `gtable` and `tidyselect`; a local GeoPressureR clone (`GEOPRESSURER_PATH`, default `~/Documents/GitHub/GeoPressureR`); and Quarto with a TeX installation. Run all commands from the repository root.
 
 ```bash
 Rscript run_all.R ground_selection     # select GHCNh stations and accepted pressure records
