@@ -162,20 +162,20 @@ Pressure decreases with altitude because each layer of air supports the weight o
 $$
 z = z_0 + \frac{R\,\bar T_v}{g\,M}\,\ln\frac{p_0}{p},
 $$ {#eq-hypsometric}
-with $z$ the altitude (m) at pressure $p$, $z_0$ and $p_0$ the altitude and pressure of a reference level, $g$ = 9.80665 m.s$^{-2}$, $R$ = 8.31432 J.mol$^{-1}$ K$^{-1}$, $M$ = 0.0289644 kg.mol$^{-1}$, and $\bar T_v$ the mean virtual temperature.
+with $z$ the altitude (m) at pressure $p$, $z_0$ and $p_0$ the altitude and pressure of a reference level, $g$ = 9.80665 m s$^{-2}$, $R$ = 8.31432 J mol$^{-1}$ K$^{-1}$, $M$ = 0.0289644 kg mol$^{-1}$, and $\bar T_v$ the mean virtual temperature.
 
 The virtual temperature $T_v = T(1 + 0.608\,q)$, with $T$ the air temperature in kelvin and $q$ the specific humidity, accounts for moist air being lighter than dry air because water vapor has a lower molar mass than dry air. Temperature can vary with height; the conversion uses the mean virtual temperature between the reference level and the bird, weighted by increments of log pressure:
 $$
 \bar T_v = \frac{1}{\ln(p_0/p)}\int_p^{p_0} T_v(p')\,d\ln p'.
 $$
-To simplify the computation, temperature is assumed to change at a constant rate with height, giving a linear profile $T(z)=T_0+L(z-z_0)$, where $T_0$ is the reference temperature in kelvin. This rate, called the lapse rate $L=dT/dz$ (K.m$^{-1}$), is negative when temperature decreases with height. Without a humidity correction, $T_v=T$, and integration gives the barometric equation:
+To simplify the computation, temperature is assumed to change at a constant rate with height, giving a linear profile $T(z)=T_0+L(z-z_0)$, where $T_0$ is the reference temperature in kelvin. This rate, called the lapse rate $L=dT/dz$ (K m$^{-1}$), is negative when temperature decreases with height. Without a humidity correction, $T_v=T$, and integration gives the barometric equation:
 $$
 z = z_0 + \frac{T_0}{L}\left[\left(\frac{p}{p_0}\right)^{-R L / (g M)} - 1\right].
 $$ {#eq-barometric}
 The three conversions differ in their reference level and assumed temperature profile (@fig-column):
 
-1. **Standard atmosphere.** The reference is sea level ($z_0$ = 0, $p_0$ = 1013.25 hPa) with $T_0$ = 288.15 K (15 °C) and $L$ = $-6.5$ K.km$^{-1}$ [@icao1993]. It needs no external data but ignores changes in pressure, temperature and humidity.
-2. **ERA5, standard lapse rate.** The ERA5 reanalysis provides surface pressure $p_0$, 2 m air temperature $T_0$ and surface geopotential $\Phi$ at the location and hour of each measurement, with reference altitude $z_0=\Phi/g$. This accounts for local pressure and temperature variations, while retaining a constant lapse rate of $-6.5$ K.km$^{-1}$ and no humidity correction.
+1. **Standard atmosphere.** The reference is sea level ($z_0$ = 0, $p_0$ = 1013.25 hPa) with $T_0$ = 288.15 K (15 °C) and $L$ = $-6.5$ K km$^{-1}$ [@icao1993]. It needs no external data but ignores changes in pressure, temperature and humidity.
+2. **ERA5, standard lapse rate.** The ERA5 reanalysis provides surface pressure $p_0$, 2 m air temperature $T_0$ and surface geopotential $\Phi$ at the location and hour of each measurement, with reference altitude $z_0=\Phi/g$. This accounts for local pressure and temperature variations, while retaining a constant lapse rate of $-6.5$ K km$^{-1}$ and no humidity correction.
 3. **ERA5, virtual temperature and GPT3 lapse rate.** This conversion adds two refinements to the ERA5 reference. First, humidity at the reference level is accounted for by replacing $T_0$ in @eq-barometric with the reference-level value of $T_v$. The specific humidity $q$ needed for this correction is calculated from ERA5 surface pressure $p_0$ and 2 m dewpoint $T_d$, via vapour pressure $e$ [@bolton1980]:
 $$
 q=\frac{0.622\,e}{p_0-0.378\,e}, \qquad e=611.2\exp\left(\frac{17.67\,T_d}{T_d+243.5}\right),
