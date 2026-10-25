@@ -30,10 +30,26 @@ knitr:
 invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 library(data.table)
 # Numbers in the text come from analysis/11_manuscript_values.R.
-v <- with(fread("results/manuscript_values.csv", colClasses = "character"), setNames(as.list(value), name))
+v <- with(
+  fread("results/manuscript_values.csv", colClasses = "character"),
+  setNames(as.list(value), name)
+)
 latex <- knitr::is_latex_output()
-fig <- function(f) knitr::include_graphics(file.path("figures", paste0(f, ".pdf")), error = FALSE)
-kab <- function(d, ...) knitr::kable(d, format = if (latex) "latex" else "pipe", booktabs = TRUE, linesep = "", ...)
+fig <- function(f) {
+  knitr::include_graphics(
+    file.path("figures", paste0(f, ".pdf")),
+    error = FALSE
+  )
+}
+kab <- function(d, ...) {
+  knitr::kable(
+    d,
+    format = if (latex) "latex" else "pipe",
+    booktabs = TRUE,
+    linesep = "",
+    ...
+  )
+}
 ```
 
 This supplement describes the selection of reference stations (S1), environmental variation (S2), the ERA5-Land comparison (S3), the bird flight-height distribution (S4), and horizontal-position sensitivity (S5). It uses the main manuscript's conversions and error definitions. Code and underlying numerical summaries accompany the analysis [@validation].
@@ -72,7 +88,11 @@ The final sample contains `r v$ground_accepted` stations, and spike removal disc
 #| label: tbl-review
 #| tbl-cap: "GHCNh stations excluded after visual review of their pressure series."
 kab(
-  fread("data/curated/ghcnh_review_exclusions.csv")[, .(Station = id, Name = name, Defect = reason)],
+  fread("data/curated/ghcnh_review_exclusions.csv")[, .(
+    Station = id,
+    Name = name,
+    Defect = reason
+  )],
   align = if (latex) c("l", "l", "p{8.5cm}") else "lll"
 )
 ```

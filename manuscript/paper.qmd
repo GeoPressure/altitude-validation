@@ -33,27 +33,85 @@ knitr:
 invisible(Sys.setlocale("LC_CTYPE", "en_US.UTF-8"))
 library(data.table)
 # Numbers in the text come from analysis/11_manuscript_values.R.
-v <- with(fread("results/manuscript_values.csv", colClasses = "character"), setNames(as.list(value), name))
+v <- with(
+  fread("results/manuscript_values.csv", colClasses = "character"),
+  setNames(as.list(value), name)
+)
 latex <- knitr::is_latex_output()
-fig <- function(f) knitr::include_graphics(file.path("figures", paste0(f, ".pdf")), error = FALSE)
+fig <- function(f) {
+  knitr::include_graphics(
+    file.path("figures", paste0(f, ".pdf")),
+    error = FALSE
+  )
+}
 cap_column <- "Effects of atmospheric conditions on pressure-derived altitude. Top: observed pressure at Cairo Regional Airport, USA (left), and observed and assumed temperature profiles for a temperate summer night and a continental winter night (right); points mark measured temperature levels, and the ERA5 virtual + GPT3 profile shows virtual temperature. Bottom: the resulting altitude errors at the weather station and flight-height errors above the sounding launch sites. Dashed lines mark zero error."
-cap_flight <- paste0("Flight-height errors against height above the sounding surface: (a) station bias (negative: height underestimated) and (b) within-station SD. Lines: medians across stations; shading: 25th--75th percentiles across stations. (c) Flight-time distribution of height above median terrain for ", v$n_tags, " tracked birds (Additional file 1: S4); its median and 90th percentile are marked across the panels.")
+cap_flight <- paste0(
+  "Flight-height errors against height above the sounding surface: (a) station bias (negative: height underestimated) and (b) within-station SD. Lines: medians across stations; shading: 25th--75th percentiles across stations. (c) Flight-time distribution of height above median terrain for ",
+  v$n_tags,
+  " tracked birds (Additional file 1: S4); its median and 90th percentile are marked across the panels."
+)
 ```
 
 ```{r abstract, results = "asis"}
 # sn-jnl needs the abstract and keywords before \maketitle, so they are written here.
 abstract <- c(
   Background = "Pressure geolocators record atmospheric pressure throughout the year on small birds, and pressure sensors also provide vertical records in tags equipped with satellite positioning. The altitudes derived from these records reveal migration strategies and inform conservation assessments, including exposure to wind turbines. However, pressure-to-altitude conversions make assumptions about atmospheric conditions whose consequences for altitude error remain poorly quantified.",
-  Methods = paste0("We evaluated three conversions: a fixed standard atmosphere, a conversion using local ERA5 surface conditions, and an ERA5 conversion additionally accounting for virtual temperature and a climatological temperature lapse rate from GPT3. Treating reference pressures as exact conversion inputs, we compared estimates with ", v$n_ghcnh, " GHCNh weather stations worldwide and IGRA2 radiosondes from ", v$n_sonde, " stations up to 5 km above ground. We summarize absolute errors by their medians and 95th percentiles, distinguish station bias from within-station standard deviation, and use flight heights from ", v$n_tags, " tracked birds to provide ecological context."),
-  Results = paste0("At ground-reference stations, the standard atmosphere produced a median absolute error of ", v$ground_medae_isa, " m, with 5% of absolute errors exceeding ", v$ground_p95_isa, " m. Local ERA5 conditions reduced these to ", v$ground_medae_standard, " m and ", v$ground_p95_standard, " m, respectively. At ", v$h90, " m above ground, the 90th percentile of tracked flight heights, the 95th percentile of absolute flight-height error fell from ", v$flight_p95_isa_h90, " m with the standard atmosphere to ", v$flight_p95_virtual_h90, " m with the corrected ERA5 conversion. There, virtual temperature and GPT3 reduced the median station bias of the ERA5 conversion from ", v$flight_bias_standard_h90, " m to ", v$flight_bias_virtual_h90, " m."),
+  Methods = paste0(
+    "We evaluated three conversions: a fixed standard atmosphere, a conversion using local ERA5 surface conditions, and an ERA5 conversion additionally accounting for virtual temperature and a climatological temperature lapse rate from GPT3. Treating reference pressures as exact conversion inputs, we compared estimates with ",
+    v$n_ghcnh,
+    " GHCNh weather stations worldwide and IGRA2 radiosondes from ",
+    v$n_sonde,
+    " stations up to 5 km above ground. We summarize absolute errors by their medians and 95th percentiles, distinguish station bias from within-station standard deviation, and use flight heights from ",
+    v$n_tags,
+    " tracked birds to provide ecological context."
+  ),
+  Results = paste0(
+    "At ground-reference stations, the standard atmosphere produced a median absolute error of ",
+    v$ground_medae_isa,
+    " m, with 5% of absolute errors exceeding ",
+    v$ground_p95_isa,
+    " m. Local ERA5 conditions reduced these to ",
+    v$ground_medae_standard,
+    " m and ",
+    v$ground_p95_standard,
+    " m, respectively. At ",
+    v$h90,
+    " m above ground, the 90th percentile of tracked flight heights, the 95th percentile of absolute flight-height error fell from ",
+    v$flight_p95_isa_h90,
+    " m with the standard atmosphere to ",
+    v$flight_p95_virtual_h90,
+    " m with the corrected ERA5 conversion. There, virtual temperature and GPT3 reduced the median station bias of the ERA5 conversion from ",
+    v$flight_bias_standard_h90,
+    " m to ",
+    v$flight_bias_virtual_h90,
+    " m."
+  ),
   Conclusions = "Local atmospheric conditions substantially reduce the large altitude errors introduced by a fixed standard atmosphere; virtual temperature and a climatological lapse rate further reduce systematic flight-height errors. The corrected conversion needs only measured pressure, its time and an approximate position, and is available in GeoPressureR. Remaining atmospheric and sensor errors must still be considered when interpreting flight behaviour or classifying flights relative to turbine heights."
 )
 keywords <- "biologging, barometric altimetry, flight altitude, ERA5, radiosonde, multi-sensor geolocator, GeoPressureR"
 if (latex) {
-  cat("\\abstract{", paste0("\\textbf{", names(abstract), ":} ", gsub("%", "\\%", abstract, fixed = TRUE), collapse = "\n\n"),
-    "}\n\n\\keywords{", keywords, "}\n\n\\maketitle\n", sep = "")
+  cat(
+    "\\abstract{",
+    paste0(
+      "\\textbf{",
+      names(abstract),
+      ":} ",
+      gsub("%", "\\%", abstract, fixed = TRUE),
+      collapse = "\n\n"
+    ),
+    "}\n\n\\keywords{",
+    keywords,
+    "}\n\n\\maketitle\n",
+    sep = ""
+  )
 } else {
-  cat(paste0("**", names(abstract), ".** ", abstract, collapse = "\n\n"), "\n\n**Keywords:** ", keywords, "\n", sep = "")
+  cat(
+    paste0("**", names(abstract), ".** ", abstract, collapse = "\n\n"),
+    "\n\n**Keywords:** ",
+    keywords,
+    "\n",
+    sep = ""
+  )
 }
 ```
 

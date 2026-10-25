@@ -12,11 +12,14 @@ suppressPackageStartupMessages({
 
 # ---- Configuration ---------------------------------------------------------------------------
 
-GEOPRESSURER_PATH <- Sys.getenv("GEOPRESSURER_PATH", "~/Documents/GitHub/GeoPressureR")
+GEOPRESSURER_PATH <- Sys.getenv(
+  "GEOPRESSURER_PATH",
+  "~/Documents/GitHub/GeoPressureR"
+)
 
-dir_raw <- "data/raw"          # downloaded source data
-dir_derived <- "data/derived"  # station selections, ERA5 inputs and error series
-dir_curated <- "data/curated"  # hand-curated inputs (tracked)
+dir_raw <- "data/raw" # downloaded source data
+dir_derived <- "data/derived" # station selections, ERA5 inputs and error series
+dir_curated <- "data/curated" # hand-curated inputs (tracked)
 dir_tables <- "results/tables" # tables read by the figures and manuscript
 for (d in c(dir_raw, dir_derived, dir_tables)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
@@ -31,17 +34,34 @@ analysis_dir <- file.path(dir_derived, "analysis")
 n_cores <- as.integer(Sys.getenv("N_CORES", "8"))
 
 load_geopressurer <- function() {
-  suppressMessages(pkgload::load_all(GEOPRESSURER_PATH, quiet = TRUE, export_all = TRUE))
+  suppressMessages(pkgload::load_all(
+    GEOPRESSURER_PATH,
+    quiet = TRUE,
+    export_all = TRUE
+  ))
   invisible(TRUE)
 }
 
 geopressurer_version <- function() {
   sha <- tryCatch(
-    suppressWarnings(system2("git", c("-C", shQuote(path.expand(GEOPRESSURER_PATH)), "rev-parse",
-      "--short", "HEAD"), stdout = TRUE, stderr = FALSE)),
+    suppressWarnings(system2(
+      "git",
+      c(
+        "-C",
+        shQuote(path.expand(GEOPRESSURER_PATH)),
+        "rev-parse",
+        "--short",
+        "HEAD"
+      ),
+      stdout = TRUE,
+      stderr = FALSE
+    )),
     error = function(e) character()
   )
-  desc <- read.dcf(file.path(GEOPRESSURER_PATH, "DESCRIPTION"), fields = "Version")[1, 1]
+  desc <- read.dcf(
+    file.path(GEOPRESSURER_PATH, "DESCRIPTION"),
+    fields = "Version"
+  )[1, 1]
   if (length(sha) == 1 && nzchar(sha)) paste0(desc, " (", sha, ")") else desc
 }
 
@@ -52,13 +72,21 @@ era5_snap <- function(lon, lat, era5_dataset) {
   res <- if (era5_dataset == "land") 0.1 else 0.25
   list(
     lon = floor(lon / res + 0.5) * res,
-    lat = if (era5_dataset == "land") ceiling(lat / res - 0.5) * res else floor(lat / res + 0.5) * res
+    lat = if (era5_dataset == "land") {
+      ceiling(lat / res - 0.5) * res
+    } else {
+      floor(lat / res + 0.5) * res
+    }
   )
 }
 
 #' Nearest ERA5 hour, as GeoPressureAPI's join and the ARCO backend pick it.
 era5_hour <- function(date) {
-  as.POSIXct(ceiling(as.numeric(date) / 3600 - 0.5) * 3600, origin = "1970-01-01", tz = "UTC")
+  as.POSIXct(
+    ceiling(as.numeric(date) / 3600 - 0.5) * 3600,
+    origin = "1970-01-01",
+    tz = "UTC"
+  )
 }
 
 #' Read ERA5 variables at points (one row per point) from ARCO.
@@ -75,25 +103,48 @@ era5_read <- function(lon, lat, date, variable, era5_dataset) {
 #' ERA5 orography [m] at points, from the same files GeoPressureR uses.
 era5_orography <- function(lon, lat, era5_dataset) {
   g <- era5_snap(lon, lat, era5_dataset)
-  era5_surface_elevation(g$lon, g$lat, rep(era5_dataset, length(lon)), quiet = TRUE)
+  era5_surface_elevation(
+    g$lon,
+    g$lat,
+    rep(era5_dataset, length(lon)),
+    quiet = TRUE
+  )
 }
 
 #' Altitude [m] from pressure [Pa] with the GeoPressureR formula evaluated in this study: 2 m
 #' temperature and -6.5 K/km. Package defaults can change, so the standard formula is
 #' requested explicitly when the selector is available.
-era5_altitude <- function(pressure_pa, surface_pressure, temperature_2m, orography) {
+era5_altitude <- function(
+  pressure_pa,
+  surface_pressure,
+  temperature_2m,
+  orography
+) {
   if ("altitude_formula" %in% names(formals(pressure_to_altitude))) {
-    pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography,
-      altitude_formula = "standard")
+    pressure_to_altitude(
+      pressure_pa,
+      surface_pressure,
+      temperature_2m,
+      orography,
+      altitude_formula = "standard"
+    )
   } else {
-    pressure_to_altitude(pressure_pa, surface_pressure, temperature_2m, orography)
+    pressure_to_altitude(
+      pressure_pa,
+      surface_pressure,
+      temperature_2m,
+      orography
+    )
   }
 }
 
 #' GeoPressureR's barometric formula with the lapse rate (K/m) exposed. With `lapse = -0.0065` it is
 #' `pressure_to_altitude()` with the standard formula.
 altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
-  z + temperature / lapse * ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
+  z +
+    temperature /
+      lapse *
+      ((pressure / sp)^(-8.31432 * lapse / 9.80665 / 0.0289644) - 1)
 }
 
 #' Mean temperature (K) of the column between the launch surface and each sounding level, integrated
@@ -103,7 +154,9 @@ altitude_lapse <- function(pressure, sp, temperature, z, lapse = -0.0065) {
 sonde_mean_temperature <- function(press, press_s, temp) {
   lp <- log(press)
   tk <- fifelse(temp > -8000, temp / 10 + 273.15, NA_real_)
-  if (sum(is.finite(tk)) < 2) return(rep(NA_real_, length(press)))
+  if (sum(is.finite(tk)) < 2) {
+    return(rep(NA_real_, length(press)))
+  }
   tk <- approx(lp[is.finite(tk)], tk[is.finite(tk)], xout = lp, rule = 2)$y
   delta <- c(log(press_s[1]) - lp[1], -diff(lp))
   segment <- c(tk[1], (head(tk, -1) + tail(tk, -1)) / 2)
@@ -122,7 +175,11 @@ virtual_temperature <- function(t, td, sp) {
 #' grid file (`gpt3_1.grd` or `gpt3_5.grd` from https://vmf.geo.tuwien.ac.at/codes/), as the
 #' mean and annual and semi-annual harmonics of dT/dh (K/m) at each grid centre.
 gpt3_read <- function(res = 1) {
-  g <- fread(file.path(dir_raw, "gpt3", sprintf("gpt3_%d.grd", res)), skip = 1, header = FALSE)
+  g <- fread(
+    file.path(dir_raw, "gpt3", sprintf("gpt3_%d.grd", res)),
+    skip = 1,
+    header = FALSE
+  )
   list(res = res, dT = as.matrix(g[, 18:22]) / 1000)
 }
 
@@ -143,10 +200,19 @@ gpt3_lapse <- function(g, lon, lat, doy) {
   i1 <- pmin(i0 + 1, nlat - 1)
   j1 <- (j0 + 1) %% nlon
   j0 <- j0 %% nlon
-  h <- cbind(1, cos(2 * pi * doy / 365.25), sin(2 * pi * doy / 365.25), cos(4 * pi * doy / 365.25),
-    sin(4 * pi * doy / 365.25))
+  h <- cbind(
+    1,
+    cos(2 * pi * doy / 365.25),
+    sin(2 * pi * doy / 365.25),
+    cos(4 * pi * doy / 365.25),
+    sin(4 * pi * doy / 365.25)
+  )
   v <- function(i, j) rowSums(g$dT[i * nlon + j + 1, , drop = FALSE] * h)
-  (1 - di) * (1 - dj) * v(i0, j0) + di * (1 - dj) * v(i1, j0) + (1 - di) * dj * v(i0, j1) +
+  (1 - di) *
+    (1 - dj) *
+    v(i0, j0) +
+    di * (1 - dj) * v(i1, j0) +
+    (1 - di) * dj * v(i0, j1) +
     di * dj * v(i1, j1)
 }
 
@@ -158,29 +224,57 @@ gpt3_lapse <- function(g, lon, lat, doy) {
 #' Socket rather than forked workers: on macOS, libcurl segfaults in a forked child. Each worker
 #' sources R/utils.R (and loads GeoPressureR when `geopressurer = TRUE`); `export` names further
 #' objects to copy from the calling environment.
-par_map <- function(x, fun, cores = n_cores, retries = 3, geopressurer = FALSE, export = character(),
-                    envir = parent.frame()) {
-  if (!length(x)) return(list())
+par_map <- function(
+  x,
+  fun,
+  cores = n_cores,
+  retries = 3,
+  geopressurer = FALSE,
+  export = character(),
+  envir = parent.frame()
+) {
+  if (!length(x)) {
+    return(list())
+  }
   cl <- parallel::makePSOCKcluster(cores)
   on.exit(parallel::stopCluster(cl))
   wd <- getwd()
-  parallel::clusterCall(cl, function(wd, gp) {
-    setwd(wd)
-    source("R/utils.R")
-    if (gp) load_geopressurer()
-    NULL
-  }, wd, geopressurer)
-  if (length(export) > 0) parallel::clusterExport(cl, export, envir = envir)
+  parallel::clusterCall(
+    cl,
+    function(wd, gp) {
+      setwd(wd)
+      source("R/utils.R")
+      if (gp) {
+        load_geopressurer()
+      }
+      NULL
+    },
+    wd,
+    geopressurer
+  )
+  if (length(export) > 0) {
+    parallel::clusterExport(cl, export, envir = envir)
+  }
   safe <- function(xi) {
     for (i in seq_len(retries)) {
       res <- tryCatch(fun(xi), error = function(e) e)
-      if (!inherits(res, "error")) return(res)
+      if (!inherits(res, "error")) {
+        return(res)
+      }
       Sys.sleep(2 * i)
     }
-    message("failed: ", paste(format(xi), collapse = " "), " -- ", conditionMessage(res))
+    message(
+      "failed: ",
+      paste(format(xi), collapse = " "),
+      " -- ",
+      conditionMessage(res)
+    )
     structure(list(conditionMessage(res)), class = "par_map_error")
   }
-  environment(safe) <- list2env(list(fun = fun, retries = retries), parent = globalenv())
+  environment(safe) <- list2env(
+    list(fun = fun, retries = retries),
+    parent = globalenv()
+  )
   parallel::parLapplyLB(cl, x, safe)
 }
 
@@ -190,23 +284,40 @@ check_failures <- function(res, x, what = "elements", fatal = FALSE) {
   ok <- vapply(res, function(r) !inherits(r, "par_map_error"), logical(1))
   cat(sum(ok), "of", length(x), what, "done\n")
   if (!all(ok)) {
-    msg <- paste0(sum(!ok), " ", what, " failed: ", paste(head(format(x[!ok]), 10), collapse = ", "),
-      if (sum(!ok) > 10) ", ..." else "")
-    if (fatal) stop(msg, ". Rerun this step to retry them.", call. = FALSE) else warning(msg, call. = FALSE)
+    msg <- paste0(
+      sum(!ok),
+      " ",
+      what,
+      " failed: ",
+      paste(head(format(x[!ok]), 10), collapse = ", "),
+      if (sum(!ok) > 10) ", ..." else ""
+    )
+    if (fatal) {
+      stop(msg, ". Rerun this step to retry them.", call. = FALSE)
+    } else {
+      warning(msg, call. = FALSE)
+    }
   }
   invisible(ok)
 }
 
 #' Download with the system curl (robust, resumable-safe, no R libcurl state).
 curl_download <- function(url, dest) {
-  status <- system2("curl", c("-sfL", "--retry", "3", "-o", shQuote(dest), shQuote(url)))
-  if (status != 0) stop("curl failed (", status, "): ", url)
+  status <- system2(
+    "curl",
+    c("-sfL", "--retry", "3", "-o", shQuote(dest), shQuote(url))
+  )
+  if (status != 0) {
+    stop("curl failed (", status, "): ", url)
+  }
   invisible(dest)
 }
 
 local_solar_hour <- function(date, lon) {
-  (as.numeric(format(date, "%H", tz = "UTC")) + as.numeric(format(date, "%M", tz = "UTC")) / 60 +
-    lon / 15) %% 24
+  (as.numeric(format(date, "%H", tz = "UTC")) +
+    as.numeric(format(date, "%M", tz = "UTC")) / 60 +
+    lon / 15) %%
+    24
 }
 
 #' Day of year shifted by half a year in the southern hemisphere, so that 1 = mid-winter-ish
@@ -242,8 +353,17 @@ wquant <- function(x, w, p) {
 
 #' Terrain roughness class from the SD of the sub-grid orography (ERA5 `sdor`, m).
 terrain_class <- function(sdor) {
-  cut(sdor, c(-Inf, 20, 50, 150, 300, Inf), labels = c("flat (<20 m)", "gentle (20-50 m)",
-    "hilly (50-150 m)", "rough (150-300 m)", "mountain (>300 m)"))
+  cut(
+    sdor,
+    c(-Inf, 20, 50, 150, 300, Inf),
+    labels = c(
+      "flat (<20 m)",
+      "gentle (20-50 m)",
+      "hilly (50-150 m)",
+      "rough (150-300 m)",
+      "mountain (>300 m)"
+    )
+  )
 }
 
 #' Station table with the classes used to break down the results.
@@ -251,13 +371,33 @@ load_stations <- function() {
   st <- fread(file.path(dir_tables, "stations.csv"), na.strings = c("", "NA"))
   st[, abs_lat := abs(lat)]
   st[, terrain := terrain_class(sdor)]
-  st[, elev_class := cut(elev, c(-Inf, 200, 500, 1000, 2000, Inf),
-    labels = c("<200 m", "200-500 m", "500-1000 m", "1000-2000 m", ">2000 m"))]
-  st[, lat_band := cut(abs_lat, c(0, 23.5, 45, 66.5, 90), include.lowest = TRUE,
-    labels = c("tropics (0-23.5)", "subtropics (23.5-45)", "mid-latitude (45-66.5)",
-      "polar (>66.5)"))]
-  climate_names <- c(A = "A tropical", B = "B arid", C = "C temperate", D = "D continental",
-    E = "E polar")
+  st[,
+    elev_class := cut(
+      elev,
+      c(-Inf, 200, 500, 1000, 2000, Inf),
+      labels = c("<200 m", "200-500 m", "500-1000 m", "1000-2000 m", ">2000 m")
+    )
+  ]
+  st[,
+    lat_band := cut(
+      abs_lat,
+      c(0, 23.5, 45, 66.5, 90),
+      include.lowest = TRUE,
+      labels = c(
+        "tropics (0-23.5)",
+        "subtropics (23.5-45)",
+        "mid-latitude (45-66.5)",
+        "polar (>66.5)"
+      )
+    )
+  ]
+  climate_names <- c(
+    A = "A tropical",
+    B = "B arid",
+    C = "C temperate",
+    D = "D continental",
+    E = "E polar"
+  )
   st[, climate := climate_names[koppen_main]]
   st[, cw := 1]
   st[]
@@ -273,10 +413,20 @@ hbin_mid <- c(50, 175, 375, 750, 1250, 1750, 2500, 3500, 4500)
 #' zero at the surface; other values are interpolated between reported levels only.
 interpolate_soundings <- function(B, step = 100) {
   num <- setdiff(names(B)[vapply(B, is.numeric, TRUE)], c("agl", "lsh", "sdoy"))
-  launch <- B[, .(lsh = lsh[1], sdoy = sdoy[1], top = max(agl)), by = .(id, sounding)]
-  L <- rbind(launch[, c(.(id = id, sounding = sounding, agl = 0),
-      setNames(lapply(num, function(v) if (startsWith(v, "err_")) 0 else NA_real_), num))],
-    B[, c("id", "sounding", "agl", num), with = FALSE])
+  launch <- B[,
+    .(lsh = lsh[1], sdoy = sdoy[1], top = max(agl)),
+    by = .(id, sounding)
+  ]
+  L <- rbind(
+    launch[, c(
+      .(id = id, sounding = sounding, agl = 0),
+      setNames(
+        lapply(num, function(v) if (startsWith(v, "err_")) 0 else NA_real_),
+        num
+      )
+    )],
+    B[, c("id", "sounding", "agl", num), with = FALSE]
+  )
   L <- unique(L[is.finite(agl) & agl >= 0], by = c("id", "sounding", "agl"))
   launch[, n := floor(top / step)]
   G <- launch[rep(seq_len(.N), n), .(id, sounding, lsh, sdoy)]
@@ -286,7 +436,9 @@ interpolate_soundings <- function(B, step = 100) {
   a0 <- L[G, on = .(id, sounding, agl), roll = Inf, mult = "last", x.agl]
   a1 <- L[G, on = .(id, sounding, agl), roll = -Inf, mult = "first", x.agl]
   f <- fifelse(a1 > a0, (G$agl - a0) / (a1 - a0), 0)
-  for (v in num) set(G, j = v, value = lo[[v]] + f * (hi[[v]] - lo[[v]]))
+  for (v in num) {
+    set(G, j = v, value = lo[[v]] + f * (hi[[v]] - lo[[v]]))
+  }
   G[, band := as.character(cut(agl, hbin_breaks))]
   G[]
 }
@@ -295,9 +447,20 @@ interpolate_soundings <- function(B, step = 100) {
 #' band. Unless `levels` is TRUE, each sounding is interpolated to a regular height grid
 #' (interpolate_soundings()).
 load_radiosondes <- function(st, columns = NULL, levels = FALSE) {
-  if (!levels && !is.null(columns)) columns <- union(columns, c("id", "sounding", "agl", "lsh", "sdoy"))
-  B <- as.data.table(read_parquet(file.path(dir_derived, "errors_igra.parquet"), col_select = if (is.null(columns)) tidyselect::everything() else tidyselect::all_of(columns)))
-  if (!levels) B <- interpolate_soundings(B)
+  if (!levels && !is.null(columns)) {
+    columns <- union(columns, c("id", "sounding", "agl", "lsh", "sdoy"))
+  }
+  B <- as.data.table(read_parquet(
+    file.path(dir_derived, "errors_igra.parquet"),
+    col_select = if (is.null(columns)) {
+      tidyselect::everything()
+    } else {
+      tidyselect::all_of(columns)
+    }
+  ))
+  if (!levels) {
+    B <- interpolate_soundings(B)
+  }
   B <- B[agl <= max(hbin_breaks)]
   B <- merge(B, st[network == "igra", .(id, climate, abs_lat, cw)], by = "id")
   B[, hbin := factor(band, levels = levels(cut(0, hbin_breaks)))]
