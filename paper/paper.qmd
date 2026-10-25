@@ -212,7 +212,7 @@ fig("fig2_stations")
 
 ## Error metrics
 
-We calculate height from the measured pressure using each of the three conversions, then subtract the reference height to obtain the error. We summarize individual absolute errors by their median and 95th percentile. Station-level bias (mean signed error) and standard deviation (SD) distinguish persistent offsets from variability. We report median absolute station bias on the ground and median signed station bias in flight, retaining the direction of flight-height errors.
+We calculate height from the measured pressure using each of the three conversions, then subtract the reference height to obtain the error. We summarize individual absolute errors by their median and 95th percentile. Station-level bias (mean signed error) and standard deviation (SD) distinguish persistent offsets from dispersion. We report median absolute station bias on the ground and median signed station bias in flight, retaining the direction of flight-height errors.
 
 On the ground, we examine how errors vary with terrain roughness, represented by ERA5’s standard deviation of sub-grid orography. We also test whether a finer surface reference improves the conversion by replacing ERA5 single-level conditions with ERA5-Land [@munozsabater2021], a 0.1° land reanalysis, in the standard-lapse-rate conversion, comparing both products over the same station hours. Supplementary analyses assess the station–ERA5 elevation gap, season, local time and climate (Additional file 1: S2).
 
