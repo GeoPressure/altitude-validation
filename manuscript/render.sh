@@ -19,7 +19,8 @@ for f in fig1_column fig2_stations fig3_ground fig4_flight fig5_conditions; do
   cp "figures/$f.pdf" "$out/Figure_$n.pdf"
   n=$((n + 1))
 done
-cp paper.tex vendor/sn-jnl.cls references.bib "$out/latex-source/"
+sed 's|]{vendor/sn-jnl}|]{sn-jnl}|' paper.tex > "$out/latex-source/paper.tex"
+cp vendor/sn-jnl.cls references.bib "$out/latex-source/"
 cp figures/fig*.pdf "$out/latex-source/figures/"
 (cd "$out/latex-source" && zip -qr ../latex-source.zip .)
 rm -rf "$out/latex-source"

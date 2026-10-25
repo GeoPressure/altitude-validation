@@ -6,7 +6,7 @@ csl: vendor/biomed-central.csl
 link-citations: true
 format:
   pdf:
-    documentclass: sn-jnl
+    documentclass: vendor/sn-jnl
     classoption: [pdflatex, referee]
     pdf-engine: pdflatex
     latex-min-runs: 3
