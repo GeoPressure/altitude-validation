@@ -9,6 +9,7 @@ format:
     documentclass: sn-jnl
     classoption: [pdflatex, referee]
     pdf-engine: pdflatex
+    latex-min-runs: 3
     include-before-body: title-block.tex
     include-in-header:
       text: |

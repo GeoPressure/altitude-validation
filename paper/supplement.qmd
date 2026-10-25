@@ -15,6 +15,7 @@ format:
         \floatplacement{table}{H}
     geometry: margin=2.5cm
     pdf-engine: pdflatex
+    latex-min-runs: 3
     keep-tex: true
   html:
     toc: true
@@ -123,7 +124,7 @@ We use pressure, temperature and reported geopotential-height profiles from NOAA
 1. **Prepare sounding profiles.**
    - Each sounding needs a valid surface record. We prepare pressure–height pairs up to 6 km above the launch surface, so that the profile extends beyond the 5 km evaluated in the analysis. Missing surface heights take the station elevation.
    - The time of each level is the launch time plus its reported ascent time. Missing launch times take the nominal launch time, and missing ascent times assume 5 m s^-1^, a typical radiosonde ascent rate.
-2. **Check each sounding.** The archive's heights are not measured directly: they are calculated from the sonde's pressure and temperature with the hypsometric equation. Recalculating each level's height above the surface from the reported temperatures should therefore reproduce the reported geopotential-height difference from the launch surface; a mismatch reveals an erroneous surface record, height reference or reported height.
+2. **Check each sounding.** We check hydrostatic consistency between each sounding’s reported pressure, temperature and geopotential height. Pressure and height can be linked through instrument processing, including systems that calculate pressure from satellite-derived height [@hoshino2022]. Recalculating each level’s height above the surface from pressure and temperature should agree with the reported geopotential-height difference within the tolerance below; a mismatch can indicate an erroneous surface record, height reference or reported value.
    - We average temperature over log pressure from the surface to each level, extending the lowest temperature to the surface and interpolating missing values.
    - A sounding is consistent if every level agrees within 30 m plus 3% of its height above the surface. This margin covers the omitted humidity effect and coarse temperature profiles.
    - Inconsistent soundings are discarded, as are soundings with fewer than two temperatures.
@@ -159,7 +160,7 @@ fig("supp_ground_climate")
 
 ## Flight: column temperature
 
-To test whether flight-height errors arise from the assumed temperature profile, we compare each observed error with the error predicted from the difference between the assumed and the radiosonde-derived mean column temperature. For ERA5 with the standard lapse rate, the predicted from the assumed versus observed mean column temperature closely follows the surface-referenced error (r = `r sprintf("%.2f", te$r)`; @fig-temperature). Most of the systematic flight-height error therefore arises from the assumed temperature profile; its variation with climate, season and time of day is shown in the main manuscript.
+To test whether flight-height errors arise from the assumed temperature profile, we compare each observed error with the error predicted from the difference between the assumed and the radiosonde-derived mean column temperature. For ERA5 with the standard lapse rate, the predicted error closely follows the surface-referenced error (r = `r sprintf("%.2f", te$r)`; @fig-temperature). Most of the systematic flight-height error therefore arises from the assumed temperature profile; its variation with climate, season and time of day is shown in the main manuscript.
 
 ```{r}
 #| label: fig-temperature

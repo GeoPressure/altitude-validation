@@ -7,11 +7,11 @@ format:
     geometry: margin=2.5cm
 ---
 
-23 October 2026
+25 October 2026
 
 Dear Editors,
 
-Please consider our manuscript, “How accurate is altitude from pressure geolocators? A global assessment of three pressure-to-altitude conversions on the ground and in flight”, for publication as a Methodology article in Movement Ecology.
+Please consider our manuscript, “How accurate is altitude from pressure geolocators? A global assessment of three pressure-to-altitude conversions on the ground and in flight”, for publication as a Research article in Movement Ecology.
 
 Pressure sensors provide year-round vertical records for small migratory birds and complement satellite tracking, but conversion of pressure to altitude introduces atmospheric errors that can affect ecological interpretation. We evaluate three conversions against a global network of weather stations and radiosondes, distinguish persistent bias from temporal variability, and use recorded flight heights from 203 birds to relate the errors to ecological applications.
 
