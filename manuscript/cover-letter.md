@@ -5,26 +5,31 @@ format:
     pdf-engine: pdflatex
     fontsize: 11pt
     geometry: margin=2.5cm
+    include-in-header:
+      text: |
+        \usepackage{ragged2e}
+        \AtBeginDocument{\RaggedRight\pagestyle{empty}}
+        \setlength{\parskip}{0.8em}
 ---
 
 25 October 2026
 
+\vspace{0.6em}
+
 Dear Editors,
 
-Please consider our manuscript, “How accurate is altitude from pressure geolocators? A global assessment of three pressure-to-altitude conversions on the ground and in flight”, for publication as a Research article in Movement Ecology.
+Please consider our manuscript, “How accurate is altitude from pressure geolocators? A global assessment of three pressure-to-altitude conversions on the ground and in flight”, for publication as a research article in Movement Ecology.
 
-Pressure sensors provide year-round vertical records for small migratory birds and complement satellite tracking, but conversion of pressure to altitude introduces atmospheric errors that can affect ecological interpretation. We evaluate three conversions against a global network of weather stations and radiosondes, distinguish persistent bias from temporal variability, and use recorded flight heights from 203 birds to relate the errors to ecological applications.
+Lightweight archival pressure sensors reveal the altitudes of small migratory birds throughout the year, both in flight and on the ground. However, converting pressure to altitude introduces atmospheric errors that can affect ecological interpretation. We evaluate three conversions against weather-station and radiosonde observations worldwide, distinguish persistent bias from temporal variability, and use flight heights from 203 tracked birds to put these errors in ecological context.
 
-The manuscript demonstrates the benefit of combining local ERA5 surface conditions with virtual temperature and a climatological temperature lapse rate. This computationally simple refinement is implemented in GeoPressureR and requires measured pressure, measurement time and an approximate position. The global evaluation identifies both the improvement and its limits, including uncertainty relevant to migration altitude, elevational movements and flight-height thresholds. We believe this practical methodological advance will interest Movement Ecology readers who collect or interpret animal movement data in three dimensions.
+We show that local ERA5 surface conditions substantially reduce altitude errors, while virtual temperature and a climatological temperature lapse rate further reduce systematic flight-height bias. This computationally simple conversion is implemented in [GeoPressureR](https://geopressure.org/GeoPressureR) (v3.7.0) and requires only measured pressure, its time and an approximate position. Our evaluation quantifies the remaining uncertainty relevant to migration altitude, elevational movements and flight-height thresholds. This practical advance will interest Movement Ecology readers who collect or interpret animal movement data in three dimensions.
 
-The authors declare no competing interests, and the research received no dedicated funding. The study uses public meteorological observations and existing bird-tracking data; no new animal handling or experiments were undertaken. Assistance from OpenAI Codex is disclosed in the manuscript. Code and data resources are described in the Availability of data and materials statement.
+The manuscript has not been published previously and is not under consideration elsewhere.
 
-All authors have approved the manuscript for submission to Movement Ecology. The content of the manuscript has not been published previously and is not under consideration for publication elsewhere.
+\vspace{0.6em}
 
 Yours sincerely,
 
-Raphaël Nussbaumer, on behalf of the authors
+\vspace{0.6em}
 
-Swiss Ornithological Institute, Seerose 1, 6204 Sempach, Switzerland
-
-raphael.nussbaumer@vogelwarte.ch
+Raphaël Nussbaumer and Mathieu Gravey
