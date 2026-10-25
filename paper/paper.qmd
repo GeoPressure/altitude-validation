@@ -158,7 +158,7 @@ Here, we compare three pressure-to-altitude conversions: a fixed standard atmosp
 
 ## Three conversions from pressure to altitude
 
-Pressure decreases with height because each layer of air supports the weight of the air above it. Combining this hydrostatic approximation with the ideal gas law gives the hypsometric relation [@wallace2006]:
+Pressure decreases with altitude because each layer of air supports the weight of the air above it. Combining this hydrostatic approximation with the ideal gas law gives the hypsometric relation [@wallace2006]:
 $$
 z = z_0 + \frac{R\,\bar T_v}{g\,M}\,\ln\frac{p_0}{p},
 $$ {#eq-hypsometric}
