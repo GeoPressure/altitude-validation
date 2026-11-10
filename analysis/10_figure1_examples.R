@@ -142,12 +142,7 @@ for (i in seq_len(nrow(picks))) {
   d <- d[sounding == k$sounding][order(agl)]
   k0 <- d[which.min(abs(agl - k$agl))]
   s <- st[network == "igra" & id == k$id]
-  L <- gpt3_lapse(
-    gpt3,
-    s$lon,
-    s$lat,
-    as.POSIXlt(k0$level_time, tz = "UTC")$yday + 1
-  )
+  L <- lapse_gpt3(s$lon, s$lat, k0$level_time)
   heights <- seq(0, 6000, 25)
   z <- heights + k0$gph_s
   profiles[[i]] <- rbind(
