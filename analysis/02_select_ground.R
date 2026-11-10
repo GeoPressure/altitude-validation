@@ -89,7 +89,11 @@ select_cell <- function(cell_id) {
     attempts[[length(attempts) + 1L]] <- data.table(
       cell = cell_id,
       id = s$id,
-      reason = selected$consistency$reason %||% "accepted"
+      reason = if (is.null(selected$consistency$reason)) {
+        "accepted"
+      } else {
+        selected$consistency$reason
+      }
     )
     if (is.null(selected$hours)) {
       next
