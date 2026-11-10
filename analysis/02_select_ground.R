@@ -4,7 +4,6 @@ source("R/utils.R")
 source("R/ghcnh.R")
 load_geopressurer()
 setDTthreads(1)
-cores <- max(1L, parallel::detectCores() - 2L)
 run_dir <- network_dir("ghcnh", "candidates")
 out_dir <- network_dir("ghcnh", "selection")
 settings <- readRDS(file.path(run_dir, "settings.rds"))
@@ -120,7 +119,7 @@ repeat {
         list(cell = cell_id, error = conditionMessage(e))
       })
     },
-    mc.cores = cores,
+    mc.cores = n_cores,
     mc.preschedule = FALSE
   )
   failed <- Filter(function(r) !is.null(r$error), out)
@@ -165,7 +164,7 @@ res <- par_map(
     ghcnh_core(s, settings, run_dir)
     TRUE
   },
-  cores = min(cores, 6L),
+  cores = min(n_cores, 6L),
   geopressurer = TRUE,
   export = c("settings", "run_dir")
 )

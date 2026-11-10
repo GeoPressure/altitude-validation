@@ -5,7 +5,6 @@ source("R/ghcnh.R")
 source("R/igra.R")
 load_geopressurer()
 setDTthreads(1)
-cores <- max(1L, parallel::detectCores() - 2L)
 run_dir <- network_dir("igra", "candidates")
 out_dir <- network_dir("igra", "selection")
 settings <- readRDS(file.path(run_dir, "settings.rds"))
@@ -45,7 +44,7 @@ results <- parallel::mclapply(
       list(cell = cell_id, error = conditionMessage(e))
     })
   },
-  mc.cores = cores,
+  mc.cores = n_cores,
   mc.preschedule = FALSE
 )
 failed <- Filter(function(r) !is.null(r$error), results)
@@ -77,7 +76,7 @@ res <- par_map(
     igra_core(r$station, c(r$profiles$date, r$profiles$date_s), run_dir)
     TRUE
   },
-  cores = min(cores, 6L),
+  cores = min(n_cores, 6L),
   geopressurer = TRUE,
   export = "run_dir"
 )
