@@ -150,7 +150,11 @@ for (i in seq_len(nrow(picks))) {
       temp > -8000 & agl <= 6000,
       .(height = agl, temperature = temp / 10, formula = "Observed temperature")
     ],
-    data.table(height = heights, temperature = 15 - 0.0065 * z, formula = "isa"),
+    data.table(
+      height = heights,
+      temperature = 15 - 0.0065 * z,
+      formula = "isa"
+    ),
     data.table(
       height = heights,
       temperature = k0$t2m_sl - 273.15 - 0.0065 * (z - k0$z_sl),

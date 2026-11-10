@@ -135,7 +135,10 @@ fwrite(
   )],
   file.path(dir_tables, "ground_land_hourly_hist.csv")
 )
-qs <- setNames(c(0.1, 0.25, 0.5, 0.75, 0.9), c("q10", "q25", "q50", "q75", "q90"))
+qs <- setNames(
+  c(0.1, 0.25, 0.5, 0.75, 0.9),
+  c("q10", "q25", "q50", "q75", "q90")
+)
 fwrite(
   rbind(
     P[, c(product = "sl", lapply(qs, function(p) wquant(sl, w, p)))],
