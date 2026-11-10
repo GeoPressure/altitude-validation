@@ -43,26 +43,25 @@ load_geopressurer <- function() {
 }
 
 geopressurer_version <- function() {
-  sha <- tryCatch(
-    suppressWarnings(system2(
-      "git",
-      c(
-        "-C",
-        shQuote(path.expand(GEOPRESSURER_PATH)),
-        "rev-parse",
-        "--short",
-        "HEAD"
-      ),
-      stdout = TRUE,
-      stderr = FALSE
-    )),
-    error = function(e) character()
+  sha <- system2(
+    "git",
+    c(
+      "-C",
+      shQuote(path.expand(GEOPRESSURER_PATH)),
+      "rev-parse",
+      "--short",
+      "HEAD"
+    ),
+    stdout = TRUE,
+    stderr = FALSE
   )
+  # The commit is part of the reported provenance, so a git failure must stop.
+  stopifnot(length(sha) == 1, nzchar(sha))
   desc <- read.dcf(
     file.path(GEOPRESSURER_PATH, "DESCRIPTION"),
     fields = "Version"
   )[1, 1]
-  if (length(sha) == 1 && nzchar(sha)) paste0(desc, " (", sha, ")") else desc
+  paste0(desc, " (", sha, ")")
 }
 
 # ---- ERA5 extraction ------------------------------------------------------------------------
