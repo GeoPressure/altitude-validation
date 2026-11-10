@@ -31,20 +31,12 @@ out <- rbindlist(lapply(ids, function(i) {
     pressure = d$pressure * 100,
     workers = 1
   )
-  r <- tryCatch(
-    httr2::request("https://glp.mgravey.com/GeoPressure/v2/pressurePath/") |>
-      httr2::req_body_json(body, digits = 7, auto_unbox = TRUE) |>
-      httr2::req_timeout(300) |>
-      httr2::req_perform() |>
-      httr2::resp_body_json(simplifyVector = TRUE),
-    error = function(e) {
-      message(i, ": ", conditionMessage(e))
-      NULL
-    }
-  )
-  if (is.null(r) || is.null(r$data$altitude)) {
-    return(NULL)
-  }
+  r <- httr2::request("https://glp.mgravey.com/GeoPressure/v2/pressurePath/") |>
+    httr2::req_body_json(body, digits = 7, auto_unbox = TRUE) |>
+    httr2::req_timeout(300) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json(simplifyVector = TRUE)
+  stopifnot(!is.null(r$data$altitude))
   api <- data.table(
     date = as.POSIXct(r$data$time, origin = "1970-01-01", tz = "UTC"),
     alt_api = unlist(r$data$altitude)
@@ -62,3 +54,5 @@ summ <- out[, .(
   max_abs_diff = max(abs(diff))
 )]
 print(summ)
+# Every queried station must return finite altitudes matched to the ARCO series
+stopifnot(summ$n > 0, all(is.finite(out$diff)))
