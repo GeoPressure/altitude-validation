@@ -1,8 +1,10 @@
 cff-version: 1.2.0
 message: "If you use these results or this code, please cite it as below."
 type: software
+version: 1.1.0
+date-released: 2026-11-14
 doi: 10.5281/zenodo.23085093
-title: "How accurate is altitude from pressure geolocators? Code and data for a global assessment of three pressure-to-altitude conversions"
+title: "A global assessment of three pressure-to-altitude conversions for geolocators on the ground and in flight"
 abstract: >-
   Global assessment of three pressure-to-altitude conversions: a fixed standard atmosphere,
   ERA5 surface conditions with a standard lapse rate, and ERA5 with virtual temperature and

@@ -181,8 +181,7 @@ names schaub2023/simonetti2024 as costlier profile alternatives.
 Unadopted suggestions from the reviews (possible future work): local known-height zeroing
 sensitivity; implementing a Schaub-style pressure-level lapse comparator; horizontal-position
 perturbation for geolocators; error of altitude *differences* over time; low-altitude (<100 m)
-dedicated assessment. Journal-fit opinion (7 Oct): Movement Ecology or Animal Biotelemetry;
-MEE if a transferable correction is the centre.
+dedicated assessment.
 
 ## 6. Useful references not in `paper/references.bib`
 

@@ -147,8 +147,7 @@ The table compares radiosonde conversion variants by bird-weighted flight error.
   4. Input choices, including the negative ERA5-Land result.
   5. Interpretation and calibration: surface-referenced height is not terrain clearance.
   6. Validation scope.
-- **Submission** (Movement Ecology, Methodology). Open items:
+- **Submission** (Scientific Reports, Article). Open items:
   - Publish the Zenodo record 10.5281/zenodo.23085093.
   - Confirm Mathieu's approval in the cover letter.
   - Confirm the AI-use statement and the open-access arrangements.
-  - Check compatibility with the journal's TeX Live 2021.

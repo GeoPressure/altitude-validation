@@ -1,9 +1,12 @@
 ---
-title: "Additional file 1"
-subtitle: "How accurate is altitude from pressure geolocators? Supplementary methods and results"
+title: "Supplementary Information"
+subtitle: "A global assessment of three pressure-to-altitude conversions for geolocators on the ground and in flight"
 author: "Raphaël Nussbaumer, Mathieu Gravey"
 bibliography: references.bib
-csl: vendor/biomed-central.csl
+csl: vendor/scientific-reports.csl
+crossref:
+  fig-prefix: Supplementary Fig.
+  tbl-prefix: Supplementary Table
 format:
   pdf:
     number-sections: false
@@ -12,7 +15,13 @@ format:
     include-in-header:
       text: |
         \usepackage{float}
+        \renewcommand{\thefigure}{S\arabic{figure}}
+        \renewcommand{\thetable}{S\arabic{table}}
         \floatplacement{table}{H}
+    include-before-body:
+      text: |
+        \renewcommand{\figurename}{Supplementary Figure}
+        \renewcommand{\tablename}{Supplementary Table}
     geometry: margin=2.5cm
     pdf-engine: pdflatex
     latex-min-runs: 3

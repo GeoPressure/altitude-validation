@@ -12,7 +12,7 @@ quarto render cover-letter.md --to pdf
 out=submission
 rm -rf "$out" && mkdir -p "$out/latex-source/figures"
 cp paper.pdf "$out/manuscript.pdf"
-cp supplement.pdf "$out/Additional_file_1.pdf"
+cp supplement.pdf "$out/Supplementary_Information.pdf"
 cp cover-letter.pdf "$out/cover-letter.pdf"
 n=1
 for f in fig1_column fig2_stations fig3_ground fig4_flight fig5_conditions; do
@@ -22,6 +22,7 @@ done
 sed 's|]{vendor/sn-jnl}|]{sn-jnl}|' paper.tex > "$out/latex-source/paper.tex"
 cp vendor/sn-jnl.cls references.bib "$out/latex-source/"
 cp figures/fig*.pdf "$out/latex-source/figures/"
-(cd "$out/latex-source" && zip -qr ../latex-source.zip .)
+(cd "$out/latex-source" && zip -qr ../manuscript-source-corrected.zip .)
 rm -rf "$out/latex-source"
+(cd "$out" && zip -q Scientific_Reports_submission.zip manuscript.pdf Supplementary_Information.pdf cover-letter.pdf Figure_*.pdf manuscript-source-corrected.zip)
 echo "Upload files written to manuscript/$out"
